@@ -3,14 +3,49 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+
+% \chapter {Commands \linebreak for composing \linebreak paragraphs}
 \chapter {組段命令}
+
+% \chapterdef{paras}
+
+% This section covers commands that 
+% deal with characters, words, lines, and entire paragraphs.
+% For an explanation of the conventions used in this section,
+% see \headcit{Descriptions of the commands}{cmddesc}.
+
+% \begindescriptions
 
 \chapterdef{paras}
 
-這個章節介紹了與字符, 單詞, 行以及整段相關的命令.
+這一章介紹了與字符, 單詞, 行以及整段相關的命令.
 本章寫作慣例的說明可以在\headcit{命令描述}{cmddesc}中找到.
 
 \begindescriptions
+
+% \section {Characters and accents}
+
+% %==========================================================================
+% \subsection {Letters and ligatures for European alphabets}
+
+% \begindesc
+% \xrdef{fornlets}
+% \bix^^{ligatures}
+% ^^{special symbols}
+% ^^{European alphabets}
+% %
+% \ctsx AA {Scandinavian letter \AA}
+% \ctsx aa {Scandinavian letter \aa}
+% \ctsx AE {\AE\ ligature}
+% \ctsx ae {\ae\ ligature}
+% \ctsx L {Polish letter \L}
+% \ctsx l {Polish letter \l}
+% \ctsx O {Danish/Norwegian letter \O}
+% \ctsx o {Danish/Norwegian letter \o}
+% \ctsx OE {\OE\ ligature}
+% \ctsx oe {\oe\ ligature}
+% \ctsx ss {German letter \ss}
+% \explain
 
 \section {字符和重音符}
 
@@ -23,25 +58,47 @@
 ^^{special symbols}
 ^^{European alphabets}
 %
-\ctsx AA {斯堪地纳维亚語字母 \AA}
-\ctsx aa {斯堪地纳维亚語字母 \aa}
+\ctsx AA {斯堪地纳维亚文字母 \AA}
+\ctsx aa {斯堪地纳维亚文字母 \aa}
 \ctsx AE {\AE\ 連寫}
 \ctsx ae {\ae\ 連寫}
-\ctsx L {波蘭語字母 \L}
-\ctsx l {波蘭語字母 \l}
-\ctsx O {丹麥/挪威語字母 \O}
-\ctsx o {丹麥/挪威語字母 \o}
+\ctsx L {波蘭文字母 \L}
+\ctsx l {波蘭文字母 \l}
+\ctsx O {丹麥/挪威文字母 \O}
+\ctsx o {丹麥/挪威文字母 \o}
 \ctsx OE {\OE\ 連寫}
 \ctsx oe {\oe\ 寫寫}
-\ctsx ss {德語字母 \ss}
+\ctsx ss {德文字母 \ss}
 \explain
 
-這些命令可以產生各種歐文字符和連寫.
-它們在文本中遇到偶而出現的歐語單詞和詞組時顯得很有用.
-但是如果你需要排印大量的歐文文本時, 
-你可能會去使用一個為這些語言定製的 \TeX\ 版本.
-\footnote{\TeX\ 用戶組織 (\xref{resources}) 可為你提供為歐語訂製的 \TeX\ 版本.}
+% These commands produce various letters and ligatures from European
+% alphabets.
+% They are useful for occasional words and phrases in these
+% languages---but if you need to typeset a large amount of text in a European
+% language, you should probably be using a version of \TeX\ adapted
+% to that language.\footnote{The \TeX\ Users Group (\xref{resources}) can
+% provide you with information about European language versions of \TeX.}
 
+這些命令可以產生各種歐文字符和連寫.
+它們在文本中遇到偶而出現的歐文單詞和詞組時顯得很有用.
+但是如果需要排印大量的歐文文本時, 
+你可能會去使用一個為這些語言定製的 \TeX\ 版本.
+\footnote{\TeX\ 用戶組織 (\xref{resources}) 可為你提供 \TeX\ 的欧洲语
+  言版本.}
+
+% You'll need a space after these commands when you use them within a word,
+% so that
+% \TeX\ will treat the following letters as part of the word
+% rather than as part of the command.
+% You needn't be in \minref{math mode} to use these commands.
+% \example
+% {\it les \oe vres de Moli\`ere}
+% |
+% \produces
+% {\it les \oe vres de Moli\`ere}
+% \endexample
+% \eix^^{ligatures}
+% \enddesc
 
 當你在一個單詞中使用這些命令時, 需要在它們後面加上一個空格,
 這樣, \TeX\ 會把它後面的字母當作是這個詞語的一部分而不是這個命令的一部分.
@@ -56,12 +113,38 @@
 \enddesc
 
 %==========================================================================
-\subsection {特殊符號}
+%\subsection {Special symbols}
+\subsection {专用符號}
+
+% \begindesc
+% ^^{special characters}
+% %
+% \easy\ctspecialx # \ctsxrdef{@pound} {pound sign \#}
+% \ctspecialx $ \ctsxrdef{@bucks} {dollar sign \$}
+% \ctspecialx % \ctsxrdef{@percent} {percent sign \%}
+% \ctspecialx & \ctsxrdef{@and} {ampersand \&}
+% \ctspecialx _ \ctsxrdef{@underscore} {underscore \_}
+% \ctsx lq {left quote \lq}
+% \ctsx rq {right quote \rq}
+% \aux\ctsx lbrack left bracket [
+% \aux\ctsx rbrack right bracket ]
+% \ctsx dag {dagger symbol \dag}
+% \ctsx ddag {double dagger symbol \ddag}
+% \ctsx copyright {copyright symbol \copyright}
+% \ctsx P {paragraph symbol \P}
+% \ctsx S {section symbol \S}
+% \explain
+% These commands produce various special characters and marks.  The first
+% five commands are necessary because \TeX\ by default
+% attaches special meanings to
+% the characters (|#|, |$|, |%|, |&|, |_|).
+% You needn't be in \minref{math mode} to use these commands.
 
 \begindesc
 ^^{special characters}
 %
-\easy\ctspecialx # \ctsxrdef{@pound} {磅號 \#}
+\easy\ctspecialx # \ctsxrdef{@pound} {英磅符號 \# \footnote{zpxing: 位
+    于键盘的数字 3 之上， 英式键盘为英磅符号，美式键盘为数字符号 \#。}}
 \ctspecialx $ \ctsxrdef{@bucks} {美元符號 \$}
 \ctspecialx % \ctsxrdef{@percent} {百分號 \%}
 \ctspecialx & \ctsxrdef{@and} {和 \&}
@@ -72,13 +155,28 @@
 \aux\ctsx rbrack 右中括號 ]
 \ctsx dag {短剑符號 \dag}
 \ctsx ddag {雙剑符號 \ddag}
-\ctsx copyright {版權號 \copyright}
-\ctsx P {段號 \P}
-\ctsx S {小節號 \S}
+\ctsx copyright {版權符號 \copyright}
+\ctsx P {段落符號 \P}
+\ctsx S {章節符號 \S}
 \explain
 這些命令可以產生各種特殊字符和符號.
 前五個是必需的, 因為 \TeX\ 默認地把符號 (|#|, |$|, |%|, |&|, |_|) 作特殊的用途.
-你不需為了使用這些符號而進入\minref{數學模式}.
+你不用為了使用這些符號而進入\minref{數學模式}.
+
+% You can use the dollar sign in the Computer Modern
+% italic fonts to get the ^{pound
+% sterling} symbol, as shown in the example below.
+
+% \example
+% \dag It'll only cost you \$9.98 over here, but in England
+% it's {\it \$}24.98.
+% |
+% \produces
+% \dag It'll only cost you \$9.98 over here, but in England
+% it's {\it \$}24.98.
+% \endexample
+% \enddesc
+
 
 你可以使用計算機現代字體的意大利體中的美元符號來得到英鎊符號, 例如:
 
@@ -90,12 +188,27 @@
 \endexample
 \enddesc
 
+% \begindesc
+% \cts TeX {}
+% \explain
+% This command produces the \TeX\ logo. Remember to follow it by
+% |\!vs| or to enclose it in a \minref{group} when you want a space
+% after it.
+
 \begindesc
 \cts TeX {}
 \explain
 這個符號可以得到 \TeX\ 的標志. 
 如果你需要在後面加上空格, 
 請在其後加上 |\!vs| 或者把它放到一個\minref{組}中.
+
+% \example
+% A book about \TeX\ is in your hands.
+% |
+% \produces
+% A book about \TeX\ is in your hands.
+% \endexample
+% \enddesc
 
 \example
 A book about \TeX\ is in your hands.
@@ -104,6 +217,25 @@ A book about \TeX\ is in your hands.
 A book about \TeX\ is in your hands.
 \endexample
 \enddesc
+
+% \begindesc
+% \cts dots {}
+% \explain
+% ^^{dots}
+% This command produces an ^{ellipsis}, i.e., three dots, in ordinary text.
+% It's intended for use in mathematical writing; for an ellipsis 
+% between ordinary words, you should use |$\ldots$| \ctsref{\ldots} instead.
+% Since |\dots| includes its own space, you shouldn't follow it by 
+% |\!vs|.
+% \example
+% The sequence $x_1$, $x_2$, \dots, $x_\infty$
+% does not terminate.
+% |
+% \produces
+% The sequence $x_1$, $x_2$, \dots, $x_\infty$
+% does not terminate.
+% \endexample
+% \enddesc
 
 \begindesc
 \cts dots {}
@@ -123,9 +255,25 @@ A book about \TeX\ is in your hands.
 \endexample
 \enddesc
 
-\see ``各種各樣的普通數學符號'' (\xref{specsyms}).
+%\see ``Miscellaneous ordinary math symbols'' (\xref{specsyms}).
+\see ``各種常用數學符號'' (\xref{specsyms}).
 %==========================================================================
+%\subsection {Arbitrary characters}
 \subsection {任意字符}
+
+% \begindesc
+% \bix^^{characters}
+% \cts char {\<charcode>}
+% \explain
+% This command produces the character located at position \<charcode>
+% of the current font.
+% \example
+% {\char65} {\char `A} {\char `\A}
+% |
+% \produces
+% {\char65} {\char `A} {\char `\A}
+% \endexample
+% \enddesc
 
 \begindesc
 \bix^^{characters}
@@ -140,11 +288,31 @@ A book about \TeX\ is in your hands.
 \endexample
 \enddesc
 
+% \begindesc
+% \cts mathchar {\<mathcode>}
+% \explain
+% This command produces the math character whose class, family, and 
+% font position are given by \<mathcode>.
+% It is only legal in math mode.
+% \example
+% \def\digger{\mathchar "027F} % Like \spadesuit in plain TeX.
+% % Class 0, family 2, font position "7F.
+% $\digger$
+% |
+% \produces
+% \def\digger{\mathchar "027F}
+% % class 0, family 2, font position "7F
+% $\digger$
+% \endexample
+% \enddesc
+
+% \see |\delimiter| (\xref\delimiter).
+% \eix^^{characters}
+
 \begindesc
 \cts mathchar {\<mathcode>}
 \explain
-這個命令可以產生由 \<mathcode> 所指定的類, 簇以及位置的數學字符.這個命令僅能用在數學模式中. 
-
+這個命令可以產生由 \<mathcode> 所指定的類, 簇以及位置的數學字符。這個命令僅能用在數學模式中。
 \example
 \def\digger{\mathchar "027F} % 類似 plain TeX 中的 \spadesuit 命令.
 % 0類, 2簇, "7F處.
@@ -161,29 +329,61 @@ $\digger$
 \eix^^{characters}
 
 %==========================================================================
+%\subsection {Accents}
 \subsection {重音符號}
+
+% \begindesc
+% ^^{accents}
+% \xrdef{accents}
+% %
+% \ctspecialx ' \ctsxrdef{@prime} {^{acute accent} as in \'e}
+% \ctspecialx . \ctsxrdef{@dot} {^{dot accent} as in \.n}
+% \ctspecialx = \ctsxrdef{@equal} {^{macron accent} as in \=r}
+% \ctspecialx ^ \ctsxrdef{@hat} {^{circumflex accent} as in \^o}
+% \ctspecialx ` \ctsxrdef{@lquote} {^{grave accent} as in \`e}
+% \ctspecialx " \ctsxrdef{@quote} {^{umlaut accent} as in \"o}
+% \ctspecialx ~ \ctsxrdef{@not} {^{tilde accent} as in \~a}
+% \ctsx c {^{cedilla accent} as in \c c}
+% \ctsx d {^{underdot accent} as in \d r}
+% \ctsx H {^{Hungarian umlaut accent} as in \H o}
+% \ctsx t {^{tie-after accent} as in \t uu}
+% \ctsx u {^{breve accent} as in \u r}
+% \ctsx v {^{check accent} as in \v o}
+% \explain
+% These commands produce accent marks in ordinary text.  You'll usually
+% need to leave a space after the ones denoted by a single letter
+% (see ``Spaces'', \xref{spaces}).
 
 \begindesc
 ^^{accents}
 \xrdef{accents}
 %
-\ctspecialx ' \ctsxrdef{@prime} {^{acute accent} as in \'e}
-\ctspecialx . \ctsxrdef{@dot} {^{dot accent} as in \.n}
-\ctspecialx = \ctsxrdef{@equal} {^{macron accent} as in \=r}
-\ctspecialx ^ \ctsxrdef{@hat} {^{circumflex accent} as in \^o}
-\ctspecialx ` \ctsxrdef{@lquote} {^{grave accent} as in \`e}
-\ctspecialx " \ctsxrdef{@quote} {^{umlaut accent} as in \"o}
-\ctspecialx ~ \ctsxrdef{@not} {^{tilde accent} as in \~a}
-\ctsx c {^{cedilla accent} as in \c c}
-\ctsx d {^{underdot accent} as in \d r}
-\ctsx H {^{Hungarian umlaut accent} as in \H o}
-\ctsx t {^{tie-after accent} as in \t uu}
-\ctsx u {^{breve accent} as in \u r}
-\ctsx v {^{check accent} as in \v o}
+\ctspecialx ' \ctsxrdef{@prime} {^{锐音符} 比如 \'e}
+\ctspecialx . \ctsxrdef{@dot} {^{上点符} 比如 \.n}
+\ctspecialx = \ctsxrdef{@equal} {^{长音符} 比如 \=r}
+\ctspecialx ^ \ctsxrdef{@hat} {^{抑音符} 比如 \^o}
+\ctspecialx ` \ctsxrdef{@lquote} {^{钝音符} 比如 \`e}
+\ctspecialx " \ctsxrdef{@quote} {^{分音符} 比如 \"o}
+\ctspecialx ~ \ctsxrdef{@not} {^{颚化符} 比如 \~a}
+\ctsx c {^{软音符} 比如 \c c}
+\ctsx d {^{下点符} 比如 \d r}
+\ctsx H {^{匈牙利分音符} 比如 \H o}
+\ctsx t {^{连音符} 比如 \t uu}
+\ctsx u {^{短音符} 比如 \u r}
+\ctsx v {^{倒折音符} 比如 \v o}
 \explain
-These commands produce accent marks in ordinary text.  You'll usually
-need to leave a space after the ones denoted by a single letter
-(see ``Spaces'', \xref{spaces}).
+这些命令为普通文本产生重音记号。通常，你需要为其中以单个字母表示的音符后面留一
+个空格（参见 ``空格'', \xref{spaces}）。
+
+% \example
+% Add a soup\c con of \'elan to my pin\~a colada.
+% |
+% \produces
+% Add a soup\c con of \'elan to my pin\~a colada.
+% \endexample
+
+% \margin{`see also' moved to end of group, replacing the one there.}
+% \enddesc
 
 \example
 Add a soup\c con of \'elan to my pin\~a colada.
@@ -195,16 +395,32 @@ Add a soup\c con of \'elan to my pin\~a colada.
 \margin{`see also' moved to end of group, replacing the one there.}
 \enddesc
 
+% \begindesc
+% \cts i {}
+% \cts j {}
+% \explain
+% These commands produce dotless versions of the letters `i' and `j'.
+% You should use them instead of the ordinary `i' and `j' when you are putting
+% an accent above those letters in ordinary text.
+% ^^{dotless letters}
+% Use the ^|\imath| and ^|\jmath| commands (\xref\imath)
+% for dotless `i's and `j's in math formulas.
+% \example
+% long `i' as in l\=\i fe  \quad \v\j
+% |
+% \produces
+% long `i' as in l\=\i fe  \quad \v\j
+% \endexample
+% \enddesc
+
 \begindesc
 \cts i {}
 \cts j {}
 \explain
-These commands produce dotless versions of the letters `i' and `j'.
-You should use them instead of the ordinary `i' and `j' when you are putting
-an accent above those letters in ordinary text.
+这些命令产生无点的字母 `i' 和 `j'。在普通文本中，如果需要为`i' 和 `j'
+标记重音，就使用它们。
 ^^{dotless letters}
-Use the ^|\imath| and ^|\jmath| commands (\xref\imath)
-for dotless `i's and `j's in math formulas.
+在数学公式里，无点的`i' 和 `j' 使用 ^|\imath| 和 ^|\jmath| 命令 (\xref\imath)。
 \example
 long `i' as in l\=\i fe  \quad \v\j
 |
@@ -212,23 +428,43 @@ long `i' as in l\=\i fe  \quad \v\j
 long `i' as in l\=\i fe  \quad \v\j
 \endexample
 \enddesc
+
+% \begindesc
+% \cts accent {\<charcode>}
+% \explain
+% ^^{accents}
+% This command puts an accent over the character following this command.
+% The accent is the character at position \<charcode> in the current font.
+% \TeX\ assumes that the accent has been designed to fit over a character
+% $1$\thinspace ex high in the same font as the accent.  If the 
+% character to be accented
+% is taller or shorter, \TeX\ adjusts the position accordingly.  You can
+% change \minref{font}s between the accent and the next character, thus
+% drawing the accent character and the character to be accented
+% from different fonts.  If
+% the accent character isn't really intended to be
+% an accent, \TeX\ won't complain; it
+% will just typeset something ridiculous.
+% \example
+% l'H\accent94 otel des Invalides
+% % Position 94 of font cmr10 has a circumflex accent.
+% |
+% \produces
+% l'H\accent94 otel des Invalides
+% % Position 94 of font cmr10 has a circumflex accent.
+% \endexample
+% \see Math accents (\xref{mathaccent}).
+% \enddesc
 
 \begindesc
 \cts accent {\<charcode>}
 \explain
 ^^{accents}
-This command puts an accent over the character following this command.
-The accent is the character at position \<charcode> in the current font.
-\TeX\ assumes that the accent has been designed to fit over a character
-$1$\thinspace ex high in the same font as the accent.  If the 
-character to be accented
-is taller or shorter, \TeX\ adjusts the position accordingly.  You can
-change \minref{font}s between the accent and the next character, thus
-drawing the accent character and the character to be accented
-from different fonts.  If
-the accent character isn't really intended to be
-an accent, \TeX\ won't complain; it
-will just typeset something ridiculous.
+这个命令为后面的字符加上重音标记。重音是当前字体里 \<charcode> 位置的
+字符。\TeX\ 假定重音符号被设计的比同样字体里的字符高 $1$\thinspace ex。
+如果需要标记重音的字符过高或者过低，\TeX\ 自动调整重音位置。你可以在重
+音符号和其后的字符之间切换\minref{字体}。如果重音符号被设计的很另
+类，\TeX\ 不会产生警告；只是排印出一些荒谬的结果。
 \example
 l'H\accent94 otel des Invalides
 % Position 94 of font cmr10 has a circumflex accent.
@@ -237,71 +473,120 @@ l'H\accent94 otel des Invalides
 l'H\accent94 otel des Invalides
 % Position 94 of font cmr10 has a circumflex accent.
 \endexample
-\see Math accents (\xref{mathaccent}).
+\see 数学重音 (\xref{mathaccent})。
 \enddesc
 %==========================================================================
-\subsection {Defeating boundary ligatures}
+%\subsection {Defeating boundary ligatures}
+\subsection 处理页边连写
+
+% \begindesc
+% \bix^^{ligatures}
+% \cts noboundary {}
+% \explain
+% You can defeat a ligature
+% or kern that \TeX\ applies to the
+% first or last character of a word by putting |\noboundary| just before
+% or just after the word.  
+% Certain fonts intended for languages other than English
+% contain a special boundary
+% character that \TeX\ puts at the beginning
+% and end of each word.
+% The boundary character occupies no space and is invisible when printed.
+% It enables \TeX\ to provide different typographical
+% treatment to characters at the beginning or end of a word,
+% since
+% the boundary character can be part of a sequence of
+% characters to be kerned or replaced by a ligature.
+% (None of the standard \TeX\ fonts contain this boundary character.)
+% The effect of |\noboundary| is to delete the
+% boundary character if it's there, thus preventing \TeX\
+% from recognizing the ligature or kern.
+% \eix^^{ligatures}
+% \enddesc
 
 \begindesc
 \bix^^{ligatures}
 \cts noboundary {}
 \explain
-You can defeat a ligature
-or kern that \TeX\ applies to the
-first or last character of a word by putting |\noboundary| just before
-or just after the word.  
-Certain fonts intended for languages other than English
-contain a special boundary
-character that \TeX\ puts at the beginning
-and end of each word.
-The boundary character occupies no space and is invisible when printed.
-It enables \TeX\ to provide different typographical
-treatment to characters at the beginning or end of a word,
-since
-the boundary character can be part of a sequence of
-characters to be kerned or replaced by a ligature.
-(None of the standard \TeX\ fonts contain this boundary character.)
-The effect of |\noboundary| is to delete the
-boundary character if it's there, thus preventing \TeX\
-from recognizing the ligature or kern.
+某些时候，\TeX{} 对单词的开头或者末尾字符连写或者紧排。你可以紧接着单词
+前面或者后面放一个 |\noboundary| 来取消它们。有些非英文字体包含一个专
+门的边界字符，被 \TeX{} 放在单词的前后。这个边界字符不占空间，打印出来
+也不可见。它可以成为能被紧排或连写的一串字符的组成部分，所以有了
+它，\TeX{} 可以对单词的头尾做别致的处理。（标准的\TeX{} 字体不包含此边
+界字符） |\noboundary| 的效果是删除存在的边界字符，从而防止 \TeX{} 识
+别连写或紧排。
 \eix^^{ligatures}
 \enddesc
 
 %==========================================================================
-\section {Selecting fonts}
-
+%\section {Selecting fonts}
+\section 选择字体
+%\xrdef{selfont}
 \xrdef{selfont}
-
 %==========================================================================
-\subsection {Particular fonts}
+%\subsection {Particular fonts}
+\subsection 专用字体
+
+% \begindesc
+% ^^{fonts}
+% %
+% \ctsx fivebf {use $5$-point bold font}
+% \ctsx fivei {use $5$-point math italic font}
+% \ctsx fiverm {use $5$-point roman font}
+% \ctsx fivesy {use $5$-point math symbol font}
+% \ctsx sevenbf {use $7$-point bold font}
+% \ctsx seveni {use $7$-point math italic font}
+% \ctsx sevenrm {use $7$-point roman font}
+% \ctsx sevensy {use $7$-point math symbol font}
+% \ctsx tenbf {use $10$-point bold text font}
+% \ctsx tenex {use $10$-point math extension font}
+% \ctsx teni {use $10$-point math italic font}
+% \ctsx tenrm {use $10$-point roman text font}
+% \ctsx tensl {use $10$-point slanted roman font}
+% \ctsx tensy {use $10$-point math symbol font}
+% \ctsx tenit {use $10$-point italic font}
+% \ctsx tentt {use $10$-point typewriter font}
+% \explain
+% These commands cause \TeX\ to typeset the following text in the
+% specified font.  Normally you would enclose 
+% one of these font-selecting commands in a
+% group, together with the text to be set in the selected font.
+% Outside of a group a font-selecting command is
+% effective until the end of the document
+% (unless you override it with another such command). 
+% \example
+% See how I've reduced my weight---from
+% 120 lbs.\ to {\sevenrm 140 lbs}.
+% |
+% \produces
+% See how I've reduced my weight---from
+% 120 lbs.\ to {\sevenrm 140 lbs}.
+% \endexample
+% \enddesc
 
 \begindesc
 ^^{fonts}
 %
-\ctsx fivebf {use $5$-point bold font}
-\ctsx fivei {use $5$-point math italic font}
-\ctsx fiverm {use $5$-point roman font}
-\ctsx fivesy {use $5$-point math symbol font}
-\ctsx sevenbf {use $7$-point bold font}
-\ctsx seveni {use $7$-point math italic font}
-\ctsx sevenrm {use $7$-point roman font}
-\ctsx sevensy {use $7$-point math symbol font}
-\ctsx tenbf {use $10$-point bold text font}
-\ctsx tenex {use $10$-point math extension font}
-\ctsx teni {use $10$-point math italic font}
-\ctsx tenrm {use $10$-point roman text font}
-\ctsx tensl {use $10$-point slanted roman font}
-\ctsx tensy {use $10$-point math symbol font}
-\ctsx tenit {use $10$-point italic font}
-\ctsx tentt {use $10$-point typewriter font}
+\ctsx fivebf {使用 $5$ 磅粗体}
+\ctsx fivei {使用 $5$ 磅数学意大利体}
+\ctsx fiverm {使用 $5$ 磅罗马体}
+\ctsx fivesy {使用 $5$ 磅数学符号字体}
+\ctsx sevenbf {使用 $7$ 磅粗体}
+\ctsx seveni {使用 $7$ 磅数学意大利体}
+\ctsx sevenrm {使用 $7$ 磅罗马体}
+\ctsx sevensy {使用 $7$ 磅数学符号字体}
+\ctsx tenbf {使用 $10$ 磅粗体}
+\ctsx tenex {使用 $10$ 磅数学扩展字体}
+\ctsx teni {使用 $10$ 磅数学意大利体}
+\ctsx tenrm {使用 $10$ 磅罗马体}
+\ctsx tensl {使用 $10$ 磅斜罗马体}
+\ctsx tensy {使用 $10$ 磅数学符号字体}
+\ctsx tenit {使用 $10$ 磅意大利体}
+\ctsx tentt {使用 $10$ 磅打字机字体}
 \explain
-These commands cause \TeX\ to typeset the following text in the
-specified font.  Normally you would enclose 
-one of these font-selecting commands in a
-group, together with the text to be set in the selected font.
-Outside of a group a font-selecting command is
-effective until the end of the document
-(unless you override it with another such command). 
+这些命令使 \TeX{} 用指定的字体排版后面的文本。一般你可以把字体选择命令
+和相应的文本置于同一个群组中。群组之外使用一个字体选择命令直到文档最后。
+（除非中途用另一个类似的命令覆盖掉它）
 \example
 See how I've reduced my weight---from
 120 lbs.\ to {\sevenrm 140 lbs}.
@@ -312,14 +597,19 @@ See how I've reduced my weight---from
 \endexample
 \enddesc
 
+% \begindesc
+% \cts nullfont {}
+% \explain
+% This command selects a font, built into \TeX,
+% that has no characters in it.  \TeX\ uses it
+% as a replacement for an undefined font in a family of math fonts.
+% \enddesc
+
 \begindesc
 \cts nullfont {}
 \explain
-This command selects a font, built into \TeX,
-that has no characters in it.  \TeX\ uses it
-as a replacement for an undefined font in a family of math fonts.
-\enddesc
-
+这个命令选择一种 \TeX{} 内置的没有任何字符的空字体。在一族数学字体
+中，\TeX{} 将用它取代其中没有定义的字体。
 %==========================================================================
 \subsection {Type styles}
 
