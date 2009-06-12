@@ -17,17 +17,26 @@
 ~^^{footnotes} ^^{comments} ^^{punctuation} ^^{quotation marks}
 ~^^{space characters} ^^{dashes} ^^{paragraphs//ending}
 ~\edef\examplepageno{\number\count255}%
-It's easy to prepare ordinary text for \TeX\ since
-\TeX\ usually doesn't care about how you break up your input into
-lines. It treats the end of a line of text like a space.%
-\footnote \dag{\TeX\ treats a tab like a space too, as we point
-out in this {\it footnote}.}   If you don't want a space there,
-put a per%
-cent sign (the comment character) at the end of the line.
-   \TeX\ ignores spaces at the start of a line, and treats more
-than        one      space as equivalent to a single space,
-even after a period.      You indicate a new paragraph by
-skipping a line (or more than one line).
+%It's easy to prepare ordinary text for \TeX\ since
+%\TeX\ usually doesn't care about how you break up your input into
+%lines. It treats the end of a line of text like a space.%
+%\footnote \dag{\TeX\ treats a tab like a space too, as we point
+%out in this {\it footnote}.}   If you don't want a space there,
+%put a per%
+%cent sign (the comment character) at the end of the line.
+%   \TeX\ ignores spaces at the start of a line, and treats more
+%than        one      space as equivalent to a single space,
+%even after a period.      You indicate a new paragraph by
+%skipping a line (or more than one line).
+
+由于 \Tex\ 并不关心原始的输入文本中的换行，因此，我们无须关心
+应该给其提供何种格式化的文本。在 \Tex\ 看来，输入文本中的换行符
+和空格等价。%
+\footnote \dag{\TeX\ 将 Tab 也当作空格处理, 就如你在这个 
+{\it footnote}所见到的一样。}   如果你不想在行尾处看到空格，
+可以在行尾处写一个百分号（注释符号）。\Tex\ 忽略行首的空格，
+对多于一个的空格当做一个单独的空格看待 --- 哪怕这些空格位于
+句号后面。你可以用一个或者多个空白行表示一个新的段落的开始。
 
 
 %When \TeX\ sees a period followed by a space (or the end of the
@@ -39,16 +48,30 @@ skipping a line (or more than one line).
 两者等价）时，它通常会认为此句号代表一句话的结束，并在句号的后面
 加上一点小小的空格。同样的处理还适用于问号和惊叹号。
 
-  But \TeX's rules for handling periods sometimes need fine 
-tuning. \TeX\ assumes that a capital letter before a period
-doesn't end the sentence, so you have to do something a little 
-different if, say, you're writing about DNA\null.  
+%  But \TeX's rules for handling periods sometimes need fine 
+%tuning. \TeX\ assumes that a capital letter before a period
+%doesn't end the sentence, so you have to do something a little 
+%different if, say, you're writing about DNA\null.  
+
+有时需要微调 \Tex 处理句号的方式。当句号前面紧跟着标题字
+母（大写字母）时，\Tex\ 会认为这个句号并不做为句子的结束符，
+因此在这种情况下，你需要作一些小改动。例如：我们这样写 DNA\null.
+
+
 % The \null prevents TeX from perceiving the capital `A'
 % as being next to the period.
-It's a good idea to tie words together in references such as 
-``see Fig.~8'' and in names such as V.~I\null. Lenin and in
-$\ldots$ so that \TeX\ will never split them in an awkward place
-between two lines.  (The three dots indicate an ellipsis.)
+% \null 可以阻止 \Tex\ 感知句号前面的标题字母 `A'。
+
+%It's a good idea to tie words together in references such as 
+%``see Fig.~8'' and in names such as V.~I\null. Lenin and in
+%$\ldots$ so that \TeX\ will never split them in an awkward place
+%between two lines.  (The three dots indicate an ellipsis.)
+
+% 这个 references 不知道这样翻译对不对
+如果想将多个单词绑定到一起，中间不分行，则可以将它们放入一个引用
+中，例如： ``see Fig.~8''；或者名字中，例如：V.~I\null. Lenin；或者
+省略号 $\ldots$。在这样的情况下，\Tex\ 不会在它们之间断行（三个点表示
+省略号）。
 
 You should put quotations in pairs of left and right
 single ``quotes'' so that you get the correct left and right
@@ -60,29 +83,48 @@ get en-dashes--like so, and em-dashes---like so.
 :::
 \xmpheader !xmpnum/{Indentation}% !xmpheaddef
 ~^^{indentation} ^^{margins} ^^{paragraphs//narrow}
-\noindent Now let's see how to control indentation.  If an 
-ordinary word processor can do it, so surely can \TeX. Note 
-that this paragraph isn't indented.
+%\noindent Now let's see how to control indentation.  If an 
+%ordinary word processor can do it, so surely can \TeX. Note 
+%that this paragraph isn't indented.
 
-Usually you'll either want to indent paragraphs or to leave
-extra space between them.  Since we haven't changed anything
-yet, this paragraph is indented.
+\noindent 现在让我们来看看如何控制缩进。如果一个普通的文字处理
+程序都能处理缩进的话，那 \Tex\ 一定也能。请注意，本段并未缩进。
+
+%Usually you'll either want to indent paragraphs or to leave
+%extra space between them.  Since we haven't changed anything
+%yet, this paragraph is indented.
+
+通常来说，你会想在段落的起始处安排缩进，在段落之间安排一些额外
+的空白。由于我们在此尚未做任何特殊处理，因此本段是缩进的。
 
 {\parindent = 0pt \parskip = 6pt
-% The left brace starts a group containing the unindented text.
-Let's do these two paragraphs a different way,
-with no indentation and six printer's points of extra space
-between paragraphs. 
+%% The left brace starts a group containing the unindented text.
+% 这里的左括弧包裹了一组不缩进的文本
 
-So here's another paragraph that we're typesetting without
-indentation.  If we didn't put space between these paragraphs,
-you would have a hard time knowing where one ends
-and the next begins.
+%Let's do these two paragraphs a different way,
+%with no indentation and six printer's points of extra space
+%between paragraphs. 
+
+让我们对这两个段落作一些特殊处理，这两段将不缩进，并且两段
+之间有 6pt 宽的空白。
+
+%So here's another paragraph that we're typesetting without
+%indentation.  If we didn't put space between these paragraphs,
+%you would have a hard time knowing where one ends
+%and the next begins.
+
+这是第二段不缩进的文字。如果不在这两段之间插入空白的话，将很难
+分辨段与段之间的结束和起始。
+
 \par % The paragraph *must* be ended within the group.
 }% The right brace ends the group containing unindented text.
 
-It's also possible to indent both sides of entire paragraphs.  
-The next three paragraphs illustrate this:
+%It's also possible to indent both sides of entire paragraphs.  
+%The next three paragraphs illustrate this:
+
+你也能在段落的两边同时缩进，下面的 3 段文字演示了双边缩进的效果：
+
+
 \smallskip % Provide a little extra space here.
 % Skips like this and \vskip below end a paragraph.
 {\narrower
