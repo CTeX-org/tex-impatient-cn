@@ -932,16 +932,35 @@ isn't it?}
 \endexample
 \enddesc
 
+%\begindesc
+%\easy\ctsact ~ \xrdef{@not}
+%\explain
+%The \minref{active character} `|~|', called a ``^{tie}'', 
+%produces a normal interword space
+%between two words and links those words so that
+%a line break will not occur between them.
+%You should use a tie in any context where a line break would be confusing,
+%e.g., before a middle initial, after an abbreviation such as ``Dr.'',
+%or after ``Fig.'' in ``Fig.~8''.
+%
+%\example
+%P.D.Q.~Bach (1807--1742), the youngest and most
+%imitative son of Johann~S. Bach, composed the
+%{\sl Concerto for Horn and Hardart}.
+%|
+%\produces
+%\margin{The inversion of dates is deliberate---cf. Peter Schickele.}
+%P.D.Q.~Bach (1807--1742), the youngest and most
+%imitative son of Johann~S. Bach, composed the
+%{\sl Concerto for Horn and Hardart}.
+%\endexample\enddesc
+
+
 \begindesc
 \easy\ctsact ~ \xrdef{@not}
 \explain
-The \minref{active character} `|~|', called a ``^{tie}'', 
-produces a normal interword space
-between two words and links those words so that
-a line break will not occur between them.
-You should use a tie in any context where a line break would be confusing,
-e.g., before a middle initial, after an abbreviation such as ``Dr.'',
-or after ``Fig.'' in ``Fig.~8''.
+\minref{活动字符}`|~|'，叫做``^{tie}''，产生一个正常的单词间空白，同时保证前后两个单词之间不会断行。只要断行会有歧义，就应该使用tie。比如，在中间名之前，缩写词
+``Dr.''之后，或者``Fig.''之后：像``Fig.~8''。
 
 \example
 P.D.Q.~Bach (1807--1742), the youngest and most
@@ -954,30 +973,50 @@ P.D.Q.~Bach (1807--1742), the youngest and most
 imitative son of Johann~S. Bach, composed the
 {\sl Concerto for Horn and Hardart}.
 \endexample\enddesc
+%\begindesc
+%\easy\ctspecial / \ctsxrdef{@slash}
+%\explain
+%Every character in a \TeX\ \minref{font}
+%has an ``^{italic correction}'' associated with it, although
+%the italic correction
+%is normally zero for a character in an unslanted (upright) font.
+%The italic correction specifies the extra space that's needed
+%when you're switching from a slanted font (not necessarily
+%an italic font) to an unslanted font.  
+%The extra
+%space is needed because a slanted character projects into the
+%space that follows it, making the space look too small when the
+%next character is unslanted.
+%The metrics file for a font includes the italic correction of each 
+%character in the font.
+%^^{metrics file//italic correction in}
+
 
 \begindesc
 \easy\ctspecial / \ctsxrdef{@slash}
 \explain
-Every character in a \TeX\ \minref{font}
-has an ``^{italic correction}'' associated with it, although
-the italic correction
-is normally zero for a character in an unslanted (upright) font.
-The italic correction specifies the extra space that's needed
-when you're switching from a slanted font (not necessarily
-an italic font) to an unslanted font.  
-The extra
-space is needed because a slanted character projects into the
-space that follows it, making the space look too small when the
-next character is unslanted.
-The metrics file for a font includes the italic correction of each 
-character in the font.
-^^{metrics file//italic correction in}
+\TeX\ \minref{字体}中每个字符都有``^{倾斜修正}''。直立字体的倾斜修正一般就是零。当从倾斜的字体（不一定是意大利体）切换到直立的字体时，倾斜修正会增加额外的空白。这个额外的空白之所以必要，是因为倾斜的字符略微挤占了后面的空格位置，当后面跟着直立字体时，会显得中间的空格太小。所有字符的倾斜修正都包含在字体的metrics文件里。^^{metrics file//italic correction in}
+%The |\/| command
+%produces an ^{italic correction} for the preceding character.
+%You should insert an italic correction when you're switching from
+%a slanted font to an unslanted font,
+%except when the next character is a period or comma.
+%\example
+%However, {\it somebody} ate {\it something}: that's clear.
+%
+%However, {\it somebody\/} ate {\it something\/}:
+%that's clear.
+%|
+%\produces
+%However, {\it somebody} ate {\it something}: that's clear.
+%
+%However, {\it somebody\/} ate {\it something\/}:
+%that's clear.
+%\endexample
+%\enddesc
 
-The |\/| command
-produces an ^{italic correction} for the preceding character.
-You should insert an italic correction when you're switching from
-a slanted font to an unslanted font,
-except when the next character is a period or comma.
+
+命令|\/|产生对前面字符的^{倾斜修正}。当从倾斜字体切换到直立字体的时候，必须要插入倾斜修正，除非下一个字符是句点或逗号。
 \example
 However, {\it somebody} ate {\it something}: that's clear.
 
@@ -991,24 +1030,61 @@ However, {\it somebody\/} ate {\it something\/}:
 that's clear.
 \endexample
 \enddesc
+
+%\begindesc
+%\cts frenchspacing {}
+%\cts nonfrenchspacing {}
+%\explain
+%^^{interword spacing}
+%\TeX\ normally adjusts the spacing between words to account for
+%punctuation marks.  For example, it inserts extra space at the end of a
+%sentence and adds some stretch to the \minref{glue} following any
+%punctuation mark there.  The |\frenchspacing| command tells \TeX\ to make
+%the interword spacing independent of punctuation, while the
+%|\nonfrenchspacing| command tells \TeX\ to use its normal spacing rules.  
+%If you don't specify
+%|\frenchspacing|, you'll get \TeX's normal spacing.
+%
+%See \xrefpg{periodspacing} for advice on how to control \TeX's treatment
+%of punctuation at the end of sentences.
+%
+%\example
+%{\frenchspacing  An example: two sentences. Right? No.\par}
+%{An example: two sentences. Right? No. \par}%
+%|
+%\produces
+%{\frenchspacing  An example: two sentences. Right? No.\par}
+%{An example: two sentences. Right? No. \par}%
+%\endexample
+%
+%\enddesc
+%
+
 
 \begindesc
 \cts frenchspacing {}
 \cts nonfrenchspacing {}
 \explain
 ^^{interword spacing}
-\TeX\ normally adjusts the spacing between words to account for
-punctuation marks.  For example, it inserts extra space at the end of a
-sentence and adds some stretch to the \minref{glue} following any
-punctuation mark there.  The |\frenchspacing| command tells \TeX\ to make
-the interword spacing independent of punctuation, while the
-|\nonfrenchspacing| command tells \TeX\ to use its normal spacing rules.  
-If you don't specify
-|\frenchspacing|, you'll get \TeX's normal spacing.
+\TeX{}一般会为了标点符号而调整单词间距。例如，一个句子的末尾会有额外的空白，句尾标点符号之后的\minref{glue}会被拉长。|\frenchspacing|命令让\TeX{}调整单词间距时忽略标点符号；|\nonfrenchspacing|命令让\TeX{}使用正常间距，即不使用
+|\frenchspacing|效果。
 
-See \xrefpg{periodspacing} for advice on how to control \TeX's treatment
-of punctuation at the end of sentences.
+%See \xrefpg{periodspacing} for advice on how to control \TeX's treatment
+%of punctuation at the end of sentences.
+%
+%\example
+%{\frenchspacing  An example: two sentences. Right? No.\par}
+%{An example: two sentences. Right? No. \par}%
+%|
+%\produces
+%{\frenchspacing  An example: two sentences. Right? No.\par}
+%{An example: two sentences. Right? No. \par}%
+%\endexample
+%
+%\enddesc
 
+
+关于\TeX{}如何处理句尾标点，请参考\xrefpg{periodspacing}。
 \example
 {\frenchspacing  An example: two sentences. Right? No.\par}
 {An example: two sentences. Right? No. \par}%
@@ -1019,27 +1095,48 @@ of punctuation at the end of sentences.
 \endexample
 
 \enddesc
+%\begindesc
+%\cts obeyspaces {}
+%\explain
+%\TeX\ normally condenses a sequence of several spaces to a single space.
+%|\obeyspaces| instructs \TeX\ to produce a space in the output
+%for each space in the input.
+%|\obeyspaces| does not cause spaces at the beginning of a line
+%to show up, however; for that we recommend the |\obey!-white!-space|
+%command defined in |eplain.tex| 
+%(\xref{ewhitesp}).
+%^^|\obeywhitespace|
+%|\obeyspaces| is often useful when you're typesetting something,
+%computer input for example,
+%in a monospaced font (one in which each character takes up the
+%same amount of space)
+%and you want to show exactly what each line of input looks like.
+%
+%You can use the |\obeylines| command (\xref{\obeylines}) to get \TeX\
+%to follow the line boundaries of your input.  |\obeylines| is often
+%used in combination with |\obeyspaces|.
+%\example 
+%These     spaces    are    closed   up
+%{\obeyspaces but   these  are     not   }.
+%|
+%\produces
+%These     spaces    are    closed   up
+%{\obeyspaces but   these  are     not   }.
+%\endexample
+%\enddesc
+%
 
 \begindesc
 \cts obeyspaces {}
 \explain
-\TeX\ normally condenses a sequence of several spaces to a single space.
-|\obeyspaces| instructs \TeX\ to produce a space in the output
-for each space in the input.
-|\obeyspaces| does not cause spaces at the beginning of a line
-to show up, however; for that we recommend the |\obey!-white!-space|
-command defined in |eplain.tex| 
-(\xref{ewhitesp}).
+\TeX{}把连续的空格处理为一个空格。
+|\obeyspaces|的作用是输入多少空格，就输出多少。
+但是|\obeyspaces|不会显示行首的空格。这时候推荐使用|\obey!-white!-space|，其定义在|eplain.tex|中(\xref{ewhitesp})。
 ^^|\obeywhitespace|
-|\obeyspaces| is often useful when you're typesetting something,
-computer input for example,
-in a monospaced font (one in which each character takes up the
-same amount of space)
-and you want to show exactly what each line of input looks like.
+|\obeyspaces|主要用于以等宽字体打印计算机代码，以及显示所见即所得的内容。
 
-You can use the |\obeylines| command (\xref{\obeylines}) to get \TeX\
-to follow the line boundaries of your input.  |\obeylines| is often
-used in combination with |\obeyspaces|.
+
+|\obeylines|命令(\xref{\obeylines})的作用是让\TeX{}输出跟你所输入的一模一样的行。|\obeylines|经常和|\obeyspaces|一起被使用。
 \example 
 These     spaces    are    closed   up
 {\obeyspaces but   these  are     not   }.
@@ -1050,77 +1147,123 @@ These     spaces    are    closed   up
 \endexample
 \enddesc
 
+%\begindesc
+%\cts spacefactor {\param{number}}
+%\cts spaceskip {\param{glue}}
+%\cts xspaceskip {\param{glue}}
+%\cts sfcode {\<charcode> \tblentry{number}}
+%\explain
+%These primitive \minref{parameter}s affect how much space \TeX\
+%puts between two adjacent words, i.e., the ^{interword spacing}.
+%The normal interword spacing is supplied by the current font.
+%As \TeX\ is processing a \minref{horizontal list}, it keeps track of the
+%^{space factor} $f$ in |\spacefactor|.
+%As it processes each input character $c$, it updates $f$ according to the
+%value of $f_c$, the space factor code of $c$ (see below).
+%For most characters, $f_c$ is $1000$ and \TeX\ sets $f$ to $1000$.
+%(The initial value of $f$ is also $1000$.)
+%When \TeX\ sees an interword space, it adjusts the size of that space 
+%by multiplying the stretch and shrink of that space by 
+%$f/1000$ and $1000/f$ respectively.
+%Thus:
+%\olist\compact
+%\li If $f=1000$, the interword space keeps its normal value.
+%\li If $f<1000$, the interword space gets less \minref{stretch}
+%and more \minref{shrink}.
+%\li If $f>1000$, the interword space gets more \minref{stretch}
+%and less \minref{shrink}.
+%\endolist
+%% > changed to \ge on the next line after second edition was typeset. 
+%% Correction made by A-W production.
+%In addition, if $f\ge2000$ the interword space is further increased by the
+%``extra space'' parameter associated with the current font.
+
+
+
 \begindesc
 \cts spacefactor {\param{number}}
 \cts spaceskip {\param{glue}}
 \cts xspaceskip {\param{glue}}
 \cts sfcode {\<charcode> \tblentry{number}}
 \explain
-These primitive \minref{parameter}s affect how much space \TeX\
-puts between two adjacent words, i.e., the ^{interword spacing}.
-The normal interword spacing is supplied by the current font.
-As \TeX\ is processing a \minref{horizontal list}, it keeps track of the
-^{space factor} $f$ in |\spacefactor|.
-As it processes each input character $c$, it updates $f$ according to the
-value of $f_c$, the space factor code of $c$ (see below).
-For most characters, $f_c$ is $1000$ and \TeX\ sets $f$ to $1000$.
-(The initial value of $f$ is also $1000$.)
-When \TeX\ sees an interword space, it adjusts the size of that space 
-by multiplying the stretch and shrink of that space by 
-$f/1000$ and $1000/f$ respectively.
-Thus:
+这些基本\minref{参数}影响相邻的单词间的空白，即^{单词间距}。
+默认的单词间距由当前字体决定。
+当\TeX{}处理一个\minref{horizontal list}时，会监视|\spacefactor|中的^{距离因子} $f$。
+每当一个输入字符$c$被处理时，$f$就会随$f_c$（$c$的距离因子代码）的值而更新。
+大多数的字符，$f_c$是$1000$，因此\TeX{}设定$f$为$1000$。（$f$的初始值也是$1000$。）
+当\TeX{}遇到一个单词间空格的时候，就会调整空格的大小，乘以$f/1000$来伸，除以$1000/f$来压缩。
+所以：
 \olist\compact
-\li If $f=1000$, the interword space keeps its normal value.
-\li If $f<1000$, the interword space gets less \minref{stretch}
-and more \minref{shrink}.
-\li If $f>1000$, the interword space gets more \minref{stretch}
-and less \minref{shrink}.
+\li 当$f=1000$时，单词间距为默认值。
+\li 当$f<1000$时，单词间距被\minref{压缩}。
+\li 当$f>1000$时，单词间距被\minref{拉伸}。
 \endolist
-% > changed to \ge on the next line after second edition was typeset. 
-% Correction made by A-W production.
-In addition, if $f\ge2000$ the interword space is further increased by the
-``extra space'' parameter associated with the current font.
+另外，如果$f\ge2000$，以上与当前字体相关的额外空白的参数会让单词间距会进一步增大。
 
-Each 
-input character $c$ has an entry in the |\sfcode| (space factor code)
-table.
-The |\sfcode| table entry is independent of the font.
-Usually \TeX\ just sets $f$ to $f_c$ after it processes $c$.
-However:
+%Each 
+%input character $c$ has an entry in the |\sfcode| (space factor code)
+%table.
+%The |\sfcode| table entry is independent of the font.
+%Usually \TeX\ just sets $f$ to $f_c$ after it processes $c$.
+%However:
+%\ulist
+%\li If $f_c$ is zero, \TeX\ leaves $f$ unchanged.
+%Thus a character such as `|)|' in \plainTeX,
+%for which $f_c$ is zero, is essentially transparent to
+%the interword space calculation.
+%\li If $f<1000<f_c$, \TeX\ sets $f$ to $1000$ rather than to $f_c$,
+%i.e., it refuses to raise $f$ very rapidly.
+%\endulist
+%The |\sfcode| value for a period is normally $3000$, 
+%which is why \TeX\ usually puts extra space after a period
+%% > to \ge here, too, as above.
+%(see the rule above for the case $f\ge2000$).
+%Noncharacter items in a horizontal list, e.g., vertical rules,
+%generally act like characters with a space factor of $1000$.
+
+每一个输入字符$c$对应于|\sfcode|（距离因子代码）表中的一项。
+|\sfcode|表项与字体无关。通常\TeX{}处理完$c$之后就让$f$等于$f_c$。但是：
 \ulist
-\li If $f_c$ is zero, \TeX\ leaves $f$ unchanged.
-Thus a character such as `|)|' in \plainTeX,
-for which $f_c$ is zero, is essentially transparent to
-the interword space calculation.
-\li If $f<1000<f_c$, \TeX\ sets $f$ to $1000$ rather than to $f_c$,
-i.e., it refuses to raise $f$ very rapidly.
+\li 如果$f_c$为零，$f$将不变。所以\plainTeX{}中$f_c$为零的字符，如`|)|'，对于单词间距的演算毫无影响。
+\li 如果$f<1000<f_c$，\TeX{}会让$f$为$1000$而不是$f_c$，也就是，不会让$f$快速地增加。
 \endulist
-The |\sfcode| value for a period is normally $3000$, 
-which is why \TeX\ usually puts extra space after a period
-% > to \ge here, too, as above.
-(see the rule above for the case $f\ge2000$).
-Noncharacter items in a horizontal list, e.g., vertical rules,
-generally act like characters with a space factor of $1000$.
+句点的|\sfcode|值通常是$3000$，所以\TeX{}会在句点之后增加额外的空白。
+（参见上面$f\ge2000$的情形）。水平列表中的非字符，比如垂线，一般类似于字符，距离因子为$1000$。
 
-You can change the space factor explicitly by assigning
-a different numerical value to |\spacefactor|.
-You can also override the normal
-interword spacing by assigning a different numerical
-value to |\xspaceskip| or to |\spaceskip|:
+%You can change the space factor explicitly by assigning
+%a different numerical value to |\spacefactor|.
+%You can also override the normal
+%interword spacing by assigning a different numerical
+%value to |\xspaceskip| or to |\spaceskip|:
+%\ulist
+%\li |\xspaceskip| specifies the glue to be used when $f\ge2000$;
+%in the case where
+%|\xspaceskip| is zero, the normal rules apply.
+%\li |\spaceskip| specifies the glue to be used when $f<2000$ or when
+%\hbox{|\xspaceskip|} is zero; if |\spaceskip| is zero, the normal rules apply.
+%The stretch and shrink of
+%the |\spaceskip| glue, like that of the ordinary interword glue, 
+%is modified according to the value of $f$.
+%\endulist
+%
+%See \knuth{page~76} for the precise rules that \TeX\ uses in calculating
+%interword \minref{glue}, and \knuth{pages~285--287} for the adjustments
+%made to |\spacefactor| after various items in a horizontal list.
+%\eix^^{spaces//interword}
+%\enddesc
+
+
+
+
+改变|\spacefactor|的值，就可以方便地调整单词间距。默认的单词间距通过|\xspaceskip|或者|\spaceskip|来改变：
 \ulist
-\li |\xspaceskip| specifies the glue to be used when $f\ge2000$;
-in the case where
-|\xspaceskip| is zero, the normal rules apply.
-\li |\spaceskip| specifies the glue to be used when $f<2000$ or when
-\hbox{|\xspaceskip|} is zero; if |\spaceskip| is zero, the normal rules apply.
-The stretch and shrink of
-the |\spaceskip| glue, like that of the ordinary interword glue, 
-is modified according to the value of $f$.
+\li |\xspaceskip|设定$f\ge2000$时的glue；如果|\xspaceskip|是零, 就取默认值。
+\li |\spaceskip|设定$f<2000$或者
+\hbox{|\xspaceskip|}为零时的glue；如果|\spaceskip|是零，取默认值。
+|\spaceskip| glue 的拉伸或压缩依$f$的值而变，就像普通的单词间距一样。
 \endulist
 
-See \knuth{page~76} for the precise rules that \TeX\ uses in calculating
-interword \minref{glue}, and \knuth{pages~285--287} for the adjustments
-made to |\spacefactor| after various items in a horizontal list.
+\knuth{page~76} 对\TeX\计算单词间\minref{glue}的规则有一个具体的解释。\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
 \eix^^{spaces//interword}
 \enddesc
 
