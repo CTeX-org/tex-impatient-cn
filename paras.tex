@@ -1,6 +1,7 @@
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
+% 翻译 by zpxing@gmail.com
 
 \input macros
 
@@ -15,7 +16,7 @@
 % see \headcit{Descriptions of the commands}{cmddesc}.
 
 % \begindescriptions
-
+  
 \chapterdef{paras}
 
 這一章介紹了與字符, 單詞, 行以及整段相關的命令.
@@ -464,7 +465,7 @@ long `i' as in l\=\i fe  \quad \v\j
 字符。\TeX\ 假定重音符号被设计的比同样字体里的字符高 $1$\thinspace ex。
 如果需要标记重音的字符过高或者过低，\TeX\ 自动调整重音位置。你可以在重
 音符号和其后的字符之间切换\minref{字体}。如果重音符号被设计的很另
-类，\TeX\ 不会产生警告；只是排印出一些荒谬的结果。
+类，\TeX\ 将不会产生警告；只是排印出一些稀奇古怪的结果。
 \example
 l'H\accent94 otel des Invalides
 % Position 94 of font cmr10 has a circumflex accent.
@@ -613,28 +614,48 @@ See how I've reduced my weight---from
 %==========================================================================
 \subsection {Type styles}
 
+% \xrdef{seltype}
+% \begindesc
+% ^^{type styles}
+% \easy\ctsx bf {use boldface type}
+% \ctsx it {use italic type}
+% \ctsx rm {use roman type}
+% \ctsx sl {use slanted type}
+% \ctsx tt {use typewriter type}
+% \explain
+% These commands select a type style without changing the typeface or
+% the point size.\footnote{
+% \TeX\ does not provide predefined commands for changing just the point
+% size, e.g., |\eightpoint|.
+% Supporting such commands would require a great number of fonts,
+% most of which would never be used.
+% Such commands were, however, used in typesetting \texbook.}
+% Normally you would enclose 
+% one of these type style commands in a
+% group, together with the text to be set in the selected font.
+% Outside of a group a type style command is
+% effective until the end of the document
+% (unless you override it with another such command). 
+% \example
+% The Dormouse was {\it not} amused.
+% |
+% \produces
+% The Dormouse was {\it not} amused.
+% \endexample
+% \enddesc
+
 \xrdef{seltype}
 \begindesc
 ^^{type styles}
-\easy\ctsx bf {use boldface type}
-\ctsx it {use italic type}
-\ctsx rm {use roman type}
-\ctsx sl {use slanted type}
-\ctsx tt {use typewriter type}
+\easy\ctsx bf {粗体}
+\ctsx it {意大利体}
+\ctsx rm {罗马体}
+\ctsx sl {斜体}
+\ctsx tt {打字机字体}
 \explain
-These commands select a type style without changing the typeface or
-the point size.\footnote{
-\TeX\ does not provide predefined commands for changing just the point
-size, e.g., |\eightpoint|.
-Supporting such commands would require a great number of fonts,
-most of which would never be used.
-Such commands were, however, used in typesetting \texbook.}
-Normally you would enclose 
-one of these type style commands in a
-group, together with the text to be set in the selected font.
-Outside of a group a type style command is
-effective until the end of the document
-(unless you override it with another such command). 
+这些命令选择一种字体风格，而不改变字体或者字号。\footnote{
+\TeX\ 并不提供预定义的命令来改变字号，比如，|\eightpoint|。要支持这样的命令，需要大量的字体，可能很多从来都不会用到。这样的命令曾被用来排版\texbook。}
+一般情况下，这些字体风格命令和相应的文本被一起包含在一个群组里。如果放在群组之外，效果将会作用于文档剩余部分（除非用另外一个这样的命令覆盖它）。
 \example
 The Dormouse was {\it not} amused.
 |
@@ -643,9 +664,25 @@ The Dormouse was {\it not} amused.
 \endexample
 \enddesc
 
-\see ``Fonts in math formulas'' (\xref{mathfonts}).
+% \see ``Fonts in math formulas'' (\xref{mathfonts}).
+\see ``数学公式字体'' (\xref{mathfonts}).
 %==========================================================================
-\section {Uppercase and lowercase}
+% \section {Uppercase and lowercase}
+\section {大写和小写}
+
+% \begindesc
+% \bix^^{case conversion}
+% \bix^^{uppercase//conversion to}
+% \bix^^{lowercase//conversion to}
+% \cts lccode {\<charcode> \tblentry{number}}
+% \cts uccode {\<charcode> \tblentry{number}}
+% \explain
+% The |\lccode| and |\uccode| values for the $256$ possible input
+% characters specify the correspondence between the lowercase and
+% uppercase forms of letters.  These values are used by the |\lowercase|
+% and |\uppercase| commands respectively and by \TeX's hyphenation
+% algorithm.
+
 
 \begindesc
 \bix^^{case conversion}
@@ -654,27 +691,39 @@ The Dormouse was {\it not} amused.
 \cts lccode {\<charcode> \tblentry{number}}
 \cts uccode {\<charcode> \tblentry{number}}
 \explain
-The |\lccode| and |\uccode| values for the $256$ possible input
-characters specify the correspondence between the lowercase and
-uppercase forms of letters.  These values are used by the |\lowercase|
-and |\uppercase| commands respectively and by \TeX's hyphenation
-algorithm.
+|\lccode|和|\uccode|的值为$256$个输入字符设定大小写的对应关系。
+|\lowercase|和|\uppercase|命令以及\TeX{}的断词算法将会使用这些值。
 
-\TeX\ initializes the values of |\lccode| and |\uccode| as follows:
-
+% \TeX\ initializes the values of |\lccode| and |\uccode| as follows:
+\TeX{}这样来初始化|\lccode|和|\uccode|的值：
+%\ulist\compact
+%\li The |\lccode| of a lowercase letter is the {\ascii} code for that letter.
+%\li The |\lccode| of an uppercase letter is the {\ascii} code for the
+%corresponding lowercase letter.
+%\li The |\uccode| of an uppercase letter is the {\ascii} code for that letter.
+%\li The |\uccode| of a lowercase letter is the {\ascii} code for the
+%corresponding uppercase letter.
+%\li The |\lccode| and |\uccode| of a nonletter are both zero.
+%\endulist
 \ulist\compact
-\li The |\lccode| of a lowercase letter is the {\ascii} code for that letter.
-\li The |\lccode| of an uppercase letter is the {\ascii} code for the
-corresponding lowercase letter.
-\li The |\uccode| of an uppercase letter is the {\ascii} code for that letter.
-\li The |\uccode| of a lowercase letter is the {\ascii} code for the
-corresponding uppercase letter.
-\li The |\lccode| and |\uccode| of a nonletter are both zero.
-\endulist
+\li 小写字母的|\lccode|是它的{\ascii}代码。
+\li 大写字母的|\lccode|是它的小写形式的{\ascii}代码。
+\li 大写字母的|\uccode|是它的{\ascii}代码。
+\li 小写字母的|\lccode|是它的大写形式的{\ascii}代码。
+\li 非字母字符的|\lccode|和|\uccode|都是零。
+\endlist
 
-Most of the time there's no reason to change these values,
-but you might want to change them if you're using a  language
-that has more letters than English.
+%Most of the time there's no reason to change these values,
+%but you might want to change them if you're using a  language
+%that has more letters than English.
+%\example
+%\char\uccode`s \char\lccode`a \char\lccode`M
+%|
+%\produces
+%\char\uccode`s \char\lccode`a \char\lccode`M
+%\endexample
+%\enddesc
+大多数时候，没有必要改变这些值，除非你使用的语文的字母比英文多。
 \example
 \char\uccode`s \char\lccode`a \char\lccode`M
 |
@@ -683,17 +732,35 @@ that has more letters than English.
 \endexample
 \enddesc
 
+
+%\begindesc
+%\cts lowercase {\rqbraces{\<token list>}}
+%\cts uppercase {\rqbraces{\<token list>}}
+%\explain ^^{case conversion}
+%These commands convert the letters in \<token list>,
+%i.e., those tokens with category code $11$, to their lowercase
+%and uppercase forms.
+%The conversion of a letter is defined by its |\lccode| (for lowercase)
+%or |\uccode| (for uppercase) table value.
+%Tokens in the list that are not letters are not affected---even if the
+%tokens are \minref{macro} calls or other commands that expand into letters.
+%\example
+%\def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
+%|
+%\produces
+%\def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
+%
+%\eix^^{case conversion}
+%\eix^^{uppercase//conversion to}
+%\eix^^{lowercase//conversion to}
+%\endexample
+%\enddesc
 \begindesc
 \cts lowercase {\rqbraces{\<token list>}}
 \cts uppercase {\rqbraces{\<token list>}}
 \explain ^^{case conversion}
-These commands convert the letters in \<token list>,
-i.e., those tokens with category code $11$, to their lowercase
-and uppercase forms.
-The conversion of a letter is defined by its |\lccode| (for lowercase)
-or |\uccode| (for uppercase) table value.
-Tokens in the list that are not letters are not affected---even if the
-tokens are \minref{macro} calls or other commands that expand into letters.
+这些命令按照|\lccode|和|\uccode|的值转换\<token list>中的字母（类别代码为$11$的）为它们的大写和小写形式。
+非字母字符不受影响，即使它们是\minref{macro}引用或其他展开成字母的命令。
 \example
 \def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
 |
@@ -706,26 +773,49 @@ tokens are \minref{macro} calls or other commands that expand into letters.
 \endexample
 \enddesc
 
-%==========================================================================
-\section {Interword spacing}
 
+%==========================================================================
+%\section {Interword spacing}
+\section {单词间距}
+
+%\begindesc
+%\bix^^{spaces//interword}
+%\easy\ctsbasic {\\\vs}{}
+%\blankidxref\ctsxrdef{@space}
+%\explain
+%This command explicitly produces an interword
+%space called a ``^{control space}''.
+%A control space is useful when a
+%letter occurs immediately after a control sequence, or in any other
+%circumstance where you don't want two tokens to be run together in the
+%output.
+%The amount of space produced by |\!vs|
+%is independent of preceding punctuation, i.e., its space factor
+%(\xref\spacefactor) is $1000$.
 \begindesc
 \bix^^{spaces//interword}
 \easy\ctsbasic {\\\vs}{}
 \blankidxref\ctsxrdef{@space}
 \explain
-This command explicitly produces an interword
-space called a ``^{control space}''.
-A control space is useful when a
-letter occurs immediately after a control sequence, or in any other
-circumstance where you don't want two tokens to be run together in the
-output.
-The amount of space produced by |\!vs|
-is independent of preceding punctuation, i.e., its space factor
-(\xref\spacefactor) is $1000$.
+这个命令明确地产生一个单词间空格，称为``^{控制空格}''。
+当一个字母出现在一个控制序列之后或者其他情况下你不想让两个记号排在一起时，就要用到控制空格。
+由|\!vs|产生的空白不受前面标点的影响，即其距离因子
+（\xref\spacefactor）为$1000$。
 
-Incidentally, if you want to print the `\vs' ^^{visible space}
-character that we've used here to denote a space, you can get it by typing
+%Incidentally, if you want to print the `\vs' ^^{visible space}
+%character that we've used here to denote a space, you can get it by typing
+%|{\tt \char `\ }|.
+%
+%\example
+%The Dormouse was a \TeX\ expert, but he never let on.
+%|
+%\produces
+%The Dormouse was a \TeX\ expert, but he never let on.
+%\endexample
+%\enddesc
+
+
+如果哦你想打印出`\vs' ^^{visible space}空格，可以输入
 |{\tt \char `\ }|.
 
 \example
@@ -735,13 +825,27 @@ The Dormouse was a \TeX\ expert, but he never let on.
 The Dormouse was a \TeX\ expert, but he never let on.
 \endexample
 \enddesc
+%\begindesc
+%\cts space {}
+%\explain
+%This command is equivalent to an input space character.
+%It differs from ^|\ | in that its
+%width \emph{can} be affected by preceding punctuation.
+%\example
+%Yes.\space No.\space Maybe.\par
+%Yes.\!vs!.No.\!vs!.Maybe.
+%
+%|
+%\produces
+%Yes.\space No.\space Maybe.\par
+%Yes.\ No.\ Maybe.
+%\endexample
+%\enddesc
 
 \begindesc
 \cts space {}
 \explain
-This command is equivalent to an input space character.
-It differs from ^|\ | in that its
-width \emph{can} be affected by preceding punctuation.
+这个命令等价于一个输入的空格字符。和^|\ |不同，它的宽度\emph{会}受到前面标点的影响。
 \example
 Yes.\space No.\space Maybe.\par
 Yes.\!vs!.No.\!vs!.Maybe.
@@ -753,26 +857,61 @@ Yes.\ No.\ Maybe.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctsact  ^^M \xrdef{@newline}
+%\explain
+%This construct produces the ^{end of line} character.
+%It normally has two effects when \TeX\ encounters it in 
+%your input:
+%\olist
+%\li It acts as a command, producing either an input space
+%(if it comes at the end of a nonblank line)
+%or a |\par| token (if it comes at the end of a blank line).
+%^^|\par//from empty line|
+%\li It ends the input line, causing \TeX\ to ignore the remaining
+%characters on the line.
+%\endolist
+%\noindent
+%However, |^^M| does \emph{not} end the line when it appears in the
+%context |`\^^M|, denoting the ASCII code for control-M (the number $13$).
+%You can change the meaning of |^^M|
+%by giving it a different \minref{category code}.
+%See \xrefpg{twocarets} for a more general explanation of the |^^| notation.
+%\example
+%Hello.^^MGoodbye.
+%Goodbye again.\par
+%The \char `\^^M\ character.\par
+%% The fl ligature is at position 13 of font cmr10
+%\number `\^^M\ is the end of line code.\par
+%Again, \number `^^M is the end of line code,
+%isn't it? % 32 is the ASCII code for a space
+%|
+%\produces
+%{\catcode `\^ = 7 % disable indexing use within this display
+%Hello.^^MGoodbye
+%Goodbye again.\par
+%The \char `\^^M\ character.\par
+%\number `\^^M\ is the end of line code.\par
+%Again, \number `^^M is the end of line code,
+%isn't it?}
+%\endexample
+%\enddesc
+%
+
+
 \begindesc
 \ctsact  ^^M \xrdef{@newline}
 \explain
-This construct produces the ^{end of line} character.
-It normally has two effects when \TeX\ encounters it in 
-your input:
+这将产生^{行尾}字符。通常有两个效果：
 \olist
-\li It acts as a command, producing either an input space
-(if it comes at the end of a nonblank line)
-or a |\par| token (if it comes at the end of a blank line).
-^^|\par//from empty line|
-\li It ends the input line, causing \TeX\ to ignore the remaining
-characters on the line.
+\li 类似一个命令，产生一个输入的空格（如果它出现在一个非空行的尾部）或者一个
+|\par|记号（如果出现在空行的尾部）。^^|\par//from empty line|
+\li 结束一行，使\TeX{}忽略剩余的字符。
 \endolist
 \noindent
-However, |^^M| does \emph{not} end the line when it appears in the
-context |`\^^M|, denoting the ASCII code for control-M (the number $13$).
-You can change the meaning of |^^M|
-by giving it a different \minref{category code}.
-See \xrefpg{twocarets} for a more general explanation of the |^^| notation.
+但是，如果以|`\^^M|（control-M的ASCII 代码13）出现，|^^M|\emph{不会}结束一行。
+你可以修改\minref{类别代码}，从而赋予它新的含义。
+关于|^^|更多的解释请参见\xrefpg{twocarets}。
 \example
 Hello.^^MGoodbye.
 Goodbye again.\par
