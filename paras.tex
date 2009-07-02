@@ -1,7 +1,7 @@
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
-% 翻译 by zpxing@gmail.com
+% 中文翻译 by Zhaopeng Xing (zpxing@gmail.com)
 
 \input macros
 
@@ -1268,7 +1268,49 @@ These     spaces    are    closed   up
 \enddesc
 
 %==========================================================================
-\section {Centering and justifying lines}
+%\section {Centering and justifying lines}
+
+\section {行的居中和平均分布}
+
+%\begindesc
+%\bix^^{centering}
+%\bix^^{flush left}
+%\bix^^{flush right}
+%\bix^^{justification}
+%\easy\cts centerline {\<argument>}
+%\cts leftline {\<argument>}
+%\cts rightline {\<argument>}
+%\explain
+%The |\centerline| command produces an \minref{hbox} exactly as wide
+%as the current line and places \<argument> at the center of the box.
+%The |\leftline| and |\rightline| commands are analogous; they
+%place \<argument> at the left end or at the right end of the box.
+%If you want to apply one of these commands to
+%several consecutive lines, you must apply
+%it to each one individually.
+%See \xrefpg{eplaincenter} for an alternate approach.
+%
+%Don't use these commands within a paragraph---if you do, 
+%\TeX\ probably won't be able to break the paragraph into lines and
+%will complain about an overfull hbox.
+%\example
+%\centerline{Grand Central Station}
+%\leftline{left of Karl Marx}
+%\rightline{right of Genghis Khan}
+%|
+%\produces
+%\centerline{Grand Central Station}
+%\leftline{left of Karl Marx}
+%\rightline{right of Genghis Khan}
+%
+%\eix^^{centering}
+%\eix^^{flush left}
+%\eix^^{flush right}
+%\eix^^{justification}
+%
+%\endexample
+%\enddesc
+
 
 \begindesc
 \bix^^{centering}
@@ -1279,18 +1321,32 @@ These     spaces    are    closed   up
 \cts leftline {\<argument>}
 \cts rightline {\<argument>}
 \explain
-The |\centerline| command produces an \minref{hbox} exactly as wide
-as the current line and places \<argument> at the center of the box.
-The |\leftline| and |\rightline| commands are analogous; they
-place \<argument> at the left end or at the right end of the box.
-If you want to apply one of these commands to
-several consecutive lines, you must apply
-it to each one individually.
-See \xrefpg{eplaincenter} for an alternate approach.
+命令|\centerline|产生产生一个与当前行同宽的\minref{hbox}并把\<argument>在里面居中放置。命令|\leftline|和|\rightline|的作用类似：把\<argument>放在盒子里靠左或者靠右的位置。如果想让几行内容都有同样的效果，每一行都必须这样操作。
+其他的办法，请看\xrefpg{eplaincenter}。
 
-Don't use these commands within a paragraph---if you do, 
-\TeX\ probably won't be able to break the paragraph into lines and
-will complain about an overfull hbox.
+%Don't use these commands within a paragraph---if you do, 
+%\TeX\ probably won't be able to break the paragraph into lines and
+%will complain about an overfull hbox.
+%\example
+%\centerline{Grand Central Station}
+%\leftline{left of Karl Marx}
+%\rightline{right of Genghis Khan}
+%|
+%\produces
+%\centerline{Grand Central Station}
+%\leftline{left of Karl Marx}
+%\rightline{right of Genghis Khan}
+%
+%\eix^^{centering}
+%\eix^^{flush left}
+%\eix^^{flush right}
+%\eix^^{justification}
+%
+%\endexample
+%\enddesc
+
+
+这些命令不能用在段落里，否则拆段成行的时候，\TeX{}可能会遇到麻烦并警告盒子溢出了。
 \example
 \centerline{Grand Central Station}
 \leftline{left of Karl Marx}
@@ -1309,12 +1365,28 @@ will complain about an overfull hbox.
 \endexample
 \enddesc
 
+%\begindesc
+%\easy\cts line {\<argument>}
+%\explain
+%This command produces an \minref{hbox} containing \<argument>.
+%The hbox is exactly as wide as the current line, i.e., it
+%extends from the right margin to the left margin.
+%\example
+%\line{ugly \hfil suburban \hfil sprawl}
+%%Without \hfil you'd get an `underfull box' from this.
+%|
+%\produces
+%\line{ugly \hfil suburban \hfil sprawl}%
+%\endexample
+%
+%\enddesc
+
+
 \begindesc
 \easy\cts line {\<argument>}
 \explain
-This command produces an \minref{hbox} containing \<argument>.
-The hbox is exactly as wide as the current line, i.e., it
-extends from the right margin to the left margin.
+这个命令产生一个\minref{hbox}来包含\<argument>。
+hbox的宽度和当前行宽相同，即从左边距延伸到右边距。
 \example
 \line{ugly \hfil suburban \hfil sprawl}
 % Without \hfil you'd get an `underfull box' from this.
@@ -1324,25 +1396,57 @@ extends from the right margin to the left margin.
 \endexample
 
 \enddesc
+%\begindesc
+%^^{overlapping text}
+%\cts llap {\<argument>}
+%\cts rlap {\<argument>}
+%\explain
+%These commands enable you to produce text that overlaps
+%whatever happens to be to the left or to the right of the current
+%position.  |\llap| backspaces by the width of \<argument> and then
+%typesets \<argument>.  |\rlap| is similar, except that it typesets 
+%\<argument> first and then backspaces.  |\llap| and |\rlap| are useful for
+%placing text outside of the current margins.
+%Both |\llap| and |\rlap| do their work by creating
+%a \minref{box} of zero~width.
+
 
 \begindesc
 ^^{overlapping text}
 \cts llap {\<argument>}
 \cts rlap {\<argument>}
 \explain
-These commands enable you to produce text that overlaps
-whatever happens to be to the left or to the right of the current
-position.  |\llap| backspaces by the width of \<argument> and then
-typesets \<argument>.  |\rlap| is similar, except that it typesets 
-\<argument> first and then backspaces.  |\llap| and |\rlap| are useful for
-placing text outside of the current margins.
-Both |\llap| and |\rlap| do their work by creating
-a \minref{box} of zero~width.
+这些命令把文本覆盖到当前位置的左边或者右边。|\llap|会向左退\<argument>的宽度，然后开始排版\<argument>。|\rlap|类似，但是先排版\<argument>然后把后面的内容向左退。|\llap|和|\rlap|主要用于把文本放在现在的页边距之外。它们的工作原理是创建一个零宽度的\minref{盒子}。
+%You can also use |\llap| or |\rlap| to construct special characters by
+%^{overprinting}, but don't try it unless you're sure that the characters
+%you're using have the same width (which is the case for a monospaced
+%font such as ^|cmtt10|, the Computer Modern $10$-point ^{typewriter font}).
+%^^{Computer Modern fonts}
+%\example
+%\noindent\llap{off left }\line{\vrule $\Leftarrow$
+%left margin of examples\hfil right margin of examples
+%$\Rightarrow$\vrule}\rlap{ off right}
+%|
+%\produces
+%\noindent\llap{off left }\line{\vrule $\Leftarrow$
+%left margin of examples\hfil right margin of examples
+%$\Rightarrow$\vrule}\rlap{ off right}
+%\endexample
+%
+%%\example
+%%{\tt O\llap{!|}}
+%%|
+%%\produces
+%%{\cm \tt O\llap{\char `|}}
+%%\endexample
+%
+%\nobreak % don't lose the \see
+%\enddesc
+%
+%\see |\hsize| (\xref{\hsize}).
+%
 
-You can also use |\llap| or |\rlap| to construct special characters by
-^{overprinting}, but don't try it unless you're sure that the characters
-you're using have the same width (which is the case for a monospaced
-font such as ^|cmtt10|, the Computer Modern $10$-point ^{typewriter font}).
+|\llap|和|\rlap|可以被用来以^{叠印}的方式新建特殊字符。但是必须确保作原料的字符一般宽（等宽字体如^|cmtt10|和Computer Modern $10$-point的^{打字机字体}是这样的）。
 ^^{Computer Modern fonts}
 \example
 \noindent\llap{off left }\line{\vrule $\Leftarrow$
@@ -1368,9 +1472,11 @@ $\Rightarrow$\vrule}\rlap{ off right}
 \see |\hsize| (\xref{\hsize}).
 
 %==========================================================================
-\section {Shaping paragraphs}
+%\section {Shaping paragraphs}
+\section {塑段}
 
-\subsection {Starting, ending, and indenting paragraphs}
+%\subsection {Starting, ending, and indenting paragraphs}
+\subsection {段落的开始、结束和缩进}
 
 \begindesc
 \bix^^{paragraphs//shaping}
