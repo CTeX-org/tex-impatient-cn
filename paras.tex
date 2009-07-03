@@ -1478,35 +1478,73 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %\subsection {Starting, ending, and indenting paragraphs}
 \subsection {段落的开始、结束和缩进}
 
+%\begindesc
+%\bix^^{paragraphs//shaping}
+%\ctspecial par \ctsxrdef{@par}
+%\explain
+%This command ends a paragraph and puts \TeX\ into \minref{vertical mode},
+%ready to add more items to the page.  Since \TeX\ converts a blank line in
+%your input file into a |\par| \minref{token}, you don't ordinarily need to
+%type an explicit |\par| in order to end a paragraph.
+
+
 \begindesc
 \bix^^{paragraphs//shaping}
 \ctspecial par \ctsxrdef{@par}
 \explain
-This command ends a paragraph and puts \TeX\ into \minref{vertical mode},
-ready to add more items to the page.  Since \TeX\ converts a blank line in
-your input file into a |\par| \minref{token}, you don't ordinarily need to
-type an explicit |\par| in order to end a paragraph.
+这个命令结束一个段落，并使\TeX{}进入\minref{垂直模式}来在页面上增加更多内容。
+因为\TeX{}把一个空行当作|\par|\minref{记号}，所以不需要明确地键入|\par|。
 
-An important point is that |\par| doesn't tell
-\TeX\ to start a paragraph; it only tells \TeX\ to end a paragraph.
-\TeX\ starts a paragraph when it is in ordinary vertical mode (which it
-is after a |\par|) and encounters an inherently horizontal item such as
-a letter.  As part of its ceremony for starting a paragraph, \TeX\
+%An important point is that |\par| doesn't tell
+%\TeX\ to start a paragraph; it only tells \TeX\ to end a paragraph.
+%\TeX\ starts a paragraph when it is in ordinary vertical mode (which it
+%is after a |\par|) and encounters an inherently horizontal item such as
+%a letter.  As part of its ceremony for starting a paragraph, \TeX\
+%^^{paragraphs//starting}
+%inserts an amount of vertical space given by the parameter |\parskip|
+%(\xref{\parskip}) and indents the paragraph by a horizontal space given
+%by |\parindent| (\xref{\parindent}).
+
+
+必须指出|\par|不会让\TeXi{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
+要使\TeX{}开始新段落，需要处于垂直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
 ^^{paragraphs//starting}
-inserts an amount of vertical space given by the parameter |\parskip|
-(\xref{\parskip}) and indents the paragraph by a horizontal space given
-by |\parindent| (\xref{\parindent}).
+将插入一些垂直空白，取决于|\parskip|
+(\xref{\parskip})；新段落缩进，取决于|\parindent| (\xref{\parindent})。
 
-You can usually cancel any interparagraph space produced by a |\par| by giving
-the command |\vskip -\lastskip|.  It can often
-be helpful to do this when you're writing a \minref{macro} that is
-supposed to work the same way whether or not it is preceded by a blank
-line.
+%You can usually cancel any interparagraph space produced by a |\par| by giving
+%the command |\vskip -\lastskip|.  It can often
+%be helpful to do this when you're writing a \minref{macro} that is
+%supposed to work the same way whether or not it is preceded by a blank
+%line.
 
-You can get \TeX\ to take some special action at the start of each paragraph
-by placing the instructions in ^|\everypar| (\xref\everypar).
 
-See \knuth{pages~283 and 286} for the precise effect of |\par|.
+要想减小段落间|\par|产生的空白，通常可以使用命令|\vskip -\lastskip|。当你需要写一个\miniref{宏}而让它与前面是不是空行无关的时候，这个命令就有用。
+%You can get \TeX\ to take some special action at the start of each paragraph
+%by placing the instructions in ^|\everypar| (\xref\everypar).
+%
+%See \knuth{pages~283 and 286} for the precise effect of |\par|.
+%
+%\example
+%\parindent = 2em
+%``Can you row?'' the Sheep asked, handing Alice a pair of
+%knitting-needles as she was speaking.\par ``Yes, a little%
+%---but not on land---and not with needles---'' Alice was
+%starting to say, when suddenly the needles turned into oars.
+%|
+%\produces
+%\parindent = 2em
+%``Can you row?'' the Sheep asked, handing Alice a pair of
+%knitting-needles as she was speaking.\par ``Yes, a little%
+%---but not on land---and not with needles---'' Alice was
+%starting to say, when suddenly the needles turned into oars.
+%\endexample
+%\enddesc
+
+
+你可以使用^|\everypar| (\xref\everypar)来让\TeX{}在每开始一个新段落的时候做一些事.
+
+|\par|的具体效果请参阅\knuth{pages~283 and 286}。
 
 \example
 \parindent = 2em
@@ -1523,47 +1561,94 @@ knitting-needles as she was speaking.\par ``Yes, a little%
 starting to say, when suddenly the needles turned into oars.
 \endexample
 \enddesc
+%\begindesc
+%\cts endgraf {}
+%\explain
+%This command is a synonym for the ^|\par| primitive command.
+%It is useful when you've redefined ^|\par| but still want access to the
+%original definition of |\par|.
+%\enddesc
+
 
 \begindesc
 \cts endgraf {}
 \explain
-This command is a synonym for the ^|\par| primitive command.
-It is useful when you've redefined ^|\par| but still want access to the
-original definition of |\par|.
+这个命令与^|\par|同义。有时候你重新定义了^|\par|，但是又想取得|\par|的原始定义，这个命令就会有用。
 \enddesc
+%\begindesc
+%\cts parfillskip {\param{glue}}
+%\explain
+%^^{paragraphs//glue at end of}
+%This parameter specifies the horizontal glue that
+%\TeX\ inserts at the end of a paragraph.
+%The default value of |\parfillskip| is |0pt plus 1fil|,
+%which causes the last line of a paragraph to be
+%filled out with blank space.  A value of |0pt| forces
+%\TeX\ to end the last line of a paragraph at the right margin.
+%\enddesc
+
 
 \begindesc
 \cts parfillskip {\param{glue}}
 \explain
 ^^{paragraphs//glue at end of}
-This parameter specifies the horizontal glue that
-\TeX\ inserts at the end of a paragraph.
-The default value of |\parfillskip| is |0pt plus 1fil|,
-which causes the last line of a paragraph to be
-filled out with blank space.  A value of |0pt| forces
-\TeX\ to end the last line of a paragraph at the right margin.
+这个参数设定\TeX{}插入段落末尾的水平粘连。
+默认值是|0pt plus 1fil|，这使得最后一行被空格填满。如果设成|0pt|，
+\TeX{}就会把段落的最后一行拉伸到右边距。
 \enddesc
+%\bix^^{indentation}
+%\begindesc
+%\easy\cts indent {}
+%\explain
+%If \TeX\ is in vertical mode, as it is after ending a paragraph,
+%this command inserts the ^|\parskip| interparagraph glue,
+%puts \TeX\ into horizontal mode, starts a paragraph, and
+%indents that paragraph by |\parindent|.
+%If \TeX\ is already in horizontal mode, this command merely produces
+%a blank space of width |\parindent|.
+%Two |\indent|s in a row 
+%produce two indentations.
+%^^{indentation}
+
 
 \bix^^{indentation}
 \begindesc
 \easy\cts indent {}
 \explain
-If \TeX\ is in vertical mode, as it is after ending a paragraph,
-this command inserts the ^|\parskip| interparagraph glue,
-puts \TeX\ into horizontal mode, starts a paragraph, and
-indents that paragraph by |\parindent|.
-If \TeX\ is already in horizontal mode, this command merely produces
-a blank space of width |\parindent|.
-Two |\indent|s in a row 
-produce two indentations.
+当\TeX{}处于垂直模式时，比如段落结束以后，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，开始新的一段，并缩进|\parindent|大小。
+如果\TeX{}已经处于水平模式了，这个命令就只做缩进。
+一行中两个|\indent|产生两个缩进。
 ^^{indentation}
+%As the example below shows, an |\indent| at a point where \TeX\
+%would start a paragraph anyway is redundant.
+%When \TeX\ is in vertical mode and sees a letter or some other
+%inherently horizontal command, it starts a paragraph by
+%switching to horizontal mode,
+%doing an |\indent|, and processing the horizontal command.
+%
+%\example
+%\parindent = 2em  This is the first in a series of three 
+%paragraphs that show how you can control indentation. Note
+%that it has the same indentation as the next paragraph.\par
+%\indent This is the second in a series of three paragraphs.
+%It has \indent an embedded indentation.\par
+%\indent\indent This doubly indented paragraph
+%is the third in the series.
+%|
+%\produces
+%\parindent = 2em  This is the first in a series of three 
+%paragraphs that show how you can control indentation. Note
+%that it has the same indentation as the next paragraph.\par
+%\indent This is the second in a series of three paragraphs.
+%It has \indent an embedded indentation.\par
+%\indent\indent This doubly indented paragraph
+%is the third in the series.
+%\endexample
+%\enddesc
 
-As the example below shows, an |\indent| at a point where \TeX\
-would start a paragraph anyway is redundant.
-When \TeX\ is in vertical mode and sees a letter or some other
-inherently horizontal command, it starts a paragraph by
-switching to horizontal mode,
-doing an |\indent|, and processing the horizontal command.
+
+如下面的例子所示，新的段落开始之后的|\indent|是多余的。
+当\TeX{}处在垂直模式下，遇到一个字母或其他水平模式中的命令时，就会切换到水平模式缩进|\indent|，然后继续。
 
 \example
 \parindent = 2em  This is the first in a series of three 
@@ -1585,22 +1670,45 @@ is the third in the series.
 \endexample
 \enddesc
 
+%
+%\begindesc
+%\easy\cts noindent {}
+%\explain
+%If \TeX\ is in vertical mode, as it is after ending a paragraph,
+%this command inserts the ^|\parskip| interparagraph glue,
+%puts \TeX\ into horizontal mode, and starts an unindented paragraph.
+%It has no effect in horizontal mode, i.e., within a paragraph.
+%Starting a paragraph with |\noindent| thus cancels
+%the indentation by |\parindent|
+%that would normally occur there.
+%^^{indentation}
+%
 
 \begindesc
 \easy\cts noindent {}
 \explain
-If \TeX\ is in vertical mode, as it is after ending a paragraph,
-this command inserts the ^|\parskip| interparagraph glue,
-puts \TeX\ into horizontal mode, and starts an unindented paragraph.
-It has no effect in horizontal mode, i.e., within a paragraph.
-Starting a paragraph with |\noindent| thus cancels
-the indentation by |\parindent|
-that would normally occur there.
+当\TeX{}结束一段后处于垂直模式时，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，然后开始新段，不要缩进。在水平模式中，比如段落中，这个命令没有效果。|\noindent|开始的新段会取消通常的|\parindent|缩进。
 ^^{indentation}
+%A common use of |\noindent| is to cancel the indentation of 
+%the first line of a
+%paragraph when the paragraph follows some displayed material.
+%
+%\example
+%\parindent = 1em
+%Tied round the neck of the bottle was a label with the
+%words \smallskip \centerline{EAT ME}\smallskip
+%\noindent beautifully printed on it in large letters.
+%|
+%\produces
+%\parindent = 1em
+%Tied round the neck of the bottle was a label with the
+%words \smallskip \centerline{EAT ME}\smallskip
+%\noindent beautifully printed on it in large letters.
+%\endexample
+%\enddesc
 
-A common use of |\noindent| is to cancel the indentation of 
-the first line of a
-paragraph when the paragraph follows some displayed material.
+
+当新的段落是在某些独立显示的内容之后出现时，|\noindent|通常用于取消段落第一行的缩进。
 
 \example
 \parindent = 1em
@@ -1615,21 +1723,45 @@ words \smallskip \centerline{EAT ME}\smallskip
 \noindent beautifully printed on it in large letters.
 \endexample
 \enddesc
+%\margin{{\tt\\textindent} moved here from later in the section.}
+%\begindesc
+%\cts textindent {\<argument>}
+%\explain
+%^^{indentation}
+%This command tells \TeX\ to start a paragraph and indent it by
+%|\par!-indent|,
+%as usual.
+%\TeX\ then right-justifies \<argument> within the indentation
+%and
+%follows it with an en space (half an em).
+%\PlainTeX\ uses this command to typeset footnotes (\xref\footnote)
+%^^{footnotes//using \b\tt\\textindent\e\ with}
+%and items in lists (see |\item|, \xref\item).
+%
+%\example
+%\parindent = 20pt \textindent{\raise 1pt\hbox{$\bullet$}}%
+%You are allowed to use bullets in \TeX\ even if
+%you don't join the militia, and many peace-loving
+%typographers do so.
+%|
+%\produces
+%\parindent = 20pt \textindent{\raise 1pt\hbox{$\bullet$}}%
+%You are allowed to use bullets in \TeX\ even if
+%you don't join the militia, and many peace-loving
+%typographers do so.
+%\endexample\enddesc
 
-\margin{{\tt\\textindent} moved here from later in the section.}
+
+\margin{{\tt\\textindent} 从此节的后面移到这里}
 \begindesc
 \cts textindent {\<argument>}
 \explain
 ^^{indentation}
-This command tells \TeX\ to start a paragraph and indent it by
-|\par!-indent|,
-as usual.
-\TeX\ then right-justifies \<argument> within the indentation
-and
-follows it with an en space (half an em).
-\PlainTeX\ uses this command to typeset footnotes (\xref\footnote)
+这个命令让\TeX{}开始新段，正常缩进|\par!-indent|。
+然后\TeX{}在缩进的地方向右对齐排版\<argument>并加入一个en大小的空白(em的一半)。
+\PlainTeX{}使用这个命令来排版脚注（\xref\footnote）
 ^^{footnotes//using \b\tt\\textindent\e\ with}
-and items in lists (see |\item|, \xref\item).
+已经列表项目 (see |\item|, \xref\item)。
 
 \example
 \parindent = 20pt \textindent{\raise 1pt\hbox{$\bullet$}}%
@@ -1643,15 +1775,33 @@ You are allowed to use bullets in \TeX\ even if
 you don't join the militia, and many peace-loving
 typographers do so.
 \endexample\enddesc
+%\begindesc
+%\cts parindent {\param{dimen}}
+%\explain
+%This \minref{parameter} specifies the amount by which
+%the first line of each paragraph is to be indented. ^^{indentation}
+%As the example below shows, it's a bad idea to set both |\parindent|
+%and ^|\parskip| to zero since then the paragraph breaks are 
+%no longer apparent.
+%\example
+%\parindent = 2em This paragraph is indented by 2 ems.
+%\par \parindent=0pt This paragraph is not indented at all.
+%\par Since we haven't reset the paragraph indentation,
+%this paragraph isn't indented either.
+%|
+%\produces
+%\parindent = 2em This paragraph is indented by 2 ems.
+%\par \parindent=0pt This paragraph is not indented at all.
+%\par Since we haven't reset the paragraph indentation,
+%this paragraph isn't indented either.
+%\endexample\enddesc
+
 
 \begindesc
 \cts parindent {\param{dimen}}
 \explain
-This \minref{parameter} specifies the amount by which
-the first line of each paragraph is to be indented. ^^{indentation}
-As the example below shows, it's a bad idea to set both |\parindent|
-and ^|\parskip| to zero since then the paragraph breaks are 
-no longer apparent.
+这个\minref{参数}设定段落第一行缩进的大小。^^{indentation}
+如下面的例子所示，最好不要同时使|\parindent|和^|\parskip|为零，否则两段的区别就不明显了。
 \example
 \parindent = 2em This paragraph is indented by 2 ems.
 \par \parindent=0pt This paragraph is not indented at all.
@@ -1664,15 +1814,42 @@ this paragraph isn't indented either.
 \par Since we haven't reset the paragraph indentation,
 this paragraph isn't indented either.
 \endexample\enddesc
+%\begindesc
+%\cts everypar {\param{token list}}
+%\explain
+%\TeX\ performs the commands in \<token list> whenever it
+%enters horizontal mode, e.g., when it starts a paragraph.
+%By default |\everypar| is empty, but you can 
+%take extra actions at the start of every paragraph by putting
+%the commands for those actions into a token list
+%%
+%% This \vglue makes the example overwrite the example, but since we are
+%% not reprinting this page, it doesn't matter.  For reasons I did not
+%% attempt to track down, a page break happened before the example,
+%% unlike in the first printing.
+%% 
+%\secondprinting{\vglue-48pt}
+%and assigning that token list to |\everypar|.
+%\example
+%\everypar = {$\Longrightarrow$\enspace}
+%Now pay attention!!\par
+%I said, ``Pay attention!!''.\par
+%I'll say it again!! Pay attention!!
+%|
+%\produces
+%\everypar = {$\Longrightarrow$\enspace}
+%Now pay attention!\par
+%I said, ``Pay attention!''.\par
+%I'll say it again! Pay attention!
+%\endexample
+%\enddesc
+%\secondprinting{\vfill\eject}
+
 
 \begindesc
 \cts everypar {\param{token list}}
 \explain
-\TeX\ performs the commands in \<token list> whenever it
-enters horizontal mode, e.g., when it starts a paragraph.
-By default |\everypar| is empty, but you can 
-take extra actions at the start of every paragraph by putting
-the commands for those actions into a token list
+\TeX{}处于水平模式下，比如新段开始的时候，就会在\<记号列表>中执行这个命令。默认的|\everypar|为空，但是你可以添加一些命令，每一段开始的时候在记号列表中执行
 %
 % This \vglue makes the example overwrite the example, but since we are
 % not reprinting this page, it doesn't matter.  For reasons I did not
@@ -1680,7 +1857,7 @@ the commands for those actions into a token list
 % unlike in the first printing.
 % 
 \secondprinting{\vglue-48pt}
-and assigning that token list to |\everypar|.
+并为|\everypar|分配记号列表。
 \example
 \everypar = {$\Longrightarrow$\enspace}
 Now pay attention!!\par
