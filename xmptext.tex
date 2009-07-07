@@ -170,40 +170,65 @@ the margins are clearly visible.
 ~^^{fonts} ^^{characters//special} ^^{accents}
 ~^^{music symbols} ^^{card suits}
 ~^^|$| ^^|&| ^^|#| ^^|_| ^^|%| ^^|^| ^^|~| ^^|{| ^^|}| \indexchar \
-{\it Here are a few words in an italic font}, {\bf a 
-few words in a boldface font}, {\it and a\/ {\bf mixture} 
-of the two, with two\/ {\rm roman words} inserted}.
-Where an italic font is followed by a nonitalic font, we've
-inserted an ``italic correction'' ({\tt \\/}) to make the
-spacing look right. 
-Here's a {\sevenrm smaller} word---but the standard \TeX\
-fonts won't give you anything smaller than {\fiverm this}.
+%{\it Here are a few words in an italic font}, {\bf a 
+%few words in a boldface font}, {\it and a\/ {\bf mixture} 
+%of the two, with two\/ {\rm roman words} inserted}.
+%Where an italic font is followed by a nonitalic font, we've
+%inserted an ``italic correction'' ({\tt \\/}) to make the
+%spacing look right. 
 
-If you need any of the ten characters:
+%{\it 这是一些斜体字词}, {\bf  
+%一些粗体字词}, {\it 以及一些 {\bf 二者混合的效果} 
+%, 我们在中间插入一些 {\rm 正常的字词} }.
+%当斜体字后面紧跟非斜体字时, 我们在其间插入一个``倾斜校正''
+%({\tt \\/})，使得中间的空白看起来较舒适。
+
+%Here's a {\sevenrm smaller} word---but the standard \TeX\
+%fonts won't give you anything smaller than {\fiverm this}.
+
+这是一些{\sevenrm 更小的} 字词---可是标准的 \TeX\
+字体并不会给出小于 {\fiverm 如此大小}的字体。
+
+%If you need any of the ten characters:
+如果你需要以下十个字符任意之一：
 \medskip
 \centerline{\$ \quad \& \quad \# \quad \_ \quad \% \quad
    \char `\^ \quad \char `\~ \quad $\{$ \quad
    $\}$ \quad $\backslash$}
 % The \quad inserts an em space between characters.
 \medskip
-\noindent  you'll need to write them a special way.  Look at
-the facing page to see how to do it.
+%\noindent  you'll need to write them a special way.  Look at
+%the facing page to see how to do it.
+\noindent 你需要通过特殊的方式来写他们。参照首页，学习正确的记录
+这些特殊字符的方法.
 
-\TeX\ has the accents and letters that you'll need
-for French words such as {\it r\^ ole\/} and  {\it \'
-el\` eve\/}, for German words such as {\it Schu\ss\/},
-and for words in several other languages as well.
-You'll find a complete list of \TeX's accents and letters
-of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].  
+%\TeX\ has the accents and letters that you'll need
+%for French words such as {\it r\^ ole\/} and  {\it \'
+%el\` eve\/}, for German words such as {\it Schu\ss\/},
+%and for words in several other languages as well.
+%You'll find a complete list of \TeX's accents and letters
+%of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].  
 
-You can also get Greek letters such as ``$\alpha$'' and
-``$\Omega$'' for use in math, card suits such as
-``$\spadesuit$'' and ``$\diamondsuit$'', music symbols
-such as ``$\sharp$'' and ``$\flat$'', and many other special
-symbols that you'll find listed on !xrefdelim[specsyms].
-\TeX\ will only accept these sorts of special symbols in its
-``math mode'', so you'll need to enclose them
-within `{\tt \$}' characters.
+\Tex\ 拥有一些语音和字母，可以用于某些法语词，例如：{\it r\^ ole\/} 以及
+{\it \'el\` eve\/}, 或者德语词，例如 {\it Schu\ss\/},
+或者某些别的什么语言。你可以在 !xrefdelim[accents] 和 !xrefdelim[fornlets] 处
+找到 \TeX\ 的 欧洲语音和字母表。
+
+%You can also get Greek letters such as ``$\alpha$'' and
+%``$\Omega$'' for use in math, card suits such as
+%``$\spadesuit$'' and ``$\diamondsuit$'', music symbols
+%such as ``$\sharp$'' and ``$\flat$'', and many other special
+%symbols that you'll find listed on !xrefdelim[specsyms].
+%\TeX\ will only accept these sorts of special symbols in its
+%``math mode'', so you'll need to enclose them
+%within `{\tt \$}' characters.
+
+你也可以写一些希腊字母，例如数学中的 ``$\alpha$'' 以及
+``$\Omega$'' , 扑克牌中的 
+``$\spadesuit$'' 以及 ``$\diamondsuit$'', 一些音乐符号，例如：
+``$\sharp$'' 和 ``$\flat$'', 以及一些你可以在 !xrefdelim[specsyms]
+找到的各种符号。\TeX\ 仅在 ``数学模式'' 下接受这些符号, 因此，
+你需要将它们放在两个 `{\tt \$}' 字符中间。
 \bye % end the document
 :::
 \xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
