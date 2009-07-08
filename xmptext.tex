@@ -245,21 +245,35 @@ the margins are clearly visible.
    \kern-.15em \lower .25ex \hbox{\the\scriptfont0 #2}%
 }%
 
-Once in a while you may want to print a document with extra
-space between the lines.  For instance, bills before Congress
-are printed this way so that the legislators can mark them up.
-For the same reason, book publishers usually insist that
-manuscripts be double-spaced. Double spacing is rarely
-appropriate for finished documents, however.
+%Once in a while you may want to print a document with extra
+%space between the lines.  For instance, bills before Congress
+%are printed this way so that the legislators can mark them up.
+%For the same reason, book publishers usually insist that
+%manuscripts be double-spaced. Double spacing is rarely
+%appropriate for finished documents, however.
 
-A baseline is an imaginary line that acts like the lines
-on a pad of ruled paper.   You can control the interline
-spacing---what printers call ``leading''---%
-by setting the amount of space between baselines. Take a
-look at the input to see how to do it. You could use
-the same method for $1\;1/2$ spacing as well, using {\tt 1.5}
-instead of {\tt 2}. (You can also write $1\frac 1/2$
-a nicer way.)
+有的时候，你会想在文档的文字行之间增加一些空白。例如：议会的
+某些讨论稿需要这样做，使得议院们能够在其上作一些标记。书商们
+也基于同样的理由，要求作者提交的手稿具有双倍的行间距。当然，
+对最终的出版物来说，双倍行间距的情形极其少见。
+
+
+%A baseline is an imaginary line that acts like the lines
+%on a pad of ruled paper.   You can control the interline
+%spacing---what printers call ``leading''---%
+%by setting the amount of space between baselines. Take a
+%look at the input to see how to do it. You could use
+%the same method for $1\;1/2$ spacing as well, using {\tt 1.5}
+%instead of {\tt 2}. (You can also write $1\frac 1/2$
+%a nicer way.)
+
+基线是一条想象出来的线，其作用类似于带横格标记的纸张上
+横格线的作用。你可以通过控制基线间的距离来控制两行文字
+之间的距离 --- 打印机管这个距离叫做 ``起始空白''。具体
+的做法可以参看这段的源文件。你可以用{\tt 1.5}取代{\tt 2}
+获得 $1\;1/2$空白的效果。（或者可以写成更好看的 $1\frac 1/2$
+形式。）
+
 % Here we've used the macro definition given above.
 
 For this example we've also increased the paragraph indentation
