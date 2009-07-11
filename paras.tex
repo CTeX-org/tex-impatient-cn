@@ -1874,28 +1874,55 @@ I'll say it again! Pay attention!
 \secondprinting{\vfill\eject}
 
 %==========================================================================
-\subsection {Shaping entire paragraphs}
+%\subsection {Shaping entire paragraphs}
+\susection {形成段落}
+
+%\begindesc
+%\margin{This command was also described in the `Pages' chapter. The
+%description here now combines the two earlier descriptions.}
+%\bix^^{line breaks//and paragraph shape}
+%\easy\cts hsize {\param{dimen}}
+%\explain
+%This \minref{parameter} specifies the current ^{line length},
+%i.e., the usual width of lines in a paragraph
+%starting at the left margin.
+%A great many \TeX\ commands, e.g., |\centerline| (\xref{\centerline})
+%and |\hrule| (\xref{\hrule}), implicitly use the value of
+%|\hsize|.  By changing |\hsize| within a group
+%you can change the width of the constructs produced by such commands.
+
 
 \begindesc
-\margin{This command was also described in the `Pages' chapter. The
-description here now combines the two earlier descriptions.}
+\margin{这个命令在“页面”一章也有涉及。此处讲解结合了前面两个地方的内容。}
 \bix^^{line breaks//and paragraph shape}
 \easy\cts hsize {\param{dimen}}
 \explain
-This \minref{parameter} specifies the current ^{line length},
-i.e., the usual width of lines in a paragraph
-starting at the left margin.
-A great many \TeX\ commands, e.g., |\centerline| (\xref{\centerline})
-and |\hrule| (\xref{\hrule}), implicitly use the value of
-|\hsize|.  By changing |\hsize| within a group
-you can change the width of the constructs produced by such commands.
+这个\minref{参数}设定当前的^{行宽}，即从左边距开始算起，段落里一行的宽度。
+很多\TeX{}命令，比如|\centerline| (\xref{\centerline})和|\hrule| (\xref{\hrule})，都间接使用了|\hsize|的值。改变|\hsize|的值，就相应地改变了这些命令的宽度效果。
+%If you 
+%set |\hsize| within a \minref{vbox} that contains text, the vbox will
+%have whatever width you've given to |\hsize|.
+%^^{vboxes//width determined by \b\tt\\hsize\e}
+%
+%\PlainTeX\ sets |\hsize| to |6.5in|.
+%
+%\example
+%{\hsize = 3.5in % Set this paragraph 3.5 inches wide.
+%The hedgehog was engaged in a fight with another hedgehog,
+%which seemed to Alice an excellent opportunity for
+%croqueting one of them with the other.\par}%
+%|
+%\produces
+%{\hsize = 3.5in 
+%The hedgehog was engaged in a fight with another hedgehog,
+%which seemed to Alice an excellent opportunity for croqueting
+%one of them with the other.\par}%
 
-If you 
-set |\hsize| within a \minref{vbox} that contains text, the vbox will
-have whatever width you've given to |\hsize|.
+
+如果|\hsize|的变化发生在一个非空的\minref{垂直盒子}里，盒子的宽度就是给定的|\hsize|。
 ^^{vboxes//width determined by \b\tt\\hsize\e}
 
-\PlainTeX\ sets |\hsize| to |6.5in|.
+\PlainTeX{}默认|\hsize|为|6.5in|。
 
 \example
 {\hsize = 3.5in % Set this paragraph 3.5 inches wide.
@@ -1908,6 +1935,26 @@ croqueting one of them with the other.\par}%
 The hedgehog was engaged in a fight with another hedgehog,
 which seemed to Alice an excellent opportunity for croqueting
 one of them with the other.\par}%
+
+%\doruler{\8\8\8\tick\1\tick\2\tick\1\tick\3}{3.5}{in}
+%\nextexample
+%\leftline{\raggedright\vtop{\hsize = 1.5in
+%Here is some text that we put into a paragraph that is
+%an inch and a half wide.}\qquad
+%\vtop{\hsize = 1.5in Here is some more text that
+%we put into another paragraph that is an inch and a
+%half wide.}}
+%|
+%\produces
+%\leftline{\raggedright\vtop{\hsize = 1.5in
+%Here is some text that we put into a paragraph that is
+%an inch and a half wide.}\qquad
+%\vtop{\hsize = 1.5in Here is some more text that
+%we put into another paragraph that is an inch and a
+%half wide.}}
+%\endexample
+%\enddesc
+
 
 \doruler{\8\8\8\tick\1\tick\2\tick\1\tick\3}{3.5}{in}
 \nextexample
@@ -1928,24 +1975,49 @@ half wide.}}
 \endexample
 \enddesc
 
+%\begindesc
+%\easy\cts narrower {}
+%\explain
+%^^{paragraphs//narrow}
+%This command makes paragraphs narrower, increasing the left and right
+%margins by |\parindent|, the
+%current paragraph ^{indentation}.
+%It achieves this by increasing
+%both |\leftskip| and |\rightskip| by |\parindent|.
+%Normally you place |\narrower| at the
+%beginning of a \minref{group} containing the paragraphs that you want to
+%make narrower.  If you forget to enclose |\narrower| within a group,
+%you'll find that all the rest of your document will have narrow
+%paragraphs.
+
+
 \begindesc
 \easy\cts narrower {}
 \explain
 ^^{paragraphs//narrow}
-This command makes paragraphs narrower, increasing the left and right
-margins by |\parindent|, the
-current paragraph ^{indentation}.
-It achieves this by increasing
-both |\leftskip| and |\rightskip| by |\parindent|.
-Normally you place |\narrower| at the
-beginning of a \minref{group} containing the paragraphs that you want to
-make narrower.  If you forget to enclose |\narrower| within a group,
-you'll find that all the rest of your document will have narrow
-paragraphs.
+这个命令产生较窄的段落，左右边距将会增加当前段落^{缩进}|\parindent|的大小，
+原因是|\leftskip|和|\rightskip|分别增加了|\parindent|。
+通常|\narrower|被放在一个\minref{群组}的开始，作用于其中的段落上。如果你忘记把|\narrower|封闭在群组里，就会发现文档所余部分全都变窄了。
 
-|\narrower| affects just those paragraphs that end after you invoke it.
-If you end a |\narrower| group before you've ended
-a paragraph, \TeX\ won't make that paragraph narrower.
+%|\narrower| affects just those paragraphs that end after you invoke it.
+%If you end a |\narrower| group before you've ended
+%a paragraph, \TeX\ won't make that paragraph narrower.
+%
+%\example
+%{\parindent = 12pt \narrower\narrower\narrower
+%This is a short paragraph. Its margins are indented
+%three times as much as they would be
+%had we used just one ``narrower'' command.\par}
+%|
+%\produces
+%{\parindent = 12pt \narrower\narrower\narrower
+%This is a short paragraph. Its margins are indented
+%three times as much as they would be
+%had we used just one ``narrower'' command.\par}
+%\endexample\enddesc
+
+
+|\narrower|只影响其后的段落。如果包含|\narrower|的群组在段落末尾之前结束，\TeX{}将不会产生窄的段落。
 
 \example
 {\parindent = 12pt \narrower\narrower\narrower
@@ -1960,28 +2032,70 @@ three times as much as they would be
 had we used just one ``narrower'' command.\par}
 \endexample\enddesc
 
+%\begindesc
+%\cts leftskip {\param{glue}}
+%\cts rightskip {\param{glue}}
+%\explain
+%These parameters tell \TeX\ how much glue to place
+%at the left and at the right end of each line of the current
+%paragraph.  We'll just explain how |\leftskip| works since |\rightskip| 
+%is analogous.
+%
+%^^{indentation} You can increase the left margin by setting |\leftskip|
+%to a fixed nonzero \minref{dimension}.  If you give |\leftskip| some
+%stretch, you can produce ^{ragged left} text, i.e.,
+%text that has an uneven left margin.
+%
+%Ordinarily, you should enclose any \minref{assignment} to |\leftskip|
+%in a \minref{group} together with the affected text
+%in order to keep its effect from continuing to
+%the end of your document.  However, it's pointless to change
+%|\leftskip|'s value inside a group that is in turn
+%contained within a paragraph---the value of |\leftskip| at the
+%\emph{end} of a paragraph
+%is what determines how \TeX\ breaks the paragraph into lines.  \minrefs{line
+%break}
+%
+%\example
+%{\leftskip = 1in The White Rabbit trotted slowly back
+%again, looking anxiously about as it went, as if it had
+%lost something.  {\leftskip = 10in % has no effect
+%It muttered to itself, ``The Duchess!! The Duchess!! She'll
+%get me executed as sure as ferrets are ferrets!!''}\par}%
+%|
+%\produces
+%{\leftskip = 1in The White Rabbit trotted slowly back
+%again, looking anxiously about as it went, as if it had
+%lost something.  {\leftskip = 10in % has no effect
+%It muttered to itself, ``The Duchess! The Duchess!
+%She'll get me executed as sure as ferrets are ferrets!''}\par}%
+%\nextexample
+%\pretolerance = 10000 % Don't hyphenate.
+%\rightskip = .5in plus 2em
+%The White Rabbit trotted slowly back again, looking
+%anxiously about as it went, as if it had lost something.
+%It muttered to itself, ``The Duchess!! The Duchess!! She'll
+%get me executed as sure as ferrets are ferrets!!''
+%|
+%\produces
+%\pretolerance = 10000 % Don't hyphenate.
+%\rightskip = .5in plus 2em
+%The White Rabbit trotted slowly back again, looking
+%anxiously about as it went, as if it had lost something.
+%It muttered to itself, ``The Duchess! The Duchess! She'll
+%get me executed as sure as ferrets are ferrets!''
+%\endexample
+%\enddesc
+
 \begindesc
 \cts leftskip {\param{glue}}
 \cts rightskip {\param{glue}}
 \explain
-These parameters tell \TeX\ how much glue to place
-at the left and at the right end of each line of the current
-paragraph.  We'll just explain how |\leftskip| works since |\rightskip| 
-is analogous.
+这些参数告诉\TeX{}在当前段落每一行的左右各放多大的空白。我们将只解释|\leftskip|，因为|\rightskip|与其类似。
 
-^^{indentation} You can increase the left margin by setting |\leftskip|
-to a fixed nonzero \minref{dimension}.  If you give |\leftskip| some
-stretch, you can produce ^{ragged left} text, i.e.,
-text that has an uneven left margin.
+^^{indentation} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。如果|\leftskip|是一个橡皮长度，就会得到^{右对齐}的内容，即左边距参差不齐。
 
-Ordinarily, you should enclose any \minref{assignment} to |\leftskip|
-in a \minref{group} together with the affected text
-in order to keep its effect from continuing to
-the end of your document.  However, it's pointless to change
-|\leftskip|'s value inside a group that is in turn
-contained within a paragraph---the value of |\leftskip| at the
-\emph{end} of a paragraph
-is what determines how \TeX\ breaks the paragraph into lines.  \minrefs{line
+通常，你应该在一个\miniref{群组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的群组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
 break}
 
 \example
