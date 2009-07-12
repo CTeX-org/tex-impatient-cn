@@ -2128,33 +2128,63 @@ It muttered to itself, ``The Duchess! The Duchess! She'll
 get me executed as sure as ferrets are ferrets!''
 \endexample
 \enddesc
+%\begindesc
+%\easy\cts raggedright {}
+%\cts ttraggedright {}
+%\explain
+%These commands cause \TeX\ to typeset your document 
+%``^{ragged right}''.  Interword spaces all 
+%have their natural size, i.e., they all have the same width and
+%don't stretch or shrink.
+%Consequently the right margin is generally not even.
+%The alternative, which is \TeX's default, is to typeset your document
+%justified,
+%^^{justification}
+%i.e., with uniform left and right margins.
+%In justified text, interword spaces are stretched in order to 
+%make the right margin even.
+%Some typographers prefer ragged right because 
+%it avoids distracting ``rivers'' of white space on the printed page.
+%\minrefs{justified text}
+
 
 \begindesc
 \easy\cts raggedright {}
 \cts ttraggedright {}
 \explain
-These commands cause \TeX\ to typeset your document 
-``^{ragged right}''.  Interword spaces all 
-have their natural size, i.e., they all have the same width and
-don't stretch or shrink.
-Consequently the right margin is generally not even.
-The alternative, which is \TeX's default, is to typeset your document
-justified,
-^^{justification}
-i.e., with uniform left and right margins.
-In justified text, interword spaces are stretched in order to 
-make the right margin even.
-Some typographers prefer ragged right because 
-it avoids distracting ``rivers'' of white space on the printed page.
-\minrefs{justified text}
+这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。因此右边距是不均匀的。而\TeX默认的则是均匀对齐^^{justification}，即左右边距一样。均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。因为左对齐避免了页面上的空白参差不齐。
+\minrefs{均匀对齐的文本}
+%You should use the |\ttraggedright| command when typesetting text in a
+%monospaced font and the |\raggedright| command when typesetting text in any
+%other font.  
+%
+%Most of the time you'll want to apply these commands to an entire document,
+%but you can limit their effects by enclosing them
+%in a \minref{group}.
+%\example
+%\raggedright ``You couldn't have it if you {\it did\/}
+%want it,'' the Queen said. ``The rule is, jam tomorrow
+%and jam yesterday---but never jam {\it today\/}.''
+%``It {\it must\/} come sometimes to `jam today,%
+%thinspace'' Alice objected. ``No, it can't'', said the
+%Queen. ``It's jam every {\it other\/} day: today isn't
+%any {\it other\/} day.''
+%|
+%\produces
+%\raggedright ``You couldn't have it if you {\it did\/}
+%want it,'' the Queen said. ``The rule is, jam tomorrow
+%and jam yesterday---but never jam {\it today\/}.''
+%``It {\it must\/} come sometimes to `jam today,%
+%'\thinspace'' Alice objected. ``No, it can't'', said the
+%Queen. ``It's jam every {\it other\/} day: today isn't
+%any {\it other\/} day.''
+%\endexample
+%\enddesc
+%
 
-You should use the |\ttraggedright| command when typesetting text in a
-monospaced font and the |\raggedright| command when typesetting text in any
-other font.  
+当使用等宽字体排版的时候，你需要用|\ttraggedright|命令；而使用其他字体时，需要用|\raggedright|命令。  
 
-Most of the time you'll want to apply these commands to an entire document,
-but you can limit their effects by enclosing them
-in a \minref{group}.
+通常你会希望对整篇文档使用这些命令，但是通过\minref{群组}就可以把效果局限在部分文本中。
 \example
 \raggedright ``You couldn't have it if you {\it did\/}
 want it,'' the Queen said. ``The rule is, jam tomorrow
@@ -2174,16 +2204,34 @@ Queen. ``It's jam every {\it other\/} day: today isn't
 any {\it other\/} day.''
 \endexample
 \enddesc
+%\begindesc
+%\cts hang {}
+%\explain
+%This command indents the second and subsequent lines of a paragraph
+%by |\parindent|, the paragraph ^{indentation}
+%(\xref{\parindent}).
+%Since the first line is already indented by |\parindent|
+%(unless you've cancelled the indentation with |\noindent|), the
+%entire paragraph appears to be indented by |\parindent|.
+%
+%\example
+%\parindent=24pt \hang  ``I said you {\it looked} like an
+%egg, Sir,'' Alice gently explained to Humpty Dumpty. ``And
+%some eggs are very pretty, you know,'' she added.
+%|
+%\produces
+%\parindent=24pt \hang  ``I said you {\it looked} like an
+%egg, Sir,'' Alice gently explained to Humpty Dumpty. ``And
+%some eggs are very pretty, you know,'' she added.
+%\endexample
+%\enddesc
+
 
 \begindesc
 \cts hang {}
 \explain
-This command indents the second and subsequent lines of a paragraph
-by |\parindent|, the paragraph ^{indentation}
-(\xref{\parindent}).
-Since the first line is already indented by |\parindent|
-(unless you've cancelled the indentation with |\noindent|), the
-entire paragraph appears to be indented by |\parindent|.
+这个命令使段落第二行及以后各行也缩进|\parindent|大小(\xref{\parindent})。
+因为第一行已经缩进了|\parindent|（除非你使用|\noindent|取消了缩进），所以整个段落呈现悬挂缩进。
 
 \example
 \parindent=24pt \hang  ``I said you {\it looked} like an
@@ -2196,50 +2244,102 @@ egg, Sir,'' Alice gently explained to Humpty Dumpty. ``And
 some eggs are very pretty, you know,'' she added.
 \endexample
 \enddesc
+%\begindesc
+%\cts hangafter {\param{number}}
+%\cts hangindent {\param{dimen}}
+%
+%\explain
+%These two \minref{parameter}s jointly
+%specify  ``^{hanging indentation}'' for a paragraph.
+%The hanging indentation indicates to \TeX\ that certain lines
+%of the paragraph should
+%be indented and the remaining lines should have their normal width.
+%^^{indentation}
+%|\hangafter| determines which lines
+%are indented, while |\hangindent| determines the amount of indentation
+%and whether it occurs on the left or on the right: 
+
 
 \begindesc
 \cts hangafter {\param{number}}
 \cts hangindent {\param{dimen}}
 
 \explain
-These two \minref{parameter}s jointly
-specify  ``^{hanging indentation}'' for a paragraph.
-The hanging indentation indicates to \TeX\ that certain lines
-of the paragraph should
-be indented and the remaining lines should have their normal width.
+这两个\minref{参数}一起决定段落的“^{悬挂缩进}”。悬挂缩进使\TeX{}产生某些行缩进而其他行依然正常的效果。
 ^^{indentation}
-|\hangafter| determines which lines
-are indented, while |\hangindent| determines the amount of indentation
-and whether it occurs on the left or on the right: 
+|\hangafter|决定哪些行将被缩进；|\hangindent|决定缩进的大小以及位置是左边还是右边： 
+%\ulist
+%\li Let $n$ be the value of |\hangafter|.  If $n < 0$, 
+%the first $-n$ lines of the paragraph will be indented.
+%If $n\ge0$, all but the first $n$ lines of the paragraph will be
+%indented.
+%
+%\li Let $x$ be the value of |\hangindent|.
+%If $x\ge0$, the lines will be indented
+%by $x$ on the left. If $x<0$ the lines will be indented by $-x$ on
+%the right.  
+%\endulist
+
 
 \ulist
-\li Let $n$ be the value of |\hangafter|.  If $n < 0$, 
-the first $-n$ lines of the paragraph will be indented.
-If $n\ge0$, all but the first $n$ lines of the paragraph will be
-indented.
+\li 设|\hangafter|的值为$n$。如果$n < 0$， 
+开始的$-n$行将被缩进。如果$n\ge0$，除开始的$n$行以外的各行将被缩进。
 
-\li Let $x$ be the value of |\hangindent|.
-If $x\ge0$, the lines will be indented
-by $x$ on the left. If $x<0$ the lines will be indented by $-x$ on
-the right.  
+\li 设|\hangindent|的值为$x$。如果$x\ge0$，左边将缩进$x$；如果$x<0$，右边将缩进$-x$。  
 \endulist
-
-When you specify hanging indentation, it applies 
-only to the next paragraph (if you're in vertical mode) or to
-the current paragraph (if you're in horizontal mode).
-\TeX\ uses the values of |\hangafter| and |\hangindent| at the end of a
-paragraph, when it breaks that paragraph into lines.\minrefs{line
-break}
+%When you specify hanging indentation, it applies 
+%only to the next paragraph (if you're in vertical mode) or to
+%the current paragraph (if you're in horizontal mode).
+%\TeX\ uses the values of |\hangafter| and |\hangindent| at the end of a
+%paragraph, when it breaks that paragraph into lines.\minrefs{line
+%break}
  
-Unlike most of the other paragraph-shaping parameters,
-|\hangafter| and |\hangindent| are reset to their default values
-at the start of each paragraph, namely,
-$1$ for |\hangafter| and $0$ for |\hangindent|.
-If you want to typeset a sequence of paragraphs with hanging
-indentation, use |\everypar| (\xref{\everypar}).
+当你设置悬挂缩进的时候，仅对下一段（如果处于垂直模式）或者当前段（如果处于水平模式）有效。
+\TeX{}拆段成行时，使用的是段落末尾的|\hangafter|和|\hangindent|的值。\minrefs{断行}
+% Unlike most of the other paragraph-shaping parameters,
+%|\hangafter| and |\hangindent| are reset to their default values
+%at the start of each paragraph, namely,
+%$1$ for |\hangafter| and $0$ for |\hangindent|.
+%If you want to typeset a sequence of paragraphs with hanging
+%indentation, use |\everypar| (\xref{\everypar}).
+%^^|\everypar//for hanging indentation|
+%If you specify |\hangafter| and |\hangindent| as well as ^|\parshape|,
+%\TeX\ ignores the |\hangafter| and |\hangindent|.
+%
+%\example
+%\hangindent=6pc \hangafter=-2
+%This is an example of a paragraph with hanging indentation. 
+%In this case, the first two lines are indented on the left,
+%but after that we return to unindented text.
+%|
+%\produces
+%\hangindent=6pc \hangafter=-2
+%This is an example of a paragraph with hanging indentation. 
+%In this case, the first two lines are indented on the left,
+%but after that we return to unindented text.
+%\nextexample
+%\hangindent=-6pc \hangafter=1
+%This is another example of a paragraph with hanging
+%indentation.  Here, all lines after the first have been
+%indented on the right. The first line, on the other
+%hand, has been left unindented.
+%|
+%\produces
+%\hangindent=-6pc \hangafter=1
+%This is another example of a paragraph with hanging
+%indentation.  Here, all lines after the first have been
+%indented on the right. The first line, on the other
+%hand, has been left unindented.
+%\endexample
+%\enddesc
+
+
+与其他塑段参数不同的是，
+|\hangafter|和|\hangindent|在每一段的开始都被重设为其默认值，即
+|\hangafter|为$1$，|\hangindent|为$0$。
+想要排版许多悬挂缩进的段落，可以使用|\everypar| (\xref{\everypar})。
 ^^|\everypar//for hanging indentation|
-If you specify |\hangafter| and |\hangindent| as well as ^|\parshape|,
-\TeX\ ignores the |\hangafter| and |\hangindent|.
+如果你同时设定|\hangafter|，|\hangindent|以及^|\parshape|，\TeX{}将忽略|\hangafter|和|\hangindent|。
 
 \example
 \hangindent=6pc \hangafter=-2
