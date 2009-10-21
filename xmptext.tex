@@ -276,16 +276,22 @@ the margins are clearly visible.
 
 % Here we've used the macro definition given above.
 
-For this example we've also increased the paragraph indentation
-and skipped an extra line between paragraphs.
+%For this example we've also increased the paragraph indentation
+%and skipped an extra line between paragraphs.
+
+做为举例，我们这里增加了段落的缩进，并且在两段之间增加了一个空行。
 
 \bye % end the document
 :::
 \xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
 ~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
-Here's an example of a ``description list''.  In practice you'd 
-be better off using a macro to avoid the repetitive constructs
-and to make sure that the subhead widths are wide enough:
+%Here's an example of a ``description list''.  In practice you'd 
+%be better off using a macro to avoid the repetitive constructs
+%and to make sure that the subhead widths are wide enough:
+
+这里展示的是 ``描述列表''的实例。实际使用时，最好将这些重复结构
+定义成宏，并且保证子标题的宽度足够宽。
+
 \bigskip
 % Call the indentation for descriptions \descindent
 % and set it to 8 picas.
@@ -386,43 +392,71 @@ completely different from the others.
 \def\pal{\let\rm = \tenrm \baselineskip=12.5pt \rm}
 \pal % Use Palatino from now on.
 
-You aren't restricted to using the Computer Modern fonts that
-come with \TeX.  Other fonts are available from many sources,
-and you may prefer them.  For instance, we've set this page
-in 10-point Palatino Roman. Palatino was designed by
-Hermann Zapf, considered to be one of the greatest type
-designers of the twentieth century.  This page will
-give you some idea of what it looks like.
+%You aren't restricted to using the Computer Modern fonts that
+%come with \TeX.  Other fonts are available from many sources,
+%and you may prefer them.  For instance, we've set this page
+%in 10-point Palatino Roman. Palatino was designed by
+%Hermann Zapf, considered to be one of the greatest type
+%designers of the twentieth century.  This page will
+%give you some idea of what it looks like.
 
-Fonts can be provided either as outlines or as bitmaps.  An
-outline font describes the shapes of the characters, while a
-bitmap font specifies each pixel (dot) that makes up each
-character.  A font outline can be used to generate many
-different sizes of the same font.  The Metafont program
-that's associated with \TeX\  provides a particularly
-powerful way of generating bitmap fonts, but it's not the
-only way.
+你并不局限于只能使用随 \TeX 发行的 Computer Modern 系列字体。
+从其他很多渠道你都可以得到一些你可能会更喜欢的字体。例如我们
+当前页面就被设置为 10p 大小的 Palatino Roman 字体。Palatino
+是一种由 Hermann Zapf 所设计的字体，它被认为是二十世纪最伟大的
+字体设计之一。从本页的输出可以获得关于这个字体的一些直观印
+象（由于译本的缘故，本页的字体并未被设为 Palatino 字体）。
 
-The fact that a single outline can generate a great range of
-point sizes for a font tempts many vendors of digital
-typefaces to provide just one set of outlines for a typeface
-such as Palatino Roman.  This may be a sensible economic
-decision, but it is an aesthetic sacrifice.  Fonts cannot be
-scaled up and down linearly without loss of quality. 
-Larger sizes of letters should not, in general, have the
-same proportions as smaller sizes; they just don't look
-right.  For example, a font that's linearly scaled down will
-tend to have too little space between strokes, and its
-x-height will be too~small. % tie added to avoid widow word
+%Fonts can be provided either as outlines or as bitmaps.  An
+%outline font describes the shapes of the characters, while a
+%bitmap font specifies each pixel (dot) that makes up each
+%character.  A font outline can be used to generate many
+%different sizes of the same font.  The Metafont program
+%that's associated with \TeX\  provides a particularly
+%powerful way of generating bitmap fonts, but it's not the
+%only way.
 
-A type designer can compensate for these changes by
-providing different outlines for different point sizes, but
-it's necessary to go to the expense of designing these
-different outlines.  One of the great advantages of Metafont
-is that it's possible to parameterize the descriptions of
-characters in a font.  Metafont can then maintain the
-typographical quality of characters over a range of point
-sizes by adjusting the character shapes accordingly.
+字体既可以是轮廓字体，也可以是位图字体。轮廓字体的意思是它
+描述的是各个字符的形状，而位图字体则是标识了每个字符形状所
+占据的像素点。轮廓字体可用来产生同一种字体的多种不同大小。
+随 \TeX\ 而发行的 metafont 程序是一个产生位图字体的强大工具，
+而且它并不是唯一的工具。
+
+%The fact that a single outline can generate a great range of
+%point sizes for a font tempts many vendors of digital
+%typefaces to provide just one set of outlines for a typeface
+%such as Palatino Roman.  This may be a sensible economic
+%decision, but it is an aesthetic sacrifice.  Fonts cannot be
+%scaled up and down linearly without loss of quality. 
+%Larger sizes of letters should not, in general, have the
+%same proportions as smaller sizes; they just don't look
+%right.  For example, a font that's linearly scaled down will
+%tend to have too little space between strokes, and its
+%x-height will be too~small. % tie added to avoid widow word
+
+由于单一的轮廓字体文件既可生成多种不同大小的字体，因此很多
+数字字体提供商倾向于仅提供字体的单一文件 ——例如 Palatino 
+Roman 即是如此。这也许是个经济的决定，可它却同时是个美学上
+的重大牺牲。字体无法做到在不损害其显示质量的前提下，线性地
+放大或者缩小。一个字符的大字体版本，通常来说，与小字体的版
+本应该有不同的比例 —— 而如果我们坚持这么做的话，其结果看
+起来将不会那么好看。例如：如果将一个字体线性缩小的话，其各
+笔画间的间距将会显得过窄，而它的 x-height 值也会显得过小。
+
+%A type designer can compensate for these changes by
+%providing different outlines for different point sizes, but
+%it's necessary to go to the expense of designing these
+%different outlines.  One of the great advantages of Metafont
+%is that it's possible to parameterize the descriptions of
+%characters in a font.  Metafont can then maintain the
+%typographical quality of characters over a range of point
+%sizes by adjusting the character shapes accordingly.
+
+字体的设计者可以为不同大小的字体设计不同的轮廓形状，从而
+对这个问题进行弥补，可这同时需要付出额外的代价。使用 Metafont
+程序的一个巨大的好处就是可以将字符符号形状的描述参数化。
+这样在改变字体大小的时候，Metafont 可以视情况做一些自动处理，
+从而得到较好的效果。
 \bye % end the document
 :::
 ~\idxref{mushrooms}
