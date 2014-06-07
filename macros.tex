@@ -658,6 +658,15 @@
 \def\secondprinting{\afterassignment\finishsecondprinting \toks0 = }
 \def\finishsecondprinting{\the\toks0}
 
+% add pdf bookmarks for xetex
+%
+\special{pdf: docview << /PageMode /UseOutlines >>}
+\def\bookmark#1#2{%
+  \begingroup%
+  \def\linebreak{}\def\TeX{TeX}\def\vtop##1{##1}\def\noindent{}\def\\{}\def\hfil{}\def\quad{}%
+  \special{pdf:out #1 << /Title (#2) /Dest [ @thispage /FitH @ypos ] >>}%
+  \endgroup%
+}
 
 
 % Parts of the book.
@@ -685,6 +694,8 @@
    %
    \def\chaptername{#1}%
    \advance\chapterno by 1
+   %
+   \bookmark{1}{\the\chapterno\ \chaptername}
    %
    \setbox0 = \hbox{\chapternumeralfont
                     \kern1pt
@@ -778,6 +789,7 @@
 % at the start of a description.
 %
 \outer\def\section#1 \par{%
+   \bookmark{2}{#1}%
    \par % be sure we're in vertical mode
    \saveskip = \lastskip % will be 0 if no skip
    \cmdbreak
@@ -806,6 +818,7 @@
 % a \nobreak.
 %
 \def\subsection#1 \par{%
+   \bookmark{3}{#1}%
    \par % be sure we're in vertical mode
    \saveskip = \lastskip % will be 0 if no skip
    \ifheading  % Did we just have \section?
@@ -1122,6 +1135,7 @@
 %
 \def\frontchapter#1 \par{%
    \def\chaptername{#1}%
+   \bookmark{1}{\chaptername}%
    \leftline{%
       \chapterfonts
       \chaprule
