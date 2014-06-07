@@ -496,7 +496,7 @@
    \vbox to 0pt{\vskip -\headmargin\vskip -2pc
       \moveleft\cropmargin\hbox to \totalwidth{%
          \twelvebf 
-         \quad\TeX\ for the Impatient\hss
+         \quad\TeX\ 急就帖\hss
          N\raise 3.3pt\hbox{o} \the\truepage\quad}%
       \vss}%
 }
@@ -1456,7 +1456,7 @@
    \noheadlinetrue
    \advance\hsize by 2pc
    \vglue2pc % Plus a \topskip of 2pc.
-   {\sectionfonts \leftline{List of concepts}}%
+   {\sectionfonts \leftline{概念列表}}%
    \vskip\belowsectionskip
    {\conceptpagefonts
       \parindent=0pt
@@ -1464,7 +1464,7 @@
       \input \jobname.ccs
       \vfil
       % Put the `logo' at the bottom of the page.
-      \rightline{\thisbook}%
+      %\rightline{\thisbook}%
    }%
    \eject
 }
@@ -2052,15 +2052,15 @@
 \def\anatomy{anatomy of \TeX}
 \def\ascii{{\ninerm ASCII}}
 \def\asciichar#1{$\langle \rm #1\rangle$}
-\def\bblfile{{\tt .bbl} file}
-\def\bibfile{{\tt .bib} file}
-\def\bstfile{{\tt .bst} file}
+\def\bblfile{{\tt .bbl} 文件}
+\def\bibfile{{\tt .bib} 文件}
+\def\bstfile{{\tt .bst} 文件}
 \def\didotpt{did\^ot point}
-\def\dvifile{{\tt .dvi} file}
+\def\dvifile{{\tt .dvi} 文件}
 \def\em{\thinspace {\rm em}}
 \def\emph#1{{\it #1}\itcorr}  % Emphasize.
 \def\ftp{{\tt ftp}}
-\def\gffile{{\tt .gf} file}
+\def\gffile{{\tt .gf} 文件}
 \def\hand{{\handfont A}}
 \def\ifatest{{\tt \\if} test}
 \chardef\inches = "7D
@@ -2070,30 +2070,30 @@
 \def\Mprimecomma,{$M'$\kern-3.5pt,}
 \def\Mprimeperiod.{$M'$\kern-2.5pt.}
 \def\mud{\thinspace {\rm mu}} % can't use \mu; it'a a Greek letter!
-\def\newTeX{new \TeX}
-\def\p{p.\thinspace}
+\def\newTeX{新 \TeX}
+\def\p{頁 \thinspace}
 \def\pkfile{{\tt .pk} file}
 \def\plainTeX{plain \TeX}
 \def\PlainTeX{Plain \TeX}
 \def\pp{p\p}
-\def\pt{\thinspace {\rm pt}}
-\def\pxlfile{{\tt .pxl} file}
+\def\pt{\thinspace {\rm 點}}
+\def\pxlfile{{\tt .pxl} 文件}
 \def\tequiv{\unskip $\>\equiv\>$} % equivalence in text
 \def\texbook{{\sl The \TeX book}\itcorr}
 \let\tex@ = \TeX
 \def\TeX{\tex@\null}
 \def\TeXMeX{\TeX\ M\kern-.11em\lower .5ex\hbox{E}\kern-.125em X\null}%
-\def\tfmfile{{\tt .tfm} file}
-\def\thisbook{{\sl \TeX\ for the Impatient\/}}
+\def\tfmfile{{\tt .tfm} 文件}
+\def\thisbook{{\sl \TeX\ 急就帖}}
 \let\ths = \thinspace
 \def\tminus{\unskip\allowbreak $\>-\>$\allowbreak} % minus in text
 \def\tplus{\unskip\allowbreak $\>+\>$\allowbreak} % plus in text
-\def\TUG{\TeX{} Users Group}
+\def\TUG{\TeX{} 用戶組織}
 \def\Vcomma,{$V$\kern-2pt,}
 \def\visiblespace{{\tentt \char'040}}
 \def\Vperiod.{$V$\kern-2pt.}
 \let\vs=\visiblespace
-\def\xrefpg#1{page~\xrefn{#1}}
+\def\xrefpg#1{第~\xrefn{#1}~頁}
 
 % \tighten attempts to shorten the number of lines occupied by a paragraph.
 \def\tighten{\looseness=-1
