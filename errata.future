@@ -1,9 +1,21 @@
-$Id: errata.future,v 1.2 2003/09/16 21:17:27 karl Exp $
+$Id: errata.future,v 1.2 2011/01/27 22:16:24 karl Exp $
 
 Ideas for future changes.  Did not make these in the free edition since
 I didn't want to change the page breaks because I didn't want to install
 Icon so I could regenerate the index -- aside from lack of time and
-inclination. :)
+inclination. :)  See the README.
+
+
+- incorporate the images in the artwork/ subdirectory.
+
+- discuss CTAN, other Internet resources, plain or generic macro
+  packages, and so on.
+
+- extend with descriptions of e-TeX, pdftex, omega.
+
+- html output, perhaps using tex2page.
+  http://www.ccs.neu.edu/home/dorai/tex2page/tex2page-doc.html
+  (tex4ht did nothing useful with it, but maybe with work ...)
 
 
 from Will Adams:
