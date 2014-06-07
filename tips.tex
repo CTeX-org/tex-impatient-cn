@@ -274,7 +274,7 @@
 这一招对页首无效，因为在紧接着分页后的所有 glue, kerns 和 penalties，
 都会被 \TeX{} 会丢弃。
 ^^{page breaks//glue at}
-一个替代：^|\topglue| 命令 \ctsref\topglue\，能产生永不消失的 glue。
+一个替代：^|\topglue| 命令 \ctsref\topglue\ ，能产生永不消失的 glue。
 \eix^^{page breaks//bad}
 
 % \section Correcting bad line breaks
@@ -618,6 +618,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 中也被忽略。%
 \footnote{实际上，\TeX{} 在这些地方只会忽略单个的空格。因为多个空格会
   被处理为一个空格，所以结果就是忽略所有空格。}
+\endolist
 
 %\section Avoiding excess space around a display
 \section 避免独立显示（display）周围的额外空白
@@ -808,6 +809,7 @@ about going into it.}
 % \endulist
 \li 如果你没有明确设定宽度，垂直盒子里的横线就会和盒子一样宽。水平盒子
 里的竖线也类似。如果你得到的线太长或太短，请检查外面盒子的尺寸。
+\endulist
 
 % As an example, suppose we want to produce:
 % \display{%

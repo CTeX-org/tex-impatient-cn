@@ -521,12 +521,13 @@ l'H\accent94 otel des Invalides
 
 %==========================================================================
 %\section {Selecting fonts}
-\section 选择字体
+\section {选择字体}
+
 %\xrdef{selfont}
 \xrdef{selfont}
 %==========================================================================
 %\subsection {Particular fonts}
-\subsection 专用字体
+\subsection {专用字体}
 
 % \begindesc
 % ^^{fonts}
@@ -611,6 +612,7 @@ See how I've reduced my weight---from
 \explain
 这个命令选择一种 \TeX{} 内置的没有任何字符的空字体。在一族数学字体
 中，\TeX{} 将用它取代其中没有定义的字体。
+\enddesc
 %==========================================================================
 \subsection {Type styles}
 
@@ -711,7 +713,7 @@ The Dormouse was {\it not} amused.
 \li 大写字母的|\uccode|是它的{\ascii}代码。
 \li 小写字母的|\lccode|是它的大写形式的{\ascii}代码。
 \li 非字母字符的|\lccode|和|\uccode|都是零。
-\endlist
+\endulist
 
 %Most of the time there's no reason to change these values,
 %but you might want to change them if you're using a  language
@@ -1263,7 +1265,7 @@ These     spaces    are    closed   up
 |\spaceskip| glue 的拉伸或压缩依$f$的值而变，就像普通的单词间距一样。
 \endulist
 
-\knuth{page~76} 对\TeX\计算单词间\minref{glue}的规则有一个具体的解释。\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
+\knuth{page~76} 对\TeX\ 计算单词间\minref{glue}的规则有一个具体的解释。\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
 \eix^^{spaces//interword}
 \enddesc
 
@@ -1506,7 +1508,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %by |\parindent| (\xref{\parindent}).
 
 
-必须指出|\par|不会让\TeXi{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
+必须指出|\par|不会让\TeX{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
 要使\TeX{}开始新段落，需要处于垂直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
 ^^{paragraphs//starting}
 将插入一些垂直空白，取决于|\parskip|
@@ -1519,7 +1521,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %line.
 
 
-要想减小段落间|\par|产生的空白，通常可以使用命令|\vskip -\lastskip|。当你需要写一个\miniref{宏}而让它与前面是不是空行无关的时候，这个命令就有用。
+要想减小段落间|\par|产生的空白，通常可以使用命令|\vskip -\lastskip|。当你需要写一个\minref{宏}而让它与前面是不是空行无关的时候，这个命令就有用。
 %You can get \TeX\ to take some special action at the start of each paragraph
 %by placing the instructions in ^|\everypar| (\xref\everypar).
 %
@@ -1875,7 +1877,7 @@ I'll say it again! Pay attention!
 
 %==========================================================================
 %\subsection {Shaping entire paragraphs}
-\susection {形成段落}
+\subsection {形成段落}
 
 %\begindesc
 %\margin{This command was also described in the `Pages' chapter. The
@@ -2095,7 +2097,7 @@ had we used just one ``narrower'' command.\par}
 
 ^^{indentation} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。如果|\leftskip|是一个橡皮长度，就会得到^{右对齐}的内容，即左边距参差不齐。
 
-通常，你应该在一个\miniref{群组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的群组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
+通常，你应该在一个\minref{群组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的群组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
 break}
 
 \example
@@ -2152,7 +2154,7 @@ get me executed as sure as ferrets are ferrets!''
 \easy\cts raggedright {}
 \cts ttraggedright {}
 \explain
-这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。因此右边距是不均匀的。而\TeX默认的则是均匀对齐^^{justification}，即左右边距一样。均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。因为左对齐避免了页面上的空白参差不齐。
+这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。因此右边距是不均匀的。而\TeX 默认的则是均匀对齐 ^^{justification}，即左右边距一样。均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。因为左对齐避免了页面上的空白参差不齐。
 \minrefs{均匀对齐的文本}
 %You should use the |\ttraggedright| command when typesetting text in a
 %monospaced font and the |\raggedright| command when typesetting text in any

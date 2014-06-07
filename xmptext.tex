@@ -29,12 +29,12 @@
 %even after a period.      You indicate a new paragraph by
 %skipping a line (or more than one line).
 
-由于 \Tex\ 并不关心原始的输入文本中的换行，因此，我们无须关心
-应该给其提供何种格式化的文本。在 \Tex\ 看来，输入文本中的换行符
+由于 \TeX\ 并不关心原始的输入文本中的换行，因此，我们无须关心
+应该给其提供何种格式化的文本。在 \TeX\ 看来，输入文本中的换行符
 和空格等价。%
-\footnote \dag{\TeX\ 将 Tab 也当作空格处理, 就如你在这个 
+\footnote \dag{\TeX\ 将 Tab 也当作空格处理, 就如你在这个
 {\it footnote}所见到的一样。}   如果你不想在行尾处看到空格，
-可以在行尾处写一个百分号（注释符号）。\Tex\ 忽略行首的空格，
+可以在行尾处写一个百分号（注释符号）。\TeX\ 忽略行首的空格，
 对多于一个的空格当做一个单独的空格看待 --- 哪怕这些空格位于
 句号后面。你可以用一个或者多个空白行表示一个新的段落的开始。
 
@@ -42,27 +42,27 @@
 %When \TeX\ sees a period followed by a space (or the end of the
 %line, which is equivalent), it ordinarily assumes you've ended a
 %sentence and inserts a little extra space after the period.  It
-%treats question marks and exclamation points the same way.   
+%treats question marks and exclamation points the same way.
 
-当 \Tex\ 看见一个句号后面紧接着一个空格（或者是一个行结束符，这
+当 \TeX\ 看见一个句号后面紧接着一个空格（或者是一个行结束符，这
 两者等价）时，它通常会认为此句号代表一句话的结束，并在句号的后面
 加上一点小小的空格。同样的处理还适用于问号和惊叹号。
 
-%  But \TeX's rules for handling periods sometimes need fine 
+%  But \TeX's rules for handling periods sometimes need fine
 %tuning. \TeX\ assumes that a capital letter before a period
-%doesn't end the sentence, so you have to do something a little 
-%different if, say, you're writing about DNA\null.  
+%doesn't end the sentence, so you have to do something a little
+%different if, say, you're writing about DNA\null.
 
-有时需要微调 \Tex 处理句号的方式。当句号前面紧跟着标题字
-母（大写字母）时，\Tex\ 会认为这个句号并不做为句子的结束符，
+有时需要微调 \TeX 处理句号的方式。当句号前面紧跟着标题字
+母（大写字母）时，\TeX\ 会认为这个句号并不做为句子的结束符，
 因此在这种情况下，你需要作一些小改动。例如：我们这样写 DNA\null.
 
 
 % The \null prevents TeX from perceiving the capital `A'
 % as being next to the period.
-% \null 可以阻止 \Tex\ 感知句号前面的标题字母 `A'。
+% \null 可以阻止 \TeX\ 感知句号前面的标题字母 `A'。
 
-%It's a good idea to tie words together in references such as 
+%It's a good idea to tie words together in references such as
 %``see Fig.~8'' and in names such as V.~I\null. Lenin and in
 %$\ldots$ so that \TeX\ will never split them in an awkward place
 %between two lines.  (The three dots indicate an ellipsis.)
@@ -70,7 +70,7 @@
 % 这个 references 不知道这样翻译对不对
 如果想将多个单词绑定到一起，中间不分行，则可以将它们放入一个引用
 中，例如： ``see Fig.~8''；或者名字中，例如：V.~I\null. Lenin；或者
-省略号 $\ldots$。在这样的情况下，\Tex\ 不会在它们之间断行（三个点表示
+省略号 $\ldots$。在这样的情况下，\TeX\ 不会在它们之间断行（三个点表示
 省略号）。
 
 You should put quotations in pairs of left and right
@@ -83,12 +83,12 @@ get en-dashes--like so, and em-dashes---like so.
 :::
 \xmpheader !xmpnum/{Indentation}% !xmpheaddef
 ~^^{indentation} ^^{margins} ^^{paragraphs//narrow}
-%\noindent Now let's see how to control indentation.  If an 
-%ordinary word processor can do it, so surely can \TeX. Note 
+%\noindent Now let's see how to control indentation.  If an
+%ordinary word processor can do it, so surely can \TeX. Note
 %that this paragraph isn't indented.
 
 \noindent 现在让我们来看看如何控制缩进。如果一个普通的文字处理
-程序都能处理缩进的话，那 \Tex\ 一定也能。请注意，本段并未缩进。
+程序都能处理缩进的话，那 \TeX\ 一定也能。请注意，本段并未缩进。
 
 %Usually you'll either want to indent paragraphs or to leave
 %extra space between them.  Since we haven't changed anything
@@ -207,9 +207,9 @@ the margins are clearly visible.
 %el\` eve\/}, for German words such as {\it Schu\ss\/},
 %and for words in several other languages as well.
 %You'll find a complete list of \TeX's accents and letters
-%of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].  
+%of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].
 
-\Tex\ 拥有一些语音和字母，可以用于某些法语词，例如：{\it r\^ ole\/} 以及
+\TeX\ 拥有一些语音和字母，可以用于某些法语词，例如：{\it r\^ ole\/} 以及
 {\it \'el\` eve\/}, 或者德语词，例如 {\it Schu\ss\/},
 或者某些别的什么语言。你可以在 !xrefdelim[accents] 和 !xrefdelim[fornlets] 处
 找到 \TeX\ 的 欧洲语音和字母表。
