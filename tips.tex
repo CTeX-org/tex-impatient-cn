@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -49,7 +50,7 @@
 % e.g., a sequence of paragraphs, will be vertical mode material.
 % You should
 % precede and follow the vbox by an implicit or explicit paragraph command
-% (either a blank line or |\par|); otherwise 
+% (either a blank line or |\par|); otherwise
 % \TeX\ may try to make the vbox part of an an adjacent paragraph.
 % The vbox method has an important limitation:
 % you can't apply it to portions of text smaller than a paragraph.
@@ -66,7 +67,7 @@
 
 % You can sometimes keep the lines of a single paragraph together by enclosing
 % the paragraph in a group and assigning |\interlinepenalty|
-% \ctsref{\interlinepenalty} 
+% \ctsref{\interlinepenalty}
 % a value of $10000$ at the start of the group (or elsewhere before the
 % end of the paragraph).
 % This method causes \TeX\ to consider page breaks within that paragraph to be
@@ -108,24 +109,24 @@
 
 % You can use the ^|\eject| command \ctsref{\eject}
 % to force \TeX\ to break a page at a
-% particular place.  Within a paragraph, you can use the combination 
-% `|\vadjust{\vfill\eject}|' 
+% particular place.  Within a paragraph, you can use the combination
+% `|\vadjust{\vfill\eject}|'
 % \ctsref{\vadjust}
 % ^^|\vadjust|
 % to force a break after the next complete output line.
-% The reason for preceding |\eject| by ^|\vfill| 
+% The reason for preceding |\eject| by ^|\vfill|
 % \ctsref{\vfill} is to
-% get \TeX\ to fill out the page with blank space.  
+% get \TeX\ to fill out the page with blank space.
 % However, using |\eject| to fix page break problems
 % has a major disadvantage:
 % if the page boundaries in your document change,
 % the page breaks that you've inserted may no longer be where you want them.
 
 你可以使用 ^|\eject| 命令 \ctsref{\eject}，强制 \TeX{} 在特定的地方分
-页。在段落内部，你可以使用一个组合：`|\vadjust{\vfill\eject}|' 
+页。在段落内部，你可以使用一个组合：`|\vadjust{\vfill\eject}|'
 \ctsref{\vadjust}
 ^^|\vadjust|
-在下一行之后强制断开。|\eject| 之前 ^|\vfill| 
+在下一行之后强制断开。|\eject| 之前 ^|\vfill|
 \ctsref{\vfill} 的作用是让 \TeX{} 使用空白来填充页面。但是，使用
 |\eject| 来纠正分页问题的主要缺点在于：如果文档的页边距改变，分页的地
 方可能未必就如你所愿那样。
@@ -211,7 +212,7 @@
 \section 保留页尾
 
 % Sometimes you need to modify something on a single page and you want to avoid
-% reprinting the entire document.  If your modification doesn't 
+% reprinting the entire document.  If your modification doesn't
 % change the page length too much, there's hope.  You need to fix the end
 % of the page so that it falls in the same place;
 % the methods are similar to the ones for fixing a bad page break.
@@ -279,7 +280,7 @@
 
 % \section Correcting bad line breaks
 
-\section 纠正不良断行 
+\section 纠正不良断行
 
 % \null
 % \bix^^{line breaks//bad}
@@ -291,7 +292,7 @@
 % ^^|\break//correcting line breaks with|
 % \li You can insert a tie (|~|) between two words
 % (see \xref{@not}) to prevent a break between them.\ttidxref{~}
-% \li You can tell \TeX\ about hyphenations that it wouldn't 
+% \li You can tell \TeX\ about hyphenations that it wouldn't
 % otherwise consider by
 % inserting one or more discretionary hyphens in various words
 % (see |\-|, \xref{\@minus}).
@@ -320,7 +321,7 @@
 % set one or more underfull or overfull boxes and complain about it.
 % ^^{underfull boxes} ^^{overfull boxes}
 % The hbox method has a further disadvantage: because \TeX\ sets an hbox
-% as a single unit without considering its context, the interword space 
+% as a single unit without considering its context, the interword space
 % within the hbox may not be consistent with the interword space in the rest of
 % the line.
 % \eix^^{line breaks//bad}
@@ -339,12 +340,12 @@
 % \bix^^{boxes//overfull}
 % \bix^^{boxes//underfull}
 % If \TeX\ complains about an overfull box, it means you've put
-% more material into a box than that box has room for.  
+% more material into a box than that box has room for.
 % Similarly, if \TeX\ complains about an underfull box, it means you
 % haven't put enough material into the box.  You can encounter
 % these complaints under many different circumstances, so let's look at the more
 % common ones:
- 
+
 \null
 \bix^^{overfull boxes}
 \bix^^{underfull boxes}
@@ -354,7 +355,7 @@
 
 % \ulist
 % \li An overfull hbox that's a line of a paragraph indicates that the line was
-% too long and that 
+% too long and that
 % \TeX\ couldn't rearrange the paragraph
 % to make the line shorter.  If you set ^|\emergencystretch|
 % \ctsref{\emergencystretch} to some nonzero
@@ -453,7 +454,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 |
 说的是你构造了一个长于一页的垂直盒子。弄短一点吧。
 
-% \li 
+% \li
 % \bix^^|\hbox//overfull box from|
 % \bix^^|\vbox//overfull box from|
 % The only cures for an overfull hbox or vbox that you've constructed
@@ -463,16 +464,16 @@ Overfull \vbox (296.30745pt too high) has occurred
 % with ^|\hss| or ^|\vss| (\xref\hss), or to increase the size
 % of the box.
 
-\li 
+\li
 \bix^^|\hbox//overfull box from|
 \bix^^|\vbox//overfull box from|
 对于 |\hbox| 或 |\vbox| 命令 （\pp\xrefn\hbox， \xrefn\vbox） 所产生的
 溢出盒子问题，矫正的诀窍是：从盒子里拿一些东西出去；用^|\hss| 或 ^|\vss| (\xref\hss)
 插入负值的 glue；或者增加盒子的尺寸。
 
-% \li If you encounter an underfull hbox or vbox that you've constructed 
+% \li If you encounter an underfull hbox or vbox that you've constructed
 % with |\hbox| or |\vbox|,
-% you're usually best off to fill out the box with ^|\hfil| 
+% you're usually best off to fill out the box with ^|\hfil|
 % or ^|\vfil| (\xref\hfil).
 % \eix^^|\hbox//overfull box from|
 % \eix^^|\vbox//overfull box from|
@@ -495,14 +496,14 @@ Overfull \vbox (296.30745pt too high) has occurred
 \eix^^{underfull boxes}
 
 % \section Recovering lost interword spaces
-        
+
 \section 恢复丢失的单词间距
 
 % \null
 % ^^{space//lost}
 % ^^{words run together}
 % If you find that \TeX\ has run two words together, the likely cause is a
-% control sequence that's absorbed the spaces after it.  
+% control sequence that's absorbed the spaces after it.
 % Put a ^{control space} (|\!visiblespace|) after the control
 % sequence.
 
@@ -549,7 +550,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 
 如果多余的空白是在一行内，由大括号后的空格引起的，那就移除它。如果多余的空
 白是在行尾，由大括号后的空格引起的，那就紧接着在大括号后放一个`|%|'。
-{\recat!ttidxref[%//to eliminate unwanted spaces]] 
+{\recat!ttidxref[%//to eliminate unwanted spaces]]
 `|%|' 用于注释开始，但不一定真的要有注释内容。
 
 % A macro definition can also
@@ -627,7 +628,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 % ^^{math display}
 % If you're getting too much space above a math display, it may be because
 % you've left a blank line in your input above the display.
-% The blank line starts a new paragraph and puts \TeX\ into 
+% The blank line starts a new paragraph and puts \TeX\ into
 % vertical mode.  When
 % \TeX\ sees a '|$|' in vertical mode, it switches back to horizontal mode
 % and inserts the interparagraph glue (|\parskip|) followed by
@@ -635,7 +636,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 % Then, when it starts the display itself,
 % it inserts \emph{more} glue (either ^|\abovedisplayskip|
 % or ^|\abovedisplayshortskip|, depending on the length of the preceding
-% line).  
+% line).
 % This last glue is the only glue that you want.
 % To avoid getting the interparagraph glue as well, don't leave a blank line above a
 % math display or otherwise
@@ -786,7 +787,7 @@ about going into it.}
 % \ulist
 % \li You can only use |\hrule| when \TeX\ is in a vertical mode and |\vrule|
 % when \TeX\ is in a horizontal mode.
-% This requirement means that 
+% This requirement means that
 % you can't put a horizontal rule into an hbox or a vertical rule
 % into a vbox.
 % You can, however, construct a horizontal rule that looks vertical by
@@ -873,7 +874,7 @@ The following input will do it:
 % You can use
 % the ^|\headline|  and ^|\footline| commands
 % (\xref\footline) to produce headers and footers, but they don't work properly
-% for headers and footers having more than one line.  However, you can get 
+% for headers and footers having more than one line.  However, you can get
 % multiline headers and footers by redefining some of the subsidiary
 % macros in \TeX's output routine.
 
@@ -905,7 +906,7 @@ The following input will do it:
 % |
 % You can usually follow the pattern of this definition quite closely, just
 % substituting your own header lines and choosing an appropriate multiple
-% of |\baselineskip| (one less than the number of lines in the 
+% of |\baselineskip| (one less than the number of lines in the
 % header).
 
 为了得到多行页眉，你需要做三件事：
@@ -986,7 +987,7 @@ The following input will do it:
 % \csdisplay
 % (\end occurred inside a group at level 1)
 % |
-% This indicates that there is an extra left brace 
+% This indicates that there is an extra left brace
 % or a missing right brace somewhere
 % in your document, but it gives you no hint at all
 % about where the problem might be.  So how can you find it?
@@ -1048,7 +1049,7 @@ ending）之间，你将从前三个伪装结尾的地方得到出错消息，�
 那么灵了。然而大多数情况下，你可以适当地变化一下这个方法来找出暗地捣乱的大
 括号。
 
-% If all else fails, try shortening your input by removing 
+% If all else fails, try shortening your input by removing
 % the last half of the file
 % (after stashing away the original version first!) or inserting a
 % |\bye| command in the middle.
@@ -1082,7 +1083,7 @@ ending）之间，你将从前三个伪装结尾的地方得到出错消息，�
 % \csdisplay
 % \hsize = 6in \advance\hsize by 3pc % 6in + 3pc
 % |
-% \li You can indicate a dimension as a multiple of a dimension 
+% \li You can indicate a dimension as a multiple of a dimension
 % or glue parameter or register.
 % In this case, \TeX\ converts glue to a dimension by throwing away
 % the stretch and shrink.  For example:
@@ -1117,7 +1118,7 @@ ending）之间，你将从前三个伪装结尾的地方得到出错消息，�
 
 
 %\section Creating composite fonts
-\section 创建混合字体 
+\section 创建混合字体
 
 % \null
 % \bix^^{fonts//composite}
@@ -1137,9 +1138,9 @@ F$, 它的字符基于一种字体 $f_1$，但是有一些来自另一种字体 
 % In the definition of $\cal F$, you first select font $f_1$ and then
 % define control sequences that produce the borrowed characters,
 % set in $f_2$.
-% For example, suppose that you want to 
+% For example, suppose that you want to
 % create a composite font |\britrm| which has all the characters of |cmr10|
-% except for the dollar sign, for which you want to borrow 
+% except for the dollar sign, for which you want to borrow
 % the pound sterling symbol
 % from font |cmti10|.
 % The pound sterling symbol in |cmti10| happens to be in the same font position
@@ -1232,7 +1233,7 @@ Debbie was the * of the show.
 \null
 ^^{verbatim text}\xrdef{verbatim}
 原文是 "输入什么样，就是什么样''的文本。比较常见的是排版计算机输入，包
-括计算机程序和 \TeX{} 输入。 
+括计算机程序和 \TeX{} 输入。
 ^^{computer programs, typesetting}
 计算机输入难于以原文呈现的原因是：
 \olist\compact
@@ -1292,7 +1293,7 @@ Debbie was the * of the show.
 事：保留行首的空格以及保留多个空白行。对此，你需要更强大的方法---使用
 我们将要定义的 ^|\obeywhitespace| 宏。
 
-% \TeX\ normally insists on collecting lines into paragraphs. One way to 
+% \TeX\ normally insists on collecting lines into paragraphs. One way to
 % convince it to take line boundaries literally is to turn individual lines
 % into paragraphs.\footnote{%
 % Another way is to turn the end of line character into a |\break|
@@ -1322,7 +1323,7 @@ Debbie was the * of the show.
 
 % |
 % A subtle point about the definition of |\obeywhitespace| is that
-% |^^M| must be made active both 
+% |^^M| must be made active both
 % when |\obeywhitespace| is being \emph{defined} and when
 % it is being \emph{used}.
 
@@ -1392,7 +1393,7 @@ glue。
 
 % There are many variations on this technique:
 % \ulist
-% \li If a programming language has keywords, you can turn 
+% \li If a programming language has keywords, you can turn
 % each keyword into a command that typesets
 % that keyword in boldface.  Each keyword in the input should then be
 % preceded by the temporary escape character.
@@ -1518,7 +1519,7 @@ Addison-Wesley, 1990.\par}
 
 % If you make such a local change to the category code of a character,
 % you may sometimes be dismayed to find that
-% \TeX\ seems to be paying no attention whatsoever to your change.  
+% \TeX\ seems to be paying no attention whatsoever to your change.
 % Two aspects of \TeX's behavior are likely causes:
 如果局部地改变了类别代码，你可能会悲哀地发现 \TeX{} 没有理会你的努力。通
 常，原因有两个：
@@ -1529,14 +1530,14 @@ Addison-Wesley, 1990.\par}
 % Let's say you read in a tilde (|~|) and later
 % change the category code of tildes,
 % but make the change
-% before \TeX's stomach has actually processed that \emph{particular\/} 
+% before \TeX's stomach has actually processed that \emph{particular\/}
 % tilde \seeconcept{\anatomy}.
 % \TeX\ will still respond to that
-% tilde using the category code as it was before the change.  
-% This difficulty typically arises 
+% tilde using the category code as it was before the change.
+% This difficulty typically arises
 % when the tilde is part of an argument to a macro
 % and the macro itself changes the category code of tilde.
-\olist 
+\olist
 \li \TeX{} 决定输入字符 ^^{input characters} 的类别代码，读到字符的
 时候就贴上相应的类别代码。假设读到波浪符（|~|），但是在 \TeX{} 的胃还
 没有实际消化\emph{那个}波浪符之前改变了它的类别代码\seeconcept{\anatomy}。
@@ -1552,7 +1553,7 @@ Addison-Wesley, 1990.\par}
 % If the category code of a pattern character isn't equal to
 % the category code of the same character in the call, \TeX\ won't consider
 % the characters as matching.
-% This effect can produce mysterious results because it 
+% This effect can produce mysterious results because it
 % \emph{looks} as though the pattern should match.
 % For example, if you've defined a macro:
 % \csdisplay
@@ -1592,12 +1593,12 @@ Addison-Wesley, 1990.\par}
 \section 使宏文档易读
 % \null
 % \bix^^{macros//making readable}
-% You can make a file of macros more readable by 
+% You can make a file of macros more readable by
 % setting the category codes of space to $9$ (ignored
 % character) and ^|\endlinechar| \ctsref{\endlinechar} to $-1$
 % at the beginning of the file.
 % Then you can use spaces and ends of line freely in the
-% macro definitions without getting 
+% macro definitions without getting
 % unwanted spaces when you call the macros.
 % The ignored characters won't generate spaces, but they'll still
 % act as terminators for control sequences.

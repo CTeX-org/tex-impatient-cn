@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -7,13 +8,13 @@
 
 \chapterdef{general}
 
-這章介紹 \TeX\ 的^{編程功能}和不適合放入前幾章的所有內容.
-在 \headcit{命令描述}{cmddesc} 一節中, 給出了這章的慣例.
+这章介绍 \TeX\ 的^{编程功能}和不适合放入前几章的所有内容.
+在 \headcit{命令描述}{cmddesc} 一节中, 给出了这章的惯例.
 
 \begindescriptions
 
 %==========================================================================
-\section {命名及修改字體}
+\section {命名及修改字体}
 
 \begindesc
 \bix^^{fonts//naming and modifying}
@@ -22,46 +23,46 @@
 \aux\cts font {\<control sequence> = \<fontname> {\bt scaled} \<number>}
 \aux\cts font {\<control sequence> = \<fontname> {\bt at} \<dimen>}
 \explain
-單獨使用時, |\font| 控製序列指代當前的字體.
-|\font| 在這個時候並不是一個真正的命令, 
-它僅僅作為其它命令的一個參數.
+单独使用时, |\font| 控制序列指代当前的字体.
+|\font| 在这个时候并不是一个真正的命令,
+它仅仅作为其它命令的一个参数.
 
-其它的三個 |\font| 形式, 字體名 \<font\-name> 
-用來指代定義一個字體所需要的一系列文件. 
-在這些形式下, |\font| 是命令.
-每種形式都有兩個效果:
+其它的三个 |\font| 形式, 字体名 \<font\-name>
+用来指代定义一个字体所需要的一系列文件.
+在这些形式下, |\font| 是命令.
+每种形式都有两个效果:
 {\tighten
 \olist
-\li 它定義了一個名為 \<control sequence> 的控製序列,
-用來選擇名為 \<font\-name> 的字體, 而且該字體可能被縮放 (見後).
-\li 它使 \TeX\ 載入 \<font\-name> 的^{字體信息文件} (^{\tfmfile}).
+\li 它定义了一个名为 \<control sequence> 的控制序列,
+用来选择名为 \<font\-name> 的字体, 而且该字体可能被缩放 (见后).
+\li 它使 \TeX\ 载入 \<font\-name> 的^{字体信息文件} (^{\tfmfile}).
 \endolist
 }% end tighten
 
 \noindent
-字體的名字往往表示它的設計大小, 
-比如 |cmr10| 表示設計大寫為 $10$ 點的計算機現代字體.
-字體的設計大小保存在字體信息文件中.
+字体的名字往往表示它的设计大小,
+比如 |cmr10| 表示设计大写为 $10$ 点的计算机现代字体.
+字体的设计大小保存在字体信息文件中.
 
-如果用戶既沒有指定 |scaled| \<number> 也沒有指定 |at| \<dimen>,
-那麼這個字體載入時, 使用設計大小---設計大小的含意是, 
-字體在這個大小時, 表示最佳.
-否則將會載入一個縮放版的字體:
+如果用户既没有指定 |scaled| \<number> 也没有指定 |at| \<dimen>,
+那么这个字体载入时, 使用设计大小---设计大小的含意是,
+字体在这个大小时, 表示最佳.
+否则将会载入一个缩放版的字体:
 \ulist
-\li 如果指定了 |scaled| \<number>, 則字體將被放大 $\hbox{\<number>}/1000$ 倍. 
-\li 如果指定了 |at| \<dimen>, 則字體通過縮放大 $\hbox{\<dimen>}/ds$ 倍, 
-變為 \<dimen> 大小, 
-其中,  $ds$  是 \<fontname> 的設計大小.
-\<dimen>  和 $ds$ 的單位往往使用點.
+\li 如果指定了 |scaled| \<number>, 则字体将被放大 $\hbox{\<number>}/1000$ 倍.
+\li 如果指定了 |at| \<dimen>, 则字体通过缩放大 $\hbox{\<dimen>}/ds$ 倍,
+变为 \<dimen> 大小,
+其中,  $ds$  是 \<fontname> 的设计大小.
+\<dimen>  和 $ds$ 的单位往往使用点.
 \endulist
 \noindent
-放大率可以小於 $1$, 這樣做就會使字體縮小尺寸.
+放大率可以小于 $1$, 这样做就会使字体缩小尺寸.
 
-你往往需要為載入的字體的每一個使用的放大率提供一個字體輪廓文件 (\xref{shape}).
-當然, 一些^{設備驅動}可以使用打印機內置的字體.
-^^{resident fonts}這些字體不需要字體輪廓文件.
+你往往需要为载入的字体的每一个使用的放大率提供一个字体轮廓文件 (\xref{shape}).
+当然, 一些^{设备驱动}可以使用打印机内置的字体.
+^^{resident fonts}这些字体不需要字体轮廓文件.
 
-更多信息請參見 \conceptcit{font} 和 \conceptcit{magnification}.
+更多信息请参见 \conceptcit{font} 和 \conceptcit{magnification}.
 
 \example
 \font\tentt = cmtt10
@@ -85,31 +86,31 @@ Finally we use {\bigttfont big CM typewriter}.
 \cts fontdimen {\<number> \<font>\param{dimen}}
 \explain
 ^^{fonts//parameters of}
-這些參項可以用來定義控製序列 \<font> (注意, \<font> 和 \<font\-name> 不同, \<font-name> 是用來表示字體文件的文件名的) 所定義的各種尺寸大小.
-這些參項的值, 都在 \<font> 所使用的字體信息文件中定義了, 但是你可以在執行 \TeX\ 時得到或改變這些值.
-這些參項的數值及其意義為:
+这些参项可以用来定义控制序列 \<font> (注意, \<font> 和 \<font\-name> 不同, \<font-name> 是用来表示字体文件的文件名的) 所定义的各种尺寸大小.
+这些参项的值, 都在 \<font> 所使用的字体信息文件中定义了, 但是你可以在执行 \TeX\ 时得到或改变这些值.
+这些参项的数值及其意义为:
 \display{\halign{\hfil#\hfil\quad&#\hfil\cr
-\it 數值&\it 義意\cr
+\it 数值&\it 义意\cr
 \noalign{\vskip 1\jot}%
-1&字體每點的傾斜程度\cr
-2&詞間距\cr
-3&詞間伸長長度\cr
-4&詞間收縮長度\cr
-5&x 字符的高度(|1ex| 的長度)\cr
-6&m 字符的寬度 (|1em| 的長度)\cr
-7&額外空白長度\cr}}
+1&字体每点的倾斜程度\cr
+2&词间距\cr
+3&词间伸长长度\cr
+4&词间收缩长度\cr
+5&x 字符的高度(|1ex| 的长度)\cr
+6&m 字符的宽度 (|1em| 的长度)\cr
+7&额外空白长度\cr}}
 \noindent
-\TeX\ 需要使用字體每點的傾斜程度來計算重音符號的位置.
-使用詞間距來控製單詞間的距離 (見 |\spaceskip|, \xref\spaceskip).
-使用額外空白長度來控製句號以後所留的空白 (見 |\spaceskip|, \xref\spaceskip).
-在 \knuth{433~頁} 中列出了 \plainTeX\ 中字體所使用的這些參項的數值.
-數學符號有另外 $15$ 個參項, 不過我們在此不展開討論.
+\TeX\ 需要使用字体每点的倾斜程度来计算重音符号的位置.
+使用词间距来控制单词间的距离 (见 |\spaceskip|, \xref\spaceskip).
+使用额外空白长度来控制句号以后所留的空白 (见 |\spaceskip|, \xref\spaceskip).
+在 \knuth{433~页} 中列出了 \plainTeX\ 中字体所使用的这些参项的数值.
+数学符号有另外 $15$ 个参项, 不过我们在此不展开讨论.
 
 
 注意:
-這些參項被設定後, 在當前組結束時, 並\emph{不}返回初始值.
-如果你只是希望在局部的文本中改變這些值, 
-你需要將它的原值保存, 以便稍後恢復.
+这些参项被设定后, 在当前组结束时, 并\emph{不}返回初始值.
+如果你只是希望在局部的文本中改变这些值,
+你需要将它的原值保存, 以便稍后恢复.
 \example
 Here's a line printed normally.\par
 \fontdimen2\font = 3\fontdimen2\font
@@ -130,37 +131,37 @@ Here's a line printed normally.\par
 \cts magnification {{\bt =} \<number>}
 \cts mag {\param{number}}
 \explain
-\margin{合並了 {\tt\\mag} 和 {\tt\\magnification}.}
-使用 |\magnification| 可以定義``^{縮放倍率}'' $f$,
-縮放倍率決定了你的文檔的\minref{放大}率 \seeconcept{放大率}.
-|\magni!-fication|必需在文檔的第一頁被編譯出前定義.
+\margin{合并了 {\tt\\mag} 和 {\tt\\magnification}.}
+使用 |\magnification| 可以定义``^{缩放倍率}'' $f$,
+缩放倍率决定了你的文档的\minref{放大}率 \seeconcept{放大率}.
+|\magni!-fication|必需在文档的第一页被编译出前定义.
 
-這個命令把 $f$ 定義成 \<number> 的同時, 
-也會定義把 |\hsize| 定義為 |6.5true in|, 把 |\vsize| 義為 |8.9true in|, 
+这个命令把 $f$ 定义成 \<number> 的同时,
+也会定义把 |\hsize| 定义为 |6.5true in|, 把 |\vsize| 义为 |8.9true in|,
 ^^|\hsize//set by {\tt\\magnification}|
 ^^|\vsize//set by {\tt\\magnification}|
-即 $8 \frac1/2$ 英尺乘 $11$ 英尺的頁大小. 
-縮放倍率 $f$ 值必需間於 $0$ 到 $32768$ 之間.
-該文檔的 \minref{放大}率 為 $f/1000$.
-一個為 $1000$ 的縮放倍率為單位放大率, 也就是說, 
-這個設置不會使你的文檔的尺寸發生任何變化.
-習慣上使用 $1.2$ 的次冪值來定義縮放倍率,
-因為很多的字體就是基於這種倍率的.
-你可以用 ^|\magstep| 和 ^|\magstephalf| 命令來更方便地定義這種倍率.
+即 $8 \frac1/2$ 英尺乘 $11$ 英尺的页大小.
+缩放倍率 $f$ 值必需间于 $0$ 到 $32768$ 之间.
+该文档的 \minref{放大}率 为 $f/1000$.
+一个为 $1000$ 的缩放倍率为单位放大率, 也就是说,
+这个设置不会使你的文档的尺寸发生任何变化.
+习惯上使用 $1.2$ 的次幂值来定义缩放倍率,
+因为很多的字体就是基于这种倍率的.
+你可以用 ^|\magstep| 和 ^|\magstephalf| 命令来更方便地定义这种倍率.
 
 
-|\magnification| 不是一個參項, 你不能使用它來得到縮放率.
-如果你使用類似 |\dimen0 = \mag!-nifi!-cation| 之類的語句, 
-\TeX\ 會因此報錯.
+|\magnification| 不是一个参项, 你不能使用它来得到缩放率.
+如果你使用类似 |\dimen0 = \mag!-nifi!-cation| 之类的语句,
+\TeX\ 会因此报错.
 
-而 |\mag| 參項則含有縮放倍率.
-改變 |\mag| 的值可以對頁面的尺寸重新縮放,
-當然這一般不是你所想要的.
-因此, 一般情況下, 最好是使用 |\magnification| 而不是 |\mag| 來改變頁面的放大率.
+而 |\mag| 参项则含有缩放倍率.
+改变 |\mag| 的值可以对页面的尺寸重新缩放,
+当然这一般不是你所想要的.
+因此, 一般情况下, 最好是使用 |\magnification| 而不是 |\mag| 来改变页面的放大率.
 
 \example
-\magnification = \magstep2 
-% 把字體放大 1.44 倍 (=1.2x1.2)
+\magnification = \magstep2
+% 把字体放大 1.44 倍 (=1.2x1.2)
 |
 \endexample
 \enddesc
@@ -168,10 +169,10 @@ Here's a line printed normally.\par
 \begindesc
 \cts magstep {\<number>}
 \explain
-這個命令可以展開成為\minref{放大}率,
-這個放大率的數為可以把你文檔中所有 (除了給定真值尺寸的) 東西的放大 $1.2^r$ 倍.
+这个命令可以展开成为\minref{放大}率,
+这个放大率的数为可以把你文档中所有 (除了给定真值尺寸的) 东西的放大 $1.2^r$ 倍.
 其中 $r$ 是 \<number> 的值.
-\<number> 必需在 $0$ 到 $5$ 之間.
+\<number> 必需在 $0$ 到 $5$ 之间.
 \example
 \magnification = \magstep1 % 放大 1.2 倍.
 |
@@ -181,9 +182,9 @@ Here's a line printed normally.\par
 \begindesc
 \cts magstephalf {}
 \explain
-這個命令可以展開成為\minref{放大}率,
-這個放大率的數為可以把你文檔中所有 (除了給定真值尺寸的) 東西的放大 $\sqrt{1.2}$ 倍.
-也就是 $1$ 和 $1.2$ 的等比中項.
+这个命令可以展开成为\minref{放大}率,
+这个放大率的数为可以把你文档中所有 (除了给定真值尺寸的) 东西的放大 $\sqrt{1.2}$ 倍.
+也就是 $1$ 和 $1.2$ 的等比中项.
 \example
 \magnification = \magstephalf
 |
@@ -192,9 +193,9 @@ Here's a line printed normally.\par
 \enddesc
 
 %==========================================================================
-\section {把信息轉為標記}
+\section {把信息转为标记}
 
-\subsection {數值}
+\subsection {数值}
 
 \begindesc
 \xrdef{convert}
@@ -202,9 +203,9 @@ Here's a line printed normally.\par
 %
 \cts number {\<number>}
 \explain
-這個命令可以把一個\minref{數}表示成字符\minref{標記}序列.
-這裡的數可以是一個確定的整數, 或是一個 \<number> 參項, 
-也可以是一個 \<number> 寄存器.
+这个命令可以把一个\minref{数}表示成字符\minref{标记}序列.
+这里的数可以是一个确定的整数, 或是一个 \<number> 参项,
+也可以是一个 \<number> 寄存器.
 \example
 \number 24 \quad \count13 = -10000 \number\count13
 |
@@ -217,10 +218,10 @@ Here's a line printed normally.\par
 ^^{Roman numerals}
 \easy\cts romannumeral {\<number>}
 \explain
-這個命令可以把一個\minref{數}表示成羅馬字符\minref{標記}序列.
-這裡的數可以是一個確定的整數, 或是一個 \<number> 參項, 
-也可以是一個 \<number> 寄存器.
-如果這個數是負的, 則 |\romannumeral| 不產生任何標記.
+这个命令可以把一个\minref{数}表示成罗马字符\minref{标记}序列.
+这里的数可以是一个确定的整数, 或是一个 \<number> 参项,
+也可以是一个 \<number> 寄存器.
+如果这个数是负的, 则 |\romannumeral| 不产生任何标记.
 \example
 \romannumeral 24 \quad (\romannumeral -16)\quad
 \count13 = 6000 \romannumeral\count13
@@ -234,43 +235,43 @@ Here's a line printed normally.\par
 \enddesc
 
 %==========================================================================
-\subsection {環境信息}
+\subsection {环境信息}
 
 \begindesc
 ^^{time of day}
 \cts time {\param{number}}
 \explain
-\TeX\ 把這個參項設置為從當日午夜到現在所經過的分鐘數.
+\TeX\ 把这个参项设置为从当日午夜到现在所经过的分钟数.
 比如在中午, |\time| 就是 $720$.
-這個命令和下面的三個命令使用的是你計算機中所記錄的時間.
-\TeX\ 只在開始運行的時候向系統獲取一次時間, 
-所以如果你不改變這個值的話, 
-先前運行的 |\time| 和最後運行的 |\time| 的值是完全相同的.
+这个命令和下面的三个命令使用的是你计算机中所记录的时间.
+\TeX\ 只在开始运行的时候向系统获取一次时间,
+所以如果你不改变这个值的话,
+先前运行的 |\time| 和最后运行的 |\time| 的值是完全相同的.
 \enddesc
 
 \bix^^{date}
 \begindesc
 \cts day {\param{number}}
 \explain
-\TeX\ 把這個參項設置為今天的日期數.
-這是一個介於 $1$ 和 $31$ 之間的數.
-|\day| 只在程序開始運行的時候被設定 (見上面 |\time| 的說明).
+\TeX\ 把这个参项设置为今天的日期数.
+这是一个介于 $1$ 和 $31$ 之间的数.
+|\day| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 \enddesc
 
 \begindesc
 \cts month {\param{number}}
 \explain
-\TeX\ 把這個參項設置為當前的月份.
-這是一個介於 $1$ 和 $12$ 之間的數.
-|\time| 只在程序開始運行的時候被設定 (見上面 |\time| 的說明).
+\TeX\ 把这个参项设置为当前的月份.
+这是一个介于 $1$ 和 $12$ 之间的数.
+|\time| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 \enddesc
 
 \begindesc
 \cts year {\param{number}}
 \explain
-\TeX\ 把這個參項設置為當前的 ({\sc 公元}) 年份.
-這是一個類似 $1991$ 之類的數.
-|\year| 只在程序開始運行的時候被設定 (見上面 |\time| 的說明).
+\TeX\ 把这个参项设置为当前的 ({\sc 公元}) 年份.
+这是一个类似 $1991$ 之类的数.
+|\year| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 
 \eix^^{date}
 \enddesc
@@ -280,13 +281,13 @@ Here's a line printed normally.\par
 \cts fmtname {}
 \cts fmtversion {}
 \explain
-這個命令會產生當前使用的 \TeX\ 格式 (比如 \minref{\plainTeX} 或 ^{\LaTeX}) 的名字和版本號.
+这个命令会产生当前使用的 \TeX\ 格式 (比如 \minref{\plainTeX} 或 ^{\LaTeX}) 的名字和版本号.
 \example
-本書使用 \fmtname\ 格式,
+本书使用 \fmtname\ 格式,
 版本~\fmtversion.
 |
 \produces
-本書使用 \fmtname\ 格式,
+本书使用 \fmtname\ 格式,
 版本~\fmtversion.
 \endexample
 \enddesc
@@ -294,26 +295,26 @@ Here's a line printed normally.\par
 \begindesc
 \cts jobname {}
 \explain
-這個命令產生調用 \TeX\ 的文件的文件本名.
-比如你的輸入文件為 |hatter.tex|, |\jobname| 會被展開成 |hatter|. 
-|\jobname| 在你生成文檔的輔助文件時會很管用.
+这个命令产生调用 \TeX\ 的文件的文件本名.
+比如你的输入文件为 |hatter.tex|, |\jobname| 会被展开成 |hatter|.
+|\jobname| 在你生成文档的辅助文件时会很管用.
 ^^{auxiliary files}
 \example
 \newwrite\indexfile  \openout\indexfile = \jobname.idx
-% 打開 `hatter.tex' 的索引文件 `hatter.idx'.
+% 打开 `hatter.tex' 的索引文件 `hatter.idx'.
 |
 \endexample\enddesc
 
 %==========================================================================
-\subsection {變量的值}
+\subsection {变量的值}
 
 \begindesc
 \cts meaning {\<token>}
 \explain
 ^^{tokens//showing the meaning of}
-這個命令會產生 \<token> 的定義.
-它對於診斷輸出很有用.
-你可以用類似的方法使用 ^|the| 命令 (\xref\the) 來得到 \minref{寄存器}和其它 \TeX\ 中的東西的值信息.
+这个命令会产生 \<token> 的定义.
+它对于诊断输出很有用.
+你可以用类似的方法使用 ^|the| 命令 (\xref\the) 来得到 \minref{寄存器}和其它 \TeX\ 中的东西的值信息.
 \example
 [{\tt \meaning\eject}] [\meaning\tenrm] [\meaning Y]
 |
@@ -325,36 +326,36 @@ Here's a line printed normally.\par
 \cts string {\<control sequence>}
 \explain
 ^^{control sequences//converting to strings}
-這個命令會把 \<control sequence> 表示成其名字的字符串,
-包括 \minref{轉義符}.
-轉義符會被表示成當前 ^|\escapechar| 的值.
+这个命令会把 \<control sequence> 表示成其名字的字符串,
+包括 \minref{转义符}.
+转义符会被表示成当前 ^|\escapechar| 的值.
 ^^{escape character//represented by \b\tt\\escapechar\e}
-\TeX\ 把在此中的所有字符的類碼設為 $12$ (其它).
+\TeX\ 把在此中的所有字符的类码设为 $12$ (其它).
 
-你可以使用 ^|\csname| 命令執行這個命令的反操作 (\xref\csname).
-它會把一個字符串轉為一個控製序列.
+你可以使用 ^|\csname| 命令执行这个命令的反操作 (\xref\csname).
+它会把一个字符串转为一个控制序列.
 \example
-控製序列 {\tt \string\bigbreak}
+控制序列 {\tt \string\bigbreak}
 |
 \produces
-控製序列 {\tt \string\bigbreak}
+控制序列 {\tt \string\bigbreak}
 \endexample\enddesc
 
 \begindesc
 \cts escapechar {\param{number}}
 \explain
-這個參項在把一個控製序列名轉化為一系列字符標記時, 指定 \TeX\ 用來表示\minref{轉義符}的字符的 \ascii\ 碼\minrefs{ascii}.
+这个参项在把一个控制序列名转化为一系列字符标记时, 指定 \TeX\ 用来表示\minref{转义符}的字符的 \ascii\ 码\minrefs{ascii}.
 ^^{escape character//represented by \b\tt\\escapechar\e}
-這個轉化發生在你使用 |\string|命令時或者 \TeX\ 在產生診斷信息時.
-轉義符的默認值是 $92$, 即 ^{右斜杠} 的 \ascii\ 碼.
-如果 |\escapechar| 不在 $0$--$255$ 之間, \TeX\ 則在轉換時不包括轉義符.
+这个转化发生在你使用 |\string|命令时或者 \TeX\ 在产生诊断信息时.
+转义符的默认值是 $92$, 即 ^{右斜杠} 的 \ascii\ 码.
+如果 |\escapechar| 不在 $0$--$255$ 之间, \TeX\ 则在转换时不包括转义符.
 \example
 \escapechar = `!!
-控製序列 {\tt \string\bigbreak}
+控制序列 {\tt \string\bigbreak}
 |
 \produces
 \escapechar = `!
-控製序列 {\tt \string\bigbreak}
+控制序列 {\tt \string\bigbreak}
 \endexample
 \enddesc
 
@@ -362,8 +363,8 @@ Here's a line printed normally.\par
 \cts fontname {\<font>}
 \explain
 ^^{fonts//names of}
-這個命令產生 \<font> 的字體文件名.
-該字體名就是定義 \<font> 時所的 \<font\-name>.
+这个命令产生 \<font> 的字体文件名.
+该字体名就是定义 \<font> 时所的 \<font\-name>.
 \example
 \font\myfive=cmr5 [\fontname\myfive]
 |
@@ -374,7 +375,7 @@ Here's a line printed normally.\par
 
 
 %==========================================================================
-\section {組}
+\section {组}
 
 \begindesc
 \bix^^{groups}
@@ -382,18 +383,18 @@ Here's a line printed normally.\par
 \cts begingroup {}
 \cts endgroup {}
 \explain
-這兩個命令開始或結束一個\minref{組}.
-|\begingroup| 不會和右括孤匹配, |\endgroup| 也不會和左括孤匹配.
+这两个命令开始或结束一个\minref{组}.
+|\begingroup| 不会和右括孤匹配, |\endgroup| 也不会和左括孤匹配.
 
 
-\TeX\ 把 |\begingroup| 和 |\endgroup| 當作和其它的\minref{控製序列}一樣對待.
-尤其體現在, 你可以定義一個包括 |\begingroup| 但不包括 |\endgroup| 的宏, 
-或者與之相反.
+\TeX\ 把 |\begingroup| 和 |\endgroup| 当作和其它的\minref{控制序列}一样对待.
+尤其体现在, 你可以定义一个包括 |\begingroup| 但不包括 |\endgroup| 的宏,
+或者与之相反.
 ^^{macros//using \b\tt\\begingroup\e\ and \b\tt\\endgroup\e\ in}
-這個技巧往往在你定義一對宏時會非常有用, 一個用來開始一個環境, 
-另一個用來結束這個環境.
-但是你不可以使用 |\begingroup| 和 |\endgroup| 
-來替換除了用來括起一個組以外功能的括孤.
+这个技巧往往在你定义一对宏时会非常有用, 一个用来开始一个环境,
+另一个用来结束这个环境.
+但是你不可以使用 |\begingroup| 和 |\endgroup|
+来替换除了用来括起一个组以外功能的括孤.
 \example
 \def\a{一 \begingroup \it 二 }
 \def\enda{\endgroup 四}
@@ -414,42 +415,42 @@ Here's a line printed normally.\par
 \ctsact } \xrdef{@rbrace}
 \cts egroup {}
 \explain
-左括孤和右括孤命令的作用是用來開始或結束一個\minref{組}.
-|\bgroup| 和 |\egroup| \minref{控製序列}和 `|{|' and `|}|' 
-除了 \TeX\ 在掃描輸入時會把 |\bgroup| 和 |\egroup| 
-像其它\minref{控製序列}一樣對待以外, 都是等價的. 
+左括孤和右括孤命令的作用是用来开始或结束一个\minref{组}.
+|\bgroup| 和 |\egroup| \minref{控制序列}和 `|{|' and `|}|'
+除了 \TeX\ 在扫描输入时会把 |\bgroup| 和 |\egroup|
+像其它\minref{控制序列}一样对待以外, 都是等价的.
 
-當你定義一個成對的宏時, |\bgroup| 和 |\egroup| 會非常有用.
-成對的宏可以由一個宏開始一個由括孤分割的結構 (不一定是一個組), 
-並由另一個宏結束該組.
+当你定义一个成对的宏时, |\bgroup| 和 |\egroup| 会非常有用.
+成对的宏可以由一个宏开始一个由括孤分割的结构 (不一定是一个组),
+并由另一个宏结束该组.
 ^^{macros//using \b\tt\\bgroup\e\ and \b\tt\\egroup\e\ in}
-你不能使用常規的括孤來定義這樣的宏, 否則你的宏定義會包含沒有匹配的括孤,
-而這樣的定義是不被 \TeX\ 所接受的.
-一般情況下你需要在你沒有辦法使用括孤時使用這些命令.
+你不能使用常规的括孤来定义这样的宏, 否则你的宏定义会包含没有匹配的括孤,
+而这样的定义是不被 \TeX\ 所接受的.
+一般情况下你需要在你没有办法使用括孤时使用这些命令.
 
 \example
-一個組的 {\it 邊界\/} 可由括孤定義.
+一个组的 {\it 边界\/} 可由括孤定义.
 |
 \produces
-一個組的 {\it 邊界\/} 可由括孤定義.
+一个组的 {\it 边界\/} 可由括孤定义.
 \nextexample
 \def\a{一 \vbox\bgroup}
-% 在這裡你不能使用一個 { 來代替 \bgroup,
-% 否則 TeX 不會識別這個宏
+% 在这里你不能使用一个 { 来代替 \bgroup,
+% 否则 TeX 不会识别这个宏
 \def\enda#1{{#1\egroup} 二}
-% 這有點技巧性, 因為 \egroup 事實上和左括孤匹配,
-% 而它右邊的右邊的括孤和 \bgroup 匹配.
-% 不過這個歪門邪道行得通!!
+% 这有点技巧性, 因为 \egroup 事实上和左括孤匹配,
+% 而它右边的右边的括孤和 \bgroup 匹配.
+% 不过这个歪门邪道行得通!!
 \a \enda{\hrule width 1in}
 |
 \produces
 \def\a{一 \vbox\bgroup}
-% 在這裡你不能使用一個 { 來代替 \bgroup,
-% 否則 TeX 不會識別這個宏
+% 在这里你不能使用一个 { 来代替 \bgroup,
+% 否则 TeX 不会识别这个宏
 \def\enda#1{{#1\egroup} 二}
-% 這有點技巧性, 因為 \egroup 事實上和左括孤匹配,
-% 而它右邊的右邊的括孤和 \bgroup 匹配.
-% 不過這花招能用!!
+% 这有点技巧性, 因为 \egroup 事实上和左括孤匹配,
+% 而它右边的右边的括孤和 \bgroup 匹配.
+% 不过这花招能用!!
 \a \enda{\hrule width 1in}
 \endexample
 \enddesc
@@ -457,10 +458,10 @@ Here's a line printed normally.\par
 \begindesc
 \cts global {}
 \explain
-這個命令使它隨後的定義或\minref{賦值}成為\minref{全局}性的 
-\seeconcept{global}, 而不是僅局限在所處的\minref{組}之中生效.
+这个命令使它随后的定义或\minref{赋值}成为\minref{全局}性的
+\seeconcept{global}, 而不是仅局限在所处的\minref{组}之中生效.
 你可以把 |\global| 放在
-包括宏定義和\minref{寄存器}賦值在內的任意的定義或\minref{賦值}前,
+包括宏定义和\minref{寄存器}赋值在内的任意的定义或\minref{赋值}前,
 \example
 {\global\let\la = \leftarrow}
 $a \la b$
@@ -475,30 +476,30 @@ $a \la b$
 \begindesc
 \cts globaldefs {\param{number}}
 \explain
-這個參項控製 \TeX\ 是否把定義和其它的賦值作為\minref{全局}的:
+这个参项控制 \TeX\ 是否把定义和其它的赋值作为\minref{全局}的:
 \ulist
-\li 如 |\globaldefs| 是 (默認值) 零,
-當且僅當一個定義是由直接或者間接的 |\global| 命令指定的.
-(^|\gdef| 和 ^|\xdef| 命令 (\xref\gdef) 間接地在定義前面加了 |\global| 命令).
-\li 如果 |\globaldefs| 大於零, 所有的定義和賦值都會間接地在前面加上 ^|global|. 
-\li 如果 |\globaldefs| 小於零, 所有的 ^|\global| 都被忽略.
+\li 如 |\globaldefs| 是 (默认值) 零,
+当且仅当一个定义是由直接或者间接的 |\global| 命令指定的.
+(^|\gdef| 和 ^|\xdef| 命令 (\xref\gdef) 间接地在定义前面加了 |\global| 命令).
+\li 如果 |\globaldefs| 大于零, 所有的定义和赋值都会间接地在前面加上 ^|global|.
+\li 如果 |\globaldefs| 小于零, 所有的 ^|\global| 都被忽略.
 \endulist
 \enddesc
 
 \begindesc
-\margin{改變了 {\tt\\aftergroup} 和 {\tt\\afterassignment} 順序.}
+\margin{改变了 {\tt\\aftergroup} 和 {\tt\\afterassignment} 顺序.}
 \cts aftergroup {\<token>}
 \explain
-當 \TeX\ 在讀取輸入時遇到了這個命令, 它就把 \<token> 保存下來.
-並在在當前\minref{組}後插入展開後的 \<token>.
-如果一個組有好幾個 |\aftergroup|, 則每個標記\emph{全}都會依次插入這個組的最後.
+当 \TeX\ 在读取输入时遇到了这个命令, 它就把 \<token> 保存下来.
+并在在当前\minref{组}后插入展开后的 \<token>.
+如果一个组有好几个 |\aftergroup|, 则每个标记\emph{全}都会依次插入这个组的最后.
 
-下面的例子向你展示了如何用 |\aftergroup| 來延迟處理一個在\minref{條件測試}中產生的標記.
+下面的例子向你展示了如何用 |\aftergroup| 来延迟处理一个在\minref{条件测试}中产生的标记.
 \example
-\def\neg{負} \def\pos{正}
-% 因為一個 \aftergroup 只能作用到一個標記上, 
-% 而不是到一系列的標記上, 甚至不能是一個用括號定界的文本,
-% 所以下面的代碼是必需的.
+\def\neg{负} \def\pos{正}
+% 因为一个 \aftergroup 只能作用到一个标记上,
+% 而不是到一系列的标记上, 甚至不能是一个用括号定界的文本,
+% 所以下面的代码是必需的.
 \def\arith#1{是否 $#1>0$? \begingroup
    \ifnum #1>-1 是\aftergroup\pos
    \else 否\aftergroup\neg\fi
@@ -507,10 +508,10 @@ $a \la b$
 \arith {-1}
 |
 \produces
-\def\neg{負} \def\pos{正}
-% 因為一個 \aftergroup 只能作用到一個標記上, 
-% 而不是到一系列的標記上, 甚至不能是一個用括號定界的文本,
-% 所以下面的代碼是必需的.
+\def\neg{负} \def\pos{正}
+% 因为一个 \aftergroup 只能作用到一个标记上,
+% 而不是到一系列的标记上, 甚至不能是一个用括号定界的文本,
+% 所以下面的代码是必需的.
 \def\arith#1{是否 $#1>0$? \begingroup
    \ifnum #1>-1 是\aftergroup\pos
    \else 否\aftergroup\neg\fi
@@ -524,28 +525,28 @@ $a \la b$
 \begindesc
 \cts afterassignment {\<token>}
 \explain
-當 \TeX\ 遇到這個命令, 它會把 \<token> 保存在一個特殊的地方.
-當它接下來執行一個賦值時, 它會把展關後的 \<token> 放到其後.
-如果你調用了幾次 |\afterassignment|, 那僅有最後一次是生效的.
-|\afterassignment| 命令的一個用處是可以寫定義形式的\minref{宏}命令, 
+当 \TeX\ 遇到这个命令, 它会把 \<token> 保存在一个特殊的地方.
+当它接下来执行一个赋值时, 它会把展关后的 \<token> 放到其后.
+如果你调用了几次 |\afterassignment|, 那仅有最后一次是生效的.
+|\afterassignment| 命令的一个用处是可以写定义形式的\minref{宏}命令,
 例子如下.
 
-精確的 |\afterassignment| 行為定義請參見 \knuth{page~279}.
+精确的 |\afterassignment| 行为定义请参见 \knuth{page~279}.
 \example
 \def\setme{\afterassignment\setmeA\count255}
 \def\setmeA{$\number\count255\advance\count255 by 10
    +10=\number\count255$}
-算術式: \setme = 27
-% 在展開 \setme 以後, TeX 把 \count255 
-% 設為 27, 然後調用 \setmeA. 
+算术式: \setme = 27
+% 在展开 \setme 以后, TeX 把 \count255
+% 设为 27, 然后调用 \setmeA.
 |
 \produces
 \def\setme{\afterassignment\setmeA\count255}
 \def\setmeA{$\number\count255\advance\count255 by 10
    +10=\number\count255$}
-算術式: \setme = 27
-% 在展開 \setme 以後, TeX 把 \count255 
-% 設為 27, 然後調用 \setmeA. 
+算术式: \setme = 27
+% 在展开 \setme 以后, TeX 把 \count255
+% 设为 27, 然后调用 \setmeA.
 \endexample
 \enddesc
 
@@ -554,7 +555,7 @@ $a \la b$
 \section {宏}
 
 %==========================================================================
-\subsection {定義宏}
+\subsection {定义宏}
 
 \begindesc
 \bix^^{macros}
@@ -563,8 +564,8 @@ $a \la b$
 %
 \cts def {\<control sequence> \<parameter text> \rqbraces{\<replacement text>}}
 \explain
-這個命定根據 \<parameter text> 和 \<replacement text> 把 \<control sequence> 定義為一個\minref{宏}.
-請參閱  \xrefpg{macro} 獲取關於如何定義宏的完整信息.
+这个命定根据 \<parameter text> 和 \<replacement text> 把 \<control sequence> 定义为一个\minref{宏}.
+请参阅  \xrefpg{macro} 获取关于如何定义宏的完整信息.
 \example
 \def\add#1+#2=?{#1+#2&=
    \count255=#1 \advance\count255 by #2 \number\count255\cr}
@@ -584,18 +585,18 @@ $$\eqalign{
 \begindesc
 \cts edef {\<control sequence> \<parameter text> \rqbraces{\<replacement text>}}
 \explain
-這個命令和 |\def| 一樣可以定義宏.
-唯一的區別在於, \TeX\ 會把 |\edef| 的 \<replacement text> 立即展開 (但是不會執行它).
-因此, 任何在 \<replacement text> 中的內容會被展開, 但那些產生盒子或粘連的排列或命令依然保持原來的樣子.
-比如 \TeX\ 在處理這個定義時, 在由 |\edef| 的定義中的 \<replacement text> 中的 |\hbox| 命令依然會保持命令竹的格式, 而不會變成一個盒子.
-一般情況下, 並不能明顯看出什麼會被展開, 什麼不會, 但你可以在 \knuth{頁~212-215} 找到一張可被展開的控製序列列表.
+这个命令和 |\def| 一样可以定义宏.
+唯一的区别在于, \TeX\ 会把 |\edef| 的 \<replacement text> 立即展开 (但是不会执行它).
+因此, 任何在 \<replacement text> 中的内容会被展开, 但那些产生盒子或粘连的排列或命令依然保持原来的样子.
+比如 \TeX\ 在处理这个定义时, 在由 |\edef| 的定义中的 \<replacement text> 中的 |\hbox| 命令依然会保持命令竹的格式, 而不会变成一个盒子.
+一般情况下, 并不能明显看出什么会被展开, 什么不会, 但你可以在 \knuth{页~212-215} 找到一张可被展开的控制序列列表.
 
-你可以使用 |\no!-expand| 命令 (\xref\noexpand) 來阻止一個控製序列的展開.
+你可以使用 |\no!-expand| 命令 (\xref\noexpand) 来阻止一个控制序列的展开.
 ^^|\noexpand|
-你可以使用 ^|\expandafter| (\xref\expandafter) 命令來延迟一個控製序列的展開.
+你可以使用 ^|\expandafter| (\xref\expandafter) 命令来延迟一个控制序列的展开.
 
 
-|\write|, |\message|, |\errmessage|, |\wlog| 和 |\csname| 命令會把它們的標記使用和 |\edef| 替換文本相同的法則進行展開.
+|\write|, |\message|, |\errmessage|, |\wlog| 和 |\csname| 命令会把它们的标记使用和 |\edef| 替换文本相同的法则进行展开.
 
 ^^|\write//expanded by {\tt\\edef} rules|
 ^^|\message//expanded by {\tt\\edef} rules|
@@ -605,15 +606,15 @@ $$\eqalign{
 \example
 \def\aa{xy} \count255 = 1
 \edef\bb{w\ifnum \count255 > 0\aa\fi z}
-% 和 \def\bb{wxyz} 等價
-\def\aa{} \count255 = 0 % 不影響 \bb 
+% 和 \def\bb{wxyz} 等价
+\def\aa{} \count255 = 0 % 不影响 \bb
 \bb
 |
 \produces
 \def\aa{xy} \count255 = 1
 \edef\bb{w\ifnum \count255 > 0\aa\fi z}
-% 和 \def\bb{wxyz} 等價
-\def\aa{} \count255 = 0 % 不影響 \bb
+% 和 \def\bb{wxyz} 等价
+\def\aa{} \count255 = 0 % 不影响 \bb
 \bb
 \endexample
 \enddesc
@@ -621,39 +622,39 @@ $$\eqalign{
 \begindesc
 \cts gdef {\<control sequence> \<parameter text> \rqbraces{\<replacement text>}}
 \explain
-這個命令等價於 |\global\def|.
+这个命令等价于 |\global\def|.
 \enddesc
 
 \begindesc
 \cts xdef {\<control sequence> \<parameter text> \rqbraces{\<replacement text>}}
 \explain
-這個命令等價於 |\global\edef|.
+这个命令等价于 |\global\edef|.
 \enddesc
 
 \begindesc
 \cts long {}
 \explain
-這個命令加在\minref{宏}定義前面. 
-它告訴 \TeX\ 該宏的參數可以包括 |\par| 標記 (\xref{\@par}), 
-該標記一般表示一個段的結束.
+这个命令加在\minref{宏}定义前面.
+它告诉 \TeX\ 该宏的参数可以包括 |\par| 标记 (\xref{\@par}),
+该标记一般表示一个段的结束.
 ^^|\par//in macro arguments|
-如果 \TeX\ 嘗試把一個沒有 |\long| 的宏定義展開, 
-而該宏的任意一部分的參數包括了一個 |\par| 標記,
-\TeX\ 就會報錯錯這是一個失控的參數.
-這個行為的目的, 是為了確保宏參數的完整結束.
-而 |\long| 就給你提供了一個回避這個行為的方法.
+如果 \TeX\ 尝试把一个没有 |\long| 的宏定义展开,
+而该宏的任意一部分的参数包括了一个 |\par| 标记,
+\TeX\ 就会报错错这是一个失控的参数.
+这个行为的目的, 是为了确保宏参数的完整结束.
+而 |\long| 就给你提供了一个回避这个行为的方法.
 \example
 \long\def\aa#1{\par\hrule\smallskip#1\par\smallskip\hrule}
-\aa{這是第一行.\par
-這是第二行.}
-% 沒有 \long, TeX 會報錯
+\aa{这是第一行.\par
+这是第二行.}
+% 没有 \long, TeX 会报错
 |
 \produces
 \medskip
 \long\def\aa#1{\par\hrule\smallskip#1\par\smallskip\hrule}
-\aa{這是第一行.\par
-這是第二行.}
-% 沒有 \long, TeX 會報錯
+\aa{这是第一行.\par
+这是第二行.}
+% 没有 \long, TeX 会报错
 \endexample
 \enddesc
 
@@ -661,16 +662,16 @@ $$\eqalign{
 \cts outer {}
 \explain
 \null ^^{outer}
-這個命令加前\minref{宏}定義前.
-它告訴 \TeX\ 這個宏是一個外部的 (\xref{outer}) 宏, 
-所以不能在某些情況中使用.
-如果這個宏出現在那些被禁止的情下, \TeX\ 會報錯.
+这个命令加前\minref{宏}定义前.
+它告诉 \TeX\ 这个宏是一个外部的 (\xref{outer}) 宏,
+所以不能在某些情况中使用.
+如果这个宏出现在那些被禁止的情下, \TeX\ 会报错.
 
 \example
 \outer\def\chapterhead#1{%
    \eject\topglue 2in \centerline{\bf #1}\bigskip}
-% 在一個被禁止的情況下使用 \chapterhead 
-% 會出現錯誤信息.
+% 在一个被禁止的情况下使用 \chapterhead
+% 会出现错误信息.
 |
 \endexample
 \enddesc
@@ -679,18 +680,18 @@ $$\eqalign{
 \cts chardef {\<control sequence>=\<charcode>}
 \explain
 ^^{characters//defined by \b\tt\\chardef\e}
-上面的命令把 \<charcode> 定義為 \<control sequence>.
-雖然 |\chardef| 常在定義字符時用到, 
-你也可以使用它來給 $0$--$255$ 之間的任何一個數定義一個名字, 
-即使你沒用以字符碼的形式使用該數.
+上面的命令把 \<charcode> 定义为 \<control sequence>.
+虽然 |\chardef| 常在定义字符时用到,
+你也可以使用它来给 $0$--$255$ 之间的任何一个数定义一个名字,
+即使你没用以字符码的形式使用该数.
 \example
 \chardef\percent = `\% 21\percent, {\it 19\percent}
-% 排印出正體和意大利體的百分號
+% 排印出正体和意大利体的百分号
 |
 \produces
 \chardef\percent = `\%
 21\percent, {\it 19\percent}
-% 排印出正體和意大利體的百分號
+% 排印出正体和意大利体的百分号
 \endexample
 \enddesc
 
@@ -699,58 +700,58 @@ $$\eqalign{
 ^^{mathcodes}
 \cts mathchardef {\<control sequence>=\<mathcode>}
 \explain
-這個命令把 \<control sequence> 定義為一個給定\minref{數學字符碼}的數學字符.
-這個控製序列僅在數學模式下有效
+这个命令把 \<control sequence> 定义为一个给定\minref{数学字符码}的数学字符.
+这个控制序列仅在数学模式下有效
 \example
-\mathchardef\alphachar = "010B % 類似 plain TeX 的定義
+\mathchardef\alphachar = "010B % 类似 plain TeX 的定义
 $\alphachar$
 |
 \produces
-\mathchardef\alphachar = "010B % 類似 plain TeX 的定義
+\mathchardef\alphachar = "010B % 类似 plain TeX 的定义
 $\alphachar$
 \endexample
 \eix^^{macros//defining}
 \enddesc
 
 %==========================================================================
-\subsection {其它定義方法}
+\subsection {其它定义方法}
 
 \begindesc
 \cts let {\<control sequence> = \<token>}
 \explain
 ^^{control sequences//defining with \b\tt\\let\e}
 \minrefs{token}
-這個命令會使得 \<control sequence> 去獲取當前 \<token> 的含義.
-即使你對 \<token> 重新定義,  \<control sequence> 的含義仍然不變.
-雖然 \<token> 一般情況下都是一個控製序列,
-它其實也可以是一個\minref{字符}標記.
+这个命令会使得 \<control sequence> 去获取当前 \<token> 的含义.
+即使你对 \<token> 重新定义,  \<control sequence> 的含义仍然不变.
+虽然 \<token> 一般情况下都是一个控制序列,
+它其实也可以是一个\minref{字符}标记.
 \enddesc
 
 \begindesc
 \cts futurelet {\<control sequence> \<token$_1$> \<token$_2$>}
 \explain
-這個命令告訴 \TeX\ 把 \<token$_2$> 的設為 \<control sequence> 的定義
-(可以由 |\let| 完成), 
-然後按正常的方式來處理 \<token$_1$> 和 \<token$_2$>.
-在宏定義的最後 |\futurelet| 很有用, 因為它可以給你提供一個
-在 \TeX\ 處理未處理的標記前, 查看它後面的標記的方法.
+这个命令告诉 \TeX\ 把 \<token$_2$> 的设为 \<control sequence> 的定义
+(可以由 |\let| 完成),
+然后按正常的方式来处理 \<token$_1$> 和 \<token$_2$>.
+在宏定义的最后 |\futurelet| 很有用, 因为它可以给你提供一个
+在 \TeX\ 处理未处理的标记前, 查看它后面的标记的方法.
 \example
 \def\predict#1{\toks0={#1}\futurelet\next\printer}
-% \next 會獲取 \predict 後的標點符號.
-\def\printer#1{一個 \punc\ 放在 \the\toks0 前. }
+% \next 会获取 \predict 后的标点符号.
+\def\printer#1{一个 \punc\ 放在 \the\toks0 前. }
 \def\punc{%
-   \ifx\next;分號\else
-      \ifx\next,逗號\else
+   \ifx\next;分号\else
+      \ifx\next,逗号\else
          ``\next''\fi\fi}
 \predict{三月}; \predict{四月}, \predict{七月}/
 |
 \produces
 \def\predict#1{\toks0={#1}\futurelet\next\printer}
-% \next 會獲取 \predict 後的標點符號.
-\def\printer#1{一個 \punc\ 放在 \the\toks0 前. }
+% \next 会获取 \predict 后的标点符号.
+\def\printer#1{一个 \punc\ 放在 \the\toks0 前. }
 \def\punc{%
-   \ifx\next;分號\else
-      \ifx\next,逗號\else
+   \ifx\next;分号\else
+      \ifx\next,逗号\else
          ``\next''\fi\fi
    }
 \predict{三月}; \predict{四月}, \predict{七月}/
@@ -761,35 +762,35 @@ $\alphachar$
 \cts csname {\<token list> {\bt \\endcsname}}
 \xrdef{\endcsname}
 \explain
-這個命令可以由 \<token list> 產生一個控製序列.
-它提供了一種把標記合並成控製序列的方式,
-包括一些你一般情況下不能直接寫的形式.
-|\csname| 命令會把它們的標記使用和 |\edef| 替換文本相同的法則進行展開 (\xref\edef).
-如果最後的展開會產生不是字符的東西, \TeX\ 會報錯.
-|\csname| 把一系列的標記轉為一個控製序列; 
+这个命令可以由 \<token list> 产生一个控制序列.
+它提供了一种把标记合并成控制序列的方式,
+包括一些你一般情况下不能直接写的形式.
+|\csname| 命令会把它们的标记使用和 |\edef| 替换文本相同的法则进行展开 (\xref\edef).
+如果最后的展开会产生不是字符的东西, \TeX\ 会报错.
+|\csname| 把一系列的标记转为一个控制序列;
 你可以用 ^|\string| \ctsref\string 的方法做相反的事情.
 \example
 \def\capTe{Te}
-本書關於 \csname\capTe X\endcsname.
+本书关于 \csname\capTe X\endcsname.
 |
 \produces
 \def\capTe{Te}
-本書關於 \csname\capTe X\endcsname.
+本书关于 \csname\capTe X\endcsname.
 \endexample
 \enddesc
 
 %==========================================================================
-\subsection {控製展開}
+\subsection {控制展开}
 
 \begindesc
 \bix^^{macros//controlling expansion of}
 \cts expandafter {\<token$_1$> \<token$_2$>}
 \explain
-這個命令會讓 \TeX\ 在展開一層 \<token$_2$> 後把 \<token$_1$> 根據\minref{宏}展開法則進行展開.
-有時你想展開 \<token$_2$>, 
-而它前面有類似 `|{|' 或 ^|\string| 的東西阻止它的展開,
+这个命令会让 \TeX\ 在展开一层 \<token$_2$> 后把 \<token$_1$> 根据\minref{宏}展开法则进行展开.
+有时你想展开 \<token$_2$>,
+而它前面有类似 `|{|' 或 ^|\string| 的东西阻止它的展开,
 ^^|{//with {\tt\\expandafter}|
-這時這個命令會非常有用.
+这时这个命令会非常有用.
 \example
 \def\aa{xyz}
 \tt % Use this font so `\' prints that way.
@@ -807,20 +808,20 @@ $\alphachar$
 \begindesc
 \cts noexpand {\<token>}
 \explain
-這個命令讓 \TeX\ 跳過一個可以展開的標記 \<token> 的展開.
-如果 \<token> 不能被展開, 比如它是一個字符, 
-\TeX\ 則不會理會 |\noexpand|, 而把 \<token> 按一般的方法處理.
+这个命令让 \TeX\ 跳过一个可以展开的标记 \<token> 的展开.
+如果 \<token> 不能被展开, 比如它是一个字符,
+\TeX\ 则不会理会 |\noexpand|, 而把 \<token> 按一般的方法处理.
 \example
 \def\bunny{免子}
-\edef\magic{把 \noexpand\bunny\ 從帽子中取出!! }
-% 如果沒有 \noexpand, \bunny 會永遠替換為 `免子'
+\edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
+% 如果没有 \noexpand, \bunny 会永远替换为 `免子'
 \let\oldbunny=\bunny \def\bunny{免} \magic
 \let\bunny=\oldbunny \magic
 |
 \produces
 \def\bunny{免子}
-\edef\magic{把 \noexpand\bunny\ 從帽子中取出!! }
-% 如果沒有 \noexpand, \bunny 會永遠替換為 `免子'
+\edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
+% 如果没有 \noexpand, \bunny 会永远替换为 `免子'
 \let\oldbunny=\bunny \def\bunny{免} \magic
 \let\bunny=\oldbunny \magic
 \endexample
@@ -829,45 +830,45 @@ $\alphachar$
 \begindesc
 \cts the {\<token>}
 \explain
-這個命令一般會把 \<token> 展開, 表示成一個\minref{字符}串.
+这个命令一般会把 \<token> 展开, 表示成一个\minref{字符}串.
 其中 \<token>  可以是以下的任何形式:
 
 \ulist\compact
-\li \TeX\ \minref{參數}, 比如, |\parindent| 或者 |\deadcycles|
+\li \TeX\ \minref{参数}, 比如, |\parindent| 或者 |\deadcycles|
 ^^{parameters//using \b\tt\\the\e\ with}
 \li \minref{寄存器}, 比如, |\count0|
 ^^{registers//with \b\tt\\the\e}
-\margin{去除了特殊寄存器的那項}
-\li 輸入字符的字符碼, 比如, |\catcode`(|
-\li 字符參數, 比如, |\fontdimen3\sevenbf|
-\li 字體的 ^|\hyphenchar| 或 ^|\skewchar|, 比如, |\skewchar\teni|
-\li ^|\lastpenalty|, ^|\lastskip|, 或者 ^|\lastkern| 
-(當前的水平\minrefs{水平列表}或\minref{垂直列表}的最後一項的數值).
-\li ^|\chardef| 或 ^|\mathchardef| 定義的控製序列 
+\margin{去除了特殊寄存器的那项}
+\li 输入字符的字符码, 比如, |\catcode`(|
+\li 字符参数, 比如, |\fontdimen3\sevenbf|
+\li 字体的 ^|\hyphenchar| 或 ^|\skewchar|, 比如, |\skewchar\teni|
+\li ^|\lastpenalty|, ^|\lastskip|, 或者 ^|\lastkern|
+(当前的水平\minrefs{水平列表}或\minref{垂直列表}的最后一项的数值).
+\li ^|\chardef| 或 ^|\mathchardef| 定义的控制序列
 \endulist
 
 \noindent
-此外, |\the| 可以在下面兩種情況下, 展開成非字符標記:
+此外, |\the| 可以在下面两种情况下, 展开成非字符标记:
 \ulist\compact
-\li |\the| \<font>, 會展開成當前定義的控製序列, 
-這個控製序列和控製序列 \<font> 所選擇的字體相同.
-\li |\the| \<token variable>, 會復製變量的值, 並且對復本進行展開,
+\li |\the| \<font>, 会展开成当前定义的控制序列,
+这个控制序列和控制序列 \<font> 所选择的字体相同.
+\li |\the| \<token variable>, 会复制变量的值, 并且对复本进行展开,
 比如 |\the\everypar|
 \endulist
 
-請參閱 \knuth{頁~214--215} 來獲取 |\the| 在各種情況下行為的更詳細描述.
+请参阅 \knuth{页~214--215} 来获取 |\the| 在各种情况下行为的更详细描述.
 \example
-目前頁面的竪直長度為 \the\vsize.
-`(' 字符的類碼是 \the\catcode `(.
+目前页面的竪直长度为 \the\vsize.
+`(' 字符的类码是 \the\catcode `(.
 |
 \produces
-目前頁面的竪直長度為 \the\vsize.
-`(' 字符的類碼是 \the\catcode `(.
+目前页面的竪直长度为 \the\vsize.
+`(' 字符的类码是 \the\catcode `(.
 \endexample
 \enddesc
 
 {\tighten
-\see \headcit{把信息改為標記}{convert},
+\see \headcit{把信息改为标记}{convert},
 |\showthe| (\xref\showthe).
 \par}
 
@@ -887,7 +888,7 @@ This command tests if \<token$_1$> and \<token$_2$>
 have the same \minref{character} code, independent of their
 \minref{category code}s.
 Before performing the test, \TeX\ expands tokens following the |\if|
-until it obtains two tokens that can't be expanded further.  
+until it obtains two tokens that can't be expanded further.
 These two tokens become \<token$_1$> and \<token$_2$>.
 The expansion
 includes replacing  a control sequence |\let| equal to a character token
@@ -936,7 +937,7 @@ considered to have category code $16$.
 \ifcat \hbox\day true\else false\fi;
 \def\first{12345}
 \ifcat (\first true\else false\fi
-% ``2345'' lands in the true branch of the test 
+% ``2345'' lands in the true branch of the test
 |
 \produces
 \ifcat axtrue\else false\fi;
@@ -944,7 +945,7 @@ considered to have category code $16$.
 \ifcat \hbox\day true\else false\fi;
 \def\first{12345}
 \ifcat (\first true\else false\fi
-% ``2345'' lands in the true branch of the test 
+% ``2345'' lands in the true branch of the test
 \endexample
 \enddesc
 
@@ -1090,7 +1091,7 @@ restricted horizontal, internal vertical, or text math.
       \ifinner \hbox{IV}\else \hbox{V}\fi
    \else\ifmmode \hbox{M}\else
       error\fi\fi\fi}}
-Formula $\modes$; then \modes, 
+Formula $\modes$; then \modes,
    \hbox{next \modes\ and \vbox{\modes}}.
 \par\modes
 |
@@ -1102,7 +1103,7 @@ Formula $\modes$; then \modes,
       \ifinner \hbox{IV}\fi
    \else\ifmmode \hbox{M}\else
       error\fi\fi\fi}}
-Formula $\modes$; then \modes, 
+Formula $\modes$; then \modes,
    \hbox{next \modes\ and \vbox{\modes}}.
 \par\noindent{\bf V} % sorry folks, we have to fake this one
 \endexample
@@ -1289,7 +1290,7 @@ test in the sense you want (see the second example below).
 \example
 \count255 = 6
 \loop
-   \number\count255\ 
+   \number\count255\
    \ifnum\count255 > 0
       \advance\count255 by -1
 \repeat
@@ -1297,7 +1298,7 @@ test in the sense you want (see the second example below).
 \produces
 \count255 = 6
 \loop
-   \number\count255\ 
+   \number\count255\
    \ifnum\count255 > 0
       \advance\count255 by -1
 \repeat
@@ -1305,7 +1306,7 @@ test in the sense you want (see the second example below).
 \newif\ifnotdone % \newif uses \count255 in its definition
 \count255=6
 \loop
-   \number\count255\ 
+   \number\count255\
    \ifnum\count255 < 1 \notdonefalse\else\notdonetrue\fi
    \ifnotdone
       \advance\count255 by -1
@@ -1315,7 +1316,7 @@ test in the sense you want (see the second example below).
 \newif\ifnotdone
 \count255=6
 \loop
-   \number\count255\ 
+   \number\count255\
    \ifnum\count255 < 1 \notdonefalse\else\notdonetrue\fi
    \ifnotdone
       \advance\count255 by -1
@@ -1389,7 +1390,7 @@ you can typeset their values.
 You can name and reserve registers
 with the ^|\newcount| command and its relatives
 (\xref{\@newcount}).
-Using these commands is a safe way to obtain registers that 
+Using these commands is a safe way to obtain registers that
 are known not to have any conflicting usage.
 
 ^^{count registers}
@@ -1629,7 +1630,7 @@ or \<muglue> all three components (natural value, stretch, and shrink)
 Any of the quantities can be negative.  For purposes of these calculations
 (and other assignments as well), \<glue> can be converted to a
 \<dimen> by dropping the stretch and shrink, and a \<dimen> can be converted
-to a \<number> by taking its value in scaled points 
+to a \<number> by taking its value in scaled points
 \seeconcept{dimension}.
 You can omit the word |by| in these commands---\TeX\ will understand them
 anyway.
@@ -1706,7 +1707,7 @@ It is the usual way to end your input file.
 \cts end {}
 \explain
 This command tells \TeX\ to produce the last page and end the job.
-It does not fill out the page, however, 
+It does not fill out the page, however,
 so it's usually better to use |\bye| rather than |\end|.
 \enddesc
 
@@ -1772,7 +1773,7 @@ designated by \<number>.
 \<number> must be between $0$ and $15$.
 Once you've opened a file and connected it to an input stream,
 you can read from the file using the |\read| command
-with the input stream's number.  
+with the input stream's number.
 
 You can associate more than one input stream with the same
 file.  You can then read from several different positions within
@@ -1811,7 +1812,7 @@ You should close an input stream once you're finished using its file.
 This command tells \TeX\ to read a line from the file
 associated with the \minref{input stream}
 designated by \<number> and assign the tokens on that line to
-\<control sequence>.  The \minref{control sequence} then becomes a 
+\<control sequence>.  The \minref{control sequence} then becomes a
 parameterless \minref{macro}.  No macro expansion takes place
 during the reading operation.  If the line contains any unmatched
 left braces, \TeX\ will read additional lines until the braces are
@@ -1849,7 +1850,7 @@ designated by \<number>.
 \<number> must be between $0$ and $15$.
 Once you've opened a file and connected it to an output stream,
 you can write to the file using the |\write| command
-with the output stream's number.  
+with the output stream's number.
 
 An |\openout| generates a whatsit that becomes part of a box.
 The |\openout| does not take effect until \TeX\ ships out that box
@@ -1906,7 +1907,7 @@ unless you've preceded the |\write| with ^|\immediate|.
 For a |\write| that is not immediate, \TeX\ does not expand macros in
 \<token list> until the token list is actually written to the file.
 The macro expansions follow the same rules as |\edef| (\xref\edef).
-In particular, any control sequence that is not 
+In particular, any control sequence that is not
 the name of a macro is written as
 ^|\escapechar| followed by the control sequence name
 and a space.  Any `|#|' tokens
@@ -1942,7 +1943,7 @@ It tells \TeX\ to perform the specified file operation without delay.
 \begindesc
 \cts special {\rqbraces{\<token list>}}
 \explain
-This command tells \TeX\ to 
+This command tells \TeX\ to
 write \<token list> directly to the \dvifile\ when it next
 ships out a page.
 A typical use of |\special| would be to tell the device driver to incorporate
@@ -1955,7 +1956,7 @@ had appeared instead of the |\special| command.
 Any use you might make of |\special| depends strictly on
 the ^{device drivers} that you have available.
 \example
-\special{graphic expic} 
+\special{graphic expic}
 % Display the graphics file `expic' here.
 |
 \endexample
@@ -2026,7 +2027,7 @@ whose \ascii\ code is \<charcode> \seeconcept{mathcode}.
 The mathcode specifies that character's interpretation in math mode.
 \example
 \mathcode\> = "313E % as in plain TeX
-% The > character has class 3 (relation), family 1 (math 
+% The > character has class 3 (relation), family 1 (math
 % italic), and character code "3E
 |
 \endexample
@@ -2140,12 +2141,12 @@ into batch mode.
 \cts pausing {\param{number}}
 \explain
 If this parameter is greater than zero, \TeX\ will pause
-at each line of input to give you an opportunity to 
+at each line of input to give you an opportunity to
 replace it with a different line.  If you type in a replacement,
 \TeX\ will use that line instead of the original one; if you respond
 with \asciichar{return}, \TeX\ will use the original line.
 
-Setting |\pausing| to $1$ can be useful as a way of patching a document as 
+Setting |\pausing| to $1$ can be useful as a way of patching a document as
 \TeX\ is processing it.  For example,
 you can use this facility to insert ^|\show| commands (see below).
 \eix^^{running \TeX}
@@ -2170,10 +2171,10 @@ These commands record information in the log of your \TeX\ run:
 \ulist
 \li |\show| records the meaning of \<token>.\minrefs{token}
 ^^{tokens//displayed by \b\tt\\show\e}
-\li |\showthe| records 
- whatever tokens would be produced by 
+\li |\showthe| records
+ whatever tokens would be produced by
 |\the| \<arg\-u\-ment> (see \xref \the).
-\li |\showbox| records the contents of the \minref{box} 
+\li |\showbox| records the contents of the \minref{box}
 \minref{register} numbered \<num\-ber>.
 The number of
 leading dots in the log indicates the number of
@@ -2201,7 +2202,7 @@ press \asciichar{return}.
 You can control the amount of output produced by |\showbox| by setting
 |\show!-box!-breadth| and |\show!-box!-depth| (\xref\showboxbreadth).
 ^^|\showboxbreadth| ^^|\showboxdepth|
-These parameters respectively have default values of $5$ 
+These parameters respectively have default values of $5$
 and $3$, which is why
 just five items appear for each box described
 in the log output below.  (The `|..etc.|' indicates additional items
@@ -2255,7 +2256,7 @@ within the boxes that aren't displayed.)
 \vfil\eject
 \example
 \vbox{A \hbox
-   {formula 
+   {formula
        $x \over y\showlists$}}
 |
 \logproduces
@@ -2298,7 +2299,7 @@ prevdepth ignored
 \cts tracingonline {\param{number}}
 \explain
 If this parameter is greater than zero,
-\TeX\ will display the results of tracing 
+\TeX\ will display the results of tracing
 (including ^|\showbox| and ^|\showlists|)
 at your terminal in addition to recording them in the log file.
 \enddesc
@@ -2311,7 +2312,7 @@ If this parameter is $1$ or greater,
 If ^|\tracingonline| is greater than zero, this information will also appear
 at your terminal.
 Typesetting the first character of a word counts as a command,
-but (for the purposes of the trace only) 
+but (for the purposes of the trace only)
 the actions of typesetting the subsequent characters
 and any punctuation following them
 do not count as commands.
@@ -2395,7 +2396,7 @@ at your terminal.
 Call \a once.
 |
 \logproduces
-\a ->first \b , then \c 
+\a ->first \b , then \c
 
 \b ->b
 
@@ -2521,7 +2522,7 @@ include a report on the resources that it used to run your job
 Moreover, if |\tracingstats| is $2$ or greater,
 \TeX\ will report on its memory usage whenever it does a
 ^|\shipout| (\xref \shipout) for a page.
-The report appears at the end of the log file. 
+The report appears at the end of the log file.
 ^^{log file//tracing statistics in}
 If ^|\tracingonline| is greater than zero, the information will also appear
 at your terminal.
@@ -2599,7 +2600,7 @@ terminal and also enter it into the log.  Any \minref{macro}s in the
 message are expanded, but no commands are executed.  This is the same rule
 that \TeX\ uses for |\edef| (\xref \edef).
 
-For |\errmessage|, \TeX\ pauses 
+For |\errmessage|, \TeX\ pauses
 in the same way that it does for one of its own error messages
 and displays the |\errhelp| tokens if you ask for help.
 
@@ -2644,12 +2645,12 @@ You can use the ^|\newlinechar| character to produce multiline messages.
 \ctspecial newhelp \ctsxrdef{@newhelp} {\<control sequence>
    \rqbraces{\<help text>}}
 \explain
-This command assigns the ^{help message} given by \<help text> to 
+This command assigns the ^{help message} given by \<help text> to
 \<control sequence>.  It provides an efficient way of defining
 the ^{help text} that further explains an error message.
 Before issuing the error message with the |\errmessage| command,
 you should assign \<control sequence> to ^|\errhelp|.  The help text
-will then appear if the user types `|H|' 
+will then appear if the user types `|H|'
 or `|h|' in response to the error message.
 \example
 \newhelp\pain{Your input includes a token that I find^^J
@@ -2662,11 +2663,11 @@ or `|h|' in response to the error message.
 \logproduces
 !! I do not appreciate receiving this token.
 l.8 ...t appreciate receiving this token.}
-                                          
+
 ? H
 \Your input includes a token that I find
  to be offensive. Don't bother me again with this
- document until you've removed it. 
+ document until you've removed it.
 |
 \endexample
 \enddesc
@@ -2677,7 +2678,7 @@ l.8 ...t appreciate receiving this token.}
 This parameter determines the number of pairs of context lines,
 not counting the top and bottom pairs, that \TeX\ prints when it
 encounters an error.  By setting it to $0$ you can get rid of long
-error messages.  
+error messages.
 You can still force out the full context by typing something like:
 \csdisplay
 I\errorcontextlines=100\oops
@@ -2697,14 +2698,14 @@ since the undefined control sequence |\oops| will cause another error.
 \begindesc
 \cts dump {}
 \explain
-這個命令不能使用在組中, 它可以把 \TeX\ 記錄的內容導出成一個^{格式文件}
+这个命令不能使用在组中, 它可以把 \TeX\ 记录的内容导出成一个^{格式文件}
 (\xref{format file}).
-如果使用的是^|virtex| (這是一種 \TeX\ 形式\footnote{譯者注, |virtex| 和 |initex| 在現代的 \TeX\ 系統中不再被使用. 在遠古時代, 人們必需使用 |initex| 命令來導出格式文件, 用 |virtex| 命令載入格式文件, 而 |tex| 程序不能導出或載入格式文件. 而在現代的發行版中, |tex| 命令可以處理這一切}, 
-你可以使用很快的速度載入這個格式文件, 
-載入後的 \TeX\ 狀態和你當初導出格式文件時的狀態並無二致.
-|\dump| 命令會同時結束本次運行.
-由於 |\dump| 只能在 ^|initex| 中運行, 
-而不是生產版本的 \TeX, 所以它僅僅在你安裝 \TeX\ 時會用到.
+如果使用的是^|virtex| (这是一种 \TeX\ 形式\footnote{译者注, |virtex| 和 |initex| 在现代的 \TeX\ 系统中不再被使用. 在远古时代, 人们必需使用 |initex| 命令来导出格式文件, 用 |virtex| 命令载入格式文件, 而 |tex| 程序不能导出或载入格式文件. 而在现代的发行版中, |tex| 命令可以处理这一切},
+你可以使用很快的速度载入这个格式文件,
+载入后的 \TeX\ 状态和你当初导出格式文件时的状态并无二致.
+|\dump| 命令会同时结束本次运行.
+由于 |\dump| 只能在 ^|initex| 中运行,
+而不是生产版本的 \TeX, 所以它仅仅在你安装 \TeX\ 时会用到.
 \enddesc
 
 \begindesc

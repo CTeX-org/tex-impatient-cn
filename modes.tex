@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 %box: 盒子
 %space: 间隔
 %rule: 嵌线
@@ -111,7 +112,7 @@ The horror, the horror\negthinspace, the horror of it all!
 \cts qquad {}
 \explain
 ^^{en}
-%Each of these commands 
+%Each of these commands
 %produces a glob of horizontal \minref{glue}
 %that can neither stretch nor shrink.
 %\TeX\ can break a line \minrefs{line break} at such glue.
@@ -153,7 +154,7 @@ en\enskip skip; quad\quad skip; qquad\qquad skip
 %These commands produce successively larger
 %amounts of vertical space:
 这些命令可以产生连续较大的垂直间隔：
-\display{{\def\bar{\kern 2pt\hrule width 5pc} 
+\display{{\def\bar{\kern 2pt\hrule width 5pc}
 \def\lbl#1{\hbox to 5pc{\hfil #1skip\hfil}}
 \leavevmode
 \vtop{\lbl{small}\bar\smallskip\bar}\quad
@@ -267,7 +268,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \explain
 %The |\hglue| command produces horizontal \minref{glue} that won't disappear at
 %a line break; the |\vglue| command
-%produces vertical \minref{glue} that won't disappear at a page break. 
+%produces vertical \minref{glue} that won't disappear at a page break.
 %In other respects these commands are just like |\hskip| and |\vskip|.
 %You can use |\vglue| to produce blank space at the top of a page,
 %e.g., above a title on the first page of a document, but
@@ -302,7 +303,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \begindesc
 \cts kern {\<dimen>}
 \explain
-%The effect of this command depends on the mode that \TeX\ is in when 
+%The effect of this command depends on the mode that \TeX\ is in when
 %it encounters it:
 该命令产生的效果取决于 \TeX\ 遇到它时所处的模式：
 \ulist
@@ -370,7 +371,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \cts vfill {}
 \explain
 \bix^^{glue//infinitely stretchable}
-%These commands produce infinitely stretchable horizontal 
+%These commands produce infinitely stretchable horizontal
 %and vertical glue that
 %overwhelms any finite stretch that may be present.
 %|\hfil| and |\hfill| produce horizontal glue, while
@@ -468,7 +469,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 ^^{glue//negative}
 %These commands cancel the effect of a preceding |\hfil|
 %or |\vfil|. While |\hfil| and |\vfil|
-%produce infinitely stretchable positive \minref{glue}, |\hfilneg| 
+%produce infinitely stretchable positive \minref{glue}, |\hfilneg|
 %and |\vfilneg| produce infinitely stretchable negative glue.
 %(Thus, $n$ |\hfilneg|s cancel $n$ ^|\hfil|s, and similarly for
 %|\vfilneg|.)
@@ -540,7 +541,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %|\hbox| is often useful when you want to keep some text all on one line.
 %If your use of |\hbox| prevents \TeX\ from breaking lines in an acceptable
 %way, \TeX\ will complain about an overfull hbox.
-当你希望将一些文字全部放在一行上时，|\hbox| 是有用的。如果你所用的 |\hbox| 使得 \TeX\ 不能以一种可以接受的方式断行时，\TeX\ 会给出 hbox 过满的警告。 
+当你希望将一些文字全部放在一行上时，|\hbox| 是有用的。如果你所用的 |\hbox| 使得 \TeX\ 不能以一种可以接受的方式断行时，\TeX\ 会给出 hbox 过满的警告。
 
 %The width of the hbox depends on the arguments to |\hbox|:
 %\ulist\compact
@@ -619,7 +620,7 @@ hbox 的宽度取决于 |\hbox| 的参数：
 当你希望将一些文字放在单独的一页上时，|\vtop| 和 |\vbox| 是有用的。
 （为了这个目的，它通常不在乎你使用的命令。）如果你使用这些命令使得 \TeX\ 不能以一种可以接受的方式分页时，\TeX\ 会在 |\output| 处于活动的情况下，给出 vbox 过满或不足的警告。
 
-%The height of a vbox depends on 
+%The height of a vbox depends on
 %the arguments to |\vtop| or |\vbox|.
 %For |\vbox|, \TeX\ determines the height as follows:
 %\ulist\compact
@@ -668,13 +669,13 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %using the two rules just given, the depth turns out to be greater than
 %^|\boxmaxdepth|.
 %Then the depth is reduced to |\boxmaxdepth| and the height is adjusted
-%accordingly.} 
+%accordingly.}
 %\endulist
 通常，构造的 vbox 的宽度是其内部最宽项目的宽度。\footnote{更准确地说，是从参考点至构造的 vbox 最右侧之间的距离。因此，如果你使用 ^|\moveright| 或（负数距离的）^|\moveleft| 向右移动任何项目，那么构造的 vbox 则可能更宽。}
 在高度与深度间分配垂直扩展的规则更加复杂：
 \ulist
 \li 对于 |\vtop|，如果第一个项目是一个盒子或嵌线，则其高度是其第一个项目的高度。否则，其高度是零。深度是减去高度后的垂直扩展。
-\li 对于 |\vbox|，如果最后一个项目是一个盒子或嵌线，则其深度是其最后一个项目的深度。否则浓度是零。高度是减去深度后的垂直扩展。\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，则深度将会大于 ^|\boxmaxdepth|。随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。} 
+\li 对于 |\vbox|，如果最后一个项目是一个盒子或嵌线，则其深度是其最后一个项目的深度。否则浓度是零。高度是减去深度后的垂直扩展。\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，则深度将会大于 ^|\boxmaxdepth|。 随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。}
 \endulist
 
 %The |\vfil| command (\xref\vfil) is useful for filling out a vbox
@@ -685,7 +686,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \example
 \hbox{\hsize = 10pc \raggedright\parindent = 1em
 \vtop{在这个例子中，我们将看到如何使用 vbox 产生双栏的效果。
-每个 vbox 都包含两个段落，除了设置为左对齐以外均依照 \TeX 
+每个 vbox 都包含两个段落，除了设置为左对齐以外均依照 \TeX
 通常的规则进行排版。\par
 这实际上并不是获得真正双栏的最好的方法，因为两栏}
 \hskip 2pc
@@ -713,7 +714,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %vbox is very useful for placing that text where you
 %want it on the page.}}
 \vtop{在这个例子中，我们将看到如何使用 vbox 产生双栏的效果。
-每个 vbox 都包含两个段落，除了设置为左对齐以外均依照 \TeX 
+每个 vbox 都包含两个段落，除了设置为左对齐以外均依照 \TeX
 通常的规则进行排版。\par
 这实际上并不是获得真正双栏的最好的方法，因为两栏}
 \hskip 2pc
@@ -769,7 +770,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %\TeX\ will not construct a box whose depth exceeds $D$.
 %If you produce a box whose depth $d$ would exceed $D$,
 %\TeX\ will transfer the
-%excess depth to the height of the box, effectively moving the 
+%excess depth to the height of the box, effectively moving the
 %\minref{reference point} of the box down by $d-D$.
 %If you set |\boxmaxdepth| to zero, \TeX\ will line up a row of vboxes
 %so that their bottom boundaries all lie on the same horizontal line.
@@ -818,16 +819,16 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \explain
 ^^{assignments//of boxes}
 %These commands respectively set and retrieve the contents
-%of the box register 
-%whose number is \<register>.  
+%of the box register
+%whose number is \<register>.
 %Note that you set a box register a little differently than
-%you set the other kinds of registers: you use 
+%you set the other kinds of registers: you use
 %|\setbox|$\,n$~|=| rather than |\box|$\,n$~|=|.
 这些命令分别设置和获取编号为 \<register> 的盒子寄存器的内容。需要注意，设置盒子寄存器与设置其它寄存器有细微的差别：你应该使用 |\setbox|$\,n$~|=|，而不是 |\box|$\,n$~|=|。
 
 %\emph{Retrieving the contents of a box register
 %with these commands has the side effect of emptying it,
-%so that the box register become void.}  If you don't want that to happen, 
+%so that the box register become void.}  If you don't want that to happen,
 %you can use |\copy| (see below) to retrieve the contents.
 %You should use |\box| in preference to |\copy|
 %when you don't care about what's in a box register after you've used it,
@@ -877,7 +878,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \explain
 %These commands produce the list contained in box register \<register> and make
 %that box register void.
-%|\unhbox| applies to box registers containing 
+%|\unhbox| applies to box registers containing
 %hboxes and |\unvbox| applies to box registers containing vboxes.
 %You should use these commands in preference to |\unhcopy| and |\unvcopy|
 %(see below)
@@ -895,7 +896,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \produces
 %\setbox0=\hbox{The Mock Turtle sighed deeply, and
 %drew the back of one flapper across his eyes. }
-%\setbox1=\hbox{He tried to speak, but sobs choked 
+%\setbox1=\hbox{He tried to speak, but sobs choked
 %               his voice. }
 \setbox0=\hbox{素甲鱼深深地叹息着，用一只手背抹着眼泪。}
 \setbox1=\hbox{他想说话，可是有好一阵子泣不成声。}
@@ -929,7 +930,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \produces
 %\setbox0=\hbox{The Mock Turtle sighed deeply, and
 %drew the back of one flapper across his eyes. }
-%\setbox1=\hbox{He tried to speak, but sobs choked his 
+%\setbox1=\hbox{He tried to speak, but sobs choked his
 %          voice. }
 \setbox0=\hbox{素甲鱼深深地叹息着，用一只手背抹着眼泪。}
 \setbox1=\hbox{他想说话，可是有好一阵子泣不成声。}
@@ -1093,11 +1094,11 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %up with other radicals, underbars, and overbars in a formula.
 %It is much like ^|\strut| (\xref \strut),
 %except that it adjusts itself to the different \minref{style}s
-%that can occur in math formulas.  
+%that can occur in math formulas.
 这个命令产生一个宽度为零的幻影公式，它的高度与深度与左圆括号是一致的。|\mathstrut| 实际上的定义是 `|\vphantom(|'。它主要用于使得根号、下横线和上横线能与公式中其它的根号、下横线和上横线成行排列。除能根据出现在数学公式中的不同\minref{样式} 自动调节以外，它与 ^|\strut|（\xref \strut）非常相似。
 \example
 $$\displaylines{
-\overline{a_1a_2} \land \overline{b_1b_2} 
+\overline{a_1a_2} \land \overline{b_1b_2}
 \quad{\rm versus}\quad \overline{a_1a_2\mathstrut}
   \land \overline{b_1b_2\mathstrut}\cr
 \sqrt{\epsilon} + \sqrt{\xi} \quad{\rm versus}\quad
@@ -1106,7 +1107,7 @@ $$\displaylines{
 \dproduces
 \kern 4pt
 $$\displaylines{
-\overline{a_1a_2} \land \overline{b_1b_2} 
+\overline{a_1a_2} \land \overline{b_1b_2}
 \quad{\rm versus}\quad \overline{a_1a_2\mathstrut}
   \land \overline{b_1b_2\mathstrut}\cr
 \sqrt{\epsilon} + \sqrt{\xi} \quad{\rm versus}\quad
@@ -1122,7 +1123,7 @@ $$\displaylines{
 \bix^^{phantoms}
 %This command produces an empty \minref{box}
 %having the same size and placement
-%that \<argument> would have were it typeset.  
+%that \<argument> would have were it typeset.
 %One use of |\phantom| is for reserving space for a symbol that for some
 %reason needs to be drawn in by hand.
 这个命令产生一个空的\minref{盒子}，它具有与假定被排版出来的 \<argument> 一样的大小与位置。因为某种原因为一个需要手工绘出的符号保留一定的空间是 |\phantom| 的用途之一。
@@ -1218,7 +1219,7 @@ $${\smash{r_m \brace r_n}\vphantom{r}} \Longrightarrow r$$
 \bix^^{boxes//underfull}
 \cts overfullrule {\param{dimen}}
 \explain
-%This parameter specifies the width of the rule 
+%This parameter specifies the width of the rule
 %that \TeX\ appends to an overfull \minref{hbox}.
 %\PlainTeX\ sets it to |5pt|.
 这个参数设定 \TeX\ 附加在一个过满的 \minref{hbox} 后的嵌线的宽度。\PlainTeX\ 将其设为 |5pt|。
@@ -1340,7 +1341,7 @@ Underfull \hbox (badness 5091) detected at line 4
 
 %These control sequences are
 %most useful after macro calls that might have inserted entities of
-%the indicated kinds. 
+%the indicated kinds.
 这些控制序列在可能插入指标类型的宏调用后是非常有用的。
 
 \example
@@ -1487,16 +1488,16 @@ one \a\a\hskip 2\lastkern three\par
 \cts cleaders {\<box or rule> \<skip command>}
 \cts xleaders {\<box or rule> \<skip command>}
 \explain
-%These commands produce \minref{leaders}, i.e., they fill a 
+%These commands produce \minref{leaders}, i.e., they fill a
 %horizontal or vertical space with
 %copies of a pattern \seeconcept{leaders}.
 %The \<box> or \<rule> specifies a leader,
 %i.e., a single copy of the pattern,
-%while the \<skip command> specifies a 
+%while the \<skip command> specifies a
 %window to be filled with a
 %row or a column of the leaders.
 %The pattern is repeated as many times as will fit into the window.
-%If \<skip command> is a horizontal skip, the window 
+%If \<skip command> is a horizontal skip, the window
 %contains a row of leaders and \TeX\ must be in a horizontal mode;
 %if \<skip command> is a vertical skip, the window
 %contains a column of leaders and \TeX\ must be in a vertical mode.
@@ -1574,10 +1575,10 @@ one \a\a\hskip 2\lastkern three\par
 \cts hrulefill {}
 \explain
 ^^{fill}
-%These commands respectively fill the enclosing horizontal space with 
+%These commands respectively fill the enclosing horizontal space with
 %a row of dots on the baseline and with
 %a horizontal line on the baseline.
-%It's usually a good idea to leave a space between 
+%It's usually a good idea to leave a space between
 %|\dotfill| or |\hrulefill|
 %and any text that precedes or follows it (see the example below).
 这些命令分别采用一行位于基线上的点和水平线填充封闭的水平空间。通常，在 |\dotfill| 或 |\hrulefill| 与任何其之前或之后的文字之间留一个空格是一个好的主意（参见下面的例子）。
@@ -1599,12 +1600,12 @@ one \a\a\hskip 2\lastkern three\par
 %left-pointing or right-pointing ^{arrows}.
 这些命令用向左或向右的^{箭头}来填充封闭的水平空间。
 \example
-\hbox to 3in{\vrule \rightarrowfill \ 3 in 
+\hbox to 3in{\vrule \rightarrowfill \ 3 in
              \leftarrowfill\vrule}
 |
 \produces
 \medskip
-\hbox to 3in{\vrule \rightarrowfill \ 3 in 
+\hbox to 3in{\vrule \rightarrowfill \ 3 in
         \leftarrowfill\vrule}
 \endexample
 
@@ -1624,12 +1625,12 @@ one \a\a\hskip 2\lastkern three\par
 \bix^^{alignments//commands for}
 %
 \ctspecial + {{\bt \<text>\thinspace\&\thinspace\<text>%
-   \thinspace\& $\cdots$ \\cr}} 
+   \thinspace\& $\cdots$ \\cr}}
 \ctsxrdef{@plus}
 \cts tabalign {}
 \explain
 %These commands begin a single line in a  tabbed \minref{alignment}.
-%The only difference between |\+| and |\tabalign| is that 
+%The only difference between |\+| and |\tabalign| is that
 %|\+| is an outer macro---you can't use it when \TeX\ is reading tokens at
 %high speed \seeconcept{outer}.
 在制表符\minref{排列}中，这些命令开始单独的一行。|\+| 与 |\tabalign| 之间唯一的不同在于 |\+| 是一个外部宏，当 \TeX\ 高速读取记号时，你不能使用它\seeconcept{outer}。
@@ -1694,7 +1695,7 @@ one \a\a\hskip 2\lastkern three\par
 %use this form you'll usually want to put material into the sample line that is
 %somewhat wider than the widest corresponding material in the alignment,
 %in order to produce space between the columns.
-%That's what we've done in the 
+%That's what we've done in the
 %example below.  The material following the last tab
 %stop is irrelevant, since \TeX\ does not need to position
 %anything at the place where the |\cr|~appears.
@@ -1770,7 +1771,7 @@ one \a\a\hskip 2\lastkern three\par
 %Each row consists of a sequence of column
 %entries, also separated by `|&|' and ended by |\cr|. Within
 %a template, `|#|' indicates where \TeX\ should insert the
-%corresponding text of a column entry. 
+%corresponding text of a column entry.
 %In contrast, |\settabs| uses a fixed implicit template of `|#|',
 %i.e., it just inserts the text as is.
 每一行由一系列列的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。在模板中，`|#|' 表示 \TeX\ 应该在一个列条目中插入相应文字的位置。与之相反，|\settabs| 使用 `|#|' 的固定隐式模板，即它只插入文字本身。
@@ -1848,7 +1849,7 @@ one \a\a\hskip 2\lastkern three\par
 %Each column consists of a sequence of ^{row}
 %entries, also separated by `|&|' and ended by |\cr|. Within
 %a template, `|#|' indicates where \TeX\ should insert the
-%corresponding text of a row entry. 
+%corresponding text of a row entry.
 每一列由一系列行的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。在模板中，`|#|' 表示 \TeX\ 应该在一个行条目中插入相应文字的位置。
 
 %\TeX\ typesets each row entry in internal vertical
@@ -1861,7 +1862,7 @@ one \a\a\hskip 2\lastkern three\par
 %in internal vertical mode.)
 %The usual paragraphing parameters apply in this case:
 %the row entry has an initial
-%indentation of |\parindent| (\xref\parindent) and 
+%indentation of |\parindent| (\xref\parindent) and
 %its lines have the
 %|\leftskip| and |\rightskip| (\xref\leftskip) \minref{glue}
 %appended to~them.
@@ -1991,7 +1992,7 @@ one \a\a\hskip 2\lastkern three\par
    以色列&耶路撒冷&新谢克尔&0.507\cr
    日本&东京&日元&0.0829\cr}
 \nextexample
-{\hsize=1.2in \parindent=0pt 
+{\hsize=1.2in \parindent=0pt
 \valign{(#)\strut&(#)\strut&(#)\strut&(#)\strut\cr
    bernaise&curry&hoisin&hollandaise\cr
    ketchup&\omit\strut{\bf MARINARA!!}&mayonnaise&mustard\cr
@@ -2158,11 +2159,11 @@ one \a\a\hskip 2\lastkern three\par
 \begindesc
 \cts tabskip {\param{glue}}
 \explain
-%This parameter specifies the amount of horizontal or vertical glue 
-%that \TeX\ puts between the 
+%This parameter specifies the amount of horizontal or vertical glue
+%that \TeX\ puts between the
 %columns of a horizontal alignment or between the
 %rows of a vertical alignment.
-%\TeX\ also puts the |\tabskip| glue 
+%\TeX\ also puts the |\tabskip| glue
 %to the left of the first column and to the right of the last column
 %of a horizontal alignment, and
 %above the first row
@@ -2252,14 +2253,14 @@ one \a\a\hskip 2\lastkern three\par
 无论什么时候，当 \TeX\ 遇到处于每个导言结尾处、水平排列的每行结尾处以及垂直排列的每列结尾处的|\cr| 时，它扩展 \<token list>。|\everycr| 只在 |\cr| 后扩展。因此，你可以通过向 |\everycr| 赋与导言、行、列相关列表，引导 \TeX\ 在导言、行或列的结尾处执行特定的命令。
 
 %The |\everycr| tokens shouldn't include any commands other than |\no!-align|.
-%That's because 
+%That's because
 %the |\everycr| tokens will reappear after the last
 %|\cr| of the alignment. A command other than
 %|\noalign| will then make \TeX\ think that it's starting a new
 %row or column.
 %\TeX\ will complain about a missing |\cr|, insert
 %a |\cr|, insert the |\everycr| tokens again, and repeat these actions
-%indefinitely. 
+%indefinitely.
 |\everycr| 的记号不应该包括 |\no!-align| 以外的任何命令。这是因为，|\everycr| 记号会出现在排列的最后一个 |\cr|。任何一个非 |\no!-align| 命令会导致 \TeX\ 认为它新开了一行或一列，因此，\TeX\ 会报怨丢失了 |\cr|，插入 |\cr|，再次插入 |\everycr| 记号，并且无限地重复这些动作。
 
 \example

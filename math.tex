@@ -1,22 +1,23 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 \input macros
-\chapter {數學公式命令}
+\chapter {数学公式命令}
 
 \bix^^{math}
 \chapterdef{math}
 
-這一章包括了排印數學公式所需要的命令.
-在 \headcit{命令描述}{cmddesc} 一節中, 給出了這章的慣例.
+这一章包括了排印数学公式所需要的命令.
+在 \headcit{命令描述}{cmddesc} 一节中, 给出了这章的惯例.
 
 \begindescriptions
 %==========================================================================
-\section {簡單公式排版}
+\section {简单公式排版}
 
 %==========================================================================
-\subsection {希臘字母}
+\subsection {希腊字母}
 
 \begindesc
 \bix^^{Greek letters}
@@ -63,37 +64,37 @@
 \ctsdisplay zeta {}
 \egroup
 \explain
-輸入這些命令可以排印出數學公式中的相應的希臘字母符號.
-你只能在數學模式中使用它們, 所以如在普通的文本中使用它們時,
-你必須把它們括在美元符號 (|$|) 內.
-\TeX\ 並不包含這些數學中使用的希臘字母所對應的正體字符的命令,
-不過你可以很方便地得到這些字符.
-比如說, 你可以在公式中使用 `|{\rm o}|' 來得到一個小寫的 ^{omicron} `o',
-又比如, 你可以使用 `|{\rm B}|' 得到大寫的 beta (`B').
+输入这些命令可以排印出数学公式中的相应的希腊字母符号.
+你只能在数学模式中使用它们, 所以如在普通的文本中使用它们时,
+你必须把它们括在美元符号 (|$|) 内.
+\TeX\ 并不包含这些数学中使用的希腊字母所对应的正体字符的命令,
+不过你可以很方便地得到这些字符.
+比如说, 你可以在公式中使用 `|{\rm o}|' 来得到一个小写的 ^{omicron} `o',
+又比如, 你可以使用 `|{\rm B}|' 得到大写的 beta (`B').
 
-注意不要混淆下面的符號:
+注意不要混淆下面的符号:
 \ulist \compact
 \li |\upsilon| (`$\upsilon$'), |{\rm v}| (`v'), 和 |\nu| (`$\nu$').
 \li |\varsigma| (`$\varsigma$') 和 |\zeta| (`$\zeta$').
 \endulist
 
-使用數學的意大利\minref{字體} (|\mit|) 可以得到斜體的大寫希臘字母.
+使用数学的意大利\minref{字体} (|\mit|) 可以得到斜体的大写希腊字母.
 
-在計算在希臘字母週圍插入多少的空白時, \TeX\ 把它們當作正常的符號.
+在计算在希腊字母周围插入多少的空白时, \TeX\ 把它们当作正常的符号.
 
 \example
-如果 $\rho$ 和 $\theta$ 都是正數, 那麼 $f(\theta)
+如果 $\rho$ 和 $\theta$ 都是正数, 那么 $f(\theta)
 -{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 |
 \produces
-如果 $\rho$ 和 $\theta$ 都是正數, 那麼 
+如果 $\rho$ 和 $\theta$ 都是正数, 那么
 $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \endexample
 \eix^^{Greek letters}
 \enddesc
 
 %==========================================================================
-\subsection {各種各樣的普通數學符號}
+\subsection {各种各样的普通数学符号}
 
 \begindesc
 \xrdef{specsyms}
@@ -120,7 +121,7 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \ctsdisplay nabla {}
 \ctsdisplay neg {}
 \ctsdisplay lnot {}
-\actdisplay ' @prime \ (上標點)
+\actdisplay ' @prime \ (上标点)
 \ctsdisplay prime {}
 \ctsdisplay partial {}
 \ctsdisplay surd {}
@@ -135,22 +136,22 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \egroup
 \explain
 ^^{music symbols} ^^{card suits}
-這些命令可以排印各種符號. 
-為了把它們和其它的符號, 比如關系符號等, 區分開來, 它們被稱為普通數學符號.
-你只能在數學模式中使用這些符號, 所以如果在普通的文本中使用, 你必須使用美元符號 (|$|) 把它們括起來.
+这些命令可以排印各种符号.
+为了把它们和其它的符号, 比如关系符号等, 区分开来, 它们被称为普通数学符号.
+你只能在数学模式中使用这些符号, 所以如果在普通的文本中使用, 你必须使用美元符号 (|$|) 把它们括起来.
 
-當你想在 `$i$' 或 `$j$' 上加上重音符號, 則需要使用 |\imath| 和 |\jmath| 命令來表示它們本身.
+当你想在 `$i$' 或 `$j$' 上加上重音符号, 则需要使用 |\imath| 和 |\jmath| 命令来表示它们本身.
 
-上標點符號 (|'|) 是一個 |\prime| 的上標的簡寫.  
-(|\prime| 本身可以排印一個很大的醜陋的撇號.)
+上标点符号 (|'|) 是一个 |\prime| 的上标的简写.
+(|\prime| 本身可以排印一个很大的丑陋的撇号.)
 
-|\!|| 和 ^|\Vert| 命令是等價的, 就像 ^|\neg| 和 ^|\lnot| 命令一樣.
-\margin{增加了 {\tt\\vert} 的解釋}
-|\vert| 符號可以排印出和 `|!||' 相同的效果.
+|\!|| 和 ^|\Vert| 命令是等价的, 就像 ^|\neg| 和 ^|\lnot| 命令一样.
+\margin{增加了 {\tt\\vert} 的解释}
+|\vert| 符号可以排印出和 `|!||' 相同的效果.
 \indexchar |
 
 由 |\backslash|, |\vert|, 和 |\Vert| 排印的命令叫做 \minref{分界符}.
-使用 ^|\bigm| 等 (\xref \bigm) 命令可以排印大號的這些字符.
+使用 ^|\bigm| 等 (\xref \bigm) 命令可以排印大号的这些字符.
 
 \example
 The Knave of $\heartsuit$s, he stole some tarts.
@@ -158,10 +159,10 @@ The Knave of $\heartsuit$s, he stole some tarts.
 \produces
 The Knave of $\heartsuit$s, he stole some tarts.
 \nextexample
-如 $\hat\imath < \hat\jmath$ 則 $i' \leq j^\prime$.
+如 $\hat\imath < \hat\jmath$ 则 $i' \leq j^\prime$.
 |
 \produces
-如 $\hat\imath < \hat\jmath$ 則 $i' \leq j^\prime$.
+如 $\hat\imath < \hat\jmath$ 则 $i' \leq j^\prime$.
 \nextexample
 $${{x-a}\over{x+a}}\biggm\backslash{{y-b}\over{y+b}}$$
 |
@@ -171,7 +172,7 @@ $${{x-a}\over{x+a}}\biggm\backslash{{y-b}\over{y+b}}$$
 \enddesc
 
 %==========================================================================
-\subsection {二元運算符}
+\subsection {二元运算符}
 
 \begindesc
 \bix^^{operations}
@@ -213,23 +214,23 @@ $${{x-a}\over{x+a}}\biggm\backslash{{y-b}\over{y+b}}$$
 \ctsdisplay wr {}
 \egroup
 \explain
-這些命令可以排印各種二元運算符. 
-二元運算符是 \TeX\ 的一種符號\minref{集}.
-\TeX\ 在不同的符號集週圍會插入不同的空白. 
-當 \TeX\ 需要在一個數學公式中間斷行時, 
-它會考慮在二元運算符後面進行斷行---不過僅在它出現在公式的最外層時, 而不是在一個組中.
+这些命令可以排印各种二元运算符.
+二元运算符是 \TeX\ 的一种符号\minref{集}.
+\TeX\ 在不同的符号集周围会插入不同的空白.
+当 \TeX\ 需要在一个数学公式中间断行时,
+它会考虑在二元运算符后面进行断行---不过仅在它出现在公式的最外层时, 而不是在一个组中.
 
-除了這些命令以外, \TeX\ 也把 `|+|' and `|-|' 作為二元運算符.
-它把 `|/|' 當作一個普通符號,  
-因為雖然事實上在數學中它是一個二元運算,
-但是它在週圍加入的空白更少時看上去更漂亮.
+除了这些命令以外, \TeX\ 也把 `|+|' and `|-|' 作为二元运算符.
+它把 `|/|' 当作一个普通符号,
+因为虽然事实上在数学中它是一个二元运算,
+但是它在周围加入的空白更少时看上去更漂亮.
 
 \example
-$$z = x \div y \quad \hbox{當且僅當} \quad
+$$z = x \div y \quad \hbox{当且仅当} \quad
 z \times y = x \;\hbox{且}\; y \neq 0$$
 |
 \dproduces
-$$z = x \div y \quad \hbox{當且僅當} \quad
+$$z = x \div y \quad \hbox{当且仅当} \quad
 z \times y = x \;\hbox{且}\; y \neq 0$$
 \endexample
 \enddesc
@@ -237,10 +238,10 @@ z \times y = x \;\hbox{且}\; y \neq 0$$
 \begindesc
 \ctspecial * \ctsxrdef{@star}
 \explain
-命令 |\*| 表示乘法符號 ($\times$), 也是一個二元符號.
-乘法符號在文本中的數學公式中出現時表現得和一個分詞符類似.
-這就是說, \TeX\ \emph{僅}會在公式該點需要斷行時排版 |\times| 符號.
-因為 \TeX\ 永遠不會在獨立公式中斷行, 所以 |\*| 在獨立公式 \minrefs{獨立公式} 中是沒有任何作用的.
+命令 |\*| 表示乘法符号 ($\times$), 也是一个二元符号.
+乘法符号在文本中的数学公式中出现时表现得和一个分词符类似.
+这就是说, \TeX\ \emph{仅}会在公式该点需要断行时排版 |\times| 符号.
+因为 \TeX\ 永远不会在独立公式中断行, 所以 |\*| 在独立公式 \minrefs{独立公式} 中是没有任何作用的.
 
 \example
 Let $c = a\*b$. In the case that $c=0$ or $c=1$, let
@@ -257,7 +258,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 \enddesc
 
 %==========================================================================
-\subsection {關系符號}
+\subsection {关系符号}
 
 \begindesc
 \xrdef {relations}
@@ -304,15 +305,15 @@ largest $q$})$ in the set of approximate $\tau$-values.
 \ctsdisplay sqsupseteq {}
 \egroup
 \explain
-這些命令可以排印各種關系符號.
-關系符號是 \TeX\ 的數學符號中的\minref{類}之一.
-\TeX\ 在不同的\minref{類}之間插入不同的空白長度.
-當 \TeX\ 需要在一個數學公式處斷行, \minrefs{斷行}
-它會考慮在一個關系符後進行斷行---不過僅在它出現在公式的最外層時, 而不是在一個組中.
+这些命令可以排印各种关系符号.
+关系符号是 \TeX\ 的数学符号中的\minref{类}之一.
+\TeX\ 在不同的\minref{类}之间插入不同的空白长度.
+当 \TeX\ 需要在一个数学公式处断行, \minrefs{断行}
+它会考虑在一个关系符后进行断行---不过仅在它出现在公式的最外层时, 而不是在一个组中.
 
-除了這裡列出的命令以外, \TeX\ 也把 `^|=|' 和``arrow'' 命令 (\xref{arrows}) 作為關系運算符.
+除了这里列出的命令以外, \TeX\ 也把 `^|=|' 和``arrow'' 命令 (\xref{arrows}) 作为关系运算符.
 
-一些關系符有多種命令表達方式, 你可以使用任何一個來排印它們:
+一些关系符有多种命令表达方式, 你可以使用任何一个来排印它们:
 \ulist \compact
 \li `$\ge$' (|\ge| 和 |\geq|).
 \li `$\le$' (|\le| 和 |\leq|).
@@ -321,7 +322,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 \endulist
 
 \xrdef{\not}
-在這些符號前加上 |\not|, 可以排印它們的非運算:
+在这些符号前加上 |\not|, 可以排印它们的非运算:
 
 \nobreak
 \threecolumns 21
@@ -351,11 +352,11 @@ largest $q$})$ in the set of approximate $\tau$-values.
 \egroup
 
 \example
-我們可以得到 $AB \perp AC$,且 
+我们可以得到 $AB \perp AC$,且
 $\triangle ABF \not\sim \triangle ACF$.
 |
 \produces
-我們可以得到 $AB \perp AC$,且 
+我们可以得到 $AB \perp AC$,且
 $\triangle ABF \not\sim \triangle ACF$.
 
 \eix^^{relations}
@@ -535,7 +536,7 @@ These commands set the names of various mathematical functions
 in roman type, as is customary.
 If you apply a superscript or subscript to one of these commands,
 \TeX\ will in most cases typeset it in the usual place.
-In display style, \TeX\ typesets superscripts and subscripts 
+In display style, \TeX\ typesets superscripts and subscripts
 on |\det|, |\gcd|, |\inf|, |\lim|, |\liminf|,
 |\limsup|, |\max|, |\min|, |\Pr|, and |\sup|
 as though they were limits,
@@ -579,7 +580,7 @@ $$x \equiv y+1 \pmod 2$$
 %==========================================================================
 \subsection {Large operators}
 
-\begindesc 
+\begindesc
 \bix^^{operators//large}
 \threecolumns 15
 \easy\ctsdoubledisplay bigcap {}
@@ -601,7 +602,7 @@ $$x \equiv y+1 \pmod 2$$
 \ctsdoubledisplay sum {}
 }
 \explain
-These commands produce various large operator symbols.  
+These commands produce various large operator symbols.
 \TeX\ produces the smaller size when it's in ^{text style}
 \minrefs{math mode} and the larger size when it's in ^{display style}.
 Operators are one of \TeX's \minref{class}es of math symbols.
@@ -644,15 +645,15 @@ When it's in text style, \TeX\ normally places limits after a large operator.
 This command tells \TeX\ to place
 limits above and below a large operator rather than after it.
 
-If you specify more than one of |\limits|, |\nolimits|, 
+If you specify more than one of |\limits|, |\nolimits|,
 and |\display!-limits|, the last command rules.
 
 \example
-Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least 
+Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least
 two elements.
 |
 \produces
-Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least 
+Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least
 two elements.
 \endexample
 \enddesc
@@ -668,7 +669,7 @@ places limits for |\int| after the operator in all cases.)
 This command tells \TeX\ to place
 limits after a large operator rather than above and below it.
 
-If you specify more than one of |\limits|, |\nolimits|, 
+If you specify more than one of |\limits|, |\nolimits|,
 and |\display!-limits|, the last command rules.
 
 \example
@@ -682,7 +683,7 @@ $$\bigcap\nolimits_{i=1}^Nq_i$$
 \begindesc
 \cts displaylimits {}
 \explain
-This command tells \TeX\ to 
+This command tells \TeX\ to
 follow its normal rules for placement of limits:
 \olist\compact
 \li Limits on ^|\int| are placed after the operator.
@@ -697,9 +698,9 @@ useful in \minref{macro} definitions.
 
 Note that \plainTeX\ defines ^|\int| as a macro that sets |\nolimits|,
 so |\int\displaylimits| in text style restores the |\limits|
-convention.  
+convention.
 
-If you specify more than one of |\limits|, |\nolimits|, 
+If you specify more than one of |\limits|, |\nolimits|,
 and |\display!-limits|, the last command rules.
 
 \example
@@ -801,15 +802,15 @@ name as shown in the examples of ^|\lim| and ^|\det| below.
 
 \example
 $x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
-   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad 
-   \int_0^\infty{f(x)\,dx}$ 
+   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
+   \int_0^\infty{f(x)\,dx}$
 $$\lim_{x\leftarrow0}f(x)\qquad\det^{z\in A}\qquad\sin^2t$$
 |
 \produces
 \secondprinting{\divide\abovedisplayskip by 2}
 $x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
-   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad 
-   \int_0^\infty{f(x)\,dx}$ 
+   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
+   \int_0^\infty{f(x)\,dx}$
 $$\lim_{x \leftarrow 0} f(x)\qquad
    \det^{z \in A}\qquad \sin^2 t$$
 
@@ -856,18 +857,18 @@ $t+{\scriptstyle t + {\scriptscriptstyle t}}$
 This command tells \TeX\ to typeset one of the subformulas
 \<math$_1$>, \<math$_2$>, \<math$_3$>, or \<math$_4$>, making its choice
 according to the current \minref{style}.
-That is, if \TeX\ is in 
+That is, if \TeX\ is in
 display style it sets the |\mathchoice| as \<math$_1$>; in text style it sets
 it as \<math$_2$>; in script style it sets it as \<math$_3$>;
 and in scriptscript style it sets it as \<math$_4$>.
 \example
 \def\mc{{\mathchoice{D}{T}{S}{SS}}}
-The strange formula $\mc_{\mc_\mc}$ illustrates a 
+The strange formula $\mc_{\mc_\mc}$ illustrates a
 mathchoice.
 |
 \produces
 \def\mc{{\mathchoice{D}{T}{S}{SS}}}
-The strange formula $\mc_{\mc_\mc}$ illustrates a 
+The strange formula $\mc_{\mc_\mc}$ illustrates a
 mathchoice.
 \endexample
 \enddesc
@@ -876,7 +877,7 @@ mathchoice.
 \cts mathpalette {\<argument$_1$> \<argument$_2$>}
 \explain
 ^^{math symbols}
-This command provides a convenient way of 
+This command provides a convenient way of
 producing a math construct that works in all four \minref{style}s.
 To use it, you'll normally need to define an additional macro,
 which we'll call |\build|.
@@ -891,7 +892,7 @@ command that selects the current style and |#2| being \<argument>.
 Thus, within the definition of |\build| you can typeset something
 in the current style by preceding it with `|#1|'.
 See \knuth{page~360} for examples of using |\mathpalette|
-and \knuth{page~151} for a further explanation of how it works. 
+and \knuth{page~151} for a further explanation of how it works.
 
 \eix^^{styles}
 \enddesc
@@ -971,7 +972,7 @@ These commands stack one subformula on top of another one.  We will explain how
 |\over| works, and then relate the other commands to it.
 
 |\over| is the command that you'd normally use to produce a fraction.
-^^{fractions//produced by \b\tt\\over\e} 
+^^{fractions//produced by \b\tt\\over\e}
 If you write something in one of the following forms:
 \csdisplay
 $$!fri\over!frii$$
@@ -1001,7 +1002,7 @@ in a single formula, \TeX\ wouldn't know how to group them.
 
 The other commands are similar to |\over|, with the following exceptions:
 \ulist\compact
-\li |\atop| leaves out the fraction bar. 
+\li |\atop| leaves out the fraction bar.
 \li |\above| provides a fraction bar of thickness \<dimen>.
 \li |\choose|
 leaves out the fraction bar and encloses the construct in parentheses.
@@ -1219,9 +1220,9 @@ $$\lgroup\dots\rgroup\qquad\bigg\lgroup\dots\bigg\rgroup$$
 These commands must be used together in the pattern:
 \display
 {{\bt \\left} \<delim$_1$> \<subformula> {\bt \\right} \<delim$_2$>}
-This construct causes \TeX\ to produce \<subformula>, 
+This construct causes \TeX\ to produce \<subformula>,
 enclosed in the \minref{delimiter}s \<delim$_1$> and \<delim$_2$>.
-The vertical size of the delimiter is adjusted to fit the 
+The vertical size of the delimiter is adjusted to fit the
 vertical size (height plus depth) of \<subformula>.  \<delim$_1$> and
 \<delim$_2$> need not correspond.
 For instance, you could use `|]|' as a left delimiter
@@ -1256,7 +1257,7 @@ You can use the |\delimiter| command instead of a character in any context
 where \TeX\ expects a delimiter (although the command is rarely used
 outside of a macro definition).
 Suppose that \<number> is the hexadecimal number $cs_1s_2s_3
-l_1l_2l_3$.  Then \TeX\ takes the delimiter to have 
+l_1l_2l_3$.  Then \TeX\ takes the delimiter to have
 \minref{class} $c$, small variant
 $s_1s_2s_3$, and large variant $l_1l_2l_3$.  Here $s_1s_2s_3$ indicates
 the math character found in position $s_2s_3$ of family $s_1$, and
@@ -1269,7 +1270,7 @@ used for ^|\mathcode| (\xref\mathcode).
 \enddesc
 
 
-\begindesc 
+\begindesc
 \margin{{\tt\\delcode} was explained in two places.  The
 combined explanation is now in `General operations'.}
 \cts delimiterfactor {\param{number}}
@@ -1294,7 +1295,7 @@ is exactly $1000$ then \TeX\ will try to make a delimiter at least as tall
 as the formula to which it is attached.
 See \knuth{page~152 and page~446 (Rule 19)}
 for the exact details of how \TeX\ uses these parameters.
-\PlainTeX\ sets |\delimiter!-factor| to $901$ and 
+\PlainTeX\ sets |\delimiter!-factor| to $901$ and
 |\delimiter!-shortfall| to |5pt|.
 \enddesc
 
@@ -1313,7 +1314,7 @@ and |\backslash| (\xref\vert).
 \cts bordermatrix
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
 \explain
-Each of these three commands produces a ^{matrix}.  
+Each of these three commands produces a ^{matrix}.
 The elements of each row of the input matrix
 are separated by `|&|' and each row in turn is ended
 by |\cr|.
@@ -1564,12 +1565,12 @@ You can also use the commands given in
 \headcit{Selecting fonts}{selfont} to change fonts in math mode.
 \example
 ${\cal XYZ} \quad
-{\mit AaBb\Gamma \Delta \Sigma} \quad 
+{\mit AaBb\Gamma \Delta \Sigma} \quad
 {\oldstyle 0123456789}$
 |
 \produces
 ${\cal XYZ} \quad
-{\mit AaBb\Gamma \Delta \Sigma} \quad 
+{\mit AaBb\Gamma \Delta \Sigma} \quad
 {\oldstyle 0123456789}$
 \endexample
 \enddesc
@@ -1603,7 +1604,7 @@ Outside of math mode, |\fam| has no effect.
 
 By assigning a value to
 |\fam| you can change the way that \TeX\ typesets ordinary
-characters such as variables.    
+characters such as variables.
 For instance, by setting |\fam| to |\ttfam|, you cause \TeX\ to typeset
 variables using a typewriter font.
 \PlainTeX\ defines |\tt| as a \minref{macro} that, among other things,
@@ -1670,7 +1671,7 @@ enlarged delimiter:
 \li |\bigm| produces a relation symbol.
 \endulist
 \noindent
-\TeX\ uses the class of a symbol in order to decide how much space to put 
+\TeX\ uses the class of a symbol in order to decide how much space to put
 around that symbol.
 
 These commands, unlike |\left| and |\right|,
@@ -1751,16 +1752,16 @@ $$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
 This command shifts the accent \<argument$_1$> by
 \<number> \minref{mathematical unit}s to the right of its normal position
 with respect to \<argu\-ment$_2$>.
-The most common use of this command is for 
+The most common use of this command is for
 modifying the position of an accent that's over
 another accent.
 \example
 $$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
-  \skew 4\tilde{\hat x}$$   
+  \skew 4\tilde{\hat x}$$
 |
 \dproduces
 $$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
-  \skew 4\tilde{\hat x}$$   
+  \skew 4\tilde{\hat x}$$
 \endexample
 \enddesc
 
@@ -1781,7 +1782,7 @@ If the value of |\skewchar| is not in the range $0$--$255$,
 
 Note that \<font> is a control sequence
 that names a font, not a \<font\-name> that names font files.
-Beware: 
+Beware:
 an assignment to |\skewchar| is \emph{not} undone at the end
 of a group.
 If you want to change |\skewchar| locally, you'll need to
@@ -1796,7 +1797,7 @@ When \TeX\ reads the metrics file
 for a font in response to a
 ^|\font| command, it sets the font's ^|\skewchar| to
 |\default!-skewchar|.
-If the value of |\default!-skewchar| is 
+If the value of |\default!-skewchar| is
 not in the range $0$--$255$, \TeX\ does not assign any
 skew characters by default.
 \PlainTeX\ sets |\defaultskewchar| to $-1$, and it's usually best
@@ -1829,12 +1830,12 @@ forms expand or shrink the material vertically as in the |\vbox| command
 
 \example
 $${n \choose k} \buildrel \rm def \over \equiv \>
-\vcenter{\hsize 1.5 in \noindent the number of 
+\vcenter{\hsize 1.5 in \noindent the number of
 combinations of $n$ things taken $k$ at a time}$$
 |
 \dproduces
 $${n \choose k} \buildrel \rm def \over \equiv \>
-\vcenter{\hsize 1.5 in \noindent the number of 
+\vcenter{\hsize 1.5 in \noindent the number of
 combinations of $n$ things taken $k$ at a time}$$
 \endexample
 \enddesc
@@ -1943,12 +1944,12 @@ $0\mskip 13mu 0 \quad {\scriptscriptstyle 0 \mskip 13mu 0}$
 \cts nonscript {}
 \explain
 When \TeX\ is currently typesetting in script or scriptscript
-\minref{style} and encounters this command 
+\minref{style} and encounters this command
 immediately in front of glue or a kern,
 it cancels the glue or kern.
 |\nonscript| has no effect in the other styles.
 
-This command provides a way of ``tightening up'' the spacing in 
+This command provides a way of ``tightening up'' the spacing in
 script and scriptscript styles, which generally are set in smaller type.
 It is of little use outside of macro definitions.
 \example
@@ -2004,7 +2005,7 @@ a math display.
 \TeX\ uses |\predisplaysize| to determine whether or not
 the display starts to
 the left of where the previous line ends, i.e., whether or not it visually
-overlaps the previous line.  
+overlaps the previous line.
 If there is overlap, it uses the |\abovedisplayskip| and
 |\belowdisplayskip| glue in setting the display;
 otherwise it uses the |\abovedisplay!-shortskip| and
@@ -2038,7 +2039,7 @@ See \knuth{pages~188--189} for a more detailed explanation of this parameter.
 \cts abovedisplayshortskip {\param{glue}}
 \explain
 This parameter specifies the amount of vertical glue that
-\TeX\ inserts before a math display 
+\TeX\ inserts before a math display
 when the display starts to
 the right of where the previous line ends, i.e., when it does not visually
 overlap the previous line.
@@ -2050,7 +2051,7 @@ See \knuth{pages~188--189} for a more detailed explanation of this parameter.
 \cts belowdisplayshortskip {\param{glue}}
 \explain
 This parameter specifies the amount of vertical glue that
-\TeX\ inserts after a display 
+\TeX\ inserts after a display
 when the display starts to
 the right of where the previous line ends, i.e., when it does not visually
 overlap the previous line.
@@ -2109,7 +2110,7 @@ after a subscript or superscript cancels this space.
 These commands tell \TeX\ to treat the construct that follows as belonging
 to a particular ^{class} (see \knuth{page~154} for the definition
 of the classes).  They are listed here in the order of the class numbers,
-from $0$ to $6$.  Their primary 
+from $0$ to $6$.  Their primary
 effect is to adjust the spacing around the construct
 to be whatever it is for the specified class.
 

@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -7,47 +8,47 @@
 
 \chapterdef{concepts}
 
-本書的這部分包含了使用 \TeX\ 時所需要瞭解的概念. 
-它包括我們在解釋命令時所使用的技術詞彙以及重點內容,
-這些內容並不適合放在本書的其它地方.
+本书的这部分包含了使用 \TeX\ 时所需要瞭解的概念.
+它包括我们在解释命令时所使用的技术词汇以及重点内容,
+这些内容并不适合放在本书的其它地方.
 
 
-這些概念使用英文字母順序進行排列,
-書背內頁包含了一份詳細的在此提及的概念列表, 以及他們被提及時所在的頁數.
-我們建議你把書背內頁復印下來, 放在旁邊,
-這樣你就能在遇到不熟悉的概念時馬上查找到它們.
-我們盡可能地使用和 \texbook\ 相一致的術語. \idxref{\texbook}
+这些概念使用英文字母顺序进行排列,
+书背内页包含了一份详细的在此提及的概念列表, 以及他们被提及时所在的页数.
+我们建议你把书背内页复印下来, 放在旁边,
+这样你就能在遇到不熟悉的概念时马上查找到它们.
+我们尽可能地使用和 \texbook\ 相一致的术语. \idxref{\texbook}
 
 \beginconcepts
 
-\conceptindex{活動字符 (active characters)}
-\concept {活動字符 (active character)}
+\conceptindex{活动字符 (active characters)}
+\concept {活动字符 (active character)}
 
-一個\defterm{活動字符}是一個有定義的\refterm{字符}.
-比如一個活動字符可能表示著一個宏定義.
+一个\defterm{活动字符}是一个有定义的\refterm{字符}.
+比如一个活动字符可能表示着一个宏定义.
 ^^{macros//named by active characters}
-你可以把活動字符理解為一種控製序列. 
-當 \TeX\ 碰到了一個活動字符, 它就執行這個字符所表示的定義.
-如果 \TeX\ 碰到的活動字符並沒有表示一個定義, 
-則它會報錯說這是一個沒有定義的控製序列.
+你可以把活动字符理解为一种控制序列.
+当 \TeX\ 碰到了一个活动字符, 它就执行这个字符所表示的定义.
+如果 \TeX\ 碰到的活动字符并没有表示一个定义,
+则它会报错说这是一个没有定义的控制序列.
 
 
-一個活動字符的\refterm{類碼}為 $13$ (^|\active|的值).
-當你定義一個活動字符時, 
-你必須先使用 ^|\catcode| 命令 \ctsref{\catcode} 來使這個字符活動, 
-然後再使用類似 |\def|, |\let| 或者 |\chardef| 之類的命令指定這個字符的定義.
-定義活動字符和定義 \refterm{控製序列} 所使用的方法是相同的.
+一个活动字符的\refterm{类码}为 $13$ (^|\active|的值).
+当你定义一个活动字符时,
+你必须先使用 ^|\catcode| 命令 \ctsref{\catcode} 来使这个字符活动,
+然后再使用类似 |\def|, |\let| 或者 |\chardef| 之类的命令指定这个字符的定义.
+定义活动字符和定义 \refterm{控制序列} 所使用的方法是相同的.
 ^^{category codes//of active characters}
-如因你嘗試先對字符指定定義後把它設置成活動的, 
-\TeX\ 會報錯說這是一個不明的控製序列.
+如因你尝试先对字符指定定义后把它设置成活动的,
+\TeX\ 会报错说这是一个不明的控制序列.
 
-比如, 在 \plainTeX\ 中, 波浪號 (|~|) 被定義成一個活動字符.
-它可以在所連接的兩個單詞當中產生一個空格, 並且不讓 \TeX\ 把這個空格轉為 \refterm{斷行}. \refterm{\PlainTeX:\plainTeX} 通過以下方式來定義 `|~|':
+比如, 在 \plainTeX\ 中, 波浪号 (|~|) 被定义成一个活动字符.
+它可以在所连接的两个单词当中产生一个空格, 并且不让 \TeX\ 把这个空格转为 \refterm{断行}. \refterm{\PlainTeX:\plainTeX} 通过以下方式来定义 `|~|':
 
 \csdisplay
 \catcode `~ = \active \def~{\penalty10000\!visiblespace}
 |
-(這裡的 |\penalty| 可以阻止斷行, `|\!visiblespace|' 可以插入一個空格.)
+(这里的 |\penalty| 可以阻止断行, `|\!visiblespace|' 可以插入一个空格.)
 \endconcept
 
 
@@ -55,13 +56,13 @@
 \concept 排列 (alignment)
 
 \bix^^{tables}
-一個排列是一個把素材有序排印的結構, 比如一張有行有列的表格.
-當你需要構成一個排列時, 你要 (a)~描述行和列的布局, 並且 (b)~告訴 \TeX\ 插在行或者列中的內容. 
-表排列和水平排列是由一系列的行組成; 垂直排列則由一系列的列組成.
-我們首先講述表排列和水平排列, 然後簡要地介紹一下垂直排列.
+一个排列是一个把素材有序排印的结构, 比如一张有行有列的表格.
+当你需要构成一个排列时, 你要 (a)~描述行和列的布局, 并且 (b)~告诉 \TeX\ 插在行或者列中的内容.
+表排列和水平排列是由一系列的行组成; 垂直排列则由一系列的列组成.
+我们首先讲述表排列和水平排列, 然后简要地介绍一下垂直排列.
 
-表排列是在 \plainTeX\ 中定義的. 它很簡單, 因此不如水平排列那樣靈活.
-表排列和水平排列的主要區別在於你如何定義它們的佈局.
+表排列是在 \plainTeX\ 中定义的. 它很简单, 因此不如水平排列那样灵活.
+表排列和水平排列的主要区别在于你如何定义它们的布局.
 
 \bix^^|\settabs|
 \bix\ctsidxref{+}
@@ -77,7 +78,7 @@ Adjacent entries in a row are separated by an ampersand (|&|).
 \xrdef{@and}
 \ttidxref{&}
 The end of a row is indicated by ^|\cr| after its
-last entry. 
+last entry.
 If a row has fewer entries than there are columns in the alignment,
 \TeX\ effectively fills out the row with blank entries.
 
@@ -155,7 +156,7 @@ left or right justifying a column, or setting a column in a particular
 you omit the |\+| at the beginning of each row.
 As before, entries are separated by |&| and the end of the row
 is indicated by |\cr|.
-\TeX\ treats each entry as a 
+\TeX\ treats each entry as a
 \refterm{group}, so any
 font-setting command or other \refterm{assignment}
 in a column template is in effect only for the entries in that column.
@@ -190,8 +191,8 @@ For example, the horizontal alignment:
   Dormouse&muffin&middle\cr
   Hatter&tea&right\cr}
 }%
-\noindent The ^|\tabskip| \ctsref{\tabskip} in this example 
-tells \TeX\ to insert |2pc| of 
+\noindent The ^|\tabskip| \ctsref{\tabskip} in this example
+tells \TeX\ to insert |2pc| of
 \refterm{glue} between the columns.
 The ^|\noalign| \ctsref{\noalign} commands tell \TeX\ to insert
 \refterm{vertical mode} material between two rows.
@@ -226,7 +227,7 @@ and columns are interchanged.  For example, the vertical alignment:
   seven&eight&nine\cr
   ten&eleven\cr}}
 }
-The ^|\strut| commands \ctsref{\strut} 
+The ^|\strut| commands \ctsref{\strut}
 in the template are necessary to get the entries in each row
 to line up properly, i.e., to have a common \refterm{baseline},
 and to keep the distance between baselines uniform.
@@ -279,8 +280,8 @@ Each group contains a primitive command followed by its arguments, if any.
 Most of the commands are of the ``typeset this character'' variety,
 so their groups consist of just one token.
 Obeying the instructions given by the commands,
-\TeX's stomach assembles larger and larger 
-units, starting with 
+\TeX's stomach assembles larger and larger
+units, starting with
 characters and ending with pages,
 and passes the pages to \TeX's intestines.
 ^^{pages//assembled in \TeX's stomach}
@@ -289,22 +290,22 @@ and passes the pages to \TeX's intestines.
 i.e., breaking each paragraph into a sequence of lines---%
 and of \refterm{page break}ing---i.e., breaking a continuous sequence of lines
 and other vertical mode material
-into pages. 
+into pages.
 
 \li Using its ``\pix^{intestines}'', \TeX\ transforms the pages produced by its
 stomach into a form intended for processing
-by other programs.  It then sends the transformed output to the 
+by other programs.  It then sends the transformed output to the
 \dvifile.
 ^^{\dvifile//created by \TeX's intestines}
 
 \endulist
 
 Most of the time you can think of the processes that take place in \TeX's
-eyes, mouth, gullet, stomach, and intestines 
-as happening one after the other.  But the 
+eyes, mouth, gullet, stomach, and intestines
+as happening one after the other.  But the
 truth of the matter is that commands executed in \TeX's stomach can
 influence the earlier stages of digestion.  For instance, when \TeX's stomach
-encounters the |\input| command \ctsref{\input}, 
+encounters the |\input| command \ctsref{\input},
 its eyes start reading from a different
 file; when \TeX's stomach encounters a |\catcode| command
  \ctsref{\catcode} specifying a category code
@@ -329,7 +330,7 @@ An \defterm{argument} contains text that is passed to a
 \refterm{command}.
 The arguments of a command complete the description of what
 the command is supposed to do.
-The command can either be a \refterm{primitive} command or a 
+The command can either be a \refterm{primitive} command or a
 \refterm{macro}.
 
 Each primitive command ^^{primitive//command}
@@ -374,7 +375,7 @@ lies in the way that \TeX\ decides where the argument ends.
 \li A delimited argument consists of the tokens
 from the start of the argument up to, but not including, the
 particular sequence of tokens that serves as the delimiter for that argument.
-The delimiter is specified in the macro definition.  Thus you 
+The delimiter is specified in the macro definition.  Thus you
 supply a delimited argument to a macro by writing the argument itself
 followed by the delimiter.  A delimited argument can be empty, i.e., have
 no text at all in it.  Any braces in a delimited argument must be paired
@@ -392,7 +393,7 @@ also complain if you put in too many left braces, but you'll probably
 get \emph{that} complaint long after the place where you intended to
 end the argument (see \xref{mismatched}).
 \endulist
-\noindent 
+\noindent
 See \conceptcit{macro} for more information
 about parameters and arguments.  You'll find the precise rules pertaining
 to delimited and undelimited arguments in \knuth{pages~203--204}.
@@ -511,12 +512,12 @@ in order to evaluate the different ways of breaking the paragraph into lines.
 During this evaluation it associates ``demerits'' with each potential line.
 The badness increases the number of \refterm{demerits}.
 \TeX\ then
-breaks the paragraph into lines in a way that minimizes the 
+breaks the paragraph into lines in a way that minimizes the
 total demerits for the paragraph.
 Most
 often \TeX\ arranges the paragraph in a way that minimizes the badness of the
 worst line.  See \knuth{pages~97--98} for the details of how \TeX\
-breaks a paragraph into lines.  
+breaks a paragraph into lines.
 \endolist
 
 \TeX's procedure for assembling a sequence of lines and other vertical
@@ -525,7 +526,7 @@ However, assembling pages is
 not as complicated because \TeX\ only considers one page at a time
 when it looks for page breaks.
 Thus the only decision it must make is where to end the current page.
-In contrast, when \TeX\ is choosing line breaks it 
+In contrast, when \TeX\ is choosing line breaks it
 considers several of them simultaneously.
 (Most word processors choose line breaks one at a time,
 and thus don't do as good a job at it as \TeX\ does.)
@@ -543,7 +544,7 @@ across the box.
 When \TeX\ is
 assembling the boxes of a \refterm{horizontal list} into a larger box,
 it lines up the boxes in the list so that their baselines coincide.
-As an analogy, think of writing on a pad of ruled paper.  Each letter 
+As an analogy, think of writing on a pad of ruled paper.  Each letter
 that you write has
 an implicit baseline.
 In order to line up the letters horizontally,
@@ -570,7 +571,7 @@ somewhere in the middle.
 \TeX\ carries out most of its box-building activities implicitly as it
 constructs paragraphs and pages.
 You can construct boxes explicitly
-using a number of \TeX\ \refterm{commands}, notably 
+using a number of \TeX\ \refterm{commands}, notably
 ^|\hbox| \ctsref{\hbox},
 ^|\vbox| \ctsref{\vbox}, and
 ^|\vtop| \ctsref{\vtop}.
@@ -619,9 +620,9 @@ like this:
 
 ^^{baselines}
 The \refterm{baseline} is like one of
-the light guidelines on a pad of ruled paper.  
+the light guidelines on a pad of ruled paper.
 The boxes for letters such as `g'
-extend below the baseline; the boxes for letters such as `h' don't. 
+extend below the baseline; the boxes for letters such as `h' don't.
 The height of a box is the distance that the box extends above its
 baseline, while its depth is the distance that it extends below its
 baseline. \bix^^{reference point}
@@ -635,7 +636,7 @@ one by one from left to right.
 Each box in the list is placed so that its baseline coincides with the
 baseline of $H$\kern-2pt,
 i.e., the component boxes are lined up horizontally.%
-\footnote{If a box is moved up or down with ^|\raise| or 
+\footnote{If a box is moved up or down with ^|\raise| or
 ^|\lower|, \TeX\ uses its reference point before the move when
 placing it.}
 The height of $H$ is the
@@ -669,7 +670,7 @@ the vertical extent of $V$ into a height and a depth.
 Choosing the reference point of $V$ determines that partition.
 \ulist
 \li For |\vbox|, \TeX\ places the reference point on a horizontal line
-with the reference point of the last component box 
+with the reference point of the last component box
 or rule of \Vcomma, except
 that if the last box (or rule) is followed by glue or a kern, \TeX\ places the
 reference point at the very bottom of \Vperiod.%
@@ -688,7 +689,7 @@ Roughly speaking, then, |\vbox| puts the reference point near the bottom
 of the vbox and |\vtop| puts it near the top.
 When you want to align a
 row of vboxes so that their tops line up horizontally,
-you should usually use |\vtop| rather than |\vbox|. 
+you should usually use |\vtop| rather than |\vbox|.
 See \knuth{pages~78 and 80--81} for the
 details of how \TeX\ builds vboxes.
 \eix^^|\vbox|
@@ -705,7 +706,7 @@ You can save a box in a box \refterm{register} and retrieve it later.
 Before using a box register,
 ^^{box registers}
 you should reserve it and give it a name
-with the ^|\newbox| command \ctsref{\@newbox}.  See 
+with the ^|\newbox| command \ctsref{\@newbox}.  See
 \conceptcit{register} for more information about box
 registers.
 \endconcept
@@ -727,12 +728,12 @@ category codes, but they become important when you are trying to achieve
 special effects.
 
 Category codes apply only to characters that \TeX\ reads from input
-files.  Once a character has gotten past \TeX's ^{gullet} 
+files.  Once a character has gotten past \TeX's ^{gullet}
 \seeconcept{\anatomy} and been interpreted, its category code no
 longer matters.  A character that you produce with the ^|\char| command
 \ctsref{\char} does not have a category code because |\char|
 is an instruction to \TeX\ to produce a certain character in a certain
-\refterm{font}.  For instance, the ^{\ascii} code for `|\|' 
+\refterm{font}.  For instance, the ^{\ascii} code for `|\|'
 (the usual escape character) is $92$.  If
 you type `|\char92 grok|', it is \emph{not} equivalent to |\grok|.
 Instead it tells \TeX\ to
@@ -786,16 +787,16 @@ together with the characters in each category:
    \ttidxref{_//category code of} \cr
 9&Ignored character  \quad |^^@| \tequiv \ascii\ \asciichar{null}
   ^^{ignored characters} \indexchar ^^@ \cr
-10&Space  \quad \visiblespace\ and |^^I| \tequiv \ascii\ 
+10&Space  \quad \visiblespace\ and |^^I| \tequiv \ascii\
   \asciichar{horizontal\ tab}
   ^^{horizontal tab}
   ^^{space characters//category code of} \indexchar ^^I
   {\recat!ttidxref[ ]]
   \cr
 11&Letter  \quad |A| \dots |Z| and |a| \dots |z| ^^{letter}\cr
-12&Other character \quad (everything not listed above or below) 
+12&Other character \quad (everything not listed above or below)
   ^^{other characters}\cr
-13&Active character  \quad |~| and |^^L| \tequiv\ascii\ \asciichar{form\ feed} 
+13&Active character  \quad |~| and |^^L| \tequiv\ascii\ \asciichar{form\ feed}
    ^^{active characters} ^^{form feed} \indexchar ~ \indexchar ^^L \cr
 14&Comment character  \quad |%| ^^{comments}
    {\recat!ttidxref[%//category code of]]
@@ -819,10 +820,10 @@ beginning-of-group and end-of-group characters equivalent to
 the left and right brace characters.  With these definitions `|[a b]|'
 is a valid group, and so are \hbox{`|[a b}|'} and~\hbox{`|{a b]|'}.
 
-The characters in categories $11$ (letter) and $12$ 
+The characters in categories $11$ (letter) and $12$
 (other character) act as \refterm{commands:command}
 that mean
-``produce a \refterm{box} containing this character 
+``produce a \refterm{box} containing this character
 typeset in the current font''.
 The only distinction between letters and ``other'' characters is
 that letters can appear in \refterm{control word}s but
@@ -833,10 +834,10 @@ all by itself.  \TeX\ complains if it encounters an active character that
 doesn't have a definition associated with it.
 ^^{active characters}
 
-If \TeX\ encounters an ^{invalid character} (category $15$) 
-in your input, it will complain about it. 
+If \TeX\ encounters an ^{invalid character} (category $15$)
+in your input, it will complain about it.
 
-The `|^^K|' and `|^^A|' characters have been included in categories 
+The `|^^K|' and `|^^A|' characters have been included in categories
 $8$ (subscript) and $9$ (superscript), even though these meanings
 don't follow the standard \refterm{\ascii} interpretation.
 That's because some keyboards, notably some at Stanford
@@ -863,17 +864,17 @@ This bit of \TeX\ code produces `\$' in the typeset output.  When
 it's looking for the end of a control sequence name.  Since
 the `|$|' isn't yet a letter, it marks the end of `|\foo|'.  Next,
 \TeX\ expands the `|\foo|' macro and changes the category code of `|$|'
-to $11$ (letter).  Then \TeX\ reads the `|$|' ``for real''.  Since 
+to $11$ (letter).  Then \TeX\ reads the `|$|' ``for real''.  Since
 `|$|' is now a letter, \TeX\ produces a box
 containing the `|$|' character in the current font.
 When \TeX\ sees the third line, it treats `|$|' as a letter and thus
 considers it to be part of the control sequence name.
 As a result it complains about an undefined control sequence |\foo$|.
- 
+
 \TeX\ behaves this way even when the terminating character is an
 end of line.  For example, suppose that the macro |\fum| activates the
 end-of-line character.  Then if |\fum| appears on a line $\ell$ by
-itself, \TeX\ will first interpret the end of line of $\ell$ as 
+itself, \TeX\ will first interpret the end of line of $\ell$ as
 the end of the |\fum| control sequence and then will \emph{reinterpret}
 the end of line of $\ell$ as an active character.
 \endconcept
@@ -949,11 +950,11 @@ notation you'll find it handy to have a table of \ascii\ codes.
 
 An output character is a character to be typeset.
 A command for producing an output character has the meaning
-``Produce a \refterm{box} containing 
+``Produce a \refterm{box} containing
 character number $n$ from the current \refterm{font}'',
 where $n$ is determined by the command.
 \TeX\ produces your typeset document by combining such boxes with
-other typographical \hbox{elements} and arranging them 
+other typographical \hbox{elements} and arranging them
 on the page.
 
 An input character whose category code is $11$ (^{letter}) or $12$ (other)
@@ -1000,7 +1001,7 @@ A command can be invoked by a
 \refterm{control sequence}, by an \refterm{active character}, or by an
 ordinary character.  It might seem odd that \TeX\ treats an ordinary
 character as a command, but in fact that's what it does:
-when \TeX\ sees 
+when \TeX\ sees
 an ordinary character
 it constructs a \refterm{box} containing that character typeset in
 the current font.
@@ -1017,7 +1018,7 @@ without specifying how far it is supposed to skip.
 The tokens in the arguments to a command are not themselves considered
 to be commands.
 
-Some examples of different kinds of \TeX\ commands are: 
+Some examples of different kinds of \TeX\ commands are:
 \ulist\compact
 \li Ordinary characters, such as `|W|', which instructs \TeX\
 to produce a box containing a typeset `W'
@@ -1037,7 +1038,7 @@ such as |\bf|, which begins boldface type
 \concept {conditional test}
 
 A \defterm{conditional test} is a command that tests whether or not a certain
-condition is true and 
+condition is true and
 causes \TeX\ either to expand or to skip some text, depending on
 the outcome.
 The general form of a conditional test is either:
@@ -1078,7 +1079,7 @@ A control sequence takes one of two forms:
 ^^{control words}
 The control
 word ends when \TeX\ sees a nonletter.  For instance, when \TeX\ reads
-`\hbox{|\hfill!visiblespace,!visiblespace!.the|}', it sees six 
+`\hbox{|\hfill!visiblespace,!visiblespace!.the|}', it sees six
 \refterm{tokens:token}:
 the control sequence `|\hfill|', comma, space, `|t|', `|h|', `|e|'.  The
 space after `|\hfill|' ends the control sequence and
@@ -1098,7 +1099,7 @@ The character after a control symbol is never absorbed by
 the control symbol.
 \endulist
 \noindent See \xrefpg{spaces} for more information about spaces after control
-sequences. 
+sequences.
 
 \TeX\ provides a great many predefined control sequences.  The
 \refterm{primitive} control sequences are built into the \TeX\ computer
@@ -1112,7 +1113,7 @@ You can augment the predefined control sequences with ones of your own,
 using commands such as ^|\def| and ^|\let| to define them.
 \chapterref{eplain} of this book contains a
 collection of control sequence definitions that you may find
-useful.  In addition, your computing facility may 
+useful.  In addition, your computing facility may
 be able to provide a collection of
 locally developed \TeX\ macros.
 \endconcept
@@ -1128,8 +1129,8 @@ letter---even a space or end of line.
 \endconcept
 
 
-\conceptindex{control words} 
-\concept{control word} 
+\conceptindex{control words}
+\concept{control word}
 
 A \defterm{control word} is a \refterm{control sequence} that consists
 of an \refterm{escape character} followed by one or more
@@ -1159,7 +1160,7 @@ its size according
 to the vertical size (\refterm{height} plus \refterm{depth})
 of the subformula.
 However, \TeX\ performs the adjustment only if the delimiter
-appears in a ``delimiter context'', namely, as an argument to 
+appears in a ``delimiter context'', namely, as an argument to
 one of the commands ^|\left|,
 ^|\right|,
 |\over!-with!-delims|,
@@ -1193,7 +1194,7 @@ $$({a \over b})$$
 you'll get:
 $$({a \over b})$$
 Since the parentheses aren't in a delimiter context,
-they are \emph{not} enlarged.  
+they are \emph{not} enlarged.
 
 Delimiters come in pairs:
 an opening delimiter at the left of the subformula
@@ -1255,7 +1256,7 @@ A delimiter can belong to any class.
 ^^{class//of a delimiter}
 For a delimiter that you enlarge with
 |\bigl|, |\bigr|, etc., the class is determined by the command:
-``opener'' for |l|-commands, ``closer'' for |r|-commands, 
+``opener'' for |l|-commands, ``closer'' for |r|-commands,
 ``relation'' for |m|-commands, and ``ordinary symbol'' for |g|-commands,
 e.g., |\Big|.
 
@@ -1295,8 +1296,8 @@ In essence the search works like this.  The delimiter code specifies a
 providing a \refterm{font} position and a font \refterm{family} for each
 (see \xref\delcode).
 Using this information, \TeX\ can find (or construct)
-larger and larger versions of the delimiter.  \TeX\ first tries 
-different sizes (from small to large) 
+larger and larger versions of the delimiter.  \TeX\ first tries
+different sizes (from small to large)
 of the ``small'' character in the ``small'' font
 and then
 different sizes (also from small to large)
@@ -1308,7 +1309,7 @@ It's possible that
 the small character, the large character, or both have been left unspecified
 (indicated by a zero in the appropriate part of the delimiter code).
 If only one character
-has been specified, \TeX\ uses that one. If neither has been specified, 
+has been specified, \TeX\ uses that one. If neither has been specified,
 it replaces the delimiter by a space of width ^|\nulldelimiterspace|.
 \eix^^{delimiter codes}
 
@@ -1327,7 +1328,7 @@ and by \refterm{penalties:penalty} associated with the line.
 total demerits for the paragraph, which it computes by adding up the demerits
 for the individual lines.
 See \knuth{pages~97--98} for the details of how \TeX\
-breaks a paragraph into lines.  
+breaks a paragraph into lines.
 \TeX\ does not use demerits when it's choosing page breaks; instead, it uses
 a similar measure known as the ``cost'' of a particular page break.
 \endconcept
@@ -1336,7 +1337,7 @@ a similar measure known as the ``cost'' of a particular page break.
 
 ^^{boxes//depth of}
 The \defterm{depth} of a \refterm{box} is the distance that the box extends
-below its \refterm{baseline}. 
+below its \refterm{baseline}.
 \endconcept
 
 
@@ -1375,12 +1376,12 @@ about the width of the letter `M' in the font. Finally,
 \TeX\ provides three ``infinite'' units of measure: `^|fil|', `^|fill|', and
 `^|filll|', in increasing order of~strength.
 
-A dimension is written as a ^{factor}, i.e, a multiplier, 
+A dimension is written as a ^{factor}, i.e, a multiplier,
 followed by a unit of measure.
 ^^{units of measure}
 The factor can be either a whole \refterm{number} or
 a \refterm{decimal constant} containing a decimal point
-or decimal comma.  
+or decimal comma.
 The factor can be preceded by a plus or minus sign, so a dimension
 can be positive or negative.
 ^^{dimensions//negative}
@@ -1396,7 +1397,7 @@ The last of these represents a first-order infinite distance.
 
 An infinite distance outweighs any finite distance or any weaker infinite
 distance.  If you add |10in| to |.001fil|, you get |.001fil|; if you add
-|2fil| to |-1fill| you get |-1fill|; and so forth. 
+|2fil| to |-1fill| you get |-1fill|; and so forth.
 \TeX\ accepts infinite distances
 only when you are specifying the \refterm{stretch} and \refterm{shrink}
 of \refterm{glue}.
@@ -1417,7 +1418,7 @@ produces a kern of $8$ points whatever the magnification.
 \concept {display math}
 
 The term \defterm{display math} refers to a math formula that \TeX\
-places on a line by itself with extra space above and below 
+places on a line by itself with extra space above and below
 so as to set it off from the surrounding text.
 A display math formula is enclosed by `|$$|'s.
 \ttidxref{$$}
@@ -1435,7 +1436,7 @@ by reassigning the category codes of $c_1$ and $c_2$
 with the ^|\catcode| command \ctsref{\catcode}.
 You can also define additional escape characters similarly.
 If you want to typeset material containing literal escape characters, you must
-either 
+either
 (a) define a control sequence that stands for the printed escape character or
 (b) temporarily
 disable the escape character by changing its category code, using the
@@ -1510,7 +1511,7 @@ on the command line when
 you invoke \TeX---is a source file, and so is any file that you call for
 with an ^|\input| command \ctsref \input.
 
-\li A ``^{result file}'' is one that contains the results of 
+\li A ``^{result file}'' is one that contains the results of
 running \TeX.  A \TeX\ run creates two result files: the
 \dvifile\ and the log file.
 ^^{\dvifile//as a result file}
@@ -1528,9 +1529,9 @@ particular implementations of \TeX\ are free to change it.}
 command \ctsref{\read} you need to associate the file with an input stream.
 ^^{input streams//reading with \b\tt\\read\e}
 You can have up to $16$ input streams active
-at once, numbered $0$--$15$.  
+at once, numbered $0$--$15$.
 The |\read| command reads a single line and makes it the value of a
-designated \refterm{control sequence}, so reading with 
+designated \refterm{control sequence}, so reading with
 |\read| is very different from reading with ^|\input| (which brings in an
 entire file).
 \TeX\ takes any input stream number not between
@@ -1543,7 +1544,7 @@ with an output stream.
 ^^|\write//output stream for|
 ^^{output streams}
 You can have up to $16$ output streams active
-at once, numbered $0$--$15$.  
+at once, numbered $0$--$15$.
 Input and output streams are independent.
 Anything sent to an output stream with a negative number goes to the log
 file; anything sent to an output stream with a number greater than $15$
@@ -1592,7 +1593,7 @@ on an output stream immediately by preceding the action command with
 \conceptindex{file names}
 \concept {file name}
 
-A \defterm{file name} names a 
+A \defterm{file name} names a
 \refterm{file} that is known to the ^{operating system}
 that in turn
 supervises your \TeX\ run.  The syntax of a file name does \emph{not}
@@ -1600,7 +1601,7 @@ follow the usual rules of \TeX\ syntax, and in fact it is different
 in different implementations of \TeX.
 In particular, most \TeX\ implementations consider a file name to be
 terminated by a blank or an end of line.  Thus \TeX\ is likely to
-misinterpret `|{\input chapter2}|' 
+misinterpret `|{\input chapter2}|'
 by taking the right brace as part of the file name.
 As a general rule, you should follow a file name by a blank or the
 end of the line as in `|{\input chapter2!visiblespace}|'.
@@ -1657,7 +1658,7 @@ You name and load a font as a single operation, using a
 command such as `|\font\twelvebf=cmbx12|'.  Here `|\twelvebf|' is the
 control sequence that you use to name the font
 and `|cmbx12|' identifies the font metrics file
-|cmbx12.tfm| 
+|cmbx12.tfm|
 in your computer's file system.
 You then can start to use the font by typing
 `|\twelvebf|'.  After that, the font will be in effect until
@@ -1673,7 +1674,7 @@ text `|white rabbits like carrots|'.
 
 You can use \TeX\ with fonts other than
 Computer Modern (look at the example on \xrefpg{palatino} and
-at the page headers). 
+at the page headers).
 The files for such fonts need to be
 installed in your computer's file system in a place where \TeX\ can find
 them.  \TeX\ and its companion programs generally need two files for each font:
@@ -1738,7 +1739,7 @@ The image contains a complete record
 of the definitions (of \refterm{fonts:font}, \refterm{macros:macro}, etc.)
 that were present when the dump took place.
 By using ^|virtex|, a special ``virgin'' form of \TeX,
-you can then reload the format file at high speed and 
+you can then reload the format file at high speed and
 continue in the same state that \TeX\ was in at the time of the dump.
 The advantage of a format file over an ordinary input
 file containing the same information is that \TeX\ can load it much
@@ -1751,7 +1752,7 @@ Neither |virtex| nor |initex| has any
 facilities other than the primitives built into the
 \TeX\ program itself.
 
-A ^{preloaded} form of \TeX\ is one that has a format file already 
+A ^{preloaded} form of \TeX\ is one that has a format file already
 loaded and is ready to accept user input.
 The form of \TeX\ that's called |tex|
 often has the \plainTeX\ definitions preloaded.
@@ -1766,10 +1767,10 @@ it cannot be done using only the facilities of \TeX\ itself.
 
 \concept global
 
-A \defterm{global} definition is effective 
+A \defterm{global} definition is effective
 until the end of the
 document or until it is overridden by another definition,
-even when it occurs within a \refterm{group}.  
+even when it occurs within a \refterm{group}.
 Thus a global definition is unaffected by group boundaries.
 You can make any definition global by prefixing it with the |\global|
 command \ctsref{\global} unless ^|\globaldefs| \ctsref\globaldefs{}
@@ -1793,10 +1794,10 @@ be global.  That is, `^|\gdef|' is equivalent to `|\global\def|' and
 
 \bix^^{stretch}
 \bix^^{shrink}
-\defterm{Glue} is blank space that can stretch or shrink. 
+\defterm{Glue} is blank space that can stretch or shrink.
 Glue gives \TeX\ the flexibility that it needs in order to produce
 handsome
-documents.  Glue comes in two flavors: horizontal glue and vertical glue.  
+documents.  Glue comes in two flavors: horizontal glue and vertical glue.
 Horizontal glue occurs within \refterm{horizontal lists:horizontal list},
 while vertical glue occurs within \refterm{vertical lists:vertical list}.
 ^^{horizontal lists}
@@ -1824,7 +1825,7 @@ math displays
 A glue item has a natural space---the size it ``wants to be''.  Glue
 also has two other attributes: its \refterm{stretch} and its
 \refterm{shrink}.  You can produce a specific amount of horizontal glue
-with the ^|\hskip| \refterm{command} \ctsref{\hskip}.  The command 
+with the ^|\hskip| \refterm{command} \ctsref{\hskip}.  The command
 |\hskip 6pt plus 2pt minus 3pt|
 produces a horizontal glue item whose natural
 size is $6$ points, whose stretch is $2$ points, and whose shrink is
@@ -1835,7 +1836,7 @@ The best way to understand what stretch and shrink are about
 is to see an example of glue at work.
 Suppose you're constructing an \refterm{hbox} from three boxes and two glue
 items, as in this picture:
-\gluepicture 
+\gluepicture
    29 {\picbox 4 \gluebox 6 4 1 6 \picbox 5 \gluebox 10 8 3 10 \picbox 4 }
 \noindent
 The units of measurement here could be points, millimeters, or anything else.
@@ -1847,15 +1848,15 @@ Next, suppose that the hbox is required to be wider than $29$ units, say
 $35$ units.  This
 could happen, for example, if the hbox is required to occupy an entire
 line and the line width is $35$ units.
-Since the boxes can't change their width, 
+Since the boxes can't change their width,
 \TeX\ produces the necessary extra space by making the glue items wider.
 The picture now looks like this:
-\gluepicture 
+\gluepicture
    35 {\picbox 4 \gluebox 6 4 2 8 \picbox 5 \gluebox 10 8 6 14 \picbox 4 }
 The glue items don't become wider equally; they became wider in proportion to
-their stretch.  Since the second glue item 
-has twice as much stretch as the first one, 
-it gets wider by four units while the first glue item gets wider by only 
+their stretch.  Since the second glue item
+has twice as much stretch as the first one,
+it gets wider by four units while the first glue item gets wider by only
 two units.
 Glue can be stretched as far as necessary, although \TeX\ is
 somewhat reluctant to
@@ -1864,14 +1865,14 @@ stretch it beyond the amount of stretch given in its definition.
 Finally, suppose that the hbox is required to be narrower than $29$ units, say
 $25$ units.  In this case \TeX\ makes the glue items narrower.
 The picture looks like this:
-\gluepicture 
+\gluepicture
    25 {\picbox 4 \gluebox 6 4 2 5 \picbox 5 \gluebox 10 8 6 7 \picbox 4 }
 The glue items become narrower in proportion to their shrink.
 The first glue item becomes narrower by one unit, while the second glue item
 becomes narrower by three units.  Glue cannot shrink by a distance
 less than the amount of shrink
 given in its definition even though the distance it can stretch is
-unlimited.  In this important sense the shrink and 
+unlimited.  In this important sense the shrink and
 the stretch behave differently.
 
 A good rule of thumb for glue is to set the natural size to the amount
@@ -1898,9 +1899,9 @@ setting text flush left, flush right, or centered:
 \ulist\compact
 \li To set text ^{flush left}, put infinitely stretchable
 horizontal glue to the right of it.
-That glue will consume all the 
+That glue will consume all the
 extra space that's available on the line.
-You can use the ^|\leftline| command \ctsref{\leftline} 
+You can use the ^|\leftline| command \ctsref{\leftline}
 or the |\raggedright| command \ctsref{\raggedright} to do~this.
 \li To set text ^{flush right}, put infinitely
 stretchable horizontal glue to the left of it.
@@ -1917,7 +1918,7 @@ You can use the ^|\centerline| command \ctsref{\centerline} to do~this.
 You can also specify infinitely shrinkable glue
 ^^{glue//infinitely shrinkable}
 in a similar way.  Infinitely shrinkable glue can act as negative space.
-Note that |fil|, etc., can be used only 
+Note that |fil|, etc., can be used only
 to specify the stretch and shrink of glue---they can't be used to specify
 its natural size.
 \eix^^{stretch}
@@ -1961,7 +1962,7 @@ you'll get:
 }
 \noindent
 since the control sequence |\TeX| (which produces the \TeX\
-logo) absorbs the following space. 
+logo) absorbs the following space.
 What you probably want is:
 \display{%
 {\TeX} for the Impatient and the Outpatient too.
@@ -2016,7 +2017,7 @@ extends above its \refterm{baseline}.
 \conceptindex{horizontal lists}
 \concept{horizontal list}
 
-A \defterm{horizontal list} is a list of items 
+A \defterm{horizontal list} is a list of items
 that \TeX\ has produced while it is
 in one of its \refterm{horizontal modes:horizontal mode}, i.e., assembling
 either a paragraph or an hbox.  See ``horizontal mode'' below.
@@ -2051,7 +2052,7 @@ horizontal are in fact inherently vertical: |\halign| \ctsref{\halign}
 and |\hrule| \ctsref{\hrule}.
 ^^|\hrule//inherently vertical|
 ^^|\halign//inherently vertical|
-See \knuth{page~286} for a list 
+See \knuth{page~286} for a list
 of the inherently vertical commands.
 
 {\tighten
@@ -2087,7 +2088,7 @@ discretionary hyphen
 with the ^|\-| command \ctsref{\@minus}.
 \li You can tell \TeX\ how to
 hyphenate particular words throughout your document with the ^|\hyphenation|
-command \ctsref{\hyphenation}.  
+command \ctsref{\hyphenation}.
 \li You can enclose a word in an \refterm{hbox}, thus preventing \TeX\
 from hyphenating it.
 \li You can set the value of penalties such as |\hyphenpenalty|
@@ -2107,11 +2108,11 @@ See \conceptcit{file}.
 \conceptindex{insertions}
 \concept insertion
 
-\looseness = -1 
+\looseness = -1
 An \defterm{insertion} is a vertical list containing material
 to be inserted into
 a page when \TeX\ has finished building that page.\footnote
-{\tighten 
+{\tighten
 \TeX\ itself doesn't
 insert the material---it just makes the material available to
 the output routine, which is then responsible for transferring
@@ -2145,7 +2146,7 @@ see \knuth{pages~122--125} for the details.
 \defterm{Interline glue} is the glue that \TeX\ inserts in front of every
 \refterm{box} in a \refterm{vertical list} except for the first one.
 The interline glue is ordinarily specified so as to maintain a constant
-distance between the baselines of the boxes.  
+distance between the baselines of the boxes.
 Its value is jointly determined by the ^|\baselineskip|,
 ^|\lineskip|, and ^|\lineskiplimit| parameters \ctsref{\baselineskip}.
 \endconcept
@@ -2162,12 +2163,12 @@ a horizontal, vertical, or math  list, i.e., a list of items that
 
 
 \conceptindex{justification}
-\concept {justified text} 
+\concept {justified text}
 
 \defterm{Justified text} is text that has been typeset so that both
 margins are even.  Unjustified text, on the other hand, has been typeset
 with ``ragged'' margins on one or both sides.
-Documents typed on old-fashioned typewriters almost always have 
+Documents typed on old-fashioned typewriters almost always have
 ragged right margins.
 Although documents produced by \TeX\ are
 justified by default, you can if you wish produce documents (or
@@ -2175,7 +2176,7 @@ sequences of lines) that have ^{ragged right}---or ^{ragged left}---margins.
 You can also get \TeX\ to center a sequence of lines, thus making both
 margins ragged.
 ^^{centered text}
-You can use the 
+You can use the
 ^|\leftskip|, ^|\rightskip|, and  ^|\raggedright| commands
 (\pp \xrefn{\leftskip},~\xrefn{\raggedright}) for these purposes.
 
@@ -2204,7 +2205,7 @@ instance, this text:
 |
 produces letter pairs that look like this:
 \display{11\quad 1\kern1pt 1\quad 1\kern-.75pt 1}
-You can use kerns in vertical mode to adjust the space between 
+You can use kerns in vertical mode to adjust the space between
 particular pairs of lines.
 
 A kern of size $d$ is very similar to a \refterm{glue} item that has
@@ -2218,7 +2219,7 @@ particular purpose.
 
 \TeX\ automatically inserts kerns between particular pairs of adjacent
 letters, thus adjusting the space between those letters and enhancing
-the appearance of your typeset document.  
+the appearance of your typeset document.
 For instance, the Computer Modern $10$-point roman font contains a kern
 for the pair `To' that brings the left edge of the `o' under the
 `T'.  Without the kern, you'd get \hbox{``T{o}p''} rather than ``Top''---%
@@ -2251,7 +2252,7 @@ The specification of leaders contains three pieces of information:
 \bix^^|\xleaders|
 {\tighten
 \TeX\ has three commands for specifying leaders:
-|\leaders|, \hbox{|\cleaders|}, and |\xleaders| (\xref\leaders).  The 
+|\leaders|, \hbox{|\cleaders|}, and |\xleaders| (\xref\leaders).  The
 \refterm{argument} of each command specifies the leader.
 The command must be followed by \refterm{glue}; the size of the glue
 specifies how much space is to be filled.  The choice of command determines
@@ -2273,14 +2274,14 @@ use them in two places. This input produces:
 \line{Bail Bonds{\dotting}26}
 }
 
-The \refterm{hbox} following |\leaders| specifies 
+The \refterm{hbox} following |\leaders| specifies
 the leader, namely, an hbox 1\em\ wide containing a dot
 at its center.
 The space is filled with copies of this box,
 effectively filling it
 with dots whose centers are 1\em{} apart.
 The following |\hfil| (the one at the
-end of the macro definition) is glue that 
+end of the macro definition) is glue that
 specifies the space to be filled.
 In this case it's whatever space is needed to fill out the line.
 By choosing |\leaders| rather than |\cleaders| or |\xleaders| we've insured
@@ -2298,7 +2299,7 @@ within the window and how they distribute any leftover space:
 
 \ulist
 \li For |\leaders|, \TeX\ first produces a row of copies of the leader.
-It then aligns the start of this row with the left end of the innermost 
+It then aligns the start of this row with the left end of the innermost
 box $B$ that is to contain the result of the |\leaders| command.
 In the two-line example above, $B$ is a box produced by |\line|.
 Those leaders that fit entirely in the window are placed into $B$,
@@ -2414,7 +2415,7 @@ See \knuth{pages~96--101} for a full description of \TeX's line-breaking rules.
 You can control \TeX's choice of line breaks in several ways:
 \ulist
 
-\li You can insert a \refterm{penalty} (\xref{hpenalty}) somewhere in 
+\li You can insert a \refterm{penalty} (\xref{hpenalty}) somewhere in
 the horizontal list that \TeX\ builds as it forms a paragraph.
 ^^{penalties//in horizontal lists}
 A
@@ -2445,7 +2446,7 @@ inserting a ^{tie} (|~|) between those words.
 assigning different values to \TeX's line-breaking
 \refterm{parameters:parameter}.
 
-\li You can enclose a word or sequence of words in an \refterm{hbox}, 
+\li You can enclose a word or sequence of words in an \refterm{hbox},
 thus preventing \TeX\ from breaking the line anywhere within the hbox.
 ^^{hboxes//controlling line breaks}
 \endulist
@@ -2457,7 +2458,7 @@ It's useful to know the places where \TeX\ can break a line:
 \li the item preceding the glue is one of the following:
 a box, a discretionary item (e.g., a discretionary hyphen),
 the end of a math formula,
-a whatsit, 
+a whatsit,
 or vertical material produced by |\mark| or |\vadjust|
 or |\insert|
 \li the glue is not part of a math formula
@@ -2471,7 +2472,7 @@ provided that this kern isn't within a math formula
 \li at a penalty, even one within a math formula
 \li at a discretionary break
 \endulist
-When \TeX\ breaks a line, it discards any 
+When \TeX\ breaks a line, it discards any
 sequence of glue, kerns, and penalty items that follows the break point.
 If such a sequence is followed by the beginning of a math formula, it
 also discards any kern produced by the beginning of the formula.
@@ -2522,7 +2523,7 @@ and you'll get it.  For example, `|$e^{\arctheta}$|' will give you
 
 \bix^^{macros//parameters of}
 But the real power of macros lies in the fact that a macro can have
-parameters.  When you call a macro that has parameters, you provide 
+parameters.  When you call a macro that has parameters, you provide
 arguments that are substituted for those parameters.  For example, suppose
 you write:
 \pix\indexchar #
@@ -2550,7 +2551,7 @@ they have delimited parameters.
 ^^{parameters//undelimited}
 If a macro has only undelimited parameters, those parameters must appear
 one after another in the macro definition \emph{with nothing between
-them or between the last parameter and the left brace in front of the 
+them or between the last parameter and the left brace in front of the
 replacement text}.
 A call on such a macro consists of the macro name followed by
 the arguments of the call, one for each parameter.  Each argument is
@@ -2618,14 +2619,14 @@ delimiter.  That is, when \TeX\ is looking for such an argument, it
 takes the argument to be all the tokens from \TeX's current position up
 to but not including the delimiter.
 
-You indicate a delimited parameter by writing `|#|$n$' ($n$ 
+You indicate a delimited parameter by writing `|#|$n$' ($n$
 must be between $0$
 and $9$) followed by one or more tokens that act as the delimiter.  The
 delimiter extends up to the next `|#|' or `|{|'---which makes sense
 since `|#|' starts another parameter and `|{|' starts the replacement text.
 
 The delimiter can't be `|#|' or `|{|', so you can tell a delimited
-parameter from an undelimited one by looking at what comes after it. 
+parameter from an undelimited one by looking at what comes after it.
 
 If the character after the parameter is `|#|' or `|{|', you've got an
 undelimited parameter; otherwise you've got a delimited one.  Note
@@ -2667,7 +2668,7 @@ What then do you do about
 the parameters of the second macro to avoid getting \TeX\ confused?
 The answer is that you write
 two `|#|'s for every one that you want
-when the first macro is expanded.  For example, suppose you 
+when the first macro is expanded.  For example, suppose you
 write the macro definition:
 \def\first#1{\def\second##1{#1/##1}}
 \csdisplay
@@ -2690,8 +2691,8 @@ For the complete rules pertaining to macros, see \knuth{Chapter~20}.
 
 \concept magnification
 
-When \TeX\ typesets your document, it multiplies all dimensions 
-by a 
+When \TeX\ typesets your document, it multiplies all dimensions
+by a
 \refterm{magnification} factor $f/1000$,
 where $f$ is the value of the ^|\mag| parameter \ctsref\mag.
 Since the default value of |\mag| is $1000$, the normal case is that
@@ -2702,7 +2703,7 @@ that will later be photoreduced.
 You can also apply magnification to a single \refterm{font} so as to get
 a smaller or larger version of that font than its ``^{design size}''.  You
 need to provide the device driver with a ^{shape file}
-\seeconcept{font} for 
+\seeconcept{font} for
 each magnification of a font that you're using---%
 unless the fonts are built into your printer and your device driver
 knows about them.
@@ -2719,7 +2720,7 @@ Bold Extended $10$-point) and has the character shapes
 uniformly enlarged by a factor of~$2$.
 
 Many computer centers find it convenient to provide fonts scaled by a ratio
-of $1.2$, corresponding to magnification values of $1200$, $1440$, etc.  
+of $1.2$, corresponding to magnification values of $1200$, $1440$, etc.
 \TeX\ has special names for these values:
 ^^|\magstep|
 `|\magstep1|' for $1200$,
@@ -2734,8 +2735,8 @@ is visually halfway between `|\magstep0|' (no magnification) and
 
 You can specify a \refterm{dimension} as it will be
 measured in the final document independent of magnification by putting
-`^|true|' in front of the unit.  For instance, `|\kern 8 true pt|' 
-produces a kern of $8$ points whatever the magnification. 
+`^|true|' in front of the unit.  For instance, `|\kern 8 true pt|'
+produces a kern of $8$ points whatever the magnification.
 
 \endconcept
 
@@ -2764,7 +2765,7 @@ The width of the rectangle is given by ^|\hsize| and the depth by ^|\vsize|.
 The implications of these conventions are:
 \ulist\compact
 \li The left margin is given by |\hoffset|\tplus|1in|.
-\li The right margin is given by the width of the paper minus 
+\li The right margin is given by the width of the paper minus
     |\hoffset|\tplus|1in|\tplus|\hsize|.
 \li The top margin is given by |\voffset|\tplus|1in|.
 \li The bottom margin is given by the length of the paper minus
@@ -2977,7 +2978,7 @@ One |mu| is equal to \frac1/{18} em, where
 the size of an em is taken from \refterm{family} 2 of the math fonts.
 \TeX\ automatically adjusts the size of muglue according to the context.
 For instance, a glue size of |2mu| is normally smaller within a
-subscript than it is within ordinary text.  
+subscript than it is within ordinary text.
 You must use the ^|\mskip| command to produce muglue.
 For example, `|\mskip 4mu plus 5mu|' produces mathematical glue with
 natural space of four |mu| and \refterm{stretch} of five |mu|.
@@ -2997,7 +2998,7 @@ You can write a number in \TeX\ in four different ways:
 \li as the code for an \refterm{\ascii\ character}, e.g., |`)|
 or |`\)|
 \endolist
-\noindent 
+\noindent
 Any of these forms can be preceded by `|+|' or `|-|'.
 
 An octal number can have only the digits |0|--|7|.
@@ -3010,7 +3011,7 @@ You can't, alas, use lowercase letters when you write a hexadecimal number.
 If you need an explanation of octal and hexadecimal numbers,
 you'll find one on \knuth{pages~43--44}.
 
-A decimal, octal, or hexadecimal number 
+A decimal, octal, or hexadecimal number
 ends at the first character that can't be part of the number.
 Thus a decimal number ends when \TeX\ sees, say, a letter, even though a
 letter between `|A|' and `|F|' would not end a hexadecimal number.
@@ -3020,7 +3021,7 @@ When you're defining a macro that ends in a number, you should always
 put a space after that number; otherwise \TeX\ may later combine that
 number with something else.}
 
-The fourth form above specifies a number as the 
+The fourth form above specifies a number as the
 \minref{\ascii} code for a character.
 ^^{characters//\ascii\ codes for}
 \TeX\ ignores spaces after this form of number also.
@@ -3051,10 +3052,10 @@ in front of it.
 You can also use ^{decimal constant}s, i.e., numbers with a fractional part,
 for specifying dimensions \seeconcept{dimension}.
 A decimal constant has a ^{decimal point}, which
-can be the first character of the constant.  
+can be the first character of the constant.
 You can use a comma instead of a period to represent the decimal point.
 A decimal constant can be preceded by a plus or minus sign.
-Thus `|.5in|', 
+Thus `|.5in|',
 `|-3.22pt|', and `|+1,5\baselineskip|' are valid dimensions.
 You can't, however, use decimal constants
 in any context \emph{other} than as the ``factor'' part of a dimension,
@@ -3079,7 +3080,7 @@ An \defterm{outer} macro is one that you can't use in certain contexts
 where \TeX\ is processing tokens at high speed.
 The purpose of making a command outer is to enable \TeX\ to catch
 errors before it's gone too far.
-When you define a macro, you can make it outer with the 
+When you define a macro, you can make it outer with the
 ^|\outer| command \ctsref\outer.
 
 You cannot use an outer macro in any of the following contexts:
@@ -3116,10 +3117,10 @@ current \defterm{output routine}, which processes the material and eventually
 sends it to the \dvifile.
 ^^{\dvifile//material from output routine}
 The output routine can perform further
-processing, such as inserting headers, footers, and footnotes.  
+processing, such as inserting headers, footers, and footnotes.
 \refterm{\PlainTeX:\plainTeX} provides
 a default output routine that inserts a centered page number
-at the bottom of each page.  
+at the bottom of each page.
 By providing a different output routine you can achieve such
 effects as double-column output.
 You can think of the output routine as having a single responsibility:
@@ -3141,7 +3142,7 @@ combining those insertions and any
 ``decorations'' such as headers and
 footers with the main contents of the page and packaging all
 of this material in a box; and
-eventually sending that box to the \dvifile\ 
+eventually sending that box to the \dvifile\
 ^^{\dvifile//material from output routine}
 with the ^|\shipout|
 command \ctsref{\shipout}.
@@ -3164,9 +3165,9 @@ See \conceptcit{file}.
 \TeX\ processes a document by assembling \defterm{pages} one at a time
 and passing them to the output routine.
 As it proceeds through your document, \TeX\ maintains a list of lines
-and other 
+and other
 items to be placed on the page.  (The lines are actually hboxes.)
-This list is called the ``^{main vertical list}''. 
+This list is called the ``^{main vertical list}''.
 Periodically \TeX\ goes through a process called ``exercising the
 ^{page builder}''.
 The items added to the main vertical list between exercises of the
@@ -3236,16 +3237,16 @@ description of \TeX's page-breaking rules.
 \concept{page break}
 
 A \defterm{page break} is a place in your document where \TeX\ ends a
-page and (except at the end of the document) starts a new one.  
+page and (except at the end of the document) starts a new one.
 See \conceptcit{page} for the process that \TeX\ goes through in choosing
 a page break.
 
 You can control \TeX's choice of page breaks in several ways:
 \ulist
-\li You can insert a penalty (\xref{vpenalty}) 
+\li You can insert a penalty (\xref{vpenalty})
 ^^{penalties//in vertical lists}
 between two items in the main vertical list.  A positive
-penalty discourages \TeX\ from breaking the page 
+penalty discourages \TeX\ from breaking the page
 there, while a negative penalty---a bonus, in other words---%
 encourages \TeX\ to break the page there.  A penalty of $10000$
 or more prevents a
@@ -3257,8 +3258,8 @@ You can get the same effects with the |\break| and
 by assigning different values to \TeX's page-breaking
 \refterm{parameters:parameter}.
 
-\li You can enclose a sequence of paragraphs 
-or other items in the main vertical list within a \refterm{vbox}, 
+\li You can enclose a sequence of paragraphs
+or other items in the main vertical list within a \refterm{vbox},
 thus preventing \TeX\ from breaking the page anywhere within the sequence.
 \endulist
 
@@ -3280,7 +3281,7 @@ of the glue space and forgets about the rest of the glue.
 \li At a kern that's immediately followed by glue.
 \li At a penalty, possibly between the lines of a paragraph.
 \endulist
-When \TeX\ breaks a page, it discards any 
+When \TeX\ breaks a page, it discards any
 sequence of glue, kerns, and penalty items that follows the break point.
 
 
@@ -3379,10 +3380,10 @@ It then proceeds to collect items for the paragraph until it gets a signal
 that the paragraph is ended.
 At the end of the paragraph it
 resets the paragraph shape parameters ^|\parshape|, |\hang!-indent|,
-^^|\hangindent| 
+^^|\hangindent|
 and ^|\looseness|.
 
-\TeX\ ordinarily translates a blank line into |\par|.  
+\TeX\ ordinarily translates a blank line into |\par|.
 It also
 inserts a |\par| into the input whenever it's in horizontal mode and
 sees an intrinsically vertical command.
@@ -3399,7 +3400,7 @@ to the end of the current horizontal list.}
 the paragraph it's working on.
 It then breaks the paragraph into lines,
 adds the resulting list of items to the enclosing vertical list,
-and exercises the page builder 
+and exercises the page builder
 (in the case where the enclosing vertical list is the main vertical list).
 If the paragraph was ended by an intrinsically vertical command,
 \TeX\ then executes that command.
@@ -3455,10 +3456,10 @@ for more information about this kind of parameter.
 \conceptindex{penalties}
 \concept penalty
 
-A \defterm{penalty} is an item that you can include in a 
+A \defterm{penalty} is an item that you can include in a
 horizontal, vertical, or math list
 in order to discourage \TeX\ from breaking the list
-at that point or encourage \TeX\ to break the list there.  
+at that point or encourage \TeX\ to break the list there.
 ^^{horizontal lists//penalties in}
 ^^{vertical lists//penalties in}
 A positive penalty indicates a bad break point, while
@@ -3467,8 +3468,8 @@ Breaking an
 ordinary horizontal
 list produces a \refterm{line break}, while breaking an
 ordinary vertical list produces
-a \refterm{page break}.  
-(A penalty has no effect in restricted horizontal or 
+a \refterm{page break}.
+(A penalty has no effect in restricted horizontal or
 internal vertical \refterm{mode}.)
 
 You can use the
@@ -3593,7 +3594,7 @@ you must be sure that the register isn't modified by any
 \refterm{macro}
 that you might call within the group.
 Be especially careful
-about using arbitrary registers in a group that calls macros 
+about using arbitrary registers in a group that calls macros
 that you didn't write yourself.
 
 {\tighten
@@ -3636,7 +3637,7 @@ has \refterm{width}, \refterm{height}, and \refterm{depth}.
 The vertical dimension of the rectangle
 is the sum of its height and its depth.
 An ordinary horizontal or vertical straight line is a special case of a rule.
- 
+
 \bix^^{horizontal rules}
 \bix^^{vertical rules}
 \bix^^|\hrule|
@@ -3648,7 +3649,7 @@ like a horizontal line), while a horizontal rule can be tall and skinny
 (and therefore look like a vertical line).  \TeX's notion of a rule is
 more general than that of typographers, who think of a rule as a line
 and would not usually call a square black box a rule.
- 
+
 You can produce a horizontal rule using the
 |\hrule| command and a vertical rule using
 the |\vrule| command \ctsref{\vrule}.
@@ -3676,15 +3677,15 @@ dimension.)
 
 ^^{horizontal lists//rule in}
 ^^{vertical lists//rule in}
-\li 
+\li
 {\tighten
 A horizontal rule is an inherently vertical item that cannot participate in
 a \refterm{horizontal list},
-while a vertical 
+while a vertical
 rule is an inherently horizontal item
 that cannot participate in a \refterm{vertical list}.  This behavior
 may seem strange at first but there is good reason for it:
-a horizontal rule ordinarily runs visually from left 
+a horizontal rule ordinarily runs visually from left
 to right and thus separates items in a vertical list,
 while a vertical rule ordinarily runs visually from top to bottom
 and thus separates items in a horizontal list.
@@ -3713,7 +3714,7 @@ You'll find a precise statement of \TeX's treatment of rules on
 \endconcept
 
 
-\concept {script size} 
+\concept {script size}
 
 \defterm{Script size} describes one of the three related
 \refterm{fonts:font} in a family.
@@ -3743,8 +3744,8 @@ See \conceptcit{glue}.
 
 \concept space
 
-You can cause \TeX\ to put \defterm{space} between two items in 
-several~ways: 
+You can cause \TeX\ to put \defterm{space} between two items in
+several~ways:
 
 \olist
 ^^{end of line}
@@ -3830,7 +3831,7 @@ in a much narrower line length.\strut}
 in a much narrower line length.\strut}
 }}
 \noindent
-Without the struts the \refterm{vboxes:vbox} would be too close 
+Without the struts the \refterm{vboxes:vbox} would be too close
 together.  Similarly, in the formula:
 \csdisplay
 $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
@@ -3845,7 +3846,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 \nobreak
 
 \conceptindex{styles}
-\concept {style} 
+\concept {style}
 
 Material in a math formula is set in one of eight \defterm{styles},
 depending on the context.  Knowing about styles can be useful if you want to
@@ -3901,7 +3902,7 @@ commands \ctsref{\textstyle}.
 
 (a)~A variant of \TeX\  used for mathematical typesetting in
 Central American countries.
-(b)~A spicy cuisine favored by the \TeX\-ni\-cians of ^{El Paso}. 
+(b)~A spicy cuisine favored by the \TeX\-ni\-cians of ^{El Paso}.
 \endconcept
 
 
@@ -3919,7 +3920,7 @@ line of text, i.e., enclosed in |$|'s.
 \defterm{Text size} describes the largest of the three related
 \refterm{fonts:font} in a \refterm{family}.
 ^^{family//text size in}
-\TeX\ uses text size for ordinary symbols appearing in 
+\TeX\ uses text size for ordinary symbols appearing in
 \refterm{math mode}.
 \endconcept
 
@@ -3963,7 +3964,7 @@ first (and usually topmost) constituent list item.
 \conceptindex{vertical lists}
 \concept{vertical list}
 
-A \defterm{vertical list} is a list of items 
+A \defterm{vertical list} is a list of items
 that \TeX\ has produced while it is
 in one of its vertical modes, i.e.,
 assembling either a
@@ -3984,7 +3985,7 @@ list} of items (boxes, glue, penalties, etc.).
 \TeX\ typesets the items in the list
 one below another, top to bottom.
 
-A vertical list can't contain any items produced by 
+A vertical list can't contain any items produced by
 inherently horizontal commands, e.g.,
 ^^{vertical lists//can't contain horizontal commands}
 |\hskip| or an ordinary (nonspace) character.
@@ -3994,7 +3995,7 @@ that it encounters while it's in a vertical mode.}
 \ulist
 \li If \TeX\ is  assembling a vertical list in ordinary vertical mode and
 encounters an inherently horizontal command, it switches to ordinary
-\refterm{horizontal mode}. 
+\refterm{horizontal mode}.
 \li If \TeX\ is  assembling a vertical list in internal vertical mode and
 encounters an inherently horizontal command, it complains.
 \endulist
@@ -4021,7 +4022,7 @@ neither inherently horizontal nor inherently vertical.
 
 \concept whatsit
 
-A \defterm{whatsit} is an item of information that 
+A \defterm{whatsit} is an item of information that
 tells \TeX\ to carry out some action
 that doesn't fit into its ordinary scheme of things.
 A whatsit can appear in a horizontal or vertical list, just like a box
@@ -4030,7 +4031,7 @@ or a glue item.
 as a \refterm{box} having zero width, height, and depth---in other
 words, a box that contains nothing and occupies no space.
 
-Three sorts of whatsits are built into \TeX: 
+Three sorts of whatsits are built into \TeX:
 \ulist
 \li The |\openout|, |\closeout|, and |\write| commands
 (\p\xrefn{\openout})
@@ -4050,7 +4051,7 @@ insert certain text directly into the \dvifile.
 As with the |\write| command, \TeX\ postpones the insertion
 until it next ships out a page to the {\dvifile}.
 ^^{\dvifile//material inserted by \b\tt\\special\e}
-A typical use of |\special| would be to 
+A typical use of |\special| would be to
 name a graphics file that the device driver should incorporate into
 your final output.
 \li When you change languages with the ^|\language| or ^|\setlanguage|

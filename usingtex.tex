@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -9,109 +10,109 @@
 
 % Avoid underfull box complaint about the empty paragraph
 % that precedes the first section heading.
-% 
+%
 \def\par{{\parfillskip = 0pt plus 1fil\endgraf}\let\par=\endgraf}
 \vglue-\abovesectionskip % we've skipped enough already
 \vskip0pt % Make \combineskips work.
 
-\section 從鍵盘輸入變到油墨
+\section 从键盘输入变到油墨
 
 \subsection 你所需要的程序和文件
 
-為了製作一個 \TeX\ 文檔, 你必需運行 \TeX\ 及其相關軟件.
-你同時也需要一些 \TeX\ 及其相關軟件所用到的輔助文件.
-在這本書中, 我們僅僅談論 \TeX\ 和一些通用的軟件及輔助文件,
-不過我們不會介紹其它的, 因為它們僅僅和你自己的 \TeX\ 環境相關.
-為你提供 \TeX\ 的人可以為你提供我們所說的\emph{本地信息}.
+为了制作一个 \TeX\ 文档, 你必需运行 \TeX\ 及其相关软件.
+你同时也需要一些 \TeX\ 及其相关软件所用到的辅助文件.
+在这本书中, 我们仅仅谈论 \TeX\ 和一些通用的软件及辅助文件,
+不过我们不会介绍其它的, 因为它们仅仅和你自己的 \TeX\ 环境相关.
+为你提供 \TeX\ 的人可以为你提供我们所说的\emph{本地信息}.
 \pix^^{local information}
-這些本地信息可以告訴你如何去啓動 \TeX, 如何去使用相關的程序,
-以及如何去訪問這些所用到的輔助文件.
+这些本地信息可以告诉你如何去启动 \TeX, 如何去使用相关的程序,
+以及如何去访问这些所用到的辅助文件.
 
 
-你可以使用一個 ^{文本編輯器} 來編寫一個可以輸入到 \TeX\ 的普通文本文件.
-一個 \TeX\ 輸入文件和一個文字處理軟件的輸入文件不同, 它通常並不存在任何不可見的^{控製字符}.
-任何 \TeX\ 讀到的字符對你來說, 都是你可以看到的.
+你可以使用一个 ^{文本编辑器} 来编写一个可以输入到 \TeX\ 的普通文本文件.
+一个 \TeX\ 输入文件和一个文字处理软件的输入文件不同, 它通常并不存在任何不可见的^{控制字符}.
+任何 \TeX\ 读到的字符对你来说, 都是你可以看到的.
 
-你的輸入文件, 可以僅僅是一個引用其它輸入文件的框架.
-\TeX\ 用戶往往把大的文檔, 比如說這本書, 組織成這種形式.
-你可以使用 ^|\input| 命令 (\xref\input) 來把一個輸入文件篏入到另一個中.
-特別地, 你可以使用 |\input|來調入包含\emph{宏定義}的文件,
+你的输入文件, 可以仅仅是一个引用其它输入文件的框架.
+\TeX\ 用户往往把大的文档, 比如说这本书, 组织成这种形式.
+你可以使用 ^|\input| 命令 (\xref\input) 来把一个输入文件篏入到另一个中.
+特别地, 你可以使用 |\input|来调入包含\emph{宏定义}的文件,
 ^^{macros//in auxiliary files}
-宏定義是一些輔助的定義, 它可以來增強 \TeX\ 的功能.
-如果你的 \TeX\ 系統中包含任何的宏文件, 
-和 \TeX\ 相關的本地信息會告訴你如何得到這些宏文件, 
-以及它們的功能.
-\TeX\ 的標準安裝形式, 也就是在這本書中所描述的, 包括了一個被稱為 ^{\plainTeX} (\xref{\plainTeX}) 的宏集.
+宏定义是一些辅助的定义, 它可以来增强 \TeX\ 的功能.
+如果你的 \TeX\ 系统中包含任何的宏文件,
+和 \TeX\ 相关的本地信息会告诉你如何得到这些宏文件,
+以及它们的功能.
+\TeX\ 的标准安装形式, 也就是在这本书中所描述的, 包括了一个被称为 ^{\plainTeX} (\xref{\plainTeX}) 的宏集.
 
-當 \TeX\ 處理你的文檔時, 它會產生一種叫做  ^{\dvifile} 的文件. 
-其中, ``|dvi|'' 的全稱為 ``device independent (設備無關)''.
-之所以選用這個縮寫, 是因為 \dvifile\ 中所包含的信息和你的打印或顯示設備無關.
+当 \TeX\ 处理你的文档时, 它会产生一种叫做  ^{\dvifile} 的文件.
+其中, ``|dvi|'' 的全称为 ``device independent (设备无关)''.
+之所以选用这个缩写, 是因为 \dvifile\ 中所包含的信息和你的打印或显示设备无关.
 
 
-當你需要打印或使用\emph{閱覽器}查看你的文檔時, ^^{previewer}
-你需要使用相應的\emph{設備驅動}來處理之. ^^{device drivers}
-(閱覽器是一個程序, 它能把和打印出來的結果差不多的排版內容顯示在屏幕上.)
-不同的輸出設備往往需要不同的設備驅動. 在運行設備驅動以後,
-你還需要把設備驅動輸出的內容傳輸到打印機或者其它輸出設備上.
-^^{printers} ^^{output devices}  
-和 \TeX\ 相關的本地信息會告訴你如何得到正確的設備驅動和如何使用它.
+当你需要打印或使用\emph{阅览器}查看你的文档时, ^^{previewer}
+你需要使用相应的\emph{设备驱动}来处理之. ^^{device drivers}
+(阅览器是一个程序, 它能把和打印出来的结果差不多的排版内容显示在屏幕上.)
+不同的输出设备往往需要不同的设备驱动. 在运行设备驱动以后,
+你还需要把设备驱动输出的内容传输到打印机或者其它输出设备上.
+^^{printers} ^^{output devices}
+和 \TeX\ 相关的本地信息会告诉你如何得到正确的设备驱动和如何使用它.
 
-因為 \TeX\ 內部並沒有任何關於一個特定字體的任何信息, 
-它使用\emph{字體文件}
+因为 \TeX\ 内部并没有任何关于一个特定字体的任何信息,
+它使用\emph{字体文件}
 ^^{font files}
-來得到你文檔中所使用的字體的信息.
-字體文件也是你本地 \TeX\ 環境的一個組成部分.
-一個字體一般對應兩個文件:
-一個文件 (\emph{字體信息文件}) ^^{metrics file} 包括了字體中每個字符的大小信息,
-另一個文件 (\emph{字體輪廓文件}) ^^{shape file} 則描述了字體中字符的形狀.
-一個字體的縮放版本使用同樣的字體信息文件, 不過並不使用相同的字體輪廓文件.
+来得到你文档中所使用的字体的信息.
+字体文件也是你本地 \TeX\ 环境的一个组成部分.
+一个字体一般对应两个文件:
+一个文件 (\emph{字体信息文件}) ^^{metrics file} 包括了字体中每个字符的大小信息,
+另一个文件 (\emph{字体轮廓文件}) ^^{shape file} 则描述了字体中字符的形状.
+一个字体的缩放版本使用同样的字体信息文件, 不过并不使用相同的字体轮廓文件.
 ^^{magnification}
-字體信息文件往往用來指稱 ^{\tfmfile}, 
-而字體輪廓文件則往往用來指稱 ^{\pkfile}, ^{\pxlfile} 和 ^{\gffile} 等不同的種類.
-這些名稱和 \TeX\ 以及相關軟件所使用的文件的文件名所對應.
-比如, |cmr10.tfm| 為 |cmr10| 字體的字體信息文件 (10-點的計算機現代字體).
+字体信息文件往往用来指称 ^{\tfmfile},
+而字体轮廓文件则往往用来指称 ^{\pkfile}, ^{\pxlfile} 和 ^{\gffile} 等不同的种类.
+这些名称和 \TeX\ 以及相关软件所使用的文件的文件名所对应.
+比如, |cmr10.tfm| 为 |cmr10| 字体的字体信息文件 (10-点的计算机现代字体).
 
-\TeX\ 本身僅使用字體信息文件, 因為它只關心這個字體的字符占用了多大的空間, 
-而並不關心這個字體的外形是什麼樣子的.
-設備驅動則往往需要使用字體輪廓文件,
-因為它需要負責把每個排出的字符變成印出的圖形.
-某些設備驅動也需要使用字體信息文件.
-一些設備驅動可以使用打印機中包含的字體, 
-所以可以不需要這些字體的字體輪廓文件.
+\TeX\ 本身仅使用字体信息文件, 因为它只关心这个字体的字符占用了多大的空间,
+而并不关心这个字体的外形是什么样子的.
+设备驱动则往往需要使用字体轮廓文件,
+因为它需要负责把每个排出的字符变成印出的图形.
+某些设备驱动也需要使用字体信息文件.
+一些设备驱动可以使用打印机中包含的字体,
+所以可以不需要这些字体的字体轮廓文件.
 \secondprinting{\vfill\eject}
 
 
-\subsection 運行 {\TeX}
+\subsection 运行 {\TeX}
 
 \bix^^{running \TeX}
 
-你可以通過輸入類似 `|run tex|' 或 `|tex|' (查看你的本地信息) 來運行 \TeX\ 來處理一個輸入文件 |screed.tex|.
+你可以通过输入类似 `|run tex|' 或 `|tex|' (查看你的本地信息) 来运行 \TeX\ 来处理一个输入文件 |screed.tex|.
 ^^{input files}
-\TeX\ 會作出如下顯示
+\TeX\ 会作出如下显示
 % 4/23/90 is Shakespeare's 426th birthday, and Karl's 26th.
 \csdisplay
 This is TeX, Version 3.0 (preloaded format=plain 90.4.23)
 **
 |
-在這裡, ``preloaded format'' (已預先載入的格式) 指的是 \TeX\ 提供的 ^{\plainTeX} 宏集的一個己預先產生的形式.
-現在你可以輸入 `|screed|' 來讓 \TeX\ 來處理你的文件.
-當處理結束時, 你可以在終端或者打印機印出的記錄上 (如果你不使用終端) 得到類似下面的輸出:
+在这里, ``preloaded format'' (已预先载入的格式) 指的是 \TeX\ 提供的 ^{\plainTeX} 宏集的一个己预先产生的形式.
+现在你可以输入 `|screed|' 来让 \TeX\ 来处理你的文件.
+当处理结束时, 你可以在终端或者打印机印出的记录上 (如果你不使用终端) 得到类似下面的输出:
 \csdisplay
 (screed.tex [1] [2] [3] )
 Output written on screed.dvi (3 pages, 400 bytes).
 Transcript written on screed.log.
 |
-這個輸出大部分是不言自明的.
-在括號中的數字是 \TeX\ 在把每頁內容輸入 \dvifile\ 時所顯示的當前頁碼.
-當你提供的名件名不含擴展名時, \TeX\ 往往會把你的文件擴展名當作 `|.tex|'.
-在某些 \TeX\ 環境中, 你可能可以直接執行類似下面的語句:
+这个输出大部分是不言自明的.
+在括号中的数字是 \TeX\ 在把每页内容输入 \dvifile\ 时所显示的当前页码.
+当你提供的名件名不含扩展名时, \TeX\ 往往会把你的文件扩展名当作 `|.tex|'.
+在某些 \TeX\ 环境中, 你可能可以直接执行类似下面的语句:
 \csdisplay
 tex screed
 |
-來直接處理文檔.
+来直接处理文档.
 
 Instead of providing your \TeX\ input from a file, you can type it directly at
-your terminal.  To do so, type `^|\relax|' instead of `|screed|' at the 
+your terminal.  To do so, type `^|\relax|' instead of `|screed|' at the
 `|**|' prompt.
 \TeX\ will now prompt you with a `|*|' for each line of input and interpret
 each line of input as it sees it.
@@ -120,13 +121,13 @@ you're done.
 Direct input is sometimes a handy way of experimenting with \TeX.
 
 When your input file contains other embedded input files, the displayed
-information indicates when \TeX\ begins and ends processing each 
+information indicates when \TeX\ begins and ends processing each
 embedded file.
 ^^{input files//embedded}
 \xrdef{infiles}
 \TeX\ displays a left parenthesis and the file name
 when it starts working on a file and displays the corresponding right
-parenthesis when it's done with the file. 
+parenthesis when it's done with the file.
 If you get any ^{error messages} in the displayed output, you can match
 them with a file by looking for the most recent unclosed left parenthesis.
 
@@ -191,7 +192,7 @@ follow the control sequence with a ^{control space}
 \csdisplay
 The wonders of \TeX\!visiblespace!.shall never cease!!
 |
-or:\hfil\ 
+or:\hfil\
 \csdisplay
 The wonders of \TeX{} shall never cease!!
 |
@@ -223,7 +224,7 @@ following space.  Thus, for example, you can type the French word {\it
 d\'eshabiller\/} either as `|d\'eshabiller|' or as
 `|d\'!visiblespace!.eshabiller|'.
 
-Every control sequence is also a command, 
+Every control sequence is also a command,
 but not the other way around.
 ^^{commands//versus control sequences}
 ^^{control sequences//versus commands}
@@ -244,11 +245,11 @@ syntax that don't apply to commands in general.
 Some commands need to be followed by one or more
 \emph{arguments} ^^{arguments}
 that help to determine what the command does.
-For instance, the |\vskip| command, which 
+For instance, the |\vskip| command, which
 tells \TeX\ to skip down (or up) the page,
 expects an argument specifying how much space to skip.  To skip
 down two inches, you would type `|\vskip 2in|', where |2in|
-is the argument of |\vskip|. 
+is the argument of |\vskip|.
 
 Different commands expect different kinds of arguments.  Many commands
 expect dimensions, such as the |2in| in the example above.
@@ -271,7 +272,7 @@ Some commands are parameters (\xref{parameter}).
 ^^{parameters//as commands}
 You can use a parameter in either of two ways:
 \olist
-\li You can use the value of a parameter 
+\li You can use the value of a parameter
 as an argument to another command.  For example, the command
 \hbox{|\vskip\parskip|}
 causes a vertical skip by the value of the |\parskip| (paragraph skip)
@@ -355,7 +356,7 @@ By typing `|Fig.~8|' you can prevent such a line break.
 \xrdef{comments}
 \pix\bix^^{comments}
 You can include comments in your \TeX\ input.
-When \TeX\ sees a comment it just passes over it, so 
+When \TeX\ sees a comment it just passes over it, so
 what's in a comment doesn't affect your typeset document in any way.
 Comments are useful for
 providing extra information about what's in your input file.
@@ -451,7 +452,7 @@ There is no `q' in this sentence.
 The |\thinspace| in the third input line prevents
 the single quotation mark from coming
 too close to the double quotation marks.
-Without it, you'd just see three 
+Without it, you'd just see three
 nearly equally spaced quotation marks in a row.
 
 \TeX\ has three kinds of ^{dashes}:
@@ -510,13 +511,13 @@ For the others, you need something more elaborate:
 \subsection Groups
 
 \bix^^{groups}
-A \emph{group} 
-consists of material enclosed in matching left and right braces (|{| and 
+A \emph{group}
+consists of material enclosed in matching left and right braces (|{| and
 |}|).
 ^^|{//starting a group|
 ^^|}//ending a group|
 By placing a command within a group, you can limit its effects to
-the material within the group.  
+the material within the group.
 For instance, the |\bf| command tells \TeX\ to set
 something in {\bf boldface} type.  If you were to put |\bf| into your input
 and do nothing else to counteract it, everything in your document following the
@@ -592,10 +593,10 @@ in math formulas.
 
 \section How \TeX\ works
 
-In order to use \TeX\ effectively, it helps to 
+In order to use \TeX\ effectively, it helps to
 have some idea of how \TeX\ goes about
 its activity of transmuting input into output.
-You can imagine \TeX\ as a kind of organism with ``eyes'', 
+You can imagine \TeX\ as a kind of organism with ``eyes'',
 ``mouth'', ``gullet'',
 ``stomach'', and ``intestines''.
 Each part of the organism transforms its input in some way and passes
@@ -607,7 +608,7 @@ The ^{mouth} transforms the sequence of characters into a sequence of
 ^^{tokens}
 where each token is either a single character or a control sequence.
 ^^{control sequences//as tokens}
-The gullet expands the tokens into a sequence of 
+The gullet expands the tokens into a sequence of
 \emph{primitive commands}, which are also tokens.
 ^^{expanding tokens}
 The ^{stomach} carries out the operations specified by the primitive commands,
@@ -615,7 +616,7 @@ producing a sequence of pages.
 Finally, the ^{intestines} transform each page into the form required
 for the \dvifile\ and send it there.
 ^^{\dvifile//created by \TeX's intestines}
-These actions are described in more detail 
+These actions are described in more detail
 in \chapterref{concepts} under \conceptcit{\anatomy}.
 ^^{\anatomy}
 
@@ -630,7 +631,7 @@ Each typeset character occupies a box, and so does an entire page.
 A box can contain not just smaller boxes but also \emph{glue} ^^{glue}
 (\xref{glue}) and a few other things.
 The glue produces
-space between the smaller boxes.  
+space between the smaller boxes.
 An important property of glue is that it can stretch and shrink;
 thus \TeX\ can make a box
 larger or smaller by stretching or shrinking
@@ -666,9 +667,9 @@ next page \seeconcept{page break}. ^^{page breaks//inserted by \TeX's stomach}
 When \TeX\ is assembling an entity from a list of items (boxes, glue, etc.),
 it is in one of six
 \emph{modes} ^^{modes} (\xref{mode}).
-The kind of entity it is assembling defines the mode that it is in.  
+The kind of entity it is assembling defines the mode that it is in.
 There are two ordinary modes: ordinary horizontal mode for assembling
-paragraphs (before they are broken into lines) 
+paragraphs (before they are broken into lines)
 and ordinary vertical mode for assembling pages.
 There are two restricted modes:
 restricted horizontal mode for appending items horizontally to form
@@ -683,13 +684,13 @@ displayed on lines by themselves (see ``Math formulas'', \xref{mathform}).
 \section 新 \TeX\ 和老 {\TeX}
 
 \xrdef{newtex}
-在 1989 年, Knuth 對 \TeX\ 做了一次大幅的修改, 來使它可以處理非英語排版所需用的字符集.\space ^^{foreign languages}
-這次修改還包括了一些額外的不干擾其它東西的小功能,
-這本書介紹 ``^{\newTeX}''.
+在 1989 年, Knuth 对 \TeX\ 做了一次大幅的修改, 来使它可以处理非英语排版所需用的字符集.\space ^^{foreign languages}
+这次修改还包括了一些额外的不干扰其它东西的小功能,
+这本书介绍 ``^{\newTeX}''.
 This book describes ``^{\newTeX}''.
-如果你仍使用舊版本的 \TeX\ ($2.991$ 版或以前的版本)
-你可能會想知道哪些 {\newTeX} 的功能你是沒法使用的.
-以下這些功能無法在舊版中使用:
+如果你仍使用旧版本的 \TeX\ ($2.991$ 版或以前的版本)
+你可能会想知道哪些 {\newTeX} 的功能你是没法使用的.
+以下这些功能无法在旧版中使用:
 \ulist\compact
 \li ^|\badness| (\xref\badness)
 \li ^|\emergencystretch| (\xref\emergencystretch)
@@ -700,35 +701,35 @@ This book describes ``^{\newTeX}''.
 \li ^|\lefthyphenmin| 和 ^|\righthyphenmin| (\xref\lefthyphenmin)
 \li ^|\noboundary| (\xref\noboundary)
 \li ^|\topglue| (\xref\topglue)
-\li 十六進製的數字表達方式 |^^|$xy$  (\xref{hexchars})
+\li 十六进制的数字表达方式 |^^|$xy$  (\xref{hexchars})
 \endulist
 \noindent
-我們建議你盡可能地使用新版本的 \TeX.
+我们建议你尽可能地使用新版本的 \TeX.
 
-\section 資源
+\section 资源
 
 \xrdef{resources}
-有很多資源可以幫助你使用 \TeX.
-\texbook\ 是最可靠的 \TeX\ 信息來源.
+有很多资源可以帮助你使用 \TeX.
+\texbook\ 是最可靠的 \TeX\ 信息来源.
 
 \smallskip
 {\narrower\noindent
 ^{Knuth, Donald E.}, \texbook.  Reading, Mass.: Addison-Wesley, 1984.\par}
 \smallskip
 \noindent
-請一定使用第十七次 (1990 年 1 月) 及以後的印刷版本.
-早先的印刷版本不包括新 \TeX\ 的許多功能.
+请一定使用第十七次 (1990 年 1 月) 及以后的印刷版本.
+早先的印刷版本不包括新 \TeX\ 的许多功能.
 
-^{\LaTeX} 是一套為了簡化使用 \TeX\ 而設計的命令集
-在這本書中有描述\footnote{譯者注: 這本書中介紹的 \LaTeX\ 己經過時}:
+^{\LaTeX} 是一套为了简化使用 \TeX\ 而设计的命令集
+在这本书中有描述\footnote{译者注: 这本书中介绍的 \LaTeX\ 己经过时}:
 \smallskip
 {\narrower\noindent\frenchspacing\spaceskip = 3.33pt plus 2pt minus 1.2pt
 ^{Lamport, Leslie}, {\sl The \LaTeX\ Document Preparation System}.
 Reading, Mass.: Addison-Wesley, 1986.\par}
 \smallskip
 \noindent
-^{\AMSTeX} 是一套美國數學學會定義的提交電子數學手稿的命令標準,
-在這裡有描述:
+^{\AMSTeX} 是一套美国数学学会定义的提交电子数学手稿的命令标准,
+在这里有描述:
 \smallskip
 {\narrower\noindent
 ^{Spivak, Michael~D.}, {\sl The Joy of \TeX}. Providence, R.I.:
@@ -736,8 +737,8 @@ American Mathematical Society, 1986.
 \par}
 \smallskip
 \noindent
-你可以加入 ^{\TUG} (TUG), 這個組織出版一本名為 {\it ^{TUGBoad}} 的通訊.
-TUG 是一個很好的信息來源渠道, 它同時也提供包括 \AMSTeX\ 在內的很多 \TeX\ 宏包資源, 
+你可以加入 ^{\TUG} (TUG), 这个组织出版一本名为 {\it ^{TUGBoad}} 的通讯.
+TUG 是一个很好的信息来源渠道, 它同时也提供包括 \AMSTeX\ 在内的很多 \TeX\ 宏包资源,
 它的地址是:
 \smallskip
 {\obeylines
@@ -749,18 +750,18 @@ U.S.A.
 }
 \smallskip
 \noindent
-最後, 你可以獲取在 \chapterref{eplain} 介紹的用來排版本書的宏包 ^|eplain.tex|.
-它可以通過使用 \ftp\ 匿名登錄獲取:
+最后, 你可以获取在 \chapterref{eplain} 介绍的用来排版本书的宏包 ^|eplain.tex|.
+它可以通过使用 \ftp\ 匿名登录获取:
 {\obeylines\display{\tt
 labrea.stanford.edu [36.8.0.47]
 ics.uci.edu [128.195.1.1]
 june.cs.washington.edu [128.95.1.4]}}
 
-電子版本還包括了斯坦弗大學的 Oren Patashnik ^^{Patashnik, Oren} 為 ^{\BibTeX} 計算機程序處理輸入並且排印出其輸出的宏.
-如果你在這個宏包中發現了錯誤, 或者想改進它, 你可以給 Karl 發電子郵件, Karl 的電子郵箱地址是 {\tt karl@cs.umb.edu}.
+电子版本还包括了斯坦弗大学的 Oren Patashnik ^^{Patashnik, Oren} 为 ^{\BibTeX} 计算机程序处理输入并且排印出其输出的宏.
+如果你在这个宏包中发现了错误, 或者想改进它, 你可以给 Karl 发电子邮件, Karl 的电子邮箱地址是 {\tt karl@cs.umb.edu}.
 
-這個宏包可以通過向以下地址郵寄 10.00 美元購買 $5\frac1/4$\inches\
-或 $3\frac1/2$\inches\  軟盘得到.
+这个宏包可以通过向以下地址邮寄 10.00 美元购买 $5\frac1/4$\inches\
+或 $3\frac1/2$\inches\  软盘得到.
 \smallskip
 {\obeylines
 Paul Abrahams
@@ -771,6 +772,6 @@ Email: {\tt Abrahams\%Wayne-MTS@um.cc.umich.edu}
 }
 \smallskip
 \noindent
-這個地址在 1990 年 6 月是正確的; 請注意在這之後它可能發生改變, 尤其是電子郵件地址.
+这个地址在 1990 年 6 月是正确的; 请注意在这之后它可能发生改变, 尤其是电子邮件地址.
 
 \endchapter\byebye

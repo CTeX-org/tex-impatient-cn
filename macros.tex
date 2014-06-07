@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -6,7 +7,7 @@
 %
 % These macros are being distributed without any warranty whatsoever.
 % The level of commentary is that which we, the authors, found necessary
-% for our own purposes. 
+% for our own purposes.
 %
 % ==========================================================================
 %
@@ -18,7 +19,7 @@
 
 
 % An embedded file should end with \byebye.
-% 
+%
 \begingroup
 \ifx \macsin\relax
    % In frontm.tex, we do \input macros several times, and we still want
@@ -37,7 +38,7 @@
 \input eplain
 
 % Define configuration switches and then read their values.
-% 
+%
 \newif\ifcenterpage \centerpagetrue
 \newif\ifcompletebook
 \newif\iffinal % true for the 2000dpi copy
@@ -60,7 +61,7 @@
 \iffinal \centerpagetrue \edgetabstrue\fi
 
 % Initial definitions.  (These should come before \input fonts.)
-% 
+%
 \catcode`\@ = \letter % For the macro file only.
 
 % We don't want register allocation information in the log,
@@ -73,7 +74,7 @@
 
 % The fonts.  This should come before defining the new character control
 % sequences that follow.
-% 
+%
 \input fonts
 
 \hyphenation{script-script base-line-skip no-base-line-skip line-skip
@@ -93,7 +94,7 @@
 \let\shriek = !
 \let\vbar = |
 {
-   \catcode `\[ = 1 \catcode `\] = 2 
+   \catcode `\[ = 1 \catcode `\] = 2
    \catcode `\{ = \other \catcode `\} = \other
    \global\let\lbracechar = {
    \global\let\rbracechar = }
@@ -116,13 +117,13 @@
 
 
 % These are for debugging (less drastically than \tracingall or \loggingall).
-% 
+%
 \def\tron{\tracingmacros=2 \tracingcommands=2 \tracingonline=1}
 \def\troff{\tracingmacros=0 \tracingcommands=0}
 
 % \pagebreak should always cause a break, even if the resulting
 % page is empty.
-% 
+%
 \def\pagebreak{\null\vfill\eject}
 
 % \linebreak causes a line break in chapter headings, but outside of that
@@ -132,7 +133,7 @@
 
 
 % Parameters.
-% 
+%
 \parskip = 0pt plus 0.3pt
 \newdimen\codefuzz \codefuzz = 10pt % for \csdisplay, \example
 \hbadness = 4000
@@ -147,7 +148,7 @@
 %
 % Note that the \newdimens can't be within an \if or a \def
 % because \newdimen is an \outer macro (thanks to DEK).
-% 
+%
 \newdimen\insidemargin \newdimen\outsidemargin
 \newdimen\topmargin \newdimen\bottommargin
 \newdimen\headmargin
@@ -163,7 +164,7 @@
 % This makes it so that we only have to cut twice on a page.
 % 8.5" = 51.19125pc exactly.
 % \totalwidth should = \outsidemargin + \insidemargin + \hsize.
-% 
+%
 \totalwidth = 7.375in % 44.4159375pc = 7 3/8".
 \outsidemargin = 8pc
 \insidemargin = 10pc
@@ -173,7 +174,7 @@
 % \hsize should now be 26.4159375pc
 
 % Now that we know \hsize, we can set \parfillskip to eliminate (most)
-% widows. 
+% widows.
 %
 \parfillskip = .75\hsize plus .06\hsize minus .75\hsize
 
@@ -184,7 +185,7 @@
 %
 % The -1in below comes from the default margin, which the DVI driver must
 % set at 1in.  Odd pages are on the left, even on the right.
-% 
+%
 % First, align the left edge of the virtual page with the left edge of the
 % draft page.
 %
@@ -201,7 +202,7 @@
    \advance\dimen0 by -\totalwidth
    \divide\dimen0 by 2
    \advance\oddoffset by \dimen0
-   \advance\evenoffset by \dimen0 
+   \advance\evenoffset by \dimen0
 
 % For uncentered even-numbered pages, align the right edge of the virtual
 % page with the right edge of the draft paper so that we can remove the trim
@@ -218,7 +219,7 @@
 % page to page.
 % 11" = 66.2475pc exactly.
 % \totalheight should = \topmargin + \bottommargin + \vsize.
-% 
+%
 \totalheight = 9.25in % 9 1/4" = 55.708125pc
 \topmargin = 6pc      % Distance from top of page to baseline of text line 1
 \bottommargin = 6pc   % Distance from last line to bottom of page.
@@ -247,9 +248,9 @@
 
 
 % Other formatting parameters.
-% 
+%
 % The basic increments we'll use in the layout.
-% 
+%
 \def\setskip#1 = #2 {%
    \dimen0 = #2\baselineskip
    \csname #1skipamount\endcsname =
@@ -285,7 +286,7 @@
 
 % Displays involve text and math.  We don't want as much flexibility in
 % the glue as plain.tex sets.
-% 
+%
 \abovedisplayskip = \medsmallskipamount
 \abovedisplayshortskip = 0pt plus 2pt
 \belowdisplayskip = \medsmallskipamount
@@ -325,7 +326,7 @@
 
 % The indentation for subsidiary entries in the index. (Should be less
 % than \indexpageindent.)
-\newdimen\indexlevelindent   \indexlevelindent = .5pc 
+\newdimen\indexlevelindent   \indexlevelindent = .5pc
 
 \newskip\codebaselineskip   \codebaselineskip = \baselineskip
 
@@ -347,11 +348,11 @@
    \onepageout
    %
    % Odd pages are right-hand pages.
-   % 
+   %
    % Note \pageno has been incremented when we get here -- it now refers
    % to the page number of the page about to be typeset, not the page
    % that we just shipped out.
-   % 
+   %
    \ifodd\pageno   % \onepageout advances \pageno.
       \global\hoffset = \oddoffset
       \global\intercmdnamepenalty = 10000
@@ -397,14 +398,14 @@
    \advancepageno
    \global\advance\truepage by 1
    \ifnum\outputpenalty>-20000\else \dosupereject \fi
-} 
+}
 
 \footline = {\hfil}
 
 % The headline always includes the name of the current chapter.  This
 % goes on the inside.  If more information, such as the concept we're
 % explaining, is included, it goes on the outside.
-% 
+%
 \headline = {%
    % Produce the timestamp
    \ifnoheadline
@@ -428,7 +429,7 @@
 }
 
 % Sizes for cropmarks:
-% 
+%
 \newdimen\cropthick  \cropthick = 0.4pt
 \newdimen\crophsize  \crophsize = 1pc
 \newdimen\cropvsize  \cropvsize = 1pc
@@ -464,7 +465,7 @@
    \kern\cropoffset}}
 
 % \cropmargin will be set to the left margin on the current page.
-% 
+%
 \newdimen\cropmargin
 \def\cropline#1{\moveleft\cropmargin\hbox to \totalwidth{#1}}
 
@@ -495,7 +496,7 @@
 \def\addtruepage{%
    \vbox to 0pt{\vskip -\headmargin\vskip -2pc
       \moveleft\cropmargin\hbox to \totalwidth{%
-         \twelvebf 
+         \twelvebf
          \quad\TeX\ 急就帖\hss
          N\raise 3.3pt\hbox{o} \the\truepage\quad}%
       \vss}%
@@ -506,7 +507,7 @@
 %
 % We can use a different mark, e.g., a shorter heading, by calling
 % \changemark.
-% 
+%
 \newtoks\shortmark \shortmark = {}
 \newif\ifchangemark
 
@@ -524,7 +525,7 @@
 % ``Tabs'' down the side of the book.
 % Say \nextedgetab to move the thing down to the next.
 % Say \edgetabsfalse to turn them off.
-% 
+%
 \newcount\numtabs  \numtabs = 7
 \newdimen\edgetabjump  \edgetabjump = 0pt
 \def\nextedgetab{%
@@ -541,7 +542,7 @@
 }
 
 \newskip\bigtab \newskip\smalltab
-\newskip\edgetabdepth   
+\newskip\edgetabdepth
 \newbox\tabbox
 
 \bigtab = \totalheight    \divide\bigtab by \numtabs
@@ -571,7 +572,7 @@
 
 % We can simplify \pagecontents (which is called by \pagebody) somewhat,
 % since we don't have \topinserts.
-% 
+%
 \def\pagecontents{%
    \unvbox255   % The main page contents.
    %
@@ -585,10 +586,10 @@
 
 % The command chapters had a mini-index at the bottom of right-hand
 % pages.  These definitions are the way to put entries into it.
-% 
+%
 % \minref generates a reference for the mini-index, and prints the
 % reference on the page, also.
-% 
+%
 \def\minref#1{%
    #1% Print it on the page.
    % That's it, now.
@@ -596,19 +597,19 @@
 
 % Mini-index entry without printing the argument on the page.
 % Just ignore the argument now.
-% 
+%
 \def\minrefs#1{%
    \ignorespaces
 }
 
 % This is used for producing the concept mini-index.
-% 
+%
 \def\minrefsdelim#1\endmark{\minrefs{#1}}
 
 % One last insertion-oriented thing:
 % we always want numbered footnotes, as defined in eplain.
 % We'll do them in 8-point type.
-% 
+%
 \let\@plainfootnote = \footnote
 \let\footnote = \numberedfootnote
 \everyfootnote = {\footnotefonts}
@@ -627,7 +628,7 @@
       \printmarginnote{#1}%
       \prevdepth = \dimen0
    \fi
-   \ignorespaces 
+   \ignorespaces
 }
 
 \def\printmarginnote#1{%
@@ -653,7 +654,7 @@
 
 % Stuff to preserve page breaks inserted for the 2nd printing.
 % This macro takes one ``argument''.
-% 
+%
 \def\secondprinting{\afterassignment\finishsecondprinting \toks0 = }
 \def\finishsecondprinting{\the\toks0}
 
@@ -661,9 +662,9 @@
 
 % Parts of the book.
 %
-% 
+%
 % Chapters.
-% 
+%
 \let\chaptername = \empty
 \newcount\chapterno
 
@@ -674,7 +675,7 @@
 % book.  The facing page has an illustration.  This means that if the
 % previous chapter ended on a left-hand (i.e., even) page, we have to
 % eject an extra blank page.
-% 
+%
 \outer\def\chapter#1 \par{%
    \ifcompletebook % Don't do the blank pages for proof copies.
       \blankpage % the illustration page
@@ -737,7 +738,7 @@
 % In the final book, it just advances the page number.
 % For the web edition, the blank pages serve no purpose except to keep
 % the indexing correct.  I didn't want to rerun the index.
-% 
+%
 \def\blankpage{%
    \iffinal
       \advancepageno
@@ -751,7 +752,7 @@
 % number.  We want to kern more between `11' then otherwise; also, we
 % want to remove the extra space before the chapter number, and after
 % `11'.
-% 
+%
 \def\kernchapno#1#2{%
    \ifx\empty#2\else \kern-3pt \fi
    #1%
@@ -767,7 +768,7 @@
 }
 
 % Sections.
-% 
+%
 \newif\ifheading   % Avoid breaking after a heading.
 
 % get section numbers for the fdl only, since it has internal references.
@@ -775,7 +776,7 @@
 
 % The heading flag is turned on by headings and turned off
 % at the start of a description.
-% 
+%
 \outer\def\section#1 \par{%
    \par % be sure we're in vertical mode
    \saveskip = \lastskip % will be 0 if no skip
@@ -791,7 +792,7 @@
    \writetocentry{section}{#1}%
    \nobreak
    % Don't go into horizontal mode within the command descriptions.
-   % 
+   %
    \vskip\belowsectionskip
    \ifcommands \else \noindent \fi
    \headingtrue
@@ -803,7 +804,7 @@
 
 % Subsections.  We don't want a break at the glue if we were preceded by
 % a \nobreak.
-% 
+%
 \def\subsection#1 \par{%
    \par % be sure we're in vertical mode
    \saveskip = \lastskip % will be 0 if no skip
@@ -822,7 +823,7 @@
    % Don't go into horizontal mode within the command descriptions.
    \vskip\belowsubsectionskip
    \ifcommands \else \noindent \fi
-   \headingtrue 
+   \headingtrue
    \everypar = {\headingfalse \global\everypar = {}}%
       % only gets executed for \par in horizontal mode
    \ignorespaces
@@ -838,10 +839,10 @@
 
 
 % List macros.
-% 
+%
 
 % We want to use different names than eplain.
-% 
+%
 \let\ulist = \unorderedlist
 \let\endulist = \endunorderedlist
 %
@@ -854,7 +855,7 @@
 % It also makes the display into a `short' display, FYI.
 % The \belowdisplayskip and \abovedisplayskip glue are inserted by the
 % display.
-% 
+%
 \long\def\display#1{%
    \ifvmode \noindent \fi
    $$\vtop{\everypar = {}\hsize = \displaywidth
@@ -866,7 +867,7 @@
 
 % \vdisplay is like \display, except it's for vertical mode material.  Use it
 % to avoid an unwanted initial lineskip.
-% 
+%
 \long\def\vdisplay#1{%
    \ifvmode \noindent \fi
    $$\vtop{\everypar = {}\hsize = \displaywidth
@@ -880,14 +881,14 @@
 
 % Indexing.
 % Derived from Knuth's manmac macros.
-% 
+%
 \newwrite\index
 
 \immediate\openout\index = \jobname.idx
 \newif\ifsilent
 
 % We need ^ to be active temporarily, while we define it.
-% 
+%
 {  \catcode`\^ = \active
 %
 \gdef^{%
@@ -916,7 +917,7 @@
 }
 
 % Eat the `^' that we saw would be the next token.
-% 
+%
 \gdef\secondhat^{\checkbar}
 
 } % end scope where ^ is \other
@@ -925,12 +926,12 @@
 
 % Here we start reading the text of the actual index entry;
 % we've determined whether it's silent or not.
-% 
+%
 % We handle the following cases:
 %      ^{alpha} and ^^{alpha}
 %      ^|alpha| and ^^|alpha|
 %      ^|\alpha| and ^^|\alpha|
-% 
+%
 % When this is called, \next is either `|' or `{'.
 %
 \def\iswitch{%
@@ -950,7 +951,7 @@
 
 % The thing after the ^ is a |.  We have further checking to do -- is
 % the next character a \?
-% 
+%
 { % reverse \ and /
 \catcode`\/ = 0
 \catcode`\\ = \other
@@ -963,14 +964,14 @@
 }
 
 % The thing being indexed starts with a \.
-% 
+%
 /gdef/litidxA \#1|{%
    /ctsidxref{#1}%
    /litidxswitch{/\#1}%
 }
 
 % The thing being indexed is just a word.
-% 
+%
 /gdef/litidxB #1|{%
    /ttidxref{#1}%
    /litidxswitch{#1}%
@@ -978,7 +979,7 @@
 }% end reversal of \ and /
 
 % The thing after the ^ is not a |.
-% 
+%
 \def\normalidx#1{%
    \ifsilent
       \aftergroup\ignorespaces
@@ -994,7 +995,7 @@
       \aftergroup\ignorespaces
    \else
       {\tt #1}%
-   \fi 
+   \fi
    \endgroup % group started by \iswitch.
 }
 
@@ -1004,7 +1005,7 @@
 
 % \idxref generates an index entry for #1. If #1 contains any control
 % sequences, they are treated literally.
-% 
+%
 \def\idxref#1{\indexwrite{#1}N\ignorespaces}
 
 
@@ -1040,7 +1041,7 @@
 \def\@@ifempty#1#2\@emptymarkB{\ifx #1\@emptymarkA}%
 \def\@emptymarkA{\@emptymarkA}% Again, so \ifx won't complain.
 
-% #1 is the index term, #2 is the reference as in 
+% #1 is the index term, #2 is the reference as in
 % Diacritical mark, see accent.
 
 \def\idxsee#1#2{%
@@ -1054,24 +1055,24 @@
 
 % \ttidxref generates an index entry for #1 in the program font.
 % If #1 contains any control sequences, they are treated literally.
-% 
+%
 \def\ttidxref#1{\indexwrite{#1}T\ignorespaces}
 
 
 % \ctsidxref generates an index entry for a control sequence.  #1
 % should not have a preceding backslash, so that the proper call for
 % indexing \alpha is \ctsidxref{alpha}.
-% 
+%
 \def\ctsidxref #1{\indexwrite{#1}C\ignorespaces}
 
 % \indexchar is needed to generate index entries for three especially
 % difficult single characters: {, }, and \.  They are blank-delimited.
-% 
+%
 \def\indexchar{\begingroup \deactivate \indexcharA}
 \def\indexcharA#1 {\indexwrite{#1}T\endgroup}
 
 % \pix indicates that the next index entry is a principal one.
-% 
+%
 \newif\ifpix
 \def\pix{\global\pixtrue}
 
@@ -1110,11 +1111,11 @@
 % Macros for the front matter.
 %
 % Space at the top of the frontmatter pages.
-% 
+%
 \def\sinkage{\vglue 7pc \relax}
 
 % And at the top of the backmatter pages.
-% 
+%
 \def\backsinkage{\vglue 2pc \relax}
 
 % \frontchapter doesn't care if we're on an even page or an odd page.
@@ -1139,7 +1140,7 @@
 
 
 % We are called from inside a group, so we can redefine the \toc... macros.
-% 
+%
 \def\shortcontents{{%
    \firsttoctrue
    \backfalse
@@ -1155,14 +1156,14 @@
 }
 
 % #1 is the chapter name, #2 the chapter number, #3 the page number.
-% 
+%
 \def\shorttocchapter#1#2#3{%
-   \ifback\else#2\quad $\backslash$\quad\fi&#1\qquad 
+   \ifback\else#2\quad $\backslash$\quad\fi&#1\qquad
    \raise3pt\hbox{\vrule height2pt width4pt depth2pt}$\,\,$#3\cr
 }
 
 % Yes, we read the entire contents (several pages) as one alignment.
-% 
+%
 \def\contents{{%
    \firsttoctrue
    \backfalse
@@ -1209,7 +1210,7 @@
 % \ifback is true when we're doing the table of contents and are about
 % to do the back matter.  It is also true just before we do the back matter
 % chapters (really, only the index).
-% 
+%
 \def\backmatter{\write\tocfile{\noexpand\setback}\backtrue}
 \def\setback{\noalign{\bigskip\global\backtrue}}
 
@@ -1221,12 +1222,12 @@
 % Each example is ended by ::: (including the last one)
 % A line starting with ~ is executed in the output (without the ~)
 % but dropped from the input.
-% 
+%
 % Within the input, ! is an escape character, but {} are not recognized.
 % This provides a limited control sequence capability, which is sufficient
 % for delimited macros and therefore for cross-references (see \xrefdelim).
 % !! stands for !.
-% 
+%
 \def\endmark{:::}
 
 \newif\ifnotatend  \newif\ifnotatendfile \newif\iftildeline
@@ -1254,7 +1255,7 @@
 % input, and \holderA, which produces example output.
 %
 % We can't say \global\immediate\read, but \immediate is implied with \read.
-% 
+%
 \def\reader{{\deactivate
    \catcode`\! = \other   % To execute control sequences on \input.
    \catcode`\^^M = 9     \global\read\exfileA to \holder
@@ -1323,7 +1324,7 @@
 
 % This definition is more or less repeated verbatim in the first example
 % in xmptext.tex.
-% 
+%
 \def\xmpheader #1/#2{%
    {\exampletitlefonts \leftline{Example #1:\quad \bi#2}}%
    \vglue .5\baselineskip
@@ -1373,10 +1374,10 @@
 
 
 % Macros for the concepts chapter.
-% 
-% 
+%
+%
 % Start off the chapter.
-% 
+%
 \def\beginconcepts{\openout\conceptfile = \jobname.ccs }
 \def\endconcepts{\closeout\conceptfile}
 
@@ -1431,7 +1432,7 @@
 % Commands for cross-referencing within the concepts chapter.
 % Each refterm has the form {a} or {a:b}, where b is the term to
 % actually reference (e.g., \refterm{\PlainTeX:\plainTeX}).
-% 
+%
 \def\refterm#1{%
    \reftermA #1:\endmark  % Parse the stuff.
    \expandafter\minrefsdelim\termtoref\endmark
@@ -1449,7 +1450,7 @@
 
 
 % This macro prints the single page that will go on the back cover.
-% 
+%
 \def\printconceptpage{%
    % Make sure this is considered an odd page.
    \ifodd\pageno\else\blankpage\fi
@@ -1482,7 +1483,7 @@
 %
 \outer\def\begindescriptions{\beginit{DESCRIPTIONS}%
    % The following definitions are local to this chapter.
-   % 
+   %
    \let\example = \commandexample
    \let\endexample = \endcommandexample
    \interlinepenalty = 50
@@ -1493,7 +1494,7 @@
 
 % The \endgroup that \enddescriptions does must come after the page
 % break, so the last page of descriptions will get a mini-index.
-% 
+%
 \def\enddescriptions{%
    \vskip -\lastskip % undo the skip created by \enddesc
    \endit{DESCRIPTIONS}%
@@ -1552,7 +1553,7 @@
 % \endexample
 %
 % repeated an indefinite number of times.
-% 
+%
 % We want to set the code of an example in a box so as to prevent it from
 % being broken across pages.  By using \vtop we assure that the code is the
 % right distance from the `Example:' line.  In order to keep the `produces:'
@@ -1590,7 +1591,7 @@
 
 % \dproduces should be used when the following material is a math
 % display.
-% 
+%
 \newif\ifexampledisplay
 \def\dproduces{\global\exampledisplaytrue \produces}
 
@@ -1667,14 +1668,14 @@
 
 % \aux acts as a prefix to a \cts command, specifying that a
 % cross-reference should not be generated.
-% 
+%
 \def\aux{\xreffalse}
 
 % So does \easy, which prints a hand, pointing at the control sequence.
 % (The hand font doesn't define an em.)
-% 
+%
 \newif\ifeasy
-\let\easy = \easytrue 
+\let\easy = \easytrue
 \def\testeasy{\ifeasy\llap{\hand\ \kern 6pt}\easyfalse\fi}
 
 % \cts typesets the beginning of a control sequence description, and
@@ -1682,7 +1683,7 @@
 % control sequence name must be delimited by a blank, since there may be
 % parameters that follow.  The control sequence name can contain special
 % characters; they are deactivated.  The initial \ must be omitted.
-% 
+%
 \def\cts{\begingroup \deactivate \ctsA}
 \def\ctsA#1 {\endgroup \ctsB{#1}}
 \def\ctsB#1#2{%
@@ -1693,7 +1694,7 @@
 
 % \ctsx is like \cts, but separates the control sequence name and the
 % text by more space. (`x' for `extra')
-% 
+%
 \def\ctsx{\begingroup \deactivate \ctsxA}
 \def\ctsxA#1 {\endgroup \ctsxB{#1}}
 \def\ctsxB#1#2{%
@@ -1716,7 +1717,7 @@
 % own for `\ '.  It does not generate any index or cross-reference
 % entries.  #1 is the command name, #2 some (possibly empty) text to go
 % next to it.
-% 
+%
 \def\ctsbasic#1#2{%
    \par
    \nobreak % At the \parskip glue the \noindent will produce.
@@ -1726,13 +1727,13 @@
 % \ctsxrdef generates a control sequence cross-reference definition.
 % For example, `\ctsxrdef{@star}' generates a cross-reference definition
 % for `\@star'.
-% 
+%
 \def\ctsxrdef#1{\expandafter\xrdef\csname#1\endcsname}
 
 % \ctsact prints an active character #1 and generates an index entry
 % for it.  #1 is blank-delimited.  \ctsact does not generate a
 % cross-reference definition.
-% 
+%
 \def\ctsact{\begingroup \deactivate \ctsactA}
 \def\ctsactA#1 {\endgroup
    \ctsbasic{#1}{}%
@@ -1753,7 +1754,7 @@
 % argument.  We want ` and ' to come from cmtt, instead of Optima, so we
 % call \mapquotes before reading the argument.  This only affects the \`
 % and \' descriptions.
-% 
+%
 \def\ctspecialx{\begingroup \deactivate \mapquotes \ctspecialxA}
 \def\ctspecialxA#1 {\endgroup
    \ctsbasic{\\#1}{}\quad
@@ -1762,14 +1763,14 @@
 
 % \ctsdisplay has a blank-delimited argument consisting of a control
 % sequence such as alpha.  It produces $\alpha$ followed by \alpha.
-% 
+%
 \def\ctsdisplay#1 {\basicdisplay {$\csname #1\endcsname$}{\\#1}%
    \ifxref\ctsxrdef{#1}\else\xreftrue\fi   \pix\ctsidxref {#1}}
 
 % \ctsdoubledisplay has a blank-delimited argument consisting of a
 % control sequence such as bigvee.  It produces $\bigvee$ and
 % $\big\bigvee$ followed by \bigvee.
-% 
+%
 \def\ctsdoubledisplay#1 {
    {%
       \symbolspace = 42pt
@@ -1785,7 +1786,7 @@
 % \ctsydisplay displays a control symbol.  #1 is a single character,
 % which may be active.  #2 is the cross-reference label,
 % blank-delimited.
-% 
+%
 \def\ctsydisplay{\begingroup \deactivate\catcode`\|=\other \ctsydisplayA}
 \def\ctsydisplayA#1 #2 {\endgroup
    \basicdisplay{$\csname\string#1\endcsname$}{\\#1}%
@@ -1795,7 +1796,7 @@
 
 % \actdisplay displays an active character. #1 is the character, and
 % #2 is the cross-reference label, blank-delimited.
-% 
+%
 \def\actdisplay{\begingroup\catcode `\|=\other\actdisplayA}
 \def\actdisplayA#1 #2 {\endgroup
    \basicdisplay{$#1$}{\string#1}%
@@ -1805,7 +1806,7 @@
 
 % \basicdisplay does the actual typesetting of a control sequence name.
 % for inside displays.
-% 
+%
 \def\basicdisplay#1#2{\testeasy\hbox to \symbolspace{#1\hfil}{\bt #2}}
 
 % Printing parameter and table entry headings.
@@ -1819,7 +1820,7 @@
 \def\rqbraces#1{\{\hskip2pt#1\hskip2pt\}}
 
 % Printing rulers.
-% 
+%
 \def\1{\vrule height 0pt depth 2pt}
 \def\2{\vrule height 0pt depth 4pt}
 \def\3{\vrule height 0pt depth 6pt}
@@ -1830,7 +1831,7 @@
 \def\8{\tick\1\tick\2\tick\1\tick\3\tick\1\tick\2\tick\1\tick\4}
 
 % Macros for the capsule summary chapter.
-% 
+%
 \def\begincapsum{\beginit{CAPSULE SUMMARY}%
    \let\bt = \tentt
    \bigskip
@@ -1891,20 +1892,20 @@
 % \caplineout produces an output line (or several lines) for the capsule
 % summary.  #1 is the command text, #2 is the description, #3 is either * or
 % empty, and #4 is the cross-reference label.
-% 
+%
 \def\caplineout#1#2#3#4{%
    \setbox0 = \ifempty {#3}\box\voidb@x \else \copy\@primitivebox\fi
    \vskip\intercapsuleskip
    % If we use \vbox here, a multi-line summary at the top of a page
    % will cause \topskip to disappear.
-   % 
+   %
    \vtop{\noindent \hangindent = \capsulehangindent
       \spaceskip = 3.33pt plus 2pt minus 1.5pt
       \rightskip = 0pt plus 4em % a little more stretch
       \parfillskip = 0pt plus 1fil
       \llap{\box0}{\bt #1}% Bold typewriter for the cs name.
          \quad \hskip 0pt plus 1pt minus 1pt
-         #2\unskip\ 
+         #2\unskip\
          (\ifcstwo \tworefs #4:\else \xref{#4}\fi)%
    }%
    \par
@@ -1915,9 +1916,9 @@
 
 
 % Macros for printing the index.
-% 
+%
 % Set up to print it.
-% 
+%
 \def\beginindex{%
    \doublecolumns
    \beginit{THE INDEX}
@@ -1930,7 +1931,7 @@
       \def\see##1{.\quad{\it See} ##1 }
       \def\seealso##1{\hfil\break{\it See also} ##1 }
       \let\r = \romannumeral
-      
+
       \raggedright
 }
 
@@ -1942,7 +1943,7 @@
 % (T for ttfont, C for control sequence, N for normal), and
 % #4 is the list of pages.  The page list can have \pp (principal
 % entry)in it, and each page is separated by \c.
-% 
+%
 \def\indexentry#1#2#3#4{%
    \beginit{INDEX ENTRY}%
       \leftskip = #1\indexpageindent
@@ -1963,7 +1964,7 @@
 }
 
 % Nah, let's forget printing the initial.
-% 
+%
 \def\indexgroup#1{%
   \bigskip
 }
@@ -1971,10 +1972,10 @@
 
 
 % Code formatting.
-% 
-% 
+%
+%
 % Turn off normally special characters.
-% 
+%
 \def\deactivate{%
    \catcode`\\ = \other   \catcode`\{ = \other   \catcode`\} = \other
    \catcode`\$ = \other   \catcode`\& = \other   \catcode`\# = \other
@@ -1985,7 +1986,7 @@
 % It is convenient to have |...| mean print the ... verbatim, except for !.
 % (But | should just be a vertical bar in math mode.)  This should be
 % used only for inline code; returns inside |...| become spaces.
-% 
+%
 \catcode`\| = \active
 \def|{%
    \ifmmode
@@ -2000,7 +2001,7 @@
 
 % \csdisplay is similar, but it inserts glue before and after.
 % It also is ended by |, so we have to redefine that.
-% 
+%
 \def\csdisplay{%
    \par
    \nobreak % don't break above displays
@@ -2014,7 +2015,7 @@
 
 % \begincs does the setup for verbatim printing.  It does not confine
 % its effects to a group.
-% 
+%
 \def\begincs{%
    \hfuzz = \codefuzz
    \parfillskip = 0pt plus 1fil
@@ -2034,7 +2035,7 @@
 
 % In math mode we want vertical bars and exclamation points to be
 % regular characters again.
-% 
+%
 \everymath = {\setmathchars}
 \everydisplay = {\setmathchars}
 \leftdisplays
@@ -2048,7 +2049,7 @@
 
 
 % Some miscellanous macros.
-% 
+%
 \def\anatomy{anatomy of \TeX}
 \def\ascii{{\ninerm ASCII}}
 \def\asciichar#1{$\langle \rm #1\rangle$}
@@ -2071,12 +2072,12 @@
 \def\Mprimeperiod.{$M'$\kern-2.5pt.}
 \def\mud{\thinspace {\rm mu}} % can't use \mu; it'a a Greek letter!
 \def\newTeX{新 \TeX}
-\def\p{頁 \thinspace}
+\def\p{页 \thinspace}
 \def\pkfile{{\tt .pk} file}
 \def\plainTeX{plain \TeX}
 \def\PlainTeX{Plain \TeX}
 \def\pp{p\p}
-\def\pt{\thinspace {\rm 點}}
+\def\pt{\thinspace {\rm 点}}
 \def\pxlfile{{\tt .pxl} 文件}
 \def\tequiv{\unskip $\>\equiv\>$} % equivalence in text
 \def\texbook{{\sl The \TeX book}\itcorr}
@@ -2088,12 +2089,12 @@
 \let\ths = \thinspace
 \def\tminus{\unskip\allowbreak $\>-\>$\allowbreak} % minus in text
 \def\tplus{\unskip\allowbreak $\>+\>$\allowbreak} % plus in text
-\def\TUG{\TeX{} 用戶組織}
+\def\TUG{\TeX{} 用户组织}
 \def\Vcomma,{$V$\kern-2pt,}
 \def\visiblespace{{\tentt \char'040}}
 \def\Vperiod.{$V$\kern-2pt.}
 \let\vs=\visiblespace
-\def\xrefpg#1{第~\xrefn{#1}~頁}
+\def\xrefpg#1{第~\xrefn{#1}~页}
 
 % \tighten attempts to shorten the number of lines occupied by a paragraph.
 \def\tighten{\looseness=-1
@@ -2111,7 +2112,7 @@
 
 % Arrange N items in three columns.
 % A right brace is needed at the end of the list to match the \bgroup.
-% 
+%
 \def\threecolumns{\nobreak\vskip\abovedisplayskip\dothreecolumns}
 
 \def\dothreecolumns#1 {\bgroup
@@ -2121,7 +2122,7 @@
 
 % We don't want to make < an active character because then it cannot be used
 % in \ifnum tests.  So, \<foo> denotes a nonterminal `foo'.
-% 
+%
 \def\<#1>{$\langle${\rm\it \kern-.2pt #1\kern.65pt}$\rangle$}
 
 \let\beginit = \environment
@@ -2142,16 +2143,16 @@
    \vskip -#1 plus -1fil
    \vskip -\saveskip \vskip \saveskip % to restore \lastskip
 }
-   
+
 
 
 
 % Expanded cross-referencing for various parts of the books.
-% 
+%
 
 % Sometimes it is clearer to refer to a cross-reference as a control
 % sequence.
-% 
+%
 \def\ctsref{\begingroup \catcode`\@ = \letter \@ctsref}
 \def\@ctsref#1{(\xref{#1})\endgroup}
 
@@ -2160,7 +2161,7 @@
 % This command comes at the beginning of chapters, after the \chapter
 % command and before the text.  Hence the \par in the template
 % and the \noindent
-% 
+%
 \def\chapterdef#1#2\par{%
    \@writeaux{%
       \string\gdef\expandafter\string
@@ -2191,9 +2192,9 @@
 
 
 % Special types of pictures.
-% 
+%
 % Glue pictures:
-% 
+%
 \newdimen\glueboxwidth
 \newdimen\boxdepth  \boxdepth = 3.5pc
 \newskip\underlabel  \underlabel= .1\boxdepth % space under `width n'.
@@ -2210,7 +2211,7 @@
 }}%
 
 % Make a picture of a box.
-% 
+%
 \def\picbox#1 {%
    \glueboxwidth = #1pc \squeezeglue
    \vtop{%
@@ -2223,7 +2224,7 @@
 }
 
 % And of glue.
-% 
+%
 \def\gluebox#1 #2 #3 #4 {\vtop{%
    \glueboxwidth = #4pc \squeezeglue
    \hbox to \glueboxwidth{\strut \hfil {\it glue}\hfil}%
@@ -2248,7 +2249,7 @@
 }}
 
 \def\gluepicture#1 #2{{\ninerm
-   \medskip 
+   \medskip
    \vtop{%
       \setbox0 = \hbox{#2}% The glue and box pictures.
       \glueboxwidth = \wd0
@@ -2260,10 +2261,10 @@
 }}
 
 % Box pictures.
-% 
+%
 % Set up a `reference point' and the macro for a labelled height, for use
 % in forming pictures of boxes.
-% 
+%
 \newbox\refpoint
 
 \setbox\refpoint = \vbox to 0pt{%
@@ -2271,7 +2272,7 @@
    \hbox to 0pt{\kern-2.2pt $\bullet$\hss}
    \vss
 }%
-   
+
 \def\labelledheight#1#2{%
 \vtop to #1{\offinterlineskip
    \setbox0=\hbox{#2}\skip0=\wd0
@@ -2284,11 +2285,11 @@
 
 
 % Paul's updates -- no longer needed; we have converged.
-% 
+%
 %\input paulmacs
 
 % Read the cross-reference definitions.
-% 
+%
 \readauxfile
 
 \catcode`\@ = \other  % Make @ an `other' character again.

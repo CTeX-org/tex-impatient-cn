@@ -1,19 +1,20 @@
+% -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 \input macros
-\chapter {組頁命令}
+\chapter {组页命令}
 
 \chapterdef{pages}
 
-這個章節介紹了與頁, 頁的組成部分以及輸出程序相關的命令.
-本章寫作慣例的說明可以在\headcit{命令描述}{cmddesc}中找到.
+这个章节介绍了与页, 页的组成部分以及输出程序相关的命令.
+本章写作惯例的说明可以在\headcit{命令描述}{cmddesc}中找到.
 
 \begindescriptions
 
 %==========================================================================
-\section {行間距和段間距}
+\section {行间距和段间距}
 
 \begindesc
 \cts baselineskip {\param{glue}}
@@ -27,7 +28,7 @@
 \bix^^|\lineskiplimit|
 These three parameters jointly determine how much space \TeX\ leaves between
 consecutive \minref{box}es of an ordinary \minref{vertical list},
-e.g., the lines of a paragraph.  
+e.g., the lines of a paragraph.
 This space is called ``\minref{interline glue}''.
 It is also inserted between the component boxes of a vbox constructed in
 internal vertical mode.
@@ -180,14 +181,14 @@ most useful for typesetting tables and math displays---a
 little extra space between rows often makes them more readable.
 ^^{alignments//space between rows of}
 \example
-Alice picked up the White King very gently, and lifted him 
+Alice picked up the White King very gently, and lifted him
 across more slowly than she had lifted the Queen; but before
 she put him on the table, she thought she might well dust
 him a little, he was so covered with ashes.
 \openup .5\baselineskip % 1.5 linespacing.
 |
 \produces
-Alice picked up the White King very gently, and lifted him 
+Alice picked up the White King very gently, and lifted him
 across more slowly than she had lifted the Queen; but before
 she put him on the table, she thought she might well dust
 him a little, he was so covered with ashes.
@@ -226,7 +227,7 @@ otherwise might occur.
 \begindesc
 \ctspecial allowbreak {} \xrdef{vallowbreak}
 \explain
-This command tells \TeX\ to 
+This command tells \TeX\ to
 allow a page break where one could not ordinarily occur.
 |\allowbreak| can also be used in horizontal mode.
 \enddesc
@@ -238,7 +239,7 @@ This command produces a \minref{penalty} item.
 The penalty item makes \TeX\ more or less willing to break a page
 at the point where that item occurs.
 A negative penalty, i.e., a bonus, encourages a page break;
-a positive penalty discourages a page break.  
+a positive penalty discourages a page break.
 A penalty of $10000$ or more prevents a break altogether,
 while a penalty of $-10000$ or less forces a break.
 |\penalty| can also be used in horizontal mode.
@@ -263,7 +264,7 @@ this is a good place to break the page.
 \cts bigbreak {}
 \explain
 These commands indicate increasingly desirable places for \TeX\ to
-break a page.  They also cause \TeX\ to 
+break a page.  They also cause \TeX\ to
 insert a ^|\smallskip|, ^|\medskip|, or
 ^|\bigskip| (\xref \smallskip) if the page break doesn't actually
 happen.  \TeX\ suppresses this skip if it occurs just after an
@@ -295,11 +296,11 @@ chapter or other major unit of your document.
 \explain
 This command provides a kind of conditional page break.
 It tells \TeX\ to
-break the page---but not if the text up to a later |\filbreak| also 
+break the page---but not if the text up to a later |\filbreak| also
 fits on the same page.
 By enclosing a paragraph in a pair of |\filbreak|s,
 you can ensure that \TeX\ will keep a paragraph on a single page if it can.
-You should not use |\filbreak| within a paragraph, since it 
+You should not use |\filbreak| within a paragraph, since it
 forces \TeX\ into vertical mode and thus ends the paragraph.
 See \xrefpg{filbreak} for more advice on this subject.
 \enddesc
@@ -326,7 +327,7 @@ The |\normalbottom| command cancels the effect of |\raggedbottom|.
 \begindesc
 \cts interlinepenalty {\param{number}}
 \explain
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page between the lines of a paragraph.
 By setting it to $10000$ you can force all page breaks to occur
 between paragraphs, provided that the pages have enough stretch so
@@ -338,7 +339,7 @@ that \TeX\ can still compose them decently.
 \cts clubpenalty {\param{number}}
 \explain
 ^^{club line}
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just after the first line of a paragraph.
 A line by itself at the bottom of a page is called a ``club line''.
 \PlainTeX\ sets |\clubpenalty| to $150$.
@@ -348,7 +349,7 @@ A line by itself at the bottom of a page is called a ``club line''.
 \cts widowpenalty {\param{number}}
 \explain
 ^^{widow line}
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just before the last line of a paragraph.
 A line by itself at the top of a page is called a ``widow line''.
 \PlainTeX\ sets |\widowpenalty| to $150$.
@@ -358,7 +359,7 @@ A line by itself at the top of a page is called a ``widow line''.
 \cts displaywidowpenalty {\param{number}}
 \explain
 ^^{widow line}^^{math display}
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just before the last line of a partial paragraph
 that immediately precedes a math display.
 \PlainTeX\ sets |\displaywidowpenalty| to $50$.
@@ -369,7 +370,7 @@ that immediately precedes a math display.
 \cts predisplaypenalty {\param{number}}
 \explain
 ^^{math display}
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just before a math display.
 \PlainTeX\ sets |\predisplaypenalty| to $10000$.
 \enddesc
@@ -378,7 +379,7 @@ breaking a page just before a math display.
 \cts postdisplaypenalty {\param{number}}
 \explain
 ^^{math display}
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just after a math display.
 \PlainTeX\ leaves |\postdisplaypenalty| at $0$.
 \enddesc
@@ -386,7 +387,7 @@ breaking a page just after a math display.
 \begindesc
 \cts brokenpenalty {\param{number}}
 \explain
-This parameter specifies the \minref{penalty} for 
+This parameter specifies the \minref{penalty} for
 breaking a page just after a line  that ends in
 a discretionary item (usually a hyphen).
 ^^{hyphenation}
@@ -404,7 +405,7 @@ This parameter contains the sum of certain penalties \minrefs{penalty}
 that \TeX\ accumulates as it is placing insertions onto the
 current page.
 These penalties are incurred when \TeX\ is processing an |\insert|
-command 
+command
 and discovers that a previous insertion  of the same kind on this page has
 been split, leaving part of it for subsequent pages.
 See \knuth{pages~123--125} for the details of this
@@ -513,7 +514,7 @@ See \xrefpg{\hsize} for a more complete explanation.
 \begindesc
 \cts vsize {\param{dimen}}
 \explain
-This parameter specifies the current vertical extent of a page.  
+This parameter specifies the current vertical extent of a page.
 \TeX\ examines it only when it is starting a page.  Thus if you change
 |\vsize| in the
 middle of a page, your change won't affect anything until the following page.
@@ -534,7 +535,7 @@ change \emph{both} |\vsize| and |\pagegoal|.)
 \idxsee{origin}{page origin}
 \explain
 \TeX\ normally takes the ``origin'' of a page, that is, the point where
-it starts printing, as being one inch down from the top of the page and one 
+it starts printing, as being one inch down from the top of the page and one
 inch to the right of the left end of the page.\footnote{
 \TeX\ itself is indifferent to where the origin of the page is,
 but this information has to be built into the device drivers
@@ -566,7 +567,7 @@ what $d$ should be (provided that the first box
 on the page isn't too tall).
 $d$ is given by the natural size of the |\topskip| glue.
 If the height of the first box on the page exceeds $d$,
-so that the glue would be negative, \TeX\ simply inserts no 
+so that the glue would be negative, \TeX\ simply inserts no
 |\topskip| glue at all on that page.
 
 To understand better the effect of these rules, assume that |\topskip|
@@ -624,7 +625,7 @@ printing of page numbers is handled by \TeX's \minref{output routine},
 which you can modify.
 
 \PlainTeX\ keeps the page number in the \minref{register} ^|\count0|.
-(|\pageno| is, in fact, a synonym for |\count0|.)  
+(|\pageno| is, in fact, a synonym for |\count0|.)
 Whenever it ships out a page to the \dvifile,
 ^^|\shipout//{\tt\\count} registers displayed at|
 \TeX\ displays the current value of |\count0| on your
@@ -729,7 +730,7 @@ footers.
 \nextexample
 \footline = {\tenit\ifodd\pageno\hfil\folio
            \else\folio\hfil\fi}
-% Produce the page number in ten-point italic at 
+% Produce the page number in ten-point italic at
 % the outside bottom corner of each page.
 |
 \endexample\enddesc
@@ -764,10 +765,10 @@ See \knuth{pages~259--260} for examples showing how |\mark| can be used.
 \cts topmark {}
 \explain
 These commands expand to the mark text in an item generated by an earlier
-^|\mark| command.  
+^|\mark| command.
 The mark text has the form of a token list.
 \TeX\ sets the values of these commands when it
-finishes placing the contents of a page into ^|\box255|, 
+finishes placing the contents of a page into ^|\box255|,
 just before calling the \minref{output routine}
 as part of its \minref{page break}ing actions.  \TeX\ determines
 these values as follows:
@@ -796,11 +797,11 @@ The table at the bottom of \knuth{page~258} illustrates the relation among
 These commands expand to the ^{mark text} generated by an earlier
 ^|\mark| command that produced an item in the item list of a vbox $V$.
 The mark text has the form of a token list.
-When \TeX\ 
+When \TeX\
 splits $V$ in response to a ^|\vsplit| command (\xref \vsplit),
 it sets the values of these commands as follows:
 \ulist\compact
-\li |\splitfirstmark| contains the tokens of the first mark in 
+\li |\splitfirstmark| contains the tokens of the first mark in
 the item list of $V$.
 \li |\splitbotmark| contains the tokens of the last mark in
 the item list of $V$.
@@ -823,12 +824,12 @@ These commands produce footnotes.
 \<argument$_1$> is the ``^{reference mark}''
 for the footnote and \<argument$_2$> is its text.
 The text can be several paragraphs long if necessary and can contain
-constructs such as math displays, but it shouldn't contain any 
+constructs such as math displays, but it shouldn't contain any
 \minref{insertion}s (such as other footnotes).
 
 You shouldn't use these commands inside a subformula of a math formula,
 in a box within a box being contributed to a page,
-or in an insertion of any kind. 
+or in an insertion of any kind.
 If you're unsure whether these restrictions apply, you can be safe by
 only using |\footnote| and |\vfootnote| directly within a paragraph or
 between paragraphs.
@@ -908,9 +909,9 @@ Insertions are very useful for material such as figures and tables because
 you can position such material where you want it without knowing where the
 page breaks will fall.
 
-Each of these commands implicitly ends the current paragraph, so 
+Each of these commands implicitly ends the current paragraph, so
 you should use them only between paragraphs.
-You should not use them within a box or within another insertion.  
+You should not use them within a box or within another insertion.
 If you have several insertions competing for
 the same space, \TeX\ will retain their relative order.
 \example
@@ -935,12 +936,12 @@ This command ends an insertion started by
 \cts insert {\<number> \rqbraces{\<vertical mode material>}}
 \explain
 \minrefs{insertion}
-This primitive command provides the 
+This primitive command provides the
 underlying mechanism for constructing insertions, but
 it is hardly ever used outside of a \minref{macro} definition.
 The definitions of the
 |\foot!-note|, |\vfoot!-note|,
-|\top!-insert|, |\mid!-insert|, and |\page!-insert| commands are 
+|\top!-insert|, |\mid!-insert|, and |\page!-insert| commands are
 all built around |\insert|.
 ^^|\topinsert|
 ^^|\midinsert| ^^|\pageinsert| ^^|\footnote| ^^|\vfootnote|
@@ -1006,7 +1007,7 @@ command and of how insertions interact with page breaking.
 %\begindesc
 %\cts output {\param{token list}}
 %\explain
-%This parameter contains the current \minref{output routine}, i.e., 
+%This parameter contains the current \minref{output routine}, i.e.,
 %the token list that \TeX\ expands when it finds a page break.
 %\TeX\ puts the page into ^|\box255|, so |\output| is responsible
 %for doing something with |\box255|---either shipping it out or
@@ -1093,7 +1094,7 @@ command and of how insertions interact with page breaking.
 %If the value of |\deadcycles| exceeds the value of |\maxdeadcycles|,
 %\TeX\ assumes that the output routine has gotten into a loop.
 %\TeX\ then complains and runs its own simple output routine,
-%equivalent to |\shipout!allowbreak\box255|, 
+%equivalent to |\shipout!allowbreak\box255|,
 %that is likely to break the loop.
 %\PlainTeX\ sets |\maxdeadcycles| \hbox{to $25$}.
 %\enddesc
@@ -1138,7 +1139,7 @@ command and of how insertions interact with page breaking.
 %\begindesc
 %\cts holdinginserts {\param{number}}
 %\explain
-%If this parameter is greater than $0$ when \TeX\ 
+%If this parameter is greater than $0$ when \TeX\
 %is processing a page break, \TeX\ will refrain from processing insertions.
 %Setting this parameter to $1$
 %can be useful when you're writing an output routine
@@ -1232,7 +1233,7 @@ $B_2$这个盒子必须是个垂直盒子，不是水平盒子。
 %\begindesc
 %\cts splitmaxdepth {\param{dimen}}
 %\explain
-%This parameter specifies the 
+%This parameter specifies the
 %maximum allowable depth of a box resulting from a |\vsplit|.
 %|\splitmaxdepth| plays the
 %same role that ^|\maxdepth| (\xref \maxdepth) plays for a page.
@@ -1249,7 +1250,7 @@ $B_2$这个盒子必须是个垂直盒子，不是水平盒子。
 %\begindesc
 %\cts splittopskip {\param{glue}}
 %\explain
-%This parameter specifies the glue that \TeX\ inserts at the top of 
+%This parameter specifies the glue that \TeX\ inserts at the top of
 %a box resulting from a |\vsplit|.
 %|\splittopskip| plays the
 %same role that ^|\topskip| (\xref \topskip) plays for a page.
