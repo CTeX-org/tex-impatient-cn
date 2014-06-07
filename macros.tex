@@ -1582,7 +1582,7 @@
 {\makeactive|
 \gdef\commandexample{% a.k.a. \example, inside \begindescriptions.
    \cmdbreak\vskip\exampleskip
-   \leftline{\it Example:}%
+   \leftline{\it 例子：}%
    \nobreak % At the interline glue.
    \beginit{EXAMPLE}%
    \parfillskip = 0pt plus 1fil
@@ -1619,7 +1619,7 @@
    \producestrue
    \ifodd\pageno \par \nobreak \else \cmdbreak\fi
    \vskip\tinyskipamount
-   \noindent {\it produces\ifexamplelog\ in the log\examplelogfalse\fi :}%
+   \noindent {\it 结果\ifexamplelog\ in the log\examplelogfalse\fi ：}%
    \vadjust{\nobreak}% At the interline glue.
    \ifexampledisplay
       \centereddisplays
@@ -1672,7 +1672,7 @@
    \noindent
     {\tenbi \spaceskip = 3.33pt plus 2pt minus 1.1pt
      \parfillskip = 0pt plus 1fil
-     See also: %k \hskip 1em plus .5em minus .25em
+     参见：%k \hskip 1em plus .5em minus .25em
     }%
     \ignorespaces
 }%
@@ -2079,7 +2079,7 @@
 \def\hand{{\handfont A}}
 \def\ifatest{{\tt \\if} test}
 \chardef\inches = "7D
-\def\knuth#1{#1 of \texbook}
+\def\knuth#1{\texbook\ #1}
 \let\Metafont = \MF
 \def\Mperiod.{$M$\kern-1.6pt.}
 \def\Mprimecomma,{$M'$\kern-3.5pt,}
