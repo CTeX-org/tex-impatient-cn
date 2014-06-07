@@ -31,105 +31,113 @@
   \def\fang{FangSong}
 \fi
 %
-\font\zhfont="\song" at 10pt
-\def\zhpunctfont{\zhfont}
-\input zhspacing.sty
-\zhspacing
+\ifxecjk
+  \font\CJKfont="\song" at 10pt
+  \input xeCJK-base
+  \def\letfont{\let\CJKfont}
+\else
+  \font\zhfont="\song" at 10pt
+  \def\zhpunctfont{\zhfont}
+  \input zhspacing.sty
+  \zhspacing
+  \def\letfont{\let\zhfont}
+\fi
+%
 \font\enfiverm = cmr5
 \font\zhfiverm = "\song" at 5pt
-\def\fiverm{\enfiverm\let\zhfont\zhfiverm}
+\def\fiverm{\enfiverm\letfont\zhfiverm}
 \font\eneightrm = cmr8
 \font\zheightrm = "\song" at 8pt
-\def\eightrm{\eneightrm\let\zhfont\zheightrm}
+\def\eightrm{\eneightrm\letfont\zheightrm}
 \font\enninerm = cmr9 % Glue pictures, small caps for ASCII.
 \font\zhninerm = "\song" at 9pt
-\def\ninerm{\enninerm\let\zhfont\zhninerm}
+\def\ninerm{\enninerm\letfont\zhninerm}
 %\font\tenrm = xcmr10 % with our kerning
 \font\entenrm = cmr10 % don't have the xcmr10 source any more
 \font\zhtenrm = "\song"  at 10pt
-\def\tenrm{\entenrm\let\zhfont\zhtenrm}
+\def\tenrm{\entenrm\letfont\zhtenrm}
 \font\enoldtenrm = cmr10 % straight CM
 \font\zholdtenrm = "\song"  at 10pt
-\def\oldtenrm{\enoldtenrm\let\zhfont\zholdtenrm}
+\def\oldtenrm{\enoldtenrm\letfont\zholdtenrm}
 \font\entwelverm = cmr12
 \font\zhtwelverm = "\song"  at 12pt
-\def\twelverm{\entwelverm\let\zhfont\zhtwelverm}
+\def\twelverm{\entwelverm\letfont\zhtwelverm}
 \font\entwentysixrm = cmr10 at 26pt
 \font\zhtwentysixrm = "\hei"  at 26pt
-\def\twentysixrm{\entwentysixrm\let\zhfont\zhtwentysixrm}
+\def\twentysixrm{\entwentysixrm\letfont\zhtwentysixrm}
 %
 \font\eneightit = cmti8
 \font\zheightit = "\kai" at 8pt
-\def\eightit{\eneightit\let\zhfont\zheightit}
+\def\eightit{\eneightit\letfont\zheightit}
 \font\ennineit = cmti9
 \font\zheightit = "\kai" at 9pt
-\def\nineit{\ennineit\let\zhfont\zhnineit}
+\def\nineit{\ennineit\letfont\zhnineit}
 \font\entenit = cmti10
 \font\zhtenit = "\kai" at 10pt
-\def\tenit{\entenit\let\zhfont\zhtenit}
+\def\tenit{\entenit\letfont\zhtenit}
 %
 \font\eneighttt = cmtt8
 \font\zheighttt = "\fang" at 8pt
-\def\eighttt{\eneighttt\let\zhfont\zheighttt}
-\font\ententt = cmtt10 
+\def\eighttt{\eneighttt\letfont\zheighttt}
+\font\ententt = cmtt10
 \font\zhtentt = "\fang" at 10pt
-\def\tentt{\ententt\let\zhfont\zhtentt}
+\def\tentt{\ententt\letfont\zhtentt}
 \font\eneleventt = cmtt10 at 11pt
 \font\zheleventt = "\fang" at 11pt
-\def\elventt{\enelventt\let\zhfont\zhelventt}
+\def\elventt{\enelventt\letfont\zhelventt}
 \font\entwelvett = cmtt10 scaled \magstep2
 \font\zhtwelvett = "\fang" at 12pt
-\def\twelvett{\entwelvett\let\zhfont\zhtwelvett}
+\def\twelvett{\entwelvett\letfont\zhtwelvett}
 %
 \font\entenbt = cmtt10
 \font\zhtenbt = "\fang" at 10pt
-\def\tenbt{\entenbt\let\zhfont\zhtenbt}
+\def\tenbt{\entenbt\letfont\zhtenbt}
 %
 \font\enelevensf = cmss10 scaled\magstephalf
 \font\zhelevensf = "\hei" at 11pt
-\def\elevensf{\enelevensf\let\zhfont\zhelevensf}
+\def\elevensf{\enelevensf\letfont\zhelevensf}
 \font\enfourteensf = cmss10 scaled\magstep2
 \font\zhfourteensf = "\hei" at 14pt
-\def\fourteensf{\enfourteensf\let\zhfont\zhfourteensf}
+\def\fourteensf{\enfourteensf\letfont\zhfourteensf}
 %
 \font\eneightbf = cmbx8
 \font\zheightbf = "\hei" at 8pt
-\def\eightbf{\eneightbf\let\zhfont\zheightbf}
+\def\eightbf{\eneightbf\letfont\zheightbf}
 \font\entenbf = cmbx10
 \font\zhtenbf = "\hei" at 10pt
-\def\tenbf{\entenbf\let\zhfont\zhtenbf}
+\def\tenbf{\entenbf\letfont\zhtenbf}
 \font\enelevenbf = cmbx10 scaled \magstephalf
 \font\zhelevenbf = "\hei" at 11pt
-\def\elevenbf{\enelevenbf\let\zhfont\zhelevenbf}
+\def\elevenbf{\enelevenbf\letfont\zhelevenbf}
 \font\entwelvebf = cmbx12
 \font\zhtwelvebf = "\hei" at 12pt
-\def\twelvebf{\entwelvebf\let\zhfont\zhtwelvebf}
+\def\twelvebf{\entwelvebf\letfont\zhtwelvebf}
 \font\enthirtysixbf = cmbx10 at 36pt
 \font\zhthirtysixbf = "\hei" at 36pt
-\def\thirtysixbf{\enthirtysixbf\let\zhfont\zhthirtysixbf}
+\def\thirtysixbf{\enthirtysixbf\letfont\zhthirtysixbf}
 %
 \font\entenbi = cmbxti10
 \font\zhtenbi = "\hei" at 10pt
-\def\tenbi{\entenbi\let\zhfont\zhtenbi}
+\def\tenbi{\entenbi\letfont\zhtenbi}
 \font\enelevenbi= cmbxti10 scaled \magstephalf
 \font\zhelevenbi = "\hei" at 11pt
-\def\elevenbi{\enelevenbi\let\zhfont\zhelevenbi}
+\def\elevenbi{\enelevenbi\letfont\zhelevenbi}
 \font\enfourteenbi= cmbxti10 scaled \magstep2
 \font\zhfourteenbi = "\hei" at 14pt
-\def\fourteenbi{\enfourteenbi\let\zhfont\zhfourteenbi}
+\def\fourteenbi{\enfourteenbi\letfont\zhfourteenbi}
 %
 \font\entensc = cmcsc10
 \font\zhtensc = "\fang" at 10pt
-\def\tensc{\entensc\let\zhfont\zhtensc}
+\def\tensc{\entensc\letfont\zhtensc}
 \font\eneightsl = cmsl8
 \font\zheightsl = "\fang" at 8pt
-\def\eightsl{\eneightsl\let\zhfont\zheightsl}
+\def\eightsl{\eneightsl\letfont\zheightsl}
 \font\eneighti = cmmi8
 \font\zheighti = "\kai" at 8pt
-\def\eighti{\eneighti\let\zhfont\zheighti}
+\def\eighti{\eneighti\letfont\zheighti}
 \font\eneightsy = cmsy8
 \font\zheightsy = "\song" at 8pt
-\def\eightsy{\eneightsy\let\zhfont\zheightsy}
+\def\eightsy{\eneightsy\letfont\zheightsy}
 
 % % Optima fonts.
 % %
