@@ -2373,25 +2373,38 @@ hand, has been left unindented.
 
 \margin{{\tt\\textindent} has been moved to earlier in this section.}
 
+%\begindesc
+%\cts parshape {$n\; i_1 l_1\; i_2 l_2\; \ldots \;i_n l_n$}
+%\explain
+%This command specifies the shape of the first $n$ lines of a paragraph---
+%the next paragraph if you're in vertical mode and the current paragraph
+%if you're in horizontal mode.
+%The $i$'s and $l$'s are all
+%dimensions.  The first line is indented by $i_1$ and has length $l_1$,
+%the second line is indented by $i_2$ and has length $l_2$, and so forth.
+%If the paragraph has more than $n$ lines, the last indentation\slash
+%length pair is used for the extra lines.
+%To achieve special effects such as the one
+%shown here, you usually have to experiment a lot, insert kerns here and
+%there, and choose your words to fit the shape.
+%
+%|\parshape|, like ^|\hangafter| and ^|\hangindent|, is effective only for one
+%paragraph.
+%If you specify |\hangafter| and |\hangindent| as well as |\par!-shape|,
+%\TeX\ ignores the ^|\hangafter| and ^|\hangindent|.
+%\ifodd\pageno\vfill\eject\fi % so the wineglass is on a single page.
 \begindesc
 \cts parshape {$n\; i_1 l_1\; i_2 l_2\; \ldots \;i_n l_n$}
 \explain
-This command specifies the shape of the first $n$ lines of a paragraph---
-the next paragraph if you're in vertical mode and the current paragraph
-if you're in horizontal mode.
-The $i$'s and $l$'s are all
-dimensions.  The first line is indented by $i_1$ and has length $l_1$,
-the second line is indented by $i_2$ and has length $l_2$, and so forth.
-If the paragraph has more than $n$ lines, the last indentation\slash
-length pair is used for the extra lines.
-To achieve special effects such as the one
-shown here, you usually have to experiment a lot, insert kerns here and
-there, and choose your words to fit the shape.
+此命令指定一个段落前$n$行的形状。如果处于水平模式，该命令作用于当前段落；
+如果处于竖直模式，则作用于下一段落。其中的各个 $i$ 和 $l$ 都是尺寸。
+第$1$行的缩进为$i_1$，长度为 $l_1$；第$2$行的缩进为$i_2$，长度为$l_2$；依此类推。
+若该段落超过$n$行，后面各行都使用 $i_n$ 和 $l_n$。为达到这里展示的特殊效果，
+你通常要反复调试，插入多个 kern，并且选择适合该形状的词语。
 
-|\parshape|, like ^|\hangafter| and ^|\hangindent|, is effective only for one
-paragraph.
-If you specify |\hangafter| and |\hangindent| as well as |\par!-shape|,
-\TeX\ ignores the ^|\hangafter| and ^|\hangindent|.
+与 ^|\hangafter| 和 ^|\hangindent| 一样，|\parshape| 也仅对此段落有效。
+如果你同时指定 |\hangafter| 和 |\hangindent| 以及 |\par!-shape|，
+\TeX\ 将忽略 ^|\hangafter| 和 ^|\hangindent|。
 \ifodd\pageno\vfill\eject\fi % so the wineglass is on a single page.
 
 \example
@@ -2447,25 +2460,38 @@ Good luck finding them!
 \eix^^{indentation}
 \enddesc
 
+%\begindesc
+%\cts prevgraf {\param{number}}
+%\explain
+%In horizontal mode, this parameter specifies the
+%number of lines in the paragraph so far; in vertical mode,
+%it specifies the number of lines in the previous paragraph.
+%\TeX\ only sets |\prevgraf| after it has finished breaking some text into
+%lines, i.e., at a math display or at the end of a paragraph.
+%See \knuth{page~103} for more details about it.
+%\enddesc
 \begindesc
 \cts prevgraf {\param{number}}
 \explain
-In horizontal mode, this parameter specifies the
-number of lines in the paragraph so far; in vertical mode,
-it specifies the number of lines in the previous paragraph.
-\TeX\ only sets |\prevgraf| after it has finished breaking some text into
-lines, i.e., at a math display or at the end of a paragraph.
-See \knuth{page~103} for more details about it.
+在水平模式中，此参数表示该段落的当前行数；在竖直模式中，它表示上个段落的行数。
+只有在完成一些文本断行后，例如在显示公式前或者在段落结尾处，\TeX\ 才会设置
+|\prevgraf|。详见 \knuth{第103页}。
 \enddesc
 
+%\begindesc
+%\cts vadjust {\rqbraces{\<vertical mode material>}}
+%\explain
+%This command inserts the specified \<vertical mode material> just after the
+%output line containing the position where the command occurs.
+%^^{vertical lists//inserting in paragraphs}
+%You can use it, for instance, to cause a page eject or to insert extra
+%space after a certain line.
 \begindesc
 \cts vadjust {\rqbraces{\<vertical mode material>}}
 \explain
-This command inserts the specified \<vertical mode material> just after the
-output line containing the position where the command occurs.
+此命令在当前位置所在行下边插入指定的 \<vertical mode material>。
 ^^{vertical lists//inserting in paragraphs}
-You can use it, for instance, to cause a page eject or to insert extra
-space after a certain line.
+例如，你可以用它输出页面，或者在特定行添加额外空白。
 
 \example
 Some of these words are \vadjust{\kern8pt\hrule} to be
@@ -2485,20 +2511,25 @@ to be found above the line and others are to be found below it.
 \eix^^{paragraphs//shaping}
 
 %==========================================================================
-\section {Line breaks}
+%\section {Line breaks}
+\section {换行}
 
 %==========================================================================
-\subsection {Encouraging or discouraging line breaks}
+%\subsection {Encouraging or discouraging line breaks}
+\subsection {鼓励或阻碍换行}
 
 \begindesc
 \bix^^{line breaks}
 \bix^^{line breaks//encouraging or discouraging}
 \ctspecial break {} \xrdef{hbreak}
 \explain
-This command forces a line break.
-Unless you do something to fill out the line, you're likely to
-get an ``underfull hbox'' complaint.
-|\break| can also be used in vertical mode.
+%This command forces a line break.
+%Unless you do something to fill out the line, you're likely to
+%get an ``underfull hbox'' complaint.
+%|\break| can also be used in vertical mode.
+强制在此处换行。除非用某种方法填满该行，
+否则你将得到 ``underfull hbox'' 的警告。
+此命令也能用于竖直模式。
 \example
 Fill out this line\hfil\break and start another one.\par
 % Use \hfil here to fill out the line.
@@ -2516,9 +2547,10 @@ This line is underfull---we ended it\break prematurely.
 \begindesc
 \ctspecial nobreak {} \xrdef{hnobreak}
 \explain
-This command prevents a line break where it
-otherwise might occur.
-|\nobreak| can also be used in vertical mode.
+%This command prevents a line break where it
+%otherwise might occur.
+%|\nobreak| can also be used in vertical mode.
+阻止在此处换行。此命令也能用于竖直模式。
 \example
 Sometimes you'll encounter a situation where
 a certain space\nobreak\qquad must not get lost.
@@ -2631,7 +2663,8 @@ had a Jekyll\slash Hyde personality when it came to mice.
 
 
 %==========================================================================
-\subsection {Line breaking parameters}
+%\subsection {Line breaking parameters}
+\subsection {换行参数}
 
 \begindesc
 \bix^^{line breaks//parameters affecting}
@@ -2896,7 +2929,8 @@ after a relation when the formula appears in a paragraph.
 \enddesc
 
 %==========================================================================
-\subsection {Hyphenation}
+%\subsection {Hyphenation}
+\subsection {连字}
 
 \begindesc
 \bix^^{hyphenation}
@@ -3118,7 +3152,8 @@ for `|-|'.
 \eix^^{line breaks}
 
 %==========================================================================
-\section {Section headings, lists, and theorems}
+%\section {Section headings, lists, and theorems}
+\section {分节、列表和定理}
 
 \begindesc
 ^^{section headings}
