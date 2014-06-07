@@ -43,8 +43,8 @@
 \indexgroup L
 \indexentry {0}{local+information}{N}{\ic \pp{7}}
 \indexgroup �
-\indexentry {0}{文本編輯器}{N}{\ic 7}
-\indexentry {0}{控製字符}{N}{\ic 7}
+\indexentry {0}{文本编辑器}{N}{\ic 7}
+\indexentry {0}{控制字符}{N}{\ic 7}
 \indexgroup I
 \indexentry {0}{input}{C}{\ic 7}
 \indexgroup M
@@ -374,7 +374,7 @@
 \indexgroup T
 \indexentry {0}{\texbook}{N}{\ic 43}
 \indexgroup �
-\indexentry {0}{活動字符+(active+characters)}{N}{\ic \pp{43}}
+\indexentry {0}{活动字符+(active+characters)}{N}{\ic \pp{43}}
 \indexgroup M
 \indexentry {0}{macros}{N}{}
 \indexentry {1}{named+by+active+characters}{N}{\ic 43}
@@ -385,7 +385,7 @@
 \indexentry {0}{category+codes}{N}{}
 \indexentry {1}{of+active+characters}{N}{\ic 43}
 \indexgroup �
-\indexentry {0}{活動字符+(active+characters)}{N}{\ic 43}
+\indexentry {0}{活动字符+(active+characters)}{N}{\ic 43}
 \indexentry {0}{排列+(alignments)}{N}{\ic \pp{43}}
 \indexgroup T
 \indexentry {0}{tables}{N}{\ic 43}
@@ -1741,7 +1741,7 @@
 \indexentry {0}{dots}{C}{\ic \pp{99}}
 \indexentry {0}{dots}{N}{\ic 99}
 \indexgroup �
-\indexentry {0}{省略號}{N}{\ic 99}
+\indexentry {0}{省略号}{N}{\ic 99}
 \indexgroup C
 \indexentry {0}{characters}{N}{\ic 99}
 \indexentry {0}{char}{C}{\ic \pp{99}}
@@ -3870,17 +3870,17 @@
 \indexgroup M
 \indexentry {0}{math}{N}{\ic 219}
 \indexgroup �
-\indexentry {0}{編程功能}{N}{\ic 221}
+\indexentry {0}{编程功能}{N}{\ic 221}
 \indexgroup F
 \indexentry {0}{fonts}{N}{}
 \indexentry {1}{naming+and+modifying}{N}{\ic 221}
 \indexentry {0}{font}{C}{\ic \pp{221}}
 \indexgroup �
-\indexentry {0}{字體信息文件}{N}{\ic 221}
+\indexentry {0}{字体信息文件}{N}{\ic 221}
 \indexgroup T
 \indexentry {0}{\tfmfile}{N}{\ic 221}
 \indexgroup �
-\indexentry {0}{設備驅動}{N}{\ic 222}
+\indexentry {0}{设备驱动}{N}{\ic 222}
 \indexgroup R
 \indexentry {0}{resident+fonts}{N}{\ic 222}
 \indexgroup F
@@ -3891,7 +3891,7 @@
 \indexentry {0}{magnification}{C}{\ic \pp{223}}
 \indexentry {0}{mag}{C}{\ic \pp{223}}
 \indexgroup �
-\indexentry {0}{縮放倍率}{N}{\ic 223}
+\indexentry {0}{缩放倍率}{N}{\ic 223}
 \indexgroup H
 \indexentry {0}{hsize}{C}{}
 \indexentry {1}{set by {\tt\\magnification}}{N}{\ic 223}
