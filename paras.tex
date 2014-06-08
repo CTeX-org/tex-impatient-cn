@@ -2564,11 +2564,14 @@ a certain space\nobreak\qquad must not get lost.
 \begindesc
 \ctspecial allowbreak {} \xrdef{hallowbreak}
 \explain
-This command tells \TeX\ to
-allow a line break where one could not ordinarily occur.
-It's most often useful within a math formula, since \TeX\
-is reluctant to break lines there.  ^^{line breaks//in math formulas}
-|\allowbreak| can also be used in vertical mode.
+%This command tells \TeX\ to
+%allow a line break where one could not ordinarily occur.
+%It's most often useful within a math formula, since \TeX\
+%is reluctant to break lines there.  ^^{line breaks//in math formulas}
+%|\allowbreak| can also be used in vertical mode.
+在通常不换行的地方允许 \TeX\ 换行。它经常用于数学公式中，
+因为 \TeX\ 通常不愿意在其中换行。^^{line breaks//in math formulas}
+此命令也能用于竖直模式。
 \example
 Under most circumstances we can state with some confidence
 that $2+2\allowbreak=4$, but skeptics may disagree.
@@ -2585,14 +2588,20 @@ analyze the input/\allowbreak output behavior in the limit.
 \begindesc
 \ctspecial penalty {\<number>} \xrdef{hpenalty}
 \explain
-This command produces a \minref{penalty} item.
-The penalty item makes \TeX\ more or less willing to break a line
-at the point where that item occurs.
-A negative penalty, i.e., a bonus, encourages a line break;
-a positive penalty discourages a line break.
-A penalty of $10000$ or more prevents a break altogether,
-while a penalty of $-10000$ or less forces a break.
-|\penalty| can also be used in vertical mode.
+%This command produces a \minref{penalty} item.
+%The penalty item makes \TeX\ more or less willing to break a line
+%at the point where that item occurs.
+%A negative penalty, i.e., a bonus, encourages a line break;
+%a positive penalty discourages a line break.
+%A penalty of $10000$ or more prevents a break altogether,
+%while a penalty of $-10000$ or less forces a break.
+%|\penalty| can also be used in vertical mode.
+此命令生成一个惩罚（\minref{penalty}）项。
+惩罚项使得 \TeX\ 或多或少愿意在此处换行。
+负惩罚值，实际上是奖励值，鼓励换行；正惩罚值阻碍换行。
+大于或等于 $10000$ 的惩罚值彻底阻止换行，
+而小于或等于 $-10000$ 的惩罚值强制换行。
+此命令也能用于竖直模式。
 \secondprinting{\vfill\eject}
 \example
 \def\break{\penalty -10000 } % as in plain TeX
@@ -2606,25 +2615,38 @@ while a penalty of $-10000$ or less forces a break.
 \begindesc
 \cts obeylines {}
 \explain
-\TeX\ normally treats an end of line as a space.
-|\obeylines| instructs \TeX\ to treat each end of line as
-an end of paragraph, thus forcing a line break.
-|\obeylines| is often useful when you're typesetting verse or
-computer programs.
+%\TeX\ normally treats an end of line as a space.
+%|\obeylines| instructs \TeX\ to treat each end of line as
+%an end of paragraph, thus forcing a line break.
+%|\obeylines| is often useful when you're typesetting verse or
+%computer programs.
+%^^{verse, typesetting}^^{poetry, typesetting}^^{computer programs, typesetting}
+%If any of your lines are longer than the effective line length
+%(|\hsize|\tminus|\parindent|),
+%however,
+%you may get an extra line break within those lines.
+%
+%Because \TeX\ inserts the |\parskip| glue (\xref\parskip)
+%between lines controlled by |\obeylines| (since it thinks each line is a
+%paragraph), you should normally set |\parskip| to zero when you're using
+%|\obeylines|.
+%
+%You can use the ^|\obeyspaces| command (\xref{\obeyspaces}) to get
+%\TeX\ to take spaces within a line literally.  |\obeylines| and |\obeyspaces|
+%are often used together.
+\TeX\ 通常将行结束符视为空格。
+|\obeylines| 让 \TeX\ 将每个行结束符都视为段落结束符，从而强制换行。
+在排版诗歌或者程序代码时 |\obeylines| 大有用处。
 ^^{verse, typesetting}^^{poetry, typesetting}^^{computer programs, typesetting}
-If any of your lines are longer than the effective line length
-(|\hsize|\tminus|\parindent|),
-however,
-you may get an extra line break within those lines.
+然而，如果某些行的长度超过行的实际长度（|\hsize|\tminus|\parindent|），
+它们将会被自动换行。
 
-Because \TeX\ inserts the |\parskip| glue (\xref\parskip)
-between lines controlled by |\obeylines| (since it thinks each line is a
-paragraph), you should normally set |\parskip| to zero when you're using
-|\obeylines|.
+\TeX\ 将在设定了 |\obeylines| 的各行间插入 |\parskip|（\xref\parskip ）橡皮间距
+（既然它认为每行都是一个段落）。
+因此，在使用 |\obeylines| 时一般应该设定 |\parskip| 为零。
 
-You can use the ^|\obeyspaces| command (\xref{\obeyspaces}) to get
-\TeX\ to take spaces within a line literally.  |\obeylines| and |\obeyspaces|
-are often used together.
+用 ^|\obeyspaces| 命令（\xref{\obeyspaces}）可以让 \TeX\ 按原样处理行中的空格。
+我们经常一起使用 |\obeylines| 和 |\obeyspaces|。
 \example
 \obeylines
 ``Beware the Jabberwock, my son!!
@@ -2646,8 +2668,9 @@ Beware the Jubjub bird, and shun
 \begindesc
 \easy\cts slash {}
 \explain
-This command produces a ^{solidus} (/) and also tells \TeX\ that it can
-break the line after the solidus, if necessary.
+%This command produces a ^{solidus} (/) and also tells \TeX\ that it can
+%break the line after the solidus, if necessary.
+此命令生成一个^{斜线符号}（/），并且告诉 \TeX\ 必要时可以在该斜线后换行。
 \example
 Her oldest cat, while apparently friendly to most people,
 had a Jekyll\slash Hyde personality when it came to mice.
@@ -2672,57 +2695,101 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \cts pretolerance {\param{number}}
 \cts tolerance {\param{number}}
 \explain
-These parameters determine the \minref{badness} that \TeX\ will tolerate
-on each line when it is choosing line breaks
-for a paragraph.
-The badness is a measure of how far the interword spacing deviates from
-the ideal.
-|\pretolerance| specifies the  tolerable badness for
-line breaks without hyphenation;
-|\tolerance| specifies the tolerable badness for line breaks with
-hyphenation.
-The tolerable badness can be exceeded in either of two ways:
-a line is too tight (the interword spaces are too
-small) or it is too loose (the interword spaces are too big).
+%These parameters determine the \minref{badness} that \TeX\ will tolerate
+%on each line when it is choosing line breaks
+%for a paragraph.
+%The badness is a measure of how far the interword spacing deviates from
+%the ideal.
+%|\pretolerance| specifies the  tolerable badness for
+%line breaks without hyphenation;
+%|\tolerance| specifies the tolerable badness for line breaks with
+%hyphenation.
+%The tolerable badness can be exceeded in either of two ways:
+%a line is too tight (the interword spaces are too
+%small) or it is too loose (the interword spaces are too big).
+在 \TeX\ 选择段落换行位置时，
+这两个参数确定对各行\minref{劣度}（badness）的容许值（tolerance）。
+劣度衡量了字间空隙和理想情形差别多大
+\footnote{译注：在英文中，“字间空隙”指的是单词间的空隙。}。
+其中 |\pretolerance| 指定在不加连字符断行时对劣度的容许值，
+而 |\tolerance| 指定加上连字符断行时对劣度的容许值。
+当某行排得太紧密（字间空隙过小），
+或者排得太松散（字间空隙过大）时，劣度就会超过容许值。
 
+%\ulist
+%\li If \TeX\ must set a line too loosely, it
+%complains about an ``underfull hbox''.
+%\li If \TeX\ must set a line too rightly,
+%it lets the line run past the right margin and
+%complains about an ``overfull \minref{hbox}''.
+%\endulist
 \ulist
-\li If \TeX\ must set a line too loosely, it
-complains about an ``underfull hbox''.
-\li If \TeX\ must set a line too rightly,
-it lets the line run past the right margin and
-complains about an ``overfull \minref{hbox}''.
+\li 如果 \TeX\ 将某一行排得太松散，
+它将给出 ``underfull hbox'' 的警告。
+\li 如果 \TeX\ 将某一行排得太紧密，
+它将让该行超出右边缘，
+并给出 ``overfull \minref{hbox}'' 的警告。
 \endulist
 
-\noindent \TeX\ chooses line breaks in the following steps:
+%\noindent \TeX\ chooses line breaks in the following steps:
+%\olist
+%\li It attempts to choose line breaks without hyphenating.
+%If none of the
+%resulting lines have a badness exceeding |\pretolerance|, the
+%line breaks are acceptable and the paragraph can now be set.
+%\li Otherwise, it tries another set of line breaks, this
+%time allowing hyphenation.  If none of the resulting lines have a badness
+%exceeding |\tolerance|, the new set of line breaks is
+%acceptable and the paragraph can now be set.
+%\li Otherwise, it adds ^|\emergencystretch| (see below) to the stretch
+%of each line and tries again.
+%\li If none of these attempts have produced an acceptable
+%set of line breaks,
+%it sets the paragraph with one or more overfull hboxes
+%and complains about them.
+%\endolist
+\noindent \TeX\ 按照如下步骤选择换行断点：
 \olist
-\li It attempts to choose line breaks without hyphenating.
-If none of the
-resulting lines have a badness exceeding |\pretolerance|, the
-line breaks are acceptable and the paragraph can now be set.
-\li Otherwise, it tries another set of line breaks, this
-time allowing hyphenation.  If none of the resulting lines have a badness
-exceeding |\tolerance|, the new set of line breaks is
-acceptable and the paragraph can now be set.
-\li Otherwise, it adds ^|\emergencystretch| (see below) to the stretch
-of each line and tries again.
-\li If none of these attempts have produced an acceptable
-set of line breaks,
-it sets the paragraph with one or more overfull hboxes
-and complains about them.
+\li 它试图选择无需添加连字符的一系列断点。
+如果结果中每行的劣度都不超过 |\pretolerance|，
+这组断点是可接受的，该段落也就完成了断行。
+\li 否则，它在允许添加连字符的情况下再次寻找换行断点。
+如果结果中每行的劣度都不超过 |\tolerance|, 这组新
+断点是可接受的，该段落也就完成了断行。
+\li 否则，它给每行的伸展值增加 ^|\emergencystretch|（见下面），
+然后重新尝试。
+\li 如果上述各种尝试都无法得到可接受的断点系列，
+它给该段落设置一个或多个溢出的水平盒子，并给出警告。
 \endolist
 
-\PlainTeX\ sets |\tolerance| to $200$ and |\pretolerance| to $100$.
-If you set |\tolerance| to $10000$, \TeX\
-becomes infinitely tolerant and accepts any spacing, no matter how bad
-(unless it encounters a word that won't fit on a line, even with
-hyphenation).  Thus by changing |\tolerance| you can avoid
-overfull and underfull hboxes, but at the cost of making the spacing worse.
-By making |\pretolerance| larger you can get \TeX\ to avoid hyphenation
-(and also run faster),
-again at the cost of possibly worse spacing.
-If you set |\pretolerance| to $-1$,
-\TeX\ will not even try to set the paragraph without hyphenation.
+%\PlainTeX\ sets |\tolerance| to $200$ and |\pretolerance| to $100$.
+%If you set |\tolerance| to $10000$, \TeX\
+%becomes infinitely tolerant and accepts any spacing, no matter how bad
+%(unless it encounters a word that won't fit on a line, even with
+%hyphenation).  Thus by changing |\tolerance| you can avoid
+%overfull and underfull hboxes, but at the cost of making the spacing worse.
+%By making |\pretolerance| larger you can get \TeX\ to avoid hyphenation
+%(and also run faster),
+%again at the cost of possibly worse spacing.
+%If you set |\pretolerance| to $-1$,
+%\TeX\ will not even try to set the paragraph without hyphenation.
+\PlainTeX\ 设置 |\tolerance| 为 $200$，|\pretolerance| 为 $100$。
+若你设置 |\tolerance| 为 $10000$, \TeX\ 将有无穷大的容许值，
+可以接受任何空隙，不管它有多糟糕。%
+（除非它遇到即使添加连字符也无法放在一行的单词）。
+因此，通过改变 |\tolerance| 值，你可以避免溢出的或者松散的水平盒子，
+但会得到更糟糕的空隙。
+通过增大 |\pretolerance| 值你可以让 \TeX\ 不添加连字符（并且运行得更快），
+但同样可能得到更糟糕的空隙。
+而如果你设置 |\pretolerance| 为 $-1$，
+\TeX\ 将不再尝试不添加连字符的断行方式。
 
+%The  ^|\hbadness| parameter (\xref \hbadness) determines the level of badness
+%that \TeX\ will tolerate before it complains, but |\hbadness| does not affect
+%the way that \TeX\ typesets your document.
+%The ^|\hfuzz| parameter (\xref \hfuzz) determines the amount that
+%an hbox can exceed its specified width before \TeX\ considers it to be
+%erroneous.
 The  ^|\hbadness| parameter (\xref \hbadness) determines the level of badness
 that \TeX\ will tolerate before it complains, but |\hbadness| does not affect
 the way that \TeX\ typesets your document.
