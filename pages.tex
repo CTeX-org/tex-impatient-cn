@@ -21,44 +21,74 @@
 \cts lineskiplimit {\param{dimen}}
 \cts lineskip {\param{glue}}
 \explain
+%^^{line spacing}
+%\bix^^{interline glue}
+%\bix^^|\baselineskip|
+%\bix^^|\lineskip|
+%\bix^^|\lineskiplimit|
+%These three parameters jointly determine how much space \TeX\ leaves between
+%consecutive \minref{box}es of an ordinary \minref{vertical list},
+%e.g., the lines of a paragraph.
+%This space is called ``\minref{interline glue}''.
+%It is also inserted between the component boxes of a vbox constructed in
+%internal vertical mode.
+%^^{vboxes//interline glue for}
+%
+%In the usual case, when the boxes aren't abnormally high or deep, \TeX\
+%makes the distance from the baseline of one box to the baseline of the
+%next one equal to |\baselineskip|.  It does this by inserting interline
+%glue equal to |\baselineskip| minus the depth of the upper box (as given
+%by ^|\prevdepth|) and the height of the lower box.  But if this
+%interline glue would be less than |\lineskiplimit|, indicating that the
+%two boxes are too close together, \TeX\ inserts the |\lineskip| glue
+%instead.\footnote
+%{\TeX\ actually accounts for the beginning of a
+%vertical list by setting |\prevdepth| to $-1000$\pt\ and testing
+%|\prevdepth| before \emph{every} box.  If |\prevdepth|$\>\le-1000$\pt\
+%it does not insert any interline glue.} See \knuth{pages~79--80} for a
+%precise description.
+%
+%Note that |\baselineskip| and |\lineskip| measure \emph{different
+%things}: the distance between baselines on the one hand and the distance
+%between the bottom of one box and the top of the next box on the other
+%hand.  See \knuth{page~78} for further details.  The first example below
+%shows the effects of |\lineskiplimit|.
+%
+%You can obtain the effect of ^{double spacing} by doubling the value
+%of |\baselineskip| as illustrated in the second example below.
+%A change to |\baselineskip| at any point before the end of a paragraph affects
+%the entire paragraph.
 ^^{line spacing}
 \bix^^{interline glue}
 \bix^^|\baselineskip|
 \bix^^|\lineskip|
 \bix^^|\lineskiplimit|
-These three parameters jointly determine how much space \TeX\ leaves between
-consecutive \minref{box}es of an ordinary \minref{vertical list},
-e.g., the lines of a paragraph.
-This space is called ``\minref{interline glue}''.
-It is also inserted between the component boxes of a vbox constructed in
-internal vertical mode.
+在一个普通\minref{垂直列}（例如段落各行）中，
+这三个参数共同确定了 \TeX\ 在相邻两个\minref{盒子}间插入的间隔。
+这个间隔称为“\minref{行间间距}”。
+对于内部垂直模式中构造的 vbox 垂直列，其中的组成盒子间同样会有此间隔。
 ^^{vboxes//interline glue for}
 
-In the usual case, when the boxes aren't abnormally high or deep, \TeX\
-makes the distance from the baseline of one box to the baseline of the
-next one equal to |\baselineskip|.  It does this by inserting interline
-glue equal to |\baselineskip| minus the depth of the upper box (as given
-by ^|\prevdepth|) and the height of the lower box.  But if this
-interline glue would be less than |\lineskiplimit|, indicating that the
-two boxes are too close together, \TeX\ inserts the |\lineskip| glue
-instead.\footnote
-{\TeX\ actually accounts for the beginning of a
-vertical list by setting |\prevdepth| to $-1000$\pt\ and testing
-|\prevdepth| before \emph{every} box.  If |\prevdepth|$\>\le-1000$\pt\
-it does not insert any interline glue.} See \knuth{pages~79--80} for a
-precise description.
+在通常情况下，盒子的高度和深度不会太大，
+此时 \TeX\ 让相邻盒子的两基线距离等于 |\baselineskip|。
+为此可以让行间间距等于 |\baselineskip| 减去上盒子深度（由 ^|\prevdepth| 给出）%
+和下盒子高度。
+但如果两个盒子靠得太近，即行间间距小于 |\lineskiplimit|，
+\TeX\ 将改为插入 |\lineskip| 大小的间距。\negthinspace\footnote
+{\TeX\ 实际上在垂直列开头设定 |\prevdepth| 为 $-1000$\pt ，
+从而可以测定\emph{每个}盒子的 |\prevdepth|。
+若 |\prevdepth|$\>\le-1000$\pt ，
+它就不会插入任何行间间距。}详情可见 \knuth{第~79--80~页}。
 
-Note that |\baselineskip| and |\lineskip| measure \emph{different
-things}: the distance between baselines on the one hand and the distance
-between the bottom of one box and the top of the next box on the other
-hand.  See \knuth{page~78} for further details.  The first example below
-shows the effects of |\lineskiplimit|.
+注意 |\baselineskip| 和 |\lineskip| 测量\emph{不同的东西}：
+前者为两盒子基线之间的距离，
+而后者为上盒子底部和下盒子顶部的距离。
+详情可看 \knuth{第~78~页}。
+下面第一个例子展示了|\lineskiplimit| 的作用。
 
-You can obtain the effect of ^{double spacing} by doubling the value
-of |\baselineskip| as illustrated in the second example below.
-A change to |\baselineskip| at any point before the end of a paragraph affects
-the entire paragraph.
-
+如下面第二个例子所示，将 |\baselineskip| 加倍，
+就能得到^{双倍行距}的效果。
+在段落结束前任何位置改变 |\baselineskip|，都会影响整个段落。
 \example
 \baselineskip = 11pt \lineskiplimit = 1pt
 \lineskip = 2pt plus .5pt
