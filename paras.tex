@@ -2,7 +2,8 @@
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
-% 中文翻译 by Zhaopeng Xing (zpxing@gmail.com)
+% 中文翻译：Zhaopeng Xing (zpxing@gmail.com)
+% 中文翻译：zohooo (zohooo@yeah.net)
 
 \input macros
 
@@ -1859,7 +1860,7 @@ this paragraph isn't indented either.
 % attempt to track down, a page break happened before the example,
 % unlike in the first printing.
 %
-\secondprinting{\vglue-48pt}
+%%\secondprinting{\vglue-48pt}
 并为|\everypar|分配记号列表。
 \example
 \everypar = {$\Longrightarrow$\enspace}
@@ -1874,7 +1875,7 @@ I said, ``Pay attention!''.\par
 I'll say it again! Pay attention!
 \endexample
 \enddesc
-\secondprinting{\vfill\eject}
+%%\secondprinting{\vfill\eject}
 
 %==========================================================================
 %\subsection {Shaping entire paragraphs}
@@ -2512,11 +2513,11 @@ to be found above the line and others are to be found below it.
 
 %==========================================================================
 %\section {Line breaks}
-\section {换行}
+\section {断行}
 
 %==========================================================================
 %\subsection {Encouraging or discouraging line breaks}
-\subsection {鼓励或阻碍换行}
+\subsection {鼓励或阻碍断行}
 
 \begindesc
 \bix^^{line breaks}
@@ -2527,7 +2528,7 @@ to be found above the line and others are to be found below it.
 %Unless you do something to fill out the line, you're likely to
 %get an ``underfull hbox'' complaint.
 %|\break| can also be used in vertical mode.
-强制在此处换行。除非用某种方法填满该行，
+强制在此处断行。除非用某种方法填满该行，
 否则你将得到 ``underfull hbox'' 的警告。
 此命令也能用于竖直模式。
 \example
@@ -2550,7 +2551,7 @@ This line is underfull---we ended it\break prematurely.
 %This command prevents a line break where it
 %otherwise might occur.
 %|\nobreak| can also be used in vertical mode.
-阻止在此处换行。此命令也能用于竖直模式。
+阻止在此处断行。此命令也能用于竖直模式。
 \example
 Sometimes you'll encounter a situation where
 a certain space\nobreak\qquad must not get lost.
@@ -2569,8 +2570,8 @@ a certain space\nobreak\qquad must not get lost.
 %It's most often useful within a math formula, since \TeX\
 %is reluctant to break lines there.  ^^{line breaks//in math formulas}
 %|\allowbreak| can also be used in vertical mode.
-在通常不换行的地方允许 \TeX\ 换行。它经常用于数学公式中，
-因为 \TeX\ 通常不愿意在其中换行。^^{line breaks//in math formulas}
+在通常不断行的地方允许 \TeX\ 断行。它经常用于数学公式中，
+因为 \TeX\ 通常不愿意在其中断行。^^{line breaks//in math formulas}
 此命令也能用于竖直模式。
 \example
 Under most circumstances we can state with some confidence
@@ -2597,10 +2598,10 @@ analyze the input/\allowbreak output behavior in the limit.
 %while a penalty of $-10000$ or less forces a break.
 %|\penalty| can also be used in vertical mode.
 此命令生成一个惩罚（\minref{penalty}）项。
-惩罚项使得 \TeX\ 或多或少愿意在此处换行。
-负惩罚值，实际上是奖励值，鼓励换行；正惩罚值阻碍换行。
-大于或等于 $10000$ 的惩罚值彻底阻止换行，
-而小于或等于 $-10000$ 的惩罚值强制换行。
+惩罚项使得 \TeX\ 或多或少愿意在此处断行。
+负惩罚值，实际上是奖励值，鼓励断行；正惩罚值阻碍断行。
+大于或等于 $10000$ 的惩罚值彻底阻止断行，
+而小于或等于 $-10000$ 的惩罚值强制断行。
 此命令也能用于竖直模式。
 \secondprinting{\vfill\eject}
 \example
@@ -2635,13 +2636,13 @@ analyze the input/\allowbreak output behavior in the limit.
 %\TeX\ to take spaces within a line literally.  |\obeylines| and |\obeyspaces|
 %are often used together.
 \TeX\ 通常将行结束符视为空格。
-|\obeylines| 让 \TeX\ 将每个行结束符都视为段落结束符，从而强制换行。
+|\obeylines| 让 \TeX\ 将每个行结束符都视为段落结束符，从而强制断行。
 在排版诗歌或者程序代码时 |\obeylines| 大有用处。
 ^^{verse, typesetting}^^{poetry, typesetting}^^{computer programs, typesetting}
 然而，如果某些行的长度超过行的实际长度（|\hsize|\tminus|\parindent|），
-它们将会被自动换行。
+它们将会被自动断行。
 
-\TeX\ 将在设定了 |\obeylines| 的各行间插入 |\parskip|（\xref\parskip ）橡皮间距
+\TeX\ 将在设定了 |\obeylines| 的各行间插入 |\parskip|（\xref\parskip ）粘连
 （既然它认为每行都是一个段落）。
 因此，在使用 |\obeylines| 时一般应该设定 |\parskip| 为零。
 
@@ -2670,7 +2671,7 @@ Beware the Jubjub bird, and shun
 \explain
 %This command produces a ^{solidus} (/) and also tells \TeX\ that it can
 %break the line after the solidus, if necessary.
-此命令生成一个^{斜线符号}（/），并且告诉 \TeX\ 必要时可以在该斜线后换行。
+此命令生成一个^{斜线符号}（/），并且告诉 \TeX\ 必要时可以在该斜线后断行。
 \example
 Her oldest cat, while apparently friendly to most people,
 had a Jekyll\slash Hyde personality when it came to mice.
@@ -2687,7 +2688,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 
 %==========================================================================
 %\subsection {Line breaking parameters}
-\subsection {换行参数}
+\subsection {断行参数}
 
 \begindesc
 \bix^^{line breaks//parameters affecting}
@@ -2707,14 +2708,14 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %The tolerable badness can be exceeded in either of two ways:
 %a line is too tight (the interword spaces are too
 %small) or it is too loose (the interword spaces are too big).
-在 \TeX\ 选择段落换行位置时，
+在 \TeX\ 选择段落断行点时，
 这两个参数确定对各行\minref{劣度}（badness）的容许值（tolerance）。
-劣度衡量了字间空隙和理想情形差别多大
-\footnote{译注：在英文中，“字间空隙”指的是单词间的空隙。}。
+劣度衡量了单词间距和理想情形差别多大
+\footnote{译注：在中文排版中，“单词空隙”实际上是字间距。}。
 其中 |\pretolerance| 指定在不加连字符断行时对劣度的容许值，
 而 |\tolerance| 指定加上连字符断行时对劣度的容许值。
-当某行排得太紧密（字间空隙过小），
-或者排得太松散（字间空隙过大）时，劣度就会超过容许值。
+当某行排得太紧密（单词间距过小），
+或者排得太松散（单词间距过大）时，劣度就会超过容许值。
 
 %\ulist
 %\li If \TeX\ must set a line too loosely, it
@@ -2748,15 +2749,15 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %it sets the paragraph with one or more overfull hboxes
 %and complains about them.
 %\endolist
-\noindent \TeX\ 按照如下步骤选择换行断点：
+\noindent \TeX\ 按照如下步骤选择断行点：
 \olist
 \li 它试图选择无需添加连字符的一系列断点。
 如果结果中每行的劣度都不超过 |\pretolerance|，
 这组断点是可接受的，该段落也就完成了断行。
-\li 否则，它在允许添加连字符的情况下再次寻找换行断点。
+\li 否则，它在允许添加连字符的情况下再次寻找断点。
 如果结果中每行的劣度都不超过 |\tolerance|, 这组新
 断点是可接受的，该段落也就完成了断行。
-\li 否则，它给每行的伸展值增加 ^|\emergencystretch|（见下面），
+\li 否则，它给每行的伸长量增加 ^|\emergencystretch|（见下面），
 然后重新尝试。
 \li 如果上述各种尝试都无法得到可接受的断点系列，
 它给该段落设置一个或多个溢出的水平盒子，并给出警告。
@@ -2790,78 +2791,110 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %The ^|\hfuzz| parameter (\xref \hfuzz) determines the amount that
 %an hbox can exceed its specified width before \TeX\ considers it to be
 %erroneous.
-The  ^|\hbadness| parameter (\xref \hbadness) determines the level of badness
-that \TeX\ will tolerate before it complains, but |\hbadness| does not affect
-the way that \TeX\ typesets your document.
-The ^|\hfuzz| parameter (\xref \hfuzz) determines the amount that
-an hbox can exceed its specified width before \TeX\ considers it to be
-erroneous.
+参数 ^|\hbadness|（\xref \hbadness ）确定劣度达到多大时 \TeX\ 才给出警告，
+但它不影响 \TeX\ 对文档的排版。
+参数 ^|\hfuzz|（\xref \hfuzz ）确定水平盒子宽度超出多大时，
+\TeX\ 才认为是错误的。
 \enddesc
 
 \begindesc
 \cts emergencystretch {\param{dimen}}
 \explain
-By setting this parameter to be greater than zero,
-you can make it easier for \TeX\
-to typeset your document without generating overfull hboxes.
-^^{overfull boxes}
-This is a better alternative than setting |\tolerance=10000|,
-since that tends to produce really ugly lines.
-If \TeX\ can't typeset a paragraph without exceeding ^|\tolerance|,
-it will try again, adding |\emergencystretch| to the stretch of each
-line.
-The effect of the change is to scale down the badness of each
-line, enabling \TeX\ to make spaces wider than they would otherwise be
-and thus choose line breaks that are as
-good as possible under the circumstances.
+%By setting this parameter to be greater than zero,
+%you can make it easier for \TeX\
+%to typeset your document without generating overfull hboxes.
+%^^{overfull boxes}
+%This is a better alternative than setting |\tolerance=10000|,
+%since that tends to produce really ugly lines.
+%If \TeX\ can't typeset a paragraph without exceeding ^|\tolerance|,
+%it will try again, adding |\emergencystretch| to the stretch of each
+%line.
+%The effect of the change is to scale down the badness of each
+%line, enabling \TeX\ to make spaces wider than they would otherwise be
+%and thus choose line breaks that are as
+%good as possible under the circumstances.
+设定此参数大于零，可以让 \TeX\ 更容易排版文档，而不是生成溢出的水平盒子。
+^^{溢出的水平盒子}
+这样比设定 |\tolerance=10000| 更好，因为那样往往得到十分难看的行。
+如果 \TeX\ 排版段落时无法不超过 ^|\tolerance| 值，
+它将给每行的伸长量增加 |\emergencystretch| 然后重新尝试。
+伸长量的增加将会缩减各行劣度，允许 \TeX\ 生成比原来更宽的间距，
+从而选出当前情况下尽可能好的断行点。
 \enddesc
 
 \begindesc
 \cts looseness {\param{number}}
 \explain
 \minrefs{line break}
-This parameter gives you a way
-to change the total number of lines in a paragraph from what they
-optimally would be.
-|\looseness| is so named because it's a
-measure of how loose the paragraph is, i.e., how much extra space there is in
-it.
+%This parameter gives you a way
+%to change the total number of lines in a paragraph from what they
+%optimally would be.
+%|\looseness| is so named because it's a
+%measure of how loose the paragraph is, i.e., how much extra space there is in
+%it.
+此参数用于修改段落的行数，相对其最佳行数。
+之所以称为松散度（|\looseness|），
+是因为它衡量该段落有多松散，即包含多少额外的间距。
 
-Normally, |\looseness| is $0$ and
-\TeX\ chooses line breaks in its usual way.  But if
-|\looseness| is, say, $3$, \TeX\ does the following:
+%Normally, |\looseness| is $0$ and
+%\TeX\ chooses line breaks in its usual way.  But if
+%|\looseness| is, say, $3$, \TeX\ does the following:
+%\olist
+%\li It chooses line breaks normally, resulting in a paragraph of $n$ lines.
+%\li It discards these line breaks and
+%tries to find a new set of line breaks that gives the paragraph $n+3$ lines.
+%(Without the previous step, \TeX\ wouldn't know the value of $n$.)
+%\li If the previous attempt results in lines whose badness exceeds
+%|\tol!-er!-ance|,
+%^^|\tolerance|
+%it tries to get $n+2$ lines---and if that also fails,
+%$n+1$ lines, and finally $n$ lines again.
+%\endolist
+%\noindent
+%Similarly, if looseness is $-n$,
+%\TeX\ attempts to set the paragraph with $n$
+%fewer lines  than normal.
+%The easiest way for \TeX\ to make a paragraph one line longer is to put
+%a single word on the excess line.  You can prevent this by
+%putting a tie (\xref{@not}) between the last two words of the paragraph.
+一般地，若 |\looseness| 等于 $0$，\TeX\ 将按通常方式选择断行点。
+但若 |\looseness| 等于，比如 $3$，\TeX\ 依下面步骤处理：
 \olist
-\li It chooses line breaks normally, resulting in a paragraph of $n$ lines.
-\li It discards these line breaks and
-tries to find a new set of line breaks that gives the paragraph $n+3$ lines.
-(Without the previous step, \TeX\ wouldn't know the value of $n$.)
-\li If the previous attempt results in lines whose badness exceeds
-|\tol!-er!-ance|,
+\li 按通常方式选择断行点，得到总行数为 $n$ 的段落。
+\li 丢弃这些断行点，并试着寻找总行数为 $n+3$ 的一系列新断点。%
+（缺少上一步，\TeX\ 就无法知道 $n$ 的值。）
+\li 如果上一步尝试无法得到行劣度不超过 |\tol!-er!-ance| 的结果，
 ^^|\tolerance|
-it tries to get $n+2$ lines---and if that also fails,
-$n+1$ lines, and finally $n$ lines again.
+它将试着将段落分为 $n+2$ 行；如果这也不行，试着分为 $n+1$ 行；
+最终只能再次分为 $n$ 行。
 \endolist
 \noindent
-Similarly, if looseness is $-n$,
-\TeX\ attempts to set the paragraph with $n$
-fewer lines  than normal.
-The easiest way for \TeX\ to make a paragraph one line longer is to put
-a single word on the excess line.  You can prevent this by
-putting a tie (\xref{@not}) between the last two words of the paragraph.
+类似地，若松散度为 $-k$，\TeX\ 试着让段落的行数比正常情形少 $k$ 行。
+让段落多出一行的最简单方法是，将一个单词放到多出的那行。
+在最后两个单词之间加上一个带子（tie，\xref{@not}）符号，
+你就可以阻止此种断行方法。
 
-Setting |\looseness| is the best way to force a paragraph
-to occupy a given number of lines.
-Setting it to a negative value is useful when you're trying to
-increase the amount of text you can fit on a page.
-Similarly, setting it to a positive
-value is useful when you're trying to
-decrease the amount of text on a page.
+%Setting |\looseness| is the best way to force a paragraph
+%to occupy a given number of lines.
+%Setting it to a negative value is useful when you're trying to
+%increase the amount of text you can fit on a page.
+%Similarly, setting it to a positive
+%value is useful when you're trying to
+%decrease the amount of text on a page.
+设定 |\looseness| 是迫使段落占用给定行数的最好方法。
+想增加页面中的文本时，你可以将它设为负值。
+同样地，想减少页面中的文本时，可以将它设为正值。
 
-\TeX\ sets |\looseness| to $0$ when it ends a paragraph, after breaking
-the paragraph into lines.
-If you want to change the looseness of several paragraphs, you must do it
-individually for each one or put the change into |\everypar|
-\ctsref\everypar.
+%\TeX\ sets |\looseness| to $0$ when it ends a paragraph, after breaking
+%the paragraph into lines.
+%If you want to change the looseness of several paragraphs, you must do it
+%individually for each one or put the change into |\everypar|
+%\ctsref\everypar.
+%^^|\everypar//for setting \b\tt\\looseness\e|
+在结束段落并分段为行之后，\TeX\ 将 |\looseness| 重置为 $0$。
+若要改动多个段落的松散度，你必须对每个段落分别设置，
+或者将改动放在 |\everypar|
+\ctsref\everypar 命令中。
 ^^|\everypar//for setting \b\tt\\looseness\e|
 \enddesc
 
@@ -2869,108 +2902,165 @@ individually for each one or put the change into |\everypar|
 \cts linepenalty {\param{number}}
 \explain
 \minrefs{line break}
-This parameter specifies \minref{demerits} that \TeX\ assesses for each line
-break when it is breaking a paragraph into lines.
-The penalty is independent of where the line break occurs.
-Increasing the value
-of this parameter causes \TeX\ to try harder to set a paragraph with a
-minimum number of lines, even at the cost of other aesthetic considerations
-such as avoiding overly tight interword spacing.
-Demerits are in units of \minref{badness} squared, so
-you need to assign a rather large value to this parameter (in the
-thousands) for it to have any effect.
-\PlainTeX\ sets |\linepenalty| to $10$.
+%This parameter specifies \minref{demerits} that \TeX\ assesses for each line
+%break when it is breaking a paragraph into lines.
+%The penalty is independent of where the line break occurs.
+%Increasing the value
+%of this parameter causes \TeX\ to try harder to set a paragraph with a
+%minimum number of lines, even at the cost of other aesthetic considerations
+%such as avoiding overly tight interword spacing.
+%Demerits are in units of \minref{badness} squared, so
+%you need to assign a rather large value to this parameter (in the
+%thousands) for it to have any effect.
+%\PlainTeX\ sets |\linepenalty| to $10$.
+此参数设定 \TeX\ 分段为行时各行的\minref{惩罚}值\thinspace%
+\footnote{译注：原文中似乎将 penalty 误认为 demerit 了。}。
+此惩罚值与断行位置无关。
+增大此参数将让  \TeX\ 把段落压缩到最小的行数，
+但会损害其它审美上的考虑，比如避免过紧的单词间距。
+\PlainTeX\ 设定 |\linepenalty| 为 $10$。
 \enddesc
 
 \begindesc
 \cts adjdemerits {\param{number}}
 \explain
+%\minrefs{line break}
+%^^{hyphenation//penalties for}
+%{\tighten
+%This parameter specifies additional \minref{demerits} that \TeX\ attaches to a
+%breakpoint between two adjacent lines that are
+%``visually incompatible''.
+%Such a pair of lines makes a paragraph appear uneven.
+%Incompatibility is evaluated in terms of the tightness or looseness
+%of lines:
+%}
+%\olist\compact
+%\li A line is tight if its \minref{glue} needs to shrink by at least $50\%$.
+%\li A line is decent if its badness is $12$ or less.
+%\li A line is loose if its glue needs to stretch by more than $50\%$.
+%\li A line is very loose if its glue needs to stretch so much
+%that its badness exceeds $100$.
+%\endolist
+%Two adjacent lines are visually incompatible
+%if their categories are not adjacent, e.g., a tight line is next to a loose one
+%or a decent line is next to a very loose one.
+%
+%Demerits are in units of \minref{badness} squared, so
+%you need to assign a rather large value to this parameter (in the
+%thousands) for it to have any effect.
+%\PlainTeX\ sets |\adjdemerits| to~$10000$.
 \minrefs{line break}
 ^^{hyphenation//penalties for}
 {\tighten
-This parameter specifies additional \minref{demerits} that \TeX\ attaches to a
-breakpoint between two adjacent lines that are
-``visually incompatible''.
-Such a pair of lines makes a paragraph appear uneven.
-Incompatibility is evaluated in terms of the tightness or looseness
-of lines:
+此参数给行断点设定额外的\minref{缺陷}（demerit），只要该断点在“视觉不相容的”相邻两行间出现。
+这些相邻行使得段落看起来参差不齐。
+不相容性取决于各行的松紧度\thinspace%
+\footnote{译注：如果粘连调整比例大于或等于$50\%$，其劣度必定大于或等于$13$。}：
 }
 \olist\compact
-\li A line is tight if its \minref{glue} needs to shrink by at least $50\%$.
-\li A line is decent if its badness is $12$ or less.
-\li A line is loose if its glue needs to stretch by more than $50\%$.
-\li A line is very loose if its glue needs to stretch so much
-that its badness exceeds $100$.
+\li 此行是过紧的，如果其\minref{粘连}至少需要收缩$50\%$。
+\li 此行是适中的，如果它的劣度小于或等于$12$。
+\li 此行是松散的，如果其粘连至少需要伸长$50\%$。
+\li 此行是空荡的，如果其粘连需要伸长太多以致它的劣度超过$100$。
 \endolist
-Two adjacent lines are visually incompatible
-if their categories are not adjacent, e.g., a tight line is next to a loose one
-or a decent line is next to a very loose one.
+如果相邻的两行分类却不相近，比如，
+松散的行后面跟着一个过紧的行，或者空荡的行后面是一个适中的行，
+则称它们为视觉不相容的。
 
-Demerits are in units of \minref{badness} squared, so
-you need to assign a rather large value to this parameter (in the
-thousands) for it to have any effect.
-\PlainTeX\ sets |\adjdemerits| to~$10000$.
+缺陷以\minref{劣度}的平方为单位，
+因此只有在给定一个较大的数值时（比如数千）才会产生作用。
+\PlainTeX\ 设定 |\adjdemerits| 为~$10000$。
 \enddesc
 
 \begindesc
 \bix^^{hyphenation//penalties for}
 \cts exhyphenpenalty {\param{number}}
 \explain
+%\minrefs{line break}
+%This parameter specifies the \minref{penalty} that \TeX\ attaches to a
+%breakpoint at an explicit hyphen such as the one in
+%``helter-skelter''.  Increasing this parameter has the effect of discouraging
+%\TeX\ from ending a line at an explicit hyphen.
+%\PlainTeX\ sets |\exhyphenpenalty| to $50$.
 \minrefs{line break}
-This parameter specifies the \minref{penalty} that \TeX\ attaches to a
-breakpoint at an explicit hyphen such as the one in
-``helter-skelter''.  Increasing this parameter has the effect of discouraging
-\TeX\ from ending a line at an explicit hyphen.
-\PlainTeX\ sets |\exhyphenpenalty| to $50$.
+此参数指定 \TeX\ 在显式连字符（比如``helter-skelter''的连字符）处断行时
+所附加的\minref{惩罚}值。
+增大此参数将阻碍 \TeX\ 在显式连字符处换行。 
+\PlainTeX\ 设定 |\exhyphenpenalty| 为 $50$。
 \enddesc
 
 \begindesc
 \cts hyphenpenalty {\param{number}}
 \explain
+%\minrefs{line break}
+%This parameter specifies the \minref{penalty} that \TeX\ attaches to a
+%breakpoint at an implicit hyphen.
+%Implicit hyphens can come from \TeX's hyphenation dictionary or
+%from ^{discretionary hyphens} that you've inserted with |\-|~(\xref{\@minus}).
+%^^|-//leads to {\tt\\hyphenpenalty}|
+%Increasing this parameter has the effect of discouraging
+%\TeX\ from hyphenating words.
+%\PlainTeX\ sets |\hyphenpenalty| to $50$.
 \minrefs{line break}
-This parameter specifies the \minref{penalty} that \TeX\ attaches to a
-breakpoint at an implicit hyphen.
-Implicit hyphens can come from \TeX's hyphenation dictionary or
-from ^{discretionary hyphens} that you've inserted with |\-|~(\xref{\@minus}).
+此参数指定 \TeX\ 在隐式连字符处断行时所附加的\minref{惩罚}值。
+隐式连字符来自 \TeX\ 的连字词典，或者来自你用 |\-|~(\xref{\@minus})
+插入的^{任意连字符}。
 ^^|-//leads to {\tt\\hyphenpenalty}|
-Increasing this parameter has the effect of discouraging
-\TeX\ from hyphenating words.
-\PlainTeX\ sets |\hyphenpenalty| to $50$.
+增大此参数将阻碍 \TeX\ 将单词连字化。
+\PlainTeX\ 设定 |\hyphenpenalty| 为 $50$。
 \enddesc
 
 \begindesc
 \cts doublehyphendemerits {\param{number}}
 \explain
+%\minrefs{line break}
+%{\tighten
+%This parameter specifies additional \minref{demerits} that \TeX\
+%attaches to a breakpoint when that breakpoint leads to
+%two consecutive lines that end in a hyphen.
+%Increasing the value of this parameter has the effect of discouraging
+%\TeX\ from hyphenating two lines in a row.
+%Demerits are in units of \minref{badness} squared, so
+%you need to assign a rather large value to this parameter (in the
+%thousands) for it to have any effect.
+%\PlainTeX\ sets |\doublehyphendemerits| to $10000$.
+%}
 \minrefs{line break}
 {\tighten
-This parameter specifies additional \minref{demerits} that \TeX\
-attaches to a breakpoint when that breakpoint leads to
-two consecutive lines that end in a hyphen.
-Increasing the value of this parameter has the effect of discouraging
-\TeX\ from hyphenating two lines in a row.
-Demerits are in units of \minref{badness} squared, so
-you need to assign a rather large value to this parameter (in the
-thousands) for it to have any effect.
-\PlainTeX\ sets |\doublehyphendemerits| to $10000$.
+此参数指定 \TeX\ 在导致连续两行都以连字符结尾的断点处所附加的额外\minref{缺陷}值。
+增大此参数将阻碍 \TeX\ 将连续两行连字化。
+缺陷以\minref{劣度}的平方为单位，
+因此只有在给定一个较大的数值时（比如数千）才会产生作用。
+\PlainTeX\ 设定 |\doublehyphendemerits| 为 $10000$。
 }
 \enddesc
 
 \begindesc
 \cts finalhyphendemerits {\param{number}}
 \explain
+%\minrefs{line break}
+%{\tighten
+%This parameter specifies additional \minref{demerits} that \TeX\
+%attaches to a breakpoint that causes
+%the next to last line of a paragraph to end with a hyphen.
+%Such a hyphen is generally considered to be unaesthetic
+%because of the possible blank space from a short last line beneath it.
+%Increasing the value of this parameter has the effect of discouraging
+%\TeX\ from ending the next to the last line with a hyphen.
+%Demerits are in units of \minref{badness} squared, so
+%you need to assign a rather large value to this parameter (in the
+%thousands) for it to have any effect.
+%\PlainTeX\ sets |\finalhyphendemerits| to $5000$.
+%}
+%\eix^^{hyphenation//penalties for}
 \minrefs{line break}
 {\tighten
-This parameter specifies additional \minref{demerits} that \TeX\
-attaches to a breakpoint that causes
-the next to last line of a paragraph to end with a hyphen.
-Such a hyphen is generally considered to be unaesthetic
-because of the possible blank space from a short last line beneath it.
-Increasing the value of this parameter has the effect of discouraging
-\TeX\ from ending the next to the last line with a hyphen.
-Demerits are in units of \minref{badness} squared, so
-you need to assign a rather large value to this parameter (in the
-thousands) for it to have any effect.
-\PlainTeX\ sets |\finalhyphendemerits| to $5000$.
+此参数指定 \TeX\ 在段落倒数第二行以连字符结尾时所附加的额外\minref{缺陷}值。
+由于该行下面可能有短行造成的空白，这样的连字符通常认为是缺乏美感的。
+增大此参数将阻碍 \TeX\ 将段落倒数第二行连字化。
+缺陷以\minref{劣度}的平方为单位，
+因此只有在给定一个较大的数值时（比如数千）才会产生作用。
+\PlainTeX\ 设定 |\finalhyphendemerits| 为 $5000$。
 }
 \eix^^{hyphenation//penalties for}
 \enddesc
@@ -2978,19 +3068,27 @@ thousands) for it to have any effect.
 \begindesc
 \cts binoppenalty {\param{number}}
 \explain
+%^^{operators}
+%This parameter specifies the penalty for breaking a math formula
+%after a binary operator when the formula appears in a paragraph.
+%\PlainTeX\ sets |\binoppenalty| to $700$.
 ^^{operators}
-This parameter specifies the penalty for breaking a math formula
-after a binary operator when the formula appears in a paragraph.
-\PlainTeX\ sets |\binoppenalty| to $700$.
+此参数指定 \TeX\ 在段内公式的二元运算符后断行所附加的惩罚值。
+\PlainTeX\ 设定 |\binoppenalty| 为 $700$。
 \enddesc
 
 \begindesc
 \cts relpenalty {\param{number}}
 \explain
+%^^{relations}
+%This parameter specifies the penalty for breaking a math formula
+%after a relation when the formula appears in a paragraph.
+%\PlainTeX\ sets |\rel!-penal!-ty| to~$500$.
+%
+%\eix^^{line breaks//parameters affecting}
 ^^{relations}
-This parameter specifies the penalty for breaking a math formula
-after a relation when the formula appears in a paragraph.
-\PlainTeX\ sets |\rel!-penal!-ty| to~$500$.
+此参数指定 \TeX\ 在段内公式的二元关系符后断行所附加的惩罚值。
+\PlainTeX\ 设定 |\rel!-penal!-ty| 为~$500$。
 
 \eix^^{line breaks//parameters affecting}
 \enddesc
@@ -3004,15 +3102,21 @@ after a relation when the formula appears in a paragraph.
 %
 \easy\ctspecial - \ctsxrdef{@minus}
 \explain
-The |\-| command inserts a ``discretionary hyphen''
-^^{discretionary hyphens}
-into a word.
-The discretionary hyphen allows \TeX\ to hyphenate the word at that
-place.  \TeX\ isn't obliged to hyphenate there---it does so
-only if it needs to.  This command is useful when a word
-that occurs in one or two places in your document
-needs to be hyphenated,
-but \TeX\ can't find an appropriate hyphenation point on its own.
+%The |\-| command inserts a ``discretionary hyphen''
+%^^{discretionary hyphens}
+%into a word.
+%The discretionary hyphen allows \TeX\ to hyphenate the word at that
+%place.  \TeX\ isn't obliged to hyphenate there---it does so
+%only if it needs to.  This command is useful when a word
+%that occurs in one or two places in your document
+%needs to be hyphenated,
+%but \TeX\ can't find an appropriate hyphenation point on its own.
+此命令在单词中加入“自定连字符”。
+^^{自定连字符}
+自定连字符允许 \TeX\ 在该处连字化。
+但 \TeX\ 未必非得如此连字－－它仅在必要时这样做。
+当某个单词在文档中出现一次或多次，而 \TeX\ 又找不到合适连字点时，
+这个命令就比较有用了。
 \example
 Alice was exceedingly reluctant to shake hands first
 with either Twee\-dle\-dum or Twee\-dle\-dee, for
@@ -3030,24 +3134,39 @@ fear of hurting the other one's feelings.
    \rqbraces{\<post-break text>}
    \rqbraces{\<no-break text>}}
 \explain
+%\minrefs{line break}
+%^^{hyphenation}
+%This command specifies a ``discretionary break'', namely,
+%a place where \TeX\ can break a line.
+%It also tells \TeX\ what text to put on either side of the break.
+%\ulist
+%\li If \TeX\ does not break there, it uses the \<no-break text>.
+%\li If \TeX\ does break there, it puts the \<pre-break text> just before
+%the break and the \<post-break text> just after the break.
+%\endulist
+%\noindent
+%Just as with |\-|,
+%\TeX\ isn't obligated to break a line at a discretionary break.
+%In fact, |\-| is ordinarily equivalent to |\discretionary!allowbreak{-}{}{}|.
+%
+%\TeX\ sometimes inserts discretionary breaks on its own.
+%For example, it inserts |\discretionary!allowbreak{}{}{}| after
+%an explicit hyphen or dash.
 \minrefs{line break}
 ^^{hyphenation}
-This command specifies a ``discretionary break'', namely,
-a place where \TeX\ can break a line.
-It also tells \TeX\ what text to put on either side of the break.
+此命令指定一个“自定断点”，即，\TeX\ 可以断行的位置。
+它还告诉 \TeX\ 在断点前后放置的文字。
 \ulist
-\li If \TeX\ does not break there, it uses the \<no-break text>.
-\li If \TeX\ does break there, it puts the \<pre-break text> just before
-the break and the \<post-break text> just after the break.
+\li 如果 \TeX\ 不在该处断行，它使用 \<no-break text>。
+\li 如果 \TeX\ 确实在该处断行，它把 \<pre-break text> 放在断点前，
+而把 \<post-break text> 放在断点后。
 \endulist
 \noindent
-Just as with |\-|,
-\TeX\ isn't obligated to break a line at a discretionary break.
-In fact, |\-| is ordinarily equivalent to |\discretionary!allowbreak{-}{}{}|.
+如同 |\-|，在自定断点处 \TeX\ 未必非得断行。
+实际上, |\-| 通常等同于 |\discretionary!allowbreak{-}{}{}|。
 
-\TeX\ sometimes inserts discretionary breaks on its own.
-For example, it inserts |\discretionary!allowbreak{}{}{}| after
-an explicit hyphen or dash.
+\TeX\ 有时也会加入自己的自定断点。
+例如，它在显式连字号或者破折号后加入|\discretionary!allowbreak{}{}{}|。
 
 {%\hyphenchar\ententt=-1 % needed to avoid weirdnesses
 \example
@@ -3070,19 +3189,27 @@ German ``fli\discretionary{k-}{k}{ck}en''
 \cts hyphenation {\rqbraces{\<word>\thinspace\vs\ $\ldots$\ \vs
    \thinspace\<word>}}
 \explain
-\TeX\ keeps a dictionary of exceptions to its ^{hyphenation} rules.
-Each dictionary entry indicates how a particular word should
-be hyphenated.
-The |\hyphenation| command adds words to the dictionary.
-Its argument is a sequence of words separated by blanks.
-Uppercase and lowercase letters are equivalent.
-The hyphens in each word indicate the places
-where \TeX\ can hyphenate that word.
-A word with no hyphens in it will never be hyphenated.
-However, you can still override the hyphenation dictionary by
-using |\-| in a particular occurrence of a word.
-You need to provide all the grammatical forms of a word
-that you want \TeX\ to handle, e.g., both the singular and the plural.
+%\TeX\ keeps a dictionary of exceptions to its ^{hyphenation} rules.
+%Each dictionary entry indicates how a particular word should
+%be hyphenated.
+%The |\hyphenation| command adds words to the dictionary.
+%Its argument is a sequence of words separated by blanks.
+%Uppercase and lowercase letters are equivalent.
+%The hyphens in each word indicate the places
+%where \TeX\ can hyphenate that word.
+%A word with no hyphens in it will never be hyphenated.
+%However, you can still override the hyphenation dictionary by
+%using |\-| in a particular occurrence of a word.
+%You need to provide all the grammatical forms of a word
+%that you want \TeX\ to handle, e.g., both the singular and the plural.
+\TeX\ 中有个词典记录了它的^{连字}规则的例外情形。
+词典中每个条目指明了某个单词应该如何连字化。
+这个 |\hyphenation| 命令用于添加单词到该词典。
+它的参数是用空格分开的多个单词，不区分字母大小写。
+单词中的连字符指明 \TeX\ 可以在哪些地方将它连字化。
+一个不含连字符的单词将永远不会被连字化。
+然而，在特定单词中的 |\-| 还是优先于连字词典中对该单词的规定。
+你需要提供单词的各种语法形式给 \TeX\ 处理，比如单数和复数形式。
 
 \example
 \hyphenation{Gry-phon my-co-phagy}
@@ -3094,23 +3221,32 @@ that you want \TeX\ to handle, e.g., both the singular and the plural.
 \begindesc
 \cts uchyph {\param{number}}
 \explain
-A positive value of |\uchyph| (uppercase hyphenation)
-permits hyphenation of words, such as proper names,
-that start with a capital letter.
-A zero or negative
-value inhibits such hyphenation.  \PlainTeX\ sets |\uchyph| to $1$,
-so \TeX\  normally tries to hyphenate words that start with a capital letter.
+%A positive value of |\uchyph| (uppercase hyphenation)
+%permits hyphenation of words, such as proper names,
+%that start with a capital letter.
+%A zero or negative
+%value inhibits such hyphenation.  \PlainTeX\ sets |\uchyph| to $1$,
+%so \TeX\  normally tries to hyphenate words that start with a capital letter.
+取 |\uchyph|（大写单词连字化）为正数，
+将允许对专有名词等以大写字母开始的单词连字化。
+取为零或者负数将禁止此类连字。
+\PlainTeX\ 设定 |\uchyph| 为 $1$，
+因此 \TeX\ 一般会试着将大写字母开始的单词连字化。
 \enddesc
 
 \begindesc
 \cts showhyphens {\rqbraces{\<word>\thinspace\vs\ $\ldots$\ \vs
    \thinspace\<word>}}
 \explain
-This command isn't normally used in documents, but you can use it at
-your terminal to see how \TeX\ would hyphenate some random set of words.
-The words, with hyphenations indicated, appear both in the log and at
-your terminal.  You'll get a complaint about an underfull hbox---just
-ignore it.
+%This command isn't normally used in documents, but you can use it at
+%your terminal to see how \TeX\ would hyphenate some random set of words.
+%The words, with hyphenations indicated, appear both in the log and at
+%your terminal.  You'll get a complaint about an underfull hbox---just
+%ignore it.
+此命令在文档中一般不会用到，
+使用它你可以在终端输出中看到 \TeX\ 对一些单词是如何连字的。
+用连字符表示的单词将出现在编译记录和终端输出中。
+同时你也会看到关于“松散的盒子”的警告，忽略它即可。
 \example
 \showhyphens{threshold quizzical draughts argumentative}
 |
@@ -3124,62 +3260,90 @@ Underfull \hbox (badness 10000) detected at line 0
 \begindesc
 \cts language {\param{number}}
 \explain
-Different languages have different sets of hyphenation rules.
-This parameter determines the set of ^{hyphenation rules} that \TeX\ uses.
-By changing |\language| you can get \TeX\
-to hyphenate portions of text or entire documents according to the
-hyphenation rules appropriate to a particular language.
-^^{European languages}
-Your ^{local information} about \TeX\ will tell you if any
-additional sets of hyphenation rules are available (besides the
-ones for English)
-and what the appropriate values of |\language| are.
-The default value of |\language| is $0$.
+%Different languages have different sets of hyphenation rules.
+%This parameter determines the set of ^{hyphenation rules} that \TeX\ uses.
+%By changing |\language| you can get \TeX\
+%to hyphenate portions of text or entire documents according to the
+%hyphenation rules appropriate to a particular language.
+%^^{European languages}
+%Your ^{local information} about \TeX\ will tell you if any
+%additional sets of hyphenation rules are available (besides the
+%ones for English)
+%and what the appropriate values of |\language| are.
+%The default value of |\language| is $0$.
+%
+%\TeX\ sets the current language to $0$ at the start of every paragraph,
+%and compares |\language| to the current language whenever it adds
+%a character to the current paragraph.
+%If they are not the same, \TeX\ adds a ^{whatsit} indicating the
+%language change.
+%This whatsit is the clue in later processing that the language rules
+%should change.
+不同的语言有不同的连字规则。此参数确定 \TeX\ 使用哪组^{连字规则}。
+通过改变 |\language|，
+你可以让 \TeX\ 对部分或整个文档用特定语言的连字规则连字。
+^^{欧洲语言}
+你所用的 \TeX\ 会说明
+是否还有另外的连字规则可用（除了英语），
+以及适当的 |\language| 值是哪些。
+默认的 |\language| 值为 $0$。
 
-\TeX\ sets the current language to $0$ at the start of every paragraph,
-and compares |\language| to the current language whenever it adds
-a character to the current paragraph.
-If they are not the same, \TeX\ adds a ^{whatsit} indicating the
-language change.
-This whatsit is the clue in later processing that the language rules
-should change.
+在段落开始处，\TeX\ 设定当前语言值为 $0$。
+在添加字符到当前段落时，\TeX\ 会比较 |\language| 和当前语言值。
+如果两者不同，\TeX\ 添加一个 ^{whatsit}，表明当前语言的变化。
+这个 whatsit 提示后续处理时所用的语言规则应该改变。
 \enddesc
 
 \begindesc
 \cts setlanguage {\<number>}
 \explain
-This command sets the current language to \<number>
-by inserting the same whatsit that you'd get by changing ^|\language|.
-However, it does not change the value of |\language|.
+%This command sets the current language to \<number>
+%by inserting the same whatsit that you'd get by changing ^|\language|.
+%However, it does not change the value of |\language|.
+此命令通过添加 whatsit 设定当前语言值为 \<number>。
+该 whatsit 和修改 ^|\language| 时的一样。
+然而，此命令不会改动 |\language| 的值。
 \enddesc
 
 \begindesc
 \cts lefthyphenmin {\param{number}}
 \cts righthyphenmin {\param{number}}
 \explain
-These parameters specify the smallest word fragments that \TeX\ allows
-at the left and at the right end of a hyphenated word.
-\PlainTeX\ defaults them to $2$ and $3$ respectively;
-these are the recommended values for English.
+%These parameters specify the smallest word fragments that \TeX\ allows
+%at the left and at the right end of a hyphenated word.
+%\PlainTeX\ defaults them to $2$ and $3$ respectively;
+%these are the recommended values for English.
+这两个参数指定，对于连字单词，\TeX\ 在连字符左右至少得有几个字母。
+\PlainTeX\ 中两者的默认值分别为 $2$ 和 $3$；
+这是英语的建议值。
 \enddesc
 
 \begindesc
 \bix^^{fonts//hyphenation characters for}
 \cts hyphenchar {\<font>\param{number}}
 \explain
-\TeX\ doesn't necessarily use the `-' character at hyphenation points.
-Instead, it uses the |\hyphenchar| of the current font, which is usually
-`-' but need not be.   If a font has a negative |\hyphenchar| value,
-\TeX\ won't hyphenate words in that font.
+%\TeX\ doesn't necessarily use the `-' character at hyphenation points.
+%Instead, it uses the |\hyphenchar| of the current font, which is usually
+%`-' but need not be.   If a font has a negative |\hyphenchar| value,
+%\TeX\ won't hyphenate words in that font.
+%
+%Note that \<font> is a control sequence
+%that names a font, not a \<font\-name> that names font files.
+%Beware:
+%an assignment to |\hyphenchar| is \emph{not} undone at the end
+%of a group.
+%If you want to change |\hyphenchar| locally, you'll need to
+%save and restore its original value explicitly.
+\TeX\ 未必总是以 `-' 字符为连字符。
+实际上，它使用的是当前字体的 |\hyphenchar|，
+此字符通常是 `-' 但未必总是。
+若某字体的 |\hyphenchar| 值为负数，
+\TeX\ 将不会对该字体下的单词连字化。
 
-Note that \<font> is a control sequence
-that names a font, not a \<font\-name> that names font files.
-Beware:
-an assignment to |\hyphenchar| is \emph{not} undone at the end
-of a group.
-If you want to change |\hyphenchar| locally, you'll need to
-save and restore its original value explicitly.
-
+注意 \<font> 指的是该字体的控制序列名称，
+而不是字体文件名 \<font\-name>。
+谨记：在群组结束时所分配的 |\hyphenchar| \emph{不会}撤销。
+若要局部改变 |\hyphenchar|，你必须显式地保存和恢复原有取值。
 \example
 \hyphenchar\tenrm = `-
    % Set hyphenation for tenrm font to `-'.
@@ -3192,17 +3356,25 @@ save and restore its original value explicitly.
 \begindesc
 \cts defaulthyphenchar {\param{number}}
 \explain
-When \TeX\ reads the metrics file
+%When \TeX\ reads the metrics file
+%^^{metrics file//default hyphen in}
+%for a font in response to a
+%^|\font| command, it sets the font's ^|\hyphenchar| to
+%|\default!-hyphen!-char|.
+%If the value of |\default!-hyphen!-char| is
+%not in the range $0$--$255$ when you load a font,
+%\TeX\ won't hyphenate any words in that font  unless you
+%override the decision by setting the font's |\hyphenchar| later on.
+%\PlainTeX\  sets |\default!-hyphen!-char| to $45$, the \ascii\ code
+%for `|-|'.
+当 \TeX\ 碰到 ^|\font| 命令时，它读取该字体的度量文件，
+并设置该字体的 ^|\hyphenchar| 为 |\default!-hyphen!-char|。
 ^^{metrics file//default hyphen in}
-for a font in response to a
-^|\font| command, it sets the font's ^|\hyphenchar| to
-|\default!-hyphen!-char|.
-If the value of |\default!-hyphen!-char| is
-not in the range $0$--$255$ when you load a font,
-\TeX\ won't hyphenate any words in that font  unless you
-override the decision by setting the font's |\hyphenchar| later on.
-\PlainTeX\  sets |\default!-hyphen!-char| to $45$, the \ascii\ code
-for `|-|'.
+如果载入字体时 |\default!-hyphen!-char| 的值不在 $0$--$255$
+范围中，\TeX\ 将不会对该字体下的任何单词连字化；
+除非你以后用 |\hyphenchar| 命令设定此字体的连字符。
+\PlainTeX\ 设定 |\default!-hyphen!-char| 为 $45$，
+即 `|-|' 字符的 \ascii\ 码。
 \example
 \defaulthyphenchar = `-
    % Assume `-' is the hyphen, unless overridden.
@@ -3227,12 +3399,17 @@ for `|-|'.
 \easy\ctspecial beginsection {\<argument>\thinspace{\bt\\par}}
    \ctsxrdef{@beginsection}
 \explain
-You can use this command to begin a major subdivision of your document.
-\<argument> is intended to serve as a section title.
-|\beginsection| surrounds \<argument>
-by extra vertical space and sets it in
-boldface, left-justified.
-You can produce the |\par| that ends \<argument> with a blank line.
+%You can use this command to begin a major subdivision of your document.
+%\<argument> is intended to serve as a section title.
+%|\beginsection| surrounds \<argument>
+%by extra vertical space and sets it in
+%boldface, left-justified.
+%You can produce the |\par| that ends \<argument> with a blank line.
+%\let\message = \gobble % Don't bother to tell us about Pig and Pepper.
+此命令开始文档的一节。
+\<argument> 用于表示节标题。
+标题将用粗体显示，靠左对齐，而且上下有额外的竖直间距。
+你也可以在 \<argument> 后用一个空行得到 |\par|。
 \let\message = \gobble % Don't bother to tell us about Pig and Pepper.
 \example
 $\ldots$  till she had brought herself down to nine
@@ -3256,20 +3433,30 @@ For a minute or two she stood looking at the house $\ldots$
 \cts item {\<argument>}
 \cts itemitem {\<argument>}
 \explain
+%^^{itemized lists}
+%These commands are useful for creating ^{itemized lists}.  The entire paragraph
+%following \<argument> is indented by |\parindent|
+%^^|\parindent//indentation for itemized lists|
+%(for |\item|) or by |2\parindent| (for |\itemitem|).
+%(See \xrefpg{\parindent} for an explanation of |\parindent|.)
+%Then \<argument>,
+%followed by an en space, is placed just to
+%the left of the text of the
+%first line of the paragraph so that it falls within the paragraph indentation
+%as specified by |\parindent|.
+%
+%If you want to include more than one
+%paragraph in an item, put |\item{}| in front of the additional paragraphs.
 ^^{itemized lists}
-These commands are useful for creating ^{itemized lists}.  The entire paragraph
-following \<argument> is indented by |\parindent|
+这两个命令用于创建^{逐项列表}。
+在 \<argument> 后面的整个段落会有 |\parindent|（对于|\item|）或者
+|2\parindent|（对于 |\itemitem|）的缩进。%
+（|\parindent| 的解释见\xrefpg{\parindent}。）
 ^^|\parindent//indentation for itemized lists|
-(for |\item|) or by |2\parindent| (for |\itemitem|).
-(See \xrefpg{\parindent} for an explanation of |\parindent|.)
-Then \<argument>,
-followed by an en space, is placed just to
-the left of the text of the
-first line of the paragraph so that it falls within the paragraph indentation
-as specified by |\parindent|.
+\<argument> 加上 1en 的间距后被放置在段落首行文字的左边。
+也就是说，它总是落在由 |\parindent| 确定的段落缩进空白中。
 
-If you want to include more than one
-paragraph in an item, put |\item{}| in front of the additional paragraphs.
+要让一个列表项包含多个段落，可以将 |\item{}| 放在另外的段落前。
 \example
 {\parindent = 18pt
 \noindent Here is what we require:
@@ -3297,17 +3484,29 @@ but with the yolks removed.
    \<general text>\thinspace{\bt\\par}}
    \ctsxrdef{@proclaim}
 \explain
+%^^{theorems}
+%^^{lemmas}
+%^^{hypotheses}
+%This command ``proclaims'' a theorem, lemma, hypothesis, etc.
+%It sets \<argument> in boldface type and the following paragraph in
+%italics.  \<arg\-u\-ment> must be followed by a period and a space token,
+%which serve
+%to set off \<argument> from \<general text>.
+%\<general text> consists of the text up to the next paragraph
+%boundary, except that you can include multiple paragraphs by putting them
+%within braces and ending a paragraph after the closing right brace.
 ^^{theorems}
 ^^{lemmas}
 ^^{hypotheses}
-This command ``proclaims'' a theorem, lemma, hypothesis, etc.
-It sets \<argument> in boldface type and the following paragraph in
-italics.  \<arg\-u\-ment> must be followed by a period and a space token,
-which serve
-to set off \<argument> from \<general text>.
-\<general text> consists of the text up to the next paragraph
-boundary, except that you can include multiple paragraphs by putting them
-within braces and ending a paragraph after the closing right brace.
+此命令“陈述”一个定理、引理、假设等。
+它用粗体显示 \<argument>，并用斜体显示后面的段落。
+\<arg\-u\-ment> 后面必须跟着句号和空格，
+以此区分开 \<argument> 和 \<general text>。
+\<general text> 到下一个段落之前截止；
+若要包含多个段落，你可以将它们放在花括号中，
+并且在右花括号后结束段落\thinspace%
+\footnote{译注：原文关于包含多个段落这句似有错误。
+但改用 |\endgraf| 结束段落就可以包含多个段落。}。
 \example
 \proclaim Theorem 1.
 What I say is not to be believed.
