@@ -65,20 +65,20 @@
 \bix^^|\lineskiplimit|
 在一个普通\minref{垂直列}（例如段落各行）中，
 这三个参数共同确定了 \TeX\ 在相邻两个\minref{盒子}间插入的间隔。
-这个间隔称为“\minref{行间间距}”。
+这个间隔称为“\minref{行间\zglue}”。
 对于内部垂直模式中构造的 vbox 垂直列，其中的组成盒子间同样会有此间隔。
 ^^{vboxes//interline glue for}
 
 在通常情况下，盒子的高度和深度不会太大，
 此时 \TeX\ 让相邻盒子的两基线距离等于 |\baselineskip|。
-为此可以让行间间距等于 |\baselineskip| 减去上盒子深度（由 ^|\prevdepth| 给出）%
+为此可以让行间\zglue 等于 |\baselineskip| 减去上盒子深度（由 ^|\prevdepth| 给出）%
 和下盒子高度。
-但如果两个盒子靠得太近，即行间间距小于 |\lineskiplimit|，
+但如果两个盒子靠得太近，即行间\zglue 小于 |\lineskiplimit|，
 \TeX\ 将改为插入 |\lineskip| 大小的间距。\negthinspace\footnote
 {\TeX\ 实际上在垂直列开头设定 |\prevdepth| 为 $-1000$\pt ，
 从而可以测定\emph{每个}盒子的 |\prevdepth|。
 若 |\prevdepth|$\>\le-1000$\pt ，
-它就不会插入任何行间间距。}详情可见 \knuth{第~79--80~页}。
+它就不会插入任何行间\zglue 。}详情可见 \knuth{第~79--80~页}。
 
 注意 |\baselineskip| 和 |\lineskip| 测量\emph{不同的东西}：
 前者为两盒子基线之间的距离，
@@ -330,7 +330,7 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %^|\bigskip| (\xref \smallskip) if the page break doesn't actually
 %happen.  \TeX\ suppresses this skip if it occurs just after an
 %equal or larger skip.
-这些命令指明了越来越合适的分页位置。如果实际上没在此处分页，\TeX\ 将分别 
+这些命令指明了越来越合适的分页位置。如果实际上没在此处分页，\TeX\ 将分别
 插入大小为 ^|\smallskip|，^|\medskip| 或 ^|\bigskip| 的间距（\xref \smallskip ）。
 但如果此位置之前已经有大于或等于此值的间距，\TeX\ 就不会再插入间距。
 \enddesc
@@ -673,7 +673,7 @@ The combined description now appears there.}
 此参数指定页面的竖直长度。
 \TeX\ 仅在页面开始时检查此值。
 因此，在页面中间改变 |\vsize| 到下一页才会生效。
-若要在页面中间改变其竖直长度，应该修改 ^|\pagegoal|（\xref \pagegoal ）的值。% 
+若要在页面中间改变其竖直长度，应该修改 ^|\pagegoal|（\xref \pagegoal ）的值。%
 （若要改变当前页面开始的所有页面，你需要\emph{同时}修改 |\vsize| 和 |\pagegoal|。）
 \PlainTeX\ 设定 |\vsize| 为 |8.9in|。
 \eix^^{page dimensions}
@@ -782,7 +782,7 @@ $d$ 等于 |\topskip| \zglue 的自然大小。
 %a page could extend well into the bottom margin or even off
 %the page entirely.  \PlainTeX\ sets |\maxdepth| to |4pt|.
 此参数设定页面底部\minref{盒子}的最大深度。
-它和 |\boxmaxdepth| 参数（\xref \boxmaxdepth ）也有关系. 
+它和 |\boxmaxdepth| 参数（\xref \boxmaxdepth ）也有关系.
 如果底部盒子的深度超过 |\maxdepth|，
 \TeX\ 下移该盒子的基准点，让深度就等于 |\maxdepth|。
 若不作此调整，页面底部盒子可能大大超出下边距，甚至超出页面，
@@ -904,28 +904,38 @@ This explanation appears on page \folio\ of the book.
 \cts headline {\param{token list}}
 \cts footline {\param{token list}}
 \explain
-These parameters
-contain, respectively, the current headline (header) and the current
-footline (footer).
-The \plainTeX\ output routine
-places the headline at the top of each page and the footline
-at the bottom of each page.
-The default headline is empty and the default footline is a centered
-page number.
+%These parameters
+%contain, respectively, the current headline (header) and the current
+%footline (footer).
+%The \plainTeX\ output routine
+%places the headline at the top of each page and the footline
+%at the bottom of each page.
+%The default headline is empty and the default footline is a centered
+%page number.
+这两个参数分别指定当前的页眉和页脚。
+\PlainTeX\ 输出例行程序将把页眉放在各页顶部，页脚放在各页底部。
+默认的页眉为空，而默认的页脚为居中的页码。
 
-The headline and footline should both
-be as wide as |\hsize| (use |\hfil|, \xref{\hfil}, for this
-if necessary).
-You should always include a font-setting command in these lines, since
-the current font is unpredictable when \TeX\ is calling the
-output routine.  If you don't set the font explicitly,
-you'll get whatever font \TeX\ was using when it broke the page.
+%The headline and footline should both
+%be as wide as |\hsize| (use |\hfil|, \xref{\hfil}, for this
+%if necessary).
+%You should always include a font-setting command in these lines, since
+%the current font is unpredictable when \TeX\ is calling the
+%output routine.  If you don't set the font explicitly,
+%you'll get whatever font \TeX\ was using when it broke the page.
+页眉和页脚的宽度应该和 |\hsize| 相等（必要时可以用 |\hfil|，\xref{\hfil}）。
+在页眉和页脚中你永远应该加上字体设定命令，
+因为你无法预知 \TeX\ 调用输出例行程序时的当前字体。
+如果你不明确指明字体，\TeX\ 将使用分页时所用的字体。
 
-You shouldn't try to use |\headline| or |\footline|
-to produce multiline headers or footers.
-Although \TeX\ won't complain, it will give you something that's very ugly.
-See \xrefpg{bighead} for a method of creating multiline headers or
-footers.
+%You shouldn't try to use |\headline| or |\footline|
+%to produce multiline headers or footers.
+%Although \TeX\ won't complain, it will give you something that's very ugly.
+%See \xrefpg{bighead} for a method of creating multiline headers or
+%footers.
+不要试图用 |\headline| 或 |\footline| 生成多行的页眉或页脚。
+即使 \TeX\ 不会报错，它也只会出很难看的结果。
+在\xrefpg{bighead}中有生成多行页眉或页脚的方法。
 \example
 \headline = {\tenrm My First Reader\hfil Page \folio}
 |
@@ -951,19 +961,28 @@ footers.
 \begindesc
 \cts mark {\rqbraces{\<text>}}
 \explain
-\bix^^{marks}
-This command causes \TeX\ to append a mark
-containing \<mark text>
-to whatever list it is currently constructing.
-Generally you shouldn't use |\mark| within an
-``inner'' construct such as a math formula or a \minref{box}
-you've built with an |\hbox|, |\vbox|, or |\vtop| command, because
-\TeX\ won't see the mark when it's constructing the main box of the page.  But
-if you use |\mark| in ordinary horizontal \minref{mode}
-or directly in an hbox that's part of the main vertical list,
-the mark migrates out
-to the main \minref{vertical list}.
-See \knuth{pages~259--260} for examples showing how |\mark| can be used.
+%\bix^^{marks}
+%This command causes \TeX\ to append a mark
+%containing \<mark text>
+%to whatever list it is currently constructing.
+%Generally you shouldn't use |\mark| within an
+%``inner'' construct such as a math formula or a \minref{box}
+%you've built with an |\hbox|, |\vbox|, or |\vtop| command, because
+%\TeX\ won't see the mark when it's constructing the main box of the page.  But
+%if you use |\mark| in ordinary horizontal \minref{mode}
+%or directly in an hbox that's part of the main vertical list,
+%the mark migrates out
+%to the main \minref{vertical list}.
+%See \knuth{pages~259--260} for examples showing how |\mark| can be used.
+\bix^^{标记}
+此命令让 \TeX\ 添加内容为 \<mark text> 的标记到当前正构造的列表中。
+一般地，此标记命令不应该在 “内部”构造中使用，
+例如数学公式或者用 |\hbox|、|\vbox| 或 |\vtop| 构造的\minref{盒子}。
+这是因为 \TeX\ 构造页面主盒子时将看不到这样的标记。
+但是，若你在普通水平\minref{模式}中用 |\mark|，
+或者在主垂直列的 hbox 中直接使用 |\mark|，
+该标记将会被转移到主\minref{垂直列}。
+在\knuth{第~259--260~页}中有如何使用 |\mark| 的例子。
 \enddesc
 
 \begindesc
@@ -971,91 +990,137 @@ See \knuth{pages~259--260} for examples showing how |\mark| can be used.
 \cts botmark {}
 \cts topmark {}
 \explain
-These commands expand to the mark text in an item generated by an earlier
-^|\mark| command.
-The mark text has the form of a token list.
-\TeX\ sets the values of these commands when it
-finishes placing the contents of a page into ^|\box255|,
-just before calling the \minref{output routine}
-as part of its \minref{page break}ing actions.  \TeX\ determines
-these values as follows:
+%These commands expand to the mark text in an item generated by an earlier
+%^|\mark| command.
+%The mark text has the form of a token list.
+%\TeX\ sets the values of these commands when it
+%finishes placing the contents of a page into ^|\box255|,
+%just before calling the \minref{output routine}
+%as part of its \minref{page break}ing actions.  \TeX\ determines
+%these values as follows:
+%\ulist\compact
+%\li |\firstmark| contains the tokens of the first mark on the page.
+%\li |\botmark| contains the tokens of the last mark on the page.
+%\li |\topmark| contains the tokens of the mark that is in effect at
+%the very top of the page.
+%That mark is the last mark
+%that \emph{preceded} the page,
+%i.e., the |\botmark| of the previous page.
+%It is empty if no marks preceded the page.
+%\endulist
+%\noindent
+%If a page has no marks on it, \TeX\ will set |\firstmark| and |\botmark| to
+%the same mark as |\topmark|, i.e., the most recent preceding mark.
+%The table at the bottom of \knuth{page~258} illustrates the relation among
+%|\firstmark|, |\botmark|, and |\topmark|.
+这些命令展开为之前用 ^|\mark| 生成的标记项的标记文本。
+标记文本以记号列形式表示。
+执行分页工作时，\TeX\ 需要将页面内容放入 ^|\box255|，
+然后调用\minref{输出例行程序}；
+在这两个步骤之间 \TeX\ 设定这些命令的值如下：
 \ulist\compact
-\li |\firstmark| contains the tokens of the first mark on the page.
-\li |\botmark| contains the tokens of the last mark on the page.
-\li |\topmark| contains the tokens of the mark that is in effect at
-the very top of the page.
-That mark is the last mark
-that \emph{preceded} the page,
-i.e., the |\botmark| of the previous page.
-It is empty if no marks preceded the page.
+\li |\firstmark| 包含页面第一个标记的记号列。
+\li |\botmark| 包含页面最后一个标记的记号列。
+\li |\topmark| 包含紧跟在页面上边的那个标记的记号列。
+这个标记就是\emph{上一个}页面的最后一个标记，即上一页的 |\botmark|。
+如果上一页没有标记此命令为空。
 \endulist
 \noindent
-If a page has no marks on it, \TeX\ will set |\firstmark| and |\botmark| to
-the same mark as |\topmark|, i.e., the most recent preceding mark.
-The table at the bottom of \knuth{page~258} illustrates the relation among
-|\firstmark|, |\botmark|, and |\topmark|.
+如果此页面没有任何标记，\TeX\ 设定 |\firstmark| 和 |\botmark| 都等于 |\topmark|，
+即前面最近的那个标记。
+\knuth{第~258~页}底部的表格说明了 |\firstmark|、|\botmark| 和 |\topmark| 这三者的关系。
 \enddesc
 
 \begindesc
 \cts splitfirstmark {}
 \cts splitbotmark {}
 \explain
+%^^{marks//for split lists}
+%These commands expand to the ^{mark text} generated by an earlier
+%^|\mark| command that produced an item in the item list of a vbox $V$.
+%The mark text has the form of a token list.
+%When \TeX\
+%splits $V$ in response to a ^|\vsplit| command (\xref \vsplit),
+%it sets the values of these commands as follows:
+%\ulist\compact
+%\li |\splitfirstmark| contains the tokens of the first mark in
+%the item list of $V$.
+%\li |\splitbotmark| contains the tokens of the last mark in
+%the item list of $V$.
+%\endulist
+%These commands produce no tokens if there was no preceding |\vsplit|,
+%or if the most recent preceding |\vsplit| didn't contain any marks.
+%\eix^^{marks}
 ^^{marks//for split lists}
-These commands expand to the ^{mark text} generated by an earlier
-^|\mark| command that produced an item in the item list of a vbox $V$.
-The mark text has the form of a token list.
-When \TeX\
-splits $V$ in response to a ^|\vsplit| command (\xref \vsplit),
-it sets the values of these commands as follows:
+这两个命令展开为之前用 ^|\mark| 在 vbox $V$ 中生成的标记项的标记文本。
+标记文本以记号列形式表示。
+当你用 ^|\vsplit| 命令（\xref \vsplit ）分割 $V$ 时，
+\TeX\ 按如下方式设定这两个命令的值：
 \ulist\compact
-\li |\splitfirstmark| contains the tokens of the first mark in
-the item list of $V$.
-\li |\splitbotmark| contains the tokens of the last mark in
-the item list of $V$.
+\li |\splitfirstmark| 包含 $V$ 中第一个标记的记号列。
+\li |\splitbotmark| 包含 $V$ 中最后一个标记的记号列。
 \endulist
-These commands produce no tokens if there was no preceding |\vsplit|,
-or if the most recent preceding |\vsplit| didn't contain any marks.
-\eix^^{marks}
+如果没有 |\vsplit| 命令，或者前面最近的 |\vsplit| 不包含任何标记，
+这两个命令不生成记号列。
+\eix^^{标记}
 \enddesc
 
 %==========================================================================
-\section {Insertions}
+%\section {Insertions}
+\section {插入项}
 
-\subsection {Footnotes}
+%\subsection {Footnotes}
+\subsection {脚注}
 
 \begindesc
 \easy\cts footnote {\<argument$_1$> \<argument$_2$>}
 \cts vfootnote {\<argument$_1$> \<argument$_2$>}
 \explain
-These commands produce footnotes.
-\<argument$_1$> is the ``^{reference mark}''
-for the footnote and \<argument$_2$> is its text.
-The text can be several paragraphs long if necessary and can contain
-constructs such as math displays, but it shouldn't contain any
-\minref{insertion}s (such as other footnotes).
+%These commands produce footnotes.
+%\<argument$_1$> is the ``^{reference mark}''
+%for the footnote and \<argument$_2$> is its text.
+%The text can be several paragraphs long if necessary and can contain
+%constructs such as math displays, but it shouldn't contain any
+%\minref{insertion}s (such as other footnotes).
+这两个命令用于生成脚注。
+其中 \<argument$_1$> 是脚注的“^{参考符号}”，
+而 \<argument$_2$> 是脚注文本。
+脚注文本必要时可以包含多个段落，也可以包含展示公式等其他构造，
+但不应该包含任何\minref{插入项}（比如其他脚注）。
 
-You shouldn't use these commands inside a subformula of a math formula,
-in a box within a box being contributed to a page,
-or in an insertion of any kind.
-If you're unsure whether these restrictions apply, you can be safe by
-only using |\footnote| and |\vfootnote| directly within a paragraph or
-between paragraphs.
+%You shouldn't use these commands inside a subformula of a math formula,
+%in a box within a box being contributed to a page,
+%or in an insertion of any kind.
+%If you're unsure whether these restrictions apply, you can be safe by
+%only using |\footnote| and |\vfootnote| directly within a paragraph or
+%between paragraphs.
+在数学公式的子公式中，或者组成页面的盒子的子盒子中，
+或者任何形式的插入项中，你都不应该使用这些命令。
+如果你不确定这些限制出现在哪里，为安全起见，
+你可以只在段落内或者段落间直接使用 |\footnote| 和 |\vfootnote|。
 
-These restrictions aren't as severe as they seem because you can use
-|\vfootnote| to footnote most anything.
-Both |\foot!-note| and |\vfoot!-note| insert the reference mark in front of the
-footnote itself, but |\vfoot!-note| doesn't insert the reference mark into the
-text.
-Thus, when you use |\vfoot!-note| you can
-explicitly insert the reference mark
-wherever it belongs without concern about the context
-and place the |\vfootnote| in the next paragraph.
-If you find that the footnote lands on
-the page following the one where it belongs, move the |\vfootnote| back
-to the previous paragraph.
-There are rare circumstances where you'll need to
-alter the text of your document in order to get a footnote to appear on
-the same page as its reference mark.
+%These restrictions aren't as severe as they seem because you can use
+%|\vfootnote| to footnote most anything.
+%Both |\foot!-note| and |\vfoot!-note| insert the reference mark in front of the
+%footnote itself, but |\vfoot!-note| doesn't insert the reference mark into the
+%text.
+%Thus, when you use |\vfoot!-note| you can
+%explicitly insert the reference mark
+%wherever it belongs without concern about the context
+%and place the |\vfootnote| in the next paragraph.
+%If you find that the footnote lands on
+%the page following the one where it belongs, move the |\vfootnote| back
+%to the previous paragraph.
+%There are rare circumstances where you'll need to
+%alter the text of your document in order to get a footnote to appear on
+%the same page as its reference mark.
+这些限制没看起来那么严重，因为你可以用 |\vfootnote| 命令添加几乎任何内容的脚注。
+|\foot!-note| 和 |\vfoot!-note| 都会在脚注前面插入参考符号，
+区别在于 |\vfoot!-note| 不会在正文中插入参考符号。
+因此，你可以不用考虑上下文的限制，
+显式地将参考符号放到它应该在的地方，然后在下一个段落使用 |\vfootnote| 命令。
+这可能会导致脚注跑到下一页去，此时你可以将 |\vfootnote| 命令移动到上一个段落中。
+在极少情况下，你需要修改文档正文，以让脚注和参考符号出现在同一页中。
 \example
 To quote the mathematician P\'olya is a ploy.\footnote
 *{This is an example of an anagram, but not a strict one.}
@@ -1084,7 +1149,8 @@ the previous section.}
 \enddesc
 
 %==========================================================================
-\subsection {General insertions}
+%\subsection {General insertions}
+\subsection {一般插入项}
 
 \begindesc
 \bix^^{insertions//commands for}
@@ -1092,35 +1158,54 @@ the previous section.}
 \cts midinsert {\<vertical mode material> {\bt \\endinsert}}
 \cts pageinsert {\<vertical mode material> {\bt \\endinsert}}
 \explain
-These commands produce different forms of insertions that
-instruct
-(or allow) \TeX\ to relocate the \<vertical mode material>:
+%These commands produce different forms of insertions that
+%instruct
+%(or allow) \TeX\ to relocate the \<vertical mode material>:
+%\ulist
+%\li |\topinsert| attempts to put the material at the top of the current page.
+%If it won't fit there, |\topinsert|
+%will move the material to the next available top of page.
+%\li |\midinsert| attempts to put the material at the current position.
+%If it won't fit there, |\midinsert|
+%will move the material to the next available top of page.
+%\li |\pageinsert| puts the material by itself on the next page.
+%To avoid an underfull page, be sure to end the inserted material with
+%|\vfil| or fill out the excess space some other way.
+%% Knuth doesn't say this, but I tried an experiment that verified it.
+%% Nor does he say explicitly that an insertion does a \par.
+%\endulist
+%\noindent
+%The \<vertical mode material>
+%is said to be ``floating'' ^^{floating material} because \TeX\
+%can move it from one place to another.
+%Insertions are very useful for material such as figures and tables because
+%you can position such material where you want it without knowing where the
+%page breaks will fall.
+这些命令生成不同形式的插入项，
+它们指示（或者允许）\TeX\ 重新放置 \<vertical mode material>：
 \ulist
-\li |\topinsert| attempts to put the material at the top of the current page.
-If it won't fit there, |\topinsert|
-will move the material to the next available top of page.
-\li |\midinsert| attempts to put the material at the current position.
-If it won't fit there, |\midinsert|
-will move the material to the next available top of page.
-\li |\pageinsert| puts the material by itself on the next page.
-To avoid an underfull page, be sure to end the inserted material with
-|\vfil| or fill out the excess space some other way.
+\li |\topinsert| 试图将内容放在当前页的顶部。
+如果那里放不下，|\topinsert| 将把该内容移动到顶部可放下的下一个页面。
+\li |\midinsert| 试图将内容放在当前位置，
+如果当前位置放不下，|\midinsert| 将把该内容移动到顶部可放下的下一个页面。
+\li |\pageinsert| 将把内容单独放在下一页。
+为免得到松散页面，不要忘记在内容最后用 |\vfil| 命令或者其他方式填满页面。
 % Knuth doesn't say this, but I tried an experiment that verified it.
 % Nor does he say explicitly that an insertion does a \par.
 \endulist
 \noindent
-The \<vertical mode material>
-is said to be ``floating'' ^^{floating material} because \TeX\
-can move it from one place to another.
-Insertions are very useful for material such as figures and tables because
-you can position such material where you want it without knowing where the
-page breaks will fall.
+由于 \TeX\ 可以移动\<vertical mode material>的位置，我们称它为“浮动体”。^^{浮动体}
+插入项对于图形和表格非常有用，
+因为你可以将它们放在所需的地方，而不用管哪里会分页。
 
-Each of these commands implicitly ends the current paragraph, so
-you should use them only between paragraphs.
-You should not use them within a box or within another insertion.
-If you have several insertions competing for
-the same space, \TeX\ will retain their relative order.
+%Each of these commands implicitly ends the current paragraph, so
+%you should use them only between paragraphs.
+%You should not use them within a box or within another insertion.
+%If you have several insertions competing for
+%the same space, \TeX\ will retain their relative order.
+这些命令每个都会结束当前段落，因此你应该仅在段落之间使用它们。
+你也不要在盒子内部或者另一个插入项内部使用它们。
+如果有多个插入项要放在同一个位置，\TeX\ 将保持它们的先后顺序。
 \example
 \pageinsert
 % This text will appear on the following page, by itself.
@@ -1135,70 +1220,106 @@ the Carpenter.
 \begindesc
 \cts endinsert {}
 \explain
-This command ends an insertion started by
-|\topinsert|, |\midinsert|, or |\pageinsert|.
+%This command ends an insertion started by
+%|\topinsert|, |\midinsert|, or |\pageinsert|.
+此命令结束由 |\topinsert|、|\midinsert| 或 |\pageinsert| 命令开始的插入项。
 \enddesc
 
 \begindesc
 \cts insert {\<number> \rqbraces{\<vertical mode material>}}
 \explain
+%\minrefs{insertion}
+%This primitive command provides the
+%underlying mechanism for constructing insertions, but
+%it is hardly ever used outside of a \minref{macro} definition.
+%The definitions of the
+%|\foot!-note|, |\vfoot!-note|,
+%|\top!-insert|, |\mid!-insert|, and |\page!-insert| commands are
+%all built around |\insert|.
+%^^|\topinsert|
+%^^|\midinsert| ^^|\pageinsert| ^^|\footnote| ^^|\vfootnote|
 \minrefs{insertion}
-This primitive command provides the
-underlying mechanism for constructing insertions, but
-it is hardly ever used outside of a \minref{macro} definition.
-The definitions of the
-|\foot!-note|, |\vfoot!-note|,
-|\top!-insert|, |\mid!-insert|, and |\page!-insert| commands are
-all built around |\insert|.
+这个原始命令提供了构造插入项的内部机制，
+但除了在定义\minref{宏}时会用到，其他时候很少用到它。
+|\foot!-note|、|\vfoot!-note|、|\top!-insert|、|\mid!-insert| 和
+|\page!-insert| 命令的定义都建立在 |\insert| 命令之上。
 ^^|\topinsert|
 ^^|\midinsert| ^^|\pageinsert| ^^|\footnote| ^^|\vfootnote|
 
-When you design insertions for a document, you should assign a different
-integer code\footnote
-{\texbook{} uses the term ``class'' for a code.
-We use a different term to avoid confusion with the other meaning of
-``class'' (\xref{class}).}
-$n$ to each kind of insertion,
-using the ^|\newinsert| command (\xref{\@newinsert}) to obtain the
-integer codes.
-The |\insert| command itself appends the \<vertical mode material>
-to the current horizontal or \minref{vertical list}.
-Your \minref{output routine} is responsible for
-moving the inserted material from where it resides in |\box|$\,n$
-to an output page.
-^^{output routine}
+%When you design insertions for a document, you should assign a different
+%integer code\footnote
+%{\texbook{} uses the term ``class'' for a code.
+%We use a different term to avoid confusion with the other meaning of
+%``class'' (\xref{class}).}
+%$n$ to each kind of insertion,
+%using the ^|\newinsert| command (\xref{\@newinsert}) to obtain the
+%integer codes.
+%The |\insert| command itself appends the \<vertical mode material>
+%to the current horizontal or \minref{vertical list}.
+%Your \minref{output routine} is responsible for
+%moving the inserted material from where it resides in |\box|$\,n$
+%to an output page.
+%^^{output routine}
+设计文档的插入项时，不同的插入项需要分配不同的整数代码\footnote
+{\texbook{} 用“类别”这个术语称呼此代码。
+我们用不同的术语，以免和“类别”（\xref{class}）的其他意思混淆。}
+$n$，这个代码可以用 ^|\newinsert| 命令（\xref{\@newinsert}）得到。
+|\insert|命令本身仅添加 \<vertical mode material> 到当前水平列或\minref{垂直列}。
+而\minref{输出例行程序}负责移动|\box|$\,n$中的插入内容到输出页面。
+^^{输出例行程序}
 
-\TeX\ groups together all insertions having the same code
-number.  Each insertion
-code $n$ has four \minref{register}s associated with it:
+%\TeX\ groups together all insertions having the same code
+%number.  Each insertion
+%code $n$ has four \minref{register}s associated with it:
+%\ulist
+%\li |\box|$\,n$ is where \TeX\ accumulates the material for insertions
+%with code $n$.  When \TeX\ breaks a page, it puts into |\box|$\,n$
+%as much insertion $n$ material as will fit on the page.
+%Your output routine should then move this material to the actual page.
+%You can use ^|\ifvoid| \ctsref{\@ifvoid}
+%to test if there is any material in |\box|$\,n$.
+%If not all the material fits, \TeX\ saves the leftovers for the next page.
+%\li |\count|$\,n$ is a magnification factor $f.$  When \TeX\ is computing
+%the vertical space occupied on the page
+%by insertion $n$ material, it multiplies the
+%vertical extent of this material by $f/1000$.
+%Thus you would ordinarily set $f$ to $500$ for a double-column insertion
+%and to $0$ for a marginal~note.
+%\li |\dimen|$\,n$ specifies the maximum amount
+%of insertion $n$ material that \TeX\ will put on a single page.
+%\li |\skip|$\,n$ specifies extra space that \TeX\ allocates on the page
+%if the page contains any insertion $n$ material.
+%This space is in addition to the space occupied by the insertion itself.
+%For example, it would account for the space on a page above the footnotes
+%(if there are~any).
+%\endulist
+%\noindent
+%\TeX\ sets |\box|$\,n$, and you should set the other three registers
+%so that \TeX\ can correctly compute the vertical space required by the
+%insertion.
+%See \knuth{pages~122--125} for further details of how \TeX\ processes this
+%command and of how insertions interact with page breaking.
+%\xrdef{endofinsert}
+\TeX\ 将所有插入项按照它们的代码分组。每个插入代码关联四个\minref{寄存器}：
 \ulist
-\li |\box|$\,n$ is where \TeX\ accumulates the material for insertions
-with code $n$.  When \TeX\ breaks a page, it puts into |\box|$\,n$
-as much insertion $n$ material as will fit on the page.
-Your output routine should then move this material to the actual page.
-You can use ^|\ifvoid| \ctsref{\@ifvoid}
-to test if there is any material in |\box|$\,n$.
-If not all the material fits, \TeX\ saves the leftovers for the next page.
-\li |\count|$\,n$ is a magnification factor $f.$  When \TeX\ is computing
-the vertical space occupied on the page
-by insertion $n$ material, it multiplies the
-vertical extent of this material by $f/1000$.
-Thus you would ordinarily set $f$ to $500$ for a double-column insertion
-and to $0$ for a marginal~note.
-\li |\dimen|$\,n$ specifies the maximum amount
-of insertion $n$ material that \TeX\ will put on a single page.
-\li |\skip|$\,n$ specifies extra space that \TeX\ allocates on the page
-if the page contains any insertion $n$ material.
-This space is in addition to the space occupied by the insertion itself.
-For example, it would account for the space on a page above the footnotes
-(if there are~any).
+\li |\box|$\,n$ 给 \TeX\ 用于累积第 $n$ 种插入内容。
+\TeX\ 分页时会尽可能多地往 |\box|$\,n$ 中放入第$n$ 种插入项。
+然后输出例行程序将把这些内容移动了实际页面上。
+你可以用 ^|\ifvoid| 命令\ctsref{\@ifvoid}检查 |\box|$\,n$ 中是否有任何内容。
+如果不能放下全部内容，\TeX\ 将把剩下内容留到下一页。
+\li |\count|$\,n$ 为放大因子 $f$。
+\TeX\ 计算第$n$种插入项所占用的页面纵向空间时，将把插入内容的纵向长度乘以$f/1000$。
+因此对双栏插入项通常设 $f$ 为 $500$，而对边注项设为 $0$。
+\li |\dimen|$\,n$ 设定每页放置的第$n$种插入项的最大数目。
+\li |\skip|$\,n$ 设定页面包含第 $n$ 种插入项时 \TeX\ 添加的额外间隔。
+这个间隔不包含该插入项本身占用的空间。
+例如，当页面包含脚注时，就会用到此间隔。
 \endulist
 \noindent
-\TeX\ sets |\box|$\,n$, and you should set the other three registers
-so that \TeX\ can correctly compute the vertical space required by the
-insertion.
-See \knuth{pages~122--125} for further details of how \TeX\ processes this
-command and of how insertions interact with page breaking.
+\TeX\ 只设定 |\box|$\,n$，你需要设定其他三个寄存器，
+以让 \TeX\ 正确计算插入项所需的竖直空间。
+\knuth{第~122--125~页} 中详细介绍了 \TeX\ 如何处理此命令，
+以及插入项和分页方式之间的关系。
 \xrdef{endofinsert}
 \enddesc
 
