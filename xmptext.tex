@@ -2,11 +2,14 @@
 ~% This is part of the book TeX for the Impatient.
 ~% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 ~% See file fdl.tex for copying conditions.
-% TeX ignores anything on a line after a %
-% The next two lines define fonts for the title
+~% TeX ignores anything on a line after a %
+~% The next two lines define fonts for the title
+% TeX 忽略一行中 % 之后的任何内容
+% 下面两行定义标题所用的字体
 \font\xmplbx = cmbx10 scaled \magstephalf
 \font\xmplbxti = cmbxti10 scaled \magstephalf
-% Now here's the title.
+~% Now here's the title.
+% 现在是标题行
 ~%\leftline{\xmplbx Example !xmpnum:\quad\xmplbxti Entering simple text}
 ~\bookmark{2}{例!xmpnum：输入简单文本}%
 \leftline{\xmplbx 例!xmpnum:\quad\xmplbxti 输入简单文本}
@@ -20,17 +23,17 @@
 ~^^{footnotes} ^^{comments} ^^{punctuation} ^^{quotation marks}
 ~^^{space characters} ^^{dashes} ^^{paragraphs//ending}
 ~\edef\examplepageno{\number\count255}%
-%It's easy to prepare ordinary text for \TeX\ since
-%\TeX\ usually doesn't care about how you break up your input into
-%lines. It treats the end of a line of text like a space.%
-%\footnote \dag{\TeX\ treats a tab like a space too, as we point
-%out in this {\it footnote}.}   If you don't want a space there,
-%put a per%
-%cent sign (the comment character) at the end of the line.
-%   \TeX\ ignores spaces at the start of a line, and treats more
-%than        one      space as equivalent to a single space,
-%even after a period.      You indicate a new paragraph by
-%skipping a line (or more than one line).
+~%It's easy to prepare ordinary text for \TeX\ since
+~%\TeX\ usually doesn't care about how you break up your input into
+~%lines. It treats the end of a line of text like a space.%
+~%\footnote \dag{\TeX\ treats a tab like a space too, as we point
+~%out in this {\it footnote}.}   If you don't want a space there,
+~%put a per%
+~%cent sign (the comment character) at the end of the line.
+~%   \TeX\ ignores spaces at the start of a line, and treats more
+~%than        one      space as equivalent to a single space,
+~%even after a period.      You indicate a new paragraph by
+~%skipping a line (or more than one line).
 
 由于 \TeX\ 并不关心原始的输入文本中的换行，因此，我们无须关心
 应该给其提供何种格式化的文本。在 \TeX\ 看来，输入文本中的换行符
@@ -41,36 +44,29 @@
 对多于一个的空格当做一个单独的空格看待 --- 哪怕这些空格位于
 句号后面。你可以用一个或者多个空白行表示一个新的段落的开始。
 
-
-%When \TeX\ sees a period followed by a space (or the end of the
-%line, which is equivalent), it ordinarily assumes you've ended a
-%sentence and inserts a little extra space after the period.  It
-%treats question marks and exclamation points the same way.
-
+~%When \TeX\ sees a period followed by a space (or the end of the
+~%line, which is equivalent), it ordinarily assumes you've ended a
+~%sentence and inserts a little extra space after the period.  It
+~%treats question marks and exclamation points the same way.
 当 \TeX\ 看见一个句号后面紧接着一个空格（或者是一个行结束符，这
 两者等价）时，它通常会认为此句号代表一句话的结束，并在句号的后面
 加上一点小小的空格。同样的处理还适用于问号和惊叹号。
 
-%  But \TeX's rules for handling periods sometimes need fine
-%tuning. \TeX\ assumes that a capital letter before a period
-%doesn't end the sentence, so you have to do something a little
-%different if, say, you're writing about DNA\null.
-
+~%  But \TeX's rules for handling periods sometimes need fine
+~%tuning. \TeX\ assumes that a capital letter before a period
+~%doesn't end the sentence, so you have to do something a little
+~%different if, say, you're writing about DNA\null.
 有时需要微调 \TeX 处理句号的方式。当句号前面紧跟着标题字
 母（大写字母）时，\TeX\ 会认为这个句号并不做为句子的结束符，
 因此在这种情况下，你需要作一些小改动。例如：我们这样写 DNA\null.
-
-
-% The \null prevents TeX from perceiving the capital `A'
-% as being next to the period.
+~% The \null prevents TeX from perceiving the capital `A'
+~% as being next to the period.
 % \null 可以阻止 \TeX\ 感知句号前面的标题字母 `A'。
-
-%It's a good idea to tie words together in references such as
-%``see Fig.~8'' and in names such as V.~I\null. Lenin and in
-%$\ldots$ so that \TeX\ will never split them in an awkward place
-%between two lines.  (The three dots indicate an ellipsis.)
-
-% 这个 references 不知道这样翻译对不对
+~%It's a good idea to tie words together in references such as
+~%``see Fig.~8'' and in names such as V.~I\null. Lenin and in
+~%$\ldots$ so that \TeX\ will never split them in an awkward place
+~%between two lines.  (The three dots indicate an ellipsis.)
+~% 这个 references 不知道这样翻译对不对
 如果想将多个单词绑定到一起，中间不分行，则可以将它们放入一个引用
 中，例如： ``see Fig.~8''；或者名字中，例如：V.~I\null. Lenin；或者
 省略号 $\ldots$。在这样的情况下，\TeX\ 不会在它们之间断行（三个点表示
@@ -84,117 +80,103 @@ get en-dashes--like so, and em-dashes---like so.
 
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Indentation}% !xmpheaddef
+~%\xmpheader !xmpnum/{Indentation}% !xmpheaddef
 \xmpheader !xmpnum/{缩进}% !xmpheaddef
 ~^^{indentation} ^^{margins} ^^{paragraphs//narrow}
-%\noindent Now let's see how to control indentation.  If an
-%ordinary word processor can do it, so surely can \TeX. Note
-%that this paragraph isn't indented.
-
+~%\noindent Now let's see how to control indentation.  If an
+~%ordinary word processor can do it, so surely can \TeX. Note
+~%that this paragraph isn't indented.
 \noindent 现在让我们来看看如何控制缩进。如果一个普通的文字处理
 程序都能处理缩进的话，那 \TeX\ 一定也能。请注意，本段并未缩进。
 
-%Usually you'll either want to indent paragraphs or to leave
-%extra space between them.  Since we haven't changed anything
-%yet, this paragraph is indented.
-
+~%Usually you'll either want to indent paragraphs or to leave
+~%extra space between them.  Since we haven't changed anything
+~%yet, this paragraph is indented.
 通常来说，你会想在段落的起始处安排缩进，在段落之间安排一些额外
 的空白。由于我们在此尚未做任何特殊处理，因此本段是缩进的。
 
 {\parindent = 0pt \parskip = 6pt
-%% The left brace starts a group containing the unindented text.
+~% The left brace starts a group containing the unindented text.
 % 这里的左括弧包裹了一组不缩进的文本
 
-%Let's do these two paragraphs a different way,
-%with no indentation and six printer's points of extra space
-%between paragraphs. 
-
+~%Let's do these two paragraphs a different way,
+~%with no indentation and six printer's points of extra space
+~%between paragraphs.
 让我们对这两个段落作一些特殊处理，这两段将不缩进，并且两段
 之间有 6pt 宽的空白。
 
-%So here's another paragraph that we're typesetting without
-%indentation.  If we didn't put space between these paragraphs,
-%you would have a hard time knowing where one ends
-%and the next begins.
-
+~%So here's another paragraph that we're typesetting without
+~%indentation.  If we didn't put space between these paragraphs,
+~%you would have a hard time knowing where one ends
+~%and the next begins.
 这是第二段不缩进的文字。如果不在这两段之间插入空白的话，将很难
 分辨段与段之间的结束和起始。
 
 \par % The paragraph *must* be ended within the group.
 }% The right brace ends the group containing unindented text.
 
-%It's also possible to indent both sides of entire paragraphs.  
-%The next three paragraphs illustrate this:
-
+~%It's also possible to indent both sides of entire paragraphs.
+~%The next three paragraphs illustrate this:
 你也能在段落的两边同时缩进，下面的 3 段文字演示了双边缩进的效果：
-
 
 \smallskip % Provide a little extra space here.
 % Skips like this and \vskip below end a paragraph.
 {\narrower
-% ``We've indented this paragraph on both sides by the paragraph
-% indentation.  This is often a good way to set long quotations.''
-
+~% ``We've indented this paragraph on both sides by the paragraph
+~% indentation.  This is often a good way to set long quotations.''
 ``我们对这一段作了双边缩进的处理。在长段引用时，通常都会这么做。''
 
-%``You can do multiple paragraphs this way if you choose.  This
-%is the second paragraph that's singly indented.''\par}
-
+~%``You can do multiple paragraphs this way if you choose.  This
+~%is the second paragraph that's singly indented.''\par}
 ``如果你愿意的话，可以同时对多个段落作如此处理.  这是
 第二个轻微缩进的段落.''\par}
 
-%{\narrower \narrower You can even make paragraphs doubly narrow
-%if that's what you need.  This is an example of a doubly 
-%narrowed paragraph.\par}
+~%{\narrower \narrower You can even make paragraphs doubly narrow
+~%if that's what you need.  This is an example of a doubly
+~%narrowed paragraph.\par}
 {\narrower \narrower 如果需要，你也可以让段落缩进双倍长度。
 这就是一个双倍缩进段落的例子.\par}
 \vskip 1pc % Skip down one pica for visual separation.
-In this paragraph we're back to the normal margins, as you can
-see for yourself.  We'll let it run on a little longer so that
-the margins are clearly visible.
-
+~%In this paragraph we're back to the normal margins, as you can
+~%see for yourself.  We'll let it run on a little longer so that
+~%the margins are clearly visible.
 在这一段，如你所见，我们返回到正常的边距状态。我们尽量让这一段
 稍微长一点，这样你可以更清楚地看到边距的效果。
 
-%{\leftskip .5in Now we'll indent the left margin by half
-%an inch and leave the right margin at its usual position.\par}
-
+~%{\leftskip .5in Now we'll indent the left margin by half
+~%an inch and leave the right margin at its usual position.\par}
 {\leftskip .5in 现在这一段，我们将其调整为左边距为半英尺，而
 右边距保持原样。\par}
 
-
-%{\rightskip .5in Finally, we'll indent the right margin by half
-%an inch and leave the left margin at its usual position.\par}
+~%{\rightskip .5in Finally, we'll indent the right margin by half
+~%an inch and leave the left margin at its usual position.\par}
 {\rightskip .5in 最后，我们将本段调整为右边距半英尺，而左边距保持
 原样。\par}
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
+~%\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
 \xmpheader !xmpnum/{字体和特殊字符}% !xmpheaddef
 \chardef \\ = `\\ % Let \\ denote a backslash.
 ~^^{fonts} ^^{characters//special} ^^{accents}
 ~^^{music symbols} ^^{card suits}
 ~^^|$| ^^|&| ^^|#| ^^|_| ^^|%| ^^|^| ^^|~| ^^|{| ^^|}| \indexchar \
-%{\it Here are a few words in an italic font}, {\bf a 
-%few words in a boldface font}, {\it and a\/ {\bf mixture} 
-%of the two, with two\/ {\rm roman words} inserted}.
-%Where an italic font is followed by a nonitalic font, we've
-%inserted an ``italic correction'' ({\tt \\/}) to make the
-%spacing look right. 
-
-%{\it 这是一些斜体字词}, {\bf  
-%一些粗体字词}, {\it 以及一些 {\bf 二者混合的效果} 
-%, 我们在中间插入一些 {\rm 正常的字词} }.
-%当斜体字后面紧跟非斜体字时, 我们在其间插入一个``倾斜校正''
-%({\tt \\/})，使得中间的空白看起来较舒适。
-
-%Here's a {\sevenrm smaller} word---but the standard \TeX\
-%fonts won't give you anything smaller than {\fiverm this}.
-
+~%{\it Here are a few words in an italic font}, {\bf a
+~%few words in a boldface font}, {\it and a\/ {\bf mixture}
+~%of the two, with two\/ {\rm roman words} inserted}.
+~%Where an italic font is followed by a nonitalic font, we've
+~%inserted an ``italic correction'' ({\tt \\/}) to make the
+~%spacing look right.
+{\it 这是一些斜体字词}, {\bf 一些粗体字词}，
+{\it 以及一些 {\bf 二者混合的效果}，
+我们在中间插入一些 {\rm 正常的字词} }.
+当斜体字后面紧跟非斜体字时, 我们在其间插入一个``倾斜校正''
+({\tt \\/})，使得中间的空白看起来较舒适。
+~%Here's a {\sevenrm smaller} word---but the standard \TeX\
+~%fonts won't give you anything smaller than {\fiverm this}.
 这是一些{\sevenrm 更小的} 字词---可是标准的 \TeX\
 字体并不会给出小于 {\fiverm 如此大小}的字体。
 
-%If you need any of the ten characters:
+~%If you need any of the ten characters:
 如果你需要以下十个字符任意之一：
 \medskip
 \centerline{\$ \quad \& \quad \# \quad \_ \quad \% \quad
@@ -202,41 +184,40 @@ the margins are clearly visible.
    $\}$ \quad $\backslash$}
 % The \quad inserts an em space between characters.
 \medskip
-%\noindent  you'll need to write them a special way.  Look at
-%the facing page to see how to do it.
-\noindent 你需要通过特殊的方式来写他们。参照首页，学习正确的记录
-这些特殊字符的方法.
+~%\noindent  you'll need to write them a special way.  Look at
+~%the facing page to see how to do it.
+\noindent 你需要通过特殊的方式来写他们。参照对开页，
+学习正确的记录这些特殊字符的方法.
 
-%\TeX\ has the accents and letters that you'll need
-%for French words such as {\it r\^ ole\/} and  {\it \'
-%el\` eve\/}, for German words such as {\it Schu\ss\/},
-%and for words in several other languages as well.
-%You'll find a complete list of \TeX's accents and letters
-%of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].
-
-\TeX\ 拥有一些语音和字母，可以用于某些法语词，例如：{\it r\^ ole\/} 以及
-{\it \'el\` eve\/}, 或者德语词，例如 {\it Schu\ss\/},
-或者某些别的什么语言。你可以在 !xrefdelim[accents] 和 !xrefdelim[fornlets] 处
+~%\TeX\ has the accents and letters that you'll need
+~%for French words such as {\it r\^ ole\/} and  {\it \'
+~%el\` eve\/}, for German words such as {\it Schu\ss\/},
+~%and for words in several other languages as well.
+~%You'll find a complete list of \TeX's accents and letters
+~%of European languages on !xrefdelim[accents] and !xrefdelim[fornlets].
+\TeX\ 拥有一些语音和字母，可以用于某些法语词，
+例如：{\it r\^ ole\/} 以及{\it \'el\` eve\/}，
+或者德语词，例如 {\it Schu\ss\/}，或者某些别的什么语言。
+你可以在 !xrefdelim[accents] 和 !xrefdelim[fornlets] 处
 找到 \TeX\ 的 欧洲语音和字母表。
 
-%You can also get Greek letters such as ``$\alpha$'' and
-%``$\Omega$'' for use in math, card suits such as
-%``$\spadesuit$'' and ``$\diamondsuit$'', music symbols
-%such as ``$\sharp$'' and ``$\flat$'', and many other special
-%symbols that you'll find listed on !xrefdelim[specsyms].
-%\TeX\ will only accept these sorts of special symbols in its
-%``math mode'', so you'll need to enclose them
-%within `{\tt \$}' characters.
-
+~%You can also get Greek letters such as ``$\alpha$'' and
+~%``$\Omega$'' for use in math, card suits such as
+~%``$\spadesuit$'' and ``$\diamondsuit$'', music symbols
+~%such as ``$\sharp$'' and ``$\flat$'', and many other special
+~%symbols that you'll find listed on !xrefdelim[specsyms].
+~%\TeX\ will only accept these sorts of special symbols in its
+~%``math mode'', so you'll need to enclose them
+~%within `{\tt \$}' characters.
 你也可以写一些希腊字母，例如数学中的 ``$\alpha$'' 以及
-``$\Omega$'' , 扑克牌中的 
+``$\Omega$'' , 扑克牌中的
 ``$\spadesuit$'' 以及 ``$\diamondsuit$'', 一些音乐符号，例如：
 ``$\sharp$'' 和 ``$\flat$'', 以及一些你可以在 !xrefdelim[specsyms]
 找到的各种符号。\TeX\ 仅在 ``数学模式'' 下接受这些符号, 因此，
 你需要将它们放在两个 `{\tt \$}' 字符中间。
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
+~%\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
 \xmpheader !xmpnum/{行间间距}% !xmpheaddef
 ~^^{spacing//interline} ^^{baselines}
 \baselineskip = 2\baselineskip % double spacing
@@ -251,28 +232,25 @@ the margins are clearly visible.
    \kern-.15em \lower .25ex \hbox{\the\scriptfont0 #2}%
 }%
 
-%Once in a while you may want to print a document with extra
-%space between the lines.  For instance, bills before Congress
-%are printed this way so that the legislators can mark them up.
-%For the same reason, book publishers usually insist that
-%manuscripts be double-spaced. Double spacing is rarely
-%appropriate for finished documents, however.
-
+~%Once in a while you may want to print a document with extra
+~%space between the lines.  For instance, bills before Congress
+~%are printed this way so that the legislators can mark them up.
+~%For the same reason, book publishers usually insist that
+~%manuscripts be double-spaced. Double spacing is rarely
+~%appropriate for finished documents, however.
 有的时候，你会想在文档的文字行之间增加一些空白。例如：议会的
 某些讨论稿需要这样做，使得议院们能够在其上作一些标记。书商们
 也基于同样的理由，要求作者提交的手稿具有双倍的行间距。当然，
 对最终的出版物来说，双倍行间距的情形极其少见。
 
-
-%A baseline is an imaginary line that acts like the lines
-%on a pad of ruled paper.   You can control the interline
-%spacing---what printers call ``leading''---%
-%by setting the amount of space between baselines. Take a
-%look at the input to see how to do it. You could use
-%the same method for $1\;1/2$ spacing as well, using {\tt 1.5}
-%instead of {\tt 2}. (You can also write $1\frac 1/2$
-%a nicer way.)
-
+~%A baseline is an imaginary line that acts like the lines
+~%on a pad of ruled paper.   You can control the interline
+~%spacing---what printers call ``leading''---%
+~%by setting the amount of space between baselines. Take a
+~%look at the input to see how to do it. You could use
+~%the same method for $1\;1/2$ spacing as well, using {\tt 1.5}
+~%instead of {\tt 2}. (You can also write $1\frac 1/2$
+~%a nicer way.)
 基线是一条想象出来的线，其作用类似于带横格标记的纸张上
 横格线的作用。你可以通过控制基线间的距离来控制两行文字
 之间的距离 --- 打印机管这个距离叫做 ``起始空白''。具体
@@ -282,20 +260,18 @@ the margins are clearly visible.
 
 % Here we've used the macro definition given above.
 
-%For this example we've also increased the paragraph indentation
-%and skipped an extra line between paragraphs.
-
+~%For this example we've also increased the paragraph indentation
+~%and skipped an extra line between paragraphs.
 做为举例，我们这里增加了段落的缩进，并且在两段之间增加了一个空行。
 
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
+~%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
 \xmpheader !xmpnum/{间隔、标尺和盒子}% !xmpheaddef
 ~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
-%Here's an example of a ``description list''.  In practice you'd 
-%be better off using a macro to avoid the repetitive constructs
-%and to make sure that the subhead widths are wide enough:
-
+~%Here's an example of a ``description list''.  In practice you'd
+~%be better off using a macro to avoid the repetitive constructs
+~%and to make sure that the subhead widths are wide enough:
 这里展示的是 ``描述列表''的实例。实际使用时，最好将这些重复结构
 定义成宏，并且保证子标题的宽度足够宽。
 
@@ -338,7 +314,7 @@ Here we've gotten the effect of a revision bar on the material
 in this paragraph.  The revision bar might indicate a change.}}
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
+~%\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
 \xmpheader !xmpnum/{杂项}% !xmpheaddef
 ~^^{hyphenation} ^^{theorems} ^^{lemmas} ^^{itemized lists}
 ~^^{flush left} ^^{flush right} ^^{centering}
@@ -390,7 +366,7 @@ completely different from the others.
 % Don't try to use these commands within a paragraph.
 \bye % end the document
 :::
-%\xmpheader !xmpnum/{Using fonts from other sources}% !xmpheaddef
+~%\xmpheader !xmpnum/{Using fonts from other sources}% !xmpheaddef
 \xmpheader !xmpnum/{使用其他来源的字体}% !xmpheaddef
 ~\xrdef{palatino}
 ~\idxref{Palatino fonts}
@@ -401,14 +377,13 @@ completely different from the others.
 \def\pal{\let\rm = \tenrm \baselineskip=12.5pt \rm}
 \pal % Use Palatino from now on.
 
-%You aren't restricted to using the Computer Modern fonts that
-%come with \TeX.  Other fonts are available from many sources,
-%and you may prefer them.  For instance, we've set this page
-%in 10-point Palatino Roman. Palatino was designed by
-%Hermann Zapf, considered to be one of the greatest type
-%designers of the twentieth century.  This page will
-%give you some idea of what it looks like.
-
+~%You aren't restricted to using the Computer Modern fonts that
+~%come with \TeX.  Other fonts are available from many sources,
+~%and you may prefer them.  For instance, we've set this page
+~%in 10-point Palatino Roman. Palatino was designed by
+~%Hermann Zapf, considered to be one of the greatest type
+~%designers of the twentieth century.  This page will
+~%give you some idea of what it looks like.
 你并不局限于只能使用随 \TeX 发行的 Computer Modern 系列字体。
 从其他很多渠道你都可以得到一些你可能会更喜欢的字体。例如我们
 当前页面就被设置为 10p 大小的 Palatino Roman 字体。Palatino
@@ -416,35 +391,33 @@ completely different from the others.
 字体设计之一。从本页的输出可以获得关于这个字体的一些直观印
 象（由于译本的缘故，本页的字体并未被设为 Palatino 字体）。
 
-%Fonts can be provided either as outlines or as bitmaps.  An
-%outline font describes the shapes of the characters, while a
-%bitmap font specifies each pixel (dot) that makes up each
-%character.  A font outline can be used to generate many
-%different sizes of the same font.  The Metafont program
-%that's associated with \TeX\  provides a particularly
-%powerful way of generating bitmap fonts, but it's not the
-%only way.
-
+~%Fonts can be provided either as outlines or as bitmaps.  An
+~%outline font describes the shapes of the characters, while a
+~%bitmap font specifies each pixel (dot) that makes up each
+~%character.  A font outline can be used to generate many
+~%different sizes of the same font.  The Metafont program
+~%that's associated with \TeX\  provides a particularly
+~%powerful way of generating bitmap fonts, but it's not the
+~%only way.
 字体既可以是轮廓字体，也可以是位图字体。轮廓字体的意思是它
 描述的是各个字符的形状，而位图字体则是标识了每个字符形状所
 占据的像素点。轮廓字体可用来产生同一种字体的多种不同大小。
 随 \TeX\ 而发行的 metafont 程序是一个产生位图字体的强大工具，
 而且它并不是唯一的工具。
 
-%The fact that a single outline can generate a great range of
-%point sizes for a font tempts many vendors of digital
-%typefaces to provide just one set of outlines for a typeface
-%such as Palatino Roman.  This may be a sensible economic
-%decision, but it is an aesthetic sacrifice.  Fonts cannot be
-%scaled up and down linearly without loss of quality. 
-%Larger sizes of letters should not, in general, have the
-%same proportions as smaller sizes; they just don't look
-%right.  For example, a font that's linearly scaled down will
-%tend to have too little space between strokes, and its
-%x-height will be too~small. % tie added to avoid widow word
-
+~%The fact that a single outline can generate a great range of
+~%point sizes for a font tempts many vendors of digital
+~%typefaces to provide just one set of outlines for a typeface
+~%such as Palatino Roman.  This may be a sensible economic
+~%decision, but it is an aesthetic sacrifice.  Fonts cannot be
+~%scaled up and down linearly without loss of quality.
+~%Larger sizes of letters should not, in general, have the
+~%same proportions as smaller sizes; they just don't look
+~%right.  For example, a font that's linearly scaled down will
+~%tend to have too little space between strokes, and its
+~%x-height will be too~small. % tie added to avoid widow word
 由于单一的轮廓字体文件既可生成多种不同大小的字体，因此很多
-数字字体提供商倾向于仅提供字体的单一文件 ——例如 Palatino 
+数字字体提供商倾向于仅提供字体的单一文件 ——例如 Palatino
 Roman 即是如此。这也许是个经济的决定，可它却同时是个美学上
 的重大牺牲。字体无法做到在不损害其显示质量的前提下，线性地
 放大或者缩小。一个字符的大字体版本，通常来说，与小字体的版
@@ -452,15 +425,14 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 起来将不会那么好看。例如：如果将一个字体线性缩小的话，其各
 笔画间的间距将会显得过窄，而它的 x-height 值也会显得过小。
 
-%A type designer can compensate for these changes by
-%providing different outlines for different point sizes, but
-%it's necessary to go to the expense of designing these
-%different outlines.  One of the great advantages of Metafont
-%is that it's possible to parameterize the descriptions of
-%characters in a font.  Metafont can then maintain the
-%typographical quality of characters over a range of point
-%sizes by adjusting the character shapes accordingly.
-
+~%A type designer can compensate for these changes by
+~%providing different outlines for different point sizes, but
+~%it's necessary to go to the expense of designing these
+~%different outlines.  One of the great advantages of Metafont
+~%is that it's possible to parameterize the descriptions of
+~%characters in a font.  Metafont can then maintain the
+~%typographical quality of characters over a range of point
+~%sizes by adjusting the character shapes accordingly.
 字体的设计者可以为不同大小的字体设计不同的轮廓形状，从而
 对这个问题进行弥补，可这同时需要付出额外的代价。使用 Metafont
 程序的一个巨大的好处就是可以将字符符号形状的描述参数化。
@@ -469,7 +441,7 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 \bye % end the document
 :::
 ~\idxref{mushrooms}
-%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
+~%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
 \xmpheader !xmpnum/{标线表格}% !xmpheaddef
 \bigskip
 \offinterlineskip % So the vertical rules are connected.
@@ -515,7 +487,7 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 \tableskip \tablerule \noalign{\vskip 2pt} \tablerule
 }\bye
 :::
-%\xmpheader !xmpnum/{Typesetting mathematics}% !xmpheaddef
+~%\xmpheader !xmpnum/{Typesetting mathematics}% !xmpheaddef
 \xmpheader !xmpnum/{排版数学公式}% !xmpheaddef
 ~^^{math}
 For a spherical triangle with sides $a$, $b$, and $c$, and
@@ -550,7 +522,7 @@ is defined as the sum of $n!!$ terms:
 $$\sum\>(\pm)\>a_{1i}a_{2j} \ldots a_{nk}$$
 % The \> above produces a medium space.
 where $i$, $j$, \dots,~$k$\/ take on all possible values
-between $1$ and $n$, and the sign of the product is 
+between $1$ and $n$, and the sign of the product is
 $+$ if the sequence $i$, $j$, \dots,~$k$\/ is an
 even permutation and $-$ otherwise.  Moreover:
 $$Q(\xi) = \lambda_1 y_1^2 \sum_{i=2}^n \sum_{j=2}^n y_i
@@ -561,14 +533,13 @@ b_{ij} y_j,\qquad B = \Vert b_{ij} \Vert = B'$$
 \xmpheader !xmpnum/{更多数学内容}% !xmpheaddef
 %^^{math}
 ^^{数学}
-%The absolute value of $X$, $|x|$, is defined by:
-%$$|x| = \cases{x, &if $x\ge 0$;\cr
-%-x,&otherwise.\cr}$$
-%Now for some numbered equations.
-%It is the case that for $k \ge 0$:
-%$$x^{k^2}=\overbrace{x\>x\>\cdots\> x}^{2k\ \rm times}
-%\eqno (1)$$
-
+~%The absolute value of $X$, $|x|$, is defined by:
+~%$$|x| = \cases{x, &if $x\ge 0$;\cr
+~%-x,&otherwise.\cr}$$
+~%Now for some numbered equations.
+~%It is the case that for $k \ge 0$:
+~%$$x^{k^2}=\overbrace{x\>x\>\cdots\> x}^{2k\ \rm times}
+~%\eqno (1)$$
 $X$ 的绝对值 $|x|$ 定义为：:
 $$|x| = \cases{x, &if $x\ge 0$;\cr
 -x,&otherwise.\cr}$$
@@ -577,47 +548,47 @@ $$|x| = \cases{x, &if $x\ge 0$;\cr
 $$x^{k^2}=\overbrace{x\>x\>\cdots\> x}^{2k\ \rm times}
 \eqno (1)$$
 
-%Here's an example that shows some spacing controls, with
-%a number on the left:
+~%Here's an example that shows some spacing controls, with
+~%a number on the left:
 这是一个展示空格间距调整和公式左编号的例子：
-%$$[u]!negthin[v][w]\,[x]\>[y]\;[z]\leqno(2a)$$
+~%$$[u]!negthin[v][w]\,[x]\>[y]\;[z]\leqno(2a)$$
 $$[u]!negthin[v][w]\,[x]\>[y]\;[z]\leqno(2a)$$
-%The amount of space between the items in brackets
-%gradually increases from left to right. (We've made
-%the space between the first two items be {\it less\/}
-%than the natural space.)
+~%The amount of space between the items in brackets
+~%gradually increases from left to right. (We've made
+~%the space between the first two items be {\it less\/}
+~%than the natural space.)
 从做到右公式中的项和括号的距离逐步增大。
 （我们把前两项的距离设定得比正常距离 {\it 少\/}。
-%It is sometimes the case that $$\leqalignno{
-%u'_1 + tu''_2 &= u'_2 + tu''_1&(2b)\cr
-%\hat\imath &\ne \hat \jmath&(2c)\cr
-%\vec {\vphantom{b}a}&\approx \vec b\cr}$$
-%% The \vphantom is an invisible rule as tall as a `b'.
+~%It is sometimes the case that $$\leqalignno{
+~%u'_1 + tu''_2 &= u'_2 + tu''_1&(2b)\cr
+~%\hat\imath &\ne \hat \jmath&(2c)\cr
+~%\vec {\vphantom{b}a}&\approx \vec b\cr}$$
+~%% The \vphantom is an invisible rule as tall as a `b'.
 有时候， $$\leqalignno{
 u'_1 + tu''_2 &= u'_2 + tu''_1&(2b)\cr
 \hat\imath &\ne \hat \jmath&(2c)\cr
 \vec {\vphantom{b}a}&\approx \vec b\cr}$$
 % \vphantom 是一个不可见的和“b”一样高的盒子。
-%The result is of order $O(n \log\log n)$. Thus
-%$$\sum_{i=1}^n x_i = x_1+x_2+\cdots+x_n
-%= {\rm Sum}(x_1,x_2,\ldots,x_n). \eqno(3)$$
+~%The result is of order $O(n \log\log n)$. Thus
+~%$$\sum_{i=1}^n x_i = x_1+x_2+\cdots+x_n
+~%= {\rm Sum}(x_1,x_2,\ldots,x_n). \eqno(3)$$
 结果为 $O(n \log\log n)$. 因此
 $$\sum_{i=1}^n x_i = x_1+x_2+\cdots+x_n
 = {\rm Sum}(x_1,x_2,\ldots,x_n). \eqno(3)$$
-%and
-%$$dx\,dy = r\,dr\,d\theta!negthin.\eqno(4)$$
-%The set of all $q$ such that $q\le0$ is written as:
-%$$\{\,q\mid q\le0\, \}$$
+~%and
+~%$$dx\,dy = r\,dr\,d\theta!negthin.\eqno(4)$$
+~%The set of all $q$ such that $q\le0$ is written as:
+~%$$\{\,q\mid q\le0\, \}$$
 且
 $$dx\,dy = r\,dr\,d\theta!negthin.\eqno(4)$$
 满足 $q\le0$ 的所有的 $q$ 可以被写作：
 $$\{\,q\mid q\le0\, \}$$
-%Thus
-%$$\forall x\exists y\;P(x,y)\Rightarrow
-%\exists x\exists y\;P(x,y)$$
-%where
-%$$P(x,y) \buildrel \rm def \over \equiv
-%\hbox{\rm any predicate in $x$ and $y$} . $$
+~%Thus
+~%$$\forall x\exists y\;P(x,y)\Rightarrow
+~%\exists x\exists y\;P(x,y)$$
+~%where
+~%$$P(x,y) \buildrel \rm def \over \equiv
+~%\hbox{\rm any predicate in $x$ and $y$} . $$
 因此
 $$\forall x\exists y\;P(x,y)\Rightarrow
 \exists x\exists y\;P(x,y)$$
