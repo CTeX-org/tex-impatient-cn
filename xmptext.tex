@@ -7,7 +7,9 @@
 \font\xmplbx = cmbx10 scaled \magstephalf
 \font\xmplbxti = cmbxti10 scaled \magstephalf
 % Now here's the title.
-\leftline{\xmplbx Example !xmpnum:\quad\xmplbxti Entering simple text}
+~%\leftline{\xmplbx Example !xmpnum:\quad\xmplbxti Entering simple text}
+~\bookmark{2}{例!xmpnum：输入简单文本}%
+\leftline{\xmplbx 例!xmpnum:\quad\xmplbxti 输入简单文本}
 \vglue .5\baselineskip % skip an extra half line
 ~\count255 = \pageno
 ~\xdef\examplepage{\number\count255}
@@ -82,7 +84,8 @@ get en-dashes--like so, and em-dashes---like so.
 
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Indentation}% !xmpheaddef
+%\xmpheader !xmpnum/{Indentation}% !xmpheaddef
+\xmpheader !xmpnum/{缩进}% !xmpheaddef
 ~^^{indentation} ^^{margins} ^^{paragraphs//narrow}
 %\noindent Now let's see how to control indentation.  If an
 %ordinary word processor can do it, so surely can \TeX. Note
@@ -166,7 +169,8 @@ the margins are clearly visible.
 原样。\par}
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
+%\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
+\xmpheader !xmpnum/{字体和特殊字符}% !xmpheaddef
 \chardef \\ = `\\ % Let \\ denote a backslash.
 ~^^{fonts} ^^{characters//special} ^^{accents}
 ~^^{music symbols} ^^{card suits}
@@ -232,7 +236,8 @@ the margins are clearly visible.
 你需要将它们放在两个 `{\tt \$}' 字符中间。
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
+%\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
+\xmpheader !xmpnum/{行间间距}% !xmpheaddef
 ~^^{spacing//interline} ^^{baselines}
 \baselineskip = 2\baselineskip % double spacing
 \parskip = \baselineskip % Skip a line between paragraphs.
@@ -284,7 +289,8 @@ the margins are clearly visible.
 
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
+%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
+\xmpheader !xmpnum/{间隔、标尺和盒子}% !xmpheaddef
 ~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
 %Here's an example of a ``description list''.  In practice you'd 
 %be better off using a macro to avoid the repetitive constructs
@@ -332,7 +338,8 @@ Here we've gotten the effect of a revision bar on the material
 in this paragraph.  The revision bar might indicate a change.}}
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
+%\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
+\xmpheader !xmpnum/{杂项}% !xmpheaddef
 ~^^{hyphenation} ^^{theorems} ^^{lemmas} ^^{itemized lists}
 ~^^{flush left} ^^{flush right} ^^{centering}
 \chardef \\ = `\\ % Let \\ denote a backslash.
@@ -383,7 +390,8 @@ completely different from the others.
 % Don't try to use these commands within a paragraph.
 \bye % end the document
 :::
-\xmpheader !xmpnum/{Using fonts from other sources}% !xmpheaddef
+%\xmpheader !xmpnum/{Using fonts from other sources}% !xmpheaddef
+\xmpheader !xmpnum/{使用其他来源的字体}% !xmpheaddef
 ~\xrdef{palatino}
 ~\idxref{Palatino fonts}
 ~\idxref{Zapf, Hermann}
@@ -461,7 +469,8 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 \bye % end the document
 :::
 ~\idxref{mushrooms}
-\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
+%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
+\xmpheader !xmpnum/{标线表格}% !xmpheaddef
 \bigskip
 \offinterlineskip % So the vertical rules are connected.
 % \tablerule constructs a thin rule across the table.
@@ -506,7 +515,8 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 \tableskip \tablerule \noalign{\vskip 2pt} \tablerule
 }\bye
 :::
-\xmpheader !xmpnum/{Typesetting mathematics}% !xmpheaddef
+%\xmpheader !xmpnum/{Typesetting mathematics}% !xmpheaddef
+\xmpheader !xmpnum/{排版数学公式}% !xmpheaddef
 ~^^{math}
 For a spherical triangle with sides $a$, $b$, and $c$, and
 opposite angles $\alpha$, $\beta$, and $\gamma$, we have:
@@ -547,7 +557,7 @@ $$Q(\xi) = \lambda_1 y_1^2 \sum_{i=2}^n \sum_{j=2}^n y_i
 b_{ij} y_j,\qquad B = \Vert b_{ij} \Vert = B'$$
 \bye
 :::
-%\xmpheader !xmpnum/{More mathematics}% !xmpheaddef
+~%\xmpheader !xmpnum/{More mathematics}% !xmpheaddef
 \xmpheader !xmpnum/{更多数学内容}% !xmpheaddef
 %^^{math}
 ^^{数学}

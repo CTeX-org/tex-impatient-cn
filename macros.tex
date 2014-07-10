@@ -1343,7 +1343,8 @@
 % in xmptext.tex.
 %
 \def\xmpheader #1/#2{%
-   {\exampletitlefonts \leftline{Example #1:\quad \bi#2}}%
+   \bookmark{2}{例#1：#2}%
+   {\exampletitlefonts \leftline{例#1:\quad \bi#2}}%
    \vglue .5\baselineskip
    \count255 = \pageno
    \xdef\examplepage{\number\count255}%
