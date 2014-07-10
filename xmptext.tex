@@ -267,7 +267,7 @@ get en-dashes--like so, and em-dashes---like so.
 \bye % end the document
 :::
 ~%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
-\xmpheader !xmpnum/{间隔、标尺和盒子}% !xmpheaddef
+\xmpheader !xmpnum/{间隔、嵌线和盒子}% !xmpheaddef
 ~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
 ~%Here's an example of a ``description list''.  In practice you'd
 ~%be better off using a macro to avoid the repetitive constructs
@@ -276,13 +276,16 @@ get en-dashes--like so, and em-dashes---like so.
 定义成宏，并且保证子标题的宽度足够宽。
 
 \bigskip
-% Call the indentation for descriptions \descindent
-% and set it to 8 picas.
+~% Call the indentation for descriptions \descindent
+~% and set it to 8 picas.
+% 用 \descindent 表示描述列表的缩进量，并设定它的值为 8 pica。
 \newdimen\descindent \descindent = 8pc
-% Indent paragraphs by \descindent.
-% Skip an additional half line between paragraphs.
+~% Indent paragraphs by \descindent.
+~% Skip an additional half line between paragraphs.
+% 整个段落缩进 \descindent。段落间增加半个行距的间距。
 {\noindent \leftskip = \descindent  \parskip = .5\baselineskip
-% Move the description to the left of the paragraph.
+~% Move the description to the left of the paragraph.
+% 将描述放在段落的左边。
 \llap{\hbox to \descindent{\bf Queen of Hearts\hfil}}%
 An ill-tempered woman, prone to saying ``Off with his
 head!!''\ at the slightest provocation.\par
@@ -295,14 +298,18 @@ companion to the Gryphon.  Reputedly the principal ingredient
 of Mock Turtle Soup.
 \par}
 \bigskip\hrule\bigskip % A line with vertical space around it.
-Here's an example of some words in a ruled box, just as
-Lewis Carroll wrote them:
+~%Here's an example of some words in a ruled box, just as
+~%Lewis Carroll wrote them:
+这个例子在一个嵌线盒子中放入一些词句，它们是路易斯·卡罗所写的：
 \bigskip
-% Put 8pt of space between the text and the surrounding rules.
+~% Put 8pt of space between the text and the surrounding rules.
+% 在文本和四周嵌线之间留有 8pt 宽的间隔。
 \hbox{\vrule\vbox{\hrule
    \hbox spread 8pt{\hfil\vbox spread 8pt{\vfil
-      \hbox{Who would not give all else for twop}%
-      \hbox{ennyworth only of Beautiful Soup?}%
+~%    \hbox{Who would not give all else for twop}%
+~%    \hbox{ennyworth only of Beautiful Soup?}%
+      \hbox{谁不是最想尝一尝，}%
+      \hbox{两便士一碗的好汤？}%
    \vfil}\hfil}
 \hrule}\vrule}%
 
