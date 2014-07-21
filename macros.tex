@@ -45,6 +45,7 @@
 \newif\ifmsdos
 \newif\ifedgetabs \edgetabstrue
 \newif\ifdvi \dvitrue % true if we want a .dvi file
+\newif\iftrimpage \trimpagetrue
 \newif\ifadobefont \adobefonttrue
 \newif\ifxecjk \xecjktrue
 
@@ -249,6 +250,17 @@
 
 \topskip = 2pc        % Distance from headline to first line of text.
 
+\iftrimpage
+  \pdfpagewidth=7.375in \pdfpageheight=9.25in
+  %\hsize=7.375in \vsize=9.25in
+  %\advance \hsize by -18pc
+  %\advance \vsize by -10pc
+  \outsidemargin = 9pc \insidemargin = 9pc
+  \oddoffset = -1in \advance\oddoffset by \insidemargin
+  \evenoffset = -1in \advance\evenoffset by \outsidemargin
+  \hoffset = \oddoffset
+  \voffset = -1in \advance \voffset by 4pc
+\fi
 
 % Other formatting parameters.
 %
