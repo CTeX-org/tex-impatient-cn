@@ -693,7 +693,11 @@
   \oldvoffset=\voffset
   \oldparindent=\parindent
   \hoffset=-1in\voffset=-1in\parindent=0pt%
-  \special{pdf:image width 210mm depth 297mm (#1)}\pagebreak
+  \iftrimpage
+    \special{pdf:image width 7.375in depth 9.25in (artwork/#1-l.png)}%
+  \else
+    \special{pdf:image width 210mm depth 297mm (artwork/#1.png)}%
+  \fi\pagebreak
   \hoffset=\oldhoffset
   \voffset=\oldvoffset
   \parindent=\oldparindent
