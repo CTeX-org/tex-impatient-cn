@@ -671,6 +671,22 @@
   \endgroup%
 }
 
+% for including artwork images
+%
+\newdimen\oldhoffset
+\newdimen\oldvoffset
+\newdimen\oldparindent
+\def\includeartwork#1{%
+  \oldhoffset=\hoffset
+  \oldvoffset=\voffset
+  \oldparindent=\parindent
+  \hoffset=-1in\voffset=-1in\parindent=0pt%
+  \special{pdf:image width 210mm depth 297mm (#1)}\pagebreak
+  \hoffset=\oldhoffset
+  \voffset=\oldvoffset
+  \parindent=\oldparindent
+}
+
 
 % Parts of the book.
 %
