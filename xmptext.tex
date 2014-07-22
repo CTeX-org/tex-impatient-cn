@@ -18,7 +18,7 @@
 ~\xdef\examplepage{\number\count255}
 ~\markinfo{Example 1: Entering simple text}
 ~\ifrewritetocfile
-~\write\tocfile{\string\tocsectionentry{Entering simple text}{}{\examplepage}}%
+~\write\tocfile{\string\tocsectionentry{输入简单文本}{}{\examplepage}}%
 ~\fi
 ~^^{footnotes} ^^{comments} ^^{punctuation} ^^{quotation marks}
 ~^^{space characters} ^^{dashes} ^^{paragraphs//ending}
@@ -78,7 +78,8 @@ double quotation marks.  ``For adjacent single and double
 quotation marks, insert a `thinspace'\thinspace''. You can
 get en-dashes--like so, and em-dashes---like so.
 
-\bye % end the document
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Indentation}% !xmpheaddef
 \xmpheader !xmpnum/{缩进}% !xmpheaddef
@@ -152,7 +153,8 @@ get en-dashes--like so, and em-dashes---like so.
 ~%an inch and leave the left margin at its usual position.\par}
 {\rightskip .5in 最后，我们将本段调整为右边距半英尺，而左边距保持
 原样。\par}
-\bye % end the document
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
 \xmpheader !xmpnum/{字体和特殊字符}% !xmpheaddef
@@ -215,7 +217,8 @@ get en-dashes--like so, and em-dashes---like so.
 ``$\sharp$'' 和 ``$\flat$'', 以及一些你可以在 !xrefdelim[specsyms]
 找到的各种符号。\TeX\ 仅在 ``数学模式'' 下接受这些符号, 因此，
 你需要将它们放在两个 `{\tt \$}' 字符中间。
-\bye % end the document
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
 \xmpheader !xmpnum/{行间间距}% !xmpheaddef
@@ -264,7 +267,8 @@ get en-dashes--like so, and em-dashes---like so.
 ~%and skipped an extra line between paragraphs.
 做为举例，我们这里增加了段落的缩进，并且在两段之间增加了一个空行。
 
-\bye % end the document
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
 \xmpheader !xmpnum/{间隔、嵌线和盒子}% !xmpheaddef
@@ -317,61 +321,95 @@ of Mock Turtle Soup.
 \bigskip
 
 \line{\hskip -4pt\vrule\hfil\vbox{
-Here we've gotten the effect of a revision bar on the material
-in this paragraph.  The revision bar might indicate a change.}}
-\bye % end the document
+~%Here we've gotten the effect of a revision bar on the material
+~%in this paragraph.  The revision bar might indicate a change.}}
+我们给此段落内容添加了修订线效果。修订线用于表示内容改动。}}
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
 \xmpheader !xmpnum/{杂项}% !xmpheaddef
 ~^^{hyphenation} ^^{theorems} ^^{lemmas} ^^{itemized lists}
 ~^^{flush left} ^^{flush right} ^^{centering}
-\chardef \\ = `\\ % Let \\ denote a backslash.
+~%\chardef \\ = `\\ % Let \\ denote a backslash.
+\chardef \\ = `\\ % 用 \\ 表示反斜杠。
 \footline{\hfil{\tenit - \folio -}\hfil}
 ~\global\footline{\hfil{\tenit - \folio\ -}\hfil}
-% \footline provides a footer line.
-% Here it's a centered, italicized page number.
-\TeX\ knows how to hyphenate words, but  it isn't infallible.
-If you are discussing the chemical
+~% \footline provides a footer line.
+~% Here it's a centered, italicized page number.
+% \footline 给出页脚行；此处为居中的意大利体页码。
+~%\TeX\ knows how to hyphenate words, but  it isn't infallible.
+~%If you are discussing the chemical
+~%${\it 5}$-[p-(Flouro\-sul\-fonyl)ben\-zoyl]-l,%
+~%$N^6$-ethe\-no\-adeno\-sine
+~%and \TeX\ complains to you about an ``overfull hbox'', try
+~%inserting some ``discretionary hyphens''. The notation
+~%`{\tt \\-}' tells \TeX\ about a  dis\-cre\-tion\-ary hyphen,
+~%that is, one that it might not have inserted otherwise.
+\TeX\ 懂得如何将单词连字化，但它并非绝对可靠的。若你在讨论化学
 ${\it 5}$-[p-(Flouro\-sul\-fonyl)ben\-zoyl]-l,%
-$N^6$-ethe\-no\-adeno\-sine
-and \TeX\ complains to you about an ``overfull hbox'', try
-inserting some ``discretionary hyphens''. The notation
-`{\tt \\-}' tells \TeX\ about a  dis\-cre\-tion\-ary hyphen,
-that is, one that it might not have inserted otherwise.
+$N^6$-ethe\-no\-adeno\-sine 时，
+\TeX\ 给出关于``水平盒子溢出''的警告，
+你可以尝试插入某些``自定连字符''。
+`{\tt \\-}'记号告诉 \TeX\ 一个自定连字符位置；
+在此位置 \TeX\ 本来是不会插入连字符的。
 \medskip
-{\raggedright   You can typeset text unjustified, i.e., with
-an uneven right margin. In the old days, before word
-processors were common, typewritten documents were
-unjustified because there was no convenient alternative.
-Some people  prefer text to be  unjustified so that the
-spacing between words can be uniform.  Most books are set
-with justified margins, but not all. \par}
+~%{\raggedright   You can typeset text unjustified, i.e., with
+~%an uneven right margin. In the old days, before word
+~%processors were common, typewritten documents were
+~%unjustified because there was no convenient alternative.
+~%Some people  prefer text to be  unjustified so that the
+~%spacing between words can be uniform.  Most books are set
+~%with justified margins, but not all. \par}
+{\raggedright 你可以不对齐地排版文字，即让右页边不对齐。
+在过去，文字处理软件还未普及，
+因为没有其他方便的选择，排版的文档都是不对齐的。
+有些人更喜欢不对齐地排版文字，因为此时单词间距是一致的。
+大部分书籍都设置为页边对齐，但并非都是。\par}
 
-\proclaim Assertion 27. There is an easy way to typeset
-the headings of assertions, lemmas, theorems, etc.
+~%\proclaim Assertion 27. There is an easy way to typeset
+~%the headings of assertions, lemmas, theorems, etc.
+\proclaim 断言 27. 有很简单的方法排版断言、引理、定理等的标题。
 
-Here's an example of how to typeset an itemized list two
-levels deep.  If you need more levels, you'll have to
-program it yourself, alas.
+~%Here's an example of how to typeset an itemized list two
+~%levels deep.  If you need more levels, you'll have to
+~%program it yourself, alas.
+~%\smallskip
+~%\item {1.} This is the first item.
+~%\item {2.} This is the second item.  It consists of two
+~%paragraphs.  We've indented the second paragraph so that
+~%you can easily see where it starts.
+这个例子显示如何排版两层的有序列表。
+如果需要更多层级，唉，你得自己编程。
 \smallskip
-\item {1.} This is the first item.
-\item {2.} This is the second item.  It consists of two
-paragraphs.  We've indented the second paragraph so that
-you can easily see where it starts.
+\item {1.} 这是第一个列表项。
+\item {2.} 这是第二个列表项。它由两个段落组成。
+为让你看清楚第二个段落从哪里开始，我们缩进了该段落。
 
-\item{} \indent The second paragraph has three subitems
-underneath it.
-\itemitem {(a)} This is the first subitem.
-\itemitem {(b)} This is the second subitem.
-\itemitem {(c)} This is the third subitem.
-\item {$\bullet$} This is a strange-looking item because it's
-completely different from the others.
+~%\item{} \indent The second paragraph has three subitems
+~%underneath it.
+~%\itemitem {(a)} This is the first subitem.
+~%\itemitem {(b)} This is the second subitem.
+~%\itemitem {(c)} This is the third subitem.
+~%\item {$\bullet$} This is a strange-looking item because it's
+~%completely different from the others.
+\item{} \indent 第二个段落下边有三个子列表项。
+\itemitem {(a)} 这是第一个子列表项。
+\itemitem {(b)} 这是第二个子列表项。
+\itemitem {(c)} 这是第三个子列表项。
+\item {$\bullet$} 这是一个看起来很奇怪的列表项，
+因为它和其他列表项不同。
 \smallskip
-\leftline{Here's a left-justified line.$\Leftarrow$}
-\rightline{$\Rightarrow$Here's a right-justified line.}
-\centerline{$\Rightarrow$Here's a centered line.$\Leftarrow$}
-% Don't try to use these commands within a paragraph.
-\bye % end the document
+~%\leftline{Here's a left-justified line.$\Leftarrow$}
+~%\rightline{$\Rightarrow$Here's a right-justified line.}
+~%\centerline{$\Rightarrow$Here's a centered line.$\Leftarrow$}
+\leftline{这是一个左对齐的行。$\Leftarrow$}
+\rightline{$\Rightarrow$这是一个右对齐的行。}
+\centerline{$\Rightarrow$这是一个居中的行。$\Leftarrow$}
+~% Don't try to use these commands within a paragraph.
+% 不要在段落内部使用这些命令。
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Using fonts from other sources}% !xmpheaddef
 \xmpheader !xmpnum/{使用其他来源的字体}% !xmpheaddef
@@ -445,7 +483,8 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 程序的一个巨大的好处就是可以将字符符号形状的描述参数化。
 这样在改变字体大小的时候，Metafont 可以视情况做一些自动处理，
 从而得到较好的效果。
-\bye % end the document
+~%\bye % end the document
+\bye % 结束此文档
 :::
 ~\idxref{mushrooms}
 ~%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
