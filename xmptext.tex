@@ -490,16 +490,24 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 ~%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
 \xmpheader !xmpnum/{标线表格}% !xmpheaddef
 \bigskip
-\offinterlineskip % So the vertical rules are connected.
-% \tablerule constructs a thin rule across the table.
+~%\offinterlineskip % So the vertical rules are connected.
+\offinterlineskip % 让竖直标线连接起来
+~% \tablerule constructs a thin rule across the table.
+% \tablerule 构造横穿表格的细标线
 \def\tablerule{\noalign{\hrule}}
-% \tableskip creates 9pt of space between entries.
+~% \tableskip creates 9pt of space between entries.
+% \tableskip 在单元格之间生成 9pt 的空隙
 \def\tableskip{\omit&height 9pt&&&\omit\cr}
-% & separates templates for each column. TeX substitutes
-% the text of the entries for #. We must have a strut
-% present in every row of the table; otherwise, the boxes
-% won't butt together properly, and the rules won't join.
+~% & separates templates for each column. TeX substitutes
+~% the text of the entries for #. We must have a strut
+~% present in every row of the table; otherwise, the boxes
+~% won't butt together properly, and the rules won't join.
+% 用 & 分开各列，并将 # 换为单元格的文本。
+% 在表格每行都要有一个支架（strut）；
+% 否则盒子将不能良好接合，标线也不能连接起来。
 \halign{\tabskip = .7em plus 1em  % glue between columns
+~% Use \vtop for short multiline entries in the first column.
+~% Typeset the lines ragged right, without hyphenation.
 % Use \vtop for short multiline entries in the first column.
 % Typeset the lines ragged right, without hyphenation.
    \vtop{\hsize=6pc\pretolerance = 10000\hbadness = 10000
