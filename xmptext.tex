@@ -39,7 +39,7 @@
 应该给其提供何种格式化的文本。在 \TeX\ 看来，输入文本中的换行符
 和空格等价。%
 \footnote \dag{\TeX\ 将 Tab 也当作空格处理, 就如你在这个
-{\it footnote}所见到的一样。}   如果你不想在行尾处看到空格，
+{\it 脚注}所见到的一样。}   如果你不想在行尾处看到空格，
 可以在行尾处写一个百分号（注释符号）。\TeX\ 忽略行首的空格，
 对多于一个的空格当做一个单独的空格看待 --- 哪怕这些空格位于
 句号后面。你可以用一个或者多个空白行表示一个新的段落的开始。
@@ -67,16 +67,19 @@
 ~%$\ldots$ so that \TeX\ will never split them in an awkward place
 ~%between two lines.  (The three dots indicate an ellipsis.)
 ~% 这个 references 不知道这样翻译对不对
-如果想将多个单词绑定到一起，中间不分行，则可以将它们放入一个引用
-中，例如： ``see Fig.~8''；或者名字中，例如：V.~I\null. Lenin；或者
-省略号 $\ldots$。在这样的情况下，\TeX\ 不会在它们之间断行（三个点表示
-省略号）。
+如果想将多个单词绑定到一起，中间不分行，则可以将它们放入一个引用中，
+例如：``见 Fig.~8''；或者名字中，例如：V.~I\null. Lenin；
+或者省略号 $\ldots$。在这样的情况下，\TeX\ 不会在它们之间断行
+（三个点表示省略号）。
 
-You should put quotations in pairs of left and right
-single ``quotes'' so that you get the correct left and right
-double quotation marks.  ``For adjacent single and double
-quotation marks, insert a `thinspace'\thinspace''. You can
-get en-dashes--like so, and em-dashes---like so.
+~%You should put quotations in pairs of left and right
+~%single ``quotes'' so that you get the correct left and right
+~%double quotation marks.  ``For adjacent single and double
+~%quotation marks, insert a `thinspace'\thinspace''. You can
+~%get en-dashes--like so, and em-dashes---like so.
+为得到正确的左右双引号，你需要用两个左右单``引号''。
+``在相邻的单引号和双引号之间，要插入一个`小间隔'\thinspace''。
+短破折号--可以这样写，而长破折号---可以这样写。
 
 ~%\bye % end the document
 \bye % 结束此文档
@@ -271,7 +274,7 @@ get en-dashes--like so, and em-dashes---like so.
 \bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
-\xmpheader !xmpnum/{间隔、嵌线和盒子}% !xmpheaddef
+\xmpheader !xmpnum/{间隔、标线和盒子}% !xmpheaddef
 ~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
 ~%Here's an example of a ``description list''.  In practice you'd
 ~%be better off using a macro to avoid the repetitive constructs
@@ -298,13 +301,13 @@ A cat with an enormous smile that Alice found
 in a tree.\par
 \noindent\llap{\hbox to \descindent{\bf Mock Turtle\hfil}}%
 A lachrymose creature, quite a  storyteller, who was a
-companion to the Gryphon.  Reputedly the principal ingredient
+companion to the Gryphon. Reputedly the prin\-cipal ingredient
 of Mock Turtle Soup.
 \par}
 \bigskip\hrule\bigskip % A line with vertical space around it.
 ~%Here's an example of some words in a ruled box, just as
 ~%Lewis Carroll wrote them:
-这个例子在一个嵌线盒子中放入一些词句，它们是路易斯·卡罗所写的：
+这个例子在一个标线盒子中放入一些词句，它们是路易斯·卡罗所写的：
 \bigskip
 ~% Put 8pt of space between the text and the surrounding rules.
 % 在文本和四周嵌线之间留有 8pt 宽的间隔。
@@ -486,7 +489,7 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 ~%\bye % end the document
 \bye % 结束此文档
 :::
-~\idxref{mushrooms}
+~\idxref{蘑菇}
 ~%\xmpheader !xmpnum/{A ruled table}% !xmpheaddef
 \xmpheader !xmpnum/{标线表格}% !xmpheaddef
 \bigskip
@@ -502,40 +505,67 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 ~% the text of the entries for #. We must have a strut
 ~% present in every row of the table; otherwise, the boxes
 ~% won't butt together properly, and the rules won't join.
-% 用 & 分开各列，并将 # 换为单元格的文本。
+% 用 & 分开模版各列。TeX 将把 # 替换为单元格的文本。
 % 在表格每行都要有一个支架（strut）；
 % 否则盒子将不能良好接合，标线也不能连接起来。
-\halign{\tabskip = .7em plus 1em  % glue between columns
+~%\halign{\tabskip = .7em plus 1em  % glue between columns
 ~% Use \vtop for short multiline entries in the first column.
 ~% Typeset the lines ragged right, without hyphenation.
-% Use \vtop for short multiline entries in the first column.
-% Typeset the lines ragged right, without hyphenation.
+~%   \vtop{\hsize=6pc\pretolerance = 10000\hbadness = 10000
+~%      \normalbaselines\noindent\it#\strut}%
+~%  &\vrule #&#\hfil &\vrule #% the rules and middle column
+\halign{\tabskip = .7em plus 1em  % 各列之间的 glue
+% 用 \vtop 得到表格第一列中的多行单元格。
+% 让多行文本右边不对齐，且不连字化。
    \vtop{\hsize=6pc\pretolerance = 10000\hbadness = 10000
       \normalbaselines\noindent\it#\strut}%
-  &\vrule #&#\hfil &\vrule #% the rules and middle column
-% Use \vtop to get whole paragraphs in the last column.
+  &\vrule #&#\hfil &\vrule #% rules 和中间各列
+~%% Use \vtop to get whole paragraphs in the last column.
+~%  &\vtop{\hsize=11pc \parindent=0pt \normalbaselineskip=12pt
+~%    \normalbaselines \rightskip=3pt plus2em #}\cr
+% 用 \vtop 得到表格最后一列中的段落。
   &\vtop{\hsize=11pc \parindent=0pt \normalbaselineskip=12pt
     \normalbaselines \rightskip=3pt plus2em #}\cr
-% The table rows begin here.
+~% The table rows begin here.
+% 表格各行从这里开始。
+~%\noalign{\hrule height2pt depth2pt \vskip3pt}
+~%  % The header row spans all the columns.
+~%  \multispan5\bf Some Choice Edible Mushrooms\hfil\strut\cr
 \noalign{\hrule height2pt depth2pt \vskip3pt}
-  % The header row spans all the columns.
-  \multispan5\bf Some Choice Edible Mushrooms\hfil\strut\cr
+  % 表头行横跨各列。
+  \multispan5\bf 一些上等的食用蘑菇\hfil\strut\cr
+~%\noalign{\vskip3pt} \tablerule
+~%  \omit&height 3pt&\omit&&\omit\cr
+~%  \bf Botanical&&\bf Common&&\omit \bf Identifying \hfil\cr
+~%\noalign{\vskip -2pt}% close up lines of heading
+~%  \bf Name&&\bf Name &&\omit \bf Characteristics \hfil\cr
 \noalign{\vskip3pt} \tablerule
   \omit&height 3pt&\omit&&\omit\cr
-  \bf Botanical&&\bf Common&&\omit \bf Identifying \hfil\cr
-\noalign{\vskip -2pt}% close up lines of heading
-  \bf Name&&\bf Name &&\omit \bf Characteristics \hfil\cr
-\tableskip Pleurotus ostreatus&&Oyster mushroom&&
+  \bf 学名&&\bf 常用名&&\omit \bf 识别特征 \hfil\cr
+~%\tableskip Pleurotus ostreatus&&Oyster mushroom&&
+~%  Grows in shelf\kern 1pt like clusters on stumps or logs,
+~%  % without the kern, the `f' and `l' would be too close
+~%  pink-gray oyster-shaped caps, stem short or absent.\cr
+\tableskip Pleurotus ostreatus&&平菇&&
   Grows in shelf\kern 1pt like clusters on stumps or logs,
-  % without the kern, the `f' and `l' would be too close
+  % 若不加上 \kern ，`f' 和 `l' 将挨得太近
   pink-gray oyster-shaped caps, stem short or absent.\cr
-\tableskip Lactarius hygrophoroides&&Milky hygroph&&
+~%\tableskip Lactarius hygrophoroides&&Milky hygroph&&
+~%  Butterscotch-brown cap and stem, copious white latex,
+~%  often on ground in woods near streams.\cr
+\tableskip Lactarius hygrophoroides&&稀褶乳菇&&
   Butterscotch-brown cap and stem, copious white latex,
   often on ground in woods near streams.\cr
-\tableskip Morchella esculenta&&White morel&&Conical cap
+~%\tableskip Morchella esculenta&&White morel&&Conical cap
+~%  with black pits and white ridges; no gills. Often found
+~%  near old apple trees and dying elms in the spring.\cr
+\tableskip Morchella esculenta&&羊肚菌&&Conical cap
   with black pits and white ridges; no gills. Often found
   near old apple trees and dying elms in the spring.\cr
-\tableskip Boletus edulus&&King bolete&&Reddish-brown to
+~%\tableskip Boletus edulus&&King bolete&&Reddish-brown to
+~%  tan cap with yellow pores (white when young),
+~%  bulbous stem, often near conifers, birch, or~aspen.\cr
+\tableskip Boletus edulus&&美味牛肝菌&&Reddish-brown to
   tan cap with yellow pores (white when young),
   bulbous stem, often near conifers, birch, or~aspen.\cr
 \tableskip \tablerule \noalign{\vskip 2pt} \tablerule
@@ -543,42 +573,63 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 :::
 ~%\xmpheader !xmpnum/{Typesetting mathematics}% !xmpheaddef
 \xmpheader !xmpnum/{排版数学公式}% !xmpheaddef
-~^^{math}
-For a spherical triangle with sides $a$, $b$, and $c$, and
-opposite angles $\alpha$, $\beta$, and $\gamma$, we have:
+~^^{数学}
+~%For a spherical triangle with sides $a$, $b$, and $c$, and
+~%opposite angles $\alpha$, $\beta$, and $\gamma$, we have:
+设球面三角形的三条边长度分别为$a$，$b$ 和 $c$，
+它们的对角分别为 $\alpha$，$\beta$ 和 $\gamma$，我们有：
+~%$$\cos \alpha = -\cos \beta \cos \gamma +
+~%  \sin \beta \sin \gamma \cos \alpha \quad
+~%  \hbox{(Law of Cosines)}$$
 $$\cos \alpha = -\cos \beta \cos \gamma +
   \sin \beta \sin \gamma \cos \alpha \quad
-  \hbox{(Law of Cosines)}$$
-and:
+  \hbox{(余弦定理)}$$
+~%and:
+且有：
+~%$$\tan {\alpha \over 2} = \sqrt{
+~%  {- \cos \sigma \cdot \cos(\sigma - \alpha)} \over
+~%  {\cos (\sigma - \beta) \cdot \cos (\sigma - \gamma)}},\quad
+~%  \hbox{where $\sigma = {1 \over 2}(a+b+c)$}$$
 $$\tan {\alpha \over 2} = \sqrt{
   {- \cos \sigma \cdot \cos(\sigma - \alpha)} \over
-  {\cos (\sigma - \beta) \cdot \cos (\sigma - \gamma)}},\quad
-  \hbox{where $\sigma = {1 \over 2}(a+b+c)$}$$
-We also have:$$\sin x = {{e^{ix}-e^{-ix}}\over 2i}$$
-and:
+  {\cos(\sigma - \beta) \cdot \cos(\sigma - \gamma)}},\quad
+  \hbox{其中 $\sigma = {1 \over 2}(a+b+c)$}$$
+~%We also have:$$\sin x = {{e^{ix}-e^{-ix}}\over 2i}$$
+~%and:
+~%$$\int _0 ^\infty {{\sin ax \sin bx}\over{x^2}}\,dx
+~%% The \, above produces a thin space
+~%  = {\pi a\over 2}, \quad \hbox{if $a < b$}$$
+我们还有：$$\sin x = {{e^{ix}-e^{-ix}}\over 2i}$$
+且有：
 $$\int _0 ^\infty {{\sin ax \sin bx}\over{x^2}}\,dx
-% The \, above produces a thin space
-  = {\pi a\over 2}, \quad \hbox{if $a < b$}$$
+% 上面的 \, 生成一个小间隔
+  = {\pi a\over 2}, \quad \hbox{如果 $a < b$}$$
 
-\noindent The number of combinations ${}_nC_r$ of $n$
-things taken $r$ at a time is:
+~%\noindent The number of combinations ${}_nC_r$ of $n$
+~%things taken $r$ at a time is:
+\noindent 从 $n$ 个物品中任取 $r$ 个的组合数 ${}_nC_r$ 为：
 $$C(n,r) = {}_nC_r = {n \choose r} =
   {{n(n-1) \cdots (n-r+1)} \over {r(r-1) \cdots (1)}} =
   {{n!!}\over {r!!(n-r)!!}}$$
 
 \noindent
-The value of the determinant $D$ of order $n$:
+~%The value of the determinant $D$ of order $n$:
+$n$ 阶行列式 $D$ 的值：
 $$D = \left|\matrix{a_{11}&a_{12}&\ldots&a_{1n}\cr
   a_{21}&a_{22}&\ldots&a_{2n}\cr
   \vdots&\vdots&\ddots&\vdots\cr
   a_{n1}&a_{n2}&\ldots&a_{nn}\cr}\right| $$
-is defined as the sum of $n!!$ terms:
+~%is defined as the sum of $n!!$ terms:
+定义为下面$n!!$项的和：
 $$\sum\>(\pm)\>a_{1i}a_{2j} \ldots a_{nk}$$
-% The \> above produces a medium space.
-where $i$, $j$, \dots,~$k$\/ take on all possible values
-between $1$ and $n$, and the sign of the product is
-$+$ if the sequence $i$, $j$, \dots,~$k$\/ is an
-even permutation and $-$ otherwise.  Moreover:
+~% The \> above produces a medium space.
+~%where $i$, $j$, \dots,~$k$\/ take on all possible values
+~%between $1$ and $n$, and the sign of the product is
+~%$+$ if the sequence $i$, $j$, \dots,~$k$\/ is an
+~%even permutation and $-$ otherwise.  Moreover:
+其中 $i$, $j$, \dots,~$k$\/ 取遍 $1$ 到 $n$ 的所有可能值，
+且当排列 $i$, $j$, \dots,~$k$\/ 为偶置换时乘积取 $+$ 号，
+否则取 $-$ 号。此外：
 $$Q(\xi) = \lambda_1 y_1^2 \sum_{i=2}^n \sum_{j=2}^n y_i
 b_{ij} y_j,\qquad B = \Vert b_{ij} \Vert = B'$$
 \bye
