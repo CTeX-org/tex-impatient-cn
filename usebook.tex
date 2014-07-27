@@ -138,91 +138,150 @@
 并给出该命令的详细描述所在的页码。
 此速查表可以让你快速知道某个命令的作用。
 
-\TeX{} is a complex program that occasionally works its will in
-mysterious ways.
-In \chapterref{tips}, ``Tips and techniques'',
-we provide advice on solving a variety of specific
-problems that you may encounter from time to time.
-And if you're stumped by
-\TeX's error messages, you'll find succor in \chapterref{errors},
-``Making sense of error messages''.
+%\TeX{} is a complex program that occasionally works its will in
+%mysterious ways.
+%In \chapterref{tips}, ``Tips and techniques'',
+%we provide advice on solving a variety of specific
+%problems that you may encounter from time to time.
+%And if you're stumped by
+%\TeX's error messages, you'll find succor in \chapterref{errors},
+%``Making sense of error messages''.
+\TeX{} 是个复杂的程序，偶尔地会以诡异的方式工作。
+在\chapterref{tips}，``建议和技巧''中，
+对一系列你时不时会遇到的特定的问题，我们提供了一些建议。
+而若你被 \TeX\ 的错误信息难住了，
+\chapterref{errors}，``理解错误信息''将给你提供帮助。
 
-The gray tabs on the side of the book will help you locate parts of the
-book quickly.  They divide the book into the following major parts:
+%The gray tabs on the side of the book will help you locate parts of the
+%book quickly.  They divide the book into the following major parts:
+%\olist
+%\li general explanations and examples
+%\li concepts
+%\li descriptions of commands (five shorter tabs)
+%\li advice, error messages, and the |eplain.tex| macros
+%\li capsule summary of commands
+%\li index
+%\endolist
+页边的灰色标签可以帮你快速定位到本书各个部分。
+它们将本书划分为下面几个主要部分：
 \olist
-\li general explanations and examples
-\li concepts
-\li descriptions of commands (five shorter tabs)
-\li advice, error messages, and the |eplain.tex| macros
-\li capsule summary of commands
-\li index
+\li 总体的说明和例子
+\li 概念
+\li 命令描述（五个短标签）
+\li 建议，错误信息和 |eplain.tex| 宏集
+\li 命令速查表
+\li 索引
 \endolist
 
-In many places we have provided page references to
-^{\texbook} (see \xrefpg{resources} for a citation).
-These references apply to the seventeenth edition of \texbook.
-For other editions, some references may be off by a page or two.
+%In many places we have provided page references to
+%^{\texbook} (see \xrefpg{resources} for a citation).
+%These references apply to the seventeenth edition of \texbook.
+%For other editions, some references may be off by a page or two.
+在很多地方我们都给出了到^{\texbook} 的页码索引
+（要引用该书可以见\xrefpg{resources}）。
+这些索引适用于\texbook\ 第十七次印刷版。
+对于其它版本，有的索引可能相差一两页。
 
 
 %\section Syntactic conventions
-\section 符号约定
+\section 语法约定
 
-In any book about preparing input for a computer,
-it's necessary to indicate clearly the literal characters that should be typed
-and to distinguish those characters from the explanatory text.
-We use the Computer Modern typewriter font for {\tt literal input
-like this}, and also for the names of \TeX{} commands.
-When there's any possibility of confusion, we enclose \TeX{}
-input in single quotation marks, `{\tt like this}'.
-However, we occasionally use parentheses when we're indicating single
-characters such as (|`|) (you can see why).
+%In any book about preparing input for a computer,
+%it's necessary to indicate clearly the literal characters that should be typed
+%and to distinguish those characters from the explanatory text.
+%We use the Computer Modern typewriter font for {\tt literal input
+%like this}, and also for the names of \TeX{} commands.
+%When there's any possibility of confusion, we enclose \TeX{}
+%input in single quotation marks, `{\tt like this}'.
+%However, we occasionally use parentheses when we're indicating single
+%characters such as (|`|) (you can see why).
+在任何涉及到为计算机准备输入的书籍中，
+都得明确区分哪些字符是需要逐字输入的，而哪些字符属于解释性文本。
+我们用计算机现代打字机字体显示文字输入，比如{\tt literal input}，
+以及\TeX\ 命令名。在可能导致混淆的地方，
+我们将 \TeX\ 命令用单引号围起来，比如`{\tt like this}'。
+然而，在表示单个字符时，我们偶尔也会用括号将它围起来，
+比如(|`|)（其原因你懂的）。
 
-For the sake of your eyes we usually just put spaces
-where you should put spaces. In some places where
-we need to emphasize the space, however,
-we use a `\visiblespace' character
+%For the sake of your eyes we usually just put spaces
+%where you should put spaces. In some places where
+%we need to emphasize the space, however,
+%we use a `\visiblespace' character
+%{\catcode `\ =\other\pix^^| |}%
+%to indicate it.
+%Naturally enough, this character is called a \emph{visible space}.
+%\pix^^{spaces//visible}
+通常我们按照你输入空格的方式显示空格，以免让你看花眼。
+但为了强调某些空格，我们用`\visiblespace'字符表示它。
 {\catcode `\ =\other\pix^^| |}%
-to indicate it.
-Naturally enough, this character is called a \emph{visible space}.
-\pix^^{spaces//visible}
+这个字符很自然被称为\emph{可见空格}.
+\pix^^{空格//可见}
 
 
 %\section Descriptions of the commands
 \section 命令描述
 
 \xrdef{cmddesc}
-Sections~\chapternum{paras}--\chapternum{general} contain
-a description of what nearly every \TeX{} command does.  ^^{commands}
-Both the primitive commands ^^{primitive//command}
-and those of ^{\plainTeX} are covered.
-The primitive commands are those built into the \TeX{} computer program, while
-the \plainTeX{} commands are defined in a standard file of
-auxiliary definitions (see \xref\plainTeX).
-The only commands we've omitted are those that are used purely locally
-in the definition of \plainTeX\ (\knuth{Appendix~B}).
-The commands are organized as follows:
+%Sections~\chapternum{paras}--\chapternum{general} contain
+%a description of what nearly every \TeX{} command does.  ^^{commands}
+%Both the primitive commands ^^{primitive//command}
+%and those of ^{\plainTeX} are covered.
+%The primitive commands are those built into the \TeX{} computer program, while
+%the \plainTeX{} commands are defined in a standard file of
+%auxiliary definitions (see \xref\plainTeX).
+%The only commands we've omitted are those that are used purely locally
+%in the definition of \plainTeX\ (\knuth{Appendix~B}).
+%The commands are organized as follows:
+第~\chapternum{paras}--\chapternum{general}~章描述了几乎每个\TeX\ 命令，
+^^{命令}包括原始命令^^{原始//命令}和 ^{\plainTeX} 命令。
+原始命令是那些内建于 \TeX\ 程序中的命令，
+而 \plainTeX{} 命令是那些在标准辅助定义文件中定义的命令（见\xref\plainTeX ）。
+我们仅仅忽略那些只在\plainTeX\ (\knuth{附录~B})定义中用到的局部命令。
+这些命令分为如下几部分：
+%\ulist\compact
+%\li ``Commands for composing paragraphs'', \chapterref{paras},
+%deal with characters, words, lines, and entire paragraphs.
+%\li ``Commands for composing pages'', \chapterref{pages},
+%deal with pages, their components, and the output routine.
+%\li ``Commands for horizontal and vertical modes'', \chapterref{hvmodes},
+%have corresponding or identical
+%forms for both horizontal modes (paragraphs and hboxes) and vertical
+%modes (pages and vboxes).
+%These commands provide boxes, spaces, rules, leaders,
+%and alignments.
+%\li ``Commands for composing math formulas'', \chapterref{math},
+%provide capabilities for constructing math formulas.
+%\li ``Commands for general operations'', \chapterref{general},
+%provide
+%\TeX's programming features and
+%everything else that doesn't fit into any of the other sections.
+%\endulist
 \ulist\compact
-\li ``Commands for composing paragraphs'', \chapterref{paras},
-deal with characters, words, lines, and entire paragraphs.
-\li ``Commands for composing pages'', \chapterref{pages},
-deal with pages, their components, and the output routine.
-\li ``Commands for horizontal and vertical modes'', \chapterref{hvmodes},
-have corresponding or identical
-forms for both horizontal modes (paragraphs and hboxes) and vertical
-modes (pages and vboxes).
-These commands provide boxes, spaces, rules, leaders,
-and alignments.
-\li ``Commands for composing math formulas'', \chapterref{math},
-provide capabilities for constructing math formulas.
-\li ``Commands for general operations'', \chapterref{general},
-provide
-\TeX's programming features and
-everything else that doesn't fit into any of the other sections.
+\li \chapterref{paras}，``组段命令''，介绍字符、单词、文本行和整个段落。
+\li \chapterref{pages}，``组页命令''，介绍页面及其组成部分，以及输出例行程序。
+\li \chapterref{hvmodes}，``水平和垂直模式命令''，
+介绍水平模式（段落和水平盒子）和垂直模式（页面和垂直盒子）中对应或等同的命令。
+这些命令提供了盒子、间隔、标线、指引线和对齐。
+\li \chapterref{math}，``数学公式命令''，介绍构造数学公式的命令。
+\li \chapterref{general}，``一般操作命令''，
+介绍 \TeX\ 的编程功能以及不适合放在其他部分的命令。
 \endulist
-You should think of these categories as being suggestive rather than
-rigorous, because the commands don't really fit neatly into these
-(or any other) categories.
+%You should think of these categories as being suggestive rather than
+%rigorous, because the commands don't really fit neatly into these
+%(or any other) categories.
+你应该将这些分类视为提示性的而不是严格的，
+因为把命令都归入这些（或者其他）类别并不完全合适。
 
+%Within each section, the descriptions of the commands are organized
+%by function.  When several commands are closely related, they are described as
+%a group; otherwise, each command has its own explanation.
+%The description of each command
+%includes one or more examples and the output
+%produced by each example when examples are appropriate (for
+%some commands they aren't).
+%When you are looking at a subsection containing functionally related
+%commands, be sure to check the end of a subsection for a ``see also''
+%item that refers you to related commands that are described elsewhere.
 Within each section, the descriptions of the commands are organized
 by function.  When several commands are closely related, they are described as
 a group; otherwise, each command has its own explanation.
@@ -234,6 +293,14 @@ When you are looking at a subsection containing functionally related
 commands, be sure to check the end of a subsection for a ``see also''
 item that refers you to related commands that are described elsewhere.
 
+%Some commands are closely related to certain concepts.
+%For instance, the |\halign| and |\valign| commands are related to
+%``alignment'', the |\def|
+%command is related to ``macro'',
+%and the |\hbox| and |\vbox| commands are related to ``box''.
+%In these cases we've usually given a bare-bones des\-crip\-tion of the
+%commands themselves and explained  the underlying ideas
+%in the concept.
 Some commands are closely related to certain concepts.
 For instance, the |\halign| and |\valign| commands are related to
 ``alignment'', the |\def|
