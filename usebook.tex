@@ -201,7 +201,7 @@
 以及\TeX\ 命令名。在可能导致混淆的地方，
 我们将 \TeX\ 命令用单引号围起来，比如`{\tt like this}'。
 然而，在表示单个字符时，我们偶尔也会用括号将它围起来，
-比如(|`|)（其原因你懂的）。
+比如(|`|)（其原因你容易明白）。
 
 %For the sake of your eyes we usually just put spaces
 %where you should put spaces. In some places where
@@ -214,7 +214,7 @@
 通常我们按照你输入空格的方式显示空格，以免让你看花眼。
 但为了强调某些空格，我们用`\visiblespace'字符表示它。
 {\catcode `\ =\other\pix^^| |}%
-这个字符很自然被称为\emph{可见空格}.
+这个字符很自然地被称为\emph{可见空格}.
 \pix^^{空格//可见}
 
 
@@ -282,16 +282,13 @@
 %When you are looking at a subsection containing functionally related
 %commands, be sure to check the end of a subsection for a ``see also''
 %item that refers you to related commands that are described elsewhere.
-Within each section, the descriptions of the commands are organized
-by function.  When several commands are closely related, they are described as
-a group; otherwise, each command has its own explanation.
-The description of each command
-includes one or more examples and the output
-produced by each example when examples are appropriate (for
-some commands they aren't).
-When you are looking at a subsection containing functionally related
-commands, be sure to check the end of a subsection for a ``see also''
-item that refers you to related commands that are described elsewhere.
+各章的命令描述按照其功能组织。
+当几个命令密切相关时，它们合起来介绍；否则，每个命令分别解释。
+命令的描述中包含一个或多个例子，可能还有例子的输出%
+（对有些例子这并不可行）。
+若某节内容涉及到功能上相关的其他命令时，
+务必看看该节末尾的``参见''项，
+那里给出了其它地方介绍到的相关命令所在的页码。
 
 %Some commands are closely related to certain concepts.
 %For instance, the |\halign| and |\valign| commands are related to
@@ -301,40 +298,61 @@ item that refers you to related commands that are described elsewhere.
 %In these cases we've usually given a bare-bones des\-crip\-tion of the
 %commands themselves and explained  the underlying ideas
 %in the concept.
-Some commands are closely related to certain concepts.
-For instance, the |\halign| and |\valign| commands are related to
-``alignment'', the |\def|
-command is related to ``macro'',
-and the |\hbox| and |\vbox| commands are related to ``box''.
-In these cases we've usually given a bare-bones des\-crip\-tion of the
-commands themselves and explained  the underlying ideas
-in the concept.
+有些命令与特定的概念密切相关。
+例如，|\halign| 和 |\valign| 命令与``对齐''的概念相关，
+|\def| 命令与``宏''相关,
+而 |\hbox| 和 |\vbox| 命令与``盒子''相关。
+对此种情形，在命令这里我们通常只给出粗略介绍，
+而将对基本原理的解释放在相关概念中。
 
-The examples associated with the commands have been typeset with
-^|\parindent|, the paragraph indentation, set to zero so that
-paragraphs are normally unindented.
-This convention makes the examples easier to read.
-In those examples where the paragraph indentation is essential,
-we've set it explicitly to a nonzero value.
+%The examples associated with the commands have been typeset with
+%^|\parindent|, the paragraph indentation, set to zero so that
+%paragraphs are normally unindented.
+%This convention makes the examples easier to read.
+%In those examples where the paragraph indentation is essential,
+%we've set it explicitly to a nonzero value.
+命令相关的例子在排版时设定了段落缩进 ^|\parindent| 为零，
+因而其中段落一般是不缩进的；这使得例子更加容易阅读。
+对有些例子段落缩进是必不可少的，我们显式设置缩进为非零值。
 
-The pointing hand in front of a command or a group of commands indicates
-that we judged this command or group of commands to be particularly useful
-and easy to understand.
+%The pointing hand in front of a command or a group of commands indicates
+%that we judged this command or group of commands to be particularly useful
+%and easy to understand.
+在一个或一组命令前面的手形符号，
+表示我们认为这个或这组命令是常用且容易理解的。
 
-Many commands expect ^{arguments} of one kind or another
-(\xref{arg1}).  The arguments of
-a command give \TeX{} additional information that it needs in order to
-carry out the command.  Each argument is indicated by an italicized
-term in angle brackets that indicates what kind of argument it~is:
+%Many commands expect ^{arguments} of one kind or another
+%(\xref{arg1}).  The arguments of
+%a command give \TeX{} additional information that it needs in order to
+%carry out the command.  Each argument is indicated by an italicized
+%term in angle brackets that indicates what kind of argument it~is:
+某些命令需要特定类型的参数（\xref{arg1}）。
+命令的参数提供 \TeX{} 执行该命令时所需的额外信息。
+每个参数都放在尖括号中，并用意大利体标明它的类型：
 
+%\display{%
+%\halign{\<#>\quad&#\hfil\cr
+%argument&a single token or some text enclosed in braces\cr
+%charcode&a character code, i.e., an integer between $0$ and $255$\cr
+%dimen&a dimension, i.e., a length\cr
+%glue&glue (with optional stretch and shrink)\cr
+%number&an optionally signed integer (whole number)\cr
+%register&a register number between $0$ and $255$\cr
+%}}
+%^^{\<dimen>}
+%^^{\<argument>}
+%^^{\<charcode>}
+%^^{\<glue>}
+%^^{\<number>}
+%^^{\<register>}
 \display{%
 \halign{\<#>\quad&#\hfil\cr
-argument&a single token or some text enclosed in braces\cr
-charcode&a character code, i.e., an integer between $0$ and $255$\cr
-dimen&a dimension, i.e., a length\cr
-glue&glue (with optional stretch and shrink)\cr
-number&an optionally signed integer (whole number)\cr
-register&a register number between $0$ and $255$\cr
+argument&单个记号或者放在花括号中的一些文本\cr
+charcode&字符码，即在$0$到$255$之间的整数\cr
+dimen&尺寸，即长度\cr
+glue&\zglue （有可选的伸展值和收缩值）\cr
+number&可带符号的整型值（整数）\cr
+register&寄存器编号，在$0$到$255$之间\cr
 }}
 ^^{\<dimen>}
 ^^{\<argument>}
@@ -354,7 +372,7 @@ register&a register number between $0$ and $255$\cr
 
 \noindent
 所有这些术语会在\chapterref{concepts}中进行详述.
-除了这些以外, 我们会使用一些不言自明的或者在后文进行讲述的述语, 比如 \<token list>.
+除了这些以外, 我们会使用一些不言自明的或者在后文进行讲述的术语, 比如 \<token list>.
 有些命令有自己独特的格式, 比如需要括孤或者特定的字词.
 它们会使用和命令标题相同的黑体标出.
 
