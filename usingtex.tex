@@ -15,8 +15,10 @@
 \vglue-\abovesectionskip % we've skipped enough already
 \vskip0pt % Make \combineskips work.
 
+%\section Turning input into ink
 \section 从键盘输入变到油墨
 
+%\subsection Programs and files you need
 \subsection 你所需要的程序和文件
 
 为了制作一个 \TeX\ 文档, 你必需运行 \TeX\ 及其相关软件.
@@ -82,7 +84,8 @@
 \secondprinting{\vfill\eject}
 
 
-\subsection 运行 {\TeX}
+%\subsection Running {\TeX}
+\subsection{运行 \TeX}
 
 \bix^^{running \TeX}
 
@@ -111,39 +114,58 @@ tex screed
 |
 来直接处理文档.
 
-Instead of providing your \TeX\ input from a file, you can type it directly at
-your terminal.  To do so, type `^|\relax|' instead of `|screed|' at the
-`|**|' prompt.
-\TeX\ will now prompt you with a `|*|' for each line of input and interpret
-each line of input as it sees it.
-To terminate the input, type a command such as `|\bye|' that tells \TeX\
-you're done.
-Direct input is sometimes a handy way of experimenting with \TeX.
+%Instead of providing your \TeX\ input from a file, you can type it directly at
+%your terminal.  To do so, type `^|\relax|' instead of `|screed|' at the
+%`|**|' prompt.
+%\TeX\ will now prompt you with a `|*|' for each line of input and interpret
+%each line of input as it sees it.
+%To terminate the input, type a command such as `|\bye|' that tells \TeX\
+%you're done.
+%Direct input is sometimes a handy way of experimenting with \TeX.
+\TeX\ 不仅可以读取文件输入，也可以直接读取你在终端中的输入：
+只需将 `|**|' 提示后的输入从 `|screed|' 改为 `^|\relax|'。
+\TeX\ 将在你输入的各行前面给出 `|*|' 提示，
+并且逐行解释你的输入。
+输入类似 `|\bye|' 这样的命令可以结束输入。
+在试验 \TeX\ 时直接输入有时更方便。
 
-When your input file contains other embedded input files, the displayed
-information indicates when \TeX\ begins and ends processing each
-embedded file.
-^^{input files//embedded}
+%When your input file contains other embedded input files, the displayed
+%information indicates when \TeX\ begins and ends processing each
+%embedded file.
+%^^{input files//embedded}
+%\xrdef{infiles}
+%\TeX\ displays a left parenthesis and the file name
+%when it starts working on a file and displays the corresponding right
+%parenthesis when it's done with the file.
+%If you get any ^{error messages} in the displayed output, you can match
+%them with a file by looking for the most recent unclosed left parenthesis.
+当你的输入文件包含其他嵌入的输入文件时，
+显示的信息中表明了 \TeX\ 何时开始和结束处理每个嵌入文件。
+^^{输入文件//嵌入}
 \xrdef{infiles}
-\TeX\ displays a left parenthesis and the file name
-when it starts working on a file and displays the corresponding right
-parenthesis when it's done with the file.
-If you get any ^{error messages} in the displayed output, you can match
-them with a file by looking for the most recent unclosed left parenthesis.
+当 \TeX\ 开始处理一个文件时它显示一个左圆括号和该文件名，
+而结束时显示一个对应的右圆括号。
+如果在所显示的输出中有任何^{错误信息}，
+你就能从最接近的未配对左圆括号中确定是哪个文件引起的。
 
-For a more complete explanation of how to run \TeX,
-see \knuth{Chapter~6} and your ^{local information}.
-\eix^^{running \TeX}
+%For a more complete explanation of how to run \TeX,
+%see \knuth{Chapter~6} and your ^{local information}.
+%\eix^^{running \TeX}
+要得到如何运行\TeX\ 的更完整解释，
+可以见\knuth{第~6~章}以及你的^{本地信息}.
+\eix^^{运行\TeX}
 
 
-\section Preparing an input file
+%\section Preparing an input file
+\section 准备输入文件
 
 In this section we explain some of the conventions that you must follow in
 preparing input for \TeX\null.  Some of the information given here also
 appears in the examples in \chapterref{examples} of this book.
 ^^{input, preparing}
 
-\subsection Commands and control sequences
+%\subsection Commands and control sequences
+\subsection 命令和控制序列
 
 \bix^^{commands}
 \bix^^{control sequences}
@@ -591,7 +613,8 @@ in math formulas.
 \eix^^{math}
 
 
-\section How \TeX\ works
+%\section How \TeX\ works
+\section \TeX\ 如何工作
 
 In order to use \TeX\ effectively, it helps to
 have some idea of how \TeX\ goes about
@@ -681,7 +704,8 @@ within a paragraph and display math mode for assembling math formulas that are
 displayed on lines by themselves (see ``Math formulas'', \xref{mathform}).
 
 
-\section 新 \TeX\ 和老 {\TeX}
+%\section New \TeX\ versus old {\TeX}
+\section{新 \TeX\ 和老 \TeX}
 
 \xrdef{newtex}
 在 1989 年, Knuth 对 \TeX\ 做了一次大幅的修改, 来使它可以处理非英语排版所需用的字符集.\space ^^{foreign languages}
@@ -706,6 +730,7 @@ This book describes ``^{\newTeX}''.
 \noindent
 我们建议你尽可能地使用新版本的 \TeX.
 
+%\section Resources
 \section 资源
 
 \xrdef{resources}
