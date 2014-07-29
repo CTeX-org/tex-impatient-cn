@@ -159,76 +159,129 @@ tex screed
 %\section Preparing an input file
 \section 准备输入文件
 
-In this section we explain some of the conventions that you must follow in
-preparing input for \TeX\null.  Some of the information given here also
-appears in the examples in \chapterref{examples} of this book.
-^^{input, preparing}
+%In this section we explain some of the conventions that you must follow in
+%preparing input for \TeX\null.  Some of the information given here also
+%appears in the examples in \chapterref{examples} of this book.
+%^^{input, preparing}
+在这一节中，我们解释准备 \TeX\ 输入文件时必须遵循的一些约定。
+其中的有些信息同样出现在本书\chapterref{examples}的例子中。
+^^{输入, 准备}
 
 %\subsection Commands and control sequences
 \subsection 命令和控制序列
 
+%\bix^^{commands}
+%\bix^^{control sequences}
+%Input to \TeX\ consists of a sequence of commands that tell \TeX\ how to
+%typeset your document.  Most characters act as commands of a particularly
+%simple kind: ``typeset me''.  The letter `|a|', for instance, is a
+%command to typeset an `a'.  But there's another kind of command---a
+%\emph{control sequence}---that gives \TeX\ a more elaborate
+%instruction.  A control sequence ordinarily starts with a backslash
+%(|\|), though you can change that convention if you need to.
+%\xrdef{@backslash}
+%For instance, the input:
 \bix^^{commands}
 \bix^^{control sequences}
-Input to \TeX\ consists of a sequence of commands that tell \TeX\ how to
-typeset your document.  Most characters act as commands of a particularly
-simple kind: ``typeset me''.  The letter `|a|', for instance, is a
-command to typeset an `a'.  But there's another kind of command---a
-\emph{control sequence}---that gives \TeX\ a more elaborate
-instruction.  A control sequence ordinarily starts with a backslash
-(|\|), though you can change that convention if you need to.
+\TeX\ 的输入由一系列指引 \TeX\ 如何排版文档的命令组成。
+大部分字符如同一种特别简单的命令：``排版我''。
+比如，字母 `|a|' 是作为命令将排版出 `a'。
+但有另一种命令---\emph{控制序列}（control sequence）---将给 \TeX\ 提供更细致的指令。
+控制序列通常以反斜杠(|\|)开头，但必要时你也可以更改此约定。
 \xrdef{@backslash}
-For instance, the input:
+例如，下列输入：
 
+%\csdisplay
+%She plunged a dagger (\dag) into the villain's heart.
+%|
+%contains the control sequence |\dag|; it produces the typeset output:
+%\display{%
+%She plunged a dagger (\dag) into the villain's heart.
+%}
+%\noindent Everything in this example except for the |\dag| and the spaces
+%acts like a ``typeset me'' command.  We'll explain more about spaces
+%on \xrefpg{spaces}.
 \csdisplay
 She plunged a dagger (\dag) into the villain's heart.
 |
-contains the control sequence |\dag|; it produces the typeset output:
+包含一个控制序列|\dag|；它排版出下列的输出：
 \display{%
 She plunged a dagger (\dag) into the villain's heart.
 }
-\noindent Everything in this example except for the |\dag| and the spaces
-acts like a ``typeset me'' command.  We'll explain more about spaces
-on \xrefpg{spaces}.
+\noindent 在这个例子中，
+除 |\dag| 和空格之外的每个字符都如同一个``排版我''命令。
+在\xrefpg{spaces}中我们将更详细地解释空格的作用。
 
-There are two kinds of control sequences: \emph{control words}
-^^{control words}
-and \emph{control symbols}:
-^^{control symbols}
+%There are two kinds of control sequences: \emph{control words}
+%^^{control words}
+%and \emph{control symbols}:
+%^^{control symbols}
+%\ulist\compact
+%\li A control word consists of a
+%backslash followed by one or more letters, e.g., `|\dag|'.
+%The first character that isn't a letter marks the end
+%of the control word.
+%\li A control symbol consists of a backslash followed by a single character
+%that isn't a letter, e.g., `|\$|'.
+%The character can be a space or even the end of a line (which is a perfectly
+%legitimate character).
+%\endulist
+控制序列可分为\emph{控制词}（control word）^^{控制词}%
+和\emph{控制符}（control symbol）^^{控制符}这两种类型：
 \ulist\compact
-\li A control word consists of a
-backslash followed by one or more letters, e.g., `|\dag|'.
-The first character that isn't a letter marks the end
-of the control word.
-\li A control symbol consists of a backslash followed by a single character
-that isn't a letter, e.g., `|\$|'.
-The character can be a space or even the end of a line (which is a perfectly
-legitimate character).
+\li 控制词由反斜杠后跟一个或多个字母组成，例如`|\dag|'。
+其后用一个非字母字符结束该控制词。
+\li 控制符由反斜杠后跟一个单个的非字母字符组成，例如`|\$|'。
+该非字母字符可以是空格符，甚或是行结束符（这也是合乎规则的字符）。
 \endulist
+%\noindent
+%A control word (but not a control symbol)
+%absorbs any spaces or ends of line that follow it.
+%^^{control sequences//absorbing spaces}
+%If you don't want to lose a space after a control word,
+%follow the control sequence with a ^{control space}
+%(|\!visiblespace|) or with `|{}|'.  Thus either:
+%\csdisplay
+%The wonders of \TeX\!visiblespace!.shall never cease!!
+%|
+%or:\hfil\
+%\csdisplay
+%The wonders of \TeX{} shall never cease!!
+%|
+%produces:
+%\display{%
+%The wonders of \TeX{} shall never cease!
+%}
+%\noindent rather than:
+%\display{%
+%The wonders of \TeX shall never cease!
+%}
+%\noindent
+%which is what you'd get if you left out the `|\|\visiblespace'
+%or the `|{}|'.
 \noindent
-A control word (but not a control symbol)
-absorbs any spaces or ends of line that follow it.
-^^{control sequences//absorbing spaces}
-If you don't want to lose a space after a control word,
-follow the control sequence with a ^{control space}
-(|\!visiblespace|) or with `|{}|'.  Thus either:
+控制词后的任何空格或行结束符将被忽略（但控制符后不会这样）。
+^^{控制系列//忽略空格}
+如果你真要在控制词后得到一个空格，
+可以在该控制词后键入一个^{控制空格}（|\!visiblespace|）或者`|{}|'。
+因而这样输入：
 \csdisplay
 The wonders of \TeX\!visiblespace!.shall never cease!!
 |
-or:\hfil\
+或者这样输入：\hfil\
 \csdisplay
 The wonders of \TeX{} shall never cease!!
 |
-produces:
+将得到同样的结果：
 \display{%
 The wonders of \TeX{} shall never cease!
 }
-\noindent rather than:
+\noindent 作为对比，下面的结果：
 \display{%
 The wonders of \TeX shall never cease!
 }
 \noindent
-which is what you'd get if you left out the `|\|\visiblespace'
-or the `|{}|'.
+是你去掉上面输入中的`|\|\visiblespace'或者`|{}|'后得到的。
 
 Don't run a control word together with the text that follows it---\TeX\
 won't know where the control word ends.  For instance, the |\c| control
