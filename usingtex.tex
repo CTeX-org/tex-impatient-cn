@@ -332,33 +332,49 @@ The wonders of \TeX shall never cease!
 \eix^^{控制序列}
 \eix^^{命令}
 
-\subsection Arguments
+%\subsection Arguments
+\subsection 参量
 
+%\xrdef{arg1}
+%Some commands need to be followed by one or more
+%\emph{arguments} ^^{arguments}
+%that help to determine what the command does.
+%For instance, the |\vskip| command, which
+%tells \TeX\ to skip down (or up) the page,
+%expects an argument specifying how much space to skip.  To skip
+%down two inches, you would type `|\vskip 2in|', where |2in|
+%is the argument of |\vskip|.
 \xrdef{arg1}
-Some commands need to be followed by one or more
-\emph{arguments} ^^{arguments}
-that help to determine what the command does.
-For instance, the |\vskip| command, which
-tells \TeX\ to skip down (or up) the page,
-expects an argument specifying how much space to skip.  To skip
-down two inches, you would type `|\vskip 2in|', where |2in|
-is the argument of |\vskip|.
+有些命令的运行依赖于其后的一个或多个\emph{参量}（argument）^^{参量}。
+例如，|\vskip|命令告诉 \TeX\ 在页面中往上（或往下）跳过一定间距，
+它需要一个参量来指定所跳过间距的大小。
+要往下跳过两英寸，你需要键入`|\vskip 2in|'，
+其中的|2in|就是|\vskip|的参量。
 
-Different commands expect different kinds of arguments.  Many commands
-expect dimensions, such as the |2in| in the example above.
-Some commands, particularly those defined by macros,
-expect arguments that are either a single character or some
-text enclosed in braces.
-Yet others require that their arguments be enclosed in braces, i.e.,
-they don't accept single-character arguments.
-The description of each command in this book tells you what kinds of arguments,
-if any, the command expects.
-In some cases, required braces define a group (see \xref{bracegroup}).
+%Different commands expect different kinds of arguments.  Many commands
+%expect dimensions, such as the |2in| in the example above.
+%Some commands, particularly those defined by macros,
+%expect arguments that are either a single character or some
+%text enclosed in braces.
+%Yet others require that their arguments be enclosed in braces, i.e.,
+%they don't accept single-character arguments.
+%The description of each command in this book tells you what kinds of arguments,
+%if any, the command expects.
+%In some cases, required braces define a group (see \xref{bracegroup}).
+不同的命令要求不同类型的参量。
+很多命令的参量要求是长度值，比如上面例子中的|2in|。
+有些命令，特别是用宏定义的命令，
+其参量可以是单个字符或者放在花括号中的文本。
+而对其他有些命令，其参量只能放在花括号中，而不能是单个字符。
+在本书对各个命令的描述中，若一个命令需要参量，
+我们都说明了该命令所需参量的类型。
+在有些情形中，命令的参量所需的花括号定义了一个编组（见\xref{bracegroup}）。
 
-\secondprinting{\vfill\eject}
+%\secondprinting{\vfill\eject}
 
 
-\subsection Parameters
+%\subsection Parameters
+\subsection 参数
 
 \xrdef{introparms}
 Some commands are parameters (\xref{parameter}).
