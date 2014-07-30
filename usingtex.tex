@@ -283,36 +283,54 @@ The wonders of \TeX shall never cease!
 \noindent
 是你去掉上面输入中的`|\|\visiblespace'或者`|{}|'后得到的。
 
-Don't run a control word together with the text that follows it---\TeX\
-won't know where the control word ends.  For instance, the |\c| control
-sequence places a cedilla accent on the character that follows it.  The
-French word {\it gar\c con\/} must be typed as
-`|gar\c!visiblespace!.con|', not `|gar\ccon|'; if you write the latter,
-\TeX\ will complain about an undefined control sequence |\ccon|.
+%Don't run a control word together with the text that follows it---\TeX\
+%won't know where the control word ends.  For instance, the |\c| control
+%sequence places a cedilla accent on the character that follows it.  The
+%French word {\it gar\c con\/} must be typed as
+%`|gar\c!visiblespace!.con|', not `|gar\ccon|'; if you write the latter,
+%\TeX\ will complain about an undefined control sequence |\ccon|.
+不要将控制词和其后的文本连在一起---这样\TeX\ 无法知道控制词在哪里结束。
+比如，控制词|\c|给其后的字符加上软音符。
+要得到法文单词{\it gar\c con\/}，你必须输入`|gar\c!visiblespace!.con|'，
+而不是`|gar\ccon|'；若你输入后者，\TeX\ 将抱怨有未定义的控制序列|\ccon|。
 
-A control symbol, on the other hand, doesn't absorb anything that
-follows it.  Thus you must type `\$13.56' as `|\$13.56|', not
-`|\$!vs13.56|'; the latter form would produce `\hbox{\$ 13.56}'.
-However, those accenting commands that are named by control symbols are
-defined in such a way that they produce the effect of absorbing a
-following space.  Thus, for example, you can type the French word {\it
-d\'eshabiller\/} either as `|d\'eshabiller|' or as
-`|d\'!visiblespace!.eshabiller|'.
+%A control symbol, on the other hand, doesn't absorb anything that
+%follows it.  Thus you must type `\$13.56' as `|\$13.56|', not
+%`|\$!vs13.56|'; the latter form would produce `\hbox{\$ 13.56}'.
+%However, those accenting commands that are named by control symbols are
+%defined in such a way that they produce the effect of absorbing a
+%following space.  Thus, for example, you can type the French word {\it
+%d\'eshabiller\/} either as `|d\'eshabiller|' or as
+%`|d\'!visiblespace!.eshabiller|'.
+另一方面，控制符后面的任何字符都不会被忽略。
+因此，要得到`\$13.56'你必须键入`|\$13.56|'，
+而不是`|\$!vs13.56|'；后者将生成`\hbox{\$ 13.56}'。
+然而，那些作为控制符的重音命令，是以忽略其后空格的方式定义的。
+例如，要得到法文单词{\it d\'eshabiller\/}，键入`|d\'eshabiller|'，
+或者`|d\'!visiblespace!.eshabiller|'都可以。
 
-Every control sequence is also a command,
-but not the other way around.
-^^{commands//versus control sequences}
-^^{control sequences//versus commands}
-For instance, the letter `|N|'
-is a command, but it isn't a control sequence.
-In this book we ordinarily use ``command'' rather than
-``control sequence'' when either term would do.
-We use ``control sequence'' when we want to emphasize aspects of \TeX\
-syntax that don't apply to commands in general.
+%Every control sequence is also a command,
+%but not the other way around.
+%^^{commands//versus control sequences}
+%^^{control sequences//versus commands}
+%For instance, the letter `|N|'
+%is a command, but it isn't a control sequence.
+%In this book we ordinarily use ``command'' rather than
+%``control sequence'' when either term would do.
+%We use ``control sequence'' when we want to emphasize aspects of \TeX\
+%syntax that don't apply to commands in general.
+每个控制序列同时也是一个命令，但反之未必。
+^^{命令//与控制序列对比}
+^^{控制序列//与命令对比}
+例如字母`|N|'是一个命令，但它不是一个控制序列。
+在本书里面，当两者都适用时我们用``命令''而不用``控制序列''。
+在强调 \TeX\ 的语法层面时，我们用``控制序列''，
+因为此时用``命令''一般并不合适。
 
-\eix^^{control sequences}
-\eix^^{commands}
-
+%\eix^^{control sequences}
+%\eix^^{commands}
+\eix^^{控制序列}
+\eix^^{命令}
 
 \subsection Arguments
 
