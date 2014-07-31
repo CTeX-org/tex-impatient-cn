@@ -376,32 +376,51 @@ The wonders of \TeX shall never cease!
 %\subsection Parameters
 \subsection 参数
 
+%\xrdef{introparms}
+%Some commands are parameters (\xref{parameter}).
+%^^{parameters//as commands}
+%You can use a parameter in either of two ways:
+%\olist
+%\li You can use the value of a parameter
+%as an argument to another command.  For example, the command
+%\hbox{|\vskip\parskip|}
+%causes a vertical skip by the value of the |\parskip| (paragraph skip)
+%glue parameter.
+%\li You can change the value of the parameter by assigning
+%something to it.  For example, the assignment \hbox{|\hbadness=200|}
+%causes the value of the |\hbadness| number parameter to be $200$.
+%\endolist
+%\noindent
+%We also use the term ``parameter'' to refer to entities such as |\pageno|
+%that are actually registers but behave just like parameters.
+%^^{registers//parameters as}
 \xrdef{introparms}
-Some commands are parameters (\xref{parameter}).
-^^{parameters//as commands}
-You can use a parameter in either of two ways:
+有些命令实际上是参数（parameter，见\xref{parameter}）。
+^^{参数//作为命令}
+你可以按下面两种方式使用这种参数：
 \olist
-\li You can use the value of a parameter
-as an argument to another command.  For example, the command
-\hbox{|\vskip\parskip|}
-causes a vertical skip by the value of the |\parskip| (paragraph skip)
-glue parameter.
-\li You can change the value of the parameter by assigning
-something to it.  For example, the assignment \hbox{|\hbadness=200|}
-causes the value of the |\hbadness| number parameter to be $200$.
+\li 将该参数的值用作其他命令的参量。
+例如 \hbox{|\vskip\parskip|} 这个命令生成大小%
+等于\zglue 参数|\parskip|（段落间距）的垂直间距。
+\li 通过赋值修改该参数的值。
+例如 \hbox{|\hbadness=200|} 这个赋值使得|\hbadness|参数的值变为$200$.
 \endolist
 \noindent
-We also use the term ``parameter'' to refer to entities such as |\pageno|
-that are actually registers but behave just like parameters.
-^^{registers//parameters as}
+有些命令，例如|\pageno|，虽然是寄存器但和参数的用法一样。
+因此我们同样使用``参数''这个术语来指代这些命令。
+^^{寄存器//作为参数}
 
-Some commands are names of tables.  These commands are used like
-parameters, except that they require an additional argument that
-specifies a particular entry in the table. For example, |\catcode| names
-a table of category codes (\xref{category code}). Thus
-the command
-\hbox{|\catcode`~=13|} sets the category code of the `|~|'
-character to $13$.
+%Some commands are names of tables.  These commands are used like
+%parameters, except that they require an additional argument that
+%specifies a particular entry in the table. For example, |\catcode| names
+%a table of category codes (\xref{category code}). Thus
+%the command
+%\hbox{|\catcode`~=13|} sets the category code of the `|~|'
+%character to $13$.
+有些命令是表名。这些命令的用法和参数类似，
+只是它们需要额外的参量指定表格项。
+例如，|\catcode| 是类别码表格的名称（\xref{category code}）。
+因此，\hbox{|\catcode`~=13|} 这个命令设置字符`|~|'的类别码为$13$。
 
 
 \subsection Spaces
