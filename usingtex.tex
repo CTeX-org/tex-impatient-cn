@@ -19,7 +19,7 @@
 \section 从键盘输入变到油墨
 
 %\subsection Programs and files you need
-\subsection 你所需要的程序和文件
+\subsection 所需的程序和文件
 
 为了制作一个 \TeX\ 文档, 你必需运行 \TeX\ 及其相关软件.
 你同时也需要一些 \TeX\ 及其相关软件所用到的辅助文件.
@@ -81,7 +81,7 @@
 某些设备驱动也需要使用字体信息文件.
 一些设备驱动可以使用打印机中包含的字体,
 所以可以不需要这些字体的字体轮廓文件.
-\secondprinting{\vfill\eject}
+%\secondprinting{\vfill\eject}
 
 
 %\subsection Running {\TeX}
@@ -636,8 +636,8 @@ Proc.\!visiblespace!.Royal Acad.\!visiblespace!.of Twits
 %^|\frenchspacing| command (\xref\frenchspacing).
 %|\frenchspacing| is often recommended for ^{bibliographies}.
 有些人更喜欢不在句末标点后留下更多间隔。
-用 ^|\frenchspacing| 命令（\xref\frenchspacing ）就可达成此效果。
-在^{参考文献}中通常建议使用 |\frenchspacing| 命令。
+利用 ^|\frenchspacing| 命令（\xref\frenchspacing ）你就可达成此效果。
+在^{参考文献}中通常建议使用这个 |\frenchspacing| 命令。
 
 %For single ^{quotation marks}, you should use the left and right
 %single quotes
@@ -718,28 +718,55 @@ There is no `q' in this sentence.
 % 用 \null 和 {} 绕开 xecjk 的问题
 
 
-\subsection Special characters
+%\subsection Special characters
+\subsection 特殊字符
 
-Certain characters have special meaning to \TeX, so you shouldn't use them
-in ordinary text.  They are:
+%Certain characters have special meaning to \TeX, so you shouldn't use them
+%in ordinary text.  They are:
+在 \TeX\ 中某些字符有特殊的含义，
+因而不能在普通文本中使用。这些特殊字符为：
 
+%\csdisplay
+%    $  #  &  %  _  ^  ~  {  }  \
+%|
+%^^|$//in ordinary text|
+%^^|#//in ordinary text|
+%^^|&//in ordinary text|
+%^^|_//in ordinary text|
+%^^|^//in ordinary text|
+%^^|~//in ordinary text|
+%^^|%//in ordinary text|
+%^^|{//in ordinary text|
+%^^|}//in ordinary text|
+%{\recat!ttidxref[\//in ordinary text]]
+%\noindent
+%In order to produce them in your typeset document,
+%you need to use circumlocutions.  For the first five,
+%you should instead type:
+%^^|\$|
+%^^|\#|
+%^^|\&|
+%^^|\%|
+%^^|\_|
+%\csdisplay
+%    \$  \#  \&  \%  \_
+%|
 \csdisplay
     $  #  &  %  _  ^  ~  {  }  \
 |
-^^|$//in ordinary text|
-^^|#//in ordinary text|
-^^|&//in ordinary text|
-^^|_//in ordinary text|
-^^|^//in ordinary text|
-^^|~//in ordinary text|
-^^|%//in ordinary text|
-^^|{//in ordinary text|
-^^|}//in ordinary text|
-{\recat!ttidxref[\//in ordinary text]]
+^^|$//在普通文本中|
+^^|#//在普通文本中|
+^^|&//在普通文本中|
+^^|_//在普通文本中|
+^^|^//在普通文本中|
+^^|~//在普通文本中|
+^^|%//在普通文本中|
+^^|{//在普通文本中|
+^^|}//在普通文本中|
+{\recat!ttidxref[\//在普通文本中]]
 \noindent
-In order to produce them in your typeset document,
-you need to use circumlocutions.  For the first five,
-you should instead type:
+要在排版的文档中生成它们，你需要使用间接的方法。
+对前面五个字符，你需要键入：
 ^^|\$|
 ^^|\#|
 ^^|\&|
@@ -749,186 +776,305 @@ you should instead type:
     \$  \#  \&  \%  \_
 |
 
+%\noindent
+%For the others, you need something more elaborate:
 \noindent
-For the others, you need something more elaborate:
+而对另外五个字符，你需要键入更多：
 
 \csdisplay
    \^{!visiblespace}   \~{!visiblespace}   $\{$   $\}$   $\backslash$
 |
 
 
-\subsection Groups
+%\subsection Groups
+\subsection 编组
 
+%\bix^^{groups}
+%A \emph{group}
+%consists of material enclosed in matching left and right braces (|{| and
+%|}|).
+%^^|{//starting a group|
+%^^|}//ending a group|
+%By placing a command within a group, you can limit its effects to
+%the material within the group.
+%For instance, the |\bf| command tells \TeX\ to set
+%something in {\bf boldface} type.  If you were to put |\bf| into your input
+%and do nothing else to counteract it, everything in your document following the
+%|\bf| would be set in boldface.
+%By enclosing |\bf| in a group,
+%you limit its effect to the group.  For example, if you type:
+%\csdisplay
+%We have {\bf a few boldface words} in this sentence.
+%|
+%\noindent you'll get:
+%\display{We have {\bf a few boldface words} in this sentence.}
 \bix^^{groups}
-A \emph{group}
-consists of material enclosed in matching left and right braces (|{| and
-|}|).
-^^|{//starting a group|
-^^|}//ending a group|
-By placing a command within a group, you can limit its effects to
-the material within the group.
-For instance, the |\bf| command tells \TeX\ to set
-something in {\bf boldface} type.  If you were to put |\bf| into your input
-and do nothing else to counteract it, everything in your document following the
-|\bf| would be set in boldface.
-By enclosing |\bf| in a group,
-you limit its effect to the group.  For example, if you type:
+包含在配对的左右花括号（|{| 和 |}|）中的内容组成一个\emph{编组}。
+^^|{//开始编组|
+^^|}//结束编组|
+编组内部的命令，其作用范围被限制在该编组内部。
+例如，|\bf| 命令让 \TeX\ 将某些内容用粗体显示。
+如果你将 |\bf| 放在你的输入中，而没有用任何方式取消它，
+|\bf| 之后的所有内容都将以粗体显示。
+如果将 |\bf| 包含在一个编组中，
+就可以将它的作用限制在此编组中。
+比如，如果你键入：
 \csdisplay
 We have {\bf a few boldface words} in this sentence.
 |
-\noindent you'll get:
+\noindent 你将会得到如下的结果：
 \display{We have {\bf a few boldface words} in this sentence.}
 
-\noindent You can also use a group to limit the effect of
-an assignment to one of \TeX's parameters.
-These parameters contain values that affect how \TeX\ typesets your document.
-For example, the value of the |\parindent|
-parameter specifies the indentation at the beginning of a paragraph.
-The assignment |\parindent = 15pt|
-sets the indentation to $15$ printer's points.
-By placing this assignment at the beginning
-of a group containing a few paragraphs, you can change
-the indentation of just those paragraphs.  If you don't enclose
-the assignment in a group,
-the changed indentation will apply to the rest of the document (or up to the
-next assignment to |\parindent|, if there's a later one).
+%\noindent You can also use a group to limit the effect of
+%an assignment to one of \TeX's parameters.
+%These parameters contain values that affect how \TeX\ typesets your document.
+%For example, the value of the |\parindent|
+%parameter specifies the indentation at the beginning of a paragraph.
+%The assignment |\parindent = 15pt|
+%sets the indentation to $15$ printer's points.
+%By placing this assignment at the beginning
+%of a group containing a few paragraphs, you can change
+%the indentation of just those paragraphs.  If you don't enclose
+%the assignment in a group,
+%the changed indentation will apply to the rest of the document (or up to the
+%next assignment to |\parindent|, if there's a later one).
+\noindent 利用编组，你可以限制 \TeX\ 某个参数的取值的作用范围。
+这些参数的取值影响 \TeX\ 对文档的排版。
+例如，|\parindent| 参数的值指定了段首缩进量，
+赋值 |\parindent = 15pt| 将设定该缩进量为 $15$ 点。
+若将该赋值放在包含几个段落的编组开始处，
+你就可以仅仅改变这几个段落的段首缩进。
+若不将该赋值包含在编组中，
+对缩进量的修改将作用到文档的剩余部分%
+（或者作用到下个对|\parindent|的赋值为止，若还有下个赋值的话）。
 
+%\xrdef{bracegroup}
+%Not all pairs of braces indicate a group.
+%In particular, the braces associated with an argument for which the
+%braces are \emph{not} required don't indicate a group---they just
+%serve to delimit the argument.
+%Of those commands that do require braces for their arguments,
+%some treat the braces as defining a group
+%and the others interpret the argument in some special way that depends on
+%the command.\footnote
+%{More precisely, for primitive commands either
+%the braces define a group or they enclose tokens that aren't processed in
+%\TeX's stomach.
+%For |\halign| and |\valign| the group has a trivial
+%effect because everything within the braces either doesn't reach the stomach
+%(because it's in the template) or is enclosed in a further inner group.
+%^^|\halign//grouping for|
+%^^|\valign//grouping for|
+%}
+%\eix^^{groups}
 \xrdef{bracegroup}
-Not all pairs of braces indicate a group.
-In particular, the braces associated with an argument for which the
-braces are \emph{not} required don't indicate a group---they just
-serve to delimit the argument.
-Of those commands that do require braces for their arguments,
-some treat the braces as defining a group
-and the others interpret the argument in some special way that depends on
-the command.\footnote
-{More precisely, for primitive commands either
-the braces define a group or they enclose tokens that aren't processed in
-\TeX's stomach.
-For |\halign| and |\valign| the group has a trivial
-effect because everything within the braces either doesn't reach the stomach
-(because it's in the template) or is enclosed in a further inner group.
+并非所有配对花括号都表示一个编组。
+特别地，若参量\emph{不要求}有花括号，
+则与该参量一起的花括号并不表示一个编组%
+——它们仅用于确定该参量的界限。
+对于那些参量中确实需要花括号的命令，
+有些命令将花括号作为编组的定义，
+而其他命令用各自的特殊方式解释该参量。\footnote
+{更准确地说，对于原始命令，
+花括号要么定义了一个编组，要么不会在 \TeX\ 的胃中被处理。
+对于 |\halign| 和 |\valign| 命令，编组只有平凡的效果；
+这是由于编组中的一切东西要么不会到达胃里（因为它在模板中），
+要么包含在更深一层的群组中。
 ^^|\halign//grouping for|
 ^^|\valign//grouping for|
 }
 \eix^^{groups}
 
 
-\subsection Math formulas
+%\subsection Math formulas
+\subsection 数学公式
 
+%\bix^^{math}
+%\xrdef{mathform}
+%A math formula can appear in text (\emph{text math})
+%^^{text math}
+%or set off on a line by itself
+%with extra vertical space around it (\emph{display math}).
+%^^{display math}
+%You enclose a text formula in single dollar signs (|$|)
+%and a displayed formula in double dollar signs (|$$|).
+%\ttidxref{$}\ttidxref{$$}
+%For example:
 \bix^^{math}
 \xrdef{mathform}
-A math formula can appear in text (\emph{text math})
-^^{text math}
-or set off on a line by itself
-with extra vertical space around it (\emph{display math}).
-^^{display math}
-You enclose a text formula in single dollar signs (|$|)
-and a displayed formula in double dollar signs (|$$|).
+数学公式可以出现在正文中（\emph{行内公式}），
+^^{行内公式}
+或者出现在留出额外上下间距的单独一行中（\emph{陈列公式}）。
+^^{陈列公式}
+行内公式两边用单个美元符（|$|）围起来，
+而陈列公式两边用双个美元符（|$$|）围起来。
 \ttidxref{$}\ttidxref{$$}
-For example:
+例如：
 
+%\csdisplay
+%If $a<b$, then the relation $$e^a < e^b$$ holds.
+%|
+%\noindent This input produces:
+%\display{\centereddisplays
+%If $a<b$, then the relation $$e^a < e^b$$ holds.}
+%\smallskip
+%\noindent \chapterref{math} describes the commands that are useful
+%in math formulas.
+%\eix^^{math}
 \csdisplay
 If $a<b$, then the relation $$e^a < e^b$$ holds.
 |
-\noindent This input produces:
+\noindent 此输入得到的结果是：
 \display{\centereddisplays
 If $a<b$, then the relation $$e^a < e^b$$ holds.}
 \smallskip
-\noindent \chapterref{math} describes the commands that are useful
-in math formulas.
+\noindent \chapterref{math}描述了数学公式中常用的命令。
 \eix^^{math}
 
 
 %\section How \TeX\ works
 \section \TeX\ 如何工作
 
-In order to use \TeX\ effectively, it helps to
-have some idea of how \TeX\ goes about
-its activity of transmuting input into output.
-You can imagine \TeX\ as a kind of organism with ``eyes'',
-``mouth'', ``gullet'',
-``stomach'', and ``intestines''.
-Each part of the organism transforms its input in some way and passes
-the transformed input to the next stage.
+%In order to use \TeX\ effectively, it helps to
+%have some idea of how \TeX\ goes about
+%its activity of transmuting input into output.
+%You can imagine \TeX\ as a kind of organism with ``eyes'',
+%``mouth'', ``gullet'',
+%``stomach'', and ``intestines''.
+%Each part of the organism transforms its input in some way and passes
+%the transformed input to the next stage.
+为了更有效地使用 \TeX ，
+对 \TeX\ 着手将输入转换为输出的活动有所了解是有益的。
+你可以将 \TeX\ 想象为一种有“眼睛”、“嘴巴”、“食道”、“胃”以及“肠道”的生物体。
+该生物体的每个器官都以某种方式转换它的输入，并将转换的结果送到下个器官中。
 
-The ^{eyes} transform an input file into a sequence of characters.
-The ^{mouth} transforms the sequence of characters into a sequence of
-\emph{tokens},
-^^{tokens}
-where each token is either a single character or a control sequence.
-^^{control sequences//as tokens}
-The gullet expands the tokens into a sequence of
-\emph{primitive commands}, which are also tokens.
-^^{expanding tokens}
-The ^{stomach} carries out the operations specified by the primitive commands,
-producing a sequence of pages.
-Finally, the ^{intestines} transform each page into the form required
-for the \dvifile\ and send it there.
-^^{\dvifile//created by \TeX's intestines}
-These actions are described in more detail
-in \chapterref{concepts} under \conceptcit{\anatomy}.
+%The ^{eyes} transform an input file into a sequence of characters.
+%The ^{mouth} transforms the sequence of characters into a sequence of
+%\emph{tokens},
+%^^{tokens}
+%where each token is either a single character or a control sequence.
+%^^{control sequences//as tokens}
+%The gullet expands the tokens into a sequence of
+%\emph{primitive commands}, which are also tokens.
+%^^{expanding tokens}
+%The ^{stomach} carries out the operations specified by the primitive commands,
+%producing a sequence of pages.
+%Finally, the ^{intestines} transform each page into the form required
+%for the \dvifile\ and send it there.
+%^^{\dvifile//created by \TeX's intestines}
+%These actions are described in more detail
+%in \chapterref{concepts} under \conceptcit{\anatomy}.
+%^^{\anatomy}
+^{眼睛}将输入文件转换为一系列字符。
+^{嘴巴}将这串字符转换为一系列\emph{记号}，
+^^{记号}
+其中每个记号是单个字符或者一个控制序列。
+^^{控制序列//作为记号}
+食道将该串记号展开为一系列\emph{原始命令}记号。
+^^{展开记号}
+^{胃}执行原始命令指定的操作，生成一些页面。
+最后，^{肠道}将每个页面转换为 \dvifile 所需的形式并发送给它。 
+^^{\dvifile//由 \TeX\ 的肠道制造}
+这些活动在\chapterref{concepts}的\conceptcit{\anatomy}中有更详细的描述。
 ^^{\anatomy}
 
-The real typesetting goes on in the stomach.
-The commands instruct \TeX\ to typeset such-and-such a character in
-such-and-such a font, to insert an interword space, to end a paragraph, and
-so on.
-Starting with individual typeset characters and other simple typographic
-elements, \TeX\ builds up a page ^^{pages} as a nest of
-^{boxes} within boxes within boxes \seeconcept{box}.
-Each typeset character occupies a box, and so does an entire page.
-A box can contain not just smaller boxes but also \emph{glue} ^^{glue}
-(\xref{glue}) and a few other things.
-The glue produces
-space between the smaller boxes.
-An important property of glue is that it can stretch and shrink;
-thus \TeX\ can make a box
-larger or smaller by stretching or shrinking
-the glue within~it.
+%The real typesetting goes on in the stomach.
+%The commands instruct \TeX\ to typeset such-and-such a character in
+%such-and-such a font, to insert an interword space, to end a paragraph, and
+%so on.
+%Starting with individual typeset characters and other simple typographic
+%elements, \TeX\ builds up a page ^^{pages} as a nest of
+%^{boxes} within boxes within boxes \seeconcept{box}.
+%Each typeset character occupies a box, and so does an entire page.
+%A box can contain not just smaller boxes but also \emph{glue} ^^{glue}
+%(\xref{glue}) and a few other things.
+%The glue produces
+%space between the smaller boxes.
+%An important property of glue is that it can stretch and shrink;
+%thus \TeX\ can make a box
+%larger or smaller by stretching or shrinking
+%the glue within~it.
+实际的排版活动出现在胃中。
+这些命令指导 \TeX\ 用这样或那样的字体排版这个或那个字符，
+插入单词间空隔，结束一个段落，等等。
+从单个排版字符及其他简单排印元素开始，
+\TeX\ 将^{盒子}一层层放入其他盒子中\seeconcept{box}，
+这一整套盒子构造了一个页面^^{页面}。
+每个排版字符占用一个盒子，整个页面也一样。
+盒子中不仅包含更小的盒子，也包含\emph{粘连} ^^{粘连}
+(\xref{glue})和一些其他东西。
+粘连生成小盒子之间的间距。
+粘连的一个重要属性在于它可以伸展和收缩；
+因此通过伸缩盒子中的粘连，\TeX\ 可以让盒子变大或变小。
 
-Roughly speaking, a line is a box containing a sequence of character boxes,
-and a page is a box containing a sequence of line boxes.
-There's glue between the words of a line and between the lines of a page.
-\TeX\ stretches or shrinks
-the glue on each line so as to make the right margin
-of the page come out even and the glue on each page
-so as to make the bottom margins of different pages be equal.
-Other kinds of typographical elements can also appear in a line or in a page,
-but we won't go into them here.
+%Roughly speaking, a line is a box containing a sequence of character boxes,
+%and a page is a box containing a sequence of line boxes.
+%There's glue between the words of a line and between the lines of a page.
+%\TeX\ stretches or shrinks
+%the glue on each line so as to make the right margin
+%of the page come out even and the glue on each page
+%so as to make the bottom margins of different pages be equal.
+%Other kinds of typographical elements can also appear in a line or in a page,
+%but we won't go into them here.
+粗略说来，文本行是一个包含一系列字符盒子的盒子，
+而页面是一个包含一系列行盒子的盒子。
+一行的各单词之间以及页面的各行之间都有粘连。
+\TeX\ 伸缩各行中的粘连以让右页边对齐，
+伸缩各页中的粘连以让各页的下边距相等。
+其他类型的排印元素也可以出现在行内或页内，但我们不在这里讨论。
 
-As part of the process of assembling pages, \TeX\ needs to break paragraphs
-into lines and lines into pages.  The stomach first sees a paragraph as one
-long line, in effect.  It inserts \emph{line breaks}
-^^{line breaking}
-in order to transform
-the paragraph into a sequence of lines of the right length, performing a
-rather elaborate analysis in order to choose the set of breaks
-that makes the paragraph look best
-\seeconcept{line break}.
-The stomach carries out a similar
-but simpler process in order to transform a sequence of lines into a page.
-Essentially the stomach accumulates lines until no more lines can fit on the
-page.  It then chooses a single place to break the page, putting the lines
-before the break on the current page
-and saving the lines after the break for the
-next page \seeconcept{page break}. ^^{page breaks//inserted by \TeX's stomach}
+%As part of the process of assembling pages, \TeX\ needs to break paragraphs
+%into lines and lines into pages.  The stomach first sees a paragraph as one
+%long line, in effect.  It inserts \emph{line breaks}
+%^^{line breaking}
+%in order to transform
+%the paragraph into a sequence of lines of the right length, performing a
+%rather elaborate analysis in order to choose the set of breaks
+%that makes the paragraph look best
+%\seeconcept{line break}.
+%The stomach carries out a similar
+%but simpler process in order to transform a sequence of lines into a page.
+%Essentially the stomach accumulates lines until no more lines can fit on the
+%page.  It then chooses a single place to break the page, putting the lines
+%before the break on the current page
+%and saving the lines after the break for the
+%next page \seeconcept{page break}. ^^{page breaks//inserted by \TeX's stomach}
+作为组装页面过程的一部分，
+\TeX\ 需要将段落分为多行，将多行组成页面。
+事实上，\TeX\ 的胃刚开始将段落看成一个很长的行。
+它插入\emph{断行点}以将段落分为长度合适的一些行，
+^^{断行}
+通过复杂的分析以找到最佳的断行点的集合\seeconcept{line break}。
+\TeX\ 的胃也执行类似但简单些的分析以将一些行组成页面。
+基本上，胃累加各行直到页面上放不下更多的行。
+然后它选择一个分页位置，将该分页位置之前的各行放在当前页面，
+将之后的各行留给下个页面\seeconcept{page break}。%
+^^{分页//由 \TeX\ 的胃插入}
 
-When \TeX\ is assembling an entity from a list of items (boxes, glue, etc.),
-it is in one of six
-\emph{modes} ^^{modes} (\xref{mode}).
-The kind of entity it is assembling defines the mode that it is in.
-There are two ordinary modes: ordinary horizontal mode for assembling
-paragraphs (before they are broken into lines)
-and ordinary vertical mode for assembling pages.
-There are two restricted modes:
-restricted horizontal mode for appending items horizontally to form
-a horizontal box
-and internal vertical mode for appending items vertically to form
-a vertical box (other than a page).
-Finally, there are two math modes: text math mode for assembling math formulas
-within a paragraph and display math mode for assembling math formulas that are
-displayed on lines by themselves (see ``Math formulas'', \xref{mathform}).
+%When \TeX\ is assembling an entity from a list of items (boxes, glue, etc.),
+%it is in one of six
+%\emph{modes} ^^{modes} (\xref{mode}).
+%The kind of entity it is assembling defines the mode that it is in.
+%There are two ordinary modes: ordinary horizontal mode for assembling
+%paragraphs (before they are broken into lines)
+%and ordinary vertical mode for assembling pages.
+%There are two restricted modes:
+%restricted horizontal mode for appending items horizontally to form
+%a horizontal box
+%and internal vertical mode for appending items vertically to form
+%a vertical box (other than a page).
+%Finally, there are two math modes: text math mode for assembling math formulas
+%within a paragraph and display math mode for assembling math formulas that are
+%displayed on lines by themselves (see ``Math formulas'', \xref{mathform}).
+在 \TeX\ 组装一个列表项（盒子，粘连等）中的某个东西时，
+它总处于六种\emph{模式}^^{模式}（\xref{mode}）的其中一种模式中。
+它所组装的东西的类型定义了它所在的模式。
+首先有两种普通模式：普通水平模式用于组装段落（在它们分为多行之前），
+普通垂直模式用于组装页面。
+其次有两种限制模式：限制水平模式用于水平地添加元素形成水平盒子，
+内部垂直模式用于垂直地添加元素以形成竖直盒子（非页面盒子）。
+最后还有两种数学模式：行内数学模式用于组装段落内部的数学公式，
+陈列数学模式用于组装单独一行显示的数学公式（见“数学公式”，\xref{mathform}）。
 
 
 %\section New \TeX\ versus old {\TeX}
