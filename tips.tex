@@ -622,7 +622,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 \endolist
 
 %\section Avoiding excess space around a display
-\section 避免独立显示（display）周围的额外空白
+\section 避免陈列公式周围的额外空白
 
 % \null
 % ^^{math display}
@@ -644,21 +644,21 @@ Overfull \vbox (296.30745pt too high) has occurred
 
 \null
 ^^{math display}
-如果在数学显示之前有太多空白，有可能是因为你输入的时候在数学显示之前留
+如果在陈列公式之前有太多空白，有可能是因为你输入的时候在陈列公式之前留
 了一个空行。这个空行将开始一个新的段落，并且把 \TeX\ 转入垂直模式。当
-\TeX\ 在垂直模式里遇到一个 '|$|', 就会切换到水平模式并插入段间 glue
-（|\parskip|），接下来又插入一个行间 glue（|\baselineskip|）。然后当显
-示开始的时候，它插入\emph{更多}glue（或者是 ^|\abovedisplayskip| 或者
-是 ^|\abovedisplayshortskip|，取决于前一行的长度）。只有最后一个 glue 是你想
-要的。为了避免也得到段间 glue，在数学显示之前不要留空行或者结束段落
-（比如用 \par）。
+\TeX\ 在垂直模式里遇到一个 '|$|', 就会切换到水平模式并插入段间粘连
+（|\parskip|），接下来又插入一个行间粘连（|\baselineskip|）。然后当显
+示开始的时候，它插入\emph{更多}粘连（或者是 ^|\abovedisplayskip| 或者
+是 ^|\abovedisplayshortskip|，取决于前一行的长度）。只有最后一个粘连是你想
+要的。为了避免也得到段间粘连，在陈列公式之前不要留空行或者结束段落
+（比如用 |\par|）。
 
 % Similarly,
 % if you're getting too much space below a math display, it may be because
 % you've left a blank line in your input below the display.
 % Just remove it.
 
-类似的，如果在数学显示之后有太多的空白，可能是因为在输入时留了一个空行。
+类似的，如果在陈列公式之后有太多的空白，可能是因为在输入时留了一个空行。
 去掉它即可。
 
 %\section Avoiding excess space after a paragraph
@@ -717,10 +717,10 @@ Overfull \vbox (296.30745pt too high) has occurred
 
 \null
 \bix^^{paragraphs//shaping}
-有几个 \TeX\ 的参数---^|\hangindent|， ^|\leftskip|， 等等---%
+有几个 \TeX\ 的参数——^|\hangindent|， ^|\leftskip|， 等等——%
 影响 \TeX\ 塑段和折行的方式。
 ^^{line breaking}
-\plainTeX{} 的命令，如 ^|\narrower| 和 ^｜\hang|， 会间接的用到这些参
+\PlainTeX{} 的命令，如 ^|\narrower| 和 ^|\hang|， 会间接的用到这些参
 数；你也可以直接对它们赋值。 如果你已经使用了这些命令中的一个（或者改
 变了这些参数中的一个），但是看上去对段落没有任何效果，问题可能在于，段
 落结束之前你先结束了一个组。例如：
@@ -1232,7 +1232,7 @@ Debbie was the * of the show.
 
 \null
 ^^{verbatim text}\xrdef{verbatim}
-原文是 "输入什么样，就是什么样''的文本。比较常见的是排版计算机输入，包
+原文是“输入什么样，就是什么样”的文本。比较常见的是排版计算机输入，包
 括计算机程序和 \TeX{} 输入。
 ^^{computer programs, typesetting}
 计算机输入难于以原文呈现的原因是：
@@ -1449,7 +1449,7 @@ and Typography for More Readable Programs}. Reading, Mass.:
 Addison-Wesley, 1990.\par}
 
 %\section Using outer macros
-\section 使用 outer 宏
+\section 使用外部宏
 
 % \null
 % ^^{forbidden control sequence}^^{incomplete conditional}
