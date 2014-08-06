@@ -730,7 +730,7 @@
    \def\chaptername{#1}%
    \advance\chapterno by 1
    %
-   \bookmark{1}{\the\chapterno\ \chaptername}
+   \bookmark{1}{\ifback\else\the\chapterno\ \fi\chaptername}
    %
    \setbox0 = \hbox{\chapternumeralfont
                     \kern1pt
@@ -1507,6 +1507,7 @@
    \noheadlinetrue
    \advance\hsize by 2pc
    \vglue2pc % Plus a \topskip of 2pc.
+   \bookmark{1}{概念列表}%
    {\sectionfonts \leftline{概念列表}}%
    \vskip\belowsectionskip
    {\conceptpagefonts
