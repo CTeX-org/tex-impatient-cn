@@ -4,102 +4,190 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+%\chapter{Concepts}
 \chapter{概念}
 
 \chapterdef{concepts}
 
-本书的这部分包含了使用 \TeX\ 时所需要瞭解的概念.
-它包括我们在解释命令时所使用的技术词汇以及重点内容,
-这些内容并不适合放在本书的其它地方.
+%This part of the book contains definitions and explanations of
+%the concepts that we use in describing \TeX.
+%The concepts include both
+%technical terms that we use in explaining the commands and
+%important topics that don't fit elsewhere in the book.
+本书的这部分包含了使用 \TeX\ 时所需要了解的概念。
+它包括我们在解释命令时所使用的技术词汇以及重点内容，
+这些内容并不适合放在本书的其它地方。
 
-
-这些概念使用英文字母顺序进行排列,
-书背内页包含了一份详细的在此提及的概念列表, 以及他们被提及时所在的页数.
-我们建议你把书背内页复印下来, 放在旁边,
-这样你就能在遇到不熟悉的概念时马上查找到它们.
-我们尽可能地使用和 \texbook\ 相一致的术语. \idxref{\texbook}
+%The concepts are arranged alphabetically.
+%The inside back cover of the book contains a complete list of
+%concepts and the pages on which they are explained.
+%We suggest that you make a copy of the inside back cover and keep it nearby
+%so that you'll be able to identify and look up an unfamiliar
+%concept immediately.
+%As far as possible, we've kept our terminology consistent with that of
+%\texbook.\idxref{\texbook}
+这些概念使用英文字母顺序进行排列，
+书背内页包含了一份详细的在此提及的概念列表，以及他们被提及时所在的页数。
+我们建议你把书背内页复印下来，放在旁边，
+这样你就能在遇到不熟悉的概念时马上查找到它们。
+我们尽可能地使用和 \texbook\ 相一致的术语。\idxref{\texbook}
 
 \beginconcepts
 
-\bookmark{2}{从A到B}
-\conceptindex{活动字符 (active characters)}
-\concept {活动字符 (active character)}
+\bookmark{2}{以A开头}
+%\conceptindex{active characters}
+%\concept {active character}
+\conceptindex{活动字符}
+\concept {活动字符}
 
-一个\defterm{活动字符}是一个有定义的\refterm{字符}.
-比如一个活动字符可能表示着一个宏定义.
+%An \defterm{active character} is a \refterm{character}
+%that has a definition, e.g., a macro definition, associated with it.
+%^^{macros//named by active characters}
+%You can think of an active character as a special kind of control sequence.
+%When \TeX\ encounters an active character, it
+%executes the definition associated with the character.
+%If \TeX\ encounters an active character that does not have
+%an associated definition, it will complain about an
+%undefined control sequence.
+\defterm{活动字符}（active character）是一个有定义的\refterm{字符}。
+比如一个活动字符可能表示着一个宏定义。
 ^^{macros//named by active characters}
-你可以把活动字符理解为一种控制序列.
-当 \TeX\ 碰到了一个活动字符, 它就执行这个字符所表示的定义.
-如果 \TeX\ 碰到的活动字符并没有表示一个定义,
-则它会报错说这是一个没有定义的控制序列.
+你可以把活动字符理解为一种控制序列。
+当 \TeX\ 碰到了一个活动字符，它就执行这个字符所表示的定义。
+如果 \TeX\ 碰到的活动字符并没有表示一个定义，
+则它会报错说这是一个没有定义的控制序列。
 
-
-一个活动字符的\refterm{类码}为 $13$ (^|\active|的值).
-当你定义一个活动字符时,
-你必须先使用 ^|\catcode| 命令 \ctsref{\catcode} 来使这个字符活动,
-然后再使用类似 |\def|, |\let| 或者 |\chardef| 之类的命令指定这个字符的定义.
-定义活动字符和定义 \refterm{控制序列} 所使用的方法是相同的.
+%An active character has a \refterm{category code} of $13$ (the value
+%of ^|\active|).
+%To define an active character, you should first
+%use the ^|\catcode| command
+%\ctsref{\catcode} to make it active
+%and then provide the definition of the character, using
+%a command such as |\def|, |\let|, or |\chardef|.
+%The definition of an active character has the same form as
+%the definition of a \refterm{control sequence}.
+%^^{category codes//of active characters}
+%If you try to define the macro for an active character
+%before you make the character active, \TeX\ will complain about a
+%missing control sequence.
+一个活动字符的\refterm{类别码}为 $13$ (^|\active|的值)。
+当你定义一个活动字符时，
+你必须先使用 ^|\catcode| 命令 \ctsref{\catcode} 来使这个字符活动，
+然后再使用类似 |\def|，|\let| 或者 |\chardef| 之类的命令指定这个字符的定义。
+定义活动字符和定义\refterm{控制序列}所使用的方法是相同的。
 ^^{category codes//of active characters}
-如因你尝试先对字符指定定义后把它设置成活动的,
-\TeX\ 会报错说这是一个不明的控制序列.
+如因你尝试先对字符指定定义后把它设置成活动的，
+\TeX\ 会报错说这是一个不明的控制序列。
 
-比如, 在 \plainTeX\ 中, 波浪号 (|~|) 被定义成一个活动字符.
-它可以在所连接的两个单词当中产生一个空格, 并且不让 \TeX\ 把这个空格转为 \refterm{断行}. \refterm{\PlainTeX:\plainTeX} 通过以下方式来定义 `|~|':
+%For example, the tilde character (|~|) is defined as an active character
+%in \plainTeX.  It
+%produces a space between two words but links those words so that
+%\TeX\ will not turn the space into a \refterm{line break}.
+%\refterm{\PlainTeX:\plainTeX} defines `|~|' by the commands:
+比如，在 \PlainTeX\ 中，波浪号 (|~|) 被定义成一个活动字符。
+它可以在所连接的两个单词当中产生一个空格，并且不让 \TeX\ 把这个空格转为 \refterm{断行}。
+\refterm{\PlainTeX:\plainTeX} 通过以下方式来定义 `|~|'：
 
 \csdisplay
 \catcode `~ = \active \def~{\penalty10000\!visiblespace}
 |
-(这里的 |\penalty| 可以阻止断行, `|\!visiblespace|' 可以插入一个空格.)
+%(The |\penalty| inhibits a line break and the `|\!visiblespace|'
+%inserts a space.)
+（这里的 |\penalty| 可以阻止断行，`|\!visiblespace|' 可以插入一个空格。）
 \endconcept
 
 
-\conceptindex{排列 (alignments)}
-\concept 排列 (alignment)
+%\conceptindex{alignments}
+%\concept alignment
+\conceptindex{阵列}
+\concept 阵列
 
+%\bix^^{tables}
+%An \defterm{alignment} is a construct for aligning material, such as a
+%table, in columns or rows.  To form an alignment you need to
+%(a)~describe the layout of the columns or rows and (b)~tell \TeX\ what
+%material goes into the columns or rows.  A tabbing alignment or a
+%horizontal alignment is organized as a sequence of rows; a vertical
+%alignment is organized as a sequence of columns.  We first describe
+%tabbing and horizontal alignments and then more briefly describe
+%vertical alignments.
 \bix^^{tables}
-一个排列是一个把素材有序排印的结构, 比如一张有行有列的表格.
-当你需要构成一个排列时, 你要 (a)~描述行和列的布局, 并且 (b)~告诉 \TeX\ 插在行或者列中的内容.
-表排列和水平排列是由一系列的行组成; 垂直排列则由一系列的列组成.
-我们首先讲述表排列和水平排列, 然后简要地介绍一下垂直排列.
+\defterm{阵列}（alignment）是一个把素材有序排印的结构，
+就如一张有行有列的表格。当你需要构造一个阵列时，
+你要 (a)~描述行和列的布局，并且 (b)~告诉 \TeX\ 各行或各列中的内容。
+制表阵列和水平阵列是由一系列的行组成；竖直阵列则由一系列的列组成。
+我们首先讲述制表阵列和水平阵列，然后简要地介绍一下竖直阵列。
 
-表排列是在 \plainTeX\ 中定义的. 它很简单, 因此不如水平排列那样灵活.
-表排列和水平排列的主要区别在于你如何定义它们的布局.
+%Tabbing alignments are defined by \plainTeX.  They are simpler but less
+%flexible than horizontal alignments.  Tabbing and horizontal alignments
+%differ principally in how you describe their layouts.
+制表阵列是在 \PlainTeX\ 中定义的。它很简单，因此不如水平阵列那样灵活。
+制表阵列和水平阵列的主要区别在于你如何定义它们的布局。
 
 \bix^^|\settabs|
 \bix\ctsidxref{+}
 \bix\ctsidxref{cr}
 
-To construct a tabbing alignment you first issue a |\settabs| command
-\ctsref{\settabs} that specifies how \TeX\ should divide the available
-horizontal space into columns.  Then you provide a sequence of rows for
-the table.  Each row consists of a |\+| control sequence \ctsref{\@plus}
-followed by a list of ``entries'', i.e., row\slash column intersections.
+%To construct a tabbing alignment you first issue a |\settabs| command
+%\ctsref{\settabs} that specifies how \TeX\ should divide the available
+%horizontal space into columns.  Then you provide a sequence of rows for
+%the table.  Each row consists of a |\+| control sequence \ctsref{\@plus}
+%followed by a list of ``entries'', i.e., row\slash column intersections.
+%^^{entry (column or row)}
+%Adjacent entries in a row are separated by an ampersand (|&|).
+%\xrdef{@and}
+%\ttidxref{&}
+%The end of a row is indicated by ^|\cr| after its
+%last entry.
+%If a row has fewer entries than there are columns in the alignment,
+%\TeX\ effectively fills out the row with blank entries.
+要构造一个制表阵列，你首先需要用 |\settabs| 命令
+\ctsref{\settabs} 确定 \TeX\ 如何将可用空白水平地分为多列。
+然后你就可以逐行地填充表格的各行。
+每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“单元”组成%
 ^^{entry (column or row)}
-Adjacent entries in a row are separated by an ampersand (|&|).
 \xrdef{@and}
 \ttidxref{&}
-The end of a row is indicated by ^|\cr| after its
-last entry.
-If a row has fewer entries than there are columns in the alignment,
-\TeX\ effectively fills out the row with blank entries.
+（单元是行和列的交叉部分），并以 ^|\cr| 结束。
+如果某行的单元数目比该阵列的列数少，\TeX\ 就用空白单元填充它们。
 
-As long as it's preceded by a |\settabs| command, you can put a row of a
-tabbing alignment anywhere in your document.  In particular, you can put
-other things between the rows of a tabbing alignment or describe several
-tabbing alignments with a single |\settabs|.  Here's an example of a
-tabbing alignment:
+%As long as it's preceded by a |\settabs| command, you can put a row of a
+%tabbing alignment anywhere in your document.  In particular, you can put
+%other things between the rows of a tabbing alignment or describe several
+%tabbing alignments with a single |\settabs|.  Here's an example of a
+%tabbing alignment:
+你可以将制表阵列的行放在文档的任何地方，只要前面有 |\settabs| 命令。
+特别地，你可以在制表阵列的各行之间添加其他内容，
+或者用同一个  |\settabs| 描述多个制表阵列。
+这里有一个制表阵列的例子：
 
+%\xrdef{tabbedexample}\csdisplay
+%{\hsize = 1.7 in \settabs 2 \columns
+%\+cattle&herd\cr
+%\+fish&school\cr
+%\+lions&pride\cr}
+%|
+%The |\settabs 2 \columns| command in this example \ctsref{\settabs}
+%tells \TeX\ to produce two equally wide columns.
+%The line length is $1.7$ inches.
+%The typeset alignment looks like this:
 \xrdef{tabbedexample}\csdisplay
 {\hsize = 1.7 in \settabs 2 \columns
 \+cattle&herd\cr
 \+fish&school\cr
 \+lions&pride\cr}
 |
-The |\settabs 2 \columns| command in this example \ctsref{\settabs}
-tells \TeX\ to produce two equally wide columns.
-The line length is $1.7$ inches.
-The typeset alignment looks like this:
+这个例子中的 |\settabs 2 \columns| 命令\ctsref{\settabs}%
+让 \TeX\ 生成总宽度为 $1.7$ 英寸的等宽两列。
+所排版出的阵列如下：
 
+%{\def\+{\tabalign}% so it isn't \outer.
+%\vdisplay{%
+%\hsize 1.7 in \settabs 2 \columns
+%\+cattle&herd\cr
+%\+fish&school\cr
+%\+lions&pride\cr}
+%}%
 {\def\+{\tabalign}% so it isn't \outer.
 \vdisplay{%
 \hsize 1.7 in \settabs 2 \columns
@@ -108,17 +196,34 @@ The typeset alignment looks like this:
 \+lions&pride\cr}
 }%
 
+%\margin{Missing explanation added here.}
+%There's another form of tabbing alignment in which you specify the column
+%widths with a template.  The column widths in the template
+%determine the column widths in the rest of the alignment:
+%\csdisplay
+%{\settabs\+cattle\quad&school\cr
+%\+cattle&herd\cr
+%\+fish&school\cr
+%\+lions&pride\cr}
+%|
+%Here's the result:
+%{\def\+{\tabalign}% so it isn't \outer.
+%\vdisplay{%
+%\settabs\+cattle\quad&school\cr
+%\+cattle&herd\cr
+%\+fish&school\cr
+%\+lions&pride\cr}
+%}%
 \margin{Missing explanation added here.}
-There's another form of tabbing alignment in which you specify the column
-widths with a template.  The column widths in the template
-determine the column widths in the rest of the alignment:
+制表阵列还有另一种用模板指明各列宽度的用法。
+模板的各列宽度决定了该阵列其后的各列宽度：
 \csdisplay
 {\settabs\+cattle\quad&school\cr
 \+cattle&herd\cr
 \+fish&school\cr
 \+lions&pride\cr}
 |
-Here's the result:
+这是上面例子生成的结果：
 {\def\+{\tabalign}% so it isn't \outer.
 \vdisplay{%
 \settabs\+cattle\quad&school\cr
@@ -130,43 +235,78 @@ Here's the result:
 \eix^^|\settabs|
 \eix\ctsidxref{+}
 \bix^^|\halign|
-Horizontal alignments are constructed with |\halign| \ctsref\halign.
-\TeX\ adjusts the column widths of a horizontal alignment according to
-what is in the columns.  When \TeX\ encounters the |\halign| command
-that begins a horizontal alignment, it first examines all the rows of
-the alignment to see how wide the entries are.  It then sets each column
-width to accommodate the widest entry in that column.
+%Horizontal alignments are constructed with |\halign| \ctsref\halign.
+%\TeX\ adjusts the column widths of a horizontal alignment according to
+%what is in the columns.  When \TeX\ encounters the |\halign| command
+%that begins a horizontal alignment, it first examines all the rows of
+%the alignment to see how wide the entries are.  It then sets each column
+%width to accommodate the widest entry in that column.
+水平阵列用 |\halign| \ctsref\halign 命令构造。
+\TeX\ 将根据各列内容调整水平阵列的列宽。
+当 \TeX\ 碰到 |\halign| 命令要开始一个水平阵列时，
+它首先检查该阵列的各行，看看各单元都有多宽。
+然后设定各列宽度以容纳该列中最宽的单元。
 
-A horizontal alignment governed by |\halign| consists of a
-``\pix^{preamble}'' that indicates the row layout followed by the rows
-themselves.
+%A horizontal alignment governed by |\halign| consists of a
+%``\pix^{preamble}'' that indicates the row layout followed by the rows
+%themselves.
+%\ulist
+%\li The preamble consists of a sequence of \pix^{template}s, one for each
+%column.  The template for a column specifies how the text for that
+%column should be typeset.  Each template must include a single |#|
+%character
+%\ttidxref{#}\xrdef{@asharp}
+%to indicate where \TeX\ should substitute the text of an entry into the
+%template.  The templates are separated by ampersands (|&|), \ttidxref{&}
+%and the end of the preamble is indicated by |\cr|.  By providing an
+%appropriate template you can obtain effects such as centering a column,
+%left or right justifying a column, or setting a column in a particular
+%\refterm{font}.
+由 |\halign| 命令构造的水平阵列包含一个“\pix^{导言}”，
+该导言说明了随后各行的布局。
 \ulist
-\li The preamble consists of a sequence of \pix^{template}s, one for each
-column.  The template for a column specifies how the text for that
-column should be typeset.  Each template must include a single |#|
-character
+\li 导言由一系列\pix^{模板}组成，一个模板对应一列，
+指明该列的文本应该如何排版。
+每个模板中都必须包含一个|#|字符，
 \ttidxref{#}\xrdef{@asharp}
-to indicate where \TeX\ should substitute the text of an entry into the
-template.  The templates are separated by ampersands (|&|), \ttidxref{&}
-and the end of the preamble is indicated by |\cr|.  By providing an
-appropriate template you can obtain effects such as centering a column,
-left or right justifying a column, or setting a column in a particular
-\refterm{font}.
+用于给出 \TeX\ 将单元的文本放入模板的位置。
+各个模板之间用 |&| 分隔，\ttidxref{&} 并以 |\cr| 结束该导言。
+利用合适的模板你可以让某列居中，左对齐或右对齐，
+或者使用某个特定的\refterm{字体}。
 
-\li The rows have the same form as in a tabbing alignment, except that
-you omit the |\+| at the beginning of each row.
-As before, entries are separated by |&| and the end of the row
-is indicated by |\cr|.
-\TeX\ treats each entry as a
-\refterm{group}, so any
-font-setting command or other \refterm{assignment}
-in a column template is in effect only for the entries in that column.
+%\li The rows have the same form as in a tabbing alignment, except that
+%you omit the |\+| at the beginning of each row.
+%As before, entries are separated by |&| and the end of the row
+%is indicated by |\cr|.
+%\TeX\ treats each entry as a
+%\refterm{group}, so any
+%font-setting command or other \refterm{assignment}
+%in a column template is in effect only for the entries in that column.
+%\endulist
+%\noindent The preamble and the rows must all be enclosed in the braces
+%that follow |\halign|.  Each |\halign| alignment must include
+%its own preamble.
+\li 除了要省略各行开头的 |\+|，各行的写法都和制表阵列一样：
+一行的各单元之间用 |&| 分隔，并以 |\cr| 结束该行。
+\TeX\ 将各个单元都看作一个\refterm{编组}，
+因此对某列模板的字体设定或其他\refterm{赋值}都只对该列各个单元有效。
 \endulist
-\noindent The preamble and the rows must all be enclosed in the braces
-that follow |\halign|.  Each |\halign| alignment must include
-its own preamble.
+\noindent 导言和各行都必须放在 |\halign| 后的花括号里面。
+每个 |\halign| 阵列都必须包含各自的导言。
 
-For example, the horizontal alignment:
+%For example, the horizontal alignment:
+%\csdisplay
+%\tabskip=2pc
+%\halign{\hfil#\hfil &\hfil#\hfil &\hfil#\hfil \cr
+%  &&\it Table\cr
+%\noalign{\kern -2pt}
+%  \it Creature&\it Victual&\it Position\cr
+%\noalign{\kern 2pt}
+%  Alice&crumpet&left\cr
+%  Dormouse&muffin&middle\cr
+%  Hatter&tea&right\cr}
+%|
+例如，下面这个水平阵列：
 \csdisplay
 \tabskip=2pc
 \halign{\hfil#\hfil &\hfil#\hfil &\hfil#\hfil \cr
@@ -179,8 +319,31 @@ For example, the horizontal alignment:
   Hatter&tea&right\cr}
 |
 
-\noindent produces the result:
+%\noindent produces the result:
+\noindent 生成下面的结果：
 
+%\xrdef{halignexample}
+%\vdisplay{%
+%\tabskip=2pc \halign{\hfil#\hfil &\hfil#\hfil &\hfil#\hfil \cr
+%  &&\it Table\cr
+%\noalign{\kern -2pt}
+%  \it Creature&\it Victual&\it Position\cr
+%\noalign{\kern 2pt}
+%  Alice&crumpet&left\cr
+%  Dormouse&muffin&middle\cr
+%  Hatter&tea&right\cr}
+%}%
+%\noindent The ^|\tabskip| \ctsref{\tabskip} in this example
+%tells \TeX\ to insert |2pc| of
+%\refterm{glue} between the columns.
+%The ^|\noalign| \ctsref{\noalign} commands tell \TeX\ to insert
+%\refterm{vertical mode} material between two rows.
+%In this example we've
+%used |\noalign| to produce some extra space between the title rows and
+%the data rows, and also to bring ``Table'' and ``Position'' closer together.
+%(You can also use |\noalign| before the first row or after the
+%last row.)
+%\eix^^|\halign|
 \xrdef{halignexample}
 \vdisplay{%
 \tabskip=2pc \halign{\hfil#\hfil &\hfil#\hfil &\hfil#\hfil \cr
@@ -192,24 +355,51 @@ For example, the horizontal alignment:
   Dormouse&muffin&middle\cr
   Hatter&tea&right\cr}
 }%
-\noindent The ^|\tabskip| \ctsref{\tabskip} in this example
-tells \TeX\ to insert |2pc| of
-\refterm{glue} between the columns.
-The ^|\noalign| \ctsref{\noalign} commands tell \TeX\ to insert
-\refterm{vertical mode} material between two rows.
-In this example we've
-used |\noalign| to produce some extra space between the title rows and
-the data rows, and also to bring ``Table'' and ``Position'' closer together.
-(You can also use |\noalign| before the first row or after the
-last row.)
+\noindent 这个例子中的 ^|\tabskip| \ctsref{\tabskip}
+命令让 \TeX\ 在各列间插入 |2pc| 的\refterm{粘连}。
+^|\noalign| \ctsref{\noalign} 命令%
+让 \TeX\ 在两行间插入\refterm{竖直模式}素材。
+在此例子中我们用 |\noalign| 生成标题行和数据行之间的额外间距，
+还让“Table”和“Position”紧挨在一起。%
+（在首行之前或者末行之后你同样可以使用 |\noalign| 命令。）
 \eix^^|\halign|
 
-You can construct a vertical alignment with the ^|\valign| command
-\ctsref{\valign}.  A vertical alignment is organized as a series of
-columns rather than as a series of rows.  A vertical alignment follows
-the same rules as a horizontal alignment except that the roles of rows
-and columns are interchanged.  For example, the vertical alignment:
+%You can construct a vertical alignment with the ^|\valign| command
+%\ctsref{\valign}.  A vertical alignment is organized as a series of
+%columns rather than as a series of rows.  A vertical alignment follows
+%the same rules as a horizontal alignment except that the roles of rows
+%and columns are interchanged.  For example, the vertical alignment:
+用 ^|\valign| 命令
+\ctsref{\valign}可以构造一个竖直阵列。
+竖直阵列按照列而不按照行组织。
+它遵循和水平阵列相同的法则，
+只是此时行和列的地位交换了。
+例如，下面的竖直阵列：
 
+%\csdisplay
+%{\hsize=0.6in \parindent=0pt
+%\valign{#\strut&#\strut&#\strut\cr
+%  one&two&three\cr
+%  four&five&six\cr
+%  seven&eight&nine\cr
+%  ten&eleven\cr}}
+%|
+%\noindent yields:
+%\vdisplay{%
+%{\hsize=0.6in \parindent=\listleftindent % Because lists and displays
+%                                         % are not indented just by \parindent.
+%\valign{#\strut&#\strut&#\strut\cr
+%  one&two&three\cr
+%  four&five&six\cr
+%  seven&eight&nine\cr
+%  ten&eleven\cr}}
+%}
+%The ^|\strut| commands \ctsref{\strut}
+%in the template are necessary to get the entries in each row
+%to line up properly, i.e., to have a common \refterm{baseline},
+%and to keep the distance between baselines uniform.
+%\eix\ctsidxref{cr}
+%\eix^^{tables}
 \csdisplay
 {\hsize=0.6in \parindent=0pt
 \valign{#\strut&#\strut&#\strut\cr
@@ -218,7 +408,7 @@ and columns are interchanged.  For example, the vertical alignment:
   seven&eight&nine\cr
   ten&eleven\cr}}
 |
-\noindent yields:
+\noindent 得到的结果为：
 \vdisplay{%
 {\hsize=0.6in \parindent=\listleftindent % Because lists and displays
                                          % are not indented just by \parindent.
@@ -228,10 +418,9 @@ and columns are interchanged.  For example, the vertical alignment:
   seven&eight&nine\cr
   ten&eleven\cr}}
 }
-The ^|\strut| commands \ctsref{\strut}
-in the template are necessary to get the entries in each row
-to line up properly, i.e., to have a common \refterm{baseline},
-and to keep the distance between baselines uniform.
+模板中的 ^|\strut| 命令 \ctsref{\strut} 是必不可少的，
+因为它让一行的各单元合适地排成一行，
+即让它们有共同的\refterm{基线}，并让基线间的距离保持一致。
 \eix\ctsidxref{cr}
 \eix^^{tables}
 
@@ -240,212 +429,342 @@ and to keep the distance between baselines uniform.
 
 \concept{\anatomy}
 
-\texbook\ describes the way that {\TeX} processes its input in terms of \TeX's
-``digestive tract''---its ``^{eyes}'', ``^{mouth}'',
-``^{gullet}'', ``^{stomach}'', and ``^{intestines}''.  Knowing how this
-processing works can be helpful when you're trying to understand subtle
-aspects of \TeX's behavior as it's digesting a document.
+%\texbook\ describes the way that {\TeX} processes its input in terms of \TeX's
+%``digestive tract''---its ``^{eyes}'', ``^{mouth}'',
+%``^{gullet}'', ``^{stomach}'', and ``^{intestines}''.  Knowing how this
+%processing works can be helpful when you're trying to understand subtle
+%aspects of \TeX's behavior as it's digesting a document.
+\texbook\ 将 {\TeX} 处理输入的过程用 \TeX\ 的“消化道”来描述，
+包括“^{眼睛}”，“^{嘴巴}”，“^{食道}”，“^{胃}” 和“^{肠道}”。
+知道这个处理过程如何运转，将有助于你理解\TeX\ 消化文档时的行为细节。
 
 \ulist
 
-\li Using its ``\pix^{eyes}'', \TeX\ reads \refterm{characters:character} from
-^{input files} and passes them to its mouth.  Since an input file
-can contain ^|\input| commands \ctsref{\input},
-\TeX\ can in effect ``shift its gaze'' from one file to another.
+%\li Using its ``\pix^{eyes}'', \TeX\ reads \refterm{characters:character} from
+%^{input files} and passes them to its mouth.  Since an input file
+%can contain ^|\input| commands \ctsref{\input},
+%\TeX\ can in effect ``shift its gaze'' from one file to another.
+\li 使用“\pix^{眼睛}”，\TeX\ 从^{输入文件}中读取\refterm{字符}并传给它的嘴巴。
+由于输入文件中可能包含 ^|\input| 命令\ctsref{\input}，
+\TeX\ 实际上能够从一个文件“转移视线”到另一个文件。
 
-\li Using its ``\pix^{mouth}'', {\TeX} assembles the characters into
-\refterm{tokens:token} and passes them to its gullet.
-Each token is either a \refterm{control sequence} or a single
-character.  A control sequence always starts with an \refterm{escape
-character}.  Note that spaces and ends-of-line are characters in their
-own right, although \TeX\ compresses a sequence of input spaces into a single
-space token.  See \knuth{pages~46--47} for the rules by which \TeX\ assembles
-characters into tokens.
+%\li Using its ``\pix^{mouth}'', {\TeX} assembles the characters into
+%\refterm{tokens:token} and passes them to its gullet.
+%Each token is either a \refterm{control sequence} or a single
+%character.  A control sequence always starts with an \refterm{escape
+%character}.  Note that spaces and ends-of-line are characters in their
+%own right, although \TeX\ compresses a sequence of input spaces into a single
+%space token.  See \knuth{pages~46--47} for the rules by which \TeX\ assembles
+%characters into tokens.
+%^^{tokens//assembled from characters}
+\li 使用“\pix^{嘴巴}”，{\TeX} 将字符组合为\refterm{记号}并传给它的食道。
+每个记号要么是一个\refterm{控制序列}要么是单个字符，
+其中控制序列总是以\refterm{转义符}开始。
+注意空格符以及行尾符自身也是字符，
+只是 \TeX\ 将输入中的多个空格合并为一个空格记号。
+在\knuth{第~46--47~页}中介绍了 \TeX\ 将字符组合为记号的规则。
 ^^{tokens//assembled from characters}
 
-\li Using its ``\pix^{gullet}'', {\TeX} expands any macros, conditionals, and
+%\li Using its ``\pix^{gullet}'', {\TeX} expands any macros, conditionals, and
+%^^{macros//expanded in \TeX's stomach}
+%^^{tokens//passed to \TeX's stomach}
+%similar constructs that it finds (see \knuth{pages~212--216}) and passes
+%the resulting sequence of \refterm{tokens:token}
+%to \TeX's stomach.  Expanding one token
+%may yield other tokens that in turn need to be expanded.  {\TeX} carries
+%out this expansion from left to right unless the order is modified by
+%a command such as |\expandafter| \ctsref{\expandafter}.
+%In other words, \TeX's gullet always expands the leftmost un\-ex\-panded
+%token that it has not yet sent to \TeX's stomach.
+\li 使用“\pix^{食道}”，{\TeX} 展开任何宏、条件句，
 ^^{macros//expanded in \TeX's stomach}
 ^^{tokens//passed to \TeX's stomach}
-similar constructs that it finds (see \knuth{pages~212--216}) and passes
-the resulting sequence of \refterm{tokens:token}
-to \TeX's stomach.  Expanding one token
-may yield other tokens that in turn need to be expanded.  {\TeX} carries
-out this expansion from left to right unless the order is modified by
-a command such as |\expandafter| \ctsref{\expandafter}.
-In other words, \TeX's gullet always expands the leftmost un\-ex\-panded
-token that it has not yet sent to \TeX's stomach.
+以及它找到的类似结构（见\knuth{第~212--216~页}），
+并将得到的一系列\refterm{记号}传给 \TeX\ 的胃。
+展开一个记号也许会得到本身也需要展开的其他记号。
+{\TeX} 按照从左到右的顺序执行记号展开，
+除非你用类似 |\expandafter| \ctsref{\expandafter} 的命令改变其顺序。
+换言之，\TeX\ 的食道总是展开未送入胃中的记号中最左边的未展开记号。
 
-\li Using its ``\pix^{stomach}'', {\TeX} processes the tokens in
-groups.
-Each group contains a primitive command followed by its arguments, if any.
-Most of the commands are of the ``typeset this character'' variety,
-so their groups consist of just one token.
-Obeying the instructions given by the commands,
-\TeX's stomach assembles larger and larger
-units, starting with
-characters and ending with pages,
-and passes the pages to \TeX's intestines.
+%\li Using its ``\pix^{stomach}'', {\TeX} processes the tokens in
+%groups.
+%Each group contains a primitive command followed by its arguments, if any.
+%Most of the commands are of the ``typeset this character'' variety,
+%so their groups consist of just one token.
+%Obeying the instructions given by the commands,
+%\TeX's stomach assembles larger and larger
+%units, starting with
+%characters and ending with pages,
+%and passes the pages to \TeX's intestines.
+%^^{pages//assembled in \TeX's stomach}
+%\TeX's stomach handles the tasks of \refterm{line break}ing---%
+%^^{line breaking}
+%i.e., breaking each paragraph into a sequence of lines---%
+%and of \refterm{page break}ing---i.e., breaking a continuous sequence of lines
+%and other vertical mode material
+%into pages.
+\li 使用“\pix^{胃}”，{\TeX} 一组一组地处理记号。
+每个分组里面包含一个原始命令及可能跟随着的命令参量。
+大多数命令属于“排版此字符”这种，因此它们的分组中仅包含一个记号。
+按照命令的指示，
+\TeX\ 的胃从字符到页面逐步组装出越来越大的部件，
+并将生成的页面传给 \TeX\ 的肠道。
 ^^{pages//assembled in \TeX's stomach}
-\TeX's stomach handles the tasks of \refterm{line break}ing---%
+\TeX\ 的胃执行\refterm{断行}任务%
 ^^{line breaking}
-i.e., breaking each paragraph into a sequence of lines---%
-and of \refterm{page break}ing---i.e., breaking a continuous sequence of lines
-and other vertical mode material
-into pages.
+——即将每个段落分为若干行，
+以及\refterm{分页}任务%
+——即将连续若干行和其他竖直模式素材分为多个页面。
 
-\li Using its ``\pix^{intestines}'', \TeX\ transforms the pages produced by its
-stomach into a form intended for processing
-by other programs.  It then sends the transformed output to the
-\dvifile.
+%\li Using its ``\pix^{intestines}'', \TeX\ transforms the pages produced by its
+%stomach into a form intended for processing
+%by other programs.  It then sends the transformed output to the
+%\dvifile.
+%^^{\dvifile//created by \TeX's intestines}
+\li 使用“\pix^{肠道}”，\TeX\ 将它的胃生成的页面转换为适合其他程序处理的形式，
+并将转换出的结果送到 \dvifile 。
 ^^{\dvifile//created by \TeX's intestines}
 
 \endulist
 
-Most of the time you can think of the processes that take place in \TeX's
-eyes, mouth, gullet, stomach, and intestines
-as happening one after the other.  But the
-truth of the matter is that commands executed in \TeX's stomach can
-influence the earlier stages of digestion.  For instance, when \TeX's stomach
-encounters the |\input| command \ctsref{\input},
-its eyes start reading from a different
-file; when \TeX's stomach encounters a |\catcode| command
- \ctsref{\catcode} specifying a category code
-for a character $c$, the interpretation of $c$ by \TeX's mouth is affected.
-And when
-\TeX's stomach encounters a \refterm{macro} definition, the expansions carried
-out in \TeX's gullet are affected.
+%Most of the time you can think of the processes that take place in \TeX's
+%eyes, mouth, gullet, stomach, and intestines
+%as happening one after the other.  But the
+%truth of the matter is that commands executed in \TeX's stomach can
+%influence the earlier stages of digestion.  For instance, when \TeX's stomach
+%encounters the |\input| command \ctsref{\input},
+%its eyes start reading from a different
+%file; when \TeX's stomach encounters a |\catcode| command
+% \ctsref{\catcode} specifying a category code
+%for a character $c$, the interpretation of $c$ by \TeX's mouth is affected.
+%And when
+%\TeX's stomach encounters a \refterm{macro} definition, the expansions carried
+%out in \TeX's gullet are affected.
+多数时候你都可以认为在 \TeX\ 的眼睛，嘴巴，食道，
+胃和肠道中的操作是一个接一个进行的。
+但事实真相是，在 \TeX\ 的胃中执行的命令可能会影响前面步骤的消化过程。
+举例来说，当 \TeX\ 的胃碰到 |\input| 命令\ctsref{\input}时，
+它的眼睛将开始读取另一个文件；
+当 \TeX\ 的胃碰到指定字符$c$的类别码的 |\catcode| 命令\ctsref{\catcode}时，
+\TeX\ 的嘴巴对 $c$ 的解释就会受影响；
+而当 \TeX\ 的胃碰到\refterm{宏}定义时，
+在 \TeX\ 的食道进行的宏展开也会受到影响。
 
-You can understand how the processes interact by imagining that each
-process eagerly gobbles up the output of its predecessor as soon as it
-becomes available.  For instance, once \TeX's stomach has seen
-the last character of the filename in an |\input| command, \TeX's gaze
-immediately shifts to the first character of the specified input file.
+%You can understand how the processes interact by imagining that each
+%process eagerly gobbles up the output of its predecessor as soon as it
+%becomes available.  For instance, once \TeX's stomach has seen
+%the last character of the filename in an |\input| command, \TeX's gaze
+%immediately shifts to the first character of the specified input file.
+%\endconcept
+为更好地理解各个器官的相互影响，你可以把各个器官都想象为急性子，
+前任器官一有输出，后面的器官就急切地吞食该输出。
+比如，\TeX\ 的胃一看到 |\input| 命令的文件名的最后一个字符，
+它的眼睛就立即转移视线到所指定输入文件的第一个字符。
 \endconcept
 
-\pagebreak
-\conceptindex{arguments}
-\concept argument
+%\pagebreak
+%\conceptindex{arguments}
+%\concept argument
+\conceptindex{参量}
+\concept 参量
 
+%^^{commands//arguments of}
+%An \defterm{argument} contains text that is passed to a
+%\refterm{command}.
+%The arguments of a command complete the description of what
+%the command is supposed to do.
+%The command can either be a \refterm{primitive} command or a
+%\refterm{macro}.
 ^^{commands//arguments of}
-An \defterm{argument} contains text that is passed to a
-\refterm{command}.
-The arguments of a command complete the description of what
-the command is supposed to do.
-The command can either be a \refterm{primitive} command or a
-\refterm{macro}.
+命令的\defterm{参量}（argument）包含传递给\refterm{命令}的文本，
+它补全了该命令正常运行所需的信息。
+这里的命令可以是\refterm{原始命令}或者\refterm{宏}.
 
-Each primitive command ^^{primitive//command}
-has its own convention about the form of its
-arguments.  For instance, the sequence of \refterm{tokens:token}:
+%Each primitive command ^^{primitive//command}
+%has its own convention about the form of its
+%arguments.  For instance, the sequence of \refterm{tokens:token}:
+原始命令^^{primitive//command}的参量有各自规定的形式。
+例如，下面的一系列\refterm{记号}：
 
+%\csdisplay
+%\hskip 3pc plus 1em
+%|
+%consists of the command `|\hskip|' and the arguments
+%`|3pc plus 1em|'.  But if you were to write:
 \csdisplay
 \hskip 3pc plus 1em
 |
-consists of the command `|\hskip|' and the arguments
-`|3pc plus 1em|'.  But if you were to write:
+由 `|\hskip|' 命令及其参量 `|3pc plus 1em|' 组成。
+但若你这样写：
 
+%\csdisplay
+%\count11 3pc plus 1em
+%|
+%you'd get an entirely different effect.
+%\TeX\ would treat `|\count11|' as a command with argument `|3|',
+%followed by the ordinary text tokens `|pc plus 1em|'
+%(because count registers expect a number to be assigned to them)%
+%---probably not what
+%you intended.  The effect of the command, by the way, would be to
+%assign $3$ to count register $11$ (see the discussion of ^|\count|,
+%\xref\count).
 \csdisplay
 \count11 3pc plus 1em
 |
-you'd get an entirely different effect.
-\TeX\ would treat `|\count11|' as a command with argument `|3|',
-followed by the ordinary text tokens `|pc plus 1em|'
-(because count registers expect a number to be assigned to them)%
----probably not what
-you intended.  The effect of the command, by the way, would be to
-assign $3$ to count register $11$ (see the discussion of ^|\count|,
-\xref\count).
+你将得到完全不同的结果。
+\TeX\ 将认为 `|\count11|' 为命令，其参量为`|3|'，
+而后面的 `|pc plus 1em|' 是普通的文本记号%
+（因为计数寄存器要求一个整数值作为参量）——这多半不是你想要的。
+顺便说一下，该命令将给第$11$号计数寄存器赋值$3$
+（见 ^|\count| 这里的讨论，\xref\count ）。
 
-Macros, on the other hand, all follow the same convention
-for their arguments.
+%Macros, on the other hand, all follow the same convention
+%for their arguments.
+%^^{macros//arguments of}
+%Each argument passed to a macro
+%corresponds to a \refterm{parameter}
+%^^{parameters//and arguments}
+%in the definition of that
+%macro. ^^{macros//parameters of}
+%A macro parameter is either ``delimited'' or ``undelimited''.
+%The macro definition determines the number and nature of the macro parameters
+%and therefore the number and nature of the macro arguments.
+另一方面，所有宏都遵循相同的参量约定。
 ^^{macros//arguments of}
-Each argument passed to a macro
-corresponds to a \refterm{parameter}
-^^{parameters//and arguments}
-in the definition of that
-macro. ^^{macros//parameters of}
-A macro parameter is either ``delimited'' or ``undelimited''.
-The macro definition determines the number and nature of the macro parameters
-and therefore the number and nature of the macro arguments.
+传递给宏的每个参量都对应宏定义中的一个\refterm{参数}。
+^^{parameters//and arguments}^^{macros//parameters of}
+宏的参数可以是“定界的”或是“非定界的”。
+在宏的定义中确定了宏参数的个数和类型，
+从而确定了宏参量的个数和类型。
 
-The difference between a delimited argument and an undelimited argument
-lies in the way that \TeX\ decides where the argument ends.
+%The difference between a delimited argument and an undelimited argument
+%lies in the way that \TeX\ decides where the argument ends.
+%^^{delimited arguments}
+%^^{undelimited arguments}
+%\ulist
+%\li A delimited argument consists of the tokens
+%from the start of the argument up to, but not including, the
+%particular sequence of tokens that serves as the delimiter for that argument.
+%The delimiter is specified in the macro definition.  Thus you
+%supply a delimited argument to a macro by writing the argument itself
+%followed by the delimiter.  A delimited argument can be empty, i.e., have
+%no text at all in it.  Any braces in a delimited argument must be paired
+%properly, i.e., every left brace must have a corresponding right brace
+%and vice versa.
+定界参量和非定界参量的区别在于，
+\TeX\ 用不同方式确定该参量的结束位置。
 ^^{delimited arguments}
 ^^{undelimited arguments}
 \ulist
-\li A delimited argument consists of the tokens
-from the start of the argument up to, but not including, the
-particular sequence of tokens that serves as the delimiter for that argument.
-The delimiter is specified in the macro definition.  Thus you
-supply a delimited argument to a macro by writing the argument itself
-followed by the delimiter.  A delimited argument can be empty, i.e., have
-no text at all in it.  Any braces in a delimited argument must be paired
-properly, i.e., every left brace must have a corresponding right brace
-and vice versa.
+\li 定界参量由该参量开始处和作为该参量定界符的特定记号序列之间的所有记号组成，
+但不包含该定界符序列。其中的定界符是在宏的定义中规定的。
+因此要给出定界参量，你需要写上该参量并在其后加上定界符。
+定界参量也可以是空的，即不包含任何文本。
+定界参量里面的任何花括号都必须配好对，
+即每个左花括号必须有对应的右花括号，反之亦然。
 
-\li An undelimited argument consists of a single token or a sequence of
-tokens enclosed in braces, like this:
-`|{Here is {the} text.}|'.  Despite appearances, the outer braces don't
-form a \refterm{group}---\TeX\ uses them only to determine what the
-argument is.  Any inner braces, such as the ones around `|the|', must be
-paired properly.  If you make a mistake and put in too many right
-braces, \TeX\ will complain about an unexpected right brace.  \TeX\ will
-also complain if you put in too many left braces, but you'll probably
-get \emph{that} complaint long after the place where you intended to
-end the argument (see \xref{mismatched}).
+%\li An undelimited argument consists of a single token or a sequence of
+%tokens enclosed in braces, like this:
+%`|{Here is {the} text.}|'.  Despite appearances, the outer braces don't
+%form a \refterm{group}---\TeX\ uses them only to determine what the
+%argument is.  Any inner braces, such as the ones around `|the|', must be
+%paired properly.  If you make a mistake and put in too many right
+%braces, \TeX\ will complain about an unexpected right brace.  \TeX\ will
+%also complain if you put in too many left braces, but you'll probably
+%get \emph{that} complaint long after the place where you intended to
+%end the argument (see \xref{mismatched}).
+%\endulist
+%\noindent
+%See \conceptcit{macro} for more information
+%about parameters and arguments.  You'll find the precise rules pertaining
+%to delimited and undelimited arguments in \knuth{pages~203--204}.
+%\endconcept
+\li 非定界参量由单个记号或者包含在花括号的一系列记号组成，
+比如`|{Here is {the} text.}|'。
+外面的一对花括号，虽然看起来像，实际上并不组成一个\refterm{编组}%
+——\TeX\ 只是用它们确定参量的范围。
+而参量内部的花括号，比如`|the|'两边的，必须正确配对。
+若你误将太多右花括号放在里面，
+\TeX\ 将报错说有多余的右花括号。
+若左花括号太多，\TeX\ 同样会报错；
+但\emph{这个错误}可能出现在该参量所期望的结束位置之后很远的地方
+（见 \xref{mismatched}）。
 \endulist
 \noindent
-See \conceptcit{macro} for more information
-about parameters and arguments.  You'll find the precise rules pertaining
-to delimited and undelimited arguments in \knuth{pages~203--204}.
+在\conceptcit{宏}这里有更多关于参数和参量的内容。 
+在\knuth{第~203--204~页}你可以找到对于定界参量和非定界参量的精确规则。
 \endconcept
 
 
 \concept{ASCII}
 
-\defterm{\ascii} is the abbreviation of ``American Standard Code for
-Information Interchange''.  There are $256$ \ascii\
-^{characters}, each with its own code number, but
-the meanings of only the first~$128$ have been standardized.  You can
-find these meanings in an \ascii\ ``code table'' such as the one on
-\knuth{page~367}.  Characters $32$--$126$ are ``printable characters'',
-^^{printable characters} such as letters, numbers, and punctuation
-marks. The remaining characters are ``^{control characters}'' that are
-typically used (in the computer industry, not in \TeX) to control
-input\slash output and data communications devices.  For instance,
-\ascii\ code $84$ corresponds to the letter `T', while \ascii\
-code~$12$ corresponds to the ``form feed'' function (interpreted by most
-printers as ``start a new page'').  Although the \ascii\ standard
-specifies meanings for the control characters, many manufacturers of
-equipment such as modems and printers have used the control characters
-for purposes other than the standard ones.
+%\defterm{\ascii} is the abbreviation of ``American Standard Code for
+%Information Interchange''.  There are $256$ \ascii\
+%^{characters}, each with its own code number, but
+%the meanings of only the first~$128$ have been standardized.  You can
+%find these meanings in an \ascii\ ``code table'' such as the one on
+%\knuth{page~367}.  Characters $32$--$126$ are ``printable characters'',
+%^^{printable characters} such as letters, numbers, and punctuation
+%marks. The remaining characters are ``^{control characters}'' that are
+%typically used (in the computer industry, not in \TeX) to control
+%input\slash output and data communications devices.  For instance,
+%\ascii\ code $84$ corresponds to the letter `T', while \ascii\
+%code~$12$ corresponds to the ``form feed'' function (interpreted by most
+%printers as ``start a new page'').  Although the \ascii\ standard
+%specifies meanings for the control characters, many manufacturers of
+%equipment such as modems and printers have used the control characters
+%for purposes other than the standard ones.
+\defterm{\ascii} 是“美国信息交换标准编码”（American Standard Code for
+Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
+每个都有自己的编码，但只有前面 $128$ 个是标准编码。
+在 \ascii\ “编码表”，比如\knuth{第~367~页}里面，你可以找到这些编码的含义。
+编码在 $32$--$126$ 之间的字符为“可打印字符^^{printable characters}”，
+比如字母，数字和标点符号。
+其余字符为“^{控制字符}”，通常用于（在计算机工业中，而不是 \TeX\ 中）
+控制输入\slash 输出和数据交换设备。
+比如，\ascii\ 码 $84$ 对应于字符`T'，
+而 \ascii\ 码 $12$ 对应于“换页”功能（大多数打印机都将它解释为“开始新页”）。
+虽然 \ascii\ 标准指定了控制字符的含义，
+但很多设备，比如调制解调器和打印机，都将控制字符用于标准规定之外的目的。
 
-The meaning of a
-character in \TeX\ is usually consistent with its meaning in standard \ascii,
-and \refterm{fonts:font} that contain \ascii\
-printable characters usually have those characters in the same positions as
-their \ascii\ counterparts.
-But some fonts, notably those used for math, replace the \ascii\
-printable characters by other characters unrelated to the \ascii\ characters.
-For instance, the Computer Modern math font
-^^{Computer Modern fonts}
-|cmsy10| has the math symbol
-`{$\forall$}' in place of the \ascii\ digit `8'.
-
+%The meaning of a
+%character in \TeX\ is usually consistent with its meaning in standard \ascii,
+%and \refterm{fonts:font} that contain \ascii\
+%printable characters usually have those characters in the same positions as
+%their \ascii\ counterparts.
+%But some fonts, notably those used for math, replace the \ascii\
+%printable characters by other characters unrelated to the \ascii\ characters.
+%For instance, the Computer Modern math font
+%^^{Computer Modern fonts}
+%|cmsy10| has the math symbol
+%`{$\forall$}' in place of the \ascii\ digit `8'.
+\TeX\ 中字符的含义通常和标准 \ascii 中的含义一致。
+而且在包含 \ascii\ 可打印字符的\refterm{字体}中，
+这些字符所在的位置也和 \ascii\ 中的一样。
+但有些字体，特别是数学字体，
+将 \ascii\ 可打印字符替换为与 \ascii\ 无关的字符。
+比如，计算机现代数学字体 ^^{Computer Modern fonts} |cmsy10|
+在 \ascii\ 数字 `8' 的位置上是数学符号 `{$\forall$}'。
 
 \endconcept
 
-\conceptindex{assignments}
-\concept assignment
+%\conceptindex{assignments}
+%\concept assignment
+\conceptindex{赋值}
+\concept 赋值
 
-An \defterm{assignment} is a construct that tells \TeX\ to assign a
-value to a register,
-^^{registers//assignment to}
-to one of its internal
-\refterm{parameters:parameter},
-^^{parameters//assignments to}
-to an entry in one of its internal tables,
-or to a \refterm{control sequence}. Some examples of assignments are:
+%An \defterm{assignment} is a construct that tells \TeX\ to assign a
+%value to a register,
+%^^{registers//assignment to}
+%to one of its internal
+%\refterm{parameters:parameter},
+%^^{parameters//assignments to}
+%to an entry in one of its internal tables,
+%or to a \refterm{control sequence}. Some examples of assignments are:
+\defterm{赋值}（assignment）是一种为 \TeX\ 的寄存器，
+内部\refterm{参数}，内部表格项，或者\refterm{控制序列}分配值的结构。
+^^{registers//assignment to}^^{parameters//assignments to}
+赋值的一些例子如下：
 
 \csdisplay
 \tolerance = 2000
@@ -457,20 +776,27 @@ or to a \refterm{control sequence}. Some examples of assignments are:
 \font\myfont = cmbx12
 |
 
-The first assignment indicates that \TeX\ should assign the numeric value
-|2000| to the numeric parameter |\tolerance|, i.e., make the value of
-|\tolerance| be $2000$.  The other assignments are similar.  The `|=|'
-and the spaces are optional, so you could also write the first
-assignment more tersely as:
+%The first assignment indicates that \TeX\ should assign the numeric value
+%|2000| to the numeric parameter |\tolerance|, i.e., make the value of
+%|\tolerance| be $2000$.  The other assignments are similar.  The `|=|'
+%and the spaces are optional, so you could also write the first
+%assignment more tersely as:
+第一个赋值要求 \TeX\ 分配数值 |2000| 给数值参数 |\tolerance|，
+即让 |\tolerance| 的值等于 $2000$。其他赋值类似。
+赋值中的 `|=|' 和空格是可省略的，
+因此你也可以把第一个赋值改写为下面更紧凑的形式：
 
 \csdisplay
 \tolerance2000
 |
 
-See \knuth{pages~276--277} for the detailed syntax of assignments.
+%See \knuth{pages~276--277} for the detailed syntax of assignments.
+%\endconcept
+在 \knuth{第~276--277~页}中对赋值语法有详细介绍。
 \endconcept
 
 
+\bookmark{2}{以B开头}
 \concept badness
 
 The \defterm{badness} of a line is a measure of how far the interword
@@ -712,7 +1038,7 @@ with the ^|\newbox| command \ctsref{\@newbox}.  See
 registers.
 \endconcept
 
-\bookmark{2}{从C到D}
+\bookmark{2}{以C开头}
 \conceptindex{category codes}
 \concept {category code}
 
@@ -1143,6 +1469,8 @@ note that they end the control word.
 ^^{escape character}
 \endconcept
 
+
+\bookmark{2}{以D开头}
 \concept {decimal constant}
 
 See \conceptcit{number}.
@@ -1424,7 +1752,7 @@ A display math formula is enclosed by `|$$|'s.
 \TeX\ reads display math in display math \refterm{mode}.
 \endconcept
 
-\bookmark{2}{从E到G}
+\bookmark{2}{以E开头}
 \concept{escape character}
 
 An \defterm{escape character} introduces a control sequence.  The escape
@@ -1455,6 +1783,7 @@ e.g., those created by |\string| and |\message|.
 \endconcept
 
 
+\bookmark{2}{以F开头}
 \concept family
 
 A \defterm{family} is a group of three related \refterm{fonts:font} used
@@ -1764,6 +2093,7 @@ it cannot be done using only the facilities of \TeX\ itself.
 
 \endconcept
 
+\bookmark{2}{以G开头}
 \concept global
 
 A \defterm{global} definition is effective
@@ -1974,7 +2304,7 @@ One way to get it is to enclose `|\TeX|' in a group:
 The right brace prevents the control sequence from absorbing the space.
 \endconcept
 
-\bookmark{2}{从H到L}
+\bookmark{2}{以H开头}
 \conceptindex{hboxes}
 \concept hbox
 
@@ -2097,6 +2427,7 @@ from hyphenating it.
 \TeX\ will never break it elsewhere.
 \endconcept
 
+\bookmark{2}{以I开头}
 \conceptindex{input streams}
 \concept {input stream}
 
@@ -2159,7 +2490,7 @@ a horizontal, vertical, or math  list, i.e., a list of items that
 \endconcept
 
 
-
+\bookmark{2}{以J开头}
 \conceptindex{justification}
 \concept {justified text}
 
@@ -2187,6 +2518,7 @@ spacing is more uniform.
 \endconcept
 
 
+\bookmark{2}{以K开头}
 \conceptindex{kerns}
 \concept kern
 
@@ -2232,6 +2564,7 @@ already in this section.}
 \endconcept
 
 
+\bookmark{2}{以L开头}
 \concept leaders
 
 You can use \defterm{leaders} to fill a space with copies of
@@ -2494,9 +2827,11 @@ See \conceptcit{horizontal list}, \conceptcit{vertical list}.
 See \conceptcit{file}.
 \endconcept
 
-\bookmark{2}{从M到N}
-\conceptindex{macros}
-\concept macro
+\bookmark{2}{以M开头}
+%\conceptindex{macros}
+%\concept macro
+\conceptindex{宏}
+\concept 宏
 
 {% Use a brace here so that definitions of explanatory macros remain local.
 % The closing brace is at the end of the concept.
@@ -2984,6 +3319,7 @@ natural space of four |mu| and \refterm{stretch} of five |mu|.
 \endconcept
 
 
+\bookmark{2}{以N开头}
 \conceptindex{numbers}
 \concept number
 
@@ -3062,7 +3398,7 @@ i.e., its multiplier.
 
 \endconcept
 
-\bookmark{2}{从O到P}
+\bookmark{2}{以O开头}
 \concept{ordinary mode}
 
 An \defterm{ordinary mode} is a \refterm{mode} that \TeX\ is in when it is
@@ -3157,6 +3493,7 @@ See \conceptcit{file}.
 \endconcept
 
 
+\bookmark{2}{以P开头}
 \conceptindex{pages}
 \concept page
 
@@ -3356,7 +3693,7 @@ The result is a list of hboxes with glue, interline penalties,
 and interspersed vertical material between them.
 Each hbox is a single line, and the glue is the interline glue.
 
-\eject
+%\eject
 \TeX\ starts a paragraph when it's in a vertical mode
 and encounters an inherently horizontal command.
 In particular, it's in a vertical mode when it's just finished a paragraph,
@@ -3505,7 +3842,7 @@ other commands defined in terms of the
 primitive ones.
 \endconcept
 
-\bookmark{2}{从R到T}
+\bookmark{2}{以R开头}
 \concept {reference point}
 
 ^^{baselines}
@@ -3712,6 +4049,7 @@ You'll find a precise statement of \TeX's treatment of rules on
 \endconcept
 
 
+\bookmark{2}{以S开头}
 \concept {script size}
 
 \defterm{Script size} describes one of the three related
@@ -3896,6 +4234,7 @@ than the one you'd prefer.  You can override \TeX's choice with the
 commands \ctsref{\textstyle}.
 \endconcept
 
+\bookmark{2}{以T开头}
 \concept {\TeXMeX}
 
 (a)~A variant of \TeX\  used for mathematical typesetting in
@@ -3934,13 +4273,14 @@ reaches \TeX's stomach, \TeX\ interprets it as a \refterm{command}
 unless it's part of an argument of a preceding command.
 \endconcept
 
-\bookmark{2}{从U到W}
+\bookmark{2}{以U开头}
 \conceptindex{units of measure}
 \concept {unit of measure}
 
 See \conceptcit{dimension}.
 \endconcept
 
+\bookmark{2}{以V开头}
 \conceptindex{vboxes}
 \concept vbox
 
@@ -4018,6 +4358,7 @@ neither inherently horizontal nor inherently vertical.
 \endconcept
 
 
+\bookmark{2}{以W开头}
 \concept whatsit
 
 A \defterm{whatsit} is an item of information that
