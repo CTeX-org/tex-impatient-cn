@@ -2520,45 +2520,73 @@ spacing is more uniform.
 
 
 \bookmark{2}{以K开头}
-\conceptindex{kerns}
-\concept kern
+%\conceptindex{kerns}
+%\concept kern
+\conceptindex{微调}
+\concept 微调
 
+%^^{spacing//adjusting with kerns}
+%A \defterm{kern} indicates a change to the normal spacing between
+%the items of a vertical or horizontal list.
+%A kern can be either positive or negative.  By
+%putting a positive kern between two items, you push them further apart
+%by the amount of the kern.  By putting a negative kern between two
+%items, you bring them closer together by the amount of the kern.  For
+%instance, this text:
+%\csdisplay
+%11\quad 1\kern1pt 1\quad 1\kern-.75pt 1
+%|
+%produces letter pairs that look like this:
+%\display{11\quad 1\kern1pt 1\quad 1\kern-.75pt 1}
+%You can use kerns in vertical mode to adjust the space between
+%particular pairs of lines.
 ^^{spacing//adjusting with kerns}
-A \defterm{kern} indicates a change to the normal spacing between
-the items of a vertical or horizontal list.
-A kern can be either positive or negative.  By
-putting a positive kern between two items, you push them further apart
-by the amount of the kern.  By putting a negative kern between two
-items, you bring them closer together by the amount of the kern.  For
-instance, this text:
+\defterm{微调}（kern）表示对竖直或水平列中的项目间的距离作一定调整。
+微调可正可负。将正微调放入两个项目间，将以该微调的大小拉开两个项目。
+而将负微调放入两个项目间，将以该微调的大小拉近两个项目。
+例如，下列文本：
 \csdisplay
 11\quad 1\kern1pt 1\quad 1\kern-.75pt 1
 |
-produces letter pairs that look like this:
+将生成类似下面的几个字符对：
 \display{11\quad 1\kern1pt 1\quad 1\kern-.75pt 1}
-You can use kerns in vertical mode to adjust the space between
-particular pairs of lines.
+在竖直模式中可以用微调改变特定两行的间距。
 
-A kern of size $d$ is very similar to a \refterm{glue} item that has
-size $d$ and no stretch or shrink.  Both the kern and the glue insert or
-remove space between neighboring items.  The essential difference is
-that \TeX\ considers two boxes with only kerns between them to be tied
-together.  That is, \TeX\ won't break a line or a page at a kern unless
-the kern is immediately followed by glue.  Bear this difference in mind
-when you're deciding whether to use a kern or a glue item for a
-particular purpose.
+%A kern of size $d$ is very similar to a \refterm{glue} item that has
+%size $d$ and no stretch or shrink.  Both the kern and the glue insert or
+%remove space between neighboring items.  The essential difference is
+%that \TeX\ considers two boxes with only kerns between them to be tied
+%together.  That is, \TeX\ won't break a line or a page at a kern unless
+%the kern is immediately followed by glue.  Bear this difference in mind
+%when you're deciding whether to use a kern or a glue item for a
+%particular purpose.
+大小为$d$的微调与大小为$d$且无伸缩的\refterm{粘连}非常相似。
+微调和粘连两者都在相邻项目间插入或删除一定间距。
+本质区别在于，若两盒子间只有微调，\TeX\ 将认为它们是合在一起的。
+这就是说，\TeX\ 不会在微调处断行或者分页，除非其后跟着一个粘连。
+当你决定用微调或粘连实现某种目的时，务必记得这两者的区别。
 
-\TeX\ automatically inserts kerns between particular pairs of adjacent
-letters, thus adjusting the space between those letters and enhancing
-the appearance of your typeset document.
-For instance, the Computer Modern $10$-point roman font contains a kern
-for the pair `To' that brings the left edge of the `o' under the
-`T'.  Without the kern, you'd get \hbox{``T{o}p''} rather than ``Top''---%
-the difference is slight but noticeable.
-The metrics file
-(^{\tfmfile})
-for each \refterm{font} specifies the placement and size of the
-kerns that \TeX\ automatically inserts when it is setting text in that~font.
+%\TeX\ automatically inserts kerns between particular pairs of adjacent
+%letters, thus adjusting the space between those letters and enhancing
+%the appearance of your typeset document.
+%For instance, the Computer Modern $10$-point roman font contains a kern
+%for the pair `To' that brings the left edge of the `o' under the
+%`T'.  Without the kern, you'd get \hbox{``T{o}p''} rather than ``Top''---%
+%the difference is slight but noticeable.
+%The metrics file
+%(^{\tfmfile})
+%for each \refterm{font} specifies the placement and size of the
+%kerns that \TeX\ automatically inserts when it is setting text in that~font.
+%\margin{paragraph deleted to save space; most of the material was
+%already in this section.}
+\TeX\ 在某些相邻的字符对之间自动插入微调，
+从而改变这些字符的间距，使得排版出的文档更加美观。
+例如，在计算机现代字体的$10$点罗马字体中，
+包含一个字符对`To'的微调，将字母`o'的左边缘拉到字母`T'下边。
+没有这个微调，你将得到 \hbox{“T{o}p”} 而不是 “Top” ——%
+两者的差别是微小的但却是明显的。
+\TeX\ 用某个\refterm{字体}排版文本时自动插入的微调的位置和大小，
+是在该字体的度量文件（^{\tfmfile}）中指定的。
 \margin{paragraph deleted to save space; most of the material was
 already in this section.}
 
