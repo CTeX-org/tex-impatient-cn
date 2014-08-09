@@ -1937,7 +1937,7 @@ end of the line as in `|{\input chapter2!visiblespace}|'.
 \endconcept
 
 
-\eject
+%\eject
 \conceptindex{fonts}
 \concept font
 
@@ -2119,7 +2119,8 @@ be global.  That is, `^|\gdef|' is equivalent to `|\global\def|' and
 \endconcept
 
 
-\concept glue
+%\concept glue
+\concept 粘连
 
 \bix^^{stretch}
 \bix^^{shrink}
@@ -2728,8 +2729,10 @@ commands (see ``Letters and ligatures for European alphabets'',
 \endconcept
 
 
-\conceptindex{line breaks}
-\concept{line break}
+%\conceptindex{line breaks}
+%\concept{line break}
+\conceptindex{断行点}
+\concept{断行点}
 
 A \defterm{line break} is a place in your document where \TeX\ ends
 a line as it typesets a paragraph.
@@ -3115,7 +3118,8 @@ If you change |\hsize|, the change will become effective immediately.
 
 
 \conceptindex{marks}
-\concept mark
+%\concept mark
+\concept 标记
 
 A \defterm{mark} is an item that you can insert into a
 horizontal, vertical, or math list and later recover from within your
@@ -3301,7 +3305,8 @@ mode \Mprimecomma, it resumes what it was doing in mode \Mperiod.
 \endconcept
 
 
-\concept muglue
+%\concept muglue
+\concept 数学粘连
 
 \defterm{Muglue} is a kind of \refterm{glue} that you can use only in math
 formulas.  It is measured in ^|mu| (\refterm{mathematical
@@ -3320,8 +3325,10 @@ natural space of four |mu| and \refterm{stretch} of five |mu|.
 
 
 \bookmark{2}{以N开头}
-\conceptindex{numbers}
-\concept number
+%\conceptindex{numbers}
+%\concept number
+\conceptindex{数值}
+\concept 数值
 
 In \TeX, a \defterm{number} is a positive or negative integer.
 You can write a number in \TeX\ in four different ways:
@@ -3494,352 +3501,566 @@ See \conceptcit{file}.
 
 
 \bookmark{2}{以P开头}
-\conceptindex{pages}
-\concept page
+%\conceptindex{pages}
+%\concept page
+\conceptindex{页面}
+\concept 页面
 
-\TeX\ processes a document by assembling \defterm{pages} one at a time
-and passing them to the output routine.
-As it proceeds through your document, \TeX\ maintains a list of lines
-and other
-items to be placed on the page.  (The lines are actually hboxes.)
-This list is called the ``^{main vertical list}''.
-Periodically \TeX\ goes through a process called ``exercising the
-^{page builder}''.
-The items added to the main vertical list between exercises of the
-page builder are called ``^{recent contributions}''.
+%\TeX\ processes a document by assembling \defterm{pages} one at a time
+%and passing them to the output routine.
+%As it proceeds through your document, \TeX\ maintains a list of lines
+%and other
+%items to be placed on the page.  (The lines are actually hboxes.)
+%This list is called the ``^{main vertical list}''.
+%Periodically \TeX\ goes through a process called ``exercising the
+%^{page builder}''.
+%The items added to the main vertical list between exercises of the
+%page builder are called ``^{recent contributions}''.
+\TeX\ 每次一页地将你的文档组装为\defterm{页面}（page），
+并将它们送往输入例行程序。
+在处理文档时，\TeX\ 维持着一个由文本行和其他要放入页面的项目组成的列表。%
+（这些文本行实际上是水平盒子。）
+这个列表称为“^{主竖直列}”。
+\TeX\ 周期性地执行称为“运行^{页面构建器}”的操作。
+在运行页面构建器时添加到主竖直列的项目称为“^{备选内容}”。
 
-The page builder first examines the main vertical list to see if it's
-necessary to ship out a page yet, either because the items on the main
-vertical list won't all fit on the page or because of an explicit item,
-such as |\eject| \ctsref\eject, that tells \TeX\ to end the page.
-If it's not necessary to ship out a page, then the page builder is done
-for the time being.
+%The page builder first examines the main vertical list to see if it's
+%necessary to ship out a page yet, either because the items on the main
+%vertical list won't all fit on the page or because of an explicit item,
+%such as |\eject| \ctsref\eject, that tells \TeX\ to end the page.
+%If it's not necessary to ship out a page, then the page builder is done
+%for the time being.
+页面构建器首先检查主竖直列，看是否有必要输出页面，
+这可能由于主竖直列上的项目不能填满页面，
+或者有类似 |\eject| \ctsref\eject 的显式项目让 \TeX\ 结束页面。
+如果没必要输出页面，页面构建器这回的工作就完成了。
 
-Otherwise the page builder analyzes the main vertical
-list to find what it considers to be the best possible page break.
-It  associates penalties with various kinds of unattractive page
-breaks---a break that would leave an
-isolated line at the top or bottom of a page, a break just before a
-math display, and so forth.  It then
-chooses the least costly page break,
-where the cost of a break is increased by any penalty associated with that
-break and by the badness of the page that would result
-(see \knuth{page~111} for the cost formula).  If it finds several
-equally costly page breaks, it chooses the last one.
+%Otherwise the page builder analyzes the main vertical
+%list to find what it considers to be the best possible page break.
+%It  associates penalties with various kinds of unattractive page
+%breaks---a break that would leave an
+%isolated line at the top or bottom of a page, a break just before a
+%math display, and so forth.  It then
+%chooses the least costly page break,
+%where the cost of a break is increased by any penalty associated with that
+%break and by the badness of the page that would result
+%(see \knuth{page~111} for the cost formula).  If it finds several
+%equally costly page breaks, it chooses the last one.
+否则，页面构建器分析主竖直列以找到最佳的可能分页点。
+它在各种不美观的分页点
+——即可能导致单独一行出现在页面顶部或底部的分页点，
+或者在陈列公式前的分页点，诸如此类
+——添加惩罚项。
+然后它选择代价最小的分页点，
+其中分页代价由分页点的惩罚值以及所得页面的恶劣度加起来得到
+（代价计算公式可以见\knuth{第~111~页}）。
+如果找到多个代价相同的分页点，它选择最后一个。
 
+%{\tighten
+%Once the page builder has chosen a page break,
+%it places the items on the list that are before that break
+%into ^|\box255| and leaves the remaining ones for the next page.
+%It then calls the output routine. |\box255| acts as a mailbox, with the
+%page builder as the sender and the output routine as the receiver.
+%Ordinarily the output routine processes |\box255|, adds
+%other items, such as insertions, headers, and footers, to the page, and
+%ships out the page to the \dvifile\
+%^^{\dvifile//material from output routine}
+%with a |\shipout| command.
+%(Specialized output routines may behave differently.)
+%From \TeX's standpoint, it doesn't matter whether or not the output
+%routine ships out a page;
+%the only
+%responsibility of the output routine is to process |\box255| one way or
+%another.
+%\par}
 {\tighten
-Once the page builder has chosen a page break,
-it places the items on the list that are before that break
-into ^|\box255| and leaves the remaining ones for the next page.
-It then calls the output routine. |\box255| acts as a mailbox, with the
-page builder as the sender and the output routine as the receiver.
-Ordinarily the output routine processes |\box255|, adds
-other items, such as insertions, headers, and footers, to the page, and
-ships out the page to the \dvifile\
-^^{\dvifile//material from output routine}
-with a |\shipout| command.
-(Specialized output routines may behave differently.)
-From \TeX's standpoint, it doesn't matter whether or not the output
-routine ships out a page;
-the only
-responsibility of the output routine is to process |\box255| one way or
-another.
+一旦页面构建器选定了分页点，它就将列表中位于分页点之前的项目放入 ^|\box255|，
+并把剩余项目留给下个页面。接着它调用输出例行程序。
+|\box255| 充当了邮箱的角色，页面构建器为发送者，输出例行程序为接收者。
+输出例行程序如常处理 |\box255|，添加其他项目比如插入项和页眉页脚到该页面，
+然后用 |\shipout| 命令将页面输出到 \dvifile 。%
+（有些输出例行程序可能有不同的行为。）
+^^{\dvifile//material from output routine}%
+从 \TeX\ 的角度看，输出例行程序输出或不输出页面都无所谓；
+输出例行程序的惟一职责是以某种方式处理|\box255|。
 \par}
 
+%{\tighten
+%It's important to realize that the best place to break a page isn't
+%necessarily the last possible place to break the page.
+%Penalties and other considerations may cause the page break
+%to come earlier.
+%Furthermore, \TeX\ appends items to the main vertical list in batches,
+%not just singly.
+%The lines of a paragraph are an example of such a batch.
+%For these reasons the page builder usually has items left over when it
+%breaks a page.
+%These leftover items then form the beginning of the main vertical list
+%for the next page (possibly in the middle of a batch).
+%Because items are carried over from one page to another,
+%you can't assume that as \TeX\ is processing
+%input, the current page number accurately reflects the page on which the
+%corresponding output will appear.  See \knuth{pages~110--114} for a full
+%description of \TeX's page-breaking rules.
+%\par}
 {\tighten
-It's important to realize that the best place to break a page isn't
-necessarily the last possible place to break the page.
-Penalties and other considerations may cause the page break
-to come earlier.
-Furthermore, \TeX\ appends items to the main vertical list in batches,
-not just singly.
-The lines of a paragraph are an example of such a batch.
-For these reasons the page builder usually has items left over when it
-breaks a page.
-These leftover items then form the beginning of the main vertical list
-for the next page (possibly in the middle of a batch).
-Because items are carried over from one page to another,
-you can't assume that as \TeX\ is processing
-input, the current page number accurately reflects the page on which the
-corresponding output will appear.  See \knuth{pages~110--114} for a full
-description of \TeX's page-breaking rules.
+认识到最佳分页点未必是最后的分页点是非常重要的。
+惩罚项和其他考虑可能导致分页点出现在前面。
+此外，\TeX\ 是批量地而不是逐个地添加项目到主竖直列的。
+段落的各行是批量的例子。
+由于这些原因页面构建器分页时通常会剩余一些项目。
+这些剩余项目组成了下一页的主竖直列的开始部分
+（可能在批量的中间）。
+由于项目可能被从一个页面移动到另一个页面，
+你无法假定 \TeX\ 处理输入时的当前页码准确表示了对应输出中显示的页码。
+在 \knuth{第~110--114~页}中有 \TeX\ 的分页规则的完整说明。
 \par}
 
 \endconcept
 
 
-\conceptindex{page breaks}
-\concept{page break}
+%\conceptindex{page breaks}
+%\concept{page break}
+\conceptindex{分页点}
+\concept{分页点}
 
-A \defterm{page break} is a place in your document where \TeX\ ends a
-page and (except at the end of the document) starts a new one.
-See \conceptcit{page} for the process that \TeX\ goes through in choosing
-a page break.
+%A \defterm{page break} is a place in your document where \TeX\ ends a
+%page and (except at the end of the document) starts a new one.
+%See \conceptcit{page} for the process that \TeX\ goes through in choosing
+%a page break.
+\defterm{分页点}（page break）是文档中 \TeX\
+结束一个页面并（除非在文档结尾处）开始新页面的位置。
+在\conceptcit{页面}中介绍了 \TeX\ 选择分页点的过程。
 
-You can control \TeX's choice of page breaks in several ways:
+%You can control \TeX's choice of page breaks in several ways:
+%\ulist
+%\li You can insert a penalty (\xref{vpenalty})
+%^^{penalties//in vertical lists}
+%between two items in the main vertical list.  A positive
+%penalty discourages \TeX\ from breaking the page
+%there, while a negative penalty---a bonus, in other words---%
+%encourages \TeX\ to break the page there.  A penalty of $10000$
+%or more prevents a
+%page break, while a penalty of $-10000$ or less forces a page break.
+%You can get the same effects with the |\break| and
+%|\nobreak| commands \ctsref{vbreak}.
+你可以用以下几种方式控制 \TeX\ 对分页点的选择：
 \ulist
-\li You can insert a penalty (\xref{vpenalty})
+\li 你可以插入惩罚项（\xref{vpenalty}）
 ^^{penalties//in vertical lists}
-between two items in the main vertical list.  A positive
-penalty discourages \TeX\ from breaking the page
-there, while a negative penalty---a bonus, in other words---%
-encourages \TeX\ to break the page there.  A penalty of $10000$
-or more prevents a
-page break, while a penalty of $-10000$ or less forces a page break.
-You can get the same effects with the |\break| and
-|\nobreak| commands \ctsref{vbreak}.
+到主竖直列的两个项目之间。
+正惩罚值阻碍 \TeX\ 在此处分页，
+而负惩罚值——换言之，奖励值——鼓励 \TeX\ 在此处分页。
+大于或等于 $10000$ 的惩罚值阻止分页，
+而小于或等于 $-10000$ 的惩罚值强制分页。
+你可以用 |\break| 和 |\nobreak| \ctsref{vbreak} 命令得到相同的结果。
 
-\li You can adjust the penalties associated with page breaking
-by assigning different values to \TeX's page-breaking
-\refterm{parameters:parameter}.
+%\li You can adjust the penalties associated with page breaking
+%by assigning different values to \TeX's page-breaking
+%\refterm{parameters:parameter}.
+\li 你可以通过改变 \TeX\ 的分页\refterm{参数}的值来调整分页惩罚值。
 
-\li You can enclose a sequence of paragraphs
-or other items in the main vertical list within a \refterm{vbox},
-thus preventing \TeX\ from breaking the page anywhere within the sequence.
+%\li You can enclose a sequence of paragraphs
+%or other items in the main vertical list within a \refterm{vbox},
+%thus preventing \TeX\ from breaking the page anywhere within the sequence.
+%\endulist
+\li 你可以将主竖直列的一系列段落或者其他项目放入\refterm{竖直盒子}，
+从而阻止 \TeX\ 在它们之间的任何位置分页。
 \endulist
 
-Once \TeX\ has chosen a page break, it places the portion of the main vertical
-list that precedes the break into |\box255|.
-It then calls the current \refterm{output routine}
-to process |\box255| and eventually ships its contents to the \dvifile.
+%Once \TeX\ has chosen a page break, it places the portion of the main vertical
+%list that precedes the break into |\box255|.
+%It then calls the current \refterm{output routine}
+%to process |\box255| and eventually ships its contents to the \dvifile.
+%^^{\dvifile//material from output routine}
+%The output routine must
+%also handle \refterm{insertions}, such as footnotes, that \TeX\ has accumulated
+%while processing the page.
+一旦 \TeX\ 选定了分页点，
+它就将该主竖直列中位于分页点之前的内容放入 |\box255|。
+接着它调用当前的\refterm{输出例行程序}处理 |\box255|，
+最终输出页面内容到 \dvifile 。
 ^^{\dvifile//material from output routine}
-The output routine must
-also handle \refterm{insertions}, such as footnotes, that \TeX\ has accumulated
-while processing the page.
+输出例行程序还得处理 \TeX\ 加工页面时积累的\refterm{插入项}，比如脚注。
 
-It's useful to know the places where \TeX\ can break a page:
+%It's useful to know the places where \TeX\ can break a page:
+%\ulist
+%\li At glue, provided that the item preceding the glue is
+%a box, a whatsit, a mark, or an insertion.
+%When \TeX\ breaks a page at glue, it makes the break at the top
+%of the glue space and forgets about the rest of the glue.
+%\li At a kern that's immediately followed by glue.
+%\li At a penalty, possibly between the lines of a paragraph.
+%\endulist
+%When \TeX\ breaks a page, it discards any
+%sequence of glue, kerns, and penalty items that follows the break point.
+最好能知道 \TeX\ 在什么地方可以分页：
 \ulist
-\li At glue, provided that the item preceding the glue is
-a box, a whatsit, a mark, or an insertion.
-When \TeX\ breaks a page at glue, it makes the break at the top
-of the glue space and forgets about the rest of the glue.
-\li At a kern that's immediately followed by glue.
-\li At a penalty, possibly between the lines of a paragraph.
+\li 在粘连处，只要在粘连之前的项目是一个盒子，小玩意，标记，或者插入项。
+当 \TeX\ 在粘连处分页时，它把分页点放在该粘连间距的顶部，并忽略该粘连的其他值。
+\li 在微调处，只要该微调之后是一个粘连。
+\li 在惩罚处，这可能出现在段落的两行之间。
 \endulist
-When \TeX\ breaks a page, it discards any
-sequence of glue, kerns, and penalty items that follows the break point.
-
+\TeX\ 分页时将丢弃分页点之后的任意多个粘连，微调和惩罚项。
 
 \endconcept
 
 
-\concept page builder
+%\concept page builder
+\concept 页面构建器
 
-See \conceptcit{page}.
+%See \conceptcit{page}.
+%\endconcept
+见\conceptcit{页面}。
 \endconcept
 
 
-\concept {page layout}
+%\concept {page layout}
+\concept {页面布局}
 
+%\bix^^{margins}
+%\bix^^{headers}
+%\bix^^{footers}
+%When you're designing a document, you need to decide on its
+%\defterm{page layout}: the page size,
+%the margins on all four sides, the headers and footers, if any,
+%that appear at the top and bottom of the page,
+%and the amount of space between the body of the text and the headers or
+%footers.  \TeX\ has defaults for all of these.  It assumes an $8 \frac1/2$-%
+%by-$11$-inch page with margins of approximately one inch
+%on all four sides, no header,
+%and a footer consisting of a centered page number.
 \bix^^{margins}
 \bix^^{headers}
 \bix^^{footers}
-When you're designing a document, you need to decide on its
-\defterm{page layout}: the page size,
-the margins on all four sides, the headers and footers, if any,
-that appear at the top and bottom of the page,
-and the amount of space between the body of the text and the headers or
-footers.  \TeX\ has defaults for all of these.  It assumes an $8 \frac1/2$-%
-by-$11$-inch page with margins of approximately one inch
-on all four sides, no header,
-and a footer consisting of a centered page number.
+在设计文档时，你需要决定其\defterm{页面布局}（page layout）：
+页面大小，四个方向的边距，页眉和页脚，
+若存在的话，还有正文和页眉页脚之间的间隔大小。
+对上述这些 \TeX\ 都有默认值：
+它设定页面大小为 $8 \frac1/2$英寸乘$11$英寸，四个边距约为一英寸，
+没有页眉，页脚是居中的页码。
 
-The margins are determined jointly by the four parameters
-^|\hoffset|, ^|\voffset|, ^|\hsize|, and ^|\vsize| (see
-``margins'', \xrefpg{margins},
-for advice on how to adjust them).
+%The margins are determined jointly by the four parameters
+%^|\hoffset|, ^|\voffset|, ^|\hsize|, and ^|\vsize| (see
+%``margins'', \xrefpg{margins},
+%for advice on how to adjust them).
+%\eix^^{margins}
+%The header normally consists of a single line that appears at the top of each
+%page, within the top margin area.  You can set it by assigning
+%a \refterm{token} list to the ^|\headline| parameter (\xref{\headline}).
+%Similarly,
+%the footer normally consists of a single line that appears at the bottom
+%of each
+%page, within the bottom margin area.  You can set it by assigning
+%a \refterm{token} list to the ^|\footline| parameter (\xref{\footline}).
+%For example, the input:
+%\csdisplay
+%\headline = {Baby's First Document\dotfill Page\folio}
+%\footline = {\hfil}
+%|
+%produces a header line like this on each page:
+%\vdisplay{
+%\dimen0 = \hsize
+%\advance \dimen0 by -\parindent
+%\hbox to \dimen0{Baby's First Document\dotfill Page 19}}
+%\noindent
+%and no footer line.
+边距由四个参数 ^|\hoffset|，^|\voffset|，^|\hsize| 和 ^|\vsize| 共同确定
+（在\xrefpg{margins}的“边距”概念中有如何调整它们的指南）。
 \eix^^{margins}
-The header normally consists of a single line that appears at the top of each
-page, within the top margin area.  You can set it by assigning
-a \refterm{token} list to the ^|\headline| parameter (\xref{\headline}).
-Similarly,
-the footer normally consists of a single line that appears at the bottom
-of each
-page, within the bottom margin area.  You can set it by assigning
-a \refterm{token} list to the ^|\footline| parameter (\xref{\footline}).
-For example, the input:
+页眉是在每个页面顶部的一行内容，位于上边距区域中。
+通过将一个\refterm{记号}列表赋值给 ^|\headline| 参数（\xref{\headline}），
+你就可以设定页眉。类似地，
+页脚是在每个页面底部的一行内容，位于下边距区域中。
+通过将一个\refterm{记号}列表赋值给 ^|\footline| 参数（\xref{\footline}），
+你就可以设定页脚。
+例如，下面的输入：
 \csdisplay
 \headline = {Baby's First Document\dotfill Page\folio}
 \footline = {\hfil}
 |
-produces a header line like this on each page:
+将给每个页面生成类似下面的页眉行
 \vdisplay{
 \dimen0 = \hsize
 \advance \dimen0 by -\parindent
 \hbox to \dimen0{Baby's First Document\dotfill Page 19}}
 \noindent
-and no footer line.
+而页脚行是空白的。
 
-You can use marks to place the current topic of a section
-of text into the header or footer.
+%You can use marks to place the current topic of a section
+%of text into the header or footer.
+%^^{marks//with headers or footers}
+%See \conceptcit{mark} for an explanation of how to do this.
+%\eix^^{headers}
+%\eix^^{footers}
+%\endconcept
+利用标记，你可以将当前主题或节标题放入页眉或页脚中。
 ^^{marks//with headers or footers}
-See \conceptcit{mark} for an explanation of how to do this.
+在\conceptcit{标记}这里将详细解释如何做到这些。
 \eix^^{headers}
 \eix^^{footers}
 \endconcept
 
-\conceptindex{paragraphs}
-\concept paragraph
+%\conceptindex{paragraphs}
+%\concept paragraph
+\conceptindex{段落}
+\concept 段落
 
-Intuitively, a \defterm{paragraph} is a sequence of input lines that's
-ended by a blank line, by a ^|\par| command \ctsref{\@par},
+%Intuitively, a \defterm{paragraph} is a sequence of input lines that's
+%ended by a blank line, by a ^|\par| command \ctsref{\@par},
+%^^|\par//ending a paragraph with|
+%or by an intrinsically vertical command, such as |\vskip|.
+%More precisely, a paragraph is a sequence of commands that \TeX\ processes
+%in ordinary horizontal mode.
+%When \TeX\ has collected an entire paragraph, it forms it into a sequence of
+%lines by choosing line breaks \seeconcept{line break}.
+%The result is a list of hboxes with glue, interline penalties,
+%and interspersed vertical material between them.
+%Each hbox is a single line, and the glue is the interline glue.
+直观地，\defterm{段落}（paragraph）就是一系列输入行，
+并用空行或者 ^|\par| 命令\ctsref{\@par}，
+或者类似 |\vskip| 的本质上的竖直模式命令结束。
 ^^|\par//ending a paragraph with|
-or by an intrinsically vertical command, such as |\vskip|.
-More precisely, a paragraph is a sequence of commands that \TeX\ processes
-in ordinary horizontal mode.
-When \TeX\ has collected an entire paragraph, it forms it into a sequence of
-lines by choosing line breaks \seeconcept{line break}.
-The result is a list of hboxes with glue, interline penalties,
-and interspersed vertical material between them.
-Each hbox is a single line, and the glue is the interline glue.
+更准确地说，段落就是 \TeX\ 在普通水平模式中处理的一系列命令。
+\TeX\ 收集整个段落的内容后，就通过选择断行点\seeconcept{断行点}将它分为多行。
+得到的结果是一系列水平盒子，以及它们之间的粘连，行间惩罚和穿插的竖直素材。
+其中的每个水平盒子就是一个文本行，而这些粘连就是行间粘连。
 
 %\eject
-\TeX\ starts a paragraph when it's in a vertical mode
-and encounters an inherently horizontal command.
-In particular, it's in a vertical mode when it's just finished a paragraph,
-so the horizontal material on the line after a blank input line starts the
-next paragraph in a natural way.
-There are many kinds of inherently horizontal commands, but the most common
-kind is an ordinary character, e.g., a letter.
+%\TeX\ starts a paragraph when it's in a vertical mode
+%and encounters an inherently horizontal command.
+%In particular, it's in a vertical mode when it's just finished a paragraph,
+%so the horizontal material on the line after a blank input line starts the
+%next paragraph in a natural way.
+%There are many kinds of inherently horizontal commands, but the most common
+%kind is an ordinary character, e.g., a letter.
+当 \TeX\ 在竖直模式中碰到本质上为水平模式的命令，它开始一个新段落。
+特别地，在刚结束一个段落的时候，它位于竖直模式，
+因此在空白输入行之后的水平素材自然就开始下一个段落。
+本质上为水平模式的命令有好多种，但最常见的就是普通字符，比如一个字母。
 
+%\looseness = -1
+%The ^|\indent| and ^|\noindent| commands
+%(\pp\xrefn{\indent},~\xrefn{\noindent})
+%are also inherently horizontal commands that tell
+%\TeX\ either to indent or not to indent the beginning of a paragraph.
+%Any other horizontal command in vertical
+%mode causes \TeX\ to do an implicit |\indent|.
+%Once \TeX\ has started a paragraph, it's in ordinary horizontal mode.
+%It first obeys any commands that are in ^|\everypar|.
+%It then proceeds to collect items for the paragraph until it gets a signal
+%that the paragraph is ended.
+%At the end of the paragraph it
+%resets the paragraph shape parameters ^|\parshape|, |\hang!-indent|,
+%^^|\hangindent|
+%and ^|\looseness|.
 \looseness = -1
-The ^|\indent| and ^|\noindent| commands
-(\pp\xrefn{\indent},~\xrefn{\noindent})
-are also inherently horizontal commands that tell
-\TeX\ either to indent or not to indent the beginning of a paragraph.
-Any other horizontal command in vertical
-mode causes \TeX\ to do an implicit |\indent|.
-Once \TeX\ has started a paragraph, it's in ordinary horizontal mode.
-It first obeys any commands that are in ^|\everypar|.
-It then proceeds to collect items for the paragraph until it gets a signal
-that the paragraph is ended.
-At the end of the paragraph it
-resets the paragraph shape parameters ^|\parshape|, |\hang!-indent|,
-^^|\hangindent|
-and ^|\looseness|.
+^|\indent| 和 ^|\noindent| 命令（见\xrefn{\indent},~\xrefn{\noindent}页）
+也属于本质上为水平模式的命令，
+它们让 \TeX\ 在段落开始缩进或不缩进。
+其他水平模式命令出现在竖直模式时都会导致 \TeX\ 隐性执行 |\indent|。
+一旦 \TeX\ 开始一个新段落，它就处于普通水平模式中。
+它首先执行 ^|\everypar| 中的命令，
+然后着手收集该段落的项目，直到它得到段落结束的信号。
+在段落结尾处，它重置段落形状参数 ^|\parshape|，
+|\hangindent| ^^|\hangindent| 和 ^|\looseness|。
 
-\TeX\ ordinarily translates a blank line into |\par|.
-It also
-inserts a |\par| into the input whenever it's in horizontal mode and
-sees an intrinsically vertical command.
-So ultimately the thing that ends a paragraph is always a |\par| command.
+%\TeX\ ordinarily translates a blank line into |\par|.
+%It also
+%inserts a |\par| into the input whenever it's in horizontal mode and
+%sees an intrinsically vertical command.
+%So ultimately the thing that ends a paragraph is always a |\par| command.
+\TeX\ 一般将一个空行转换为一个 |\par| 命令。
+当它在水平模式碰到一个本质上的竖直模式命令时，
+它同样插入 |\par| 命令到输入中。
+因此结束段落的最终都是一个 |\par| 命令。
 
-When \TeX\ receives a |\par| command, it first
-fills out\footnote{%
-More precisely, it executes the commands:
+%When \TeX\ receives a |\par| command, it first
+%fills out\footnote{%
+%More precisely, it executes the commands:
+%\csdisplay
+%\unskip \penalty10000 \hskip\parfillskip
+%|
+%thus appending items for these commands
+%to the end of the current horizontal list.}
+%the paragraph it's working on.
+%It then breaks the paragraph into lines,
+%adds the resulting list of items to the enclosing vertical list,
+%and exercises the page builder
+%(in the case where the enclosing vertical list is the main vertical list).
+%If the paragraph was ended by an intrinsically vertical command,
+%\TeX\ then executes that command.
+当 \TeX\ 收到一个 |\par| 命令时，它首先填满 \footnote{%
+准确地说，它执行下列这些命令：
 \csdisplay
 \unskip \penalty10000 \hskip\parfillskip
 |
-thus appending items for these commands
-to the end of the current horizontal list.}
-the paragraph it's working on.
-It then breaks the paragraph into lines,
-adds the resulting list of items to the enclosing vertical list,
-and exercises the page builder
-(in the case where the enclosing vertical list is the main vertical list).
-If the paragraph was ended by an intrinsically vertical command,
-\TeX\ then executes that command.
+并将所得项目添加到当前竖直列的最后面。}
+当前段落。接着将该段落分为多行，
+并将所得结果添加到所在的竖直列中，
+然后执行页面构建器（仅当所在的竖直列就是主竖直列时）。
+如果该段落是用本质上为竖直模式的命令结束的，
+\TeX\ 接下来将执行该命令。
 
 \endconcept
 
-\conceptindex{parameters}
-\concept parameter
+%\conceptindex{parameters}
+%\concept parameter
+\conceptindex{参数}
+\concept 参数
 
-The term \defterm{parameter} has two different meanings---it can refer
-either to a \TeX\ parameter or to a macro parameter.
+%The term \defterm{parameter} has two different meanings---it can refer
+%either to a \TeX\ parameter or to a macro parameter.
+\defterm{参数}（parameter）这个术语有两个不同的含义
+——它可以表示 \TeX\ 参数或者表示宏参数。
 
-A \TeX\ parameter is a \refterm{control sequence} that names
-a value.
-The value of a parameter can be a \refterm{number}, a \refterm{dimension},
-an amount of \refterm{glue} or muglue, or a \refterm{token list}.
-For example, the ^|\parindent| parameter
-specifies the distance that \TeX\ skips at the start of an
-indented  paragraph.
+%A \TeX\ parameter is a \refterm{control sequence} that names
+%a value.
+%The value of a parameter can be a \refterm{number}, a \refterm{dimension},
+%an amount of \refterm{glue} or muglue, or a \refterm{token list}.
+%For example, the ^|\parindent| parameter
+%specifies the distance that \TeX\ skips at the start of an
+%indented  paragraph.
+\TeX\ 参数是一个\refterm{控制序列}，它是某个值的名称。
+参数的值可以是\refterm{数值}，\refterm{长度}，
+一定大小的\refterm{粘连}或数学粘连，或者是一个\refterm{记号列表}.
+例如，^|\parindent| 参数指定了 \TeX\ 在缩进段落开头所跳过距离的大小。
 
-You can use the control sequence for a parameter either to retrieve the value
-of the parameter or to set that value.  \TeX\ interprets the control sequence
-as a request for a value if it appears in a context where a value is expected,
-and as an \refterm{assignment} otherwise.
+%You can use the control sequence for a parameter either to retrieve the value
+%of the parameter or to set that value.  \TeX\ interprets the control sequence
+%as a request for a value if it appears in a context where a value is expected,
+%and as an \refterm{assignment} otherwise.
+%^^{assignments}
+%For example:
+%\csdisplay
+%\hskip\parindent
+%|
+%produces horizontal \refterm{glue} whose natural size is given by |\parindent|,
+%while:
+%\csdisplay
+%\parindent = 2pc  % (or \parindent 2pc)
+%|
+%sets |\parindent| to a length of two picas.  The assignment:
+%\csdisplay
+%\parindent = 1.5\parindent
+%|
+%uses |\parindent| in both ways.  Its effect is to multiply the value of
+%|\parindent| by $1.5$.
+你可以对 \TeX\ 参数的控制序列取值或赋值。
+如果该控制序列出现在需要取值的地方，\TeX\ 将它解释为取值；
+否则，解释为\refterm{赋值}。
 ^^{assignments}
-For example:
+例如：
 \csdisplay
 \hskip\parindent
 |
-produces horizontal \refterm{glue} whose natural size is given by |\parindent|,
-while:
+生成一个自然大小为 |\parindent| 的水平\refterm{粘连}，而
 \csdisplay
 \parindent = 2pc  % (or \parindent 2pc)
 |
-sets |\parindent| to a length of two picas.  The assignment:
+设置 |\parindent| 等于两皮卡的长度。而下列赋值：
 \csdisplay
 \parindent = 1.5\parindent
 |
-uses |\parindent| in both ways.  Its effect is to multiply the value of
-|\parindent| by $1.5$.
+用两种方式使用 |\parindent|。其结果是将 |\parindent| 的值乘以 $1.5$ 倍。
 
-You can think of a parameter as a built-in \refterm{register}.
+%You can think of a parameter as a built-in \refterm{register}.
+%^^{registers//parameters as}
+%You'll find a complete list of the \TeX\ parameters on \knuth{pages~272--275}.
+你可以将 \TeX\ 参数视为内置的\refterm{寄存器}。
 ^^{registers//parameters as}
-You'll find a complete list of the \TeX\ parameters on \knuth{pages~272--275}.
+在\knuth{第~272--275~页}中你可以找到 \TeX\ 参数的完整列表。
 
-A \refterm{macro} parameter is a placeholder for text that is to be
-plugged into the definition of a macro.  See \conceptcit{macro}
-for more information about this kind of parameter.
+%A \refterm{macro} parameter is a placeholder for text that is to be
+%plugged into the definition of a macro.  See \conceptcit{macro}
+%for more information about this kind of parameter.
+\refterm{宏}参数是一个占位符，用于插入文本到宏定义中。
+在\conceptcit{宏}这里有这类参数的更多信息。
 
 \endconcept
 
 
-\conceptindex{penalties}
-\concept penalty
+%\conceptindex{penalties}
+%\concept penalty
+\conceptindex{惩罚}
+\concept 惩罚
 
-A \defterm{penalty} is an item that you can include in a
-horizontal, vertical, or math list
-in order to discourage \TeX\ from breaking the list
-at that point or encourage \TeX\ to break the list there.
+%A \defterm{penalty} is an item that you can include in a
+%horizontal, vertical, or math list
+%in order to discourage \TeX\ from breaking the list
+%at that point or encourage \TeX\ to break the list there.
+%^^{horizontal lists//penalties in}
+%^^{vertical lists//penalties in}
+%A positive penalty indicates a bad break point, while
+%a negative penalty indicates a good break point.
+%Breaking an
+%ordinary horizontal
+%list produces a \refterm{line break}, while breaking an
+%ordinary vertical list produces
+%a \refterm{page break}.
+%(A penalty has no effect in restricted horizontal or
+%internal vertical \refterm{mode}.)
+\defterm{惩罚}是一个你可以放在水平、竖直或数学列表中的项目，
+用于阻碍或鼓励 \TeX\ 在此处断开该列表。
 ^^{horizontal lists//penalties in}
 ^^{vertical lists//penalties in}
-A positive penalty indicates a bad break point, while
-a negative penalty indicates a good break point.
-Breaking an
-ordinary horizontal
-list produces a \refterm{line break}, while breaking an
-ordinary vertical list produces
-a \refterm{page break}.
-(A penalty has no effect in restricted horizontal or
-internal vertical \refterm{mode}.)
+正惩罚值表示一个糟糕断开点，而负惩罚值表示一个良好断开点。
+断开普通水平列生成一个\refterm{断行点}，
+而断开普通竖直列生成一个\refterm{分页点}。%
+（在限制水平\refterm{模式}或内部竖直模式的惩罚项无效。）
 
-You can use the
-|\penalty| command (\pp\xrefn{hpenalty},~\xrefn{vpenalty})
-to insert a penalty explicitly.
-A penalty of $10000$ or more prevents a break, while a penalty of
-$-10000$  or less forces a break.
+%You can use the
+%|\penalty| command (\pp\xrefn{hpenalty},~\xrefn{vpenalty})
+%to insert a penalty explicitly.
+%A penalty of $10000$ or more prevents a break, while a penalty of
+%$-10000$  or less forces a break.
+%\endconcept
+你可以用 |\penalty| 命令（见\xrefn{hpenalty},~\xrefn{vpenalty}\pp ）
+直接插入一个惩罚项。
+大于或等于 $10000$ 的惩罚值阻止断开。
+而小于或等于 $-10000$ 的惩罚值强制断开。
 \endconcept
 
 
 \concept{\plainTeX}
 
-\defterm{\PlainTeX} is the form of \TeX\ described in this
-book and in \texbook.  \PlainTeX\ is part of the standard \TeX\
-system, so documents that use only the facilities of \plainTeX\ can
-usually be transferred from one installation to another without
-difficulty.
+%\defterm{\PlainTeX} is the form of \TeX\ described in this
+%book and in \texbook.  \PlainTeX\ is part of the standard \TeX\
+%system, so documents that use only the facilities of \plainTeX\ can
+%usually be transferred from one installation to another without
+%difficulty.
+\defterm{\PlainTeX} 是本书和 \texbook\ 中所描述的 \TeX\ 形式。
+\PlainTeX\ 包含在标准 \TeX\ 系统中，
+因此仅使用 \plainTeX\ 的文档通常很容易从一个 \TeX\ 系统转移到另一个中。
 
-\PlainTeX\ consists of the \refterm{primitive} commands together with a
-large collection of macros and
-other definitions.  These additional definitions are given in
-\knuth{Appendix~B}.  They should also be in the file |plain.tex|
-somewhere in your computer system.
+%\PlainTeX\ consists of the \refterm{primitive} commands together with a
+%large collection of macros and
+%other definitions.  These additional definitions are given in
+%\knuth{Appendix~B}.  They should also be in the file |plain.tex|
+%somewhere in your computer system.
+%\endconcept
+\PlainTeX\ 由\refterm{原始命令}，加上大量的宏和其他定义组成。
+在\knuth{附录~B}中给出了这些附加定义。
+它们应该同样包含在你的计算机系统的某个 |plain.tex| 文件中。
 \endconcept
 
 
-\concept{primitive}
+%\concept{primitive}
+\concept{原始命令}
 
-A \defterm{primitive} \refterm{command} is one whose definition is built
-into the \TeX\ computer program.  In contrast, a command that is not
-primitive is defined by a \refterm{macro} or some other form of
-definition written in \TeX\ itself.  The commands in \refterm{\plainTeX}
-consist of the primitive commands together with
-other commands defined in terms of the
-primitive ones.
+%A \defterm{primitive} \refterm{command} is one whose definition is built
+%into the \TeX\ computer program.  In contrast, a command that is not
+%primitive is defined by a \refterm{macro} or some other form of
+%definition written in \TeX\ itself.  The commands in \refterm{\plainTeX}
+%consist of the primitive commands together with
+%other commands defined in terms of the
+%primitive ones.
+%\endconcept
+\defterm{原始命令}（primitive command）是在 \TeX\ 程序内部就定义好的命令。
+作为对比，非原始命令或者是从\refterm{宏}定义得到的，
+或者是从 \TeX\ 编写的其他形式的定义得到的。
+\refterm{\PlainTeX} 的命令由原始命令加上用原始命令定义的其他命令组成。
 \endconcept
 
 \bookmark{2}{以R开头}
@@ -4189,7 +4410,7 @@ depending on the context.  Knowing about styles can be useful if you want to
 set part of a formula in a different size of type than the one
 that \TeX\ has chosen according to its usual rules.
 
-\eject
+%\eject
 The four primary styles are:
 
 \vdisplay{%
@@ -4359,7 +4580,8 @@ neither inherently horizontal nor inherently vertical.
 
 
 \bookmark{2}{以W开头}
-\concept whatsit
+%\concept whatsit
+\concept 小玩意
 
 A \defterm{whatsit} is an item of information that
 tells \TeX\ to carry out some action
