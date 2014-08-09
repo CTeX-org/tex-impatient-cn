@@ -11,7 +11,7 @@
 
 %This section contains one-line descriptions of the primitive \TeX\
 %commands and the \TeX\ commands defined in \plainTeX. These include both
-%control sequences and 
+%control sequences and
 %special characters.
 %We've omitted those commands that are only intended for internal use
 %in the
@@ -29,14 +29,16 @@
 
 %\li An asterisk in front of a command indicates that the command is primitive,
 %^^{primitive//command} i.e., built into the \TeX\ computer program
-%\seeconcept{primitive}. 
-\li 命令前面的星号表明该命令是原始的^^{primitive//command}，即，内建于 \TeX\ 计算程序中的命令\seeconcept{primitive}。
+%\seeconcept{primitive}.
+\li 命令前面的星号表明该命令是原始的^^{primitive//command}，
+即内建于 \TeX\ 计算程序中的命令\seeconcept{primitive}。
 
 %\li The words ``music'', ``punctuation'', ``function'',
 %``symbol'', ``relation'', ``delimiter'', or ``operator'' in a command
 %description imply that the command is only legal in math modes.
-\li 在命令描述中出现“音乐”、“标点”、“函数”、“符号”、“关系”、“定界符”、“运算符”，则暗示该命令只在数学模式中有效。
- 
+\li 在命令描述中出现“音乐”、“标点”、“函数”、“符号”、“关系”、
+“定界符”、“运算符”，则暗示该命令只在数学模式中有效。
+
 %\li The verb ``display'' applies to information
 %that \TeX\ sends to the ^{log file}, unless otherwise indicated.  If
 %|\tracingonline| is positive, \TeX\ also sends that output to the
@@ -125,13 +127,13 @@
 %\capcs ` {grave accent for text, as in \`e}{}{\@lquote}
 \capcs ` {文本中的抑音符，比如 \`e 中那样}{}{\@lquote}
 %\capac { {start a group}{}{@lbrace}
-\capac { {开始集合}{}{@lbrace}
+\capac { {开始编组}{}{@lbrace}
 %\capcs { {left brace delimiter for math: $\{$}{}{\@lbrace}
 \capcs { {数学中的左大括号定界符：$\{$}{}{\@lbrace}
 %\capcs | {parallel lines for math: $\Vert$}{}{\@bar}
 \capcs | {数学中的平行线：$\Vert$}{}{\@bar}
 %\capac } {end a group}{}{@rbrace}
-\capac } {结束集合}{}{@rbrace}
+\capac } {结束编组}{}{@rbrace}
 %\capcs } {right brace delimiter for math: $\}$}{}{\@rbrace}
 \capcs } {数学中的右大括号定界符：$\}$}{}{\@rbrace}
 %\capac ~ {interword space at which a line will not break}{}{@not}
@@ -145,14 +147,14 @@
 \capcs AA {斯堪的纳维亚字母：\AA}{}{}
 %\capcs above {produce a fraction with a bar of specified thickness}*{}
 \capcs above {输出带有指定厚度横线的分式}*{}
-%\capcs abovedisplayshortskip {glue \TeX\ inserts before a display when the 
-%   previous line fits in the display's indentation, by 
+%\capcs abovedisplayshortskip {glue \TeX\ inserts before a display when the
+%   previous line fits in the display's indentation, by
 %   default 0\pt\ plus 3\pt}*{}
-\capcs abovedisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之前插入的橡皮间距，其默认值是 0\pt\ plus 3\pt}*{}%%%FIXME
+\capcs abovedisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之前插入的粘连，其默认值是 0\pt\ plus 3\pt}*{}%%%FIXME
 %\capcs abovedisplayskip {glue \TeX\ inserts before a display when the previous
 %   line doesn't fit in the display's indentation, by default 12\pt\
 %   plus 3\pt\ minus 9\pt}*{}
-\capcs abovedisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之前插入的橡皮间距，其默认值是 12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
+\capcs abovedisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之前插入的粘连，其默认值是 12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
 %\capcs abovewithdelims {produce a fraction with a bar of specified thickness
 %   and surrounded by specified delimiters}*{}
 \capcs abovewithdelims {输出带有指定厚度横线且被指定定界符围绕的分式}*{}
@@ -179,7 +181,7 @@
 \capcs afterassignment {直到下一赋值完成后才扩展随后的记号}*{}
 %\capcs aftergroup {wait to expand the following token until the end
 %   of the current group}*{}
-\capcs aftergroup {直到当前集合结束后才扩展随后的记号}*{}
+\capcs aftergroup {直到当前编组结束后才扩展随后的记号}*{}
 %\capcs aleph {only Hebrew letter for math: $\aleph$}{}{}
 \capcs aleph {数学中唯一的希伯来字母：$\aleph$}{}{}
 %\capcstwo allowbreak {do |\\penalty0|, i.e., allow a line or page break
@@ -211,7 +213,7 @@
 \capcs asymp {渐近关系：$\asymp$}{}{}
 %\capcs atop {produce a fraction without a fraction bar}*{}
 \capcs atop {输出没有横线的分式}*{}
-%\capcs atopwithdelims {produce a fraction without a fraction bar and 
+%\capcs atopwithdelims {produce a fraction without a fraction bar and
 %   surrounded by specified delimiters}*{}
 \capcs atopwithdelims {输出没有横线且被指定定界符围绕的分式}*{}
 %\capcs b {bar-under accent for math, as in $\b x$}{}{}
@@ -220,27 +222,27 @@
 \capcs backslash {反斜线符号：$\backslash$}{}{}
 %\capcs badness {the badness of the glue setting in the last box
 %   made}*{}
-\capcs badness {生成的是后一个盒子中橡皮间距设置的恶劣状态}*{}%%%FIXME
+\capcs badness {生成的是后一个盒子中粘连设置的恶劣状态}*{}%%%FIXME
 %\capcs bar {bar accent for math, as in $\bar x$}{}{}
 \capcs bar {数学中横线重音符，比如 $\bar x$ 中那样}{}{}
-%\capcs baselineskip {glue for the normal vertical distance from one baseline 
+%\capcs baselineskip {glue for the normal vertical distance from one baseline
 %   to the next, by default 12\pt}*{}
-\capcs baselineskip {从一基线到另一基线的正常垂直距离的橡皮间距，其默认值是 12\pt}*{}
+\capcs baselineskip {从一基线到另一基线的正常垂直距离的粘连，其默认值是 12\pt}*{}
 %\capcs batchmode {don't stop at errors and don't output to terminal}*{}
 \capcs batchmode {不在错误处停下，也不向终端输出}*{}
 %\capcs begingroup {start a group to be ended by |\\endgroup|}*{}
-\capcs begingroup {开始由 |\\endgroup| 结束的集合}*{}
+\capcs begingroup {开始由 |\\endgroup| 结束的编组}*{}
 %\capcs beginsection {begin a major subdivision of a document}{}%
 %   {\@beginsection}
 \capcs beginsection {开始文档的一个主要部分}{}{\@beginsection}
 %\capcs belowdisplayshortskip {glue \TeX\ inserts after a display when the
-%   previous line fits in the display's indentation, 
+%   previous line fits in the display's indentation,
 %      by default 7\pt\ plus 0.3\pt\ minus 4\pt}*{}
-\capcs belowdisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之后插入的橡皮间距，其默认值是 7\pt\ plus 0.3\pt\ minus 4\pt}*{}%%%FIXME
+\capcs belowdisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之后插入的粘连，其默认值是 7\pt\ plus 0.3\pt\ minus 4\pt}*{}%%%FIXME
 %\capcs belowdisplayskip {glue \TeX\ inserts after a display when the previous
 %   line doesn't fit in the display's indentation,
 %   by default 12\pt\ plus 3\pt\ minus 9\pt}*{}
-\capcs belowdisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之后插入的橡皮间距，其默认值是  12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
+\capcs belowdisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之后插入的粘连，其默认值是  12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
 %\capcs beta {math Greek letter $\beta$}{}{}
 \capcs beta {数学希腊字母 $\beta$}{}{}
 %\capcs bf {use boldface, i.e., do |\\tenbf\\fam=\\bffam|}{}{}
@@ -248,7 +250,7 @@
 %\capcs bffam {boldface family for math}{}{}
 \capcs bffam {数学中的粗体字族}{}{}
 %\capcs bgroup {implicit beginning-of-group character}{}{}
-\capcs bgroup {隐式集合开始字符}{}{}
+\capcs bgroup {隐式编组开始字符}{}{}
 %\capcs big {make the specified delimiter larger than an ordinary one, but
 %   still small enough for text}{}{}
 \capcs big {使得指定定界符大于正常大小，但对于文本依旧足够小}{}{}%%%FIXME
@@ -256,7 +258,8 @@
 \capcs Big {使得指定定界符高度约 11.5\pt}{}{}
 %\capcs bigbreak {indicate desirable page break with |\\penalty-200|
 %   and produce |\\bigskipamount| glue}{}{}
-\capcs bigbreak {指具有|\\penalty-200| 的理想分页，并输出 |\\bigskipamount| 橡皮间距}{}{}%%%FIXME
+\capcs bigbreak {用 |\\penalty-200| 给出合适分页点，
+    并生成大小为 |\\bigskipamount| 的粘连}{}{}
 %\capcs bigcap {large cap operator (no, it doesn't produce a large
 %   capital letter!): $\bigcap$}{}{}
 \capcs bigcap {大的求交运算符（它不是用来输出大写字母的！）：$\bigcap$}{}{}
@@ -299,10 +302,10 @@
 %\capcs Bigr {sized like |\\Big|, but spaced as a closing}{}{}
 \capcs Bigr {大小与 |\\Big| 一样，但间隔与闭合的符号一样}{}{}%%%FIXME
 %\capcs bigskip {produce |\\bigskipamount| glue}{}{}
-\capcs bigskip {输出 |\\bigskipamount| 橡皮间距}{}{}
+\capcs bigskip {输出 |\\bigskipamount| 粘连}{}{}
 %\capcs bigskipamount {glue for a big vertical skip, by default 12\pt\
 %   plus 4\pt\ minus 4\pt}{}{}
-\capcs bigskipamount {用于大的垂直间距的橡皮间距，其默认值为 12\pt\ plus 4\pt\ minus 4\pt}{}{}
+\capcs bigskipamount {用于大的垂直间距的粘连，其默认值为 12\pt\ plus 4\pt\ minus 4\pt}{}{}
 %\capcs bigsqcup {large square cup operator: $\bigsqcup$}{}{}
 \capcs bigsqcup {大的方形求并运算符：$\bigsqcup$}{}{}%%%FIXME
 %\capcs bigtriangledown {triangle operator pointing downward:
@@ -316,7 +319,7 @@
 \capcs bigvee {大的逻辑“或”运算符：$\bigvee$}{}{}
 %\capcs bigwedge {large logical ``and'' operator: $\bigwedge$}{}{}
 \capcs bigwedge {大的逻辑“和”运算符：$\bigwedge$}{}{}
-%\capcs binoppenalty {additional penalty for breaking after a binary math 
+%\capcs binoppenalty {additional penalty for breaking after a binary math
 %   operator, by default~700}*{}
 \capcs binoppenalty {一个二元数学运算符后断行或分页的额外惩罚，默认值是 700}*{}
 %\capcs bmod {modulus operator, as in $n \bmod 2$}{}{}
@@ -334,7 +337,7 @@
 \capcs box {将一指定的盒子寄存器中的盒子附加到当前列表中，并使寄存器失效}*{}
 %\capcs boxmaxdepth {maximum depth of vboxes, by default |\\maxdimen|}*{}
 \capcs boxmaxdepth {vbox 的最大深度，其默认值是 |\\maxdimen|}*{}
-%\capcs brace {|\char36 n\\brace k\char36| produces 
+%\capcs brace {|\char36 n\\brace k\char36| produces
 %   braced notation: $n \brace k$}{}{}
 \capcs brace {|\char36 n\\brace k\char36| 输出带有一对大括号的标记：$n \brace k$}{}{}
 %\capcs bracevert {vertical portion of extensible large brace}{}{}
@@ -503,12 +506,12 @@
 %\capcs displaylimits {place limits above and below operators only in display
 %   styles}*{}
 \capcs displaylimits {只在显示样式中，将极限放在运算符的上或下}*{}
-%\capcs displaylines {produce specified multiline display with each 
+%\capcs displaylines {produce specified multiline display with each
 %   line centered}{}{}
 \capcs displaylines {输出指定的每行居中的多行显示}{}{}
 %\capcs displaystyle {use displaystyle size in a formula}*{}
 \capcs displaystyle {在数学公式中使用显示样式尺寸}*{}
-%\capcs displaywidowpenalty {penalty for a single line beginning a page 
+%\capcs displaywidowpenalty {penalty for a single line beginning a page
 %   just before a display, by default~50}*{}
 \capcs displaywidowpenalty {在一页开始处单行位于显示前的惩罚，默认值为 50}*{}
 %\capcs displaywidth {\TeX\ sets this to the width of a display}*{}
@@ -543,7 +546,7 @@
 %   replacement text}*{}
 \capcs edef {定义一个控制序列，使之成为宏，立即展开替换文本}*{}
 %\capcs egroup {implicit end-of-group character}{}{}
-\capcs egroup {隐式集合结束字符}{}{}
+\capcs egroup {隐式编组结束字符}{}{}
 %\capcs eject {end current paragraph and force a page break,
 %   stretching out current page}{}{}
 \capcs eject {结束当前段落，并强制分页，伸展当前页}{}{}
@@ -566,7 +569,7 @@
 %\capcs endgraf {equivalent to the |\\par| primitive}{}{}
 \capcs endgraf {等同于原始的 |\\par|}{}{}
 %\capcs endgroup {end a group started by |\\begingroup|}*{}
-\capcs endgroup {结束以 |\\begingroup| 开始的集合}*{}
+\capcs endgroup {结束以 |\\begingroup| 开始的编组}*{}
 %\capcs endinput {terminate input from the current file}*{}
 \capcs endinput {结束从当前文件中的输入}*{}
 %\capcs endinsert {end insertion}{}{}
@@ -577,9 +580,9 @@
 %   line, by default |\twocarets M|}*{}
 \capcs endlinechar {\TeX\ 在每个输入行结尾插入的字符，默认为 |\twocarets M|}*{}
 %\capcs enskip {horizontal glue with width \frac1/2\em}{}{}
-\capcs enskip {宽度为 \frac1/2\em 的水平橡皮间距}{}{}
+\capcs enskip {宽度为 \frac1/2\em 的水平粘连}{}{}
 %\capcs enspace {kern \frac1/2\em}{}{}
-\capcs enspace {\frac1/2\em 字符间距}{}{}
+\capcs enspace {\frac1/2\em 微调}{}{}
 %\capcs epsilon {math Greek letter $\epsilon$}{}{}
 \capcs epsilon {数学希腊字母 $\epsilon$}{}{}
 %\capcs eqalign {produce specified multiline display whose indicated parts
@@ -592,7 +595,7 @@
 \capcs eqno {放指定的公式编号放在显示的右侧}*{}
 %\capcs equiv {equivalence relation: $\equiv$}{}{}
 \capcs equiv {等价关系：$\equiv$}{}{}
-%\capcs errhelp {token list whose expansion \TeX\ displays when the user asks 
+%\capcs errhelp {token list whose expansion \TeX\ displays when the user asks
 %   for help in response to an |\\errmessage|}*{}
 \capcs errhelp {当用户在面对 |\\errmessage| 寻求帮助时，\TeX\ 显示展开的记号列表}*{}
 %\capcs errmessage {give specified error message}*{}
@@ -623,7 +626,7 @@
 \capcs everypar {当一段落开始时，\TeX\ 展开的记号列表}*{}
 %\capcs everyvbox {token list \TeX\ expands when a vbox begins }*{}
 \capcs everyvbox {当一 vbox 开始时，\TeX\ 展开的记号列表}*{}
-%\capcs exhyphenpenalty {additional penalty for a line break after 
+%\capcs exhyphenpenalty {additional penalty for a line break after
 %   an explicit hyphen, by default~50}*{}
 \capcs exhyphenpenalty {在一显式连字号之后断行的额外惩罚，默认值为 50}*{}
 %\capcs exists {``there exists'' symbol: $\exists$}{}{}
@@ -663,7 +666,7 @@
 \capcs fmtname {当前格式文件的名称}{}{}
 %\capcs fmtversion {version number of the current format}{}{}
 \capcs fmtversion {当前格式文件的版本号}{}{}
-%\capcs folio {produce |\\pageno| as characters; 
+%\capcs folio {produce |\\pageno| as characters;
 %   in roman numerals if it's negative}{}{}
 \capcs folio {以字符输出 |\\pageno|；如果负值，则输出罗马数字}{}{}
 %\capcs font {define a specified control sequence to select a font}*{}
@@ -674,7 +677,7 @@
 \capcs fontname {以字符形式输出指定字体的名称}*{}
 %\capcs footline {token list that produces line at the bottom of each page}{}{}
 \capcs footline {在每页底部输出线的记号列表}{}{}
-%\capcs footnote {produce a specified footnote 
+%\capcs footnote {produce a specified footnote
 %   with a specified reference mark}{}{}
 \capcs footnote {输出带有指定参考标记的指定脚注}{}{}
 %\capcs forall {``for all'' symbol: $\forall$}{}{}
@@ -736,18 +739,18 @@
 %\capcs heartsuit {heart suit symbol: $\heartsuit$}{}{}
 \capcs heartsuit {心形花色符号：$\heartsuit$}{}{}
 %\capcs hfil {produce infinitely stretchable horizontal glue}*{}
-\capcs hfil {输出无限可扩展水平橡皮间距}*{}
+\capcs hfil {输出无限可扩展水平粘连}*{}
 %\capcs hfill {produce horizontal glue even more infinitely stretchable
 %   than that produced by |\\hfil|}*{}
-\capcs hfill {输出比 |\\hfil| 更加无限扩展的水平橡皮间距}*{}
+\capcs hfill {输出比 |\\hfil| 更加无限扩展的水平粘连}*{}
 %\capcs hfilneg {produce infinitely negative stretchable horizontal glue}*{}
-\capcs hfilneg {输出无限负扩展的水平橡皮间距}*{}
-%\capcs hfuzz {space threshold for reporting overfull hboxes, by default 
+\capcs hfilneg {输出无限负扩展的水平粘连}*{}
+%\capcs hfuzz {space threshold for reporting overfull hboxes, by default
 %   0.1\pt}*{}
 \capcs hfuzz {报告过满 hbox 的间隔阈值，其默认值为 0.1\pt}*{}
-%\capcs hglue {produce horizontal glue that doesn't disappear at line 
+%\capcs hglue {produce horizontal glue that doesn't disappear at line
 %   breaks}{}{}
-\capcs hglue {输出在断行时不会消失的水平橡皮间距}{}{}
+\capcs hglue {输出在断行时不会消失的水平粘连}{}{}
 %\capcs hidewidth {ignore width of an entry in an alignment, so that it
 %   extends out from its box in the direction of the |\\hidewidth|}{}{}
 \capcs hidewidth {在对齐中忽略一个条目的宽度，以致于它可以在 |\\hidewidth| 的方向上扩展到盒子外面}{}{}
@@ -766,16 +769,16 @@
 %   natural width}{}{}
 \capcs hphantom {产生一个具有自然宽度，但高度与深度均为零的不可见公式}{}{}
 %\capcs hrule {produce a horizontal rule; legal only in vertical modes}*{}
-\capcs hrule {产生一个水平嵌线，只能用于垂直模式中}*{}
+\capcs hrule {产生一个水平标线，只能用于垂直模式中}*{}
 %\capcs hrulefill {fill enclosing space with a horizontal rule}{}{}
-\capcs hrulefill {使用水平嵌线填充闭合间隔}{}{}
+\capcs hrulefill {使用水平标线填充闭合间隔}{}{}
 %\capcs hsize {line length, by default 6.5\thinspace in}*{}
 \capcs hsize {行的长度，默认值为 6.5\thinspace in}*{}
 %\capcs hskip {produce specified horizontal glue}*{}
-\capcs hskip {输出指定的水平橡皮间距}*{}
-%\capcs hss {produce horizontal glue that is infinitely stretchable and 
+\capcs hskip {输出指定的水平粘连}*{}
+%\capcs hss {produce horizontal glue that is infinitely stretchable and
 %   infinitely shrinkable}*{}
-\capcs hss {输出可无限扩展和压缩的水平橡皮间距}*{}
+\capcs hss {输出可无限扩展和压缩的水平粘连}*{}
 %\capcs ht {the height of the box in a specified box register}*{}
 \capcs ht {在指定盒子寄存器中盒子的高度}*{}
 %\capcs hyphenation {add specified words to the
@@ -790,12 +793,12 @@
 \capcs i {与重音符一起使用的无点的字母 `\i'}{}{}
 %\capcs ialign {start an |\\halign| with the |\\tabskip| glue zero and
 %   |\\everycr| empty}{}{}
-\capcs ialign {开始一个 |\\tabskip| 橡皮间距为零且 |\\everycr| 为空的 |\\halign|}{}{}
+\capcs ialign {开始一个 |\\tabskip| 粘连为零且 |\\everycr| 为空的 |\\halign|}{}{}
 %\capcs if {test if two specified tokens have the same character code}*{\@if}
 \capcs if {判断两个指定的记号是否具有相同的字符代码}*{\@if}
 %\capcs ifcase {expand case $n$ for specified value $n$}*{\@ifcase}
 \capcs ifcase {对于指定的数值 $n$ 展开第 $n$ 种情形}*{\@ifcase}
-%\capcs ifcat {test if two specified tokens have the same category 
+%\capcs ifcat {test if two specified tokens have the same category
 %   code}*{\@ifcat}
 \capcs ifcat {判断两个指定的记号是否具有相同的组别代码}*{\@ifcat}
 %\capcs ifdim {test for a specified relationship between two specified
@@ -865,7 +868,7 @@
 \capcs iota {数学希腊字母 $\iota$}{}{}
 %\capcs it {use italics, i.e., do |\\tenit\\fam=\\itfam|}{}{}
 \capcs it {使用斜体，即执行 |\\tenit\\fam=\\itfam|}{}{}
-%\capcs item {begin a paragraph with hanging indentation of |\\parindent| 
+%\capcs item {begin a paragraph with hanging indentation of |\\parindent|
 %   and preceded by a specified label}{}{}
 \capcs item {开始一个段落，采用 |\\parindent| 悬挂缩进，且其前放置指定的标签}{}{}
 %\capcs itemitem {like |\\item|, but with indentation of |2\\parindent|}{}{}
@@ -906,13 +909,13 @@
 \capcs lastbox {如果是一个盒子，获取并移除当前列表中的最后一项}*{}
 %\capcs lastkern {retrieve the last item from the current list, if it's a
 %   kern}*{}
-\capcs lastkern {如果是一个字符间距，获取当前列表中的最后一项}*{}
+\capcs lastkern {如果是一个微调，获取当前列表中的最后一项}*{}
 %\capcs lastpenalty {retrieve the last item from the current list, if it's a
 %   penalty}*{}
 \capcs lastpenalty {如果是一个惩罚，获取当前列表中的最后一项}*{}
 %\capcs lastskip {retrieve the last item from the current list, if it's
 %   glue}*{}
-\capcs lastskip {如果是一个橡皮间距，获取当前列表中的最后一项}*{}
+\capcs lastskip {如果是一个粘连，获取当前列表中的最后一项}*{}
 %\capcs lbrace {left brace delimiter: $\lbrace$}{}{}
 \capcs lbrace {左大括号定界符：$\lbrace$}{}{}
 %\capcs lbrack {left bracket delimiter: $\lbrack$}{}{}
@@ -929,7 +932,7 @@
 \capcs le {小于或等于关系：$\le$}{}{}
 %\capcs leaders {fill a specified horizontal or vertical space by repeating a
 %   specified box or rule}*{}
-\capcs leaders {使用重复的指定的盒子或嵌线对指定水平或垂直间隔填充}*{}
+\capcs leaders {使用重复的指定的盒子或标线对指定水平或垂直间隔填充}*{}
 %\capcs left {produce the specified delimiter, sizing it to cover the
 %   following subformula ended by |\\right|}*{}
 \capcs left {输出大小覆盖随后的子公式，由 |\\right| 结束的指定的分界符}*{}
@@ -954,7 +957,7 @@
 %\capcs Leftrightarrow {relation: $\Leftrightarrow$}{}{}
 \capcs Leftrightarrow {关系：$\Leftrightarrow$}{}{}
 %\capcs leftskip {glue \TeX\ inserts at the left of each line}*{}
-\capcs leftskip {\TeX\ 在每行左侧插入的橡皮间距}*{}
+\capcs leftskip {\TeX\ 在每行左侧插入的粘连}*{}
 %\capcs leq {equivalent to |\\le|}{}{}
 \capcs leq {等同于 |\\le|}{}{}
 %\capcs leqalignno {produce specified multiline display with equation numbers
@@ -970,7 +973,7 @@
 \capcs lg {对数函数：$\lg$}{}{}
 %\capcs lgroup {left group delimiter (the smallest size is shown here):
 %   $\Big\lgroup$}{}{}
-\capcs lgroup {左集合定界符（这里显示的是最小尺寸的）：$\Big\lgroup$}{}{}
+\capcs lgroup {左编组定界符（这里显示的是最小尺寸的）：$\Big\lgroup$}{}{}
 %\capcs lim {limit function: $\lim$}{}{}
 \capcs lim {极限函数：$\lim$}{}{}
 %\capcs liminf {inferior limit function: $\liminf$}{}{}
@@ -982,12 +985,12 @@
 \capcs limsup {上极限函数：$\limsup$}{}{}
 %\capcs line {produce a justified line of type}{}{}
 \capcs line {输出两端对齐的行}{}{}
-%\capcs linepenalty {penalty for line breaking added to each line, 
+%\capcs linepenalty {penalty for line breaking added to each line,
 %   by default~10}*{}
 \capcs linepenalty {对加到每一行的断行的惩罚，默认值为 10}*{}
 %\capcs lineskip {vertical glue from one baseline to the next if the
 %   lines are closer together than |\\lineskiplimit|, by default 1\pt}*{}
-\capcs lineskip {如果行之间的距离小于|\\lineskiplimit| 时，从一个基线到另一个基线的垂直橡皮间距，默认值为 1\pt}*{}
+\capcs lineskip {如果行之间的距离小于|\\lineskiplimit| 时，从一个基线到另一个基线的垂直粘连，默认值为 1\pt}*{}
 %\capcs lineskiplimit {threshold for using |\\lineskip| instead of
 %   |\\base\-line\-skip|, by default 0\pt}*{}
 \capcs lineskiplimit {采用 |\\lineskip| 而不是 |\\base\-line\-skip| 的阈值，默认值为 0\pt}*{}
@@ -1072,7 +1075,7 @@
 \capcs mathopen {像开放分界符那样分隔指定的子公式}*{}
 %\capcs mathord {space a specified subformula as an ordinary character}*{}
 \capcs mathord {像普通字符那样分隔指定子公式}*{}
-%\capcs mathpalette {produce a |\\mathchoice| which expands a specified 
+%\capcs mathpalette {produce a |\\mathchoice| which expands a specified
 %   control sequence depending on the current style}{}{}
 \capcs mathpalette {输出根据当前样式展开指定的控制序列的 |\\mathchoice|}{}{}
 %\capcs mathpunct {space a specified subformula as punctuation}*{}
@@ -1083,7 +1086,7 @@
 %   left parenthesis and no width}{}{}
 \capcs mathstrut {输出深度与高度与左圆括号一致，但宽度为零的不可见盒子}{}{}
 %\capcs mathsurround {space \TeX\ kerns before and after math in text}*{}
-\capcs mathsurround {文本中，在数学公式前后分隔 \TeX\ 字符间隔}*{}
+\capcs mathsurround {文本中，在数学公式前后分隔 \TeX\ 微调}*{}
 %\capcs matrix {produce a specified matrix}{}{}
 \capcs matrix {输出指定矩阵}{}{}
 %\capcs max {maximum function: $\max$}{}{}
@@ -1101,15 +1104,15 @@
 \capcs meaning {以字符形式输出人类能理解的指定记号的意义}*{}
 %\capcs medbreak {indicate desirable page
 %   break with |\\penalty-100| and produce |\\medskipamount| glue}{}{}
-\capcs medbreak {指定使用 |\\penalty-100| 进行期望分页，并输出 |\\medskipamount| 橡皮间距}{}{}
+\capcs medbreak {指定使用 |\\penalty-100| 进行期望分页，并输出 |\\medskipamount| 粘连}{}{}
 %\capcs medmuskip {glue for a medium math space, by default 4\mud\ plus 2\mud\
 %   minus 4\mud}*{}
-\capcs medmuskip {中等数学间隔的橡皮间距，默认值为 4\mud\ plus 2\mud\ minus 4\mud}*{}
+\capcs medmuskip {中等数学间隔的粘连，默认值为 4\mud\ plus 2\mud\ minus 4\mud}*{}
 %\capcs medskip {produce |\\medskipamount| glue}{}{}
-\capcs medskip {输出 |\\medskipamount| 橡皮间距}{}{}
+\capcs medskip {输出 |\\medskipamount| 粘连}{}{}
 %\capcs medskipamount {glue for a medium vertical skip, by default 6\pt
 %   plus 2\pt\ minus 2\pt}{}{}
-\capcs medskipamount {中等垂直间隔的橡皮间距，默认值为 6\pt plus 2\pt\ minus 2\pt}{}{}
+\capcs medskipamount {中等垂直间隔的粘连，默认值为 6\pt plus 2\pt\ minus 2\pt}{}{}
 %\capcs message {show expansion of the specified text on the terminal}*{}
 \capcs message {在终端上显示指定文的扩展}*{}
 %\capcs mid {middle relation: $\mid$}{}{}
@@ -1122,7 +1125,7 @@
 %\capcs mit {use math italics, i.e., do |\\fam=1|}{}{}
 \capcs mit {使用数学斜体，即执行 |\\fam=1|}{}{}
 %\capcs mkern {produce a specified kern in units of |mu| for math}*{}
-\capcs mkern {数学中以 |mu| 为单位输出指定的字符间距}*{}
+\capcs mkern {数学中以 |mu| 为单位输出指定的微调}*{}
 %\capcs models {models relation: $\models$}{}{}
 \capcs models {模关系：$\models$}{}{}
 %\capcs month {current month, as a number}*{}
@@ -1136,7 +1139,7 @@
 %\capcs mp {minus and plus operator: $\mp$}{}{}
 \capcs mp {减号与加号运算符：$\mp$}{}{}
 %\capcs mskip {produce specified glue in units of |mu| for math}*{}
-\capcs mskip {数学中以|mu| 为单位输出指定的橡皮间距}*{}
+\capcs mskip {数学中以|mu| 为单位输出指定的粘连}*{}
 %\capcs mu {math Greek letter $\mu$}{}{}
 \capcs mu {数学希腊字母 $\mu$}{}{}
 %\capcs multiply {multiply a specified |\\count| register by a specified
@@ -1146,7 +1149,7 @@
 %   columns (or rows)}{}{}
 \capcs multispan {使得紧接着的对齐条目跨越指定数目的列（或行）}{}{}
 %\capcs muskip {the specified muglue register}*{}
-\capcs muskip {指定的数学橡皮间距寄存器}*{}
+\capcs muskip {指定的数学粘连寄存器}*{}
 %\capcs muskipdef {define a specified control sequence to be a number
 %   corresponding to a |\\muskip| register}*{}
 \capcs muskipdef {定义指定的控制序列为一个与 |\\muskip| 寄存器对应的数值}*{}
@@ -1164,7 +1167,7 @@
 %\capcs neg {logical ``not'' symbol: $\neg$}{}{}
 \capcs neg {逻辑“非”符号：$\neg$}{}{}
 %\capcs negthinspace {kern $-\frac1/6$\em}{}{}
-\capcs negthinspace {$-\frac1/6$\em 字符间距}{}{}
+\capcs negthinspace {$-\frac1/6$\em 微调}{}{}
 %\capcs neq {not equal relation: $\neq$}{}{}
 \capcs neq {不等于关系：$\neq$}{}{}
 %\capcs newbox {reserve and name a |\\box| register}{}{\@newbox}
@@ -1204,7 +1207,7 @@
 \capcs noalign {在对齐的行（或列）插入其它内容}*{}
 %\capcs noboundary {inhibit ligatures or kerns involving the current font's
 %   |boundarychar|}*{}
-\capcs noboundary {禁止使用当前字体的边界字符进行连字或字符间距}*{}
+\capcs noboundary {禁止使用当前字体的边界字符进行连字或微调}*{}
 %\capcstwo nobreak {do |\\penalty10000|, i.e.,
 %   inhibit a line or page break}{}{hnobreak:vnobreak}
 \capcstwo nobreak {执行 |\\penalty10000|，即禁止断行或分页}{}{hnobreak:vnobreak}
@@ -1213,14 +1216,14 @@
 %\capcs noindent {enter horizontal mode without indenting the paragraph}*{}
 \capcs noindent {进入不缩进段落的水平模式}*{}
 %\capcs nointerlineskip {inhibit interline glue before the next line}{}{}
-\capcs nointerlineskip {在下一行前禁止行内橡皮间距}{}{}
+\capcs nointerlineskip {在下一行前禁止行内粘连}{}{}
 %\capcs nolimits {place superscript and subscript after large operators}*{}
 \capcs nolimits {将上下标放在大的运算符之后}*{}
 %\capcs nonfrenchspacing {make interword spacing depend on punctuation}{}{}
 \capcs nonfrenchspacing {使字间间隔依赖于标点符号}{}{}
 %\capcs nonscript {inhibit any following glue or kern when
 %   in script and scriptscript styles}*{}
-\capcs nonscript {在上下标或次上下标样式中禁止任何随后的橡皮间距或字符间距}*{}
+\capcs nonscript {在上下标或次上下标样式中禁止任何随后的粘连或微调}*{}
 %\capcs nonstopmode {don't stop at errors, even those about missing files}*{}
 \capcs nonstopmode {不在任何错误处停下，即使是有关缺失文件的错误}*{}
 %\capcs nopagenumbers {inhibit printing of page numbers, i.e., do
@@ -1249,7 +1252,7 @@
 \capcs nu {数学希腊字母 $\nu$}{}{}
 %\capcs null {expands to an empty hbox}{}{}
 \capcs null {展开为空的 hbox}{}{}
-%\capcs nulldelimiterspace {space produced by a null delimiter, by 
+%\capcs nulldelimiterspace {space produced by a null delimiter, by
 %   default 1.2\pt}*{}
 \capcs nulldelimiterspace {由空的定界符产生的间隔，默认值为 1.2\pt}*{}
 %\capcs nullfont {primitive font with no characters in it}*{}
@@ -1263,7 +1266,7 @@
 \capcs o {丹麦语字母：\o}{}{}
 %\capcs O {Danish letter: \O}{}{}
 \capcs O {丹麦语字母：\O}{}{}
-%\capcs obeylines {make each end-of-line in the input file 
+%\capcs obeylines {make each end-of-line in the input file
 %   equivalent to |\\par|}{}{}
 \capcs obeylines {使得输入文件中的每个行结束符号等同于 |\\par|}{}{}
 %\capcs obeyspaces {produce space in the output for each space character in the
@@ -1276,7 +1279,7 @@
 %\capcs OE {\OE\ ligature}{}{}
 \capcs OE {\OE\ 连字}{}{}
 %\capcs offinterlineskip {inhibit interline glue from now on}{}{}
-\capcs offinterlineskip {从现在开始禁止行间橡皮间距}{}{}
+\capcs offinterlineskip {从现在开始禁止行间粘连}{}{}
 %\capcs oint {contour integral operator: $\oint$}{}{}
 \capcs oint {围线积分运算符：$\oint$}{}{}
 %\capcs oldstyle {use old style digits: {\oldstyle1234567890}}{}{}
@@ -1318,17 +1321,17 @@
 %   as in $\overbrace{h+w}{}$}{}{}
 \capcs overbrace {输出一个覆盖于公式顶部的大括号，比如 $\overbrace{h+w}{}$ 中那样}{}{}
 %\capcs overfullrule {width of the rule appended to an overfull box}*{}
-\capcs overfullrule {附加于过满盒子的嵌线的宽度}*{}
+\capcs overfullrule {附加于过满盒子的标线的宽度}*{}
 %\capcs overleftarrow {produce a left arrow covering the top of
 %   a formula, as in $\overleftarrow{r+a}$}{}{}
 \capcs overleftarrow {输出一个覆盖于公式顶部的向左的箭头，比如 $\overleftarrow{r+a}$ 中那样}{}{}
 %\capcs overline {produce a line covering the top of a formula,
 %   as in $\overline{2b}$}*{}
 \capcs overline {输出一个覆盖于公式顶部的直线，比如 $\overline{2b}$ 中那样}*{}
-%\capcs overrightarrow {produce a right arrow covering the top of a 
+%\capcs overrightarrow {produce a right arrow covering the top of a
 %   formula, as in $\overrightarrow{i+t}$}{}{}
 \capcs overrightarrow {输出一个覆盖于公式顶部的向右的箭头，比如 $\overrightarrow{i+t}$ 中那样}{}{}
-%\capcs overwithdelims {produce a fraction with a bar of the default thickness 
+%\capcs overwithdelims {produce a fraction with a bar of the default thickness
 %   and surrounded by specified delimiters}*{}
 \capcs overwithdelims {输出一个带有默认厚度横线，且被指定分界符包围的分式}*{}
 %\capcs owns {owns relation: $\owns$}{}{}
@@ -1341,7 +1344,7 @@
 %\capcs pagefilllstretch {\TeX\ sets this to the amount of |filll| stretch on
 %   the current page}*{}
 \capcs pagefilllstretch {\TeX\ 将其设置为在当前页的 |filll| 扩展量}*{}
-%\capcs pagefillstretch {\TeX\ sets this to the amount of |fill| stretch on 
+%\capcs pagefillstretch {\TeX\ sets this to the amount of |fill| stretch on
 %   the current page}*{}
 \capcs pagefillstretch {\TeX\ 将其设置为在当前页的 |fill| 扩展量}*{}
 %\capcs pagefilstretch {\TeX\ sets this to the amount of |fil| stretch on the
@@ -1371,15 +1374,15 @@
 \capcs parallel {平行关系：$\parallel$}{}{}
 %\capcs parfillskip {horizontal glue \TeX\ inserts at the end of a
 %   paragraph}*{}
-\capcs parfillskip {\TeX\ 在段落结束处插入的水平橡皮间距}*{}
+\capcs parfillskip {\TeX\ 在段落结束处插入的水平粘连}*{}
 %\capcs parindent {horizontal space \TeX\ inserts at the start of a
 %   paragraph}*{}
 \capcs parindent {\TeX\ 在段落开始处插入的水平间距}*{}
-%\capcs parshape {specify the width and length of each line 
+%\capcs parshape {specify the width and length of each line
 %   in the next paragraph}*{}
 \capcs parshape {指定下一段落中每行的宽度与长度}*{}
 %\capcs parskip {vertical glue \TeX\ inserts before a paragraph}*{}
-\capcs parskip {\TeX\ 在段落前插入的垂直橡皮间距}*{}
+\capcs parskip {\TeX\ 在段落前插入的垂直粘连}*{}
 %\capcs partial {partial derivative symbol: $\partial$}{}{}
 \capcs partial {偏微分符号：$\partial$}{}{}
 %\capcs pausing {if positive, stop after reading each line of input for a
@@ -1390,7 +1393,7 @@
 \capcstwo penalty {输出在此处断行或分页的惩罚（或奖励，如果是负值）}*{hpenalty:vpenalty}
 %\capcs perp {perpendicular relation: $\perp$}{}{}
 \capcs perp {垂直关系：$\perp$}{}{}
-%\capcs phantom {produce an invisible formula with the 
+%\capcs phantom {produce an invisible formula with the
 %   dimensions of a specified subformula}{}{}
 \capcs phantom {输出指定子公式大小的不可见公式}{}{}
 %\capcs phi {math Greek letter $\phi$}{}{}
@@ -1419,7 +1422,7 @@
 \capcs prec {优先关系：$\prec$}{}{}
 %\capcs preceq {precedes or equals relation: $\preceq$}{}{}
 \capcs preceq {优先或等于关系：$\preceq$}{}{}
-%\capcs predisplaypenalty {additional penalty for a line break just 
+%\capcs predisplaypenalty {additional penalty for a line break just
 %   before a display, by default~0}*{}
 \capcs predisplaypenalty {恰好在显示之前断行的额外惩罚，其默认值为 0}*{}
 %\capcs predisplaysize {\TeX\ sets this to the width of the
@@ -1430,7 +1433,7 @@
 \capcs pretolerance {没有断字的断行的恶劣情况的限值，默认值为 100}*{}
 %\capcs prevdepth {depth of the last nonrule box on the
 %   current vertical list}*{}
-\capcs prevdepth {在当前垂直列表中最后一个非嵌线盒子的深度}*{}
+\capcs prevdepth {在当前垂直列表中最后一个非标线盒子的深度}*{}
 %\capcs prevgraf {\TeX\ sets this to the number
 %   of lines in the paragraph so far (in horizontal mode)
 %   or in the previous paragraph (in vertical mode)}*{}
@@ -1448,9 +1451,9 @@
 %\capcs Psi {math Greek letter $\Psi$}{}{}
 \capcs Psi {数学希腊字母 $\Psi$}{}{}
 %\capcs qquad {produce horizontal glue with width 2\em}{}{}
-\capcs qquad {输出宽度为 2\em 的水平橡皮间距}{}{}
+\capcs qquad {输出宽度为 2\em 的水平粘连}{}{}
 %\capcs quad {produce horizontal glue with width 1\em}{}{}
-\capcs quad {输出宽度为 1\em 的水平橡皮间距}{}{}
+\capcs quad {输出宽度为 1\em 的水平粘连}{}{}
 %\capcs radical {produce a specified radical symbol}*{}
 \capcs radical {输出指定根号符号}*{}
 %\capcs raggedbottom {allow the bottom margin to vary from page to page}{}{}
@@ -1482,7 +1485,7 @@
 \capcs rfloor {右下限分界符：$\rfloor$}{}{}
 %\capcs rgroup {right group delimiter (the smallest size is shown here):
 %   $\Big\rgroup$}{}{}
-\capcs rgroup {左集合定界符（这里显示的是最小尺寸的）：$\Big\rgroup$}{}{}
+\capcs rgroup {右编组定界符（这里显示的是最小尺寸的）：$\Big\rgroup$}{}{}
 %\capcs rho {math Greek letter $\rho$}{}{}
 \capcs rho {数学希腊字母 $\rho$}{}{}
 %\capcs right {produce the specified delimiter at the right end of a
@@ -1504,7 +1507,7 @@
 %\capcs rightline {produce line with its text pushed to right margin}{}{}
 \capcs rightline {输出文字靠右边界的行}{}{}
 %\capcs rightskip {glue \TeX\ inserts at the right of each line}*{}
-\capcs rightskip {\TeX\ 在每行右侧插入的橡皮间距}*{}
+\capcs rightskip {\TeX\ 在每行右侧插入的粘连}*{}
 %\capcs righthyphenmin {size of the smallest word fragment \TeX\ allows
 %   after a hyphen at the end of a word, by default~3}*{}
 \capcs righthyphenmin {\TeX\ 允许的单词结尾在连字号之后的最小片断的大小，默认值为 3}*{}
@@ -1529,14 +1532,14 @@
 \capcs sb {隐式下标字符}{}{}
 %\capcs scriptfont {the script style font in a specified math family}*{}
 \capcs scriptfont {在指定数学字体族中的上下标样式字体}*{}
-%\capcs scriptscriptfont {the scriptscript style font in a specified 
+%\capcs scriptscriptfont {the scriptscript style font in a specified
 %   math family}*{}
 \capcs scriptscriptfont {在指定数学字体族中的次上下标样式字体}*{}
 %\capcs scriptscriptstyle {use scriptscriptstyle size in a formula}*{}
 \capcs scriptscriptstyle {在公式中使用次上下标样式尺寸}*{}
 %\capcs scriptspace {additional space \TeX\ kerns after a subscript or
 %   superscript, by default 0.5\pt}*{}
-\capcs scriptspace {\TeX\ 在下标或上标之后加入的额外的字符间距，默认值为 0.5\pt}*{}
+\capcs scriptspace {\TeX\ 在下标或上标之后加入的额外的微调，默认值为 0.5\pt}*{}
 %\capcs scriptstyle {use scriptstyle size in a formula}*{}
 \capcs scriptstyle {在公式中使用上下标样式尺寸}*{}
 %\capcs scrollmode {don't stop at most errors, but do stop at errors
@@ -1569,7 +1572,7 @@
 \capcs sharp {音乐中的升半间符：$\sharp$}{}{}
 %\capcs shipout {output a box to the |.dvi| file}*{}
 \capcs shipout {向 |.dvi| 文件输出盒子}*{}
-%\capcs show {show, in the log and 
+%\capcs show {show, in the log and
 %   on the terminal, the meaning of a specified token}*{}
 \capcs show {在日志文件中和终端上显示指定记号的意义}*{}
 %\capcs showbox {display the contents of a specified box register}*{}
@@ -1584,7 +1587,7 @@
 \capcs showhyphens {在日志文件中和终端上显示指定文本的断字}{}{}
 %\capcs showlists {display all lists being worked on}*{}
 \capcs showlists {显示所有正被影响的列表}*{}
-%\capcs showthe {show, in the log 
+%\capcs showthe {show, in the log
 %   and on the terminal, what |\\the| would produce}*{}
 \capcs showthe {在日志文件中和终端上显示 |\\the| 将要输出的内容}*{}
 %\capcs sigma {math Greek letter $\sigma$}{}{}
@@ -1605,7 +1608,7 @@
 %\capcs skewchar {character in a specified font used for positioning accents}*{}
 \capcs skewchar {指定字体中用于定位重音符的字符}*{}
 %\capcs skip {the specified glue register}*{}
-\capcs skip {指定的橡皮间距寄存器}*{}
+\capcs skip {指定的粘连寄存器}*{}
 %\capcs skipdef {define a specified control sequence to be a number
 %   corresponding to a |\\skip| register}*{}
 \capcs skipdef {定义指定的控制序列使之成为与 |\\skip| 寄存器对应的数值}*{}
@@ -1617,14 +1620,14 @@
 \capcs slfam {数学中的倾斜字体族}{}{}
 %\capcs smallbreak {indicate somewhat desirable page break
 %   with |\\penalty-50| and produce |\\smallskipamount| glue}{}{}
-\capcs smallbreak {指示一些期望 |\\penalty-50| 分页，并输出 |\\smallskipamount| 橡皮间距}{}{}
+\capcs smallbreak {指示一些期望 |\\penalty-50| 分页，并输出 |\\smallskipamount| 粘连}{}{}
 %\capcs smallint {small integral symbol: $\smallint$}{}{}
 \capcs smallint {小的积分符号：$\smallint$}{}{}
 %\capcs smallskip {produce |\\smallskipamount| glue}{}{}
-\capcs smallskip {输出 |\\smallskipamount| 橡皮间距}{}{}
+\capcs smallskip {输出 |\\smallskipamount| 粘连}{}{}
 %\capcs smallskipamount {glue for a small vertical skip, by default 3\pt\
 %   plus 1\pt\ minus 1\pt}{}{}
-\capcs smallskipamount {小的垂直间距的橡皮间距，默认值为 3\pt\ plus 1\pt\ minus 1\pt}{}{}
+\capcs smallskipamount {小的垂直间距的粘连，默认值为 3\pt\ plus 1\pt\ minus 1\pt}{}{}
 %\capcs smash {produce formula with zero height and depth}{}{}
 \capcs smash {输出高度与浓度均为零的公式}{}{}
 %\capcs smile {smile relation: $\smile$}{}{}
@@ -1632,13 +1635,13 @@
 %\capcs sp {implicit superscript character}{}{}
 \capcs sp {隐式上标字符}{}{}
 %\capcs space {produce normal interword glue}{}{}
-\capcs space {输出正常的字间橡皮间距}{}{}
-%\capcs spacefactor {modifies stretch and shrink of interword glue 
+\capcs space {输出正常的字间粘连}{}{}
+%\capcs spacefactor {modifies stretch and shrink of interword glue
 %   if not 1000}*{}
-\capcs spacefactor {修改字间橡皮间距的伸展与压缩，如果不是 1000}*{}
+\capcs spacefactor {修改字间粘连的伸展与压缩，如果不是 1000}*{}
 %\capcs spaceskip {if nonzero and |\\spacefactor|${}<2000$, overrides
 %    the normal interword glue}*{}
-\capcs spaceskip {如果非零且 |\\spacefactor|${}<2000$，抑制正常的字间橡皮间距}*{}
+\capcs spaceskip {如果非零且 |\\spacefactor|${}<2000$，抑制正常的字间粘连}*{}
 %\capcs spadesuit {spade suit symbol: $\spadesuit$}{}{}
 \capcs spadesuit {黑桃花色符号：$\spadesuit$}{}{}
 %\capcs span {either combine entries in an alignment body or expand tokens in a
@@ -1654,9 +1657,9 @@
 \capcs splitfirstmark {盒子中来自于 |\\vsplit| 的第一个标记项目}*{}
 %\capcs splitmaxdepth {maximum depth of a box resulting from |\\vsplit|}*{}
 \capcs splitmaxdepth {来自于 |\\vsplit| 的盒子的最大深度}*{}
-%\capcs splittopskip {glue \TeX\ inserts at the top of a box resulting from 
+%\capcs splittopskip {glue \TeX\ inserts at the top of a box resulting from
 %   |\\vsplit|}*{}
-\capcs splittopskip {\TeX\ 在来自于 |\\vsplit| 的盒子的顶部插入的橡皮间距}*{}
+\capcs splittopskip {\TeX\ 在来自于 |\\vsplit| 的盒子的顶部插入的粘连}*{}
 %\capcs sqcap {square cap operator: $\sqcap$}{}{}
 \capcs sqcap {方形求交运算符：$\sqcap$}{}{}
 %\capcs sqcup {square cup operator: $\sqcup$}{}{}
@@ -1704,7 +1707,7 @@
 %\capcs tabalign {equivalent to |\\+|, except it's not |\\outer|}{}{}
 \capcs tabalign {等同于 |\\+|，除了它不是 |\\outer|}{}{}
 %\capcs tabskip {glue between columns (or rows) of an alignment}*{}
-\capcs tabskip {对齐中列（或行）之间的橡皮间距}*{}
+\capcs tabskip {对齐中列（或行）之间的粘连}*{}
 %\capcs tan {tangent function: $\tan$}{}{}
 \capcs tan {正切函数：$\tan$}{}{}
 %\capcs tanh {hyperbolic tangent function: $\tanh$}{}{}
@@ -1742,11 +1745,11 @@
 %\capcs Theta {math Greek letter $\Theta$}{}{}
 \capcs Theta {数学希腊字母 $\Theta$}{}{}
 %\capcs thickmuskip {glue for a thick math space, by default 5\mud\ plus 5\mud}*{}
-\capcs thickmuskip {较大数学间隔所有的橡皮间距，默认值为 5\mud\ plus 5\mud}*{}
+\capcs thickmuskip {较大数学间隔所有的粘连，默认值为 5\mud\ plus 5\mud}*{}
 %\capcs thinmuskip {glue for a thin math space, by default 3\mud}*{}
-\capcs thinmuskip {较小数学间隔所有的橡皮间距，默认值为 3\mud}*{}
+\capcs thinmuskip {较小数学间隔所有的粘连，默认值为 3\mud}*{}
 %\capcs thinspace {kern \frac1/6\em}{}{}
-\capcs thinspace {\frac1/6\em 字符间距}{}{}
+\capcs thinspace {\frac1/6\em 微调}{}{}
 %\capcs tilde {tilde accent for math, as in $\tilde x$}{}{}
 \capcs tilde {数学中的否定号重音符，比如 $\tilde x$ 中那样}{}{}
 %\capcs time {the time of day, in minutes since midnight}*{}
@@ -1768,13 +1771,13 @@
 \capcs top {lattice top symbol: $\top$}{}{}
 %\capcs topglue {produce specified vertical glue at the
 %   top of a page}{}{}
-\capcs topglue {在页面的顶部输出指定的垂直橡皮间距}{}{}
+\capcs topglue {在页面的顶部输出指定的垂直粘连}{}{}
 \capcs topinsert {在页面顶部输出指定的文本}{}{}
 %\capcs topmark {|\\botmark| before the current page was boxed}*{}
 \capcs topmark {放入盒子中的在当前页之前的 |\\botmark|}*{}
 %\capcs topskip {glue between the headline and the first line of text
 %   on a page, by default 10\pt}*{}
-\capcs topskip {页眉线与同页上第一行文本之间的橡皮间距，默认值为 10\pt}*{}
+\capcs topskip {页眉线与同页上第一行文本之间的粘连，默认值为 10\pt}*{}
 %\capcs tracingall {turn on maximal tracing}{}{}
 \capcs tracingall {打开最大跟踪}{}{}
 %\capcs tracingcommands {display execution of commands}*{}
@@ -1795,7 +1798,7 @@
 \capcs tracingparagraphs {显示分行计算}*{}
 %\capcs tracingrestores {display values restored at the end
 %   of a group}*{}
-\capcs tracingrestores {显示在集合结束处保存的值}*{}
+\capcs tracingrestores {显示在编组结束处保存的值}*{}
 %\capcs tracingstats {display memory usage statistics}*{}
 \capcs tracingstats {显示内存使用统计}*{}
 %\capcs triangle {triangle symbol: $\triangle$}{}{}
@@ -1836,12 +1839,12 @@
 %\capcs unhcopy {like |\\unhbox|, but doesn't void the register}*{}
 \capcs unhcopy {与 |\\unhbox| 一样，但不使寄存器失效}*{}
 %\capcs unkern {if the last item on the current list is a kern, remove it}*{}
-\capcs unkern {如果当前列表的最后一项是字符间距，删除它}*{}
+\capcs unkern {如果当前列表的最后一项是微调，删除它}*{}
 %\capcs unpenalty {if the last item on the current list is a penalty, remove
 %   it}*{}
 \capcs unpenalty {如果当前列表的最后一项是惩罚，删除它}*{}
 %\capcs unskip {if the last item on the current list is glue, remove it}*{}
-\capcs unskip {如果当前列表的最后一项是橡皮间距，删除它}*{}
+\capcs unskip {如果当前列表的最后一项是粘连，删除它}*{}
 %\capcs unvbox {append the contents of the box
 %   in a specified box
 %   register to the current list, and void the register; legal only in
@@ -1908,39 +1911,39 @@
 %\capcs Vert {double bar relation: $\Vert$}{}{}
 \capcs Vert {双横线关系：$\Vert$}{}{}
 %\capcs vfil {produce infinitely stretchable vertical glue}*{}
-\capcs vfil {输出无限可扩展的垂直橡皮间距}*{}
+\capcs vfil {输出无限可扩展的垂直粘连}*{}
 %\capcs vfill {produce even more infinitely stretchable vertical glue
 %than that produced by |\\vfil|}*{}
-\capcs vfill {输出比 |\\vfil| 更加无限可扩展的垂直橡皮间距}*{}
+\capcs vfill {输出比 |\\vfil| 更加无限可扩展的垂直粘连}*{}
 %\capcs vfilneg {produce infinitely negative stretchable vertical glue}*{}
-\capcs vfilneg {输出无限负向可扩展的垂直橡皮间距}*{}
+\capcs vfilneg {输出无限负向可扩展的垂直粘连}*{}
 %\capcs vfootnote {produce a specified footnote with a specified
 %   reference mark, but don't produce the reference mark in the text}{}{}
 \capcs vfootnote {输出带有指定参考标记的指定脚注，但在文本中不输出参考标记}{}{}
-%\capcs vfuzz {space threshold for reporting overfull vboxes, by default 
+%\capcs vfuzz {space threshold for reporting overfull vboxes, by default
 %   0.1\pt}*{}
 \capcs vfuzz {报告过满 vbox 的间隔阈值，默认值为 0.1\pt}*{}
 %\capcs vglue {produce specified vertical glue
 %   that doesn't disappear at page breaks}{}{}
-\capcs vglue {输出在分页时不消失的指定的垂直橡皮间距}{}{}
-%\capcs voffset {vertical offset relative to one inch from the 
+\capcs vglue {输出在分页时不消失的指定的垂直粘连}{}{}
+%\capcs voffset {vertical offset relative to one inch from the
 %   paper's top edge}*{}
 \capcs voffset {从页面顶部开始的相对于一英寸的垂直偏移}*{}
 %\capcs vphantom {produce an invisible formula with zero width but natural
 %   height and depth}{}{}
 \capcs vphantom {输出宽度为零，但具有自然高度与深度的不可见公式}{}{}
 %\capcs vrule {produce a vertical rule; legal only in horizontal modes}*{}
-\capcs vrule {输出垂直嵌线；只在水平模式下有效}*{}
+\capcs vrule {输出垂直标线；只在水平模式下有效}*{}
 %\capcs vsize {page height, by default 8.9\thinspace in}*{}
 \capcs vsize {页面高度，默认值为 8.9\thinspace in}*{}
 %\capcs vskip {produce specified vertical glue}*{}
-\capcs vskip {输出指定的垂直橡皮间距}*{}
+\capcs vskip {输出指定的垂直粘连}*{}
 %\capcs vsplit {break the contents of a specified box
 %   register to the specified height}*{}
 \capcs vsplit {将指定的盒子寄存器的内容分隔为指定的高度}*{}
-%\capcs vss {produce vertical glue that is infinitely stretchable and 
+%\capcs vss {produce vertical glue that is infinitely stretchable and
 %   infinitely shrinkable}*{}
-\capcs vss {输出可无限扩展与压缩的垂直橡皮间距}*{}
+\capcs vss {输出可无限扩展与压缩的垂直粘连}*{}
 %\capcs vtop {produce a vbox whose baseline is that of the top box enclosed}*{}
 \capcs vtop {输出 vbox，它的基线是闭合的顶部盒子的基线}*{}
 %\capcs wd {the width of the box in a specified box register}*{}
@@ -1951,7 +1954,7 @@
 \capcs widehat {数学重音符，比如 $\widehat {y+z+a}$ 中那样}{}{}
 %\capcs widetilde {math accent $\widetilde {b+c+d}$}{}{}
 \capcs widetilde {数学重音符，比如 $\widetilde {b+c+d}$ 中那样}{}{}
-%\capcs widowpenalty {penalty for a single line beginning a page, 
+%\capcs widowpenalty {penalty for a single line beginning a page,
 %   by default~150}*{}
 \capcs widowpenalty {开始新页的单行的惩罚，默认为 150}*{}
 %\capcs wlog {|\\write| the specified token list in the log file}{}{}
@@ -1972,9 +1975,9 @@
 %\capcs xleaders {produce leaders with leftover space distributed equally
 %   between the leader boxes}*{}
 \capcs xleaders {输出剩余空白均匀分布于指引线盒子之间的指引线}*{}
-%\capcs xspaceskip {if nonzero and |\\spacefactor|${}\ge2000$, 
+%\capcs xspaceskip {if nonzero and |\\spacefactor|${}\ge2000$,
 %   overrides the normal interword glue}*{}
-\capcs xspaceskip {如果非零，且 |\\spacefactor|${}\ge2000$, 抑制正常的字间橡皮间距}*{}
+\capcs xspaceskip {如果非零，且 |\\spacefactor|${}\ge2000$, 抑制正常的字间粘连}*{}
 %\capcs year {the current year, as a number}*{}
 \capcs year {以数值形式输出当前年份}*{}
 %\capcs zeta {math Greek letter $\zeta$}{}{}

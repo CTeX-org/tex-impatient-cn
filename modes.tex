@@ -25,7 +25,7 @@
 %and alignments.
 %For an explanation of the conventions used in this section,
 %see \headcit{Descriptions of the commands}{cmddesc}.
-这一章介绍水平和垂直模式下具有对应或一致形式的命令。这些命令提供盒子、间隔、嵌线、指引线以及排列。有关本章中使用的惯例的说明，参见 \headcit{命令的描述}{cmddesc}。
+这一章介绍水平和垂直模式下具有对应或一致形式的命令。这些命令提供盒子、间隔、标线、指引线以及阵列。有关本章中使用的惯例的说明，参见 \headcit{命令的描述}{cmddesc}。
 
 \begindescriptions
 
@@ -52,7 +52,7 @@
 %and you want to separate the levels of quotes.
 %\TeX\ won't break a line at
 %a |\thinspace|.\minrefs{line break}
-该命令产生一个正的\minref{字符间距}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向右移动一个相应的距离。例如，当你需要嵌套引用，并希望将不同层次的引号分开时，它便非常有用。\TeX\ 不会在 |\thinspace| 处断行。\minrefs{line break}
+该命令产生一个正的\minref{微调}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向右移动一个相应的距离。例如，当你需要嵌套引用，并希望将不同层次的引号分开时，它便非常有用。\TeX\ 不会在 |\thinspace| 处断行。\minrefs{line break}
 
 \example
 ``\thinspace`一个引用。'\thinspace''\par
@@ -75,7 +75,7 @@
 %It is useful for bringing together characters that are a little too
 %far apart.
 %\TeX\ won't break a line at a |\negthinspace|.\minrefs{line break}
-该命令产生一个负的\minref{字符间距}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向左移动一个相应的距离。当需要将两个间隔稍远的字符靠近一些时便非常有用。\TeX\ 不会在 |\negthinspace| 处断行。\minrefs{line break}
+该命令产生一个负的\minref{微调}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向左移动一个相应的距离。当需要将两个间隔稍远的字符靠近一些时便非常有用。\TeX\ 不会在 |\negthinspace| 处断行。\minrefs{line break}
 
 \example
 The horror, the horror\negthinspace, the horror of it all!!
@@ -94,7 +94,7 @@ The horror, the horror\negthinspace, the horror of it all!
 %at an |\enspace| unless it's followed by glue.
 %In a bulleted list, the bullets are usually separated from the following
 %text by an |\enspace|.
-该命令产生一个宽度为 1 ^{en} 的\minref{字符间距}（1 em 的一半，参见 \xrefpg{dimdefs}）。\TeX\ 不会在 |\enspace| 处断行，除非紧接其后的是橡皮间距。在符号列表中，符号与其后的文字通常由 |\enspace| 来分隔。
+该命令产生一个宽度为 1 ^{en} 的\minref{微调}（1 em 的一半，参见 \xrefpg{dimdefs}）。\TeX\ 不会在 |\enspace| 处断行，除非紧接其后的是粘连。在符号列表中，符号与其后的文字通常由 |\enspace| 来分隔。
 
 \example
 引理 1.\enspace 这里有一只白兔。
@@ -118,7 +118,7 @@ The horror, the horror\negthinspace, the horror of it all!
 %\TeX\ can break a line \minrefs{line break} at such glue.
 %The width of these glues (which are relative to the current font)
 %are as follows for |cmr10|, the default \plainTeX\ font:
-这里的每个命令都产生一个既不能伸展也不能压缩的水平\minref{橡皮间距}。\TeX\ 不能在这些橡皮间距处断行。对于 \plainTeX\ 的默认字体 |cmr10| 来说，这些橡皮间距的宽度（与当前字体有关）如下：
+这里的每个命令都产生一个既不能伸展也不能压缩的水平\minref{粘连}。\TeX\ 不能在这些粘连处断行。对于 \plainTeX\ 的默认字体 |cmr10| 来说，这些粘连的宽度（与当前字体有关）如下：
 \medskip
 
 \def\distance#1{\hbox{\strut $\rightarrow$\vrule\hskip #1\vrule$\leftarrow$}}
@@ -191,7 +191,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %We recommend that you maintain this ratio by changing
 %these values whenever
 %you change |\baselineskip| (\xref\baselineskip).
-这些参数用于确定由 |\small!-skip|、|\med!-skip| 和 |\big!-skip| 命令产生的橡皮间距的量。通过更改这些参数，你可以改变命令的效果。（对于 \plainTeX）它们相应的默认值是 1/4 、1/2 以及 1 行距。我们建议你保持这个比例，无论何时，你可以通过修改 |\baselineskip| （\xref\baselineskip）来修改参数值。
+这些参数用于确定由 |\small!-skip|、|\med!-skip| 和 |\big!-skip| 命令产生的粘连的量。通过更改这些参数，你可以改变命令的效果。（对于 \plainTeX）它们相应的默认值是 1/4 、1/2 以及 1 行距。我们建议你保持这个比例，无论何时，你可以通过修改 |\baselineskip| （\xref\baselineskip）来修改参数值。
 ^^|\baselineskip//and {\tt\\smallskipamount}, etc.|
 \eix^^{vertical space}
 
@@ -221,7 +221,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %If both are present, the |plus| must come before the |minus|.
 %An omitted value
 %is taken to be zero. Any of the \<dimen>s can be negative.
-这些命令可以分别产生水平的和垂直的橡皮间距。在最简单以及最常见的情况下，即当只有 \<dimen$_1$> 存在时，|\hskip| 向右移动 \<dimen$_1$>，而 |\vskip| 向页面下方移动 \<dimen$_1$>。通常情况下，这些命令产生的\minref{橡皮间距}是 \<dimen$_1$>，它的最大伸展间距是 \<dimen$_2$>，最大压缩间距是 \<dimen$_3$>。|plus| \<dimen$_2$> 或 |minus |\<dimen$_3$>，或两者都可以从命令中被省略。如果两者都需要，则 |plus| 必须出现在 |minus| 之前。被省略的变量取值为零。任何 \<dimen> 都可以取负值。
+这些命令可以分别产生水平的和垂直的粘连。在最简单以及最常见的情况下，即当只有 \<dimen$_1$> 存在时，|\hskip| 向右移动 \<dimen$_1$>，而 |\vskip| 向页面下方移动 \<dimen$_1$>。通常情况下，这些命令产生的\minref{粘连}是 \<dimen$_1$>，它的最大伸展间距是 \<dimen$_2$>，最大压缩间距是 \<dimen$_3$>。|plus| \<dimen$_2$> 或 |minus |\<dimen$_3$>，或两者都可以从命令中被省略。如果两者都需要，则 |plus| 必须出现在 |minus| 之前。被省略的变量取值为零。任何 \<dimen> 都可以取负值。
 
 %You can use |\hskip| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
@@ -273,7 +273,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %You can use |\vglue| to produce blank space at the top of a page,
 %e.g., above a title on the first page of a document, but
 %^|\topglue| (next) is usually better for this purpose.
-|\hglue| 命令生成水平的\minref{橡皮间距}，它不会在断行处消失；|\vglue| 命令生成垂直的\minref{橡皮间距}，它不会在分页处消失。除此以外，这些命令与 |\hskip| 和 |\vskip| 相似。你可以使用 |\vglue| 在文档第一页的标题上部等页面顶部产生空白间隔，但就此目的而言，随后的 ^|\topglue| 通常是更好的选择。
+|\hglue| 命令生成水平的\minref{粘连}，它不会在断行处消失；|\vglue| 命令生成垂直的\minref{粘连}，它不会在分页处消失。除此以外，这些命令与 |\hskip| 和 |\vskip| 相似。你可以使用 |\vglue| 在文档第一页的标题上部等页面顶部产生空白间隔，但就此目的而言，随后的 ^|\topglue| 通常是更好的选择。
 \enddesc
 
 \begindesc
@@ -296,7 +296,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %produced by |\topskip| in a complex way.  By using |\topglue| you can
 %control the position of the first box on the page without worrying about
 %those adjustments.
-由于 \TeX\ 通常以非常复杂的方式调整由 |\topskip| 产生的橡皮间距，所以这个命令是非常有用的。通过使用 |\topglue|，你能够控制页面上第一个盒子的位置，而不必担心那些复杂的调整。
+由于 \TeX\ 通常以非常复杂的方式调整由 |\topskip| 产生的粘连，所以这个命令是非常有用的。通过使用 |\topglue|，你能够控制页面上第一个盒子的位置，而不必担心那些复杂的调整。
 
 \enddesc
 
@@ -310,11 +310,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 
 %\li In a horizontal mode, \TeX\ moves its position to the right (for a positive
 %kern) or to the left (for a negative kern).
-\li 在水平模式下，\TeX\ 向右（正的字符间隔）或向左（负的字符间隔）移动。
+\li 在水平模式下，\TeX\ 向右（正的微调）或向左（负的微调）移动。
 
 %\li In a vertical mode, \TeX\ moves its position down the page (for a positive
 %kern) or up the page (for a negative kern).
-\li 在垂直模式下，\TeX\ 向页面下方（正的字符间隔）或页面上方（负的字符间隔）移动。
+\li 在垂直模式下，\TeX\ 向页面下方（正的微调）或页面上方（负的微调）移动。
 
 \endulist
 \noindent
@@ -324,7 +324,9 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %is different from the notion of a kern in some computerized
 %typesetting systems---in \TeX, positive kerns push two letters \emph{apart}
 %instead of bringing them closer together.
-因此，正的字符间隔产生空白的间隔，而负的字符间隔使得 \TeX\ 倒退到已经存在的东西上。在 \TeX 中，正的字符间隔将两个字母\emph{分开}，而不是使它们更近一些。字符间隔^^{kerns}的这一设计与一些计算化排版系统是不同的。
+因此，正的微调产生空白的间隔，而负的微调使得 \TeX\ 倒退到已经存在的东西上。
+在 \TeX 中，正的微调将两个字母\emph{分开}，而不是使它们更近一些。
+微调^^{kerns}的这一设计与一些计算化排版系统是不同的。
 
 %A kern is similar to
 %\minref{glue}, except that (a)~a kern can neither stretch nor shrink,
@@ -334,7 +336,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %end of a line or a page, it discards the kern.
 %If you want to get the effect of a kern that never disappears,
 %use ^|\hglue| or ^|\vglue|.
-字符间隔与\minref{橡皮间距}相似，不同的是 (a)~字符间隔不能被伸展或压缩；(b)~如果字符间隔后紧接橡皮间距，并且不是数学公式的一部分时，\TeX\ 不能在字符间隔处断行或分页。如果 \TeX\ 发现字符间隔位于一行或一页的结尾，该字符间隔将会被忽略。如果你希望得到不会消失的字符间距的效果，使用 ^|\hglue| 或 ^|\vglue|。
+微调与\minref{粘连}相似，不同的是 (a)~微调不能被伸展或压缩；(b)~如果微调后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在微调处断行或分页。如果 \TeX\ 发现微调位于一行或一页的结尾，该微调将会被忽略。如果你希望得到不会消失的微调的效果，使用 ^|\hglue| 或 ^|\vglue|。
 
 %You can use |\kern| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
@@ -345,11 +347,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 ^^{page breaks//kerns at}
 
 \example
-\centerline{$\Downarrow$}\kern 3pt % 垂直的字符间隔
-\centerline{$\Longrightarrow$\kern 6pt % 水平的字符间隔
-   {\bf 留意我的警示！！}\kern 6pt % 另一水平的字符间隔
+\centerline{$\Downarrow$}\kern 3pt % 垂直的微调
+\centerline{$\Longrightarrow$\kern 6pt % 水平的微调
+   {\bf 留意我的警示！！}\kern 6pt % 另一水平的微调
    $\Longleftarrow$}
-\kern 3pt % 另一垂直的字符间隔
+\kern 3pt % 另一垂直的微调
 \centerline{$\Uparrow$}
 |
 \produces
@@ -376,7 +378,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %overwhelms any finite stretch that may be present.
 %|\hfil| and |\hfill| produce horizontal glue, while
 %|\vfil| and |\vfill| produce vertical glue.
-这些命令产生可无限伸展的水平或垂直的橡皮间距，它们将取代任何存在的有限伸展。|\hfil| 和 |\hfill| 产生水平的橡皮间距，而 |\vfil| 和 |\vfill| 产生垂直的橡皮间距。
+这些命令产生可无限伸展的水平或垂直的粘连，它们将取代任何存在的有限伸展。|\hfil| 和 |\hfill| 产生水平的粘连，而 |\vfil| 和 |\vfill| 产生垂直的粘连。
 
 %|\hfill| is infinitely larger than |\hfil|.
 %If both |\hfill| and |\hfil| appear in the same \minref{box},
@@ -385,7 +387,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %|\hfill| can in turn be overwhelmed by |\hskip 0pt plus 1filll|.
 %The glue produced by
 %|\hfil| and |\hfill| never shrinks.
-%|\hfill| 无限地大于 |\hfil|。如果 |\hfill| 和 |\hfil|  出现在一同一个\minref{盒子}里，|\hfill| 将占据所有可以获得的额外间隔，而 |\hfil| 的效应将被忽略。而 |\hfill| 可以被 |\hskip 0pt plus 1filll| 取代。由 |\hfil| 和 |\hfill| 产生的橡皮间距不能被压缩。
+%|\hfill| 无限地大于 |\hfil|。如果 |\hfill| 和 |\hfil|  出现在一同一个\minref{盒子}里，|\hfill| 将占据所有可以获得的额外间隔，而 |\hfil| 的效应将被忽略。而 |\hfill| 可以被 |\hskip 0pt plus 1filll| 取代。由 |\hfil| 和 |\hfill| 产生的粘连不能被压缩。
 
 %The behavior of |\vfil| and |\vfill| is analogous.
 |\vfil| 和 |\vfill| 有着类似的行为。
@@ -436,7 +438,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %infinitely shrinkable. The glue can shrink
 %to a negative distance, producing the effect of backspacing along a line
 %(for |\hss|) or moving back up a page (for |\vss|).
-这些命令产生水平和垂直的可无限伸展和压缩的橡皮间距。橡皮间距可以压缩至负的距离，产生的效果是（对于 |\hss|而言）沿一行向回移动或（对于 |\vss| 而言）向页面顶部移动。
+这些命令产生水平和垂直的可无限伸展和压缩的粘连。粘连可以压缩至负的距离，产生的效果是（对于 |\hss|而言）沿一行向回移动或（对于 |\vss| 而言）向页面顶部移动。
 
 \example
 \line{正文文本\hfil\hbox to 0pt{页边空白\hss}}
@@ -476,13 +478,13 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %The main use of |\hfilneg| and |\vfilneg|
 %is to counteract the effect of an |\hfil| or |\vfil|
 %inserted by a \minref{macro}.
-这些命令可以消除其前接的 |\hfil| 或 |\vfil| 产生的效果。当 |\hfil| 和 |\vfil| 产生正的无限可伸展的橡皮间距时，|\hfilneg| 和 |\vfilneg| 产生负的无限可伸展橡皮间距。（因此，$n$ |\hfilneg| 消除 $n$ ^|\hfil| 产生的效果，对于 |\vfilneg| 也是相似的。）|\hfilneg| 和 |\vfilneg| 主要的用途是抵消由\minref{宏} 引入的 |\hfil| 或 |\vfil| 产生的效果。
+这些命令可以消除其前接的 |\hfil| 或 |\vfil| 产生的效果。当 |\hfil| 和 |\vfil| 产生正的无限可伸展的粘连时，|\hfilneg| 和 |\vfilneg| 产生负的无限可伸展粘连。（因此，$n$ |\hfilneg| 消除 $n$ ^|\hfil| 产生的效果，对于 |\vfilneg| 也是相似的。）|\hfilneg| 和 |\vfilneg| 主要的用途是抵消由\minref{宏} 引入的 |\hfil| 或 |\vfil| 产生的效果。
 
 %|\hfilneg| and |\vfilneg| have
 %the curious property that if they are the only infinitely stretchable
 %glue in a box, they produce exactly the same effect as |\hfil|
 %and |\vfil|.
-如果它们是一个盒子中仅有的可无限伸展的橡皮间距，|\hfilneg| 和 |\vfilneg| 则具有奇异的特性，即它们产生与 |\hfil| 和 |\vfil| 完全一致的效果。
+如果它们是一个盒子中仅有的可无限伸展的粘连，|\hfilneg| 和 |\vfilneg| 则具有奇异的特性，即它们产生与 |\hfil| 和 |\vfil| 完全一致的效果。
 
 \example
 \leftline{\hfil 位于右端\hfilneg}
@@ -536,7 +538,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %\TeX\ doesn't break the \<horizontal mode material> into lines,
 %since it's in restricted horizontal mode when it's assembling the box.
 %\TeX\ won't change the size of the box once it's been produced.
-该命令产生一个 hbox（水平的\minref{盒子}）以容纳 \<horizontal mode material>。\<horizontal mode material> 两侧的大括号定义一个集合。\TeX\ 不会对 \<horizontal mode material> 断行，因为当其组装盒子时它处于受限水平模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
+该命令产生一个 hbox（水平的\minref{盒子}）以容纳 \<horizontal mode material>。\<horizontal mode material> 两侧的大括号定义一个编组。\TeX\ 不会对 \<horizontal mode material> 断行，因为当其组装盒子时它处于受限水平模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
 
 %|\hbox| is often useful when you want to keep some text all on one line.
 %If your use of |\hbox| prevents \TeX\ from breaking lines in an acceptable
@@ -595,7 +597,7 @@ hbox 的宽度取决于 |\hbox| 的参数：
 %The braces around \<vertical mode material> define a group.
 %\TeX\ is in internal vertical mode when it's assembling the box.
 %\TeX\ won't change the size of the box once it's been produced.
-这些命令产生一个 \minref{vbox}（垂直的\minref{盒子}）以容纳 \<vertical mode material>。\<vertical mode material> 两侧的大括号定义一个集合。当 \TeX\ 组装盒子时它处于内部垂直模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
+这些命令产生一个 \minref{vbox}（垂直的\minref{盒子}）以容纳 \<vertical mode material>。\<vertical mode material> 两侧的大括号定义一个编组。当 \TeX\ 组装盒子时它处于内部垂直模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
 
 %The difference between |\vtop| and |\vbox| lies in where \TeX\ puts
 %the reference point of the constructed vbox.
@@ -674,8 +676,8 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 通常，构造的 vbox 的宽度是其内部最宽项目的宽度。\footnote{更准确地说，是从参考点至构造的 vbox 最右侧之间的距离。因此，如果你使用 ^|\moveright| 或（负数距离的）^|\moveleft| 向右移动任何项目，那么构造的 vbox 则可能更宽。}
 在高度与深度间分配垂直扩展的规则更加复杂：
 \ulist
-\li 对于 |\vtop|，如果第一个项目是一个盒子或嵌线，则其高度是其第一个项目的高度。否则，其高度是零。深度是减去高度后的垂直扩展。
-\li 对于 |\vbox|，如果最后一个项目是一个盒子或嵌线，则其深度是其最后一个项目的深度。否则浓度是零。高度是减去深度后的垂直扩展。\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，则深度将会大于 ^|\boxmaxdepth|。 随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。}
+\li 对于 |\vtop|，如果第一个项目是一个盒子或标线，则其高度是其第一个项目的高度。否则，其高度是零。深度是减去高度后的垂直扩展。
+\li 对于 |\vbox|，如果最后一个项目是一个盒子或标线，则其深度是其最后一个项目的深度。否则浓度是零。高度是减去深度后的垂直扩展。\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，则深度将会大于 ^|\boxmaxdepth|。 随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。}
 \endulist
 
 %The |\vfil| command (\xref\vfil) is useful for filling out a vbox
@@ -1054,7 +1056,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %in the line.  The strut will force the height and depth of the line
 %to be larger, but it won't print anything or consume any horizontal
 %space.
-这个命令产生一个宽度为零的盒子，盒子的高度 (|8.5pt|) 和深度 (|3.5pt|) 与用 \plainTeX\ 的默认字体 |cmr10| 排出的典型的一行文字是一致的。当你使用 |\offinter!-lineskip| ^^|\offinterlineskip| 或类似的命令关闭 \TeX\ 的行间间隔，如你正在构建一个排列时，该命令主要用于强迫一行具有相同的高度。如果一行的自然高度过矮，你可以在行中插入一个 |\strut| 使它回到标准的高度。结构体将使得一行的高度和深度更大一些，但它不会打印出任何东西，或者消耗任何水平间隔。
+这个命令产生一个宽度为零的盒子，盒子的高度 (|8.5pt|) 和深度 (|3.5pt|) 与用 \plainTeX\ 的默认字体 |cmr10| 排出的典型的一行文字是一致的。当你使用 |\offinter!-lineskip| ^^|\offinterlineskip| 或类似的命令关闭 \TeX\ 的行间间隔，如你正在构建一个阵列时，该命令主要用于强迫一行具有相同的高度。如果一行的自然高度过矮，你可以在行中插入一个 |\strut| 使它回到标准的高度。结构体将使得一行的高度和深度更大一些，但它不会打印出任何东西，或者消耗任何水平间隔。
 
 %If you're setting type in a font that's bigger or smaller than |cmr10|,
 %you should redefine |\strut| for that context.
@@ -1222,7 +1224,7 @@ $${\smash{r_m \brace r_n}\vphantom{r}} \Longrightarrow r$$
 %This parameter specifies the width of the rule
 %that \TeX\ appends to an overfull \minref{hbox}.
 %\PlainTeX\ sets it to |5pt|.
-这个参数设定 \TeX\ 附加在一个过满的 \minref{hbox} 后的嵌线的宽度。\PlainTeX\ 将其设为 |5pt|。
+这个参数设定 \TeX\ 附加在一个过满的 \minref{hbox} 后的标线的宽度。\PlainTeX\ 将其设为 |5pt|。
 \enddesc
 
 \begindesc
@@ -1329,7 +1331,7 @@ Underfull \hbox (badness 5091) detected at line 4
 %if the last item on the current list is a \minref{kern},
 %|\lastkern| yields the dimension of that kern; if it
 %isn't a kern, it yields a dimension of $0$.
-这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，因为它们只能以参数的一部分出现。如果列表中的最后的项目不是指示类型，它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。例如，如果在当前列表中最后一项是一个\minref{字符间距}，|\lastkern| 给出那个字符间距的尺寸；如果它不是字符间距，它给出一个尺寸 $0$。
+这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，因为它们只能以参数的一部分出现。如果列表中的最后的项目不是指示类型，它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。例如，如果在当前列表中最后一项是一个\minref{微调}，|\lastkern| 给出那个微调的尺寸；如果它不是微调，它给出一个尺寸 $0$。
 
 %Using |\lastbox| has the additional effect of removing the last box from
 %the list.
@@ -1347,7 +1349,7 @@ Underfull \hbox (badness 5091) detected at line 4
 \example
 \def\a{two\kern 15pt}
 one \a\a\hskip 2\lastkern three\par
-% 在`三'之前产生三倍的字符间隔。
+% 在`三'之前产生三倍的微调。
 \def\a{\hbox{二}}
 一 \a
 \setbox0 = \lastbox % 将`二'去掉。
@@ -1379,13 +1381,13 @@ one \a\a\hskip 2\lastkern three\par
 %a specific item that you don't want there.
 %\TeX\ doesn't provide an ^|\unbox| command because |\lastbox| produces
 %nearly the same effect.
-如果当前列表的最后一项分别是\minref{字符间距}、\minref{橡皮间距}或\minref{惩罚}的类型，这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主垂直列表中。在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
+如果当前列表的最后一项分别是\minref{微调}、\minref{粘连}或\minref{惩罚}的类型，这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主垂直列表中。在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
 \enddesc
 
 
 %==========================================================================
 %\section {Rules and leaders}
-\section {嵌线与指引线}
+\section {标线与指引线}
 
 \begindesc
 \bix^^{rules}
@@ -1404,20 +1406,29 @@ one \a\a\hskip 2\lastkern three\par
 %the forms listed above show just two of the possible combinations.  You
 %can even give a dimension of a given kind more than once---if you do,
 %the last one is the one that counts.
-|\hrule| 命令用于产生水平的嵌线；相应的 |\vrule| 命令用于产生垂直的嵌线。你可以指定嵌线的宽度、高度或深度的任意或全部。\TeX\ 会为你省略的那些提供默认值。你可以以任何顺序给定嵌线的尺寸；上面给出的形式只是可能的组合中的两个。你甚至可以为一个给定类型的尺寸给出多个值---如果你这么做，起作用的是最后一个值。
+|\hrule| 命令用于产生水平的标线；相应的 |\vrule| 命令用于产生垂直的标线。
+你可以指定标线的宽度、高度或深度的任意或全部。
+\TeX\ 会为你省略的那些提供默认值。你可以以任何顺序给定标线的尺寸；
+上面给出的形式只是可能的组合中的两个。
+你甚至可以为一个给定类型的尺寸给出多个值---如果你这么做，起作用的是最后一个值。
 
 %If you don't specify the width of a horizontal rule, the rule is
 %extended horizontally to the boundaries of the innermost \minref{box} or
 %\minref{alignment} that contains the rule.  If you don't specify the
 %height of a horizontal rule, it defaults to |0.4pt|; if you don't
 %specify the depth of a horizontal rule, it defaults to |0pt|.
-如果你没有设定水平嵌线的宽度，则嵌线将水平地扩展到包含嵌线的\minref{盒子}或\minref{排列}的最内侧的边界。如果你没有设定水平嵌线的高度，其默认值是 |0.4pt|；如果你没有设定水平嵌线的深度，其默认值是 |0pt|。
+如果你没有设定水平标线的宽度，
+则标线将水平地扩展到包含标线的\minref{盒子}或\minref{阵列}的最内侧的边界。
+如果你没有设定水平标线的高度，其默认值是 |0.4pt|；
+如果你没有设定水平标线的深度，其默认值是 |0pt|。
 
 %If you don't specify the width of a vertical rule, it defaults to
 %|0.4pt|.  If you don't specify the height or the depth of a vertical
 %rule, the rule is extended to the boundary of the innermost \minref{box}
 %or \minref{alignment} that contains the rule.
-如果你没有设定垂直嵌线的宽度，其默认值是 |0.4pt|；如果你没有设定垂直嵌线的高度或深度，则嵌线将地扩展到包含嵌线的\minref{盒子}或\minref{排列}的最内侧的边界。
+如果你没有设定垂直标线的宽度，其默认值是 |0.4pt|；
+如果你没有设定垂直标线的高度或深度，
+则标线将地扩展到包含标线的\minref{盒子}或\minref{阵列}的最内侧的边界。
 
 %\TeX\ treats a horizontal rule as an inherently vertical item
 %and a vertical rule as an inherently horizontal item.
@@ -1429,10 +1440,10 @@ one \a\a\hskip 2\lastkern three\par
 %from left to right and separates vertical items in a sequence, while
 %a vertical rule runs up and down and
 %separates horizontal items in a sequence.
-\TeX\ 以内在的垂直项目处理水平嵌线，而以内在的水平项目处理垂直嵌线。因此，水平嵌线只有\minref{垂直模式}下是有效的，而垂直嵌线只在\minref{水平模式}下是有效的。
+\TeX\ 以内在的垂直项目处理水平标线，而以内在的水平项目处理垂直标线。因此，水平标线只有\minref{垂直模式}下是有效的，而垂直标线只在\minref{水平模式}下是有效的。
 %^^{horizontal mode//rules in}
 %^^{vertical mode//rules in}
-如果觉得意外，可以直观化地观测。水平嵌线从左向右移动，并且将垂直的项目有序地分开，而垂直嵌线从上到下，将水平项目有序地分开。
+如果觉得意外，可以直观化地观测。水平标线从左向右移动，并且将垂直的项目有序地分开，而垂直标线从上到下，将水平项目有序地分开。
 
 \example
 \hrule\smallskip
@@ -1614,11 +1625,11 @@ one \a\a\hskip 2\lastkern three\par
 
 %==========================================================================
 %\section {Alignments}
-\section {排列}
+\section {阵列}
 
 %==========================================================================
 %\subsection {Tabbing alignments}
-\subsection {制表符排列}
+\subsection {制表阵列}
 
 \begindesc
 \bix^^{tabbing alignments}
@@ -1633,12 +1644,12 @@ one \a\a\hskip 2\lastkern three\par
 %The only difference between |\+| and |\tabalign| is that
 %|\+| is an outer macro---you can't use it when \TeX\ is reading tokens at
 %high speed \seeconcept{outer}.
-在制表符\minref{排列}中，这些命令开始单独的一行。|\+| 与 |\tabalign| 之间唯一的不同在于 |\+| 是一个外部宏，当 \TeX\ 高速读取记号时，你不能使用它\seeconcept{outer}。
+在制表\minref{阵列}中，这些命令开始单独的一行。|\+| 与 |\tabalign| 之间唯一的不同在于 |\+| 是一个外部宏，当 \TeX\ 高速读取记号时，你不能使用它\seeconcept{outer}。
 
 %If you place an `|&|' at a position
 %to the right of all existing tabs in a tabbing alignment,
 %the `|&|' establishes a new tab at that position.
-在制表符排列中，如你将 `|&|' 放在所有已经存在的制表符的右侧，那么 `|&|' 将在那个位置上建立一个新的制表符。
+在制表阵列中，如你将 `|&|' 放在所有已经存在的制表符的右侧，那么 `|&|' 将在那个位置上建立一个新的制表符。
 \example
 \cleartabs % Nullify any previous \settabs.
 \+ {\bf if }$a[i] < a[i+1]$ &{\bf then}&\cr
@@ -1670,7 +1681,7 @@ one \a\a\hskip 2\lastkern three\par
 %\<number> equal parts.  \TeX\ takes the length of a line to be
 %|\hsize|, as usual.  You can make the alignment narrower by decreasing
 %|\hsize|.
-这个命令的第一种形式为制表符\minref{排列}定义一系列制表符的停止位置。它告诉 \TeX\ 设置制表符停止位置以便将每一行分成 \<number> 等份。\TeX\ 仍将行的长度设为 |\hsize|。你可以通过减小 |\hsize| 来使得排列更加紧密。
+这个命令的第一种形式为制表\minref{阵列}定义一系列制表符的停止位置。它告诉 \TeX\ 设置制表符停止位置以便将每一行分成 \<number> 等份。\TeX\ 仍将行的长度设为 |\hsize|。你可以通过减小 |\hsize| 来使得阵列更加紧密。
 %\margin{paragraph ``The tab settings $\ldots$'' moved to below.}
 \margin{``制表符设定 $\ldots$''一段被移到下面了。}
 \example
@@ -1705,7 +1716,7 @@ one \a\a\hskip 2\lastkern three\par
 %you issue a new |\settabs| command or end a group containing
 %the |\settabs| command.
 %This is true for both forms of the command.
-由 |\settabs| 建立起来的制表符设置一直有效，直到你使用一个新的 |\settabs| 命令或结束包含 |\settabs| 命令的集合。该命令的两种形式都是这样的。
+由 |\settabs| 建立起来的制表符设置一直有效，直到你使用一个新的 |\settabs| 命令或结束包含 |\settabs| 命令的编组。该命令的两种形式都是这样的。
 
 \example
 % The first line establishes the template.
@@ -1739,7 +1750,7 @@ one \a\a\hskip 2\lastkern three\par
 
 %==========================================================================
 %\subsection {General alignments}
-\subsection {常规排列}
+\subsection {常规阵列}
 
 \begindesc
 \cts halign {{\bt \rqbraces{\<preamble> \\cr \<row> \\cr $\ldots$ \<row> \\cr}}}
@@ -1753,19 +1764,19 @@ one \a\a\hskip 2\lastkern three\par
 %sequence of rows, where each row in turn contains a sequence of column
 %entries.  \TeX\ adjusts the widths of the column entries to accommodate
 %the widest one in each column.
-这一命令产生由一系列行组成的水平的\minref{排列}，每一行又包括了一系列的列。\TeX\ 调节列的宽度以容纳每一列中最宽的那一个条目。
+这一命令产生由一系列行组成的水平的\minref{阵列}，每一行又包括了一系列的列。\TeX\ 调节列的宽度以容纳每一列中最宽的那一个条目。
 
 %A horizontal alignment can only appear when \TeX\ is in a vertical
 %\minref{mode}.  We recommend that you first study alignments in general
 %(\xref{alignment}) before you attempt to use this command.
-只有当 \TeX\ 位于垂直\minref{模式}下水平排列才能出现。我们建议你在使用该命令之前首先学习一下常见的排列（\xref{alignment}）。
+只有当 \TeX\ 位于垂直\minref{模式}下水平阵列才能出现。我们建议你在使用该命令之前首先学习一下常见的阵列（\xref{alignment}）。
 
 %An alignment consists of a ^{preamble}
 %followed by the text to be aligned. The preamble,
 %which describes the layout of the rows that follow, consists of a
 %sequence of column templates, separated by `|&|' and ended
 %by |\cr|.
-排列由^{导言}和随后的需要排列的文字构成。导言描述随后行的版式，由一系列列的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
+阵列由^{导言}和随后的需要排列的文字构成。导言描述随后行的版式，由一系列列的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
 \bix^^{template}
 \bix^^{entry (column or row)}
 %Each row consists of a sequence of column
@@ -1779,7 +1790,7 @@ one \a\a\hskip 2\lastkern three\par
 %\TeX\ typesets each column entry in restricted horizontal mode,
 %i.e., as the contents of an \minref{hbox},
 %and implicitly encloses it in a group.
-\TeX\ 在受限水平模式中对每一列条目进行排版，即像 \minref{hbox} 的内容一样，并且隐式地将它封闭在一个集合中。
+\TeX\ 在受限水平模式中对每一列条目进行排版，即像 \minref{hbox} 的内容一样，并且隐式地将它封闭在一个编组中。
 
 %The |to| form of this command instructs \TeX\
 %to make the width of the alignment be \<dimen>,
@@ -1787,7 +1798,7 @@ one \a\a\hskip 2\lastkern three\par
 %The |spread| form of this command instructs \TeX\
 %to make the alignment wider by \<dimen> than its natural width.
 %These forms are like the corresponding forms of |\hbox| \ctsref\hbox.
-这个命令的 |to| 形式指导 \TeX\ 构造一个宽度为 \<dimen> 的排列，在需要的时候调节列的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身宽度再宽 \<dimen> 的排列。这些形式与 |\hbox| \ctsref\hbox 相应的形式是类似的。
+这个命令的 |to| 形式指导 \TeX\ 构造一个宽度为 \<dimen> 的阵列，在需要的时候调节列的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身宽度再宽 \<dimen> 的阵列。这些形式与 |\hbox| \ctsref\hbox 相应的形式是类似的。
 
 %See |\tabskip| \ctsref\tabskip{} for an example using the
 %|to| form.
@@ -1827,7 +1838,7 @@ one \a\a\hskip 2\lastkern three\par
 %of row entries.
 %\TeX\ adjusts the heights of the row entries to accommodate the tallest one
 %in each row.
-这一命令产生由一系列列组成的垂直的\minref{排列}，每一列又包括了一系列的行。\TeX\ 调节行的高度以容纳每一列中最高的那一个条目。
+这一命令产生由一系列列组成的垂直的\minref{阵列}，每一列又包括了一系列的行。\TeX\ 调节行的高度以容纳每一列中最高的那一个条目。
 
 %A vertical alignment
 %can only appear when \TeX\ is in a horizontal \minref{mode}.
@@ -1836,7 +1847,7 @@ one \a\a\hskip 2\lastkern three\par
 %alignments in general
 %(\xref{alignment}) and the |\halign| command (see above) before
 %you attempt to use the |\valign| command.
-只有当 \TeX\ 位于水平\minref{模式}下垂直排列才能出现。因为垂直排列（a）在概念上有一些困难，并且（b）不经常使，因此，我们建议在你试图使用 |\valign| 命令之前首先学习一下常见的排列（\xref{alignment}）以及|\halign| 命令（参见上面的描述）。
+只有当 \TeX\ 位于水平\minref{模式}下垂直阵列才能出现。因为垂直阵列（a）在概念上有一些困难，并且（b）不经常使，因此，我们建议在你试图使用 |\valign| 命令之前首先学习一下常见的阵列（\xref{alignment}）以及|\halign| 命令（参见上面的描述）。
 
 %An alignment consists of a ^{preamble}
 %followed by the text to be aligned. The preamble,
@@ -1844,7 +1855,7 @@ one \a\a\hskip 2\lastkern three\par
 %consists of a
 %sequence of row templates, separated by `|&|' and ended
 %by |\cr|.
-排列由^{导言}和随后的需要排列的文字构成。导言描述随后列的版式，由一系列行的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
+阵列由^{导言}和随后的需要排列的文字构成。导言描述随后列的版式，由一系列行的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
 \bix^^{template}
 %Each column consists of a sequence of ^{row}
 %entries, also separated by `|&|' and ended by |\cr|. Within
@@ -1866,7 +1877,7 @@ one \a\a\hskip 2\lastkern three\par
 %its lines have the
 %|\leftskip| and |\rightskip| (\xref\leftskip) \minref{glue}
 %appended to~them.
-\TeX\ 在内部垂直模式中对每一行条目进行排版，即像 \minref{vbox} 的内容一样，并且隐式地将它封闭在一个集合中。它总是将 vbox 的深度设为零。随后，列中的任何文字或其它水平模式内容将 \TeX\ 带回通常的水平模式。（这只是在内部垂直模式下 \TeX 行为常见准则的一个应用。）常见的段落参数适用于这种情形：行条目具有 |\parindent|（\xref\parindent）的起始缩进，而且它的每一行都附加了 |\leftskip| 和 |\rightskip|（\xref\leftskip）\minref{橡皮间距}。
+\TeX\ 在内部垂直模式中对每一行条目进行排版，即像 \minref{vbox} 的内容一样，并且隐式地将它封闭在一个编组中。它总是将 vbox 的深度设为零。随后，列中的任何文字或其它水平模式内容将 \TeX\ 带回通常的水平模式。（这只是在内部垂直模式下 \TeX 行为常见准则的一个应用。）常见的段落参数适用于这种情形：行条目具有 |\parindent|（\xref\parindent）的起始缩进，而且它的每一行都附加了 |\leftskip| 和 |\rightskip|（\xref\leftskip）\minref{粘连}。
 
 %Note in particular that a row entry containing text has
 %a width of |\hsize| (\xref\hsize).  Unless you reset
@@ -1882,7 +1893,7 @@ one \a\a\hskip 2\lastkern three\par
 %template so that the rows don't come out crooked as a result
 %of the varying heights of the entries in the alignment.  You
 %can produce a strut with the |\strut| command.
-正常情况下，你需要在每个模板中包括\minref{结构体}^^{struts//in vertical alignments}，以便行不会由于排列中条目高度的变化而变得弯曲。你可以使用 |\strut| 获得结构体。
+正常情况下，你需要在每个模板中包括\minref{结构体}^^{struts//in vertical alignments}，以便行不会由于阵列中条目高度的变化而变得弯曲。你可以使用 |\strut| 获得结构体。
 
 %The |to| form of this command instructs \TeX\
 %to make the vertical extent of the alignment be \<dimen>,
@@ -1890,7 +1901,7 @@ one \a\a\hskip 2\lastkern three\par
 %The |spread| form of this command instructs \TeX\
 %to make the alignment taller by \<dimen> than its natural height.
 %These forms are like the corresponding forms of |\vbox| \ctsref\vbox.
-这个命令的 |to| 形式指导 \TeX\ 构造一个垂直伸展为 \<dimen> 的排列，在需要的时候调节行的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身高度再高 \<dimen> 的排列。这些形式与 |\vbox| \ctsref\vbox 相应的形式是类似的。
+这个命令的 |to| 形式指导 \TeX\ 构造一个垂直伸展为 \<dimen> 的阵列，在需要的时候调节行的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身高度再高 \<dimen> 的阵列。这些形式与 |\vbox| \ctsref\vbox 相应的形式是类似的。
 
 \example
 {\hsize=1in \parindent=0pt
@@ -1929,7 +1940,7 @@ one \a\a\hskip 2\lastkern three\par
 %This command behaves just like ^|\halign|,
 %except that it first sets the |\tabskip| glue to zero and
 %sets |\everycr| empty.
-除了首先将 |\tabskip| 橡皮间距设为零，并将 |\everycr| 清空以外，这个命令的行为与 ^|\halign| 相似。
+除了首先将 |\tabskip| 粘连设为零，并将 |\everycr| 清空以外，这个命令的行为与 ^|\halign| 相似。
 \enddesc
 
 \begindesc
@@ -1940,7 +1951,7 @@ one \a\a\hskip 2\lastkern three\par
 %or a column of a vertical alignment.
 %You can cause \TeX\ to take certain actions whenever it sees a |\cr|
 %by setting the value of the ^|\everycr| parameter \ctsref\everycr.
-这个命令用于结束水平或垂直排列的导言、水平的或制表符排列的行，或垂直排列的列。你可以通过设置 ^|\everycr|\ctsref\everycr 参数的值，引导 \TeX\ 采取特定的行动，无论什么时候它遇到 |\cr|。
+这个命令用于结束水平或垂直阵列的导言、水平的或制表阵列的行，或垂直阵列的列。你可以通过设置 ^|\everycr|\ctsref\everycr 参数的值，引导 \TeX\ 采取特定的行动，无论什么时候它遇到 |\cr|。
 \enddesc
 
 \begindesc
@@ -1973,7 +1984,7 @@ one \a\a\hskip 2\lastkern three\par
 %|\omit| must appear as the first item in a column or row entry; in effect,
 %it overrides the template from the preamble with the simple
 %template `|#|'.
-这个命令告诉 \TeX\ 在处理特定的列或行条目时，忽略水平的或垂直的\minref{排列} 中的一个模板。|\omit| 必须以第一个项目出现在列或行条目中，它有效地使用简单的模板 `|#|' 覆盖来自导言中的模板。
+这个命令告诉 \TeX\ 在处理特定的列或行条目时，忽略水平的或垂直的\minref{阵列} 中的一个模板。|\omit| 必须以第一个项目出现在列或行条目中，它有效地使用简单的模板 `|#|' 覆盖来自导言中的模板。
 
 \example
 \tabskip = 2em\halign{%
@@ -2034,10 +2045,10 @@ one \a\a\hskip 2\lastkern three\par
 %|\span| is rarely useful by itself outside of a template,
 %but it provides the basic mechanism
 %for defining ^|\multispan|.
-这个命令的意义取决于它出现在导言中，还是在排列条目中。
+这个命令的意义取决于它出现在导言中，还是在阵列条目中。
 \ulist
 \li 通常，\TeX\ 并不扩展它读入的导言中的记号。将 |\span| 放在导言中记号的前面，根据\minref{宏}扩展的 \TeX 常用规则，会导致这些记号立即得到扩展。
-\li 用 |\span| 取代 `|&|'，放在两列或两行条目之前，会导致这些列或行合并到一起。对于水平排列，合并的列的宽度是列成员宽度之和。对于垂直排列，合并的行的高度是行成员高度之和。合并的行或合并的列的模板形成一个集合，因此，在 |\span| 前的字体设置命令影响下一个 `|&|' 前的一切。
+\li 用 |\span| 取代 `|&|'，放在两列或两行条目之前，会导致这些列或行合并到一起。对于水平阵列，合并的列的宽度是列成员宽度之和。对于垂直阵列，合并的行的高度是行成员高度之和。合并的行或合并的列的模板形成一个编组，因此，在 |\span| 前的字体设置命令影响下一个 `|&|' 前的一切。
 \endulist
 \noindent
 |\span| 很少单独用在模板之外，但它为定义 ^|\multispan| 提供了基本的机制。
@@ -2052,7 +2063,7 @@ one \a\a\hskip 2\lastkern three\par
 %\<number> rows in a column of a vertical alignment,
 %should be combined into a single column or row (as with
 %|\span|) and that their templates should be omitted (as with |\omit|).
-该命令告诉 \TeX，随后水平排列的行中的 \<number> 列或垂直排列的列中的 \<number> 行应该合并成一个单独的列或行（就像 |\span| 那样），并且它们的模板应该被忽略（就像 |\omit| 那样）。
+该命令告诉 \TeX ，随后水平阵列的行中的 \<number> 列或垂直阵列的列中的 \<number> 行应该合并成一个单独的列或行（就像 |\span| 那样），并且它们的模板应该被忽略（就像 |\omit| 那样）。
 
 \example
 \tabskip = 13pt\halign{%
@@ -2101,19 +2112,19 @@ one \a\a\hskip 2\lastkern three\par
 %\<horizontal mode material> after the current column of a vertical
 %\minref{alignment}.
 %The material can be text, glue, a rule, or anything else.
-该命令在水平\minref{排列}的当前行之后插入 \<vertical mode material>，或者在垂直\minref{排列}的当前列之后插入 \<horizontal mode material>。插入的内容可以是文本、橡皮距离、嵌线，或者其它任何东西。
+该命令在水平\minref{阵列}的当前行之后插入 \<vertical mode material>，或者在垂直\minref{阵列}的当前列之后插入 \<horizontal mode material>。插入的内容可以是文本、粘连、标线，或者其它任何东西。
 
 %The most common use of |\noalign|
 %is to put extra space after a row or column.
 %If you want to put extra space after \emph{every\/} row of a horizontal
 %alignment, use ^|\openup| (\xref\openup).
-|\noalign| 最常见的用途是在一行或列后插入额外的间隔。如果你希望在水平排列的\emph{每}行后都插入额外的间隔，可以使用 ^|\openup|（\xref\openup）。
+|\noalign| 最常见的用途是在一行或列后插入额外的间隔。如果你希望在水平阵列的\emph{每}行后都插入额外的间隔，可以使用 ^|\openup|（\xref\openup）。
 
 \example
 \halign{%
    \hfil\it#\hfil\tabskip=2em&\hfil#\hfil&#&
       \hfil\$#\tabskip=0em\cr
-   % 改变 \tabskip 将阻止下面的嵌线突出来。
+   % 改变 \tabskip 将阻止下面的标线突出来。
    美国&华盛顿&美元&1.00\cr
    法国&巴黎&法朗&0.174\cr
    \noalign{\smallskip\hrule\smallskip}
@@ -2171,7 +2182,7 @@ one \a\a\hskip 2\lastkern three\par
 %You can change |\tabskip| within a template---%
 %the change will affect the glue associated with all the following
 %|&|'s as well as the glue after the last row or column.
-该参数指定 \TeX 在水平排列的列之间或垂直排列的行之间放置水平或垂直橡皮间距的量。\TeX\ 也在水平排列的第一列的左侧和最后一行的右侧，以及垂直排列的第一行的上端和最后一行的下端放置 |\tabskip| 橡皮间距。你可以在模板中改变 |\tabskip|---这一改变将影响所有紧接其后的 |&| 的橡皮间距以及最后一行或列之后的橡皮间距。
+该参数指定 \TeX 在水平阵列的列之间或垂直阵列的行之间放置水平或垂直粘连的量。\TeX\ 也在水平阵列的第一列的左侧和最后一行的右侧，以及垂直阵列的第一行的上端和最后一行的下端放置 |\tabskip| 粘连。你可以在模板中改变 |\tabskip|---这一改变将影响所有紧接其后的 |&| 的粘连以及最后一行或列之后的粘连。
 \example
 \halign to 3.5in{%
    \hfil\it#\tabskip = 2em plus 8pt
@@ -2220,7 +2231,7 @@ one \a\a\hskip 2\lastkern three\par
 %in the column wider.  If the |\hidewidth| is at the left of the
 %entry, the entry sticks out to the left; if the |\hidewidth| is at the
 %right of the entry, the entry sticks out to the~right.
-该命令告诉 \TeX\ 忽略水平排列中下一个列条目的宽度。如果你有一个条目长于同一列中其它大多数，并且 ，你希望条目伸到列外，而不是使得该条目所在列变得更宽时，该命令是有用的。如果 |\hidewidth| 在条目的左侧，则条目向左伸展；如果 |\hidewidth| 在条目的右侧，则条目向右伸展。
+该命令告诉 \TeX\ 忽略水平阵列中下一个列条目的宽度。如果你有一个条目长于同一列中其它大多数，并且 ，你希望条目伸到列外，而不是使得该条目所在列变得更宽时，该命令是有用的。如果 |\hidewidth| 在条目的左侧，则条目向左伸展；如果 |\hidewidth| 在条目的右侧，则条目向右伸展。
 \example
 \tabskip = 25pt\halign{%
    \hfil\it#\hfil&\hfil#\hfil&#&\hfil\$#\cr
@@ -2250,7 +2261,7 @@ one \a\a\hskip 2\lastkern three\par
 %Thus you can cause \TeX\ to
 %execute certain commands at the end of a preamble, row, or column by
 %assigning a list of those commands to |\everycr|.
-无论什么时候，当 \TeX\ 遇到处于每个导言结尾处、水平排列的每行结尾处以及垂直排列的每列结尾处的|\cr| 时，它扩展 \<token list>。|\everycr| 只在 |\cr| 后扩展。因此，你可以通过向 |\everycr| 赋与导言、行、列相关列表，引导 \TeX\ 在导言、行或列的结尾处执行特定的命令。
+无论什么时候，当 \TeX\ 遇到处于每个导言结尾处、水平阵列的每行结尾处以及垂直阵列的每列结尾处的|\cr| 时，它扩展 \<token list>。|\everycr| 只在 |\cr| 后扩展。因此，你可以通过向 |\everycr| 赋与导言、行、列相关列表，引导 \TeX\ 在导言、行或列的结尾处执行特定的命令。
 
 %The |\everycr| tokens shouldn't include any commands other than |\no!-align|.
 %That's because
@@ -2261,7 +2272,7 @@ one \a\a\hskip 2\lastkern three\par
 %\TeX\ will complain about a missing |\cr|, insert
 %a |\cr|, insert the |\everycr| tokens again, and repeat these actions
 %indefinitely.
-|\everycr| 的记号不应该包括 |\no!-align| 以外的任何命令。这是因为，|\everycr| 记号会出现在排列的最后一个 |\cr|。任何一个非 |\no!-align| 命令会导致 \TeX\ 认为它新开了一行或一列，因此，\TeX\ 会报怨丢失了 |\cr|，插入 |\cr|，再次插入 |\everycr| 记号，并且无限地重复这些动作。
+|\everycr| 的记号不应该包括 |\no!-align| 以外的任何命令。这是因为，|\everycr| 记号会出现在阵列的最后一个 |\cr|。任何一个非 |\no!-align| 命令会导致 \TeX\ 认为它新开了一行或一列，因此，\TeX\ 会报怨丢失了 |\cr|，插入 |\cr|，再次插入 |\everycr| 记号，并且无限地重复这些动作。
 
 \example
 \everycr={\noalign{\smallskip\hrule\smallskip}}

@@ -81,7 +81,6 @@
 % language, you should probably be using a version of \TeX\ adapted
 % to that language.\footnote{The \TeX\ Users Group (\xref{resources}) can
 % provide you with information about European language versions of \TeX.}
-
 这些命令可以产生各种欧文字符和连写.
 它们在文本中遇到偶而出现的欧文单词和词组时显得很有用.
 但是如果需要排印大量的欧文文本时,
@@ -102,7 +101,6 @@
 % \endexample
 % \eix^^{ligatures}
 % \enddesc
-
 当你在一个单词中使用这些命令时, 需要在它们后面加上一个空格,
 这样, \TeX\ 会把它后面的字母当作是这个词语的一部分而不是这个命令的一部分.
 你不需为了使用这些符号而进入\minref{数学模式}.
@@ -589,7 +587,7 @@ l'H\accent94 otel des Invalides
 \ctsx tentt {使用 $10$ 磅打字机字体}
 \explain
 这些命令使 \TeX{} 用指定的字体排版后面的文本。一般你可以把字体选择命令
-和相应的文本置于同一个群组中。群组之外使用一个字体选择命令直到文档最后。
+和相应的文本置于同一个编组中。编组之外使用一个字体选择命令直到文档最后。
 （除非中途用另一个类似的命令覆盖掉它）
 \example
 See how I've reduced my weight---from
@@ -659,7 +657,7 @@ See how I've reduced my weight---from
 \explain
 这些命令选择一种字体风格，而不改变字体或者字号。\footnote{
 \TeX\ 并不提供预定义的命令来改变字号，比如，|\eightpoint|。要支持这样的命令，需要大量的字体，可能很多从来都不会用到。这样的命令曾被用来排版\texbook。}
-一般情况下，这些字体风格命令和相应的文本被一起包含在一个群组里。如果放在群组之外，效果将会作用于文档剩余部分（除非用另外一个这样的命令覆盖它）。
+一般情况下，这些字体风格命令和相应的文本被一起包含在一个编组里。如果放在编组之外，效果将会作用于文档剩余部分（除非用另外一个这样的命令覆盖它）。
 \example
 The Dormouse was {\it not} amused.
 |
@@ -1691,7 +1689,10 @@ is the third in the series.
 \begindesc
 \easy\cts noindent {}
 \explain
-当\TeX{}结束一段后处于垂直模式时，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，然后开始新段，不要缩进。在水平模式中，比如段落中，这个命令没有效果。|\noindent|开始的新段会取消通常的|\parindent|缩进。
+当\TeX{}结束一段后处于垂直模式时，这个命令插入段落间粘连 ^|\parskip|，
+使\TeX{}进入水平模式，然后开始新段，不要缩进。
+在水平模式中，比如段落中，这个命令没有效果。
+|\noindent|开始的新段会取消通常的|\parindent|缩进。
 ^^{indentation}
 %A common use of |\noindent| is to cancel the indentation of
 %the first line of a
@@ -1993,15 +1994,14 @@ half wide.}}
 %make narrower.  If you forget to enclose |\narrower| within a group,
 %you'll find that all the rest of your document will have narrow
 %paragraphs.
-
-
 \begindesc
 \easy\cts narrower {}
 \explain
 ^^{paragraphs//narrow}
-这个命令产生较窄的段落，左右边距将会增加当前段落^{缩进}|\parindent|的大小，
+这个命令产生较窄的段落，左右边距将会增加 |\parindent|（即当前段落^{缩进}的大小），
 原因是|\leftskip|和|\rightskip|分别增加了|\parindent|。
-通常|\narrower|被放在一个\minref{群组}的开始，作用于其中的段落上。如果你忘记把|\narrower|封闭在群组里，就会发现文档所余部分全都变窄了。
+通常|\narrower|被放在一个\minref{编组}的开始，作用于其中的段落上。
+如果你忘记把|\narrower|封闭在编组里，就会发现文档所余部分全都变窄了。
 
 %|\narrower| affects just those paragraphs that end after you invoke it.
 %If you end a |\narrower| group before you've ended
@@ -2021,7 +2021,7 @@ half wide.}}
 %\endexample\enddesc
 
 
-|\narrower|只影响其后的段落。如果包含|\narrower|的群组在段落末尾之前结束，\TeX{}将不会产生窄的段落。
+|\narrower|只影响其后的段落。如果包含|\narrower|的编组在段落末尾之前结束，\TeX{}将不会产生窄的段落。
 
 \example
 {\parindent = 12pt \narrower\narrower\narrower
@@ -2097,9 +2097,10 @@ had we used just one ``narrower'' command.\par}
 \explain
 这些参数告诉\TeX{}在当前段落每一行的左右各放多大的空白。我们将只解释|\leftskip|，因为|\rightskip|与其类似。
 
-^^{indentation} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。如果|\leftskip|是一个橡皮长度，就会得到^{右对齐}的内容，即左边距参差不齐。
+^^{indentation} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。
+如果|\leftskip|是一个粘连，就会得到^{右对齐}的内容，即左边距参差不齐。
 
-通常，你应该在一个\minref{群组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的群组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
+通常，你应该在一个\minref{编组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的编组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
 break}
 
 \example
@@ -2188,7 +2189,7 @@ get me executed as sure as ferrets are ferrets!''
 
 当使用等宽字体排版的时候，你需要用|\ttraggedright|命令；而使用其他字体时，需要用|\raggedright|命令。
 
-通常你会希望对整篇文档使用这些命令，但是通过\minref{群组}就可以把效果局限在部分文本中。
+通常你会希望对整篇文档使用这些命令，但是通过\minref{编组}就可以把效果局限在部分文本中。
 \example
 \raggedright ``You couldn't have it if you {\it did\/}
 want it,'' the Queen said. ``The rule is, jam tomorrow
@@ -2603,7 +2604,7 @@ analyze the input/\allowbreak output behavior in the limit.
 大于或等于 $10000$ 的惩罚值彻底阻止断行，
 而小于或等于 $-10000$ 的惩罚值强制断行。
 此命令也能用于竖直模式。
-\secondprinting{\vfill\eject}
+%\secondprinting{\vfill\eject}
 \example
 \def\break{\penalty -10000 } % as in plain TeX
 \def\nobreak{\penalty 10000 } % as in plain TeX
@@ -2683,7 +2684,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \eix^^{line breaks//encouraging or discouraging}
 \enddesc
 
-\secondprinting{\vfill\eject}
+%\secondprinting{\vfill\eject}
 
 
 %==========================================================================
@@ -3342,7 +3343,7 @@ Underfull \hbox (badness 10000) detected at line 0
 
 注意 \<font> 指的是该字体的控制序列名称，
 而不是字体文件名 \<font\-name>。
-谨记：在群组结束时所分配的 |\hyphenchar| \emph{不会}撤销。
+谨记：在编组结束时所分配的 |\hyphenchar| \emph{不会}撤销。
 若要局部改变 |\hyphenchar|，你必须显式地保存和恢复原有取值。
 \example
 \hyphenchar\tenrm = `-

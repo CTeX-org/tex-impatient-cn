@@ -285,7 +285,7 @@
 \bigskip
 ~% Call the indentation for descriptions \descindent
 ~% and set it to 8 picas.
-% 用 \descindent 表示描述列表的缩进量，并设定它的值为 8 pica。
+% 用 \descindent 表示描述列表的缩进量，并设定它的值为 8 皮卡。
 \newdimen\descindent \descindent = 8pc
 ~% Indent paragraphs by \descindent.
 ~% Skip an additional half line between paragraphs.
@@ -310,7 +310,7 @@ of Mock Turtle Soup.
 这个例子在一个标线盒子中放入一些词句，它们是路易斯·卡罗所写的：
 \bigskip
 ~% Put 8pt of space between the text and the surrounding rules.
-% 在文本和四周嵌线之间留有 8pt 宽的间隔。
+% 在文本和四周标线之间留有 8pt 宽的间隔。
 \hbox{\vrule\vbox{\hrule
    \hbox spread 8pt{\hfil\vbox spread 8pt{\vfil
 ~%    \hbox{Who would not give all else for twop}%
@@ -514,12 +514,12 @@ Roman 即是如此。这也许是个经济的决定，可它却同时是个美�
 ~%   \vtop{\hsize=6pc\pretolerance = 10000\hbadness = 10000
 ~%      \normalbaselines\noindent\it#\strut}%
 ~%  &\vrule #&#\hfil &\vrule #% the rules and middle column
-\halign{\tabskip = .7em plus 1em  % 各列之间的 glue
+\halign{\tabskip = .7em plus 1em  % 各列之间的粘连
 % 用 \vtop 得到表格第一列中的多行单元格。
 % 让多行文本右边不对齐，且不连字化。
    \vtop{\hsize=6pc\pretolerance = 10000\hbadness = 10000
       \normalbaselines\noindent\it#\strut}%
-  &\vrule #&#\hfil &\vrule #% rules 和中间各列
+  &\vrule #&#\hfil &\vrule #% 标线和中间各列
 ~%% Use \vtop to get whole paragraphs in the last column.
 ~%  &\vtop{\hsize=11pc \parindent=0pt \normalbaselineskip=12pt
 ~%    \normalbaselines \rightskip=3pt plus2em #}\cr

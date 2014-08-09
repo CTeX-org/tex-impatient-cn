@@ -780,8 +780,32 @@ $\alphachar$
 \enddesc
 
 %==========================================================================
+%\subsection {Controlling expansion}
 \subsection {控制展开}
 
+%\begindesc
+%\bix^^{macros//controlling expansion of}
+%\cts expandafter {\<token$_1$> \<token$_2$>}
+%\explain
+%This command tells \TeX\ to expand \<token$_1$> according to its rules
+%for \minref{macro} expansion \emph{after} it has expanded \<token$_2$>
+%by one level.  It's useful when \<token$_1$> is something like `|{|'
+%^^|{//with {\tt\\expandafter}|
+%or ^|\string| that inhibits expansion of \<token$_2$>,
+%but you want to expand \<token$_2$> nevertheless.
+%\example
+%\def\aa{xyz}
+%\tt % Use this font so `\' prints that way.
+%[\string\aa]  [\expandafter\string\aa]
+%[\expandafter\string\csname TeX\endcsname]
+%|
+%\produces
+%\def\aa{xyz}
+%\tt
+%[\string\aa]  [\expandafter\string\aa]
+%[\expandafter\string\csname TeX\endcsname]
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{macros//controlling expansion of}
 \cts expandafter {\<token$_1$> \<token$_2$>}
@@ -805,6 +829,34 @@ $\alphachar$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts noexpand {\<token>}
+%\explain
+%This command tells \TeX\ to
+%suppress expansion of \<token> if \<token> is a
+%\minref{control sequence} that can be expanded.
+%If \<token> can't be expanded, e.g., it's a letter,
+%\TeX\ acts as though the |\noexpand| wasn't there
+%and processes \<token> normally.
+%In other words the expansion of `|\noexpand|\<token>'
+%is simply \<token> no matter what \<token> happens to be.
+%\example
+%\def\bunny{rabbit}
+%\edef\magic{Pull the \noexpand\bunny\ out of the hat!! }
+%% Without \noexpand, \bunny would always be replaced
+%% by `rabbit'
+%\let\oldbunny=\bunny \def\bunny{lagomorph} \magic
+%\let\bunny=\oldbunny \magic
+%|
+%\produces
+%\def\bunny{rabbit}
+%\edef\magic{Pull the \noexpand\bunny\ out of the hat! }
+%% Without \noexpand, \bunny would always be replaced
+%% by `rabbit'
+%\let\oldbunny=\bunny \def\bunny{lagomorph} \magic
+%\let\bunny=\oldbunny \magic
+%\endexample
+%\enddesc
 \begindesc
 \cts noexpand {\<token>}
 \explain
@@ -812,27 +864,48 @@ $\alphachar$
 如果 \<token> 不能被展开, 比如它是一个字符,
 \TeX\ 则不会理会 |\noexpand|, 而把 \<token> 按一般的方法处理.
 \example
-\def\bunny{免子}
+\def\bunny{兔子}
 \edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
-% 如果没有 \noexpand, \bunny 会永远替换为 `免子'
-\let\oldbunny=\bunny \def\bunny{免} \magic
+% 如果没有 \noexpand, \bunny 会永远替换为 `兔子'
+\let\oldbunny=\bunny \def\bunny{兔} \magic
 \let\bunny=\oldbunny \magic
 |
 \produces
-\def\bunny{免子}
+\def\bunny{兔子}
 \edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
-% 如果没有 \noexpand, \bunny 会永远替换为 `免子'
-\let\oldbunny=\bunny \def\bunny{免} \magic
+% 如果没有 \noexpand, \bunny 会永远替换为 `兔子'
+\let\oldbunny=\bunny \def\bunny{兔} \magic
 \let\bunny=\oldbunny \magic
 \endexample
 \enddesc
 
+%\begindesc
+%\cts the {\<token>}
+%\explain
+%This command generally expands to a list of \minref{character} tokens
+%that represents \<token>.  \<token> can be any of the following:
 \begindesc
 \cts the {\<token>}
 \explain
 这个命令一般会把 \<token> 展开, 表示成一个\minref{字符}串.
 其中 \<token>  可以是以下的任何形式:
 
+%\ulist\compact
+%\li a \TeX\ \minref{parameter}, e.g., |\parindent| or |\deadcycles|
+%^^{parameters//using \b\tt\\the\e\ with}
+%\li a \minref{register}, e.g., |\count0|
+%^^{registers//with \b\tt\\the\e}
+%\margin{Item for special registers removed}
+%\li a code associated with an input character, e.g., |\catcode`(|
+%\li a font parameter, e.g., |\fontdimen3\sevenbf|
+%\li the ^|\hyphenchar| or ^|\skewchar| of a font, e.g.,
+%|\skewchar\teni|
+%\li ^|\lastpenalty|, ^|\lastskip|, or ^|\lastkern| (values derived from
+%the last item on the current horizontal \minrefs{horizontal list}
+%or \minref{vertical list})
+%\li a control sequence defined by ^|\chardef| or
+%^|\mathchardef|
+%\endulist
 \ulist\compact
 \li \TeX\ \minref{参数}, 比如, |\parindent| 或者 |\deadcycles|
 ^^{parameters//using \b\tt\\the\e\ with}
@@ -847,6 +920,16 @@ $\alphachar$
 \li ^|\chardef| 或 ^|\mathchardef| 定义的控制序列
 \endulist
 
+%\noindent
+%In addition, |\the| can expand to noncharacter tokens in the following two
+%cases:
+%\ulist\compact
+%\li |\the| \<font>, which expands to the most recently defined
+%control sequence that selects
+%the same font as the control sequence \<font>
+%\li |\the| \<token variable>, which expands to a copy of the value of the
+%variable, e.g., |\the\everypar|
+%\endulist
 \noindent
 此外, |\the| 可以在下面两种情况下, 展开成非字符标记:
 \ulist\compact
@@ -856,6 +939,17 @@ $\alphachar$
 比如 |\the\everypar|
 \endulist
 
+%See \knuth{pages~214--215} for a more detailed description of what
+%|\the| does in various cases.
+%\example
+%The vertical size is currently \the\vsize.
+%The category code of `(' is \the\catcode `(.
+%|
+%\produces
+%The vertical size is currently \the\vsize.
+%The category code of `(' is \the\catcode `(.
+%\endexample
+%\enddesc
 请参阅 \knuth{页~214--215} 来获取 |\the| 在各种情况下行为的更详细描述.
 \example
 目前页面的竪直长度为 \the\vsize.
@@ -867,6 +961,10 @@ $\alphachar$
 \endexample
 \enddesc
 
+%{\tighten
+%\see \headcit{Converting information to tokens}{convert},
+%|\showthe| (\xref\showthe).
+%\par}
 {\tighten
 \see \headcit{把信息改为标记}{convert},
 |\showthe| (\xref\showthe).

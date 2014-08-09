@@ -1586,7 +1586,7 @@ Addison-Wesley, 1990.\par}
 \endolist
 如果问题是因为嫌疑字符作为宏参量（argument），诊治方法是重新定义宏为一
 对宏 |\mstart| 和 |\mfinish|，分别在参量文本的前后应用。|\mstart| 设定类
-别代码而 |\mfinish| 结束这一群组来取消变动。
+别代码而 |\mfinish| 结束这一编组来取消变动。
 \eix^^{category codes//changing}
 
 %\section Making macro files more readable
@@ -1619,8 +1619,8 @@ Addison-Wesley, 1990.\par}
 % then you should also set ^|\globaldefs| to $1$ so that
 % all the macro definitions will be global and thus visible outside of the group.
 当然在文档最后，你需要恢复空格和行尾的类别代码（分别是 $10$ 和 $5$）：可
-以把整个文档封装在一个群组里，也可以明确地恢复其正常值。如果使用群组封
-装，你还需要设定 ^|\globaldefs| 为 $1$ 以使得整个宏定义是全局的，在群组之
+以把整个文档封装在一个编组里，也可以明确地恢复其正常值。如果使用编组封
+装，你还需要设定 ^|\globaldefs| 为 $1$ 以使得整个宏定义是全局的，在编组之
 外可见。
 
 % A miniature example of a macro file of this form is:

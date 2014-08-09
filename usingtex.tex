@@ -401,7 +401,7 @@ The wonders of \TeX shall never cease!
 \olist
 \li 将该参数的值用作其他命令的参量。
 例如 \hbox{|\vskip\parskip|} 这个命令生成大小%
-等于\zglue 参数|\parskip|（段落间距）的垂直间距。
+等于粘连参数|\parskip|（段落间距）的垂直间距。
 \li 通过赋值修改该参数的值。
 例如 \hbox{|\hbadness=200|} 这个赋值使得|\hbadness|参数的值变为$200$.
 \endolist
@@ -494,10 +494,10 @@ The wonders of \TeX shall never cease!
 并不简单地变成输出中的一个空格。
 由于输入行和输出行通常不会正好对应，
 输入中的这些空格有的变成输出中的行结束符，
-另外有些空格则变成宽度可变的间隔即``\zglue'' (\xref{glue})；
-\zglue 有其自然宽度（它希望的宽度），但也可以伸展或者收缩。
+另外有些空格则变成宽度可变的间隔即``粘连'' (\xref{glue})；
+粘连有其自然宽度（它希望的宽度），但也可以伸展或者收缩。
 \TeX\ 排版要求右页边对齐（通常如此）的段落时，
-将调整各行的\zglue 的宽度以让各行正好在页边结束。%
+将调整各行的粘连的宽度以让各行正好在页边结束。%
 （段落的最后一行是个例外，因为一般不要求它在右页边结束。）
 
 %You can prevent an input space from turning into an end of line by using a
@@ -879,7 +879,7 @@ We have {\bf a few boldface words} in this sentence.
 花括号要么定义了一个编组，要么不会在 \TeX\ 的胃中被处理。
 对于 |\halign| 和 |\valign| 命令，编组只有平凡的效果；
 这是由于编组中的一切东西要么不会到达胃里（因为它在模板中），
-要么包含在更深一层的群组中。
+要么包含在更深一层的编组中。
 ^^|\halign//grouping for|
 ^^|\valign//grouping for|
 }
@@ -973,7 +973,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 食道将该串记号展开为一系列\emph{原始命令}记号。
 ^^{展开记号}
 ^{胃}执行原始命令指定的操作，生成一些页面。
-最后，^{肠道}将每个页面转换为 \dvifile 所需的形式并发送给它。 
+最后，^{肠道}将每个页面转换为 \dvifile 所需的形式并发送给它。
 ^^{\dvifile//由 \TeX\ 的肠道制造}
 这些活动在\chapterref{concepts}的\conceptcit{\anatomy}中有更详细的描述。
 ^^{\anatomy}
@@ -1071,7 +1071,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 它所组装的东西的类型定义了它所在的模式。
 首先有两种普通模式：普通水平模式用于组装段落（在它们分为多行之前），
 普通垂直模式用于组装页面。
-其次有两种限制模式：限制水平模式用于水平地添加元素形成水平盒子，
+其次有两种限制模式：受限水平模式用于水平地添加元素形成水平盒子，
 内部垂直模式用于垂直地添加元素以形成竖直盒子（非页面盒子）。
 最后还有两种数学模式：行内数学模式用于组装段落内部的数学公式，
 陈列数学模式用于组装单独一行显示的数学公式（见“数学公式”，\xref{mathform}）。
