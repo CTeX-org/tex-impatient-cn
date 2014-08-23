@@ -691,7 +691,7 @@
 （见 \xref{mismatched}）。
 \endulist
 \noindent
-在\conceptcit{宏}这里有更多关于参数和参量的内容。 
+在\conceptcit{宏}这里有更多关于参数和参量的内容。
 在\knuth{第~203--204~页}你可以找到对于定界参量和非定界参量的精确规则。
 \endconcept
 
@@ -1471,9 +1471,10 @@ note that they end the control word.
 
 
 \bookmark{2}{以D开头}
-\concept {decimal constant}
+%\concept {decimal constant}
+\concept {小数}
 
-See \conceptcit{number}.
+参见\conceptcit{数}。
 \endconcept
 
 \conceptindex{delimiters}
@@ -1668,8 +1669,10 @@ below its \refterm{baseline}.
 \endconcept
 
 
-\conceptindex{dimensions}
-\concept dimension
+%\conceptindex{dimensions}
+%\concept dimension
+\conceptindex{尺寸}
+\concept 尺寸
 
 A \defterm{dimension} specifies a distance, that is, a linear measure of
 space.  You use dimensions to specify sizes of things, such as the length
@@ -3355,81 +3358,132 @@ natural space of four |mu| and \refterm{stretch} of five |mu|.
 \bookmark{2}{以N开头}
 %\conceptindex{numbers}
 %\concept number
-\conceptindex{数值}
-\concept 数值
+\conceptindex{数}
+\concept 数
 
-In \TeX, a \defterm{number} is a positive or negative integer.
-You can write a number in \TeX\ in four different ways:
+%In \TeX, a \defterm{number} is a positive or negative integer.
+%You can write a number in \TeX\ in four different ways:
+%\olist\compact
+%\li as an ordinary decimal integer, e.g., |52|
+%\li as an octal number, e.g., |'14| ^^{octal numbers}
+%\li as a hexadecimal number, e.g., |"FF0| ^^{hexadecimal numbers}
+%\li as the code for an \refterm{\ascii\ character}, e.g., |`)|
+%or |`\)|
+%\endolist
+%\noindent
+%Any of these forms can be preceded by `|+|' or `|-|'.
+在 \TeX\ 中，\defterm{数}（number）是指正整数或负整数。%
+%\footnote{译注：在本书的翻译中，经常直接将“number”称为“整数”。}
+\TeX\ 中的数可以用如下四种不同方式表示：
 \olist\compact
-\li as an ordinary decimal integer, e.g., |52|
-\li as an octal number, e.g., |'14| ^^{octal numbers}
-\li as a hexadecimal number, e.g., |"FF0| ^^{hexadecimal numbers}
-\li as the code for an \refterm{\ascii\ character}, e.g., |`)|
-or |`\)|
+\li 用通常的十进制整数表示，比如 |52|
+\li 用八进制数表示，比如 |'14| ^^{octal numbers}
+\li 用十六进制数表示，比如 |"FF0| ^^{hexadecimal numbers}
+\li 用字符的\refterm{\ascii}编码表示，比如 |`)| 或 |`\)|
 \endolist
 \noindent
-Any of these forms can be preceded by `|+|' or `|-|'.
+上述任何一种形式都可以在前面加上 `|+|' 或者 `|-|' 。
 
-An octal number can have only the digits |0|--|7|.
+%An octal number can have only the digits |0|--|7|.
+%^^{octal numbers}
+%A hexadecimal number can have digits |0|--|9| and
+%|A|--|F|, representing
+%values from $0$ to $15$.
+%^^{hexadecimal numbers}
+%You can't, alas, use lowercase letters when you write a hexadecimal number.
+%If you need an explanation of octal and hexadecimal numbers,
+%you'll find one on \knuth{pages~43--44}.
+八进制数只能包含数字 |0|--|7|。
 ^^{octal numbers}
-A hexadecimal number can have digits |0|--|9| and
-|A|--|F|, representing
-values from $0$ to $15$.
+而十六进制数可以包含数字 |0|--|9| 以及字母 |A|--|F|，
+它们分别表示从 $0$ 到 $15$ 的数值。
 ^^{hexadecimal numbers}
-You can't, alas, use lowercase letters when you write a hexadecimal number.
-If you need an explanation of octal and hexadecimal numbers,
-you'll find one on \knuth{pages~43--44}.
+然而，你不能用小写字母来表示十六进制数。
+在\knuth{43--44~页}中你可以找到八进制和十六进制数的解释。
 
-A decimal, octal, or hexadecimal number
-ends at the first character that can't be part of the number.
-Thus a decimal number ends when \TeX\ sees, say, a letter, even though a
-letter between `|A|' and `|F|' would not end a hexadecimal number.
-You can end a number with one or more spaces and
-\TeX\ will ordinarily ignore them.\footnote{
-When you're defining a macro that ends in a number, you should always
-put a space after that number; otherwise \TeX\ may later combine that
-number with something else.}
+%A decimal, octal, or hexadecimal number
+%ends at the first character that can't be part of the number.
+%Thus a decimal number ends when \TeX\ sees, say, a letter, even though a
+%letter between `|A|' and `|F|' would not end a hexadecimal number.
+%You can end a number with one or more spaces and
+%\TeX\ will ordinarily ignore them.\footnote{
+%When you're defining a macro that ends in a number, you should always
+%put a space after that number; otherwise \TeX\ may later combine that
+%number with something else.}
+十进制、八进制或十六进制数都在第一个不能作为该数一部分的字符处结束。
+因此，任何字母都会结束一个十进制数，
+而`|A|'和`|F|'之间的字母却不能结束一个十六进制数。
+你也可以用一个或多个空格结束一个数，
+\TeX\ 通常将忽略这些空格。\footnote{
+在定义一个以数结尾的宏时，
+你应该始终在该数后面加上空格；
+否则到后面 \TeX\ 可能将该数和其他字符结合在一起。}
 
-The fourth form above specifies a number as the
-\minref{\ascii} code for a character.
+%The fourth form above specifies a number as the
+%\minref{\ascii} code for a character.
+%^^{characters//\ascii\ codes for}
+%\TeX\ ignores spaces after this form of number also.
+%You can write a number in this form either as |`|$c$ or as |`\|$c$.
+%The second form, though longer, has the advantage that you can use it
+%with \emph{any} character, even `|\|', `|%|', or `|^^M|'.
+%It does have one rather technical disadvantage: when \TeX\ is expanding
+%a token sequence for a command such as |\edef| or |\write|,
+%^^|\edef//expansion of {\tt\\'\it c} in|
+%^^|\write//expansion of {\tt\\'\it c} in|
+%occurrences of `|\|$c$' within numbers will also be expanded if they can be.
+%That's rarely the effect you want.
+上述的第四种形式用字符的\minref{\ascii}编码表示一个数。
 ^^{characters//\ascii\ codes for}
-\TeX\ ignores spaces after this form of number also.
-You can write a number in this form either as |`|$c$ or as |`\|$c$.
-The second form, though longer, has the advantage that you can use it
-with \emph{any} character, even `|\|', `|%|', or `|^^M|'.
-It does have one rather technical disadvantage: when \TeX\ is expanding
-a token sequence for a command such as |\edef| or |\write|,
+\TeX\ 同样忽略此形式的数后面的空格。
+一个数按这种形式可以写成 |`|$c$ 或者 |`\|$c$。
+第二种写法虽然长一点，
+但优点在于可以用于\emph{任何}字符，
+甚至是 `|\|'，`|%|' 或者 `|^^M|'。
+不过它确实也有一个技术上的缺点：
+比如当 \TeX\ 展开 |\edef| 或 |\write| 命令的记号序列时，
 ^^|\edef//expansion of {\tt\\'\it c} in|
 ^^|\write//expansion of {\tt\\'\it c} in|
-occurrences of `|\|$c$' within numbers will also be expanded if they can be.
-That's rarely the effect you want.
+出现在数中间的能展开的`|\|$c$'将同样被展开；
+而这多半不是你想要的。
 
-The following are all valid representations of the decimal number
-$78$:
+%The following are all valid representations of the decimal number
+%$78$:
+%\csdisplay
+%78   +078   "4E   '116   `N   `\N
+%|
+下面是十进制数$78$的全部有效的表示方式：
 \csdisplay
 78   +078   "4E   '116   `N   `\N
 |
 
+%You can't use a number in text by itself since a number isn't
+%a command.
+%However, you can insert the decimal form of a number in text
+%by putting a ^|\number| command (\xref\number) in front of it
+%or the roman numeral form by putting a ^|\romannumeral| command
+%in front of it.
+你不能在文本中单独使用一个数，因为它不是命令。
+但是，你可以在文本中插入一个数的十进制形式，只要将它放在 ^|\number|
+命令（\xref\number ）之后；
+或者它的罗马数字形式，只要将它放在 ^|\romannumeral| 命令之后。
 
-You can't use a number in text by itself since a number isn't
-a command.
-However, you can insert the decimal form of a number in text
-by putting a ^|\number| command (\xref\number) in front of it
-or the roman numeral form by putting a ^|\romannumeral| command
-in front of it.
-
-You can also use ^{decimal constant}s, i.e., numbers with a fractional part,
-for specifying dimensions \seeconcept{dimension}.
-A decimal constant has a ^{decimal point}, which
-can be the first character of the constant.
-You can use a comma instead of a period to represent the decimal point.
-A decimal constant can be preceded by a plus or minus sign.
-Thus `|.5in|',
-`|-3.22pt|', and `|+1,5\baselineskip|' are valid dimensions.
-You can't, however, use decimal constants
-in any context \emph{other} than as the ``factor'' part of a dimension,
-i.e., its multiplier.
-
+%You can also use ^{decimal constant}s, i.e., numbers with a fractional part,
+%for specifying dimensions \seeconcept{dimension}.
+%A decimal constant has a ^{decimal point}, which
+%can be the first character of the constant.
+%You can use a comma instead of a period to represent the decimal point.
+%A decimal constant can be preceded by a plus or minus sign.
+%Thus `|.5in|',
+%`|-3.22pt|', and `|+1,5\baselineskip|' are valid dimensions.
+%You can't, however, use decimal constants
+%in any context \emph{other} than as the ``factor'' part of a dimension,
+%i.e., its multiplier.
+你也可以用^{小数}，即带有小数部分的数，来指定一个尺寸\seeconcept{尺寸}。
+小数包含一个可以在最前面的^{小数点}。
+小数点的圆点也可以用逗号代替。小数之前也可以加上正号或负号。
+因此 `|.5in|'，`|-3.22pt|' 和 `|+1,5\baselineskip|' 都是有效的尺寸。
+但是，除了作为尺寸的“因子”，即乘数，
+你不能在\emph{其他}地方使用小数。
 
 \endconcept
 
