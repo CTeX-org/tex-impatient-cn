@@ -656,9 +656,9 @@
 ^^{delimited arguments}
 ^^{undelimited arguments}
 \ulist
-\li 定界参量由该参量开始处和作为该参量定界符的特定记号序列之间的所有记号组成，
-但不包含该定界符序列。其中的定界符是在宏的定义中规定的。
-因此要给出定界参量，你需要写上该参量并在其后加上定界符。
+\li 定界参量由该参量开始处和作为该参量定界子的特定记号序列之间的所有记号组成，
+但不包含该定界子序列。其中的定界子是在宏的定义中规定的。
+因此要给出定界参量，你需要写上该参量并在其后加上定界子。
 定界参量也可以是空的，即不包含任何文本。
 定界参量里面的任何花括号都必须配好对，
 即每个左花括号必须有对应的右花括号，反之亦然。
@@ -1039,8 +1039,10 @@ registers.
 \endconcept
 
 \bookmark{2}{以C开头}
-\conceptindex{category codes}
-\concept {category code}
+%\conceptindex{category codes}
+%\concept {category code}
+\conceptindex{类别码}
+\concept {类别码}
 
 The \defterm{category code} of a \refterm{character} determines that
 character's role in \TeX.
@@ -2867,88 +2869,159 @@ See \conceptcit{file}.
 \conceptindex{宏}
 \concept 宏
 
+%{% Use a brace here so that definitions of explanatory macros remain local.
+%% The closing brace is at the end of the concept.
+%A \defterm{macro} is a definition that gives a name to a pattern of
+%\TeX\ input text.\footnote{More precisely, the definition gives a name
+%to a sequence of tokens.} The name can be either a \refterm{control
+%sequence} or an \refterm{active character}.  The pattern is called the
+%``replacement text''.  The primary command for defining macros is the
+%|\def| control sequence.
 {% Use a brace here so that definitions of explanatory macros remain local.
 % The closing brace is at the end of the concept.
-A \defterm{macro} is a definition that gives a name to a pattern of
-\TeX\ input text.\footnote{More precisely, the definition gives a name
-to a sequence of tokens.} The name can be either a \refterm{control
-sequence} or an \refterm{active character}.  The pattern is called the
-``replacement text''.  The primary command for defining macros is the
-|\def| control sequence.
+\defterm{宏}（macro）是一个定义，它给出了 \TeX\ 输入文本的一种模式的名称。%
+\footnote{更准确地说，该定义给出了一个记号序列的名称。}
+这个名称可以是一个\refterm{控制序列}或一个\refterm{活动字符}。
+其中的模式称为“替换文本”。
+用于定义宏的原始命令是 |\def| 控制序列。
 
+%\def\arctheta{\cos \theta + i \sin \theta}
+%As a simple example, suppose that you have a document in which
+%the sequence `$\cos \theta + i \sin \theta$' occurs many times.
+%Instead of writing it out each time, you can define a macro for it:
+%\csdisplay
+%\def\arctheta{\cos \theta + i \sin \theta}
+%|
+%Now whenever you need this sequence, you can just ``call'' the macro
+%by writing `|\arctheta|'
+%and you'll get it.  For example, `|$e^{\arctheta}$|' will give you
+%`$e^{\arctheta}$'.
 \def\arctheta{\cos \theta + i \sin \theta}
-As a simple example, suppose that you have a document in which
-the sequence `$\cos \theta + i \sin \theta$' occurs many times.
-Instead of writing it out each time, you can define a macro for it:
+举个简单例子，假设你有一个文档，
+其中多次出现‘$\cos \theta + i \sin \theta$’这串字符。
+为避免每次都写一遍，你可以给它定义一个宏：
 \csdisplay
 \def\arctheta{\cos \theta + i \sin \theta}
 |
-Now whenever you need this sequence, you can just ``call'' the macro
-by writing `|\arctheta|'
-and you'll get it.  For example, `|$e^{\arctheta}$|' will give you
-`$e^{\arctheta}$'.
+这样每次需要这串字符时，
+用‘|\arctheta|’命令“调用”这个宏就可以得到它。
+比如，‘|$e^{\arctheta}$|’将给出‘$e^{\arctheta}$’。
 
+%\bix^^{macros//parameters of}
+%But the real power of macros lies in the fact that a macro can have
+%parameters.  When you call a macro that has parameters, you provide
+%arguments that are substituted for those parameters.  For example, suppose
+%you write:
+%\pix\indexchar #
+%\def\arc#1{\cos #1 + i \sin #1}
+%\csdisplay
+%\def\arc#1{\cos #1 + i \sin #1}
+%|
 \bix^^{macros//parameters of}
-But the real power of macros lies in the fact that a macro can have
-parameters.  When you call a macro that has parameters, you provide
-arguments that are substituted for those parameters.  For example, suppose
-you write:
+但宏的真正威力在于它可以带有参数。
+在调用一个带有参数的宏时，你给出用于替换这些参数的参量。
+例如，假设你这样写：
 \pix\indexchar #
 \def\arc#1{\cos #1 + i \sin #1}
 \csdisplay
 \def\arc#1{\cos #1 + i \sin #1}
 |
 
-The notation |#1| \xrdef{@msharp} indicates the first parameter
-of the macro, which in this case has only one parameter.  You now can
-produce a similar form, such as `$\arc{2t}$', with the macro call `|\arc
-{2t}|'.
+%The notation |#1| \xrdef{@msharp} indicates the first parameter
+%of the macro, which in this case has only one parameter.  You now can
+%produce a similar form, such as `$\arc{2t}$', with the macro call `|\arc
+%{2t}|'.
+记号 |#1| \xrdef{@msharp} 表示宏的第一个参数，
+在这个例子中宏只有一个参数。
+现在你可以用‘|\arc {2t}|’得到‘$\arc{2t}$’。
 
-More generally, a macro can have up to nine parameters, which you
-indicate as `|#1|', `|#2|', etc\null. in the macro definition.  \TeX\
-provides two kinds of parameters: delimited parameters and undelimited
-parameters.  Briefly, a delimited parameter has an \refterm{argument}
-that's delimited, or ended, by a
-specified sequence of tokens (the delimiter), while an undelimited
-parameter has an argument that doesn't need a delimiter to end it.
-First we'll explain how macros work when they have only undelimited
-parameters, and then we'll explain how they work when
-they have delimited parameters.
+%More generally, a macro can have up to nine parameters, which you
+%indicate as `|#1|', `|#2|', etc\null. in the macro definition.  \TeX\
+%provides two kinds of parameters: delimited parameters and undelimited
+%parameters.  Briefly, a delimited parameter has an \refterm{argument}
+%that's delimited, or ended, by a
+%specified sequence of tokens (the delimiter), while an undelimited
+%parameter has an argument that doesn't need a delimiter to end it.
+%First we'll explain how macros work when they have only undelimited
+%parameters, and then we'll explain how they work when
+%they have delimited parameters.
+更一般地，一个宏最多可以有九个参数，
+在宏定义中它们分别用`|#1|'，`|#2|' 等表示。
+\TeX\ 提供两种类型的宏参数：定界参数和非定界参数。
+简单来说，
+定界参数对应一个由特定记号序列（即定界子）定界（即结束）的\refterm{参量}，
+而非定界参数对应一个无需定界子结束的参量。
+我们先解释只有非定界参数时宏如何运作，
+然后解释包含定界参数时宏如何运作。
 
+%^^{parameters//undelimited}
+%If a macro has only undelimited parameters, those parameters must appear
+%one after another in the macro definition \emph{with nothing between
+%them or between the last parameter and the left brace in front of the
+%replacement text}.
+%A call on such a macro consists of the macro name followed by
+%the arguments of the call, one for each parameter.  Each argument is
+%either:
 ^^{parameters//undelimited}
-If a macro has only undelimited parameters, those parameters must appear
-one after another in the macro definition \emph{with nothing between
-them or between the last parameter and the left brace in front of the
-replacement text}.
-A call on such a macro consists of the macro name followed by
-the arguments of the call, one for each parameter.  Each argument is
-either:
+当宏只有非定界参数时，这些参数必须依次出现在宏定义中，
+\emph{在各个参数之间，以及最后一个参数和替换文本前的左花括号之间，不能有任何东西}。
+对这种宏的调用由该宏的名称，以及后面跟随的各个参量组成。
+每个参量对应一个参数，参量可以是
 
+%\ulist \compact
+%\li a single \refterm{token} other than a left or right brace, or
 \ulist \compact
-\li a single \refterm{token} other than a left or right brace, or
+\li 不为左或右花括号的单个\refterm{记号}，或者
 
-\li a sequence of tokens enclosed between a left brace and
-a matching right brace.\footnote{The
-argument can have nested pairs of braces within it, and each of these
-pairs can indicate either a \refterm{group} or a further macro
-argument.}
+%\li a sequence of tokens enclosed between a left brace and
+%a matching right brace.\footnote{The
+%argument can have nested pairs of braces within it, and each of these
+%pairs can indicate either a \refterm{group} or a further macro
+%argument.}
+%\endulist
+\li 一个包含在配对的左右花括号之间的记号序列。%
+\footnote{参量内部也可以有嵌套的配对花括号，
+其中每对花括号表示一个\refterm{编组}，或者表示一个另外的宏参量。}
 \endulist
 
-When \TeX\ encounters a macro, it expands the macro in its gullet
-\seeconcept{\anatomy}
-by substituting each argument for the corresponding
-parameter in the replacement text.  The resulting text may contain other macro
-calls.  When \TeX\ encounters such an embedded macro call, it expands
-that call immediately without looking at what follows the
-call.\footnote{In computer science terminology, the expansion is ``depth
-first'' rather than ``breadth first''.  Note that you can modify the
-order of expansion with commands such as |\expandafter|.} When \TeX's
-gullet gets to a \refterm{primitive} \refterm{command} that
-cannot be further expanded, \TeX\ passes that command to \TeX's stomach.
-The order of expansion is sometimes critical, so in order to help
-you understand it we'll give you an example of \TeX\ at work.
+%When \TeX\ encounters a macro, it expands the macro in its gullet
+%\seeconcept{\anatomy}
+%by substituting each argument for the corresponding
+%parameter in the replacement text.  The resulting text may contain other macro
+%calls.  When \TeX\ encounters such an embedded macro call, it expands
+%that call immediately without looking at what follows the
+%call.\footnote{In computer science terminology, the expansion is ``depth
+%first'' rather than ``breadth first''.  Note that you can modify the
+%order of expansion with commands such as |\expandafter|.} When \TeX's
+%gullet gets to a \refterm{primitive} \refterm{command} that
+%cannot be further expanded, \TeX\ passes that command to \TeX's stomach.
+%The order of expansion is sometimes critical, so in order to help
+%you understand it we'll give you an example of \TeX\ at work.
+\TeX\ 在食道中展开它所遇到的宏\seeconcept{\anatomy}，
+方法是将替换文本中的每个参数替换为它所对应的参量。
+宏展开后所得到的文本中可能还包含其他宏。
+当 \TeX\ 遇到这种嵌套的宏调用时，
+它将立即展开此宏调用，完成后再查看后续内容。%
+\footnote{用计算机科学中的术语，
+宏展开是“深度优先的”，而不是“广度优先的”。
+注意用类似 |\expandafter| 的命令你可以修改宏展开的顺序。}
+当 \TeX\ 的食道得到无法再展开的\refterm{原始命令}时，
+\TeX\ 就将该命令送入 \TeX\ 的胃。
+宏展开的先后顺序有时候是至关重要的，
+为帮助你理解这个问题，下面我们将给出一个例子。
 
-Suppose you provide \TeX\ with the following input:
+%Suppose you provide \TeX\ with the following input:
+%\csdisplay
+%\def\a#1#2{\b#2#1\kern 2pt #1}
+%\def\b{bb}
+%\def\c{\char49 cc}
+%\def\d{dd}
+%\a\c{e\d} % Call on \a.
+%|
+%Then the argument corresponding to |#1| is |\c|,
+%and the argument corresponding to |#2| is |e\d|.
+%\TeX\ expands the macro call in the following steps:
+假设你给 \TeX\ 提供如下输入：
 \csdisplay
 \def\a#1#2{\b#2#1\kern 2pt #1}
 \def\b{bb}
@@ -2956,195 +3029,327 @@ Suppose you provide \TeX\ with the following input:
 \def\d{dd}
 \a\c{e\d} % Call on \a.
 |
-Then the argument corresponding to |#1| is |\c|,
-and the argument corresponding to |#2| is |e\d|.
-\TeX\ expands the macro call in the following steps:
+则与 |#1| 对应的参量为 |\c|，与 |#2| 对应的参量为 |e\d|。
+\TeX\ 按照如下步骤展开宏调用：
 
+%{\vskip\abovedisplayskip\obeylines % ugly
+%|\b e\d\c\kern 2pt \c|
+%|bbe\d\c\kern 2pt \c|
+%|\d\c\kern 2pt \c|\quad(`|b|', `|b|', `|e|' sent to stomach)
+%|dd\c\kern 2pt \c|
+%|\c\kern 2pt \c|\quad(`|d|', `|d|' sent to stomach)
+%|\char49 cc\kern 2pt \c|
+%|\c|\quad(`|\char|', `|4|', `|9|', `|c|', `|c|', %
+%`|\kern|', `|2|', `|p|', `|t|' sent to stomach)
+%|\char49 cc|
+%(`|\char49|', `|c|', `|c|' sent to stomach)
+%\vskip\belowdisplayskip}
 {\vskip\abovedisplayskip\obeylines % ugly
 |\b e\d\c\kern 2pt \c|
 |bbe\d\c\kern 2pt \c|
-|\d\c\kern 2pt \c|\quad(`|b|', `|b|', `|e|' sent to stomach)
+|\d\c\kern 2pt \c|\quad （`|b|'，`|b|'，`|e|' 送到胃里）
 |dd\c\kern 2pt \c|
-|\c\kern 2pt \c|\quad(`|d|', `|d|' sent to stomach)
+|\c\kern 2pt \c|\quad （`|d|'，`|d|' 送到胃里）
 |\char49 cc\kern 2pt \c|
-|\c|\quad(`|\char|', `|4|', `|9|', `|c|', `|c|', %
-`|\kern|', `|2|', `|p|', `|t|' sent to stomach)
+|\c|\quad （`|\char|'，`|4|'，`|9|'，`|c|'，`|c|'，%
+`|\kern|'，`|2|'，`|p|'，`|t|' 送到胃里）
 |\char49 cc|
-(`|\char49|', `|c|', `|c|' sent to stomach)
+（`|\char49|'，`|c|'，`|c|' 送到胃里）
 \vskip\belowdisplayskip}
 
-\noindent Note that the letters `|b|', `|c|', `|d|', and `|e|' and the
-control sequences `|\kern|' and `|\char|' are all primitive
-commands that cannot be expanded further.
+%\noindent Note that the letters `|b|', `|c|', `|d|', and `|e|' and the
+%control sequences `|\kern|' and `|\char|' are all primitive
+%commands that cannot be expanded further.
+\noindent 注意字母 `|b|'，`|c|'，`|d|' 和 `|e|'，
+以及控制序列 `|\kern|' 和 `|\char|' 都是无法再展开的原始命令。
 
+%\bix^^{parameters//delimited}
+%A macro can also have ``delimited parameters'', which can be mixed with
+%the undelimited ones in any combination.  The idea of a delimited
+%parameter is that \TeX\ finds the corresponding argument by looking for
+%a certain sequence of tokens that marks the end of the argument---the
+%delimiter.  That is, when \TeX\ is looking for such an argument, it
+%takes the argument to be all the tokens from \TeX's current position up
+%to but not including the delimiter.
 \bix^^{parameters//delimited}
-A macro can also have ``delimited parameters'', which can be mixed with
-the undelimited ones in any combination.  The idea of a delimited
-parameter is that \TeX\ finds the corresponding argument by looking for
-a certain sequence of tokens that marks the end of the argument---the
-delimiter.  That is, when \TeX\ is looking for such an argument, it
-takes the argument to be all the tokens from \TeX's current position up
-to but not including the delimiter.
+宏也可以包含“定界参数”，它们可以和非定界参数混合使用。
+定界参数的想法是，
+\TeX\ 通过寻找标记参量结束的特定记号序列（即定界子）确定对应的参量。
+也就是说，在查找这种参量时，
+\TeX\ 选取从当前位置到定界子之间的所有记号，不包含该定界子。
 
-You indicate a delimited parameter by writing `|#|$n$' ($n$
-must be between $0$
-and $9$) followed by one or more tokens that act as the delimiter.  The
-delimiter extends up to the next `|#|' or `|{|'---which makes sense
-since `|#|' starts another parameter and `|{|' starts the replacement text.
+%You indicate a delimited parameter by writing `|#|$n$' ($n$
+%must be between $0$
+%and $9$) followed by one or more tokens that act as the delimiter.  The
+%delimiter extends up to the next `|#|' or `|{|'---which makes sense
+%since `|#|' starts another parameter and `|{|' starts the replacement text.
+要指定一个定界参数，你可以在 `|#|$n$'（$n$ 必须在 $1$ 和 $9$ 之间）%
+后面加上一个或多个充当定界子的记号。
+定界子一直延续到下一个 `|#|' 或 `|{|' 为止——这是有道理的，
+因为 `|#|' 开始另一个参数，而 `|{|' 开始替换文本。
 
-The delimiter can't be `|#|' or `|{|', so you can tell a delimited
-parameter from an undelimited one by looking at what comes after it.
+%The delimiter can't be `|#|' or `|{|', so you can tell a delimited
+%parameter from an undelimited one by looking at what comes after it.
+定界子不能是 `|#|' 或者 `|{|'，
+因而你可以从后面的字符辨别出定界参数和非定界参数。
 
-If the character after the parameter is `|#|' or `|{|', you've got an
-undelimited parameter; otherwise you've got a delimited one.  Note
-the difference in arguments for the two kinds of parameters---an
-undelimited parameter is matched either by a single token or by
-a sequence of tokens enclosed in braces, while a
-delimited parameter is matched by any number of tokens, even zero.
+%If the character after the parameter is `|#|' or `|{|', you've got an
+%undelimited parameter; otherwise you've got a delimited one.  Note
+%the difference in arguments for the two kinds of parameters---an
+%undelimited parameter is matched either by a single token or by
+%a sequence of tokens enclosed in braces, while a
+%delimited parameter is matched by any number of tokens, even zero.
+如果参数之后的字符为 `|#|' 或 `|{|'，
+你得到一个非定界参数，否则你得到一个定界参数。
+注意这两种参数的参量形式不同——
+非定界参数匹配单个记号或者围在花括号中的记号序列，
+而定界参数匹配任意多个记号，即便是零个也可以。
 
-An example of a macro that uses two delimited parameters is:
+%An example of a macro that uses two delimited parameters is:
+%\def\diet#1 #2.{On #1 we eat #2!}
+%\csdisplay
+%\def\diet#1 #2.{On #1 we eat #2!!}
+%|
+%Here the first parameter is delimited by a single space
+%and the second parameter is delimited by a period.  If you write:
+%\csdisplay
+%\diet Tuesday turnips.
+%|
+%you'll get the text ``\diet Tuesday turnips.''.
+%But if the delimiting tokens are enclosed in a group, \TeX\ doesn't consider
+%them as delimiting.  So if you write:
+%\csdisplay
+%\diet {Sunday mornings} pancakes.
+%|
+%you'll get the text `\diet {Sunday mornings} pancakes.'
+%even though there's a space between `|Sunday|' and `|morning|'.
+%When you use a space as a delimiter,
+%an end-of-line character ordinarily also delimits the argument
+%since \TeX\ converts the end-of-line to a space before the macro
+%mechanism ever sees it.
+%\eix^^{parameters//delimited}
+%\eix^^{macros//parameters of}
+下面的例子用到了两个定界参数：
 \def\diet#1 #2.{On #1 we eat #2!}
 \csdisplay
 \def\diet#1 #2.{On #1 we eat #2!!}
 |
-Here the first parameter is delimited by a single space
-and the second parameter is delimited by a period.  If you write:
+其中第一个参数用单个空格定界，而第二个参数用英文句号定界。
+如果你这样写：
 \csdisplay
 \diet Tuesday turnips.
 |
-you'll get the text ``\diet Tuesday turnips.''.
-But if the delimiting tokens are enclosed in a group, \TeX\ doesn't consider
-them as delimiting.  So if you write:
+你将得到文本“\diet Tuesday turnips.”。
+但若将定界记号放在编组中，\TeX\ 就不会将它们认作定界记号。
+因此如果你这样写：
 \csdisplay
 \diet {Sunday mornings} pancakes.
 |
-you'll get the text `\diet {Sunday mornings} pancakes.'
-even though there's a space between `|Sunday|' and `|morning|'.
-When you use a space as a delimiter,
-an end-of-line character ordinarily also delimits the argument
-since \TeX\ converts the end-of-line to a space before the macro
-mechanism ever sees it.
+即使在 ‘|Sunday|’ 和 ‘|morning|’ 之间有一个空格，
+你也将得到文本‘\diet {Sunday mornings} pancakes.’。
+当你将空格符作为定界子时，行尾符一般同样定界了对应的参量；
+这是因为 \TeX\ 在宏机制运作之前就将行尾符都转换为空格了。
 \eix^^{parameters//delimited}
 \eix^^{macros//parameters of}
 
-Once in a while you might need to define a macro that has `|#|' as a
-meaningful character within it.
-You're most likely to need to do this when you're defining a macro
-that in turn defines a second macro.
-What then do you do about
-the parameters of the second macro to avoid getting \TeX\ confused?
-The answer is that you write
-two `|#|'s for every one that you want
-when the first macro is expanded.  For example, suppose you
-write the macro definition:
+%Once in a while you might need to define a macro that has `|#|' as a
+%meaningful character within it.
+%You're most likely to need to do this when you're defining a macro
+%that in turn defines a second macro.
+%What then do you do about
+%the parameters of the second macro to avoid getting \TeX\ confused?
+%The answer is that you write
+%two `|#|'s for every one that you want
+%when the first macro is expanded.  For example, suppose you
+%write the macro definition:
+%\def\first#1{\def\second##1{#1/##1}}
+%\csdisplay
+%\def\first#1{\def\second##1{#1/##1}}
+%|
+%Then the call `|\first{One}|' defines `|\second|' as:
+%\csdisplay
+%\def\second#1{One/#1}
+%|
+%and the subsequent call `|\second{Two}|' produces the text
+%\def\second#1{One/#1}%
+%`\second {Two}'.
+偶尔在你所定义的宏里面需要将`|#|'用做一个有意义的字符。
+当你在宏定义中实际上又定义了第二个宏时，你多半需要这样做。
+怎样处理第二个宏的参数，以让 \TeX\ 不会混淆它们俩呢？
+答案是，在第一个宏展开后需要一个‘|#|’的地方写上两个‘|#|’。
+假如你写出下面的宏定义：
 \def\first#1{\def\second##1{#1/##1}}
 \csdisplay
 \def\first#1{\def\second##1{#1/##1}}
 |
-Then the call `|\first{One}|' defines `|\second|' as:
+则对‘|\first{One}|’的调用将把‘|\second|’定义为：
 \csdisplay
 \def\second#1{One/#1}
 |
-and the subsequent call `|\second{Two}|' produces the text
+而随后的调用‘|\second{Two}|’将得到文本
 \def\second#1{One/#1}%
-`\second {Two}'.
+`\second {Two}'。
 
-A number of commands provide additional ways of defining macros
-(see pp.~\xrefn{mac1}--\xrefn{mac2}).
-For the complete rules pertaining to macros, see \knuth{Chapter~20}.
+%A number of commands provide additional ways of defining macros
+%(see pp.~\xrefn{mac1}--\xrefn{mac2}).
+%For the complete rules pertaining to macros, see \knuth{Chapter~20}.
+%}% close brace at the start of the `macro' concept.
+%\endconcept
+还有一些命令提供了宏的其他定义方式（见第~\xrefn{mac1}--\xrefn{mac2}~页）。
+在\knuth{第~20~章}中有关于宏的完整规则。
 }% close brace at the start of the `macro' concept.
 \endconcept
 
 
-\concept magnification
+%\concept magnification
+\concept 放大率
 
-When \TeX\ typesets your document, it multiplies all dimensions
-by a
-\refterm{magnification} factor $f/1000$,
-where $f$ is the value of the ^|\mag| parameter \ctsref\mag.
-Since the default value of |\mag| is $1000$, the normal case is that
-your document is typeset just as specified.
-Increasing the magnification is often useful when you're typesetting a document
-that will later be photoreduced.
+%When \TeX\ typesets your document, it multiplies all dimensions
+%by a
+%\refterm{magnification} factor $f/1000$,
+%where $f$ is the value of the ^|\mag| parameter \ctsref\mag.
+%Since the default value of |\mag| is $1000$, the normal case is that
+%your document is typeset just as specified.
+%Increasing the magnification is often useful when you're typesetting a document
+%that will later be photoreduced.
+\TeX\ 排版文档时将把所有尺寸乘以一个放大（magnification）因子 $f/1000$，
+其中 $f$ 是 ^|\mag| 参数\ctsref\mag 的值。
+由于 |\mag| 的默认值为 $1000$，在一般情形下文档是照常排版的。
+若以后需要缩印文档，增加文档的放大率通常就比较有用。
 
-You can also apply magnification to a single \refterm{font} so as to get
-a smaller or larger version of that font than its ``^{design size}''.  You
-need to provide the device driver with a ^{shape file}
-\seeconcept{font} for
-each magnification of a font that you're using---%
-unless the fonts are built into your printer and your device driver
-knows about them.
-When you're defining a font with
-the |\font| command \ctsref{\font}, you can specify a magnification with
-the word `|scaled|'.  For example:
+%You can also apply magnification to a single \refterm{font} so as to get
+%a smaller or larger version of that font than its ``^{design size}''.  You
+%need to provide the device driver with a ^{shape file}
+%\seeconcept{font} for
+%each magnification of a font that you're using---%
+%unless the fonts are built into your printer and your device driver
+%knows about them.
+%When you're defining a font with
+%the |\font| command \ctsref{\font}, you can specify a magnification with
+%the word `|scaled|'.  For example:
+你也可以缩放一个\refterm{字体}，
+以得到比它的“^{设计大小}”更小或更大的字体。
+对每个使用的缩放字体，你需要提供它的^{字形文件}给设备驱动程序%
+\seeconcept{font}——
+除非该字体已经内嵌在打印机中，而设备驱动程序也知道它。
+在用 |\font| 命令\ctsref{\font}定义一个字体时，
+你可以用单词‘|scaled|’指定放大率。比如：
 
+%\csdisplay
+%\font\largerbold = cmbx10 scaled 2000
+%|
+%defines `|\largerbold|' as a font that is
+%twice as big as |cmbx10| (Computer Modern
+%Bold Extended $10$-point) and has the character shapes
+%uniformly enlarged by a factor of~$2$.
 \csdisplay
 \font\largerbold = cmbx10 scaled 2000
 |
-defines `|\largerbold|' as a font that is
-twice as big as |cmbx10| (Computer Modern
-Bold Extended $10$-point) and has the character shapes
-uniformly enlarged by a factor of~$2$.
+将 `|\largerbold|' 定义为两倍大小的 |cmbx10| 字体%
+（计算机现代粗体扩展的$10$点字体），
+它的各个字符形状也统一地放大了两倍。
 
-Many computer centers find it convenient to provide fonts scaled by a ratio
-of $1.2$, corresponding to magnification values of $1200$, $1440$, etc.
-\TeX\ has special names for these values:
+%Many computer centers find it convenient to provide fonts scaled by a ratio
+%of $1.2$, corresponding to magnification values of $1200$, $1440$, etc.
+%\TeX\ has special names for these values:
+%^^|\magstep|
+%`|\magstep1|' for $1200$,
+%`|\magstep2|' for $1440$, and so forth up to `|\magstep5|'.  The special
+%value `^|\magstephalf|' corresponds to magnification by $\sqrt{1.2}$, which
+%is visually halfway between `|\magstep0|' (no magnification) and
+%`|\magstep1|'.  For example:
+%
+%\csdisplay
+%\font\bigbold = cmbx10 scaled \magstephalf
+%|
+为方便起见，很多计算机中心提供了按$1.2$比例放大的字体，
+这些字体对应的放大率为 $1200$，$1440$，等等。
+在 \TeX\ 中这些放大率有特别的名称：
 ^^|\magstep|
-`|\magstep1|' for $1200$,
-`|\magstep2|' for $1440$, and so forth up to `|\magstep5|'.  The special
-value `^|\magstephalf|' corresponds to magnification by $\sqrt{1.2}$, which
-is visually halfway between `|\magstep0|' (no magnification) and
-`|\magstep1|'.  For example:
+`|\magstep1|' 表示 $1200$，
+`|\magstep2|' 表示 $1440$，依此类推直到 `|\magstep5|'。
+特殊值 `^|\magstephalf|' 对应$\sqrt{1.2}$倍的放大率，
+它看上去位于`|\magstep0|'（不放大）和
+`|\magstep1|' 的正中间。例如：
 
 \csdisplay
 \font\bigbold = cmbx10 scaled \magstephalf
 |
 
-You can specify a \refterm{dimension} as it will be
-measured in the final document independent of magnification by putting
-`^|true|' in front of the unit.  For instance, `|\kern 8 true pt|'
-produces a kern of $8$ points whatever the magnification.
+%You can specify a \refterm{dimension} as it will be
+%measured in the final document independent of magnification by putting
+%`^|true|' in front of the unit.  For instance, `|\kern 8 true pt|'
+%produces a kern of $8$ points whatever the magnification.
+若想指定一个最终文档中的\refterm{尺寸}，让它不受放大率影响，
+你可以在单位前面加上 `^|true|'。
+例如，`|\kern 8 true pt|' 将生成 $8$ 点大小的微调，不管放大率为多少。
 
 \endconcept
 
-\concept margins
+%\concept margins
+\concept 边距
 
-The \refterm{margins}
-of a page define a rectangle that normally
-contains the printed matter on the page.
-You can get \TeX\ to print material outside of this rectangle,
-but only by taking some explicit action that moves the material there.
-\TeX\ considers headers and footers to lie outside the margins.
+%The \refterm{margins}
+%of a page define a rectangle that normally
+%contains the printed matter on the page.
+%You can get \TeX\ to print material outside of this rectangle,
+%but only by taking some explicit action that moves the material there.
+%\TeX\ considers headers and footers to lie outside the margins.
+页面的\refterm{边距}（margin）确定了一个矩形边框，
+该边框通常包含页面的印刷内容。
+你也可以让 \TeX\ 在这个边框之外印刷内容，
+但你必须用某种明确方法将内容移动到那里。
+\TeX\ 将页眉和页脚放在边框外面。
 
-The rectangle is defined in terms of its upper-left corner, its width, and
-its depth.  The location of the upper-left corner is defined by
-the ^|\hoffset|
-and ^|\voffset| parameters
-\ctsref\voffset.  The default is to place that corner one inch from the top
-and one inch from the left side of the page, corresponding to a value of
-zero for both |\hoffset| and |\voffset|.%
-\footnote{This seems to us to be an odd convention.
-It would have been more natural to have the $(0,0)$
-point for |\hoffset| and |\voffset| be at the upper-left corner of the
-paper and to have set their default values to one inch.}
-The width of the rectangle is given by ^|\hsize| and the depth by ^|\vsize|.
+%The rectangle is defined in terms of its upper-left corner, its width, and
+%its depth.  The location of the upper-left corner is defined by
+%the ^|\hoffset|
+%and ^|\voffset| parameters
+%\ctsref\voffset.  The default is to place that corner one inch from the top
+%and one inch from the left side of the page, corresponding to a value of
+%zero for both |\hoffset| and |\voffset|.%
+%\footnote{This seems to us to be an odd convention.
+%It would have been more natural to have the $(0,0)$
+%point for |\hoffset| and |\voffset| be at the upper-left corner of the
+%paper and to have set their default values to one inch.}
+%The width of the rectangle is given by ^|\hsize| and the depth by ^|\vsize|.
+这个矩形边框通过它的左上角位置，宽度，以及深度来定义。
+左上角位置用 ^|\hoffset| 和 ^|\voffset| \ctsref\voffset 参数来定义。
+默认将这个位置放在离页面顶端和左端各一英寸的地方，
+这对应于|\hoffset| 和 |\voffset| 都取值为零。%
+\footnote{这个约定看起来比较奇怪。
+让 |\hoffset| 和 |\voffset| 的 $(0,0)$ 点对应页面的左上角，
+而将它们的默认值设置为一英寸，将会更自然一些。}
+边框的宽度用 ^|\hsize| 给出，而深度用 ^|\vsize| 给出。
 
-The implications of these conventions are:
+%The implications of these conventions are:
+%\ulist\compact
+%\li The left margin is given by |\hoffset|\tplus|1in|.
+%\li The right margin is given by the width of the paper minus
+%    |\hoffset|\tplus|1in|\tplus|\hsize|.
+%\li The top margin is given by |\voffset|\tplus|1in|.
+%\li The bottom margin is given by the length of the paper minus
+%    |\voff!-set|\tplus|1in|\tplus|\vsize|.
+%\endulist
+%From this information you can see what parameters you need to
+%change in order to change the margins.
+这些规定给出的结果是：
 \ulist\compact
-\li The left margin is given by |\hoffset|\tplus|1in|.
-\li The right margin is given by the width of the paper minus
-    |\hoffset|\tplus|1in|\tplus|\hsize|.
-\li The top margin is given by |\voffset|\tplus|1in|.
-\li The bottom margin is given by the length of the paper minus
-    |\voff!-set|\tplus|1in|\tplus|\vsize|.
+\li 左边距等于 |\hoffset|\tplus|1in|。
+\li 右边距等于页面宽度减去 |\hoffset|\tplus|1in|\tplus|\hsize|。
+\li 上边距等于 |\voffset|\tplus|1in|。
+\li 下边距等于页面长度减去 |\voff!-set|\tplus|1in|\tplus|\vsize|。
 \endulist
-From this information you can see what parameters you need to
-change in order to change the margins.
+从这些信息中你可以知道，要改变页面边距应该修改哪些参数。
 
-Any changes that you make to |\hoffset|, |\voffset|, or |\vsize| become
-effective the next time \TeX\ starts a page.  In other words, if you change
-them within a page, the change will affect only the \emph{following} pages.
-If you change |\hsize|, the change will become effective immediately.
+%Any changes that you make to |\hoffset|, |\voffset|, or |\vsize| become
+%effective the next time \TeX\ starts a page.  In other words, if you change
+%them within a page, the change will affect only the \emph{following} pages.
+%If you change |\hsize|, the change will become effective immediately.
+%\endconcept
+对 |\hoffset|，|\voffset| 或者 |\vsize| 的修改在 \TeX\ 开始新页面时才生效。
+也就是说，如果你在页面中间改变它们，这些改动将只影响\emph{后面的}页面。
+然而，对 |\hsize| 的修改却会立即生效。
 \endconcept
 
 
@@ -3152,186 +3357,312 @@ If you change |\hsize|, the change will become effective immediately.
 %\concept mark
 \concept 标记
 
-A \defterm{mark} is an item that you can insert into a
-horizontal, vertical, or math list and later recover from within your
-output routine.  Marks are useful for purposes such as
-keeping track of topics to appear in page headers.
-Each mark has a list of tokens---the ``^{mark text}''---associated with it.
-The ^|\mark| command \ctsref{\mark} expects such a token list as its argument,
-and appends an item containing that token list (after
-expansion) to whatever list \TeX\ is
-currently building.  The ^|\topmark|, ^|\firstmark|, and ^|\botmark| commands
-\ctsref{\topmark} can be used to retrieve various marks on a page.
-These commands are most often used in page headers and footers.
+%A \defterm{mark} is an item that you can insert into a
+%horizontal, vertical, or math list and later recover from within your
+%output routine.  Marks are useful for purposes such as
+%keeping track of topics to appear in page headers.
+%Each mark has a list of tokens---the ``^{mark text}''---associated with it.
+%The ^|\mark| command \ctsref{\mark} expects such a token list as its argument,
+%and appends an item containing that token list (after
+%expansion) to whatever list \TeX\ is
+%currently building.  The ^|\topmark|, ^|\firstmark|, and ^|\botmark| commands
+%\ctsref{\topmark} can be used to retrieve various marks on a page.
+%These commands are most often used in page headers and footers.
+%^^{footers//marks used in}
+%^^{headers//marks used in}
+\defterm{标记}（mark）是可以插入水平、竖直或者数学列表中，
+并在输出例行程序中还原的项目。
+标记可用于记录即将出现在页眉中的内容等。
+每个标记带有一列记号——即“^{标记文本}”。
+^|\mark| 命令\ctsref{\mark}以这样的记号列作为参量，
+并将包含这个记号列（在展开之后）的项目添加到 \TeX\ 当前构造的列表中。
+^|\topmark|，^|\firstmark| 和 ^|\botmark| 命令 \ctsref{\topmark}
+用于取回页面上的各种标记。
+这些命令经常在页眉和页脚中用到。
 ^^{footers//marks used in}
 ^^{headers//marks used in}
 
+%\margin{This example of {\tt\\mark} replaces the previous explanatory
+%paragraph.}
+%Here is a simplified example.
+%Suppose you define a section heading macro as follows:
+%\csdisplay
+%\def\section#1{\medskip{\bf#1}\smallskip\mark{#1}}
+%% #1 is the name of the section
+%|
+%^^|\mark|
+%This macro, when called, will produce a section heading in boldface and
+%will also record the name of the section as a mark.
+%You can now define the header for each printed page
+%as follows:
+%\csdisplay
+%\headline = {\ifodd\pageno \hfil\botmark\quad\folio
+%   \else \folio\quad\firstmark\hfil \fi}
+%|
+%Each even (left-hand) page will now have the page number followed by the
+%name of the first section on that page, while each odd (right-hand) page
+%will have the page number followed by the name of the last section on
+%that page.  Special cases, e.g., no sections starting on a page, will
+%generally come out correctly because of how ^|\firstmark|
+%and ^|\botmark| work.
 \margin{This example of {\tt\\mark} replaces the previous explanatory
 paragraph.}
-Here is a simplified example.
-Suppose you define a section heading macro as follows:
+这里有个简化的例子。假设你定义了节标题宏如下：
 \csdisplay
 \def\section#1{\medskip{\bf#1}\smallskip\mark{#1}}
 % #1 is the name of the section
 |
 ^^|\mark|
-This macro, when called, will produce a section heading in boldface and
-will also record the name of the section as a mark.
-You can now define the header for each printed page
-as follows:
+调用这个宏将生成粗体的节标题，并将标题名记录为一个标记。
+现在你可以对每个打印页定义页眉如下：
 \csdisplay
 \headline = {\ifodd\pageno \hfil\botmark\quad\folio
    \else \folio\quad\firstmark\hfil \fi}
 |
-Each even (left-hand) page will now have the page number followed by the
-name of the first section on that page, while each odd (right-hand) page
-will have the page number followed by the name of the last section on
-that page.  Special cases, e.g., no sections starting on a page, will
-generally come out correctly because of how ^|\firstmark|
-and ^|\botmark| work.
+这样，每个偶数页（左手页）页眉是页码加上该页第一个标题名，
+而每个奇数页（右手页）页眉是该页最后一个标题名加上页码。
+特殊情形，比如该页没有节标题，
+通常也会按照 ^|\firstmark| 和 ^|\botmark| 的规定正常显示。
 
-When you split a page using the |\vsplit| command \ctsref{\vsplit} you can
-retrieve the mark texts of the first and last marks of the split-off
-portion with the ^|\splitfirstmark| and ^|\splitbotmark| commands
-\ctsref{\splitfirstmark}.
+%When you split a page using the |\vsplit| command \ctsref{\vsplit} you can
+%retrieve the mark texts of the first and last marks of the split-off
+%portion with the ^|\splitfirstmark| and ^|\splitbotmark| commands
+%\ctsref{\splitfirstmark}.
+当你用 |\vsplit| 命令\ctsref{\vsplit}分割页面时，
+用 |\splitfirstmark| 和 ^|\splitbotmark| 命令\ctsref{\splitfirstmark}%
+就可以取得分割的这部分中的第一个和最后一个标记的标记文本。
 
-See \knuth{pages~258--260} for a more precise explanation of how
-to create and retrieve marks.
+%See \knuth{pages~258--260} for a more precise explanation of how
+%to create and retrieve marks.
+%\endconcept
+在\knuth{第~258--260~页}中，对如何生成和取回标记作了更准确的解释。
 \endconcept
 
 
-\concept math mode
+%\concept math mode
+\concept 数学模式
 
+%{\tighten
+%A \defterm{math mode} is a \refterm{mode} that \TeX\ is in when it is
+%building a math formula.  \TeX\ has two different math modes: ^{text
+%math mode} for building a formula to be embedded within a line of text,
+%and ^{display math mode} for building a formula to appear on a line by
+%itself.  You indicate text math mode by enclosing the formula in
+%|$|'s, and display math mode by enclosing the formula in
+%|$$|'s.
+%%\TeX\ will accept most \refterm{commands:command} in
+%%math mode. If it encounters a command in math mode that doesn't make
+%%sense in a formula, it will complain.
+%An important property of both
+%math modes is that \emph{input spaces don't count}.  See
+%\knuth{pages~290--293} for details on how \TeX\ responds to different
+%commands in math mode.
+%\par}
 {\tighten
-A \defterm{math mode} is a \refterm{mode} that \TeX\ is in when it is
-building a math formula.  \TeX\ has two different math modes: ^{text
-math mode} for building a formula to be embedded within a line of text,
-and ^{display math mode} for building a formula to appear on a line by
-itself.  You indicate text math mode by enclosing the formula in
-|$|'s, and display math mode by enclosing the formula in
-|$$|'s.
+\defterm{数学模式}（math mode）是 \TeX\ 构造数学公式时所在的\refterm{模式}。
+\TeX\ 有两种数学模式：
+^{行内数学模式}用于构造放在文本行中的公式，
+而^{陈列数学模式}用于构造单独一行显示的公式。
+包围在 |$| 里面的公式表示一个行内数学公式，
+而包围在 |$$| 里面的公式表示一个陈列数学公式。
 %\TeX\ will accept most \refterm{commands:command} in
 %math mode. If it encounters a command in math mode that doesn't make
 %sense in a formula, it will complain.
-An important property of both
-math modes is that \emph{input spaces don't count}.  See
-\knuth{pages~290--293} for details on how \TeX\ responds to different
-commands in math mode.
+这两种数学模式有个重要特性，即\emph{其中的输入空格都被忽略}。
+\knuth{第~290--293~页}详细介绍了在数学模式中 \TeX\ 如何处理各种不同命令。
 \par}
 
 \endconcept
 
 
-\conceptindex{mathcodes}
-\concept mathcode
+%\conceptindex{mathcodes}
+%\concept mathcode
+\conceptindex{数学码}
+\concept 数学码
 
-A \defterm{mathcode} is a number that \TeX\ uses to identify and
-describe a math character,
+%A \defterm{mathcode} is a number that \TeX\ uses to identify and
+%describe a math character,
+%^^{math characters//described by mathcodes}
+%i.e., a character that has a
+%particular role in a math formula.  A mathcode conveys three pieces of
+%information about a character: its \refterm{font} position, its
+%\refterm{family}, and its \refterm{class}.
+%Each of the $256$ possible
+%input characters has a mathcode, which is defined by the \TeX\ program
+%but can be changed.
+\defterm{数学码}（mathcode）是一个数，\TeX\ 把这个数用来识别和描述一个数学字符，
 ^^{math characters//described by mathcodes}
-i.e., a character that has a
-particular role in a math formula.  A mathcode conveys three pieces of
-information about a character: its \refterm{font} position, its
-\refterm{family}, and its \refterm{class}.
-Each of the $256$ possible
-input characters has a mathcode, which is defined by the \TeX\ program
-but can be changed.
+即一个在数学公式中有特别作用的字符。
+数学码表达了一个字符三个方面的信息：
+它的字符位置，它所在的字体\refterm{族}，以及它所属的类。
+$256$ 个可能的输入字符中每个字符都有一个数学码，
+它们由 \TeX\ 程序定义，但也能被修改。
 
+%^^{family//as part of mathcode}
+%\TeX\ has sixteen families of fonts, numbered $0$--$15$.  Each
+%family contains three fonts: one for \refterm{text size}, one for
+%\refterm{script size}, and one for \refterm{scriptscript size}.  \TeX\
+%chooses the size of a particular character, and therefore its font,
+%according to the context.  The class of a character specifies its role
+%in a formula (see \knuth{page~154}).  For example, the equals sign `|=|'
+%is in class $3$ (Relation).  \TeX\ uses its knowledge of character
+%classes when it is deciding how much space to put between different
+%components of a math formula.
 ^^{family//as part of mathcode}
-\TeX\ has sixteen families of fonts, numbered $0$--$15$.  Each
-family contains three fonts: one for \refterm{text size}, one for
-\refterm{script size}, and one for \refterm{scriptscript size}.  \TeX\
-chooses the size of a particular character, and therefore its font,
-according to the context.  The class of a character specifies its role
-in a formula (see \knuth{page~154}).  For example, the equals sign `|=|'
-is in class $3$ (Relation).  \TeX\ uses its knowledge of character
-classes when it is deciding how much space to put between different
-components of a math formula.
+\TeX\ 有十六个字体族，它们用$0$ 到 $15$ 编号。
+每个字体族包含三个字体：一个用于\refterm{文本尺寸}，
+一个用于\refterm{标号尺寸}，另一个用于\refterm{小标号尺寸}。
+\TeX\ 根据上下文选择特定字符的尺寸，从而选择它的字体。
+一个字符的类指定了它在公式中扮演的角色（见\knuth{第~154~页}）。
+例如，等号‘|=|’属于第$3$类（关系符号）。
+\TeX\ 根据字符所属的类确定数学公式各部分的间距大小。
 
-The best way to understand what mathcodes are all about is to see how
-\TeX\ uses them. So we'll show you what \TeX\ does with a
-character token $t$ of \refterm{category code}~11 or~12 in a math
-formula:
+%The best way to understand what mathcodes are all about is to see how
+%\TeX\ uses them. So we'll show you what \TeX\ does with a
+%character token $t$ of \refterm{category code}~11 or~12 in a math
+%formula:
+要全面理解数学码，最好是看 \TeX\ 如何使用它们。
+因此我们将说明，对数学公式中\refterm{类别码}为 11 或 12 的字符记号$t$，
+\TeX\ 如何处理它：
 
+%\olist\compact
+%\li It looks up the character's mathcode.
+%\li It determines a family $f$ from the mathcode.
+%\li It determines the size $s$ from the context.
+%\li It selects a font $F$ by picking the font for size $s$ in family $f$.
+%\li It determines a character number $n$ from the mathcode.
+%\li It selects as the character $c$ to be typeset the character
+%at position $n$ of font $F$.
+%\li It adjusts the spacing around $c$ according to the class of $t$ and
+%the surrounding context.
+%\li It typesets the character $c$.
+%\endolist
 \olist\compact
-\li It looks up the character's mathcode.
-\li It determines a family $f$ from the mathcode.
-\li It determines the size $s$ from the context.
-\li It selects a font $F$ by picking the font for size $s$ in family $f$.
-\li It determines a character number $n$ from the mathcode.
-\li It selects as the character $c$ to be typeset the character
-at position $n$ of font $F$.
-\li It adjusts the spacing around $c$ according to the class of $t$ and
-the surrounding context.
-\li It typesets the character $c$.
+\li 它查找这个字符的数学码。
+\li 它从数学码确定字体族$f$。
+\li 它从上下文确定字符尺寸$s$。
+\li 它选择第$f$族的尺寸为$s$的字体$F$.
+\li 它从数学码确定字符编号$n$。
+\li 它从字体$F$的位置$n$选出字符$c$作为要排版的字符。
+\li 它根据$t$所属的类和上下文调整$c$周围的间距。
+\li 它排版字符$c$。
 \endolist
 
-The context dependence in
-items (3) and (7) implies that \TeX\ cannot typeset a math character
-until it has seen the entire formula containing the
-math character.  For example, in the formula
-`|$a\over b$|', \TeX\ doesn't know what size the `|a|' should be until it
-has seen the |\over|.
+%The context dependence in
+%items (3) and (7) implies that \TeX\ cannot typeset a math character
+%until it has seen the entire formula containing the
+%math character.  For example, in the formula
+%`|$a\over b$|', \TeX\ doesn't know what size the `|a|' should be until it
+%has seen the |\over|.
+在(3)和(7)中的上下文相关性意味着，
+\TeX\ 在排版数学字符时，要先看完该字符所在的整个公式。
+比如对于公式‘|$a\over b$|’，\TeX\ 无法确定‘|a|’的尺寸，直到它看到|\over|。
 
+%{\tighten
+%The mathcode of a character is encoded according to the formula $4096c
+%+ 256f + n$, where $c$ is the class of the character, $f$ is its
+%\refterm{family}, and $n$ is its \refterm{\ascii\ character} code within
+%the family.  You can change \TeX's interpretation of an input character
+%in math mode by assigning a value to the ^|\mathcode|
+%table entry \ctsref{\mathcode}
+%for that character.  The character must have a
+%\refterm{category code} of $11$ (letter) or $12$ (other) for \TeX\ to
+%look at its |\mathcode|.
+%}\par
 {\tighten
-The mathcode of a character is encoded according to the formula $4096c
-+ 256f + n$, where $c$ is the class of the character, $f$ is its
-\refterm{family}, and $n$ is its \refterm{\ascii\ character} code within
-the family.  You can change \TeX's interpretation of an input character
-in math mode by assigning a value to the ^|\mathcode|
-table entry \ctsref{\mathcode}
-for that character.  The character must have a
-\refterm{category code} of $11$ (letter) or $12$ (other) for \TeX\ to
-look at its |\mathcode|.
+字符的数学码由公式$4096c + 256f + n$ 来表示，
+其中 $c$ 是字符所属的类，$f$ 是它所在的字体\refterm{族}，
+而 $n$ 是它在该字体族中的\refterm{\ascii}编码。
+通过对一个输入字符的 ^|\mathcode| 表格项赋值\ctsref{\mathcode}，
+你可以改变数学模式中 \TeX\ 对这个字符的解释。
+只有\refterm{类别码}为$11$（字母）或者$12$（其它）的字符，
+\TeX\ 才会查看它的 |\mathcode|。
 }\par
 
+%^^{family//variable}
+%You can define a mathematical character to have a ``variable'' family by
+%giving it a class of $7$.  Whenever \TeX\ encounters that character in a
+%math formula, it takes the family of the character to be the current
+%value of the |\fam| parameter \ctsref{\fam}.  A variable family enables
+%you to specify the font of ordinary text in a math formula.  For
+%instance, if the roman characters are in family $0$, the assignment
+%|\fam = 0|
+%will cause ordinary text in a math formula to be set in roman type
+%rather than in something else like math italic type. If the value of
+%|\fam| is not in the range from $0$ to $15$, \TeX\ takes the value to be
+%$0$, thus making classes $0$ and $7$ equivalent.
+%\TeX\ sets |\fam| to $-1$ whenever it enters math mode.
+%\endconcept
 ^^{family//variable}
-You can define a mathematical character to have a ``variable'' family by
-giving it a class of $7$.  Whenever \TeX\ encounters that character in a
-math formula, it takes the family of the character to be the current
-value of the |\fam| parameter \ctsref{\fam}.  A variable family enables
-you to specify the font of ordinary text in a math formula.  For
-instance, if the roman characters are in family $0$, the assignment
-|\fam = 0|
-will cause ordinary text in a math formula to be set in roman type
-rather than in something else like math italic type. If the value of
-|\fam| is not in the range from $0$ to $15$, \TeX\ takes the value to be
-$0$, thus making classes $0$ and $7$ equivalent.
-\TeX\ sets |\fam| to $-1$ whenever it enters math mode.
+只要将一个数学字符分到第$7$类，你可以将它的族定义为“可变的”。
+当 \TeX\ 在数学公式中遇到这种字符时，
+它就将该字符的字体族取为 |\fam| 参数\ctsref{\fam}的当前值。
+可变的字体族使得你可以指定数学公式中普通文本的字体。
+举个例子，如果罗马字符是在第$0$族，
+赋值 |\fam = 0| 将让数学公式的普通文本以罗马字体显示，
+而不是用其他类似数学意大利体的字体显示。
+如果 |\fam| 的值不在 $0$ 到 $15$ 的范围中，
+\TeX\ 取它的值为 $0$，从而让第 $0$ 类和第 $7$ 类等价。
+每次进入数学模式时 \TeX\ 都设定 |\fam| 为 $-1$。
 \endconcept
 
 
-\conceptindex{mathematical units}
-\concept{mathematical unit}
+%\conceptindex{mathematical units}
+%\concept{mathematical unit}
+\conceptindex{数学单位}
+\concept{数学单位}
 
-A \defterm{mathematical unit}, denoted by `|mu|', is a unit of distance
-that is used to specify \refterm{glue} in math formulas.  See
-\conceptcit{muglue}.
+%A \defterm{mathematical unit}, denoted by `|mu|', is a unit of distance
+%that is used to specify \refterm{glue} in math formulas.  See
+%\conceptcit{muglue}.
+%\endconcept
+\defterm{数学单位}（mathematical unit），记为‘|mu|’，
+是一个用于设定数学公式中的\refterm{粘连}大小的距离单位。
+见\conceptcit{数学粘连}。
 \endconcept
 
 
-\conceptindex{modes}
-\concept mode
+%\conceptindex{modes}
+%\concept mode
+\conceptindex{模式}
+\concept 模式
 
-When \TeX\ is processing your input in its stomach \seeconcept{\anatomy},
-it is in one of six \defterm{modes}:
+%When \TeX\ is processing your input in its stomach \seeconcept{\anatomy},
+%it is in one of six \defterm{modes}:
+%\ulist\compact
+%\li ^{ordinary horizontal mode} (assembling a paragraph)
+%\li ^{restricted horizontal mode} (assembling an \refterm{hbox})
+%\li ^{ordinary vertical mode} (assembling a page)
+%\li ^{internal vertical mode} (assembling a \refterm{vbox})
+%\li ^{text math mode} (assembling a formula that appears in text)
+%\li ^{display math mode}
+%(assembling a formula that appears on a line by~itself)
+%^^{horizontal mode}^^{vertical mode}^^{math mode}
+%\endulist
+%The mode describes the kind of entity that \TeX\ is putting together.
+\TeX\ 在胃中处理你的输入时\seeconcept{\anatomy}，
+它总是处于六种\defterm{模式}（mode）的其中一种:
 \ulist\compact
-\li ^{ordinary horizontal mode} (assembling a paragraph)
-\li ^{restricted horizontal mode} (assembling an \refterm{hbox})
-\li ^{ordinary vertical mode} (assembling a page)
-\li ^{internal vertical mode} (assembling a \refterm{vbox})
-\li ^{text math mode} (assembling a formula that appears in text)
-\li ^{display math mode}
-(assembling a formula that appears on a line by~itself)
+\li ^{普通水平模式}（组装段落）
+\li ^{受限水平模式}（组装\refterm{水平盒子}）
+\li ^{普通竖直模式}（组装页面）
+\li ^{内部竖直模式}（组装\refterm{竖直盒子}）
+\li ^{行内数学模式}（组装在文本中显示的公式）
+\li ^{陈列数学模式}（组装单独一行显示的公式）
 ^^{horizontal mode}^^{vertical mode}^^{math mode}
 \endulist
-The mode describes the kind of entity that \TeX\ is putting together.
+模式描述了 \TeX\ 正在组装的实体的类型。
 
-Because you can embed one kind of entity within another, e.g., a vbox
-within a math formula, \TeX\ keeps track not just of one mode but of a
-whole list of modes (what computer scientists call a ``stack'').
-Suppose that \TeX\ is in mode $M$ and encounters something that
-puts it into a new mode \Mprimeperiod.  When it finishes its work in
-mode \Mprimecomma, it resumes what it was doing in mode \Mperiod.
+%Because you can embed one kind of entity within another, e.g., a vbox
+%within a math formula, \TeX\ keeps track not just of one mode but of a
+%whole list of modes (what computer scientists call a ``stack'').
+%Suppose that \TeX\ is in mode $M$ and encounters something that
+%puts it into a new mode \Mprimeperiod.  When it finishes its work in
+%mode \Mprimecomma, it resumes what it was doing in mode \Mperiod.
+由于你可以将某种实体嵌入另一种实体中，比如将一个竖直盒子放入数学公式中，
+\TeX\ 记录的不只是一个模式，而是一整列模式（即计算机科学中所说的“栈”）。
+假设 \TeX\ 在模式$M$中，然后遇到某些东西而进入新模式$M'$。
+当它完成在模式$M'$的工作时，它将继续在模式$M$中的工作。
 
 \endconcept
 
@@ -3339,19 +3670,28 @@ mode \Mprimecomma, it resumes what it was doing in mode \Mperiod.
 %\concept muglue
 \concept 数学粘连
 
-\defterm{Muglue} is a kind of \refterm{glue} that you can use only in math
-formulas.  It is measured in ^|mu| (\refterm{mathematical
-units:mathematical unit}).
+%\defterm{Muglue} is a kind of \refterm{glue} that you can use only in math
+%formulas.  It is measured in ^|mu| (\refterm{mathematical
+%units:mathematical unit}).
+%^^{mathematical units}^^{glue//mathematical}
+%One |mu| is equal to \frac1/{18} em, where
+%the size of an em is taken from \refterm{family} 2 of the math fonts.
+%\TeX\ automatically adjusts the size of muglue according to the context.
+%For instance, a glue size of |2mu| is normally smaller within a
+%subscript than it is within ordinary text.
+%You must use the ^|\mskip| command to produce muglue.
+%For example, `|\mskip 4mu plus 5mu|' produces mathematical glue with
+%natural space of four |mu| and \refterm{stretch} of five |mu|.
+\defterm{数学粘连}（muglue）是一种仅用于数学公式中的\refterm{粘连}，
+它的度量单位是 ^|mu|（\refterm{数学单位}）。
 ^^{mathematical units}^^{glue//mathematical}
-One |mu| is equal to \frac1/{18} em, where
-the size of an em is taken from \refterm{family} 2 of the math fonts.
-\TeX\ automatically adjusts the size of muglue according to the context.
-For instance, a glue size of |2mu| is normally smaller within a
-subscript than it is within ordinary text.
-You must use the ^|\mskip| command to produce muglue.
-For example, `|\mskip 4mu plus 5mu|' produces mathematical glue with
-natural space of four |mu| and \refterm{stretch} of five |mu|.
-
+1 |mu| 的大小与 \frac1/{18} em 相等，
+而 1 em 的大小取自第$2$\refterm{族}数学字体。
+\TeX\ 根据上下文自动调整 |mu| 的大小。
+比如同样是 |2mu| 大小的粘连，在下标中一般就比在普通文本中小一些。
+要生成数学粘连，你必须使用 ^|\mskip| 命令。
+例如，‘|\mskip 4mu plus 5mu|’生成了一个自然大小为 |4mu|，
+\refterm{伸长量}为|5mu| 的数学粘连。
 \endconcept
 
 
@@ -4041,7 +4381,7 @@ See \conceptcit{file}.
 \csdisplay
 \parindent = 2pc  % (or \parindent 2pc)
 |
-设置 |\parindent| 等于两皮卡的长度。而下列赋值：
+设置 |\parindent| 等于两派卡的长度。而下列赋值：
 \csdisplay
 \parindent = 1.5\parindent
 |
@@ -4353,7 +4693,8 @@ You'll find a precise statement of \TeX's treatment of rules on
 
 
 \bookmark{2}{以S开头}
-\concept {script size}
+%\concept {script size}
+\concept {标号尺寸}
 
 \defterm{Script size} describes one of the three related
 \refterm{fonts:font} in a family.
@@ -4365,7 +4706,8 @@ fractions in text.
 \endconcept
 
 
-\concept {scriptscript size}
+%\concept {scriptscript size}
+\concept {小标号尺寸}
 
 \defterm{Scriptscript size} describes the smallest of the three related
 \refterm{fonts:font} in a family.
@@ -4555,7 +4897,8 @@ line of text, i.e., enclosed in |$|'s.
 \endconcept
 
 
-\concept {text size}
+%\concept {text size}
+\concept {文本尺寸}
 
 \defterm{Text size} describes the largest of the three related
 \refterm{fonts:font} in a \refterm{family}.

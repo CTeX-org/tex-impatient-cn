@@ -2145,6 +2145,7 @@
 \def\visiblespace{{\tentt \char'040}}
 \def\Vperiod.{$V$\kern-2pt.}
 \let\vs=\visiblespace
+\def\xref#1{第~\xrefn{#1}~页} % 覆盖 eplain 中的定义
 \def\xrefpg#1{第~\xrefn{#1}~页}
 
 % \tighten attempts to shorten the number of lines occupied by a paragraph.
@@ -2205,7 +2206,7 @@
 % sequence.
 %
 \def\ctsref{\begingroup \catcode`\@ = \letter \@ctsref}
-\def\@ctsref#1{(\xref{#1})\endgroup}
+\def\@ctsref#1{（\xref{#1}）\endgroup}
 
 \def\xrefdelim[#1]{page~\xrefn{#1}} % this form doesn't need braces
 
@@ -2233,7 +2234,7 @@
 
 \def\chapterref#1{第~\chapternum{#1}~章}
 
-\def\headcit#1#2{``{\rm #1}'' (\xref{#2})}
+\def\headcit#1#2{“{\rm #1}”（\xref{#2}）}
 
 \def\conceptcit#1{\headcit{#1}{#1}}
 
