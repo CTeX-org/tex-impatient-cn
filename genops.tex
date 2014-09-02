@@ -4,18 +4,36 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+%\chapter {Commands for \linebreak general operations}
 \chapter {一般操作命令}
 
 \chapterdef{general}
 
+%This section covers
+%\TeX's ^{programming features} and
+%everything else that doesn't fit into the categories
+%of commands in the previous chapters.
+%For an explanation of the conventions used in this section,
+%see \headcit{Descriptions of the commands}{cmddesc}.
 这章介绍 \TeX\ 的^{编程功能}和不适合放入前几章的所有内容.
 在 \headcit{命令描述}{cmddesc} 一节中, 给出了这章的惯例.
 
 \begindescriptions
 
 %==========================================================================
+%\section {Naming and modifying fonts}
 \section {命名及修改字体}
 
+%\begindesc
+%\bix^^{fonts//naming and modifying}
+%\cts font {}
+%\aux\cts font {\<control sequence> = \<fontname>}
+%\aux\cts font {\<control sequence> = \<fontname> {\bt scaled} \<number>}
+%\aux\cts font {\<control sequence> = \<fontname> {\bt at} \<dimen>}
+%\explain
+%Used alone, the |\font| control sequence designates the current font.
+%|\font| isn't a true command when it's used alone,
+%since it then can appear only as an argument to another command.
 \begindesc
 \bix^^{fonts//naming and modifying}
 \cts font {}
@@ -27,6 +45,17 @@
 |\font| 在这个时候并不是一个真正的命令,
 它仅仅作为其它命令的一个参数.
 
+%For the other three forms of |\font|,
+%\<font\-name> names a set of files that define a font.
+%These forms of |\font|  are commands.  Each of these forms has two effects:
+%{\tighten
+%\olist
+%\li It defines \<control sequence> as a name that selects
+%the font \<font\-name>, possibly magnified (see below).
+%\li It causes \TeX\ to load the font ^{metrics file}
+%(^{\tfmfile}) for \<fontname>.
+%\endolist
+%}% end tighten
 其它的三个 |\font| 形式, 字体名 \<font\-name>
 用来指代定义一个字体所需要的一系列文件.
 在这些形式下, |\font| 是命令.
@@ -39,11 +68,30 @@
 \endolist
 }% end tighten
 
+%\noindent
+%The name of a font file usually indicates its design size.
+%For example, |cmr10| indicates Computer Modern roman with a
+%design size of $10$ points.
+%The design size of a font is recorded in its metrics file.
 \noindent
 字体的名字往往表示它的设计大小,
 比如 |cmr10| 表示设计大写为 $10$ 点的计算机现代字体.
 字体的设计大小保存在字体信息文件中.
 
+%If neither |scaled| \<number> nor |at| \<dimen>
+%is present, the font is used
+%at its design size---the size at which it usually looks best.
+%Otherwise, a magnified version of the font is loaded:
+%\ulist
+%\li If |scaled| \<number>
+%is present, the font is magnified by a factor of $\hbox{\<number>}/1000$.
+%\li If |at| \<dimen> is present, the font is scaled to \<dimen> by magnifying
+%it by $\hbox{\<dimen>}/ds$, where $ds$ is the design size of
+%\<fontname>.
+%\<dimen> and $ds$ are nearly always given in points.
+%\endulist
+%\noindent
+%Magnifications of less than $1$ are possible; they reduce the size.
 如果用户既没有指定 |scaled| \<number> 也没有指定 |at| \<dimen>,
 那么这个字体载入时, 使用设计大小---设计大小的含意是,
 字体在这个大小时, 表示最佳.
@@ -58,12 +106,36 @@
 \noindent
 放大率可以小于 $1$, 这样做就会使字体缩小尺寸.
 
+%You usually need to provide a shape file (\xref{shape}) for each
+%magnification of a font that you load.
+%However, some ^{device drivers} can utilize fonts that are resident
+%in a printer. ^^{resident fonts}
+%Such fonts don't need shape files.
 你往往需要为载入的字体的每一个使用的放大率提供一个字体轮廓文件 (\xref{shape}).
 当然, 一些^{设备驱动}可以使用打印机内置的字体.
 ^^{resident fonts}这些字体不需要字体轮廓文件.
 
+%See \conceptcit{font} and
+%\conceptcit{magnification} for further information.
 更多信息请参见 \conceptcit{font} 和 \conceptcit{magnification}.
 
+%\example
+%\font\tentt = cmtt10
+%\font\bigttfont = cmtt10 scaled \magstep2
+%\font\eleventtfont = cmtt10 at 11pt
+%First we use {\tentt regular CM typewriter}.
+%Then we use {\eleventtfont eleven-point CM typewriter}.
+%Finally we use {\bigttfont big CM typewriter}.
+%|
+%\produces
+%\font\regttfont = cmtt10
+%\font\bigttfont = cmtt10 scaled \magstep 2
+%\font\eleventtfont = cmtt10 at 11pt
+%First we use {\regttfont regular CM typewriter}.
+%Then we use {\eleventtfont eleven-point CM typewriter}.
+%Finally we use {\bigttfont big CM typewriter}.
+%\endexample
+%\enddesc
 \example
 \font\tentt = cmtt10
 \font\bigttfont = cmtt10 scaled \magstep2
@@ -82,13 +154,43 @@ Finally we use {\bigttfont big CM typewriter}.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts fontdimen {\<number> \<font>\param{dimen}}
+%\explain
+%^^{fonts//parameters of}
+%These parameters specify various dimensions associated with
+%the font named by the control sequence \<font>
+%(as distinguished from the \<font\-name> that names the font files).
+%Values of these parameters are specified in the metrics
+%file for \<font>, but you can
+%retrieve or change their values during a \TeX\ run.
+%The numbers and meanings of the parameters are:
+%\display{\halign{\hfil#\hfil\quad&#\hfil\cr
+%\it Number&\it Meaning\cr
+%\noalign{\vskip 1\jot}%
+%1&slant per point\cr
+%2&interword space\cr
+%3&interword stretch\cr
+%4&interword shrink\cr
+%5&x-height (size of |1ex|)\cr
+%6&quad width (size of |1em|)\cr
+%7&extra space\cr}}
+%\noindent
+%\TeX\ uses the slant per point for positioning accents.
+%It uses the interword parameters for producing interword spaces
+%(see |\spaceskip|, \xref\spaceskip) and the extra space parameter
+%for the additional space after a period (see |\xspaceskip|,
+%\xref\xspaceskip).
+%The values of these parameters for the
+%\plainTeX\ fonts are enumerated on \knuth{page~433}.
+%Math symbol fonts have $15$ additional parameters, which we won't discuss here.
 \begindesc
 \cts fontdimen {\<number> \<font>\param{dimen}}
 \explain
 ^^{fonts//parameters of}
-这些参项可以用来定义控制序列 \<font> (注意, \<font> 和 \<font\-name> 不同, \<font-name> 是用来表示字体文件的文件名的) 所定义的各种尺寸大小.
-这些参项的值, 都在 \<font> 所使用的字体信息文件中定义了, 但是你可以在执行 \TeX\ 时得到或改变这些值.
-这些参项的数值及其意义为:
+这些参数可以用来定义控制序列 \<font> (注意, \<font> 和 \<font\-name> 不同, \<font-name> 是用来表示字体文件的文件名的) 所定义的各种尺寸大小.
+这些参数的值, 都在 \<font> 所使用的字体信息文件中定义了, 但是你可以在执行 \TeX\ 时得到或改变这些值.
+这些参数的数值及其意义为:
 \display{\halign{\hfil#\hfil\quad&#\hfil\cr
 \it 数值&\it 义意\cr
 \noalign{\vskip 1\jot}%
@@ -103,12 +205,31 @@ Finally we use {\bigttfont big CM typewriter}.
 \TeX\ 需要使用字体每点的倾斜程度来计算重音符号的位置.
 使用词间距来控制单词间的距离 (见 |\spaceskip|, \xref\spaceskip).
 使用额外空白长度来控制句号以后所留的空白 (见 |\spaceskip|, \xref\spaceskip).
-在 \knuth{433~页} 中列出了 \plainTeX\ 中字体所使用的这些参项的数值.
-数学符号有另外 $15$ 个参项, 不过我们在此不展开讨论.
+在 \knuth{433~页} 中列出了 \plainTeX\ 中字体所使用的这些参数的数值.
+数学符号有另外 $15$ 个参数, 不过我们在此不展开讨论.
 
-
+%Beware:
+%assignments to these parameters are \emph{not} undone at the end
+%of a group.
+%If you want to change these parameters locally, you'll need to
+%save and restore their original settings explicitly.
+%\example
+%Here's a line printed normally.\par
+%\fontdimen2\font = 3\fontdimen2\font
+%% Triple the interword spacing.
+%\noindent Here's a really spaced-out line.
+%|
+%\produces
+%Here's a line printed normally.\par
+%\dimen0 = \fontdimen2\font % to undo global assignment
+%\fontdimen2\font = 3\fontdimen2\font
+%% triple the interword spacing
+%\noindent Here's a really spaced-out line.
+%\fontdimen2\font = \dimen0
+%\endexample
+%\enddesc
 注意:
-这些参项被设定后, 在当前组结束时, 并\emph{不}返回初始值.
+这些参数被设定后, 在当前组结束时, 并\emph{不}返回初始值.
 如果你只是希望在局部的文本中改变这些值,
 你需要将它的原值保存, 以便稍后恢复.
 \example
@@ -127,38 +248,84 @@ Here's a line printed normally.\par
 \endexample
 \enddesc
 
+%\begindesc
+%\cts magnification {{\bt =} \<number>}
+%\cts mag {\param{number}}
+%\explain
+%\margin{{\tt\\mag} and {\tt\\magnification} combined.}
+%An assignment to |\magnification| establishes
+%the ``^{scale factor}'' $f$ that determines
+%the \minref{magnification} ratio of your document \seeconcept{magnification}.
+%The assignment to |\magni!-fication| must occur before the first page
+%of your document has been shipped out.
 \begindesc
 \cts magnification {{\bt =} \<number>}
 \cts mag {\param{number}}
 \explain
 \margin{合并了 {\tt\\mag} 和 {\tt\\magnification}.}
-使用 |\magnification| 可以定义``^{缩放倍率}'' $f$,
-缩放倍率决定了你的文档的\minref{放大}率 \seeconcept{放大率}.
-|\magni!-fication|必需在文档的第一页被编译出前定义.
+使用 |\magnification| 可以定义“^{缩放因子}”$f$，
+缩放因子决定了你的文档的\minref{放大率}\seeconcept{放大率}。
+|\magni!-fication|必须在文档的第一页被编译出前定义。
 
-这个命令把 $f$ 定义成 \<number> 的同时,
-也会定义把 |\hsize| 定义为 |6.5true in|, 把 |\vsize| 义为 |8.9true in|,
+%The assignment sets $f$ to \<number> and also
+%sets |\hsize| and |\vsize|
+%^^|\hsize//set by {\tt\\magnification}|
+%^^|\vsize//set by {\tt\\magnification}|
+%respectively to |6.5true in| and |8.9true in|,
+%the values appropriate for an $8 \frac1/2$-%
+%by-$11$-inch page.
+%$f$ must be between $0$ and $32768$.
+%The \minref{magnification} ratio of the
+%document is $f/1000$.
+%A scale factor
+%of $1000$ provides unit magnification, i.e., it leaves the size of your
+%document
+%unchanged.  It's customary to use powers of $1.2$ as scale factors, and
+%most libraries of fonts are based on such factors.  You can use the
+%^|\magstep| and ^|\magstephalf| commands to specify magnifications by
+%these factors.
+这个命令把 $f$ 定义成 \<number> 的同时，
+也会定义 |\hsize| 为 |6.5true in|，|\vsize| 为 |8.9true in|，
 ^^|\hsize//set by {\tt\\magnification}|
 ^^|\vsize//set by {\tt\\magnification}|
-即 $8 \frac1/2$ 英尺乘 $11$ 英尺的页大小.
-缩放倍率 $f$ 值必需间于 $0$ 到 $32768$ 之间.
-该文档的 \minref{放大}率 为 $f/1000$.
-一个为 $1000$ 的缩放倍率为单位放大率, 也就是说,
-这个设置不会使你的文档的尺寸发生任何变化.
-习惯上使用 $1.2$ 的次幂值来定义缩放倍率,
-因为很多的字体就是基于这种倍率的.
-你可以用 ^|\magstep| 和 ^|\magstephalf| 命令来更方便地定义这种倍率.
+即适合 $8 \frac1/2$ 英尺乘 $11$ 英尺的页面的大小。
+缩放因子 $f$ 的值必需介于 $0$ 到 $32768$ 之间，
+它确定了该文档的\minref{放大率}为 $f/1000$。
+因此缩放因子为 $1000$ 就给出了单位放大率，也就是说，它不改变文档的尺寸。
+我们习惯使用 $1.2$ 的幂次值来定义缩放因子，
+因为很多的字体就是基于这种因子的。
+用 ^|\magstep| 和 ^|\magstephalf| 命令你可以更方便地定义这种因子。
 
+%|\magnification| is not a parameter. You can't use it
+%to \emph{retrieve} the scale factor.  If you write something like
+%|\dimen0 = \mag!-nifi!-cation|, \TeX\ will complain about it.
+|\magnification| 不是一个参数，你不能使用它来得到缩放因子。
+如果你使用类似 |\dimen0 = \mag!-nifi!-cation| 之类的语句，
+\TeX\ 将会报错。
 
-|\magnification| 不是一个参项, 你不能使用它来得到缩放率.
-如果你使用类似 |\dimen0 = \mag!-nifi!-cation| 之类的语句,
-\TeX\ 会因此报错.
+%The |\mag| parameter contains the scale factor.
+%Changing the value of |\mag| rescales the page dimensions, which is not
+%usually what you want.
+%Therefore it's usually better to change the magnification by
+%assigning to |\magnification| rather than to |\mag|.
+而 |\mag| 参数则包含缩放因子。
+改变 |\mag| 的值也缩放了页面尺寸，而这一般不是你所想要的。
+因此，一般情况下，
+最好是使用 |\magnification| 而不是 |\mag| 来改变页面的放大率。%
+\footnote{译注：|\mag| 是 \TeX\ 的原始命令，
+而 |\magnification| 是 \plainTeX\ 中定义的命令。
+|\magnification| 依赖于 |\mag|，
+它用 |\mag| 设置放大率后恢复了默认的页面尺寸。
+在 LaTeX 中没有 |\magnification| 命令，
+一般也不建议使用 |\mag| 命令，因为这与 LaTeX 的设计原则相悖。
+}
 
-而 |\mag| 参项则含有缩放倍率.
-改变 |\mag| 的值可以对页面的尺寸重新缩放,
-当然这一般不是你所想要的.
-因此, 一般情况下, 最好是使用 |\magnification| 而不是 |\mag| 来改变页面的放大率.
-
+%\example
+%\magnification = \magstep2
+%% magnify fonts by 1.44 (=1.2x1.2)
+%|
+%\endexample
+%\enddesc
 \example
 \magnification = \magstep2
 % 把字体放大 1.44 倍 (=1.2x1.2)
@@ -166,25 +333,54 @@ Here's a line printed normally.\par
 \endexample
 \enddesc
 
+%\begindesc
+%\cts magstep {\<number>}
+%\explain
+%This command expands to the \minref{magnification} ratio needed to
+%magnify everything in your document
+%(other than |true| dimensions)
+%by $1.2^r$, where $r$ is
+%the value of \<number>. \<number> must be between $0$ and $5$.
+%\example
+%\magnification = \magstep1 % Magnify by ratio of 1.2.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts magstep {\<number>}
 \explain
-这个命令可以展开成为\minref{放大}率,
-这个放大率的数为可以把你文档中所有 (除了给定真值尺寸的) 东西的放大 $1.2^r$ 倍.
-其中 $r$ 是 \<number> 的值.
-\<number> 必需在 $0$ 到 $5$ 之间.
+这个命令展开为一个\minref{放大率}因子，
+这个因子可以把你文档中所有（除了给定 |true| 尺寸的）东西放大 $1.2^r$ 倍，
+其中 $r$ 是 \<number> 的值。
+\<number> 必须在 $0$ 到 $5$ 之间。%
+\footnote{译注：即在 \plainTeX\ 中定义 |\magstep1| 为 1200，|\magstep2| 为 1440，等等。}
 \example
 \magnification = \magstep1 % 放大 1.2 倍.
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts magstephalf {}
+%\explain
+%This command expands to the \minref{magnification} ratio needed to
+%magnify everything in your document
+%(other than |true| dimensions)
+%by $\sqrt{1.2}$,
+%i.e., halfway between $1$ and $1.2$.
+%\example
+%\magnification = \magstephalf
+%|
+%\endexample
+%\eix^^{fonts//naming and modifying}
+%\enddesc
 \begindesc
 \cts magstephalf {}
 \explain
-这个命令可以展开成为\minref{放大}率,
-这个放大率的数为可以把你文档中所有 (除了给定真值尺寸的) 东西的放大 $\sqrt{1.2}$ 倍.
-也就是 $1$ 和 $1.2$ 的等比中项.
+这个命令展开为一个\minref{放大率}因子，
+这个因子可以把你文档中所有（除了给定 |true| 尺寸的）东西放大 $\sqrt{1.2}$ 倍，
+也就是 $1$ 和 $1.2$ 的等比中项。%
+\footnote{译注：即在 \plainTeX\ 中定义 |\magstephalf| 为 1095。}
 \example
 \magnification = \magstephalf
 |
@@ -204,7 +400,7 @@ Here's a line printed normally.\par
 \cts number {\<number>}
 \explain
 这个命令可以把一个\minref{数}表示成字符\minref{标记}序列.
-这里的数可以是一个确定的整数, 或是一个 \<number> 参项,
+这里的数可以是一个确定的整数, 或是一个 \<number> 参数,
 也可以是一个 \<number> 寄存器.
 \example
 \number 24 \quad \count13 = -10000 \number\count13
@@ -219,7 +415,7 @@ Here's a line printed normally.\par
 \easy\cts romannumeral {\<number>}
 \explain
 这个命令可以把一个\minref{数}表示成罗马字符\minref{标记}序列.
-这里的数可以是一个确定的整数, 或是一个 \<number> 参项,
+这里的数可以是一个确定的整数, 或是一个 \<number> 参数,
 也可以是一个 \<number> 寄存器.
 如果这个数是负的, 则 |\romannumeral| 不产生任何标记.
 \example
@@ -235,13 +431,27 @@ Here's a line printed normally.\par
 \enddesc
 
 %==========================================================================
+%\subsection {Environmental information}
 \subsection {环境信息}
 
+%\begindesc
+%^^{time of day}
+%\cts time {\param{number}}
+%\explain
+%\TeX\ sets this parameter to the
+%number of minutes that have elapsed since midnight (of the current day).
+%At noon, for instance, |\time| is $720$.
+%This command and the next three make use of the time and date as
+%recorded in your computer.
+%\TeX\ retrieves them just once, at the beginning of your run, so |\time|
+%at the end of the run always has the same value as |\time| at the
+%beginning of the run (unless you've explicitly changed it).
+%\enddesc
 \begindesc
 ^^{time of day}
 \cts time {\param{number}}
 \explain
-\TeX\ 把这个参项设置为从当日午夜到现在所经过的分钟数.
+\TeX\ 把这个参数设置为从当日午夜到现在所经过的分钟数.
 比如在中午, |\time| 就是 $720$.
 这个命令和下面的三个命令使用的是你计算机中所记录的时间.
 \TeX\ 只在开始运行的时候向系统获取一次时间,
@@ -249,49 +459,105 @@ Here's a line printed normally.\par
 先前运行的 |\time| 和最后运行的 |\time| 的值是完全相同的.
 \enddesc
 
+%\bix^^{date}
+%\begindesc
+%\cts day {\param{number}}
+%\explain
+%\TeX\ sets this parameter to the current day of the month.  It is
+%a number between $1$ and $31$.
+%|\day| is set at the beginning of your run (see the comments on
+%|\time| above).
+%\enddesc
 \bix^^{date}
 \begindesc
 \cts day {\param{number}}
 \explain
-\TeX\ 把这个参项设置为今天的日期数.
+\TeX\ 把这个参数设置为今天的日期数.
 这是一个介于 $1$ 和 $31$ 之间的数.
 |\day| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 \enddesc
 
+%\begindesc
+%\cts month {\param{number}}
+%\explain
+%\TeX\ sets this parameter to the current month.  It is
+%a number between $1$ and $12$.
+%|\month| is set at the beginning of your run (see the comments on
+%|\time| above).
+%\enddesc
 \begindesc
 \cts month {\param{number}}
 \explain
-\TeX\ 把这个参项设置为当前的月份.
+\TeX\ 把这个参数设置为当前的月份.
 这是一个介于 $1$ 和 $12$ 之间的数.
 |\time| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 \enddesc
 
+%\begindesc
+%\cts year {\param{number}}
+%\explain
+%\TeX\ sets this parameter to the current year ({\sc A.D.}).
+%It is a number such as $1991$.
+%|\year| is set at the beginning of your run (see the comments on
+%|\time| above)
 \begindesc
 \cts year {\param{number}}
 \explain
-\TeX\ 把这个参项设置为当前的 ({\sc 公元}) 年份.
+\TeX\ 把这个参数设置为当前的 ({\sc 公元}) 年份.
 这是一个类似 $1991$ 之类的数.
 |\year| 只在程序开始运行的时候被设定 (见上面 |\time| 的说明).
 
+%\eix^^{date}
+%\enddesc
 \eix^^{date}
 \enddesc
 
+%\begindesc
+%^^{version number}
+%\cts fmtname {}
+%\cts fmtversion {}
+%\explain
+%These commands produce the name and version number
+%of the \TeX\ format,
+%e.g., \minref{\plainTeX} or ^{\LaTeX}, that you're using.
+%\example
+%This book was produced with the \fmtname\ format,
+%version~\fmtversion.
+%|
+%\produces
+%This book was produced with the \fmtname\ format,
+%version~\fmtversion.
+%\endexample
+%\enddesc
 \begindesc
 ^^{version number}
 \cts fmtname {}
 \cts fmtversion {}
 \explain
-这个命令会产生当前使用的 \TeX\ 格式 (比如 \minref{\plainTeX} 或 ^{\LaTeX}) 的名字和版本号.
+这个命令会产生当前使用的 \TeX\ 格式（比如 \minref{\plainTeX} 或 ^{\LaTeX}）的名字和版本号。
 \example
-本书使用 \fmtname\ 格式,
-版本~\fmtversion.
+本书使用 \fmtname\ 格式，版本~\fmtversion 。
 |
 \produces
-本书使用 \fmtname\ 格式,
-版本~\fmtversion.
+本书使用 \fmtname\ 格式，版本~1.9: 26 April 1991 (and plain 3.141592653)。
 \endexample
 \enddesc
 
+%\begindesc
+%\cts jobname {}
+%\explain
+%This command produces the base
+%name of the file with which \TeX\ was invoked.
+%For example, if your main input file is |hatter.tex|,
+%|\jobname| will expand to |hatter|.
+%|\jobname| is most useful when you're
+%creating an auxiliary file to be associated with a document.
+%^^{auxiliary files}
+%\example
+%\newwrite\indexfile  \openout\indexfile = \jobname.idx
+%% For input file `hatter.tex', open index file `hatter.idx'.
+%|
+%\endexample\enddesc
 \begindesc
 \cts jobname {}
 \explain
@@ -344,7 +610,7 @@ Here's a line printed normally.\par
 \begindesc
 \cts escapechar {\param{number}}
 \explain
-这个参项在把一个控制序列名转化为一系列字符标记时, 指定 \TeX\ 用来表示\minref{转义符}的字符的 \ascii\ 码\minrefs{ascii}.
+这个参数在把一个控制序列名转化为一系列字符标记时, 指定 \TeX\ 用来表示\minref{转义符}的字符的 \ascii\ 码\minrefs{ascii}.
 ^^{escape character//represented by \b\tt\\escapechar\e}
 这个转化发生在你使用 |\string|命令时或者 \TeX\ 在产生诊断信息时.
 转义符的默认值是 $92$, 即 ^{右斜杠} 的 \ascii\ 码.
@@ -476,7 +742,7 @@ $a \la b$
 \begindesc
 \cts globaldefs {\param{number}}
 \explain
-这个参项控制 \TeX\ 是否把定义和其它的赋值作为\minref{全局}的:
+这个参数控制 \TeX\ 是否把定义和其它的赋值作为\minref{全局}的:
 \ulist
 \li 如 |\globaldefs| 是 (默认值) 零,
 当且仅当一个定义是由直接或者间接的 |\global| 命令指定的.
@@ -916,7 +1182,7 @@ $\alphachar$
 \li 字符参数, 比如, |\fontdimen3\sevenbf|
 \li 字体的 ^|\hyphenchar| 或 ^|\skewchar|, 比如, |\skewchar\teni|
 \li ^|\lastpenalty|, ^|\lastskip|, 或者 ^|\lastkern|
-(当前的水平\minrefs{水平列表}或\minref{垂直列表}的最后一项的数值).
+(当前的水平\minrefs{水平列表}或\minref{竖直列表}的最后一项的数值).
 \li ^|\chardef| 或 ^|\mathchardef| 定义的控制序列
 \endulist
 

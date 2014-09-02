@@ -56,13 +56,13 @@
 % you can't apply it to portions of text smaller than a paragraph.
 
 要强制 \TeX{} 把素材放在同一页上，最简单的办法是使用 |\vbox| 命令
-\ctsref{\vbox} 来使素材被封装在一个垂直盒子里。
+\ctsref{\vbox} 来使素材被封装在一个竖直盒子里。
 ^^|\vbox//fixing page breaks with|
-这里使用垂直盒子比水平盒子要好，因为大多数情况下，需要放在一起的是垂
-直模式素材，比如连续的段落。垂直盒子的前后，你都要放一个隐含或明显的分
-段命令（或者空行，或者 |\par|）；否则的话，\TeX{} 会试图使垂直盒子成
-为相邻段落的一部分。垂直盒子的方法有一个重要的局限：不能用于不足一个段
-落的小部分文本。
+这里使用竖直盒子比水平盒子要好，因为大多数情况下，
+需要放在一起的是竖直模式素材，比如连续的段落。
+竖直盒子的前后，你都要放一个隐含或明显的分段命令（或者空行，或者 |\par|）；
+否则的话，\TeX{} 会试图使竖直盒子成为相邻段落的一部分。
+竖直盒子的方法有一个重要的局限：不能用于不足一个段落的小部分文本。
 
 
 % You can sometimes keep the lines of a single paragraph together by enclosing
@@ -104,7 +104,7 @@
 |\nobreak| 需要放在段落结束的空行或者 |\par| 之后，从而避免 \TeX{} 将
 |\nobreak| 作为段落的一部分处理。 |\nobreak| 还需要出现在段落末尾所有
 适合分页的断点之前才有效。\TeX{} 插入在下一个段落之前的 glue 就是这样的
-一个断点，其他的还有你明确插入在段落后面的任何垂直 glue。 因
+一个断点，其他的还有你明确插入在段落后面的任何竖直 glue。 因
 此，|\nobreak| 通常出现在段落或者标题结束之后的第一个位置。
 
 % You can use the ^|\eject| command \ctsref{\eject}
@@ -172,7 +172,7 @@
 
 ^|\filbreak| 命令 \ctsref\filbreak{}
 \xrdef{filbreak}
-提供了一种方式来把一个自然段或几个段落（或者其他垂直模式素材）放在同一
+提供了一种方式来把一个自然段或几个段落（或者其他竖直模式素材）放在同一
 页面上。当你用 |\filbreak| 来封闭一个自然段的时候，如果段落内容可以放
 置在一页， \TeX{} 会有效地忽略那些 |\filbreak|；如果不是，\TeX{} 将在
 第一个 |\filbreak| 之前分页。如果在连续段落中，每个自然段前后都有
@@ -249,7 +249,7 @@
 ^^|\vadjust|
 是一个捷径。但是，如果新的页面要长一些的话，问题就非常难办，因为
 \TeX{} 可能已经尽量使页面非常紧凑了。这时唯一的办法就是设定
-^|\looseness| \ctsref\looseness{} 为负值，来缩短页面上的一些垂直间距，
+^|\looseness| \ctsref\looseness{} 为负值，来缩短页面上的一些竖直间距，
 如果 ^|\parskip| (\xref\parskip) 非零，压缩一下， 或者祭出压箱底的绝
 招：略微减小 |\baselineskip| \ctsref{\baselineskip}。
 ^^|\baselineskip//and preserving end of page|
@@ -271,7 +271,7 @@
 
 \null
 ^^{vertical space//reserving at top of page}
-通常你可以使用 |\vskip| 命令 \ctsref\vskip{} 在页面上添加空白垂直间距，但
+通常你可以使用 |\vskip| 命令 \ctsref\vskip{} 在页面上添加空白竖直间距，但
 这一招对页首无效，因为在紧接着分页后的所有 glue, kerns 和 penalties，
 都会被 \TeX{} 会丢弃。
 ^^{page breaks//glue at}
@@ -408,11 +408,12 @@
 Underfull \vbox (badness 10000) has occurred
    while \output is active
 |
-表明 \TeX{} 因为没有足够的素材而没有填满一页。可能的原因是：你使用了垂
-直盒子来把素材放在一起，但是在接近页面的底部时， \TeX{} 遇到了一个不适
-合放在那里的垂直盒子。结果那个盒子被移至下一页，而在当前页上留下了太多
-空白。在这种情况下，或者你要在别的地方插入更多的空白，或者将那个垂直盒
-子打破，变得小一点。
+表明 \TeX{} 因为没有足够的素材而没有填满一页。可能的原因是：
+你使用了竖直盒子来把素材放在一起，但是在接近页面的底部时， 
+\TeX{} 遇到了一个不适合放在那里的竖直盒子。
+结果那个盒子被移至下一页，而在当前页上留下了太多空白。
+在这种情况下，或者你要在别的地方插入更多的空白，
+或者将那个竖直盒子打破，变得小一点。
 
 % Another possible cause of this complaint is having a long paragraph
 % that occupies an entire page without a break.
@@ -452,7 +453,7 @@ Underfull \vbox (badness 10000) has occurred
 Overfull \vbox (296.30745pt too high) has occurred
    while \output is active
 |
-说的是你构造了一个长于一页的垂直盒子。弄短一点吧。
+说的是你构造了一个长于一页的竖直盒子。弄短一点吧。
 
 % \li
 % \bix^^|\hbox//overfull box from|
@@ -645,8 +646,8 @@ Overfull \vbox (296.30745pt too high) has occurred
 \null
 ^^{math display}
 如果在陈列公式之前有太多空白，有可能是因为你输入的时候在陈列公式之前留
-了一个空行。这个空行将开始一个新的段落，并且把 \TeX\ 转入垂直模式。当
-\TeX\ 在垂直模式里遇到一个 '|$|', 就会切换到水平模式并插入段间粘连
+了一个空行。这个空行将开始一个新的段落，并且把 \TeX\ 转入竖直模式。当
+\TeX\ 在竖直模式里遇到一个 '|$|', 就会切换到水平模式并插入段间粘连
 （|\parskip|），接下来又插入一个行间粘连（|\baselineskip|）。然后当显
 示开始的时候，它插入\emph{更多}粘连（或者是 ^|\abovedisplayskip| 或者
 是 ^|\abovedisplayshortskip|，取决于前一行的长度）。只有最后一个粘连是你想
@@ -679,8 +680,8 @@ Overfull \vbox (296.30745pt too high) has occurred
 % after the macro call---if you want a blank line just to make your input
 % more readable, start it with a `|%|'.
 
-如果使用宏得到的段落之后有太多垂直空白，可能里头包含了宏产生的段间粘
-连，一个空段，以及另外一个段间 glue。你可以通过在那个宏之后插入
+如果使用宏得到的段落之后有太多竖直空白，可能里头包含了宏产生的段间粘
+连，一个空段，以及另外一个段间粘连。你可以通过在那个宏之后插入
 \csdisplay
 \vskip -\parskip
 \vskip -\baselineskip
@@ -795,8 +796,8 @@ about going into it.}
 % Similarly, you can construct a vertical rule that looks horizontal
 % by making it short and fat.
 \ulist
-\li \TeX\ 处于垂直模式时，只能用 |\hrule|；\TeX\ 处于水平模式时，只能
-用 |\vrule|。所以你不能在水平盒子里使用横线或者在垂直盒子里使用竖线。
+\li \TeX\ 处于竖直模式时，只能用 |\hrule|；\TeX\ 处于水平模式时，只能
+用 |\vrule|。所以你不能在水平盒子里使用横线或者在竖直盒子里使用竖线。
 然而，通过设定所有三个维度（dimension），你可以把横线画的又高又细，使
 它看起来像竖线。类似的，你也可以把竖线画的又矮又宽，使它看起来像横线。
 
@@ -808,7 +809,7 @@ about going into it.}
 % If your rules are coming out too long or too short,
 % check the dimensions of the enclosing box.
 % \endulist
-\li 如果你没有明确设定宽度，垂直盒子里的横线就会和盒子一样宽。水平盒子
+\li 如果你没有明确设定宽度，竖直盒子里的横线就会和盒子一样宽。水平盒子
 里的竖线也类似。如果你得到的线太长或太短，请检查外面盒子的尺寸。
 \endulist
 
@@ -860,7 +861,7 @@ The following input will do it:
    \vskip 3pt \hrule}%
 \vrule}
 |
-我们需要把文本放到垂直盒子里来让 \TeX\ 把它当作段落处理。四层盒子是必
+我们需要把文本放到竖直盒子里来让 \TeX\ 把它当作段落处理。四层盒子是必
 要的---如果你有所怀疑，可以尝试在更少的盒子情况下运行这个例子。
 \eix^^{rules}
 
@@ -912,7 +913,7 @@ The following input will do it:
 为了得到多行页眉，你需要做三件事：
 \olist\compact
 \li 重新定义 ^|\makeheadline| 宏，\TeX\ output routine 将会用到它。
-\li 把额外的行所需的垂直距离加给 ^|\voffset|。
+\li 把额外的行所需的竖直距离加给 ^|\voffset|。
 \li 对 ^|\vsize| 减少同样的大小。
 \endolist
 \noindent 下面的例子演示了你可以怎样做：
@@ -955,8 +956,8 @@ The following input will do it:
 对多行页脚的处理也类似：
 \olist
 \li 重新定义 ^|\makefootline| 宏，\TeX\ output routine 将会用到它。
-\li 把额外的行所需的垂直距离加给 ^|\voffset|。
-\li 从 ^|\vsize| 减去额外的行所需的垂直距离。
+\li 把额外的行所需的竖直距离加给 ^|\voffset|。
+\li 从 ^|\vsize| 减去额外的行所需的竖直距离。
 \endolist
 \noindent 下面的例子演示了你可以怎样做：
 \csdisplay
@@ -1158,8 +1159,7 @@ F$, 它的字符基于一种字体 $f_1$，但是有一些来自另一种字体 
 要创建混合字体，你可以定义 $\cal F$ 为一个宏。宏定义中，首先选择字体
 $f_1$， 然后定义控制序列来产生从 $f_2$ 借来的字符。举个例子，假如你要创
 建一种混合字体 |\britrm|：基于 |cmr10| 但是其中的美元符号借用 |cmti10|
-的英
-磅符号. 英磅符号在 |cmti10| 的位置恰好跟美元符号在 |cmr10| 里的位置一样。
+的英镑符号. 英镑符号在 |cmti10| 的位置恰好跟美元符号在 |cmr10| 里的位置一样。
 你可以这样做：
 \csdisplay
 \def\britrm{%
@@ -1167,7 +1167,7 @@ $f_1$， 然后定义控制序列来产生从 $f_2$ 借来的字符。举个例�
    \def\${{\tenit\char `\$}}% \tenit names the cmti10 font.
 }
 |
-现在，当你使用 |\britrm| 字体的时候，|\$| 将生成英磅符号。
+现在，当你使用 |\britrm| 字体的时候，|\$| 将生成英镑符号。
 
 % You can also get the same effect by changing the category codes
 % of the characters in question to make those characters active and then

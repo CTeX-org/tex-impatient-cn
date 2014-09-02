@@ -144,8 +144,8 @@
 \begindesc
 ^^{special characters}
 %
-\easy\ctspecialx # \ctsxrdef{@pound} {英磅符号 \# \footnote{zpxing: 位
-    于键盘的数字 3 之上， 英式键盘为英磅符号，美式键盘为数字符号 \#。}}
+\easy\ctspecialx # \ctsxrdef{@pound} {英镑符号 \# \footnote{zpxing: 位
+    于键盘的数字 3 之上， 英式键盘为英镑符号，美式键盘为数字符号 \#。}}
 \ctspecialx $ \ctsxrdef{@bucks} {美元符号 \$}
 \ctspecialx % \ctsxrdef{@percent} {百分号 \%}
 \ctspecialx & \ctsxrdef{@and} {和 \&}
@@ -569,22 +569,22 @@ l'H\accent94 otel des Invalides
 \begindesc
 ^^{fonts}
 %
-\ctsx fivebf {使用 $5$ 磅粗体}
-\ctsx fivei {使用 $5$ 磅数学意大利体}
-\ctsx fiverm {使用 $5$ 磅罗马体}
-\ctsx fivesy {使用 $5$ 磅数学符号字体}
-\ctsx sevenbf {使用 $7$ 磅粗体}
-\ctsx seveni {使用 $7$ 磅数学意大利体}
-\ctsx sevenrm {使用 $7$ 磅罗马体}
-\ctsx sevensy {使用 $7$ 磅数学符号字体}
-\ctsx tenbf {使用 $10$ 磅粗体}
-\ctsx tenex {使用 $10$ 磅数学扩展字体}
-\ctsx teni {使用 $10$ 磅数学意大利体}
-\ctsx tenrm {使用 $10$ 磅罗马体}
-\ctsx tensl {使用 $10$ 磅斜罗马体}
-\ctsx tensy {使用 $10$ 磅数学符号字体}
-\ctsx tenit {使用 $10$ 磅意大利体}
-\ctsx tentt {使用 $10$ 磅打字机字体}
+\ctsx fivebf {使用 $5$ 点粗体}
+\ctsx fivei {使用 $5$ 点数学意大利体}
+\ctsx fiverm {使用 $5$ 点罗马体}
+\ctsx fivesy {使用 $5$ 点数学符号字体}
+\ctsx sevenbf {使用 $7$ 点粗体}
+\ctsx seveni {使用 $7$ 点数学意大利体}
+\ctsx sevenrm {使用 $7$ 点罗马体}
+\ctsx sevensy {使用 $7$ 点数学符号字体}
+\ctsx tenbf {使用 $10$ 点粗体}
+\ctsx tenex {使用 $10$ 点数学扩展字体}
+\ctsx teni {使用 $10$ 点数学意大利体}
+\ctsx tenrm {使用 $10$ 点罗马体}
+\ctsx tensl {使用 $10$ 点斜罗马体}
+\ctsx tensy {使用 $10$ 点数学符号字体}
+\ctsx tenit {使用 $10$ 点意大利体}
+\ctsx tentt {使用 $10$ 点打字机字体}
 \explain
 这些命令使 \TeX{} 用指定的字体排版后面的文本。一般你可以把字体选择命令
 和相应的文本置于同一个编组中。编组之外使用一个字体选择命令直到文档最后。
@@ -992,12 +992,16 @@ imitative son of Johann~S. Bach, composed the
 %The metrics file for a font includes the italic correction of each
 %character in the font.
 %^^{metrics file//italic correction in}
-
-
 \begindesc
 \easy\ctspecial / \ctsxrdef{@slash}
 \explain
-\TeX\ \minref{字体}中每个字符都有``^{倾斜修正}''。直立字体的倾斜修正一般就是零。当从倾斜的字体（不一定是意大利体）切换到直立的字体时，倾斜修正会增加额外的空白。这个额外的空白之所以必要，是因为倾斜的字符略微挤占了后面的空格位置，当后面跟着直立字体时，会显得中间的空格太小。所有字符的倾斜修正都包含在字体的metrics文件里。^^{metrics file//italic correction in}
+\TeX\ \minref{字体}中每个字符都有``^{倾斜修正}''。直立字体的倾斜修正一般就是零。
+当从倾斜的字体（不一定是意大利体）切换到直立的字体时，倾斜修正会增加额外的空白。
+这个额外的空白之所以必要，是因为倾斜的字符略微挤占了后面的空格位置，
+当后面跟着直立字体时，会显得中间的空格太小。
+所有字符的倾斜修正都包含在字体的度量文件里。
+^^{metrics file//italic correction in}
+
 %The |\/| command
 %produces an ^{italic correction} for the preceding character.
 %You should insert an italic correction when you're switching from
@@ -1016,9 +1020,8 @@ imitative son of Johann~S. Bach, composed the
 %that's clear.
 %\endexample
 %\enddesc
-
-
-命令|\/|产生对前面字符的^{倾斜修正}。当从倾斜字体切换到直立字体的时候，必须要插入倾斜修正，除非下一个字符是句点或逗号。
+命令|\/|产生对前面字符的^{倾斜修正}。当从倾斜字体切换到直立字体的时候，
+必须要插入倾斜修正，除非下一个字符是句点或逗号。
 \example
 However, {\it somebody} ate {\it something}: that's clear.
 
@@ -1068,8 +1071,10 @@ that's clear.
 \cts nonfrenchspacing {}
 \explain
 ^^{interword spacing}
-\TeX{}一般会为了标点符号而调整单词间距。例如，一个句子的末尾会有额外的空白，句尾标点符号之后的\minref{glue}会被拉长。|\frenchspacing|命令让\TeX{}调整单词间距时忽略标点符号；|\nonfrenchspacing|命令让\TeX{}使用正常间距，即不使用
-|\frenchspacing|效果。
+\TeX{}一般会为了标点符号而调整单词间距。例如，一个句子的末尾会有额外的空白，
+句尾标点符号之后的\minref{粘连}会被拉长。
+|\frenchspacing|命令让\TeX{}调整单词间距时忽略标点符号；
+|\nonfrenchspacing|命令让\TeX{}使用正常间距，即不使用|\frenchspacing|效果。
 
 %See \xrefpg{periodspacing} for advice on how to control \TeX's treatment
 %of punctuation at the end of sentences.
@@ -1253,19 +1258,17 @@ These     spaces    are    closed   up
 %made to |\spacefactor| after various items in a horizontal list.
 %\eix^^{spaces//interword}
 %\enddesc
-
-
-
-
-改变|\spacefactor|的值，就可以方便地调整单词间距。默认的单词间距通过|\xspaceskip|或者|\spaceskip|来改变：
+改变|\spacefactor|的值，就可以方便地调整单词间距。
+默认的单词间距通过|\xspaceskip|或者|\spaceskip|来改变：
 \ulist
-\li |\xspaceskip|设定$f\ge2000$时的glue；如果|\xspaceskip|是零, 就取默认值。
+\li |\xspaceskip|设定$f\ge2000$时的粘连；如果|\xspaceskip|是零, 就取默认值。
 \li |\spaceskip|设定$f<2000$或者
-\hbox{|\xspaceskip|}为零时的glue；如果|\spaceskip|是零，取默认值。
-|\spaceskip| glue 的拉伸或压缩依$f$的值而变，就像普通的单词间距一样。
+\hbox{|\xspaceskip|}为零时的粘连；如果|\spaceskip|是零，取默认值。
+|\spaceskip| 粘连的拉伸或压缩依$f$的值而变，就像普通的单词间距一样。
 \endulist
 
-\knuth{page~76} 对\TeX\ 计算单词间\minref{glue}的规则有一个具体的解释。\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
+\knuth{page~76} 对\TeX\ 计算单词间\minref{粘连}的规则有一个具体的解释。
+\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
 \eix^^{spaces//interword}
 \enddesc
 
@@ -1494,7 +1497,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 \bix^^{paragraphs//shaping}
 \ctspecial par \ctsxrdef{@par}
 \explain
-这个命令结束一个段落，并使\TeX{}进入\minref{垂直模式}来在页面上增加更多内容。
+这个命令结束一个段落，并使\TeX{}进入\minref{竖直模式}来在页面上增加更多内容。
 因为\TeX{}把一个空行当作|\par|\minref{记号}，所以不需要明确地键入|\par|。
 
 %An important point is that |\par| doesn't tell
@@ -1509,9 +1512,9 @@ $\Rightarrow$\vrule}\rlap{ off right}
 
 
 必须指出|\par|不会让\TeX{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
-要使\TeX{}开始新段落，需要处于垂直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
+要使\TeX{}开始新段落，需要处于竖直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
 ^^{paragraphs//starting}
-将插入一些垂直空白，取决于|\parskip|
+将插入一些竖直空白，取决于|\parskip|
 (\xref{\parskip})；新段落缩进，取决于|\parindent| (\xref{\parindent})。
 
 %You can usually cancel any interparagraph space produced by a |\par| by giving
@@ -1617,7 +1620,7 @@ starting to say, when suddenly the needles turned into oars.
 \begindesc
 \easy\cts indent {}
 \explain
-当\TeX{}处于垂直模式时，比如段落结束以后，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，开始新的一段，并缩进|\parindent|大小。
+当\TeX{}处于竖直模式时，比如段落结束以后，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，开始新的一段，并缩进|\parindent|大小。
 如果\TeX{}已经处于水平模式了，这个命令就只做缩进。
 一行中两个|\indent|产生两个缩进。
 ^^{indentation}
@@ -1650,7 +1653,7 @@ starting to say, when suddenly the needles turned into oars.
 
 
 如下面的例子所示，新的段落开始之后的|\indent|是多余的。
-当\TeX{}处在垂直模式下，遇到一个字母或其他水平模式中的命令时，就会切换到水平模式缩进|\indent|，然后继续。
+当\TeX{}处在竖直模式下，遇到一个字母或其他水平模式中的命令时，就会切换到水平模式缩进|\indent|，然后继续。
 
 \example
 \parindent = 2em  This is the first in a series of three
@@ -1689,7 +1692,7 @@ is the third in the series.
 \begindesc
 \easy\cts noindent {}
 \explain
-当\TeX{}结束一段后处于垂直模式时，这个命令插入段落间粘连 ^|\parskip|，
+当\TeX{}结束一段后处于竖直模式时，这个命令插入段落间粘连 ^|\parskip|，
 使\TeX{}进入水平模式，然后开始新段，不要缩进。
 在水平模式中，比如段落中，这个命令没有效果。
 |\noindent|开始的新段会取消通常的|\parindent|缩进。
@@ -1924,7 +1927,7 @@ I'll say it again! Pay attention!
 %one of them with the other.\par}%
 
 
-如果|\hsize|的变化发生在一个非空的\minref{垂直盒子}里，盒子的宽度就是给定的|\hsize|。
+如果|\hsize|的变化发生在一个非空的\minref{竖直盒子}里，盒子的宽度就是给定的|\hsize|。
 ^^{vboxes//width determined by \b\tt\\hsize\e}
 
 \PlainTeX{}默认|\hsize|为|6.5in|。
@@ -2299,7 +2302,7 @@ some eggs are very pretty, you know,'' she added.
 %paragraph, when it breaks that paragraph into lines.\minrefs{line
 %break}
 
-当你设置悬挂缩进的时候，仅对下一段（如果处于垂直模式）或者当前段（如果处于水平模式）有效。
+当你设置悬挂缩进的时候，仅对下一段（如果处于竖直模式）或者当前段（如果处于水平模式）有效。
 \TeX{}拆段成行时，使用的是段落末尾的|\hangafter|和|\hangindent|的值。\minrefs{断行}
 % Unlike most of the other paragraph-shaping parameters,
 %|\hangafter| and |\hangindent| are reset to their default values
