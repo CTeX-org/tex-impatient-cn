@@ -225,7 +225,7 @@ we'd only get extra space above the line.)
 此命令让 ^|\baselineskip| 增加 \<dimen>。
 在段尾之前的 |\openup| 命令将影响整个段落，
 因此想在段落中间改变 |\baseline!-skip| 时不要用 |\openup| 命令。
-在排版表格和展示公式时 |\openup| 非常有用——多点间隔将会增加它们的可读性。
+在排版表格和陈列公式时 |\openup| 非常有用——多点间隔将会增加它们的可读性。
 ^^{alignments//space between rows of}
 \example
 Alice picked up the White King very gently, and lifted him
@@ -455,8 +455,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %breaking a page just before the last line of a partial paragraph
 %that immediately precedes a math display.
 %\PlainTeX\ sets |\displaywidowpenalty| to $50$.
-^^{寡行}^^{展示公式}
-此参数设定在展示公式上一行同时也是段落尾行之前分页的\minref{惩罚}值。
+^^{寡行}^^{陈列公式}
+此参数设定在陈列公式上一行同时也是段落尾行之前分页的\minref{惩罚}值。
 \PlainTeX\ 设定 |\displaywidowpenalty| 为 $50$.
 \enddesc
 
@@ -467,8 +467,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %This parameter specifies the \minref{penalty} for
 %breaking a page just before a math display.
 %\PlainTeX\ sets |\predisplaypenalty| to $10000$.
-^^{展示公式}
-此参数设定在展示公式之前分页的\minref{惩罚}值。
+^^{陈列公式}
+此参数设定在陈列公式之前分页的\minref{惩罚}值。
 \PlainTeX\ 设定\break |\pre!-display!-penalty| 为 $10000$。
 \enddesc
 
@@ -479,8 +479,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %This parameter specifies the \minref{penalty} for
 %breaking a page just after a math display.
 %\PlainTeX\ leaves |\postdisplaypenalty| at $0$.
-^^{展示公式}
-此参数设定在展示公式之后分页的\minref{惩罚}值。
+^^{陈列公式}
+此参数设定在陈列公式之后分页的\minref{惩罚}值。
 \PlainTeX\ 设定\break |\postdisplaypenalty| 为 $0$。
 \enddesc
 
@@ -1085,7 +1085,7 @@ This explanation appears on page \folio\ of the book.
 这两个命令用于生成脚注。
 其中 \<argument$_1$> 是脚注的“^{参考符号}”，
 而 \<argument$_2$> 是脚注文本。
-脚注文本必要时可以包含多个段落，也可以包含展示公式等其他构造，
+脚注文本必要时可以包含多个段落，也可以包含陈列公式等其他构造，
 但不应该包含任何\minref{插入项}（比如其他脚注）。
 
 %You shouldn't use these commands inside a subformula of a math formula,

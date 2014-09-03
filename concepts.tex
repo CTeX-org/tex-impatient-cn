@@ -3606,19 +3606,17 @@ paragraph.}
 %\knuth{pages~290--293} for details on how \TeX\ responds to different
 %commands in math mode.
 %\par}
-{\tighten
 \defterm{数学模式}（math mode）是 \TeX\ 构造数学公式时所在的\refterm{模式}。
 \TeX\ 有两种数学模式：
-^{行内数学模式}用于构造放在文本行中的公式，
+^{文内数学模式}用于构造放在文本行中的公式，
 而^{陈列数学模式}用于构造单独一行显示的公式。
-包围在 |$| 里面的公式表示一个行内数学公式，
-而包围在 |$$| 里面的公式表示一个陈列数学公式。
+括在 |$| 里面的公式表示一个文内数学公式，
+而括在 |$$| 里面的公式表示一个陈列数学公式。
 %\TeX\ will accept most \refterm{commands:command} in
 %math mode. If it encounters a command in math mode that doesn't make
 %sense in a formula, it will complain.
 这两种数学模式有个重要特性，即\emph{其中的输入空格都被忽略}。
 \knuth{第~290--293~页}详细介绍了在数学模式中 \TeX\ 如何处理各种不同命令。
-\par}
 
 \endconcept
 
@@ -3795,7 +3793,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \li ^{受限水平模式}（组装\refterm{水平盒子}）
 \li ^{普通竖直模式}（组装页面）
 \li ^{内部竖直模式}（组装\refterm{竖直盒子}）
-\li ^{行内数学模式}（组装在文本中显示的公式）
+\li ^{文内数学模式}（组装在文本中显示的公式）
 \li ^{陈列数学模式}（组装单独一行显示的公式）
 ^^{horizontal mode}^^{vertical mode}^^{math mode}
 \endulist
@@ -4853,10 +4851,10 @@ You'll find a precise statement of \TeX's treatment of rules on
 %superscripts, as well as for the numerators and denominators of
 %fractions in text.
 %\endconcept
-\defterm{标号尺寸}（script size）描述字体族中三个相关\refterm{字体}的其中一个。
+\defterm{标号尺寸}（script size）描述一族字体中三个相关\refterm{字体}的其中一个。
 ^^{family//script size in}
 标号尺寸比\refterm{文本尺寸}小但比\refterm{小标号尺寸}大。
-对上标，下标以及文本中分式的分子和分母，\TeX\ 用标号尺寸。
+对上标，下标以及文本中分式的分子和分母，\TeX\ 使用标号尺寸。
 \endconcept
 
 
@@ -4871,9 +4869,9 @@ You'll find a precise statement of \TeX's treatment of rules on
 %scriptscript size for a subscript on a subscript or for a superscript on
 %a scriptsize numerator.
 %\endconcept
-\defterm{小标号尺寸}（scriptscript size）描述字体族中三个相关\refterm{字体}的其中一个。
+\defterm{小标号尺寸}（scriptscript size）描述一族字体中三个相关\refterm{字体}的最小一个。
 ^^{family//scriptscript size in}
-对第二级的上标、下标、分子和分母，\TeX\ 用小标号尺寸。
+对第二级的上标、下标、分子和分母，\TeX\ 使用小标号尺寸。
 比如，对于下标中的下标，或者标号尺寸分子中的上标，\TeX\ 将使用小标号尺寸。
 \endconcept
 
@@ -5148,42 +5146,65 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 \bookmark{2}{以T开头}
 \concept {\TeXMeX}
 
-(a)~A variant of \TeX\  used for mathematical typesetting in
-Central American countries.
-(b)~A spicy cuisine favored by the \TeX\-ni\-cians of ^{El Paso}.
+%(a)~A variant of \TeX\  used for mathematical typesetting in
+%Central American countries.
+%(b)~A spicy cuisine favored by the \TeX\-ni\-cians of ^{El Paso}.
+%\endconcept
+(a)~一个在中美洲国家用于数学排版的 \TeX\ 变种。
+(b)~一种深受^{埃尔帕索}的 \TeX\ 用户欢迎的香辣菜。
 \endconcept
 
 
-\concept {text math}
+%\concept {text math}
+\concept {文内公式}
 
-We use the term \defterm{text math} to refer to a math formula set within a
-line of text, i.e., enclosed in |$|'s.
+%We use the term \defterm{text math} to refer to a math formula set within a
+%line of text, i.e., enclosed in |$|'s.
+%\ttidxref{$}
+%\TeX\ sets text math in text math \refterm{mode}.
+%\endconcept
+我们用\defterm{文内公式}（text math）这个术语表示放在一行文本之中的数学公式，
+即两边用 |$| 括起来的公式。
 \ttidxref{$}
-\TeX\ sets text math in text math \refterm{mode}.
+\TeX\ 在文内数学\refterm{模式}中排版文内公式。
 \endconcept
 
 
 %\concept {text size}
 \concept {文本尺寸}
 
-\defterm{Text size} describes the largest of the three related
-\refterm{fonts:font} in a \refterm{family}.
+%\defterm{Text size} describes the largest of the three related
+%\refterm{fonts:font} in a \refterm{family}.
+%^^{family//text size in}
+%\TeX\ uses text size for ordinary symbols appearing in
+%\refterm{math mode}.
+%\endconcept
+\defterm{文本尺寸}（text size）描述一\refterm{族}字体中%
+三个相关\refterm{字体}的最大一个。
 ^^{family//text size in}
-\TeX\ uses text size for ordinary symbols appearing in
-\refterm{math mode}.
+对\refterm{数学模式}中的普通符号，\TeX\ 使用文本尺寸。
 \endconcept
 
 
-\conceptindex{tokens}
-\concept token
+%\conceptindex{tokens}
+%\concept token
+\concept 记号
 
-A \defterm{token} is either a single character tagged with a
-\refterm{category code}, or a \refterm{control sequence}.  \TeX\ reads
-characters from a file using its eyes \seeconcept{\anatomy}
-and groups the characters into tokens using its mouth.  When a token
-reaches \TeX's stomach, \TeX\ interprets it as a \refterm{command}
-unless it's part of an argument of a preceding command.
+%A \defterm{token} is either a single character tagged with a
+%\refterm{category code}, or a \refterm{control sequence}.  \TeX\ reads
+%characters from a file using its eyes \seeconcept{\anatomy}
+%and groups the characters into tokens using its mouth.  When a token
+%reaches \TeX's stomach, \TeX\ interprets it as a \refterm{command}
+%unless it's part of an argument of a preceding command.
+%\endconcept
+一个\defterm{记号}（token）要么是一个标有\refterm{类别码}的字符，
+要么是一个\refterm{控制序列}。
+\TeX\ 用它的眼睛从文件中读取字符串\seeconcept{\anatomy}，
+并用它的嘴将字符串咀嚼成一个个记号。
+当一个记号到达\TeX\ 的胃时，\TeX\ 将它解释为一个\refterm{命令}，
+除非它是之前命令的参量。
 \endconcept
+
 
 \bookmark{2}{以U开头}
 \conceptindex{units of measure}
