@@ -1789,7 +1789,8 @@ e.g., those created by |\string| and |\message|.
 
 
 \bookmark{2}{以F开头}
-\concept family
+%\concept family
+\concept 族
 
 A \defterm{family} is a group of three related \refterm{fonts:font} used
 when \TeX\ is in \refterm{math mode}.
@@ -2673,8 +2674,8 @@ spacing is more uniform.
 \bookmark{2}{以K开头}
 %\conceptindex{kerns}
 %\concept kern
-\conceptindex{微调}
-\concept 微调
+\conceptindex{紧排}
+\concept 紧排
 
 %^^{spacing//adjusting with kerns}
 %A \defterm{kern} indicates a change to the normal spacing between
@@ -2692,16 +2693,16 @@ spacing is more uniform.
 %You can use kerns in vertical mode to adjust the space between
 %particular pairs of lines.
 ^^{spacing//adjusting with kerns}
-\defterm{微调}（kern）表示对竖直或水平列中的项目间的距离作一定调整。
-微调可正可负。将正微调放入两个项目间，将以该微调的大小拉开两个项目。
-而将负微调放入两个项目间，将以该微调的大小拉近两个项目。
+\defterm{紧排}（kern）表示对竖直或水平列中的项目间的距离作一定调整。
+紧排可正可负。将正紧排放入两个项目间，将以该紧排的大小拉开两个项目。
+而将负紧排放入两个项目间，将以该紧排的大小拉近两个项目。
 例如，下列文本：
 \csdisplay
 11\quad 1\kern1pt 1\quad 1\kern-.75pt 1
 |
 将生成类似下面的几个字符对：
 \display{11\quad 1\kern1pt 1\quad 1\kern-.75pt 1}
-在竖直模式中可以用微调改变特定两行的间距。
+在竖直模式中可以用紧排改变特定两行的间距。
 
 %A kern of size $d$ is very similar to a \refterm{glue} item that has
 %size $d$ and no stretch or shrink.  Both the kern and the glue insert or
@@ -2711,11 +2712,12 @@ spacing is more uniform.
 %the kern is immediately followed by glue.  Bear this difference in mind
 %when you're deciding whether to use a kern or a glue item for a
 %particular purpose.
-大小为$d$的微调与大小为$d$且无伸缩的\refterm{粘连}非常相似。
-微调和粘连两者都在相邻项目间插入或删除一定间距。
-本质区别在于，若两盒子间只有微调，\TeX\ 将认为它们是合在一起的。
-这就是说，\TeX\ 不会在微调处断行或者分页，除非其后跟着一个粘连。
-当你决定用微调或粘连实现某种目的时，务必记得这两者的区别。
+大小为$d$的紧排与大小为$d$且无伸缩的\refterm{粘连}非常相似。
+紧排和粘连两者都在相邻项目间插入或删除一定间距。
+本质区别在于，若两盒子间只有紧排，\TeX\ 将认为它们是合在一起的。
+\footnote{译注：本书将“kern”翻译为“紧排”正由于这个原因，“紧”应该理解为“紧固”。}
+这就是说，\TeX\ 不会在紧排处断行或者分页，除非其后跟着一个粘连。
+当你决定用紧排或粘连实现某种目的时，务必记得这两者的区别。
 
 %\TeX\ automatically inserts kerns between particular pairs of adjacent
 %letters, thus adjusting the space between those letters and enhancing
@@ -2730,13 +2732,13 @@ spacing is more uniform.
 %kerns that \TeX\ automatically inserts when it is setting text in that~font.
 %\margin{paragraph deleted to save space; most of the material was
 %already in this section.}
-\TeX\ 在某些相邻的字符对之间自动插入微调，
+\TeX\ 在某些相邻的字符对之间自动插入紧排，
 从而改变这些字符的间距，使得排版出的文档更加美观。
 例如，在计算机现代字体的$10$点罗马字体中，
-包含一个字符对`To'的微调，将字母`o'的左边缘拉到字母`T'下边。
-没有这个微调，你将得到 \hbox{“T{o}p”} 而不是 “Top” ——%
+包含一个字符对`To'的紧排，将字母`o'的左边缘拉到字母`T'下边。
+没有这个紧排，你将得到 \hbox{“T{o}p”} 而不是 “Top” ——%
 两者的差别是微小的但却是明显的。
-\TeX\ 用某个\refterm{字体}排版文本时自动插入的微调的位置和大小，
+\TeX\ 用某个\refterm{字体}排版文本时自动插入的紧排的位置和大小，
 是在该字体的度量文件（^{\tfmfile}）中指定的。
 \margin{paragraph deleted to save space; most of the material was
 already in this section.}
@@ -3428,7 +3430,7 @@ See \conceptcit{file}.
 %produces a kern of $8$ points whatever the magnification.
 若想指定一个最终文档中的\refterm{尺寸}，让它不受放大率影响，
 你可以在单位前面加上 `^|true|'。
-例如，`|\kern 8 true pt|' 将生成 $8$ 点大小的微调，不管放大率为多少。
+例如，`|\kern 8 true pt|' 将生成 $8$ 点大小的紧排，不管放大率为多少。
 
 \endconcept
 
@@ -4268,10 +4270,10 @@ See \conceptcit{file}.
 \ulist
 \li 在粘连处，只要在粘连之前的项目是一个盒子，小玩意，标记，或者插入项。
 当 \TeX\ 在粘连处分页时，它把分页点放在该粘连间距的顶部，并忽略该粘连的其他值。
-\li 在微调处，只要该微调之后是一个粘连。
+\li 在紧排处，只要该紧排之后是一个粘连。
 \li 在惩罚处，这可能出现在段落的两行之间。
 \endulist
-\TeX\ 分页时将丢弃分页点之后的任意多个粘连，微调和惩罚项。
+\TeX\ 分页时将丢弃分页点之后的任意多个粘连，紧排和惩罚项。
 
 \endconcept
 
@@ -4843,27 +4845,38 @@ You'll find a precise statement of \TeX's treatment of rules on
 %\concept {script size}
 \concept {标号尺寸}
 
-\defterm{Script size} describes one of the three related
-\refterm{fonts:font} in a family.
+%\defterm{Script size} describes one of the three related
+%\refterm{fonts:font} in a family.
+%^^{family//script size in}
+%Script size is smaller than \refterm{text size} but larger than
+%\refterm{scriptscript size}.  \TeX\ uses script size for subscripts and
+%superscripts, as well as for the numerators and denominators of
+%fractions in text.
+%\endconcept
+\defterm{标号尺寸}（script size）描述字体族中三个相关\refterm{字体}的其中一个。
 ^^{family//script size in}
-Script size is smaller than \refterm{text size} but larger than
-\refterm{scriptscript size}.  \TeX\ uses script size for subscripts and
-superscripts, as well as for the numerators and denominators of
-fractions in text.
+标号尺寸比\refterm{文本尺寸}小但比\refterm{小标号尺寸}大。
+对上标，下标以及文本中分式的分子和分母，\TeX\ 用标号尺寸。
 \endconcept
 
 
 %\concept {scriptscript size}
 \concept {小标号尺寸}
 
-\defterm{Scriptscript size} describes the smallest of the three related
-\refterm{fonts:font} in a family.
+%\defterm{Scriptscript size} describes the smallest of the three related
+%\refterm{fonts:font} in a family.
+%^^{family//scriptscript size in}
+%\TeX\ uses \refterm{scriptscript size} for second-order subscripts,
+%superscripts, numerators, and denominators.  For example, \TeX\ will use
+%scriptscript size for a subscript on a subscript or for a superscript on
+%a scriptsize numerator.
+%\endconcept
+\defterm{小标号尺寸}（scriptscript size）描述字体族中三个相关\refterm{字体}的其中一个。
 ^^{family//scriptscript size in}
-\TeX\ uses \refterm{scriptscript size} for second-order subscripts,
-superscripts, numerators, and denominators.  For example, \TeX\ will use
-scriptscript size for a subscript on a subscript or for a superscript on
-a scriptsize numerator.
+对第二级的上标、下标、分子和分母，\TeX\ 用小标号尺寸。
+比如，对于下标中的下标，或者标号尺寸分子中的上标，\TeX\ 将使用小标号尺寸。
 \endconcept
+
 
 %\concept shrink
 \concept 收缩量
@@ -4873,43 +4886,66 @@ a scriptsize numerator.
 见 \conceptcit{粘连}。
 \endconcept
 
-\concept space
 
-You can cause \TeX\ to put \defterm{space} between two items in
-several~ways:
+%\concept space
+\concept 间隔
 
+%You can cause \TeX\ to put \defterm{space} between two items in
+%several~ways:
+要让 \TeX\ 在两个项目间留下\defterm{间隔}（space），有如下几种方法：
+
+%\olist
+%^^{end of line}
+%\li You can write something that \TeX\ treats as a space
+%\refterm{token}: one or more blank characters, the end of a line (the
+%end-of-line character acts like a space), or any \refterm{command} that
+%expands into a space token.  \TeX\ generally treats several consecutive
+%spaces as equivalent to a single one, including the case where the
+%spaces include a single end-of-line.  (An empty line
+%indicates the end of a paragraph; it
+%causes \TeX\ to generate a |\par| token.)
+%^^|\par//from empty line|
+%\TeX\ adjusts the size of
+%this kind of space to suit the length required by the context.
 \olist
 ^^{end of line}
-\li You can write something that \TeX\ treats as a space
-\refterm{token}: one or more blank characters, the end of a line (the
-end-of-line character acts like a space), or any \refterm{command} that
-expands into a space token.  \TeX\ generally treats several consecutive
-spaces as equivalent to a single one, including the case where the
-spaces include a single end-of-line.  (An empty line
-indicates the end of a paragraph; it
-causes \TeX\ to generate a |\par| token.)
+\li 你可以写上某些 \TeX\ 视为空格\refterm{记号}的东西：
+一个或多个空格符，行尾符（行尾符作用和空格相似），
+或任何能展开为空格记号的\refterm{命令}。
+\TeX\ 一般将多个连续空格视为单个空格，包括其中有一个行尾符的情形。%
+（一个空行表示段落的结束；它导致 \TeX\ 生成一个 |\par| 记号。）
 ^^|\par//from empty line|
-\TeX\ adjusts the size of
-this kind of space to suit the length required by the context.
+\TeX\ 调整此种间隔的大小以适应由上下文所需的长度。
 
+%^^{glue//creating space with}
+%\li You can write a skip command that produces the glue
+%you specify in the command.  The glue can
+%\refterm{stretch} or \refterm{shrink},
+%producing more or less space.  You can have vertical glue as
+%well as horizontal glue.  Glue disappears whenever it is next to a
+%line or page break.
 ^^{glue//creating space with}
-\li You can write a skip command that produces the glue
-you specify in the command.  The glue can
-\refterm{stretch} or \refterm{shrink},
-producing more or less space.  You can have vertical glue as
-well as horizontal glue.  Glue disappears whenever it is next to a
-line or page break.
+\li 你可以写上一个生成指定粘连的间距命令。
+粘连有\refterm{伸长量}或\refterm{收缩量}，从而生成或多或少的间隔。
+你可以有水平粘连和竖直粘连。在断行或分页位置之后的粘连将会消失。
 
+%^^{kerns//creating space with}
+%\li You can write a \refterm{kern}.  A kern produces a fixed amount of
+%space that does not stretch or shrink and does not disappear at a line
+%or page break (unless it is immediately followed by glue).  The most
+%common use of a kern is to establish a fixed spatial relationship
+%between two adjacent \refterm{boxes}.
+%\endolist
 ^^{kerns//creating space with}
-\li You can write a \refterm{kern}.  A kern produces a fixed amount of
-space that does not stretch or shrink and does not disappear at a line
-or page break (unless it is immediately followed by glue).  The most
-common use of a kern is to establish a fixed spatial relationship
-between two adjacent \refterm{boxes}.
+\li 你可以写上一个\refterm{紧排}。紧排生成固定大小的间隔，它不可伸长也不可收缩，
+而且在断行或分页时也不会消失（除非其后紧跟着一个粘连）。
+紧排常用于给两个相邻\refterm{盒子}建立固定的空间关系。
 \endolist
 
-Glue and kerns can have negative values.  Negative glue or a negative kern
-between adjacent items brings those items closer together.
+%Glue and kerns can have negative values.  Negative glue or a negative kern
+%between adjacent items brings those items closer together.
+%\endconcept
+粘连和紧排也可以取负值。两个相邻项目间的负粘连或负紧排将拉近它们俩的距离。
 \endconcept
 
 
@@ -4921,31 +4957,77 @@ between adjacent items brings those items closer together.
 见 \conceptcit{粘连}。
 \endconcept
 
-\conceptindex{struts}
-\concept strut
 
-{\tighten
-A \defterm{strut} is an invisible \refterm{box}
+%\conceptindex{struts}
+%\concept strut
+\concept 支架
+
+%{\tighten
+%A \defterm{strut} is an invisible \refterm{box}
+%^^{boxes//invisible}
+%whose width is zero and whose height and depth are slightly more than
+%those of a ``normal''
+%line of type in the context.  Struts are useful for obtaining
+%uniform vertical spacing when \TeX's
+%usual line spacing is disabled, e.g., within a math formula
+%or within a horizontal alignment where you've specified ^|\offinterlineskip|.
+%Because a strut is taller and deeper than everything else on its line,
+%it determines the height and depth of the line.
+%You can produce a strut with
+%the ^|\strut| command \ctsref{\strut} or the ^|\mathstrut| command
+%\ctsref\mathstrut.
+%You can use |\strut| anywhere, but you can only use |\mathstrut| when
+%\TeX\ is in math \refterm{mode}.  A strut in \plainTeX\ has height 8.5\pt\ and
+%depth 3.5\pt, while a math strut has the height and depth of a left
+%parenthesis in the current \refterm{style} (so it's smaller for
+%subscripts and superscripts).
+%\par}
+\defterm{支架}（strut）一个不可见的\refterm{盒子}，
 ^^{boxes//invisible}
-whose width is zero and whose height and depth are slightly more than
-those of a ``normal''
-line of type in the context.  Struts are useful for obtaining
-uniform vertical spacing when \TeX's
-usual line spacing is disabled, e.g., within a math formula
-or within a horizontal alignment where you've specified ^|\offinterlineskip|.
-Because a strut is taller and deeper than everything else on its line,
-it determines the height and depth of the line.
-You can produce a strut with
-the ^|\strut| command \ctsref{\strut} or the ^|\mathstrut| command
-\ctsref\mathstrut.
-You can use |\strut| anywhere, but you can only use |\mathstrut| when
-\TeX\ is in math \refterm{mode}.  A strut in \plainTeX\ has height 8.5\pt\ and
-depth 3.5\pt, while a math strut has the height and depth of a left
-parenthesis in the current \refterm{style} (so it's smaller for
-subscripts and superscripts).
-\par}
+它的宽度为零，而高度和深度比上下文中的“正常”行稍微大一点。
+支架常用于在通常行间隔取消时获得一致的竖直间隔，
+比如在数学公式中，或者在设定了 ^|\offinterlineskip| 的水平阵列中。
+因为支架比该行的其他东西都高和深，它确定了该行的高度和深度。
+你可以用 ^|\strut| 命令\ctsref{\strut}或
+^|\mathstrut| 命令\ctsref\mathstrut 生成一个支架。
+|\strut| 可以在任何地方使用，但 |\mathstrut| 只能在数学\refterm{模式}中使用。
+在 \plainTeX\ 中，支架的高度为 8.5\pt ，深度为3.5\pt ，
+而数学支架的高度和深度和当前\refterm{样式}的左圆括号的相等%
+（因此在上下标中会小一点）。
 
-Here's an example showing how you might use a strut:
+%Here's an example showing how you might use a strut:
+%\csdisplay
+%\vbox{\hsize = 3in \raggedright
+%   \strut Here is the first of two paragraphs that we're
+%   setting in a much narrower line length.\strut}
+%\vbox{\hsize = 3in \raggedright
+%   \strut Here is the second of two paragraphs that we're
+%   setting in a much narrower line length.\strut}
+%|
+%This input yields:
+%\display{\vbox{
+%\vbox{\hsize = 3in \raggedright
+%\strut Here is the first of two paragraphs that we're setting
+%in a much narrower line length.\strut}
+%\vbox{\hsize = 3in \raggedright
+%\strut Here is the second of two paragraphs that we're setting
+%in a much narrower line length.\strut}
+%}}
+%\noindent
+%Without the struts the \refterm{vboxes:vbox} would be too close
+%together.  Similarly, in the formula:
+%\csdisplay
+%$\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
+%|
+%the math struts cause both bars to be set at the same height even
+%though the `$x$' and the `$t$' have different heights:
+%\display{
+%$\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
+%}
+%\vskip -\belowdisplayskip
+%\endconcept
+%\nobreak
+这里有个例子给你展示了支架的用法：
 \csdisplay
 \vbox{\hsize = 3in \raggedright
    \strut Here is the first of two paragraphs that we're
@@ -4954,7 +5036,7 @@ Here's an example showing how you might use a strut:
    \strut Here is the second of two paragraphs that we're
    setting in a much narrower line length.\strut}
 |
-This input yields:
+这个输入产生下列输出：
 \display{\vbox{
 \vbox{\hsize = 3in \raggedright
 \strut Here is the first of two paragraphs that we're setting
@@ -4964,72 +5046,104 @@ in a much narrower line length.\strut}
 in a much narrower line length.\strut}
 }}
 \noindent
-Without the struts the \refterm{vboxes:vbox} would be too close
-together.  Similarly, in the formula:
+要是没有支架，这两个\refterm{盒子}将太过靠近了。
+类似地，在数学公式中：
 \csdisplay
 $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 |
-the math struts cause both bars to be set at the same height even
-though the `$x$' and the `$t$' have different heights:
+数学支架让两个横线位于相同的高度，即使 `$x$' 和 `$t$' 有不同的高度：
 \display{
 $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 }
 \vskip -\belowdisplayskip
 \endconcept
-\nobreak
+%\nobreak
 
-\conceptindex{styles}
-\concept {style}
 
-Material in a math formula is set in one of eight \defterm{styles},
-depending on the context.  Knowing about styles can be useful if you want to
-set part of a formula in a different size of type than the one
-that \TeX\ has chosen according to its usual rules.
+%\conceptindex{styles}
+%\concept {style}
+\concept {样式}
+
+%Material in a math formula is set in one of eight \defterm{styles},
+%depending on the context.  Knowing about styles can be useful if you want to
+%set part of a formula in a different size of type than the one
+%that \TeX\ has chosen according to its usual rules.
+数学公式中的素材依据上下文被设定为八种\defterm{样式}（style）的其中一种。
+对样式的了解，将有助于你将某部分公式设为不同类型的大小，
+即与 \TeX\ 按照通用法则选择的大小不同。
 
 %\eject
-The four primary styles are:
+%The four primary styles are:
+其中的四种主要样式如下：
 
+%\vdisplay{%
+%\halign{\refterm{# style}\hfil&\hskip .25in(for #)\hfil\cr
+%display&formulas displayed on a line by themselves\cr
+%text&formulas embedded in ordinary text\cr
+%script&superscripts and subscripts\cr
+%scriptscript&superscripts on superscripts, etc.\cr
+%}}
 \vdisplay{%
-\halign{\refterm{# style}\hfil&\hskip .25in(for #)\hfil\cr
-display&formulas displayed on a line by themselves\cr
-text&formulas embedded in ordinary text\cr
-script&superscripts and subscripts\cr
-scriptscript&superscripts on superscripts, etc.\cr
+\halign{\refterm{#样式}\hfil&\hskip .25in（用于#）\hfil\cr
+陈列&单独一行显示的公式\cr
+文本&嵌入普通文本内的公式\cr
+标号&上标和下标\cr
+小标号&上标中的上标，等等\cr
 }}
 
-The other four styles are so-called ^{cramped variants}.  In these
-variants superscripts aren't raised as high as usual, and so the formula
-needs less vertical space than it otherwise would.  See
-\knuth{pages~140--141} for the details of how \TeX\ selects the style.
+%The other four styles are so-called ^{cramped variants}.  In these
+%variants superscripts aren't raised as high as usual, and so the formula
+%needs less vertical space than it otherwise would.  See
+%\knuth{pages~140--141} for the details of how \TeX\ selects the style.
+另外四种样式被称为^{狭窄变体}。
+在这些变体中，上标升高得没那么多，因而公式和原来相比占用更少的竖直间隔。
+在\knuth{第~140--141~页}中详细介绍了 \TeX\ 如何选择样式。
 
-\TeX\ chooses a size of type according to the style:
+%\TeX\ chooses a size of type according to the style:
+\TeX\ 依照样式选择尺寸类型：
 
+%\ulist\compact
+%^^{display style}^^{text style}
+%\li Display style and text style are set in \refterm{text size}, like
+%`$\rm this$'.
 \ulist\compact
 ^^{display style}^^{text style}
-\li Display style and text style are set in \refterm{text size}, like
-`$\rm this$'.
+\li 陈列样式和文本样式设定为\refterm{文本尺寸}，就像 `$\rm this$' 这样。
 
+%^^{script style}
+%\li Script style is set in \refterm{script size}, like `$\scriptstyle
+%\rm this$'.
 ^^{script style}
-\li Script style is set in \refterm{script size}, like `$\scriptstyle
-\rm this$'.
+\li 标号样式设定为\refterm{标号尺寸}，就像 `$\scriptstyle \rm this$' 这样。
 
+%^^{scriptscript style}
+%\li Scriptscript style is set in \refterm{scriptscript size}, like
+%`$\scriptscriptstyle \rm this$'.
+%\endulist
 ^^{scriptscript style}
-\li Scriptscript style is set in \refterm{scriptscript size}, like
-`$\scriptscriptstyle \rm this$'.
+\li 小标号样式设定为\refterm{小标号尺寸}，就像 `$\scriptscriptstyle \rm this$' 这样。
 \endulist
 
-See \conceptcit{family} for more information about these three sizes.
+%See \conceptcit{family} for more information about these three sizes.
+参考\conceptcit{族}以获得更多关于这三种尺寸的信息。
 
-\TeX\ doesn't have a ``scriptscriptscript'' style because such a style
-would usually have to be set in a size of type too small to read.  \TeX\
-therefore sets third-order subscripts, superscripts, etc., using the
-scriptscript style.
+%\TeX\ doesn't have a ``scriptscriptscript'' style because such a style
+%would usually have to be set in a size of type too small to read.  \TeX\
+%therefore sets third-order subscripts, superscripts, etc., using the
+%scriptscript style.
+在 \TeX\ 中没有“小小标号”样式，因为此样式对应的尺寸太小以致无法阅读。
+因此 \TeX\ 用小标号样式设定三阶上下标等。
 
-Once in a while you may find that \TeX\ has set a formula in a different style
-than the one you'd prefer.  You can override \TeX's choice with the
-^|\textstyle|, ^|\displaystyle|, ^|\scriptstyle|, and ^|\scriptscriptstyle|
-commands \ctsref{\textstyle}.
+%Once in a while you may find that \TeX\ has set a formula in a different style
+%than the one you'd prefer.  You can override \TeX's choice with the
+%^|\textstyle|, ^|\displaystyle|, ^|\scriptstyle|, and ^|\scriptscriptstyle|
+%commands \ctsref{\textstyle}.
+%\endconcept
+偶尔你会发现 \TeX\ 给公式设定的样式和你想要的不同。
+你可以用 ^|\textstyle|，^|\displaystyle|，^|\scriptstyle| 和 ^|\scriptscriptstyle|
+命令\ctsref{\textstyle}改变 \TeX\ 的选择。
 \endconcept
+
 
 \bookmark{2}{以T开头}
 \concept {\TeXMeX}

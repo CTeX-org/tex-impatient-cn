@@ -271,11 +271,11 @@
 
 \null
 ^^{vertical space//reserving at top of page}
-通常你可以使用 |\vskip| 命令 \ctsref\vskip{} 在页面上添加空白竖直间距，但
-这一招对页首无效，因为在紧接着分页后的所有 glue, kerns 和 penalties，
+通常你可以使用 |\vskip| 命令 \ctsref\vskip{} 在页面上添加空白竖直间距，
+但这一招对页首无效，因为在紧接着分页后的所有粘连，紧排和惩罚，
 都会被 \TeX{} 会丢弃。
 ^^{page breaks//glue at}
-一个替代：^|\topglue| 命令 \ctsref\topglue\ ，能产生永不消失的 glue。
+一个替代：^|\topglue| 命令 \ctsref\topglue\ ，能产生永不消失的粘连。
 \eix^^{page breaks//bad}
 
 % \section Correcting bad line breaks
@@ -409,7 +409,7 @@ Underfull \vbox (badness 10000) has occurred
    while \output is active
 |
 表明 \TeX{} 因为没有足够的素材而没有填满一页。可能的原因是：
-你使用了竖直盒子来把素材放在一起，但是在接近页面的底部时， 
+你使用了竖直盒子来把素材放在一起，但是在接近页面的底部时，
 \TeX{} 遇到了一个不适合放在那里的竖直盒子。
 结果那个盒子被移至下一页，而在当前页上留下了太多空白。
 在这种情况下，或者你要在别的地方插入更多的空白，

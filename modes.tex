@@ -53,7 +53,7 @@
 %and you want to separate the levels of quotes.
 %\TeX\ won't break a line at
 %a |\thinspace|.\minrefs{line break}
-该命令产生一个正的\minref{微调}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向右移动一个相应的距离。例如，当你需要嵌套引用，并希望将不同层次的引号分开时，它便非常有用。\TeX\ 不会在 |\thinspace| 处断行。\minrefs{line break}
+该命令产生一个正的\minref{紧排}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向右移动一个相应的距离。例如，当你需要嵌套引用，并希望将不同层次的引号分开时，它便非常有用。\TeX\ 不会在 |\thinspace| 处断行。\minrefs{line break}
 
 \example
 ``\thinspace`一个引用。'\thinspace''\par
@@ -76,7 +76,7 @@
 %It is useful for bringing together characters that are a little too
 %far apart.
 %\TeX\ won't break a line at a |\negthinspace|.\minrefs{line break}
-该命令产生一个负的\minref{微调}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向左移动一个相应的距离。当需要将两个间隔稍远的字符靠近一些时便非常有用。\TeX\ 不会在 |\negthinspace| 处断行。\minrefs{line break}
+该命令产生一个负的\minref{紧排}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向左移动一个相应的距离。当需要将两个间隔稍远的字符靠近一些时便非常有用。\TeX\ 不会在 |\negthinspace| 处断行。\minrefs{line break}
 
 \example
 The horror, the horror\negthinspace, the horror of it all!!
@@ -95,7 +95,7 @@ The horror, the horror\negthinspace, the horror of it all!
 %at an |\enspace| unless it's followed by glue.
 %In a bulleted list, the bullets are usually separated from the following
 %text by an |\enspace|.
-该命令产生一个宽度为 1 ^{en} 的\minref{微调}（1 em 的一半，参见 \xrefpg{dimdefs}）。\TeX\ 不会在 |\enspace| 处断行，除非紧接其后的是粘连。在符号列表中，符号与其后的文字通常由 |\enspace| 来分隔。
+该命令产生一个宽度为 1 ^{en} 的\minref{紧排}（1 em 的一半，参见 \xrefpg{dimdefs}）。\TeX\ 不会在 |\enspace| 处断行，除非紧接其后的是粘连。在符号列表中，符号与其后的文字通常由 |\enspace| 来分隔。
 
 \example
 引理 1.\enspace 这里有一只白兔。
@@ -322,11 +322,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 
 %\li In a horizontal mode, \TeX\ moves its position to the right (for a positive
 %kern) or to the left (for a negative kern).
-\li 在水平模式下，\TeX\ 向右（正的微调）或向左（负的微调）移动。
+\li 在水平模式下，\TeX\ 向右（正的紧排）或向左（负的紧排）移动。
 
 %\li In a vertical mode, \TeX\ moves its position down the page (for a positive
 %kern) or up the page (for a negative kern).
-\li 在竖直模式下，\TeX\ 向页面下方（正的微调）或页面上方（负的微调）移动。
+\li 在竖直模式下，\TeX\ 向页面下方（正的紧排）或页面上方（负的紧排）移动。
 
 \endulist
 \noindent
@@ -336,9 +336,9 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %is different from the notion of a kern in some computerized
 %typesetting systems---in \TeX, positive kerns push two letters \emph{apart}
 %instead of bringing them closer together.
-因此，正的微调产生空白的间隔，而负的微调使得 \TeX\ 倒退到已经存在的东西上。
-在 \TeX 中，正的微调将两个字母\emph{分开}，而不是使它们更近一些。
-微调^^{kerns}的这一设计与一些计算化排版系统是不同的。
+因此，正的紧排产生空白的间隔，而负的紧排使得 \TeX\ 倒退到已经存在的东西上。
+在 \TeX 中，正的紧排将两个字母\emph{分开}，而不是使它们更近一些。
+紧排^^{kerns}的这一设计与一些计算化排版系统是不同的。
 
 %A kern is similar to
 %\minref{glue}, except that (a)~a kern can neither stretch nor shrink,
@@ -348,7 +348,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %end of a line or a page, it discards the kern.
 %If you want to get the effect of a kern that never disappears,
 %use ^|\hglue| or ^|\vglue|.
-微调与\minref{粘连}相似，不同的是 (a)~微调不能被伸展或压缩；(b)~如果微调后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在微调处断行或分页。如果 \TeX\ 发现微调位于一行或一页的结尾，该微调将会被忽略。如果你希望得到不会消失的微调的效果，使用 ^|\hglue| 或 ^|\vglue|。
+紧排与\minref{粘连}相似，不同的是 (a)~紧排不能被伸展或压缩；(b)~如果紧排后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在紧排处断行或分页。如果 \TeX\ 发现紧排位于一行或一页的结尾，该紧排将会被忽略。如果你希望得到不会消失的紧排的效果，使用 ^|\hglue| 或 ^|\vglue|。
 
 %You can use |\kern| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
@@ -359,11 +359,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 ^^{page breaks//kerns at}
 
 \example
-\centerline{$\Downarrow$}\kern 3pt % 竖直的微调
-\centerline{$\Longrightarrow$\kern 6pt % 水平的微调
-   {\bf 留意我的警示！！}\kern 6pt % 另一水平的微调
+\centerline{$\Downarrow$}\kern 3pt % 竖直的紧排
+\centerline{$\Longrightarrow$\kern 6pt % 水平的紧排
+   {\bf 留意我的警示！！}\kern 6pt % 另一水平的紧排
    $\Longleftarrow$}
-\kern 3pt % 另一竖直的微调
+\kern 3pt % 另一竖直的紧排
 \centerline{$\Uparrow$}
 |
 \produces
@@ -1343,7 +1343,7 @@ Underfull \hbox (badness 5091) detected at line 4
 %if the last item on the current list is a \minref{kern},
 %|\lastkern| yields the dimension of that kern; if it
 %isn't a kern, it yields a dimension of $0$.
-这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，因为它们只能以参数的一部分出现。如果列表中的最后的项目不是指示类型，它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。例如，如果在当前列表中最后一项是一个\minref{微调}，|\lastkern| 给出那个微调的尺寸；如果它不是微调，它给出一个尺寸 $0$。
+这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，因为它们只能以参数的一部分出现。如果列表中的最后的项目不是指示类型，它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。例如，如果在当前列表中最后一项是一个\minref{紧排}，|\lastkern| 给出那个紧排的尺寸；如果它不是紧排，它给出一个尺寸 $0$。
 
 %Using |\lastbox| has the additional effect of removing the last box from
 %the list.
@@ -1361,7 +1361,7 @@ Underfull \hbox (badness 5091) detected at line 4
 \example
 \def\a{two\kern 15pt}
 one \a\a\hskip 2\lastkern three\par
-% 在`三'之前产生三倍的微调。
+% 在`三'之前产生三倍的紧排。
 \def\a{\hbox{二}}
 一 \a
 \setbox0 = \lastbox % 将`二'去掉。
@@ -1393,7 +1393,7 @@ one \a\a\hskip 2\lastkern three\par
 %a specific item that you don't want there.
 %\TeX\ doesn't provide an ^|\unbox| command because |\lastbox| produces
 %nearly the same effect.
-如果当前列表的最后一项分别是\minref{微调}、\minref{粘连}或\minref{惩罚}的类型，这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主竖直列表中。在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
+如果当前列表的最后一项分别是\minref{紧排}、\minref{粘连}或\minref{惩罚}的类型，这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主竖直列表中。在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
 \enddesc
 
 

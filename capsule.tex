@@ -582,7 +582,7 @@
 %\capcs enskip {horizontal glue with width \frac1/2\em}{}{}
 \capcs enskip {宽度为 \frac1/2\em 的水平粘连}{}{}
 %\capcs enspace {kern \frac1/2\em}{}{}
-\capcs enspace {\frac1/2\em 微调}{}{}
+\capcs enspace {\frac1/2\em 紧排}{}{}
 %\capcs epsilon {math Greek letter $\epsilon$}{}{}
 \capcs epsilon {数学希腊字母 $\epsilon$}{}{}
 %\capcs eqalign {produce specified multiline display whose indicated parts
@@ -909,7 +909,7 @@
 \capcs lastbox {如果是一个盒子，获取并移除当前列表中的最后一项}*{}
 %\capcs lastkern {retrieve the last item from the current list, if it's a
 %   kern}*{}
-\capcs lastkern {如果是一个微调，获取当前列表中的最后一项}*{}
+\capcs lastkern {如果是一个紧排，获取当前列表中的最后一项}*{}
 %\capcs lastpenalty {retrieve the last item from the current list, if it's a
 %   penalty}*{}
 \capcs lastpenalty {如果是一个惩罚，获取当前列表中的最后一项}*{}
@@ -1086,7 +1086,7 @@
 %   left parenthesis and no width}{}{}
 \capcs mathstrut {输出深度与高度与左圆括号一致，但宽度为零的不可见盒子}{}{}
 %\capcs mathsurround {space \TeX\ kerns before and after math in text}*{}
-\capcs mathsurround {文本中，在数学公式前后分隔 \TeX\ 微调}*{}
+\capcs mathsurround {文本中，在数学公式前后分隔 \TeX\ 紧排}*{}
 %\capcs matrix {produce a specified matrix}{}{}
 \capcs matrix {输出指定矩阵}{}{}
 %\capcs max {maximum function: $\max$}{}{}
@@ -1125,7 +1125,7 @@
 %\capcs mit {use math italics, i.e., do |\\fam=1|}{}{}
 \capcs mit {使用数学斜体，即执行 |\\fam=1|}{}{}
 %\capcs mkern {produce a specified kern in units of |mu| for math}*{}
-\capcs mkern {数学中以 |mu| 为单位输出指定的微调}*{}
+\capcs mkern {数学中以 |mu| 为单位输出指定的紧排}*{}
 %\capcs models {models relation: $\models$}{}{}
 \capcs models {模关系：$\models$}{}{}
 %\capcs month {current month, as a number}*{}
@@ -1167,7 +1167,7 @@
 %\capcs neg {logical ``not'' symbol: $\neg$}{}{}
 \capcs neg {逻辑“非”符号：$\neg$}{}{}
 %\capcs negthinspace {kern $-\frac1/6$\em}{}{}
-\capcs negthinspace {$-\frac1/6$\em 微调}{}{}
+\capcs negthinspace {$-\frac1/6$\em 紧排}{}{}
 %\capcs neq {not equal relation: $\neq$}{}{}
 \capcs neq {不等于关系：$\neq$}{}{}
 %\capcs newbox {reserve and name a |\\box| register}{}{\@newbox}
@@ -1207,7 +1207,7 @@
 \capcs noalign {在对齐的行（或列）插入其它内容}*{}
 %\capcs noboundary {inhibit ligatures or kerns involving the current font's
 %   |boundarychar|}*{}
-\capcs noboundary {禁止使用当前字体的边界字符进行连字或微调}*{}
+\capcs noboundary {禁止使用当前字体的边界字符进行连字或紧排}*{}
 %\capcstwo nobreak {do |\\penalty10000|, i.e.,
 %   inhibit a line or page break}{}{hnobreak:vnobreak}
 \capcstwo nobreak {执行 |\\penalty10000|，即禁止断行或分页}{}{hnobreak:vnobreak}
@@ -1223,7 +1223,7 @@
 \capcs nonfrenchspacing {使字间间隔依赖于标点符号}{}{}
 %\capcs nonscript {inhibit any following glue or kern when
 %   in script and scriptscript styles}*{}
-\capcs nonscript {在上下标或次上下标样式中禁止任何随后的粘连或微调}*{}
+\capcs nonscript {在上下标或次上下标样式中禁止任何随后的粘连或紧排}*{}
 %\capcs nonstopmode {don't stop at errors, even those about missing files}*{}
 \capcs nonstopmode {不在任何错误处停下，即使是有关缺失文件的错误}*{}
 %\capcs nopagenumbers {inhibit printing of page numbers, i.e., do
@@ -1539,7 +1539,7 @@
 \capcs scriptscriptstyle {在公式中使用次上下标样式尺寸}*{}
 %\capcs scriptspace {additional space \TeX\ kerns after a subscript or
 %   superscript, by default 0.5\pt}*{}
-\capcs scriptspace {\TeX\ 在下标或上标之后加入的额外的微调，默认值为 0.5\pt}*{}
+\capcs scriptspace {\TeX\ 在下标或上标之后加入的额外的紧排，默认值为 0.5\pt}*{}
 %\capcs scriptstyle {use scriptstyle size in a formula}*{}
 \capcs scriptstyle {在公式中使用上下标样式尺寸}*{}
 %\capcs scrollmode {don't stop at most errors, but do stop at errors
@@ -1749,7 +1749,7 @@
 %\capcs thinmuskip {glue for a thin math space, by default 3\mud}*{}
 \capcs thinmuskip {较小数学间隔所有的粘连，默认值为 3\mud}*{}
 %\capcs thinspace {kern \frac1/6\em}{}{}
-\capcs thinspace {\frac1/6\em 微调}{}{}
+\capcs thinspace {\frac1/6\em 紧排}{}{}
 %\capcs tilde {tilde accent for math, as in $\tilde x$}{}{}
 \capcs tilde {数学中的否定号重音符，比如 $\tilde x$ 中那样}{}{}
 %\capcs time {the time of day, in minutes since midnight}*{}
@@ -1839,7 +1839,7 @@
 %\capcs unhcopy {like |\\unhbox|, but doesn't void the register}*{}
 \capcs unhcopy {与 |\\unhbox| 一样，但不使寄存器失效}*{}
 %\capcs unkern {if the last item on the current list is a kern, remove it}*{}
-\capcs unkern {如果当前列表的最后一项是微调，删除它}*{}
+\capcs unkern {如果当前列表的最后一项是紧排，删除它}*{}
 %\capcs unpenalty {if the last item on the current list is a penalty, remove
 %   it}*{}
 \capcs unpenalty {如果当前列表的最后一项是惩罚，删除它}*{}
