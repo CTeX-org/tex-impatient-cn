@@ -2099,216 +2099,362 @@ it cannot be done using only the facilities of \TeX\ itself.
 \endconcept
 
 \bookmark{2}{以G开头}
-\concept global
+%\concept global
+\concept 全局的
 
-A \defterm{global} definition is effective
-until the end of the
-document or until it is overridden by another definition,
-even when it occurs within a \refterm{group}.
-Thus a global definition is unaffected by group boundaries.
-You can make any definition global by prefixing it with the |\global|
-command \ctsref{\global} unless ^|\globaldefs| \ctsref\globaldefs{}
-is negative.
+%A \defterm{global} definition is effective
+%until the end of the
+%document or until it is overridden by another definition,
+%even when it occurs within a \refterm{group}.
+%Thus a global definition is unaffected by group boundaries.
+%You can make any definition global by prefixing it with the |\global|
+%command \ctsref{\global} unless ^|\globaldefs| \ctsref\globaldefs{}
+%is negative.
+%^^|\global|
+一个\defterm{全局的}（global）定义在文档结束前始终有效，
+即使它出现在一个\refterm{编组}里面（除非它被其他定义覆盖）。
+即全局定义不受编组范围的影响。
+要让任何定义成为全局的，你可以在它前面加上 |\global| 命令\ctsref{\global}，
+除非 ^|\globaldefs|\ctsref\globaldefs{} 为负值。
 ^^|\global|
 
-There's a special way of making a \refterm{macro} definition global.
+%There's a special way of making a \refterm{macro} definition global.
+%^^{macros//global}
+%Normally you define a macro using either the |\def| command
+%or the |\edef| command \ctsref{\edef}.
+%^^|\edef//making global|
+%^^|\def//making global|
+%If you use |\gdef| or |\xdef|
+%instead of |\def| and |\edef| respectively, the macro definition will
+%be global.  That is, `^|\gdef|' is equivalent to `|\global\def|' and
+%`^|\xdef|' is equivalent to `|\global\edef|'.
+%\endconcept
+还有种特殊方法将一个\refterm{宏}定义为全局的。
 ^^{macros//global}
-Normally you define a macro using either the |\def| command
-or the |\edef| command \ctsref{\edef}.
+通常你用 |\def| 命令或者 |\edef| 命令\ctsref{\edef}来定义一个宏。
 ^^|\edef//making global|
 ^^|\def//making global|
-If you use |\gdef| or |\xdef|
-instead of |\def| and |\edef| respectively, the macro definition will
-be global.  That is, `^|\gdef|' is equivalent to `|\global\def|' and
-`^|\xdef|' is equivalent to `|\global\edef|'.
+如果你将 |\def| 和 |\edef| 分别换为 |\gdef| 和 |\xdef|，
+这个宏定义就会是全局的。也就是说，`^|\gdef|'等价于`|\global\def|'，
+而`^|\xdef|'等价于`|\global\edef|'。
 \endconcept
 
 
 %\concept glue
 \concept 粘连
 
+%\bix^^{stretch}
+%\bix^^{shrink}
+%\defterm{Glue} is blank space that can stretch or shrink.
+%Glue gives \TeX\ the flexibility that it needs in order to produce
+%handsome
+%documents.  Glue comes in two flavors: horizontal glue and vertical glue.
+%Horizontal glue occurs within \refterm{horizontal lists:horizontal list},
+%while vertical glue occurs within \refterm{vertical lists:vertical list}.
+%^^{horizontal lists}
+%^^{vertical lists}
+%You
+%can produce a glue item either implicitly, e.g., with an interword space, or
+%explicitly, e.g., with the ^|\hskip| command.
+%^^{spaces//interword}
+%\TeX\ itself produces many glue
+%items as it typesets your document.
+%We'll just describe horizontal glue---vertical glue is analogous.
 \bix^^{stretch}
 \bix^^{shrink}
-\defterm{Glue} is blank space that can stretch or shrink.
-Glue gives \TeX\ the flexibility that it needs in order to produce
-handsome
-documents.  Glue comes in two flavors: horizontal glue and vertical glue.
-Horizontal glue occurs within \refterm{horizontal lists:horizontal list},
-while vertical glue occurs within \refterm{vertical lists:vertical list}.
+\defterm{粘连}（glue）是可以伸长或者收缩的空白间距。
+粘连给 \TeX\ 提供了生成漂亮文档所需的灵活性。
+粘连有两种类型：水平粘连和竖直粘连。
+水平粘连出现在\refterm{水平列表}中，而竖直粘连出现在\refterm{竖直列表}中。
 ^^{horizontal lists}
 ^^{vertical lists}
-You
-can produce a glue item either implicitly, e.g., with an interword space, or
-explicitly, e.g., with the ^|\hskip| command.
+你可以隐式地生成一个粘连项，比如用单词间空格，
+或者显式地生成一个粘连项，比如用 ^|\hskip| 命令。
 ^^{spaces//interword}
-\TeX\ itself produces many glue
-items as it typesets your document.
-We'll just describe horizontal glue---vertical glue is analogous.
+在排版文档时 \TeX\ 本身也生成很多粘连项。
+这里我们只描述水平粘连——竖直粘连与之类似。
 
-When \TeX\ assembles a list of boxes and glue into a larger
-unit,
+%When \TeX\ assembles a list of boxes and glue into a larger
+%unit,
+%^^{boxes//glue with}
+%it adjusts the size of the glue to meet the space requirements of the
+%larger unit.  For instance, \TeX\ ensures that the ^{right margin} of a page
+%is uniform by adjusting the horizontal glue within lines.
+%Similarly, it ensures that different pages have the
+%same ^{bottom margin}
+%by adjusting the glue between blocks of text such as paragraphs and
+%math displays
+%(where the change is least likely to be conspicuous).
+在 \TeX\ 将一系列盒子和粘连组装成一个较大单元时，
 ^^{boxes//glue with}
-it adjusts the size of the glue to meet the space requirements of the
-larger unit.  For instance, \TeX\ ensures that the ^{right margin} of a page
-is uniform by adjusting the horizontal glue within lines.
-Similarly, it ensures that different pages have the
-same ^{bottom margin}
-by adjusting the glue between blocks of text such as paragraphs and
-math displays
-(where the change is least likely to be conspicuous).
+它调整各个粘连的尺寸以适合较大单元的空间要求。
+例如，为了让页面的^{右边距}保持一致，\TeX\ 调整了各行的水平粘连。
+类似地，为了让各页的^{下边距}保持相同，
+它调整了各个文本块比如段落和陈列公式之间的粘连%
+（这种修改是最不可能引人注意的）。
 
-A glue item has a natural space---the size it ``wants to be''.  Glue
-also has two other attributes: its \refterm{stretch} and its
-\refterm{shrink}.  You can produce a specific amount of horizontal glue
-with the ^|\hskip| \refterm{command} \ctsref{\hskip}.  The command
-|\hskip 6pt plus 2pt minus 3pt|
-produces a horizontal glue item whose natural
-size is $6$ points, whose stretch is $2$ points, and whose shrink is
-$3$ points.  Similarly, you can produce a specific amount of vertical
-glue with the ^|\vskip| command \ctsref{\vskip}.
+%A glue item has a natural space---the size it ``wants to be''.  Glue
+%also has two other attributes: its \refterm{stretch} and its
+%\refterm{shrink}.  You can produce a specific amount of horizontal glue
+%with the ^|\hskip| \refterm{command} \ctsref{\hskip}.  The command
+%|\hskip 6pt plus 2pt minus 3pt|
+%produces a horizontal glue item whose natural
+%size is $6$ points, whose stretch is $2$ points, and whose shrink is
+%$3$ points.  Similarly, you can produce a specific amount of vertical
+%glue with the ^|\vskip| command \ctsref{\vskip}.
+每个粘连项有它的自然间距——即它“所期望的”尺寸。粘连还有另外两个属性：
+它的\refterm{伸长量}（stretch）和它的\refterm{收缩量}（shrink）。
+你可以用^|\hskip| \refterm{命令}\ctsref{\hskip}生成特定大小的水平粘连。
+命令 |\hskip 6pt plus 2pt minus 3pt| 生成一个水平粘连，
+其自然尺寸为$6$点，伸长量为$2$点，收缩量为$3$点。
+类似地，你可以用 ^|\vskip| 命令\ctsref{\vskip}生成特定大小的竖直粘连。
 
-The best way to understand what stretch and shrink are about
-is to see an example of glue at work.
-Suppose you're constructing an \refterm{hbox} from three boxes and two glue
-items, as in this picture:
+%The best way to understand what stretch and shrink are about
+%is to see an example of glue at work.
+%Suppose you're constructing an \refterm{hbox} from three boxes and two glue
+%items, as in this picture:
+%\gluepicture
+%   29 {\picbox 4 \gluebox 6 4 1 6 \picbox 5 \gluebox 10 8 3 10 \picbox 4 }
+%\noindent
+%The units of measurement here could be points, millimeters, or anything else.
+%If the hbox is allowed to assume its natural width, then each glue item in the
+%box also assumes its natural width.  The total width of the hbox is then the
+%sum of the widths of its parts, namely, $29$ units.
+要理解什么是伸长量和收缩量，最好方法是看粘连的一个实际例子。
+假设你要用三个盒子和两个粘连项构造一个\refterm{水平盒子}项目，
+如下图：
 \gluepicture
    29 {\picbox 4 \gluebox 6 4 1 6 \picbox 5 \gluebox 10 8 3 10 \picbox 4 }
 \noindent
-The units of measurement here could be points, millimeters, or anything else.
-If the hbox is allowed to assume its natural width, then each glue item in the
-box also assumes its natural width.  The total width of the hbox is then the
-sum of the widths of its parts, namely, $29$ units.
+这里的度量单位可以是点，毫米，或其他任何单位。
+如果水平盒子可以呈现它的自然宽度，
+那么盒子内的每个粘连项也呈现它的自然宽度。
+从而水平盒子的总宽度就是它个各部分宽度之和，即$29$点。
 
-Next, suppose that the hbox is required to be wider than $29$ units, say
-$35$ units.  This
-could happen, for example, if the hbox is required to occupy an entire
-line and the line width is $35$ units.
-Since the boxes can't change their width,
-\TeX\ produces the necessary extra space by making the glue items wider.
-The picture now looks like this:
+%Next, suppose that the hbox is required to be wider than $29$ units, say
+%$35$ units.  This
+%could happen, for example, if the hbox is required to occupy an entire
+%line and the line width is $35$ units.
+%Since the boxes can't change their width,
+%\TeX\ produces the necessary extra space by making the glue items wider.
+%The picture now looks like this:
+%\gluepicture
+%   35 {\picbox 4 \gluebox 6 4 2 8 \picbox 5 \gluebox 10 8 6 14 \picbox 4 }
+%The glue items don't become wider equally; they became wider in proportion to
+%their stretch.  Since the second glue item
+%has twice as much stretch as the first one,
+%it gets wider by four units while the first glue item gets wider by only
+%two units.
+%Glue can be stretched as far as necessary, although \TeX\ is
+%somewhat reluctant to
+%stretch it beyond the amount of stretch given in its definition.
+接下来，假设这个水平盒子需要比 $29$ 单位还宽，比方说 $35$ 单位。
+这是可能出现的，比如水平盒子可能需要占据行宽为 $35$ 单位的整行。
+由于 \TeX\ 不可能改变盒子的宽度，
+它通过增加粘连项的宽度生成所需的额外间距。
+现在的图形看起来是这样的：
 \gluepicture
    35 {\picbox 4 \gluebox 6 4 2 8 \picbox 5 \gluebox 10 8 6 14 \picbox 4 }
-The glue items don't become wider equally; they became wider in proportion to
-their stretch.  Since the second glue item
-has twice as much stretch as the first one,
-it gets wider by four units while the first glue item gets wider by only
-two units.
-Glue can be stretched as far as necessary, although \TeX\ is
-somewhat reluctant to
-stretch it beyond the amount of stretch given in its definition.
+各粘连项增加的宽度并不相等；增加的宽度与它们的伸长量成比例。
+由于第二个粘连项的伸长量是第一个的两倍，
+它的宽度增加了四个单位，而后者只增加了两个单位。
+粘连允许任意伸长，
+尽管 \TeX\ 有时不愿意超出定义中给出的伸长量。
 
-Finally, suppose that the hbox is required to be narrower than $29$ units, say
-$25$ units.  In this case \TeX\ makes the glue items narrower.
-The picture looks like this:
+%Finally, suppose that the hbox is required to be narrower than $29$ units, say
+%$25$ units.  In this case \TeX\ makes the glue items narrower.
+%The picture looks like this:
+%\gluepicture
+%   25 {\picbox 4 \gluebox 6 4 2 5 \picbox 5 \gluebox 10 8 6 7 \picbox 4 }
+%The glue items become narrower in proportion to their shrink.
+%The first glue item becomes narrower by one unit, while the second glue item
+%becomes narrower by three units.  Glue cannot shrink by a distance
+%less than the amount of shrink
+%given in its definition even though the distance it can stretch is
+%unlimited.  In this important sense the shrink and
+%the stretch behave differently.
+最后，假设这个水平盒子需要比 $29$ 单位还窄，比如说 $25$ 单位。
+此时 \TeX\ 将减少粘连项的宽度。图形看起来是这样的：
 \gluepicture
    25 {\picbox 4 \gluebox 6 4 2 5 \picbox 5 \gluebox 10 8 6 7 \picbox 4 }
-The glue items become narrower in proportion to their shrink.
-The first glue item becomes narrower by one unit, while the second glue item
-becomes narrower by three units.  Glue cannot shrink by a distance
-less than the amount of shrink
-given in its definition even though the distance it can stretch is
-unlimited.  In this important sense the shrink and
-the stretch behave differently.
+各粘连项减少的宽度于它们的收缩量成比例。
+第一个粘连项的宽度减少了一个单位，而第二个粘连项减少了三个单位。
+粘连收缩时不能超出定义中给出的收缩量，而伸长时却不受限制。
+从这个重要意义上说，收缩和伸长有不同的表现。
 
-A good rule of thumb for glue is to set the natural size to the amount
-of space that looks best, the stretch to the largest amount of space
-that \TeX\ can add before the document starts to look bad, and the
-shrink to the largest amount of space that \TeX\ can take away before
-the document starts to look bad.  You may need to set the values by
-experiment.
+%A good rule of thumb for glue is to set the natural size to the amount
+%of space that looks best, the stretch to the largest amount of space
+%that \TeX\ can add before the document starts to look bad, and the
+%shrink to the largest amount of space that \TeX\ can take away before
+%the document starts to look bad.  You may need to set the values by
+%experiment.
+有一个不错的经验法则可用于设定粘连，
+即取它的自然尺寸为文档最美观时的间距大小，
+取它的伸长量为文档开始变难看之前 \TeX\ 能添加的最大间距，
+取它的收缩量为文档开始变难看之前 \TeX\ 能去掉的最大间距。
+你也许需要通过试验确定这些值。
 
-You can produce glue that is infinitely stretchable  by specifying
-its stretch in units of `^|fil|', `^|fill|', or `^|filll|'.   Glue measured in
-`|fill|' is infinitely more stretchable than glue measured in `|fil|', and
-glue measured in `|filll|'  is infinitely more stretchable than glue measured
-in `|fill|'.  You should rarely have any need for `|filll|' glue.  Glue whose
-stretch is |2fil| has twice as much stretch as glue whose stretch is |1fil|,
-and similarly for the other kinds of infinitely stretchable glue.
+%You can produce glue that is infinitely stretchable  by specifying
+%its stretch in units of `^|fil|', `^|fill|', or `^|filll|'.   Glue measured in
+%`|fill|' is infinitely more stretchable than glue measured in `|fil|', and
+%glue measured in `|filll|'  is infinitely more stretchable than glue measured
+%in `|fill|'.  You should rarely have any need for `|filll|' glue.  Glue whose
+%stretch is |2fil| has twice as much stretch as glue whose stretch is |1fil|,
+%and similarly for the other kinds of infinitely stretchable glue.
+以 `^|fil|'，`^|fill|'，或 `^|filll|' 为单位设定粘连的伸长量，
+就可以生成可无限伸长的粘连。
+以 `|fill|' 为单位的粘连相比以 `|fil|' 为单位的粘连有更加无限的伸长能力，
+以 `|filll|' 为单位的粘连相比以 `|fill|' 为单位的粘连有更加无限的伸长能力。
+你很少需要使用 `|filll|' 粘连。
+伸长量为 |2fil| 的粘连，其伸长能力是伸长量为 |1fil| 的粘连的两倍，
+对其他类型的可无限伸长粘连情形类似。
 
-When \TeX\ is
-apportioning extra space among glue items, the infinitely stretchable
-ones, if there
-are any, get all of it.  Infinitely stretchable glue is particularly useful for
-setting text flush left, flush right, or centered:
+%When \TeX\ is
+%apportioning extra space among glue items, the infinitely stretchable
+%ones, if there
+%are any, get all of it.  Infinitely stretchable glue is particularly useful for
+%setting text flush left, flush right, or centered:
+在 \TeX\ 给各个粘连项分配额外间距时，
+如果存在可无限伸长的粘连，它们将分到全部间距。
+可无限伸长的粘连在设定文本左对齐，右对齐或者居中时特别有用：
 
+%\ulist\compact
+%\li To set text ^{flush left}, put infinitely stretchable
+%horizontal glue to the right of it.
+%That glue will consume all the
+%extra space that's available on the line.
+%You can use the ^|\leftline| command \ctsref{\leftline}
+%or the |\raggedright| command \ctsref{\raggedright} to do~this.
+%\li To set text ^{flush right}, put infinitely
+%stretchable horizontal glue to the left of it.
+%As before, that glue will consume all the extra space on the line.
+%You can use the ^|\rightline| command \ctsref{\rightline} to do~this.
+%\li To set ^{centered text}, put identical infinitely stretchable
+%horizontal glue items
+%on both sides of it.
+%These two glue items will divide all the extra space on the line
+%equally between them.
+%You can use the ^|\centerline| command \ctsref{\centerline} to do~this.
+%\endulist
 \ulist\compact
-\li To set text ^{flush left}, put infinitely stretchable
-horizontal glue to the right of it.
-That glue will consume all the
-extra space that's available on the line.
-You can use the ^|\leftline| command \ctsref{\leftline}
-or the |\raggedright| command \ctsref{\raggedright} to do~this.
-\li To set text ^{flush right}, put infinitely
-stretchable horizontal glue to the left of it.
-As before, that glue will consume all the extra space on the line.
-You can use the ^|\rightline| command \ctsref{\rightline} to do~this.
-\li To set ^{centered text}, put identical infinitely stretchable
-horizontal glue items
-on both sides of it.
-These two glue items will divide all the extra space on the line
-equally between them.
-You can use the ^|\centerline| command \ctsref{\centerline} to do~this.
+\li 要让文本^{左对齐}，可以在它右边放上一个可无限伸长的水平粘连。
+这个粘连将占用该行所有可用的多余间距。
+你可以用 ^|\leftline| 命令\ctsref{\leftline}或
+|\raggedright| 命令\ctsref{\raggedright}达到此目的。 
+\li 要让文本^{右对齐}，可以在它左边放上一个可无限伸长的水平粘连。
+如同上面，这个粘连将占用该行所有可用的多余间距。
+你可以用 ^|\rightline| 命令\ctsref{\rightline}达到此目的。
+\li 要设定^{居中文本}，可以在它两边各放上一个同样的可无限伸长的水平粘连。
+这两个粘连项将平分该行的多余间距。
+你可以用 ^|\centerline| 命令\ctsref{\centerline}达到此目的。
 \endulist
 
-You can also specify infinitely shrinkable glue
+%You can also specify infinitely shrinkable glue
+%^^{glue//infinitely shrinkable}
+%in a similar way.  Infinitely shrinkable glue can act as negative space.
+%Note that |fil|, etc., can be used only
+%to specify the stretch and shrink of glue---they can't be used to specify
+%its natural size.
+%\eix^^{stretch}
+%\eix^^{shrink}
+%\endconcept
+类似地，你也可以指定可无限收缩的粘连。
 ^^{glue//infinitely shrinkable}
-in a similar way.  Infinitely shrinkable glue can act as negative space.
-Note that |fil|, etc., can be used only
-to specify the stretch and shrink of glue---they can't be used to specify
-its natural size.
+可无限收缩粘连可以作为负间距。
+注意 |fil| 等只可用于指定粘连的伸长量和收缩量——%
+它们不能用于指定自然尺寸。
 \eix^^{stretch}
 \eix^^{shrink}
 \endconcept
 
 
-\conceptindex{groups}
-\concept group
+%\conceptindex{groups}
+%\concept group
+\conceptindex{编组}
+\concept 编组
 
-A \defterm{group} is a part of your manuscript that \TeX\ treats as a unit.
-You indicate a group by enclosing it in the braces
-`|{|' and `|}|' (or any other characters with the appropriate
-\refterm{category codes}).
+%A \defterm{group} is a part of your manuscript that \TeX\ treats as a unit.
+%You indicate a group by enclosing it in the braces
+%`|{|' and `|}|' (or any other characters with the appropriate
+%\refterm{category codes}).
+%^^|{//starting a group|
+%^^|}//ending a group|
+\defterm{编组}（group）是文稿中 \TeX\ 视为一个单元的一部分。
+要表示一个编组，你可以用括号 `|{|' 和 `|}|'%
+（或者\refterm{类别码}合适的其他字符）将它括起来。
 ^^|{//starting a group|
 ^^|}//ending a group|
 
-The most important property of a group is that any nonglobal
-definition or assignment that you make inside a group disappears when
-the group ends.  For instance, if you write:
+%The most important property of a group is that any nonglobal
+%definition or assignment that you make inside a group disappears when
+%the group ends.  For instance, if you write:
+编组的重要特性在于，当一个编组结束时，
+在其中所作的任何非全局的定义或赋值都消失了。假如你这样写：
 
+%\csdisplay
+%Please don't pour {\it any} more tea into my hat.
+%|
+%the |\it| \refterm{control sequence} causes \TeX\ to set the word
+%`|any|' in italic type but does not affect the rest of the text.
+%As another example, if you use the |\hsize| parameter
+%\ctsref{\hsize} to change the line length within a group, the line length
+%reverts to its previous value once \TeX\ has gotten past the group.
 \csdisplay
 Please don't pour {\it any} more tea into my hat.
 |
-the |\it| \refterm{control sequence} causes \TeX\ to set the word
-`|any|' in italic type but does not affect the rest of the text.
-As another example, if you use the |\hsize| parameter
-\ctsref{\hsize} to change the line length within a group, the line length
-reverts to its previous value once \TeX\ has gotten past the group.
+|\it| \refterm{控制序列}让 \TeX\ 设定 `|any|' 为意大利体，
+但它不会影响其他文本。
+再举一个例子，如果你在编组中用 |\hsize| 命令\ctsref{\hsize}改变行宽，
+在 \TeX\ 完成这个编组后，行宽将恢复为之前的取值。
 
-Groups are also useful as a way of controlling spacing.  For instance, if you
-write:
+%Groups are also useful as a way of controlling spacing.  For instance, if you
+%write:
+编组也可以作为一种控制间距的方法。举个例子，如果你这样写：
 
+%\csdisplay
+%\TeX for the Impatient and the Outpatient too.
+%|
+%\noindent
+%you'll get:
+%\display{%
+%\TeX for the Impatient and the Outpatient too.
+%}
+%\noindent
+%since the control sequence |\TeX| (which produces the \TeX\
+%logo) absorbs the following space.
+%What you probably want is:
+%\display{%
+%{\TeX} for the Impatient and the Outpatient too.
+%}
+%\noindent
+%One way to get it is to enclose `|\TeX|' in a group:
+%\csdisplay
+%{\TeX} for the Impatient and the Outpatient too.
+%|
+%The right brace prevents the control sequence from absorbing the space.
+%\endconcept
 \csdisplay
 \TeX for the Impatient and the Outpatient too.
 |
 \noindent
-you'll get:
+你将会得到下列结果：
 \display{%
 \TeX for the Impatient and the Outpatient too.
 }
 \noindent
-since the control sequence |\TeX| (which produces the \TeX\
-logo) absorbs the following space.
-What you probably want is:
+这是由于控制序列 |\TeX|（它生成 \TeX\ 标识）吸收了其后的空格。
+你所需要的也许是这样：
 \display{%
 {\TeX} for the Impatient and the Outpatient too.
 }
 \noindent
-One way to get it is to enclose `|\TeX|' in a group:
+要得到这种结果，其中一种方法就是将 `|\TeX|' 括到一个编组里面：
 \csdisplay
 {\TeX} for the Impatient and the Outpatient too.
 |
-The right brace prevents the control sequence from absorbing the space.
+其中的右花括号阻止了控制序列吸收空格。
 \endconcept
+
 
 \bookmark{2}{以H开头}
 \conceptindex{hboxes}
@@ -3836,7 +3982,8 @@ into a page.  See \conceptcit{horizontal mode}, \conceptcit{vertical mode}.
 \endconcept
 
 
-\concept outer
+%\concept outer
+\concept 外部的
 
 \bix^^{macros//outer}
 An \defterm{outer} macro is one that you can't use in certain contexts
@@ -4469,7 +4616,7 @@ See \conceptcit{file}.
 
 
 %\concept{primitive}
-\concept{原始命令}
+\concept{原始的}
 
 %A \defterm{primitive} \refterm{command} is one whose definition is built
 %into the \TeX\ computer program.  In contrast, a command that is not
@@ -4479,7 +4626,7 @@ See \conceptcit{file}.
 %other commands defined in terms of the
 %primitive ones.
 %\endconcept
-\defterm{原始命令}（primitive command）是在 \TeX\ 程序内部就定义好的命令。
+\defterm{原始的}（primitive）命令是在 \TeX\ 程序内部就定义好的命令。
 作为对比，非原始命令或者是从\refterm{宏}定义得到的，
 或者是从 \TeX\ 编写的其他形式的定义得到的。
 \refterm{\PlainTeX} 的命令由原始命令加上用原始命令定义的其他命令组成。
@@ -4718,9 +4865,12 @@ scriptscript size for a subscript on a subscript or for a superscript on
 a scriptsize numerator.
 \endconcept
 
-\concept shrink
+%\concept shrink
+\concept 收缩量
 
-See \conceptcit{glue}.
+%See \conceptcit{glue}.
+%\endconcept
+见 \conceptcit{粘连}。
 \endconcept
 
 \concept space
@@ -4763,11 +4913,13 @@ between adjacent items brings those items closer together.
 \endconcept
 
 
-\concept stretch
+%\concept stretch
+\concept 伸长量
 
-See \conceptcit{glue}.
+%See \conceptcit{glue}.
+%\endconcept
+见 \conceptcit{粘连}。
 \endconcept
-
 
 \conceptindex{struts}
 \concept strut

@@ -224,13 +224,22 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %If both are present, the |plus| must come before the |minus|.
 %An omitted value
 %is taken to be zero. Any of the \<dimen>s can be negative.
-这些命令可以分别产生水平的和竖直的粘连。在最简单以及最常见的情况下，即当只有 \<dimen$_1$> 存在时，|\hskip| 向右移动 \<dimen$_1$>，而 |\vskip| 向页面下方移动 \<dimen$_1$>。通常情况下，这些命令产生的\minref{粘连}是 \<dimen$_1$>，它的最大伸展间距是 \<dimen$_2$>，最大压缩间距是 \<dimen$_3$>。|plus| \<dimen$_2$> 或 |minus |\<dimen$_3$>，或两者都可以从命令中被省略。如果两者都需要，则 |plus| 必须出现在 |minus| 之前。被省略的变量取值为零。任何 \<dimen> 都可以取负值。
+这些命令可以分别产生水平的和竖直的粘连。
+在最简单以及最常见的情况下，即当只有 \<dimen$_1$> 存在时，
+|\hskip| 向右移动 \<dimen$_1$>，而 |\vskip| 向页面下方移动 \<dimen$_1$>。
+在一般情况下，这些命令产生一个\minref{粘连}，其自然尺寸为 \<dimen$_1$>，
+可伸长量为 \<dimen$_2$>，可收缩量为 \<dimen$_3$>。
+命令中的 |plus| \<dimen$_2$> 或 |minus |\<dimen$_3$>，或两者都可以省略。
+如果两者都需要，则 |plus| 必须出现在 |minus| 之前。
+被省略的变量取值为零。任何 \<dimen> 都可以取负值。
 
 %You can use |\hskip| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
 %for any of the dimensions.  If you want |mu| units, use |\mskip|
 %(\xref\mskip) instead.
-在数学模式下，你可以使用 |\hskip|，但不能使用 |mu| \seeconcept{数学单位}作为任何尺寸的单位。如果你希望使用 |mu| 作为单位，可以使用 |\mskip| （\xref\mskip）代替之。
+在数学模式下，你可以使用 |\hskip|，
+但不能使用 |mu|\seeconcept{数学单位}作为任何尺寸的单位。
+如果你希望使用 |mu| 作为单位，可以使用 |\mskip|（\xref\mskip ）代替之。
 
 \example
 \hbox to 2in{one\hskip 0pt plus .5in two}
