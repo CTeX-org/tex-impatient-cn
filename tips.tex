@@ -1471,14 +1471,14 @@ Addison-Wesley, 1990.\par}
 
 \null
 ^^{forbidden control sequence}^^{incomplete conditional}
-如果 \TeX{} 警告 ``forbidden control sequence''，很有可能你在非 outer 环境
-使用了 outer 宏\seeconcept{outer}。
+如果 \TeX{} 警告 ``forbidden control sequence''，很有可能你在非外部环境中
+使用了外部宏\seeconcept{外部的}。
 ^^{macros//outer}
-一个 outer 宏的定义总是以 ^|\outer| 开始. outer 宏不能被用于宏参量
-（argument）、宏定义、对齐内容的导言或者条件文本：只有当某个条件检
+一个外部宏的定义总是以 ^|\outer| 开始. 外部宏不能被用于宏参量
+（argument）、宏定义、阵列的导言或者条件文本：只有当某个条件检
 验有特定的结果是才展开的文本。
 ^^{alignments//outer control sequence in}
-有些宏被以 outer 的方式定义是因为我们不想在这些环境里使用它们，一旦使用，必
+有些宏被以外部的方式定义是因为我们不想在这些环境里使用它们，一旦使用，必
 定出错。解决的办法就是重新定义宏或者移动它们到合适的环境里。
 
 % Using an outer macro in an improper context can also cause
@@ -1491,11 +1491,11 @@ Addison-Wesley, 1990.\par}
 % will show you the definition of |\a| and also tell you
 % if |\a| is outer.
 
-在不恰当的环境使用 outer 宏，还会引起 \TeX{} 警告：不受控制（runaway）的情
+在不恰当的环境使用外部宏，还会引起 \TeX\ 警告：不受控制（runaway）的情
 形或者不完备的条件。因为错误消息提供不了线索，这些问题通常难于诊断。如
-果你得到了这样的错误消息，找找看哪里用了 outer 宏。可能你并不知道那些宏
-属于 outer，  `^|\show||\a|' \ctsref{\show} 将显示 |\a| 的定义，并告之 |\a|
-是否 outer 宏。
+果你得到了这样的错误消息，找找看哪里用了外部宏。可能你并不知道那些宏
+属于外部的，`^|\show||\a|'\ctsref{\show} 将显示 |\a| 的定义，并告之 |\a|
+是否外部宏。
 
 
 %\section Changing category codes

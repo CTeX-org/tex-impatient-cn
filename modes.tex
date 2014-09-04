@@ -26,7 +26,7 @@
 %and alignments.
 %For an explanation of the conventions used in this section,
 %see \headcit{Descriptions of the commands}{cmddesc}.
-这一章介绍水平和竖直模式下具有对应或一致形式的命令。这些命令提供盒子、间隔、标线、指引线以及阵列。有关本章中使用的惯例的说明，参见 \headcit{命令的描述}{cmddesc}。
+这一章介绍水平和竖直模式下具有对应或一致形式的命令。这些命令提供盒子、间隔、标线、指引线以及阵列。有关本章中使用的惯例的说明，参见\headcit{命令的描述}{cmddesc}。
 
 \begindescriptions
 
@@ -1656,7 +1656,9 @@ one \a\a\hskip 2\lastkern three\par
 %The only difference between |\+| and |\tabalign| is that
 %|\+| is an outer macro---you can't use it when \TeX\ is reading tokens at
 %high speed \seeconcept{outer}.
-在制表\minref{阵列}中，这些命令开始单独的一行。|\+| 与 |\tabalign| 之间唯一的不同在于 |\+| 是一个外部宏，当 \TeX\ 高速读取记号时，你不能使用它\seeconcept{outer}。
+在制表\minref{阵列}中，这些命令开始单独的一行。
+|\+| 与 |\tabalign| 之间唯一的不同在于 |\+| 是一个外部宏，
+当 \TeX\ 高速读取记号时，你不能使用它\seeconcept{外部的}。
 
 %If you place an `|&|' at a position
 %to the right of all existing tabs in a tabbing alignment,

@@ -2689,7 +2689,8 @@ either a paragraph or an hbox.  See ``horizontal mode'' below.
 \endconcept
 
 
-\concept {horizontal mode}
+%\concept {horizontal mode}
+\concept {水平模式}
 
 ^^{hboxes//horizontal mode for}
 When \TeX\ is assembling a paragraph or an \refterm{hbox}, it is in one
@@ -4191,99 +4192,152 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 
 \endconcept
 
-\bookmark{2}{以O开头}
-\concept{ordinary mode}
 
-An \defterm{ordinary mode} is a \refterm{mode} that \TeX\ is in when it is
-assembling a paragraph into lines or assembling lines
-into a page.  See \conceptcit{horizontal mode}, \conceptcit{vertical mode}.
+\bookmark{2}{以O开头}
+%\concept{ordinary mode}
+\concept{普通模式}
+
+%An \defterm{ordinary mode} is a \refterm{mode} that \TeX\ is in when it is
+%assembling a paragraph into lines or assembling lines
+%into a page.  See \conceptcit{horizontal mode}, \conceptcit{vertical mode}.
+%\endconcept
+\defterm{普通模式}（ordinary mode）是 \TeX\ 分段为行或组行为页时所在的\refterm{模式}。
+见\conceptcit{水平模式}，\conceptcit{竖直模式}。
 \endconcept
 
 
 %\concept outer
 \concept 外部的
 
+%\bix^^{macros//outer}
+%An \defterm{outer} macro is one that you can't use in certain contexts
+%where \TeX\ is processing tokens at high speed.
+%The purpose of making a command outer is to enable \TeX\ to catch
+%errors before it's gone too far.
+%When you define a macro, you can make it outer with the
+%^|\outer| command \ctsref\outer.
 \bix^^{macros//outer}
-An \defterm{outer} macro is one that you can't use in certain contexts
-where \TeX\ is processing tokens at high speed.
-The purpose of making a command outer is to enable \TeX\ to catch
-errors before it's gone too far.
-When you define a macro, you can make it outer with the
-^|\outer| command \ctsref\outer.
+\defterm{外部的}（outer）宏是在某些 \TeX\ 高速处理记号的环境中无法使用的宏。
+将一个命令定义为外部的，目的是使 \TeX\ 能够尽早捕获到错误。
+在定义宏时，你可以用 ^|\outer| 命令\ctsref\outer 让它成为外部的。
 
-You cannot use an outer macro in any of the following contexts:
+%You cannot use an outer macro in any of the following contexts:
+%\ulist\compact
+%\li within an argument to a macro
+%\li in the parameter text or replacement text of a definition
+%\li in the preamble to an alignment
+%\li in the unexecuted part of a conditional test
+%\endulist
+%\noindent
+%An outer context is a context in which you can use an outer macro,
+%i.e., it's any context other than the ones just listed.
+在下列这些环境中，你不可以使用外部宏：
 \ulist\compact
-\li within an argument to a macro
-\li in the parameter text or replacement text of a definition
-\li in the preamble to an alignment
-\li in the unexecuted part of a conditional test
+\li 在命令的参量中
+\li 在宏定义的参数文本或替换文本中
+\li 在阵列的导言中
+\li 在条件测试的跳过部分中
 \endulist
 \noindent
-An outer context is a context in which you can use an outer macro,
-i.e., it's any context other than the ones just listed.
+外部环境是你可以使用外部宏的环境，即刚才列出的环境除外的环境。
 
-For example, the following input would be a forbidden use of an
-outer macro:
+%For example, the following input would be a forbidden use of an
+%outer macro:
+%\csdisplay
+%\leftline{\proclaim Assertion 2. That which is not inner
+%   is outer.}
+%|
+%The |\proclaim| macro (\xref{\@proclaim}) is defined in \plainTeX\
+%to be outer, but it's being used here in a macro argument to |\leftline|.
+%\eix^^{macros//outer}
+例如，下面的输入就是外部宏的禁止用法：
 \csdisplay
 \leftline{\proclaim Assertion 2. That which is not inner
    is outer.}
 |
-The |\proclaim| macro (\xref{\@proclaim}) is defined in \plainTeX\
-to be outer, but it's being used here in a macro argument to |\leftline|.
+|\proclaim| 宏（\xref{\@proclaim}）在 \plainTeX\ 中被定义为外部的，
+但这里却将它放在 |\leftline| 的宏参量中。
 \eix^^{macros//outer}
 
 \endconcept
 
 
-\concept {output routine}
+%\concept {output routine}
+\concept {输出例行程序}
 
-When \TeX\ has accumulated
-at least enough material to fill up a page, it chooses a breakpoint
-and places the material before the breakpoint in |\box255|. It then
-calls the
-current \defterm{output routine}, which processes the material and eventually
-sends it to the \dvifile.
+%When \TeX\ has accumulated
+%at least enough material to fill up a page, it chooses a breakpoint
+%and places the material before the breakpoint in |\box255|. It then
+%calls the
+%current \defterm{output routine}, which processes the material and eventually
+%sends it to the \dvifile.
+%^^{\dvifile//material from output routine}
+%The output routine can perform further
+%processing, such as inserting headers, footers, and footnotes.
+%\refterm{\PlainTeX:\plainTeX} provides
+%a default output routine that inserts a centered page number
+%at the bottom of each page.
+%By providing a different output routine you can achieve such
+%effects as double-column output.
+%You can think of the output routine as having a single responsibility:
+%disposing of the material in |\box255| one way or another.
+\TeX\ 收集足够填满页面的素材后，它选择分页点并将分页点之前的素材放在 |\box255| 中。
+然后 \TeX\ 调用\defterm{输出例行程序}（output routine）%
+以加工素材并最终将它送到 \dvifile 中。
 ^^{\dvifile//material from output routine}
-The output routine can perform further
-processing, such as inserting headers, footers, and footnotes.
-\refterm{\PlainTeX:\plainTeX} provides
-a default output routine that inserts a centered page number
-at the bottom of each page.
-By providing a different output routine you can achieve such
-effects as double-column output.
-You can think of the output routine as having a single responsibility:
-disposing of the material in |\box255| one way or another.
+输出例行程序可以执行进一步的加工，比如插入页眉，页脚和脚注。
+\refterm{\PlainTeX:\plainTeX} 提供了一个默认的输出例行程序，
+它在每个页面底部插入居中的页码。
+通过提供不同的输出例行程序，你可以达到诸如双栏输出的效果。
+你可以认为输出例行程序只有一个职责：
+以某种方式处理掉放在 |\box255| 中的素材。
 
-The current output routine is defined by the value of ^|\output|
-\ctsref{\output}, which is a list of \refterm{tokens:token}.  When \TeX\
-is ready to produce a page, it just expands the token list.
+%The current output routine is defined by the value of ^|\output|
+%\ctsref{\output}, which is a list of \refterm{tokens:token}.  When \TeX\
+%is ready to produce a page, it just expands the token list.
+当前的输出例行程序由 ^|\output|\ctsref{\output}的值定义，它是一个\refterm{记号}列。
+当 \TeX\ 准备好生成页面时，它就展开该记号列。
 
-You can make some simple changes to the actions of the \plainTeX\
-output routine without actually modifying it.  For example, by assigning
-a list of \refterm{tokens:token} to |\headline| or
-|\footline| \ctsref{\footline} you can have \TeX\ produce a different
-header or footer than it ordinarily would.
+%You can make some simple changes to the actions of the \plainTeX\
+%output routine without actually modifying it.  For example, by assigning
+%a list of \refterm{tokens:token} to |\headline| or
+%|\footline| \ctsref{\footline} you can have \TeX\ produce a different
+%header or footer than it ordinarily would.
+实际上不用修改 \plainTeX\ 的输出例行程序，你就能对它的行为做出一些简单改动。
+例如，通过赋予一个记号列给 |\headline| 或 |\footline|\ctsref{\footline}，%
+你就可以让 \TeX\ 生成和通常情形不同的页眉或页脚。
 
-The output routine is also
-responsible for collecting any \refterm{insertions:insertion};
-combining those insertions and any
-``decorations'' such as headers and
-footers with the main contents of the page and packaging all
-of this material in a box; and
-eventually sending that box to the \dvifile\
+%The output routine is also
+%responsible for collecting any \refterm{insertions:insertion};
+%combining those insertions and any
+%``decorations'' such as headers and
+%footers with the main contents of the page and packaging all
+%of this material in a box; and
+%eventually sending that box to the \dvifile\
+%^^{\dvifile//material from output routine}
+%with the ^|\shipout|
+%command \ctsref{\shipout}.
+%Although this is what an output routine most often does,
+%a special-purpose output routine might behave differently.
+%\endconcept
+输出例行程序也负责收集任何\refterm{插入项}；
+它将这些插入项和任何“装饰”（比如页眉页脚）合并到页面主要内容中，
+并将所有这些素材包装在一个盒子里；
+最后它用 ^|\shipout| 命令\ctsref{\shipout}将这个盒子送到 \dvifile 中。
 ^^{\dvifile//material from output routine}
-with the ^|\shipout|
-command \ctsref{\shipout}.
-Although this is what an output routine most often does,
-a special-purpose output routine might behave differently.
+虽然输出例行程序大多是这样运行的，但有特定用途的输出例行程序会有不同表现。
 \endconcept
 
 
-\conceptindex{output streams}
-\concept {output stream}
+%\conceptindex{output streams}
+%\concept {output stream}
+\concept {输出流}
 
+%\margin{This concept was out of order.}
+%See \conceptcit{file}.
+%\endconcept
 \margin{This concept was out of order.}
-See \conceptcit{file}.
+见\conceptcit{文件}。
 \endconcept
 
 
@@ -5466,7 +5520,8 @@ assembling either a
 \endconcept
 
 
-\concept{vertical mode}
+%\concept{vertical mode}
+\concept{竖直模式}
 
 ^^{vboxes//vertical mode for} When \TeX\ is assembling either a
 \refterm{vbox} or the main vertical list from which pages are derived,

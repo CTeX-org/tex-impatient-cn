@@ -1001,8 +1001,8 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 \TeX\ 将^{盒子}一层层放入其他盒子中\seeconcept{box}，
 这一整套盒子构造了一个页面^^{页面}。
 每个排版字符占用一个盒子，整个页面也一样。
-盒子中不仅包含更小的盒子，也包含\emph{粘连} ^^{粘连}
-(\xref{glue})和一些其他东西。
+盒子中不仅包含更小的盒子，也包含\emph{粘连}^^{粘连}
+（\xref{粘连}）和一些其他东西。
 粘连生成小盒子之间的间距。
 粘连的一个重要属性在于它可以伸展和收缩；
 因此通过伸缩盒子中的粘连，\TeX\ 可以让盒子变大或变小。
@@ -1044,11 +1044,11 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 事实上，\TeX\ 的胃刚开始将段落看成一个很长的行。
 它插入\emph{断行点}以将段落分为长度合适的一些行，
 ^^{断行}
-通过复杂的分析以找到最佳的断行点的集合\seeconcept{line break}。
+通过复杂的分析以找到最佳的断行点的集合\seeconcept{断行点}。
 \TeX\ 的胃也执行类似但简单些的分析以将一些行组成页面。
 基本上，胃累加各行直到页面上放不下更多的行。
 然后它选择一个分页位置，将该分页位置之前的各行放在当前页面，
-将之后的各行留给下个页面\seeconcept{page break}。%
+将之后的各行留给下个页面\seeconcept{分页点}。%
 ^^{分页//由 \TeX\ 的胃插入}
 
 %When \TeX\ is assembling an entity from a list of items (boxes, glue, etc.),
@@ -1067,7 +1067,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 %within a paragraph and display math mode for assembling math formulas that are
 %displayed on lines by themselves (see ``Math formulas'', \xref{mathform}).
 在 \TeX\ 组装一个列表项（盒子，粘连等）中的某个东西时，
-它总处于六种\emph{模式}^^{模式}（\xref{mode}）的其中一种模式中。
+它总处于六种\emph{模式}^^{模式}（\xref{模式}）的其中一种模式中。
 它所组装的东西的类型定义了它所在的模式。
 首先有两种普通模式：普通水平模式用于组装段落（在它们分为多行之前），
 普通竖直模式用于组装页面。
