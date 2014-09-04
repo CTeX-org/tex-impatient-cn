@@ -797,7 +797,8 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 
 
 \bookmark{2}{以B开头}
-\concept badness
+%\concept badness
+\concept 劣度
 
 The \defterm{badness} of a line is a measure of how far the interword
 spaces ^^{interword spacing}
@@ -1476,77 +1477,155 @@ note that they end the control word.
 %\concept {decimal constant}
 \concept {小数}
 
-参见\conceptcit{数}。
+见\conceptcit{数}。
 \endconcept
 
-\conceptindex{delimiters}
-\concept delimiter
 
-A \defterm{delimiter} is a character
-that is intended to be used as
-a visible boundary of a math formula.
-The essential property of a delimiter is that \TeX\ can adjust
-its size according
-to the vertical size (\refterm{height} plus \refterm{depth})
-of the subformula.
-However, \TeX\ performs the adjustment only if the delimiter
-appears in a ``delimiter context'', namely, as an argument to
-one of the commands ^|\left|,
-^|\right|,
-|\over!-with!-delims|,
-|\atop!-with!-delims|,
-or |\above!-with!-delims|
+%\conceptindex{delimiters}
+%\concept delimiter
+\concept 定界符
+
+%A \defterm{delimiter} is a character
+%that is intended to be used as
+%a visible boundary of a math formula.
+%The essential property of a delimiter is that \TeX\ can adjust
+%its size according
+%to the vertical size (\refterm{height} plus \refterm{depth})
+%of the subformula.
+%However, \TeX\ performs the adjustment only if the delimiter
+%appears in a ``delimiter context'', namely, as an argument to
+%one of the commands ^|\left|,
+%^|\right|,
+%|\over!-with!-delims|,
+%|\atop!-with!-delims|,
+%or |\above!-with!-delims|
+%^^|\overwithdelims|
+%^^|\atopwithdelims|
+%^^|abovewithdelims|
+%\margin{Footnote deleted}
+%(see \pp\xrefn{\overwithdelims},~\xrefn{\left}).
+%The delimiter contexts also include any \refterm{argument}
+%to a \refterm{macro} that uses the argument in a delimiter context.
+\defterm{定界符}（delimiter）是一个作为数学公式的可见边界的字符。
+\TeX\ 可以根据子公式的竖直尺寸（\refterm{高度}加\refterm{深度}）调整定界符大小，
+这就是定界符的本质特性。
+然而，要让 \TeX\ 对定界符作调整，定界符必须出现在“定界环境”中，
+即作为这些命令 ^|\left|、^|\right|、|\over!-with!-delims|、|\atop!-with!-delims|
+或 |\above!-with!-delims|（见\xrefn{\overwithdelims}，\xrefn{\left}页）之一的参量。
 ^^|\overwithdelims|
 ^^|\atopwithdelims|
 ^^|abovewithdelims|
 \margin{Footnote deleted}
-(see \pp\xrefn{\overwithdelims},~\xrefn{\left}).
-The delimiter contexts also include any \refterm{argument}
-to a \refterm{macro} that uses the argument in a delimiter context.
+定界环境也包括在定界环境中使用参量的\refterm{宏}的任何\refterm{参量}。
 
-For example, the left and right
-parentheses are delimiters.
-If you use ^{parentheses} in a delimiter context
-around a formula, \TeX\ makes the parentheses big
-enough to enclose the \refterm{box} that contains the formula (as long as the
-\refterm{fonts:font} you're using have big enough parentheses).
-For example:
+%For example, the left and right
+%parentheses are delimiters.
+%If you use ^{parentheses} in a delimiter context
+%around a formula, \TeX\ makes the parentheses big
+%enough to enclose the \refterm{box} that contains the formula (as long as the
+%\refterm{fonts:font} you're using have big enough parentheses).
+%For example:
+%\csdisplay
+%$$ \left( a \over b \right) $$
+%|
+%yields:
+%\centereddisplays $$\left (a \over b \right ) $$
+%Here \TeX\ has made the parentheses big enough to accommodate the fraction.
+%But if you write, instead:
+%\csdisplay
+%$$({a \over b})$$
+%|
+%you'll get:
+%$$({a \over b})$$
+%Since the parentheses aren't in a delimiter context,
+%they are \emph{not} enlarged.
+举例说，左圆括号和右圆括号是定界符。
+如果你在定界环境中用^{圆括号}围住一个公式，
+\TeX\ 将增加圆括号的大小以让它们框住包含该公式的\refterm{盒子}%
+（只要你所使用的\refterm{字体}有足够大的圆括号）。
+例如：
 \csdisplay
 $$ \left( a \over b \right) $$
 |
-yields:
+得到下面的结果：
 \centereddisplays $$\left (a \over b \right ) $$
-Here \TeX\ has made the parentheses big enough to accommodate the fraction.
-But if you write, instead:
+这里 \TeX\ 已经调整了圆括号的大小以框住分数。
+但是如果你改为这样写：
 \csdisplay
 $$({a \over b})$$
 |
-you'll get:
+将会得到下面的结果：
 $$({a \over b})$$
-Since the parentheses aren't in a delimiter context,
-they are \emph{not} enlarged.
+由于圆括号不在定界环境中，\TeX\ \emph{不会}增加它们的大小。
 
-Delimiters come in pairs:
-an opening delimiter at the left of the subformula
-and a closing delimiter at its right.
-You can explicitly choose a larger height for a
-delimiter with the commands ^|\bigl|, ^|\bigr|, and their
-relatives \ctsref{\bigl}.\footnote
-{\PlainTeX\ defines the various |\big| commands by using |\left| and |\right|
-to provide a delimiter context.  It sets the size by
-constructing an empty formula with the desired height.}
-For instance, in order to get the
-displayed formula:
+%Delimiters come in pairs:
+%an opening delimiter at the left of the subformula
+%and a closing delimiter at its right.
+%You can explicitly choose a larger height for a
+%delimiter with the commands ^|\bigl|, ^|\bigr|, and their
+%relatives \ctsref{\bigl}.\footnote
+%{\PlainTeX\ defines the various |\big| commands by using |\left| and |\right|
+%to provide a delimiter context.  It sets the size by
+%constructing an empty formula with the desired height.}
+%For instance, in order to get the
+%displayed formula:
+%$$\bigl(f(x) - x \bigr) \bigl(f(y) - y \bigr)$$
+定界符必须成对出现：一个开定界符放在子公式左边，
+另一个闭定界符放在子公式右边。
+你可以用 ^|\bigl|，^|\bigr| 及其他相关命令\ctsref{\bigl}直接选择较大号的定界符。
+\footnote
+{\PlainTeX\ 定义了各种 |\big| 命令，其中用 |\left| 和 |\right| 提供定界环境。
+它通过构造所需尺寸的空公式来设定尺寸。}
+例如，要得到下面的陈列公式：
 $$\bigl(f(x) - x \bigr) \bigl(f(y) - y \bigr)$$
 
-\noindent in which the outer parentheses are a little bigger than the inner
-ones, you should write:
+%\noindent in which the outer parentheses are a little bigger than the inner
+%ones, you should write:
+\noindent 其中外层的圆括号比内层的稍微大一点，你应该这样写：
 
+%\csdisplay
+%$$\bigl( f(x) - x \bigr) \bigl( f(y) - y \bigr)$$
+%|
 \csdisplay
 $$\bigl( f(x) - x \bigr) \bigl( f(y) - y \bigr)$$
 |
 
-The $22$ \plainTeX\ delimiters, shown at their normal size, are:
+%The $22$ \plainTeX\ delimiters, shown at their normal size, are:
+%\display{%
+%$( \>) \>[ \>] \>\{ \>\}
+%\>\lfloor \>\rfloor \>\lceil \>\rceil
+%\>\langle \>\rangle \>/ \>\backslash
+%\>\vert \>\Vert
+%\>\uparrow \>\downarrow \>\updownarrow
+%\>\Uparrow \>\Downarrow \>\Updownarrow$}
+%^^|)| ^^|)| ^^|[| ^^|]| ^^|\lbrack| ^^|\rbrack|
+%^^|\{| ^^|\}| ^^|\lbrace| ^^|\rbrace|
+%^^|\lfloor| ^^|\rfloor|  ^^|\lceil|  ^^|\rceil|
+%^^|\langle|  ^^|\rangle|  ^^|/|  ^^|\backslash|
+%^^|\vert|  ^^|\Vert|
+%^^|\uparrow|  ^^|\downarrow|  ^^|\updownarrow|
+%^^|\Uparrow|  ^^|\Downarrow|  ^^|\Updownarrow|
+%\noindent
+%Here they are at the largest size provided explicitly by \plainTeX\
+% (the |\Biggl|, |\Biggr|, etc., versions):
+%\nobreak\vskip .5\abovedisplayskip
+%\display{%
+%$\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
+%\>\Biggl\{ \>\Biggr\} \>\Biggl\lfloor \>\Biggr\rfloor
+%\>\Biggl\lceil \>\Biggr\rceil
+%\>\Biggl\langle \>\Biggr\rangle
+%\>\Biggm/ \>\Biggm\backslash
+%\>\Biggm\vert \>\Biggm\Vert
+%\>\Biggm\uparrow \>\Biggm\downarrow \>\Biggm\updownarrow
+%\>\Biggm\Uparrow \>\Biggm\Downarrow \>\Biggm\Updownarrow$}
+%\vskip .5\belowdisplayskip
+%\noindent
+%The delimiters (except for `|(|', `|)|', and
+%`|/|')
+%are among the symbols listed on
+%pages~\xrefn{\lbrace}--\xrefn{\Uparrow}.
+%They are listed in one place on \knuth{page~146}.
+\PlainTeX\ 中有 $22$ 个定界符，用它们的自然尺寸显示如下：
 \display{%
 $( \>) \>[ \>] \>\{ \>\}
 \>\lfloor \>\rfloor \>\lceil \>\rceil
@@ -1562,8 +1641,7 @@ $( \>) \>[ \>] \>\{ \>\}
 ^^|\uparrow|  ^^|\downarrow|  ^^|\updownarrow|
 ^^|\Uparrow|  ^^|\Downarrow|  ^^|\Updownarrow|
 \noindent
-Here they are at the largest size provided explicitly by \plainTeX\
- (the |\Biggl|, |\Biggr|, etc., versions):
+而用 \plainTeX\ 提供的最大尺寸（|\Biggl|，|\Biggr| 形式）显示如下：
 \nobreak\vskip .5\abovedisplayskip
 \display{%
 $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
@@ -1576,98 +1654,145 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 \>\Biggm\Uparrow \>\Biggm\Downarrow \>\Biggm\Updownarrow$}
 \vskip .5\belowdisplayskip
 \noindent
-The delimiters (except for `|(|', `|)|', and
-`|/|')
-are among the symbols listed on
-pages~\xrefn{\lbrace}--\xrefn{\Uparrow}.
-They are listed in one place on \knuth{page~146}.
+这些定界符（`|(|'，`|)|' 和 `|/|' 除外）都出现在%
+第~\xrefn{\lbrace}--\xrefn{\Uparrow}页的符号列表中。
+它们也都出现在\knuth{第~146~页}的列表中。
 
-A delimiter can belong to any class.
+%A delimiter can belong to any class.
+%^^{class//of a delimiter}
+%For a delimiter that you enlarge with
+%|\bigl|, |\bigr|, etc., the class is determined by the command:
+%``opener'' for |l|-commands, ``closer'' for |r|-commands,
+%``relation'' for |m|-commands, and ``ordinary symbol'' for |g|-commands,
+%e.g., |\Big|.
+定界符可以属于任何类。
 ^^{class//of a delimiter}
-For a delimiter that you enlarge with
-|\bigl|, |\bigr|, etc., the class is determined by the command:
-``opener'' for |l|-commands, ``closer'' for |r|-commands,
-``relation'' for |m|-commands, and ``ordinary symbol'' for |g|-commands,
-e.g., |\Big|.
+对于用 |\bigl| 和 |\bigr| 等命令增加大小的定界符，它所属的类由该命令决定：
+|l|-命令属于“开符号”，|r|-命令属于“闭符号”，
+|m|-命令属于“关系符号”，|g|-命令比如 |\Big| 属于“普通符号”。
 
-You can obtain a delimiter in two different ways:
+%You can obtain a delimiter in two different ways:
+%\olist
+%\li You can make a character be a delimiter by assigning it a
+%nonnegative delimiter code
+%\bix^^{delimiter codes}
+%(see below) with the ^|\delcode| command (\xref\delcode).
+%Thereafter the character acts as a delimiter whenever you use it in a
+%delimiter context.\footnote{%
+%It's possible to use a character with a nonnegative delimiter code in
+%a context where it isn't a delimiter. In this case \TeX\ doesn't perform the
+%search; instead it just uses the character in the ordinary way
+%(see \knuth{page~156}).}
+%\li You can produce a delimiter explicitly with the ^|\delimiter| command
+%(\xref\delimiter), in analogy to the way that you can produce an ordinary
+%character with the |\char| command or a math character with the |\mathchar|
+%command.
+%The |\delimiter| command uses the same delimiter codes that are used in a
+%|\delcode| table entry, but with an extra digit in front to indicate a
+%class.
+%It's rare to use |\delimiter| outside of a macro definition.
+%\endolist
+你可以用两种不同方法得到一个定界符：
 \olist
-\li You can make a character be a delimiter by assigning it a
-nonnegative delimiter code
+\li 通过用 ^|\delcode| 命令（\xref\delcode ）给一个字符赋予非负定界码（见下面），
 \bix^^{delimiter codes}
-(see below) with the ^|\delcode| command (\xref\delcode).
-Thereafter the character acts as a delimiter whenever you use it in a
-delimiter context.\footnote{%
-It's possible to use a character with a nonnegative delimiter code in
-a context where it isn't a delimiter. In this case \TeX\ doesn't perform the
-search; instead it just uses the character in the ordinary way
-(see \knuth{page~156}).}
-\li You can produce a delimiter explicitly with the ^|\delimiter| command
-(\xref\delimiter), in analogy to the way that you can produce an ordinary
-character with the |\char| command or a math character with the |\mathchar|
-command.
-The |\delimiter| command uses the same delimiter codes that are used in a
-|\delcode| table entry, but with an extra digit in front to indicate a
-class.
-It's rare to use |\delimiter| outside of a macro definition.
+你可以将这个字符变成定界符。
+这样，如果你在定界环境中使用这个字符，它就和定界符一样。\footnote{%
+在非定界环境中使用定界码非负的字符也是可以的。
+此时 \TeX\ 将不会执行搜索，而仅仅以普通方式使用该字符（见\knuth{第~156~页}）。}
+\li 你可以用 ^|\delimiter| 命令（\xref\delimiter ）直接生成一个定界符，
+这与你用 |\char| 命令生成一个普通字符或者用 |\mathchar| 命令生成一个数学字符类似。
+|\delimiter| 命令使用的定界码和 |\delcode| 表格项用到的一样，
+但前面多了一个数字用于标示所属的类。
+除了在宏定义中，其他地方很少用到 |\delimiter| 命令。
 \endolist
 
-A delimiter code tells
-\TeX\ how to search for an appropriate output character to represent
-a delimiter.
-The rules for this search are rather complicated
-(see \knuth{pages~156 and 442}).
-A complete understanding of these rules requires knowing
-about the organization of font ^{metrics file}s, a topic that is not just beyond
-the scope of this book but beyond the scope of \texbook\ as well.
+%A delimiter code tells
+%\TeX\ how to search for an appropriate output character to represent
+%a delimiter.
+%The rules for this search are rather complicated
+%(see \knuth{pages~156 and 442}).
+%A complete understanding of these rules requires knowing
+%about the organization of font ^{metrics file}s, a topic that is not just beyond
+%the scope of this book but beyond the scope of \texbook\ as well.
+定界码（delimiter code）告诉 \TeX\ 如何搜索合适的输出字符来表示一个定界符。
+这些搜索规则相当复杂（见\knuth{第~156 和 442~页}）。
+要完全理解这些规则需要熟悉字体^{度量文件}的结构，
+而这个主题不仅超出本书范围，也超出 \texbook\ 的范围。
 
-In essence the search works like this.  The delimiter code specifies a
-``small'' output character and a ``large'' output character by
-providing a \refterm{font} position and a font \refterm{family} for each
-(see \xref\delcode).
-Using this information, \TeX\ can find (or construct)
-larger and larger versions of the delimiter.  \TeX\ first tries
-different sizes (from small to large)
-of the ``small'' character in the ``small'' font
-and then
-different sizes (also from small to large)
-of the ``large'' character in the ``large'' font,
-seeking one whose height plus depth is sufficiently large.
-If none of the characters it finds are large
-enough, it uses the largest one that it finds.
-It's possible that
-the small character, the large character, or both have been left unspecified
-(indicated by a zero in the appropriate part of the delimiter code).
-If only one character
-has been specified, \TeX\ uses that one. If neither has been specified,
-it replaces the delimiter by a space of width ^|\nulldelimiterspace|.
+%In essence the search works like this.  The delimiter code specifies a
+%``small'' output character and a ``large'' output character by
+%providing a \refterm{font} position and a font \refterm{family} for each
+%(see \xref\delcode).
+%Using this information, \TeX\ can find (or construct)
+%larger and larger versions of the delimiter.  \TeX\ first tries
+%different sizes (from small to large)
+%of the ``small'' character in the ``small'' font
+%and then
+%different sizes (also from small to large)
+%of the ``large'' character in the ``large'' font,
+%seeking one whose height plus depth is sufficiently large.
+%If none of the characters it finds are large
+%enough, it uses the largest one that it finds.
+%It's possible that
+%the small character, the large character, or both have been left unspecified
+%(indicated by a zero in the appropriate part of the delimiter code).
+%If only one character
+%has been specified, \TeX\ uses that one. If neither has been specified,
+%it replaces the delimiter by a space of width ^|\nulldelimiterspace|.
+%\eix^^{delimiter codes}
+本质上搜索过程是这样运行的。定界码给出了字体\refterm{族}和\refterm{字体}位置，
+从而指定了一个“小号”输出字符和一个“大号”输出字符（见\xref\delcode ）。
+利用这些信息，\TeX\ 能够找到（或者构造）定界符的越来越大的版本。
+\TeX\ 首先尝试“小号”字体的“小号”字符的不同尺寸（从小到大），
+然后是“大号”字体的“大号”字符的不同尺寸（同样是从小到大），
+寻找一个高度加上深度足够大的字符。
+如果所找到的字符都不够大，它就用最大那个。
+也有可能小号字符或大号字符，或两者都没指定（即定界码的对应部分为零）。
+如果只指定了一个字符，\TeX\ 使用那一个。如果两个字符都没指定，
+它就将定界符替换为宽度为 ^|\nulldelimiterspace| 间隔。
 \eix^^{delimiter codes}
 
 \endconcept
 
 
-\concept demerits
+%\concept demerits
+\concept 缺陷
 
-\TeX\ uses \refterm{demerits} as a measure of how undesirable a line is
-when it's breaking a paragraph into lines \seeconcept{line break}.
+%\TeX\ uses \refterm{demerits} as a measure of how undesirable a line is
+%when it's breaking a paragraph into lines \seeconcept{line break}.
+%^^{line breaks//demerits for}
+%The demerits of a line are affected both by the \refterm{badness} of the line
+%and by \refterm{penalties:penalty} associated with the line.
+%^^{badness}
+%\TeX's goal in choosing a particular arrangement of lines is to minimize the
+%total demerits for the paragraph, which it computes by adding up the demerits
+%for the individual lines.
+%See \knuth{pages~97--98} for the details of how \TeX\
+%breaks a paragraph into lines.
+%\TeX\ does not use demerits when it's choosing page breaks; instead, it uses
+%a similar measure known as the ``cost'' of a particular page break.
+%\endconcept
+\TeX\ 用\refterm{缺陷}（demerits）度量它分段为行时文本行的不良度\seeconcept{断行点}。
 ^^{line breaks//demerits for}
-The demerits of a line are affected both by the \refterm{badness} of the line
-and by \refterm{penalties:penalty} associated with the line.
+文本行的缺陷同时受该行的\refterm{劣度}和它带有的\refterm{惩罚}影响。
 ^^{badness}
-\TeX's goal in choosing a particular arrangement of lines is to minimize the
-total demerits for the paragraph, which it computes by adding up the demerits
-for the individual lines.
-See \knuth{pages~97--98} for the details of how \TeX\
-breaks a paragraph into lines.
-\TeX\ does not use demerits when it's choosing page breaks; instead, it uses
-a similar measure known as the ``cost'' of a particular page break.
+\TeX\ 的目标是合理地分配各行文本，以让段落的总缺陷最小，
+其中总缺陷由各行的缺陷加起来。
+参见 \knuth{第~97--98~页}以了解 \TeX\ 分段为行的细节。
+\TeX\ 选择分页点时不使用缺陷；它使用的是被称为分页“代价”的类似概念。
 \endconcept
 
-\concept depth
 
+%\concept depth
+\concept 深度
+
+%^^{boxes//depth of}
+%The \defterm{depth} of a \refterm{box} is the distance that the box extends
+%below its \refterm{baseline}.
+%\endconcept
 ^^{boxes//depth of}
-The \defterm{depth} of a \refterm{box} is the distance that the box extends
-below its \refterm{baseline}.
+盒子的\defterm{深度}（depth）是盒子在\refterm{基线}之下的距离。
 \endconcept
 
 
@@ -1676,15 +1801,35 @@ below its \refterm{baseline}.
 \conceptindex{尺寸}
 \concept 尺寸
 
-A \defterm{dimension} specifies a distance, that is, a linear measure of
-space.  You use dimensions to specify sizes of things, such as the length
-of a line.  Printers in English-speaking countries traditionally measure
-distance in points and picas, while printers in continental Europe
-traditionally measure distance in did\^ot points and ciceros.  You can
-use these units or others, such as inches, that may be more
-familiar to you.  The font-independent
-^{units of measure} that \TeX\ understands are:
+%A \defterm{dimension} specifies a distance, that is, a linear measure of
+%space.  You use dimensions to specify sizes of things, such as the length
+%of a line.  Printers in English-speaking countries traditionally measure
+%distance in points and picas, while printers in continental Europe
+%traditionally measure distance in did\^ot points and ciceros.  You can
+%use these units or others, such as inches, that may be more
+%familiar to you.  The font-independent
+%^{units of measure} that \TeX\ understands are:
+\defterm{尺寸}（dimension）指定了一个距离，即对空间的长度测量。
+你用尺寸指定事物的大小，比如文本行的长度。
+英语国家的打印机习惯用点（point）和派卡（pica）来测量距离，
+而欧洲大陆的打印机习惯用迪多点（ did\^ot points）和西塞罗（cicero）。
+你可以使用这些单位，或者其他你更熟悉的单位，比如英寸。
+\TeX\ 能够识别的与字体无关的^{度量单位}有如下这些：
 
+%\xrdef{dimdefs}
+%\nobreak\vskip\abovedisplayskip
+%\halign{\indent\hfil\tt #\qquad&#\hfil\cr
+%pt&^{point} (72.27 points = 1 inch)\cr
+%pc&^{pica} (1 pica = 12 points)\cr
+%bp&big point (72 big points = 1 inch)\cr
+%in&^{inch}\cr
+%cm&^{centimeter} (2.54 centimeters = 1 inch)\cr
+%mm&^{millimeter} (10 millimeters = 1 centimeter)\cr
+%dd&^{\didotpt} (1157 {\didotpt}s = 1238 points)\cr
+%cc&^{cicero} (1 cicero = 12 {\didotpt}s)\cr
+%sp&^{scaled point} (65536 scaled points = 1 point)\cr
+%}
+%\vskip\belowdisplayskip
 \xrdef{dimdefs}
 \nobreak\vskip\abovedisplayskip
 \halign{\indent\hfil\tt #\qquad&#\hfil\cr
@@ -1700,62 +1845,99 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 }
 \vskip\belowdisplayskip
 
-Two additional units of measure are associated with every font: `^|ex|',
-a vertical measure usually about the height of the letter `x'
-in the font, and `^|em|', a
-horizontal measure usually equal to the point size of the font and
-about the width of the letter `M' in the font. Finally,
-\TeX\ provides three ``infinite'' units of measure: `^|fil|', `^|fill|', and
-`^|filll|', in increasing order of~strength.
+%Two additional units of measure are associated with every font: `^|ex|',
+%a vertical measure usually about the height of the letter `x'
+%in the font, and `^|em|', a
+%horizontal measure usually equal to the point size of the font and
+%about the width of the letter `M' in the font. Finally,
+%\TeX\ provides three ``infinite'' units of measure: `^|fil|', `^|fill|', and
+%`^|filll|', in increasing order of~strength.
+还有两个与字体相关的度量单位：
+`^|ex|' 是一个纵向尺寸，通常与字体中字母 `x' 的高度相关；
+`^|em|' 是一个横向尺寸，通常等于字体的大小，与字体中字母 `M' 的宽度相关。
+最后，\TeX\ 还提供了三个“无限的”度量单位：`^|fil|'，`^|fill|' 和 `^|filll|'，
+它们的强度的阶依次增大。
 
-A dimension is written as a ^{factor}, i.e, a multiplier,
-followed by a unit of measure.
+%A dimension is written as a ^{factor}, i.e, a multiplier,
+%followed by a unit of measure.
+%^^{units of measure}
+%The factor can be either a whole \refterm{number} or
+%a \refterm{decimal constant} containing a decimal point
+%or decimal comma.
+%The factor can be preceded by a plus or minus sign, so a dimension
+%can be positive or negative.
+%^^{dimensions//negative}
+%The unit of measure must be there, even if the number is
+%zero.  Spaces between the number and the unit of measure are permitted
+%but not required.  You'll find a precise definition of a
+%dimension on \knuth{page~270}.  Here are some examples of dimensions:
+尺寸可以用一个^{因子}，即乘数，后面加上度量单位来表示。
 ^^{units of measure}
-The factor can be either a whole \refterm{number} or
-a \refterm{decimal constant} containing a decimal point
-or decimal comma.
-The factor can be preceded by a plus or minus sign, so a dimension
-can be positive or negative.
+因子可以是一个整\refterm{数}，或是一个带有小数点或小数逗号的\refterm{小数}。
+因子之前可以带有加号或减号，因此尺寸可正可负。
 ^^{dimensions//negative}
-The unit of measure must be there, even if the number is
-zero.  Spaces between the number and the unit of measure are permitted
-but not required.  You'll find a precise definition of a
-dimension on \knuth{page~270}.  Here are some examples of dimensions:
+即使数值为零，度量单位也必须写上。数值和度量单位之间可以有也可以没有空格。
+在\knuth{第~270~页}中有尺寸的精确定义。下面这些是尺寸的例子：
 
+%\csdisplay
+%5.9in    0pt    -2,5 pc    2fil
+%|
+%The last of these represents a first-order infinite distance.
 \csdisplay
 5.9in    0pt    -2,5 pc    2fil
 |
-The last of these represents a first-order infinite distance.
+其中最后一个尺寸表示一个一阶无限距离。
 
-An infinite distance outweighs any finite distance or any weaker infinite
-distance.  If you add |10in| to |.001fil|, you get |.001fil|; if you add
-|2fil| to |-1fill| you get |-1fill|; and so forth.
-\TeX\ accepts infinite distances
-only when you are specifying the \refterm{stretch} and \refterm{shrink}
-of \refterm{glue}.
+%An infinite distance outweighs any finite distance or any weaker infinite
+%distance.  If you add |10in| to |.001fil|, you get |.001fil|; if you add
+%|2fil| to |-1fill| you get |-1fill|; and so forth.
+%\TeX\ accepts infinite distances
+%only when you are specifying the \refterm{stretch} and \refterm{shrink}
+%of \refterm{glue}.
+无限距离远远大于任何有限距离或者任何低阶的无限距离。
+如果你给 |.001fil| 加上 |10in|，你得到 |.001fil|；
+如果你给 |-1fill| 加上 |2fil|，你得到 |-1fill|，依此类推。
+只有在指定\refterm{粘连}的\refterm{伸长量}和\refterm{收缩量}时，
+才可以使用无限距离。
 
-\TeX\ multiplies all dimensions in your document by a
-\refterm{magnification} factor $f/1000$,
-where $f$ is the value of the ^|\mag| parameter.
+%\TeX\ multiplies all dimensions in your document by a
+%\refterm{magnification} factor $f/1000$,
+%where $f$ is the value of the ^|\mag| parameter.
+%^^{magnification}
+%Since the default value of
+%|\mag| is $1000$, the normal case is that your document is
+%typeset just as specified.  You can specify a dimension as it will be
+%measured in the final document independent of magnification by putting
+%`|true|' in front of the unit.  For instance, `|\kern 8 true pt|'
+%produces a kern of $8$ points whatever the magnification.
+%\endconcept
+\TeX\ 对文档中的所有尺寸都乘以一个\refterm{放大率}因子$f/1000$，
+其中 $f$ 是 ^|\mag| 参数的值。
 ^^{magnification}
-Since the default value of
-|\mag| is $1000$, the normal case is that your document is
-typeset just as specified.  You can specify a dimension as it will be
-measured in the final document independent of magnification by putting
-`|true|' in front of the unit.  For instance, `|\kern 8 true pt|'
-produces a kern of $8$ points whatever the magnification.
+由于 |\mag| 的默认值为 $1000$，在一般情形下文档是照常排版的。
+你可以指定一个与放大率无关的最终文档尺寸，
+只要在度量单位前加上 `|true|'。
+例如，`|\kern 8 true pt|' 生成了一个与放大率无关的 $8$ 点大小的紧排。
 \endconcept
 
 
-\concept {display math}
+%\concept {display math}
+\concept {陈列公式}
 
-The term \defterm{display math} refers to a math formula that \TeX\
-places on a line by itself with extra space above and below
-so as to set it off from the surrounding text.
-A display math formula is enclosed by `|$$|'s.
+%The term \defterm{display math} refers to a math formula that \TeX\
+%places on a line by itself with extra space above and below
+%so as to set it off from the surrounding text.
+%A display math formula is enclosed by `|$$|'s.
+%\ttidxref{$$}
+%\TeX\ reads display math in display math \refterm{mode}.
+%\endconcept
+\defterm{陈列公式}（display math）表示在单独一行显示的公式；
+\TeX 在陈列公式上边和下边添加额外间隔，以隔开周围文本。
+陈列公式两边用 `|$$|' 括起来。
 \ttidxref{$$}
-\TeX\ reads display math in display math \refterm{mode}.
+\TeX\ 在陈列数学\refterm{模式}中读取陈列公式。
 \endconcept
+
 
 \bookmark{2}{以E开头}
 \concept{escape character}
@@ -4121,7 +4303,7 @@ See \conceptcit{file}.
 或者在陈列公式前的分页点，诸如此类
 ——添加惩罚项。
 然后它选择代价最小的分页点，
-其中分页代价由分页点的惩罚值以及所得页面的恶劣度加起来得到
+其中分页代价由分页点的惩罚值以及所得页面的劣度加起来得到
 （代价计算公式可以见\knuth{第~111~页}）。
 如果找到多个代价相同的分页点，它选择最后一个。
 
