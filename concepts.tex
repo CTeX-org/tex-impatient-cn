@@ -2013,8 +2013,9 @@ to assign fonts to that family.
 \endconcept
 
 
-\conceptindex{files}
-\concept file
+%\conceptindex{files}
+%\concept file
+\concept 文件
 
 A \defterm{file} is a stream of information that \TeX\ interprets or
 creates.  Files are managed by the ^{operating system} that supervises your
@@ -2762,66 +2763,101 @@ from hyphenating it.
 \TeX\ will never break it elsewhere.
 \endconcept
 
+
 \bookmark{2}{以I开头}
-\conceptindex{input streams}
-\concept {input stream}
+%\conceptindex{input streams}
+%\concept {input stream}
+\concept {输入流}
 
-See \conceptcit{file}.
+%See \conceptcit{file}.
+%\endconcept
+见\conceptcit{文件}。
 \endconcept
 
-\conceptindex{insertions}
-\concept insertion
+%\conceptindex{insertions}
+%\concept insertion
+\concept 插入项
 
-\looseness = -1
-An \defterm{insertion} is a vertical list containing material
-to be inserted into
-a page when \TeX\ has finished building that page.\footnote
-{\tighten
-\TeX\ itself doesn't
-insert the material---it just makes the material available to
-the output routine, which is then responsible for transferring
-it to the composed page.
+%\looseness = -1
+%An \defterm{insertion} is a vertical list containing material
+%to be inserted into
+%a page when \TeX\ has finished building that page.\footnote
+%{\tighten
+%\TeX\ itself doesn't
+%insert the material---it just makes the material available to
+%the output routine, which is then responsible for transferring
+%it to the composed page.
+%^^{output routine//insertions, treatment of}
+%The only immediate effect of the ^|\insert| command
+%\ctsref{\insert} is to change \TeX's page break calculations so that it
+%will leave room on the page for the inserted material.  Later, when
+%\TeX\ actually breaks the page, it divides the inserted material into
+%two groups: the material that fits on the current page and the material
+%that doesn't.
+%^^{page breaks//insertions at}
+%The material that fits on the page is placed into box registers,
+%one per insertion,
+%and the material that doesn't fit is carried over to the next page.
+%This procedure allows \TeX\ to do such
+%things as distributing parts of a long footnote over several consecutive
+%pages.} Examples of such insertions are footnotes and figures.  The
+%\refterm{\plainTeX} commands for
+%creating insertions are ^|\footnote|, ^|\topinsert|, |\mid!-insert|,
+%^^|\midinsert|
+%and ^|\pageinsert|, as well as the primitive ^|\insert| command
+%itself (\pp\xrefn\footnote--\xrefn{endofinsert}).
+%\TeX's mechanism for handling insertions is rather complicated;
+%see \knuth{pages~122--125} for the details.
+%\endconcept
+\defterm{插入项}（insertion）是一个竖直列表，
+它包含即将在页面建造完成后插入到该页面的素材。\footnote
+{\TeX\ 本身并不插入这些素材——它仅提供这些素材给输出例行程序，
+输出例行程序负责将它们移动到排版出的页面中。
 ^^{output routine//insertions, treatment of}
-The only immediate effect of the ^|\insert| command
-\ctsref{\insert} is to change \TeX's page break calculations so that it
-will leave room on the page for the inserted material.  Later, when
-\TeX\ actually breaks the page, it divides the inserted material into
-two groups: the material that fits on the current page and the material
-that doesn't.
+^|\insert| 命令\ctsref{\insert}仅有的直接效果是，
+改变了 \TeX\ 的分页计算公式以给插入素材留出空间。
+稍后，当 \TeX\ 实际分出了页面时，它将插入素材分为两组：当前页能够放下的和无法放下的。
 ^^{page breaks//insertions at}
-The material that fits on the page is placed into box registers,
-one per insertion,
-and the material that doesn't fit is carried over to the next page.
-This procedure allows \TeX\ to do such
-things as distributing parts of a long footnote over several consecutive
-pages.} Examples of such insertions are footnotes and figures.  The
-\refterm{\plainTeX} commands for
-creating insertions are ^|\footnote|, ^|\topinsert|, |\mid!-insert|,
+当前页能够放下的素材被放入盒子寄存器中，每个插入项放入一个寄存器，
+而无法放下的素材则保留到下一页中。
+此过程允许 \TeX\ 将长脚注分到连续多个页面中。}
+脚注和图片就是插入项的例子。
+在\refterm{\plainTeX} 中，用于创建插入项的命令有
+^|\footnote|，^|\topinsert|，|\mid!-insert| 和 ^|\pageinsert|，
 ^^|\midinsert|
-and ^|\pageinsert|, as well as the primitive ^|\insert| command
-itself (\pp\xrefn\footnote--\xrefn{endofinsert}).
-\TeX's mechanism for handling insertions is rather complicated;
-see \knuth{pages~122--125} for the details.
+以及原始命令 ^|\insert| 本身（见~\xrefn\footnote--\xrefn{endofinsert}~页）。
+\TeX\ 插入项的处理机制是相当复杂的；你可以在\knuth{第~122--125~页}中看到详细介绍。
 \endconcept
 
 
-\concept {interline glue}
+%\concept {interline glue}
+\concept {行间粘连}
 
-\defterm{Interline glue} is the glue that \TeX\ inserts in front of every
-\refterm{box} in a \refterm{vertical list} except for the first one.
-The interline glue is ordinarily specified so as to maintain a constant
-distance between the baselines of the boxes.
-Its value is jointly determined by the ^|\baselineskip|,
-^|\lineskip|, and ^|\lineskiplimit| parameters \ctsref{\baselineskip}.
+%\defterm{Interline glue} is the glue that \TeX\ inserts in front of every
+%\refterm{box} in a \refterm{vertical list} except for the first one.
+%The interline glue is ordinarily specified so as to maintain a constant
+%distance between the baselines of the boxes.
+%Its value is jointly determined by the ^|\baselineskip|,
+%^|\lineskip|, and ^|\lineskiplimit| parameters \ctsref{\baselineskip}.
+%\endconcept
+\defterm{行间粘连}（interline glue）是 \TeX\ 在\refterm{竖直列表}的每个盒子%
+（第一个盒子除外）之前插入的粘连。
+通常指定行间粘连以让各盒子基线间保持相同的距离。
+行间粘连的值由 ^|\baselineskip|，^|\lineskip| 和 ^|\lineskiplimit|
+这三个参数合起来确定\ctsref{\baselineskip}。
 \endconcept
 
 
-\conceptindex{items}
-\concept item
+%\conceptindex{items}
+%\concept item
+\concept 项目
 
-The term \defterm{item} is often used to refer to a component of
-a horizontal, vertical, or math  list, i.e., a list of items that
-\TeX\ is building while it is in a horizontal, vertical, or math mode.
+%The term \defterm{item} is often used to refer to a component of
+%a horizontal, vertical, or math  list, i.e., a list of items that
+%\TeX\ is building while it is in a horizontal, vertical, or math mode.
+%\endconcept
+\defterm{项目}（item）这个术语常用来表示水平，竖直或数学列表
+（即 \TeX\ 在水平，竖直或数学模式中建造的项目列表）的一个组成元素。
 \endconcept
 
 
