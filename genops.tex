@@ -117,7 +117,7 @@
 
 %See \conceptcit{font} and
 %\conceptcit{magnification} for further information.
-更多信息请参见\conceptcit{font}和\conceptcit{放大率}.
+更多信息请参见\conceptcit{字体}和\conceptcit{放大率}.
 
 %\example
 %\font\tentt = cmtt10
@@ -192,7 +192,7 @@ Finally we use {\bigttfont big CM typewriter}.
 这些参数的值, 都在 \<font> 所使用的字体信息文件中定义了, 但是你可以在执行 \TeX\ 时得到或改变这些值.
 这些参数的数值及其意义为:
 \display{\halign{\hfil#\hfil\quad&#\hfil\cr
-\it 数值&\it 义意\cr
+\it 数值&\it 意义\cr
 \noalign{\vskip 1\jot}%
 1&字体每点的倾斜程度\cr
 2&词间距\cr
@@ -830,8 +830,8 @@ $a \la b$
 %
 \cts def {\<control sequence> \<parameter text> \rqbraces{\<replacement text>}}
 \explain
-这个命定根据 \<parameter text> 和 \<replacement text> 把 \<control sequence> 定义为一个\minref{宏}.
-请参阅  \xrefpg{macro} 获取关于如何定义宏的完整信息.
+这个命令根据 \<parameter text> 和 \<replacement text> 把 \<control sequence> 定义为一个\minref{宏}。
+请参阅\xrefpg{宏}获取关于如何定义宏的完整信息。
 \example
 \def\add#1+#2=?{#1+#2&=
    \count255=#1 \advance\count255 by #2 \number\count255\cr}

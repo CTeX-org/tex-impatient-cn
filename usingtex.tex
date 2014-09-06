@@ -395,7 +395,7 @@ The wonders of \TeX shall never cease!
 %that are actually registers but behave just like parameters.
 %^^{registers//parameters as}
 \xrdef{introparms}
-有些命令实际上是参数（parameter，见\xref{parameter}）。
+有些命令实际上是参数（parameter，见\xref{参数}）。
 ^^{参数//作为命令}
 你可以按下面两种方式使用这种参数：
 \olist
@@ -419,7 +419,7 @@ The wonders of \TeX shall never cease!
 %character to $13$.
 有些命令是表名。这些命令的用法和参数类似，
 只是它们需要额外的参量指定表格项。
-例如，|\catcode| 是类别码表格的名称（\xref{category code}）。
+例如，|\catcode| 是类别码表格的名称（\xref{类别码}）。
 因此，\hbox{|\catcode`~=13|} 这个命令设置字符`|~|'的类别码为$13$。
 
 
@@ -494,7 +494,7 @@ The wonders of \TeX shall never cease!
 并不简单地变成输出中的一个空格。
 由于输入行和输出行通常不会正好对应，
 输入中的这些空格有的变成输出中的行结束符，
-另外有些空格则变成宽度可变的间隔即``粘连'' (\xref{glue})；
+另外有些空格则变成宽度可变的间隔即``粘连'' (\xref{粘连})；
 粘连有其自然宽度（它希望的宽度），但也可以伸展或者收缩。
 \TeX\ 排版要求右页边对齐（通常如此）的段落时，
 将调整各行的粘连的宽度以让各行正好在页边结束。%
@@ -998,7 +998,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 这些命令指导 \TeX\ 用这样或那样的字体排版这个或那个字符，
 插入单词间空隔，结束一个段落，等等。
 从单个排版字符及其他简单排印元素开始，
-\TeX\ 将^{盒子}一层层放入其他盒子中\seeconcept{box}，
+\TeX\ 将^{盒子}一层层放入其他盒子中\seeconcept{盒子}，
 这一整套盒子构造了一个页面^^{页面}。
 每个排版字符占用一个盒子，整个页面也一样。
 盒子中不仅包含更小的盒子，也包含\emph{粘连}^^{粘连}

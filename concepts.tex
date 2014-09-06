@@ -885,8 +885,9 @@ it has a descender (the bottom loop of the `g').
 \endconcept
 
 
-\conceptindex{boxes}
-\concept box
+%\conceptindex{boxes}
+%\concept box
+\concept 盒子
 
 A \defterm{box}  is a rectangle of material to be typeset.  A single
 \refterm{character} is a box by itself,
@@ -1045,430 +1046,683 @@ registers.
 \conceptindex{类别码}
 \concept {类别码}
 
-The \defterm{category code} of a \refterm{character} determines that
-character's role in \TeX.
+%The \defterm{category code} of a \refterm{character} determines that
+%character's role in \TeX.
+%^^{characters//category code of}
+%For instance, \TeX\ assigns a certain role to
+%letters, another to space characters, and so forth.  \TeX\ attaches a
+%code to each character that it reads.  When \TeX\ reads the
+%letter `|r|', for example, it ordinarily
+%attaches the category code $11$ (letter)
+%to it. For simple \TeX\ applications you won't need to worry about
+%category codes, but they become important when you are trying to achieve
+%special effects.
+字符的\defterm{类别码}（category code）决定它在 \TeX\ 中扮演的角色。
 ^^{characters//category code of}
-For instance, \TeX\ assigns a certain role to
-letters, another to space characters, and so forth.  \TeX\ attaches a
-code to each character that it reads.  When \TeX\ reads the
-letter `|r|', for example, it ordinarily
-attaches the category code $11$ (letter)
-to it. For simple \TeX\ applications you won't need to worry about
-category codes, but they become important when you are trying to achieve
-special effects.
+例如，\TeX\ 赋予某个角色给字母，另一个角色给空格符，诸如此类。
+\TeX\ 给读到的每个字符都附加一个代码。
+例如，\TeX\ 读到字母 `|r|' 时附加类别码 $11$（字母符）给它。
+在简单地使用 \TeX\ 时你无需考虑到类别码，
+但当你试图达到特别效果时它们就变得很重要。
 
-Category codes apply only to characters that \TeX\ reads from input
-files.  Once a character has gotten past \TeX's ^{gullet}
-\seeconcept{\anatomy} and been interpreted, its category code no
-longer matters.  A character that you produce with the ^|\char| command
-\ctsref{\char} does not have a category code because |\char|
-is an instruction to \TeX\ to produce a certain character in a certain
-\refterm{font}.  For instance, the ^{\ascii} code for `|\|'
-(the usual escape character) is $92$.  If
-you type `|\char92 grok|', it is \emph{not} equivalent to |\grok|.
-Instead it tells \TeX\ to
-typeset `$c$grok', where $c$ is the character in position $92$
-of the code table for the current font.
+%Category codes apply only to characters that \TeX\ reads from input
+%files.  Once a character has gotten past \TeX's ^{gullet}
+%\seeconcept{\anatomy} and been interpreted, its category code no
+%longer matters.  A character that you produce with the ^|\char| command
+%\ctsref{\char} does not have a category code because |\char|
+%is an instruction to \TeX\ to produce a certain character in a certain
+%\refterm{font}.  For instance, the ^{\ascii} code for `|\|'
+%(the usual escape character) is $92$.  If
+%you type `|\char92 grok|', it is \emph{not} equivalent to |\grok|.
+%Instead it tells \TeX\ to
+%typeset `$c$grok', where $c$ is the character in position $92$
+%of the code table for the current font.
+类别码只附加到 \TeX\ 从输入文件中读取的字符中。
+只要字符到达 \TeX\ 的^{食道}\seeconcept{\anatomy}并被解释完，它的类别码就不再改变。
+用 ^|\char| 命令\ctsref{\char}生成的字符没有类别码，
+因为 |\char| 命令是一个让 \TeX\ 生成特定\refterm{字体}中的某个特定字符的指令。
+例如，`|\|'（通常的转义字符）的^{\ascii} 码是 $92$。
+如果你键入 `|\char92 grok|'，却\emph{并不}等同于 |\grok|。
+实际上它让 \TeX\ 排版出 `$c$grok'，其中 $c$ 是当前字体的编码表中位置为 $92$ 的字符。
 
-You can use the ^|\catcode| command \ctsref{\catcode} to reassign the
-category code of any character.  By changing category codes you can
-change the roles of various characters.  For instance, if you type
-`|\catcode`\@ = 11|', the category code of the at sign (|@|) will be set
-to ``letter''.  You then can use `|@|' in the name of a control
-sequence.
+%You can use the ^|\catcode| command \ctsref{\catcode} to reassign the
+%category code of any character.  By changing category codes you can
+%change the roles of various characters.  For instance, if you type
+%`|\catcode`\@ = 11|', the category code of the at sign (|@|) will be set
+%to ``letter''.  You then can use `|@|' in the name of a control
+%sequence.
+你可以用 ^|\catcode| 命令\ctsref{\catcode}重新设定任何字符的类别码。
+改变了类别码就改变了各种字符所扮演的角色。
+例如，如果你键入 `|\catcode`\@ = 11|'，|@| 符号的类别码就被设定为“字母符”。
+这样你就可以在控制序列名称中使用 `|@|' 。
 
-Here is a list of the category codes as they're defined in
-\refterm{\plainTeX} (see \xref{twocarets} for an explanation of
-the |^^| notation),
-together with the characters in each category:
+%Here is a list of the category codes as they're defined in
+%\refterm{\plainTeX} (see \xref{twocarets} for an explanation of
+%the |^^| notation),
+%together with the characters in each category:
+这里给出\refterm{\plainTeX} 定义的类别码列表，以及每个类别中的字符（\xref{twocarets}有|^^|记法的解释）：
 
+%\xrdef{catcodes}
+%\vskip\abovedisplayskip
+%%k \vskip 0pt plus 2pt % to fix bad page break
+%{%k \interlinepenalty = 10000
+%\halign{\indent\hfil\strut#&\qquad#\hfil\cr
+%\it Code&\it Meaning\cr
+%\noalign{\vskip\tinyskipamount}
+%0&Escape character \quad |\| ^^{escape character//category code of}
+%   {\recat!ttidxref[\//category code of]]
+%   \cr
+%1&Beginning of group \quad |{| ^^{groups}
+%   {\recat!ttidxref[{//category code of]]
+%   \cr
+%2&End of group   \quad |}|
+%   {\recat!ttidxref[}//category code of]]
+%   \cr
+%3&Math shift   \quad |$| ^^{math shift}
+%   {\recat!ttidxref[$//category code of]]
+%   \cr
+%4&Alignment tab   \quad |&| ^^{tabs} ^^{alignments//tab character for}
+%   \ttidxref{&//category code of} \cr
+%5&End of line   \quad |^^M| \tequiv \ascii\ \asciichar{return}
+%   ^^{end of line} \ttidxref{^^M//category code of}\cr
+%6&Macro parameter   \quad |#|
+%   ^^{macros//parameters of}
+%   ^^{parameters//indicated by \b\tt\#\e}
+%   \ttidxref{#//category code of} \cr
+%7&Superscript   \quad |^| and |^^K| ^^{superscripts}
+%   \ttidxref{^^K}
+%   \ttidxref{^//category code of} \cr
+%8&Subscript   \quad |_| and |^^A| ^^{subscripts}
+%   \ttidxref{^^A}
+%   \ttidxref{_//category code of} \cr
+%9&Ignored character  \quad |^^@| \tequiv \ascii\ \asciichar{null}
+%  ^^{ignored characters} \indexchar ^^@ \cr
+%10&Space  \quad \visiblespace\ and |^^I| \tequiv \ascii\
+%  \asciichar{horizontal\ tab}
+%  ^^{horizontal tab}
+%  ^^{space characters//category code of} \indexchar ^^I
+%  {\recat!ttidxref[ ]]
+%  \cr
+%11&Letter  \quad |A| \dots |Z| and |a| \dots |z| ^^{letter}\cr
+%12&Other character \quad (everything not listed above or below)
+%  ^^{other characters}\cr
+%13&Active character  \quad |~| and |^^L| \tequiv\ascii\ \asciichar{form\ feed}
+%   ^^{active characters} ^^{form feed} \indexchar ~ \indexchar ^^L \cr
+%14&Comment character  \quad |%| ^^{comments}
+%   {\recat!ttidxref[%//category code of]]
+%   \cr
+%15&Invalid character  \quad |^^?| \tequiv \ascii\ \asciichar{delete}
+%  ^^{invalid character} \indexchar ^^? \cr
+%}}
+%\vskip\belowdisplayskip
+%%k \vskip 0pt plus 2pt % to fix bad page break
 \xrdef{catcodes}
 \vskip\abovedisplayskip
 %k \vskip 0pt plus 2pt % to fix bad page break
 {%k \interlinepenalty = 10000
-\halign{\indent\hfil\strut#&\qquad#\hfil\cr
-\it Code&\it Meaning\cr
+\halign{\indent\hfil\strut#&\qquad#\hfil&\qquad#\hfil\cr
+\it 编码&\it 意义&\it 字符\cr
 \noalign{\vskip\tinyskipamount}
-0&Escape character \quad |\| ^^{escape character//category code of}
+0&转义符    & |\| ^^{escape character//category code of}
    {\recat!ttidxref[\//category code of]]
    \cr
-1&Beginning of group \quad |{| ^^{groups}
+1&编组开始符& |{| ^^{groups}
    {\recat!ttidxref[{//category code of]]
    \cr
-2&End of group   \quad |}|
+2&编组结束符& |}|
    {\recat!ttidxref[}//category code of]]
    \cr
-3&Math shift   \quad |$| ^^{math shift}
+3&数学环境符& |$| ^^{math shift}
    {\recat!ttidxref[$//category code of]]
    \cr
-4&Alignment tab   \quad |&| ^^{tabs} ^^{alignments//tab character for}
+4&阵列制表符& |&| ^^{tabs} ^^{alignments//tab character for}
    \ttidxref{&//category code of} \cr
-5&End of line   \quad |^^M| \tequiv \ascii\ \asciichar{return}
+5&行结束符  & |^^M| \tequiv \ascii\ \asciichar{return}
    ^^{end of line} \ttidxref{^^M//category code of}\cr
-6&Macro parameter   \quad |#|
+6&宏参数符  & |#|
    ^^{macros//parameters of}
    ^^{parameters//indicated by \b\tt\#\e}
    \ttidxref{#//category code of} \cr
-7&Superscript   \quad |^| and |^^K| ^^{superscripts}
+7&上标符    & |^| 和 |^^K| ^^{superscripts}
    \ttidxref{^^K}
    \ttidxref{^//category code of} \cr
-8&Subscript   \quad |_| and |^^A| ^^{subscripts}
+8&下标符    & |_| 和 |^^A| ^^{subscripts}
    \ttidxref{^^A}
    \ttidxref{_//category code of} \cr
-9&Ignored character  \quad |^^@| \tequiv \ascii\ \asciichar{null}
+9&可忽略符  & |^^@| \tequiv \ascii\ \asciichar{null}
   ^^{ignored characters} \indexchar ^^@ \cr
-10&Space  \quad \visiblespace\ and |^^I| \tequiv \ascii\
+10&空格符   & \visiblespace\ 和 |^^I| \tequiv \ascii\
   \asciichar{horizontal\ tab}
   ^^{horizontal tab}
   ^^{space characters//category code of} \indexchar ^^I
   {\recat!ttidxref[ ]]
   \cr
-11&Letter  \quad |A| \dots |Z| and |a| \dots |z| ^^{letter}\cr
-12&Other character \quad (everything not listed above or below)
+11&字母符   & |A| \dots |Z| 和 |a| \dots |z| ^^{letter}\cr
+12&其他字符 &（不属于其他类别的字符）
   ^^{other characters}\cr
-13&Active character  \quad |~| and |^^L| \tequiv\ascii\ \asciichar{form\ feed}
+13&活动字符 & |~| 和 |^^L| \tequiv\ascii\ \asciichar{form\ feed}
    ^^{active characters} ^^{form feed} \indexchar ~ \indexchar ^^L \cr
-14&Comment character  \quad |%| ^^{comments}
+14&注释符   & |%| ^^{comments}
    {\recat!ttidxref[%//category code of]]
    \cr
-15&Invalid character  \quad |^^?| \tequiv \ascii\ \asciichar{delete}
+15&无效字符 & |^^?| \tequiv \ascii\ \asciichar{delete}
   ^^{invalid character} \indexchar ^^? \cr
 }}
 \vskip\belowdisplayskip
 %k \vskip 0pt plus 2pt % to fix bad page break
 
-\noindent Except for categories $11$--$13$,
-all the characters in a particular category produce the same effect.
+%\noindent Except for categories $11$--$13$,
+%all the characters in a particular category produce the same effect.
+%\margin{Misleading material removed.}
+%For instance, suppose
+%that you type:
+%\csdisplay
+%\catcode`\[ = 1 \catcode`\] = 2
+%|
+%Then the left and right bracket characters become
+%beginning-of-group and end-of-group characters equivalent to
+%the left and right brace characters.  With these definitions `|[a b]|'
+%is a valid group, and so are \hbox{`|[a b}|'} and~\hbox{`|{a b]|'}.
+\noindent 除了第 $11$--$13$ 类别，一个类别中的所有字符产生的效果都相同。
 \margin{Misleading material removed.}
-For instance, suppose
-that you type:
+例如，假设你键入：
 \csdisplay
 \catcode`\[ = 1 \catcode`\] = 2
 |
-Then the left and right bracket characters become
-beginning-of-group and end-of-group characters equivalent to
-the left and right brace characters.  With these definitions `|[a b]|'
-is a valid group, and so are \hbox{`|[a b}|'} and~\hbox{`|{a b]|'}.
+则左方括号和右方括号分别就变成编组开始符和编组结束符，即它们分别和左花括号和右花括号等价。
+在这些定义之下，`|[a b]|' 是一个有效的编组，\hbox{`|[a b}|'} 和 \hbox{`|{a b]|'} 同样也是。
 
-The characters in categories $11$ (letter) and $12$
-(other character) act as \refterm{commands:command}
-that mean
-``produce a \refterm{box} containing this character
-typeset in the current font''.
-The only distinction between letters and ``other'' characters is
-that letters can appear in \refterm{control word}s but
-``other'' characters~can't.
+%The characters in categories $11$ (letter) and $12$
+%(other character) act as \refterm{commands:command}
+%that mean
+%``produce a \refterm{box} containing this character
+%typeset in the current font''.
+%The only distinction between letters and ``other'' characters is
+%that letters can appear in \refterm{control word}s but
+%``other'' characters~can't.
+类别为 $11$（字母符）或 $12$（其他字符）的字符成为一个\refterm{命令}，
+它表示“用当前字体排版这个字符并放在一个\refterm{盒子}中”。
+字母符和“其他字符”的惟一区别是，字母符可以出现在\refterm{控制词}中而“其他字符”不能。
 
-A character in category $13$ (active) acts like a control sequence
-all by itself.  \TeX\ complains if it encounters an active character that
-doesn't have a definition associated with it.
+%A character in category $13$ (active) acts like a control sequence
+%all by itself.  \TeX\ complains if it encounters an active character that
+%doesn't have a definition associated with it.
+%^^{active characters}
+类别为 $13$（活动字符）的字符单独作为控制序列。
+如果 \TeX\ 碰到一个未定义的活动字符，它将会报错。
 ^^{active characters}
 
-If \TeX\ encounters an ^{invalid character} (category $15$)
-in your input, it will complain about it.
+%If \TeX\ encounters an ^{invalid character} (category $15$)
+%in your input, it will complain about it.
+如果 \TeX\ 在输入中碰到一个^{无效字符}（类别为$15$），它也会报错。
 
-The `|^^K|' and `|^^A|' characters have been included in categories
-$8$ (subscript) and $9$ (superscript), even though these meanings
-don't follow the standard \refterm{\ascii} interpretation.
-That's because some keyboards, notably some at Stanford
-University where \TeX\ originated,
-have down arrow and up arrow keys that generate these characters.
+%The `|^^K|' and `|^^A|' characters have been included in categories
+%$8$ (subscript) and $9$ (superscript), even though these meanings
+%don't follow the standard \refterm{\ascii} interpretation.
+%That's because some keyboards, notably some at Stanford
+%University where \TeX\ originated,
+%have down arrow and up arrow keys that generate these characters.
+%\ttidxref{^^A}
+%\ttidxref{^^K}
+字符 `|^^K|' 和 `|^^A|' 被包含在类别$7$（上标符）和 $8$（下标符）中，
+即使它们的意义并不符合标准\refterm{\ascii} 中的解释。
+这是因为某些键盘，尤其是 \TeX\ 起源地哈佛大学的键盘，用上方向键和下方向键生成这两个字符。
 \ttidxref{^^A}
 \ttidxref{^^K}
 
-There's a subtle point about the way \TeX\ assigns category codes that
-can trip you up if you're not aware of it.  \TeX\ sometimes needs to
-look at a character twice as it does its initial scan: first to find the
-end of some preceding construct, e.g., a control sequence, and later to
-turn that character into a token.  \TeX\ doesn't assign the category
-code until its \emph{second} look at the character.  For example:
+%There's a subtle point about the way \TeX\ assigns category codes that
+%can trip you up if you're not aware of it.  \TeX\ sometimes needs to
+%look at a character twice as it does its initial scan: first to find the
+%end of some preceding construct, e.g., a control sequence, and later to
+%turn that character into a token.  \TeX\ doesn't assign the category
+%code until its \emph{second} look at the character.  For example:
+在 \TeX\ 分配类别码的方式中有个细微之处，如果没注意到它你就会犯错误。
+\TeX\ 在初步扫描时有时候需要查看一个字符两次：
+第一次找到前面的控制序列等结构的结束位置，第二次才将该字符转换为记号。
+\TeX\ 在\emph{第二次}查看该字符时才会给它分配类别码。例如：
 
+%\csdisplay
+%\def\foo{\catcode`\$ = 11 }% Make $ be a letter.
+%\foo$ % Produces a `$'.
+%\foo$ % Undefined control sequence `foo$'.
+%|
+%\noindent
+%This bit of \TeX\ code produces `\$' in the typeset output.  When
+%\TeX\ first sees the `|$|' on the second line,
+%it's looking for the end of a control sequence name.  Since
+%the `|$|' isn't yet a letter, it marks the end of `|\foo|'.  Next,
+%\TeX\ expands the `|\foo|' macro and changes the category code of `|$|'
+%to $11$ (letter).  Then \TeX\ reads the `|$|' ``for real''.  Since
+%`|$|' is now a letter, \TeX\ produces a box
+%containing the `|$|' character in the current font.
+%When \TeX\ sees the third line, it treats `|$|' as a letter and thus
+%considers it to be part of the control sequence name.
+%As a result it complains about an undefined control sequence |\foo$|.
 \csdisplay
-\def\foo{\catcode`\$ = 11 }% Make $ be a letter.
-\foo$ % Produces a `$'.
-\foo$ % Undefined control sequence `foo$'.
+\def\foo{\catcode`\$ = 11 } % 将 $ 变成字母符。
+\foo$ % 生成一个 `$'。
+\foo$ % 未定义的控制序列 `foo$'。
 |
 \noindent
-This bit of \TeX\ code produces `\$' in the typeset output.  When
-\TeX\ first sees the `|$|' on the second line,
-it's looking for the end of a control sequence name.  Since
-the `|$|' isn't yet a letter, it marks the end of `|\foo|'.  Next,
-\TeX\ expands the `|\foo|' macro and changes the category code of `|$|'
-to $11$ (letter).  Then \TeX\ reads the `|$|' ``for real''.  Since
-`|$|' is now a letter, \TeX\ produces a box
-containing the `|$|' character in the current font.
-When \TeX\ sees the third line, it treats `|$|' as a letter and thus
-considers it to be part of the control sequence name.
-As a result it complains about an undefined control sequence |\foo$|.
+这段 \TeX\ 代码在输出中生成 `\$'。
+在第二行，当 \TeX\ 首次查看 `|$|' 时，它是在寻找控制序列名称的结束位置。
+由于 `|$|' 还不是字母符，它表示 `|\foo|' 已结束。
+接下来，\TeX\ 展开 `|\foo|' 宏并将 `|$|' 的类别码改为 $11$（字母符）。
+然后 \TeX\ 才“真正地”读取 `|$|'。
+由于 `|$|' 已经是字母符，\TeX\ 用当前字体生成包含 `|$|' 的盒子。
+当 \TeX\ 看到第三行时，它将 `|$|' 视为字母符，因此认为它是控制序列名称的一部分。
+结果它抱怨 |\foo$| 是一个未定义的控制序列。
 
-\TeX\ behaves this way even when the terminating character is an
-end of line.  For example, suppose that the macro |\fum| activates the
-end-of-line character.  Then if |\fum| appears on a line $\ell$ by
-itself, \TeX\ will first interpret the end of line of $\ell$ as
-the end of the |\fum| control sequence and then will \emph{reinterpret}
-the end of line of $\ell$ as an active character.
+%\TeX\ behaves this way even when the terminating character is an
+%end of line.  For example, suppose that the macro |\fum| activates the
+%end-of-line character.  Then if |\fum| appears on a line $\ell$ by
+%itself, \TeX\ will first interpret the end of line of $\ell$ as
+%the end of the |\fum| control sequence and then will \emph{reinterpret}
+%the end of line of $\ell$ as an active character.
+%\endconcept
+即使当结束符号是行尾符时，\TeX\ 也是这样处理的。
+举个例子，假设你用 |\fum| 宏激活行尾符。
+那么，如果 |\fum| 单独出现在第 $\ell$ 行中，
+\TeX\ 将首先将第$\ell$行的行尾符解释为 |\fum| 控制序列的结束，
+然后将该行尾符\emph{重新解释}为活动字符。
 \endconcept
 
 
-\conceptindex{characters}
-\concept character
+%\conceptindex{characters}
+%\concept character
+\concept 字符
 
-{\tighten
-\TeX\ works with \defterm{字符} in two contexts:
-as input characters, which it reads, and as output characters,
-which it typesets.
-\TeX\ transforms most input characters
-into the output characters that depict them.
-For example, it normally
-transforms the input letter `|h|' into the letter `h' typeset in the current
-font.
-That is not the case, however, for an input character such as `|$|' that has a
-special meaning.
-\par}
+%{\tighten
+%\TeX\ works with \defterm{字符} in two contexts:
+%as input characters, which it reads, and as output characters,
+%which it typesets.
+%\TeX\ transforms most input characters
+%into the output characters that depict them.
+%For example, it normally
+%transforms the input letter `|h|' into the letter `h' typeset in the current
+%font.
+%That is not the case, however, for an input character such as `|$|' that has a
+%special meaning.
+%\par}
+\TeX\ 在两个方面用到\defterm{字符}（character）：
+作为读取的输入字符，以及作为排版的输出字符。
+\TeX\ 将大多数输入字符转变成输出字符以显示它们。
+例如，它通常将输入字母 `|h|' 转换为用当前字体排版的字母 `h'。
+但是，对于类似 `|$|' 这些有特别意义的字符，却不是这么回事。
 
-\TeX\ gets its input characters by reading them from input files (or from your
-terminal) and by expanding \refterm{macros:macro}.  These are the
-\emph{only} ways that \TeX\ can acquire an input character.
-Each input character has a code number corresponding to its position in the
-\refterm{\ascii} code table.  ^^{\ascii}
-For instance, the letter `|T|' has \ascii\ code~$84$.
+%\TeX\ gets its input characters by reading them from input files (or from your
+%terminal) and by expanding \refterm{macros:macro}.  These are the
+%\emph{only} ways that \TeX\ can acquire an input character.
+%Each input character has a code number corresponding to its position in the
+%\refterm{\ascii} code table.  ^^{\ascii}
+%For instance, the letter `|T|' has \ascii\ code~$84$.
+\TeX\ 通过读取输入文件（或终端）和展开\refterm{宏}得到输入字符。
+它们是 \TeX\ 获取输入字符的\emph{仅有的}途径。
+每个输入字符有一个编码，它表示该字符在\refterm{\ascii} 码表的位置。
+^^{\ascii}
+例如，字母 `|T|' 的 \ascii\ 编码为 $84$。
 
-When \TeX\ reads
-a character, it attaches a \refterm{category code}
+%When \TeX\ reads
+%a character, it attaches a \refterm{category code}
+%^^{category codes//attached during input}
+%to it.  The category code affects how \TeX\ interprets the
+%character once it has been read in.  \TeX\ determines
+%(and remembers) the category codes of the characters in a macro when it
+%reads the macro's definition.  As \TeX\ reads characters with its eyes
+%\seeconcept{\anatomy} it does some ``filtering'',
+%such as condensing
+%sequences of spaces to a single space.  See \knuth{pages~46--48} for the
+%details of this filtering.
+在读取字符时，\TeX\ 给它附加一个\refterm{类别码}。
 ^^{category codes//attached during input}
-to it.  The category code affects how \TeX\ interprets the
-character once it has been read in.  \TeX\ determines
-(and remembers) the category codes of the characters in a macro when it
-reads the macro's definition.  As \TeX\ reads characters with its eyes
-\seeconcept{\anatomy} it does some ``filtering'',
-such as condensing
-sequences of spaces to a single space.  See \knuth{pages~46--48} for the
-details of this filtering.
+类别码影响 \TeX\ 读取字符时对该字符的解释。
+在读取宏定义时，\TeX\ 判定（并记住）宏里面的字符的类别码。
+在用它的眼睛读取字符时\seeconcept{\anatomy}，\TeX\ 执行一些“过滤”，
+比如将连续多个空格压缩为一个。在\knuth{第~46--48~页}中描述了过滤的细节。
 
-The \ascii\
-``^{control characters}'' have codes $0$--$31$ and $127$--$255$.
-They either don't
-show up or cause strange behavior on most terminals if you try to
-display them.  Nonetheless they are sometimes needed in \TeX\ input,
-so \TeX\ has a special notation for them.
+%The \ascii\
+%``^{control characters}'' have codes $0$--$31$ and $127$--$255$.
+%They either don't
+%show up or cause strange behavior on most terminals if you try to
+%display them.  Nonetheless they are sometimes needed in \TeX\ input,
+%so \TeX\ has a special notation for them.
+%\xrdef{twocarets}
+%If you type `|^^|$c$', where $c$ is any character, you get the character
+%whose \ascii\ code is either $64$ greater or $64$ less than $c$'s
+%\ascii\ code.  The largest acceptable code value using this notation
+%is $127$, so the notation is unambiguous.
+%Three particularly common instances of this
+%notation are `|^^M|' (the \ascii\ \asciichar{return} character),
+%`|^^J|' (the \ascii\ \asciichar{line\ feed} character) and `|^^I|'
+%(the \ascii\ \asciichar{horizontal\ tab} character).
+%\ttidxref{^^M}\ttidxref{^^J}\ttidxref{^^I}
+\ascii{}“^{控制字符}”的编码为 $0$--$31$ 和 $127$--$255$。
+倘若你试图在终端中显示它们，在多数终端中它们将显示不出来或导致奇怪行为。
+即便如此，有时候它们还是需要在 \TeX\ 输入中出现，
+因此对这些字符 \TeX\ 给出了一种特别的表示法。
 \xrdef{twocarets}
-If you type `|^^|$c$', where $c$ is any character, you get the character
-whose \ascii\ code is either $64$ greater or $64$ less than $c$'s
-\ascii\ code.  The largest acceptable code value using this notation
-is $127$, so the notation is unambiguous.
-Three particularly common instances of this
-notation are `|^^M|' (the \ascii\ \asciichar{return} character),
-`|^^J|' (the \ascii\ \asciichar{line\ feed} character) and `|^^I|'
-(the \ascii\ \asciichar{horizontal\ tab} character).
+如果你键入 `|^^|$c$'，其中 $c$ 为任何字符，
+你将得到一个比 $c$ 的\ascii\ 码大 $64$ 或小 $64$ 的字符。
+这种表示法得到的编码不能超过 $127$，因此它是无歧义的。
+这种表示法的三个最常见例子是 `|^^M|'（\ascii\ \asciichar{return}字符），
+`|^^J|'（\ascii\ \asciichar{line\ feed}字符）和
+`|^^I|'（\ascii\ \asciichar{horizontal\ tab}字符）。
 \ttidxref{^^M}\ttidxref{^^J}\ttidxref{^^I}
 
-{\tighten
-\TeX\ also has another notation for indicating \ascii\ code values
-that works for all character codes from $0$ to $255$.
+%{\tighten
+%\TeX\ also has another notation for indicating \ascii\ code values
+%that works for all character codes from $0$ to $255$.
+%\xrdef{hexchars}
+%If you type `|^^|$xy$', where $x$
+%and $y$ are any of the ^{hexadecimal digit}s `|0123456789abcdef|',
+%you get the single character with the specified code.
+%(Lowercase letters are required here.)
+%\TeX\ opts for the ``hexadecimal digits''
+%interpretation whenever it has a choice, so you must not follow a character
+%like `|^^a|' with a lowercase hexadecimal digit---if you do, you'll get the
+%wrong interpretation.
+%If you need to use this
+%notation you'll find it handy to have a table of \ascii\ codes.
+%\par}
+\TeX\ 还有另一种指明 \ascii\ 编码的表示法，它能够表示从 $0$ 到 $255$ 的所有字符。
 \xrdef{hexchars}
-If you type `|^^|$xy$', where $x$
-and $y$ are any of the ^{hexadecimal digit}s `|0123456789abcdef|',
-you get the single character with the specified code.
-(Lowercase letters are required here.)
-\TeX\ opts for the ``hexadecimal digits''
-interpretation whenever it has a choice, so you must not follow a character
-like `|^^a|' with a lowercase hexadecimal digit---if you do, you'll get the
-wrong interpretation.
-If you need to use this
-notation you'll find it handy to have a table of \ascii\ codes.
-\par}
+如果你键入 `|^^|$xy$'，其中 $x$ 和 $y$ 是任何^{十六进制数字} `|0123456789abcdef|'，
+你就得到该编码对应的字符（这里只能使用小写字符。）
+\TeX\ 优先选择“十六进制数字”这种解释，
+因此在类似 `|^^a|' 的字符后面不要跟着一个小写十六进制数字——这样将会得到错误的解释。
+在需要使用这种表示法时，你会发现有个\ascii\ 编码表更方便些。
 
-An output character is a character to be typeset.
-A command for producing an output character has the meaning
-``Produce a \refterm{box} containing
-character number $n$ from the current \refterm{font}'',
-where $n$ is determined by the command.
-\TeX\ produces your typeset document by combining such boxes with
-other typographical \hbox{elements} and arranging them
-on the page.
+%An output character is a character to be typeset.
+%A command for producing an output character has the meaning
+%``Produce a \refterm{box} containing
+%character number $n$ from the current \refterm{font}'',
+%where $n$ is determined by the command.
+%\TeX\ produces your typeset document by combining such boxes with
+%other typographical \hbox{elements} and arranging them
+%on the page.
+输出字符就是待排版的字符。生成输出字符的命令有这样的意义：
+“生成一个包含当前\refterm{字体}第$n$个字符的盒子”，其中$n$由该命令给出。
+\TeX\ 将这些盒子和其他排版\hbox{元素}组合起来并在页面上排好，以生成你排版的文档。
 
-An input character whose category code is $11$ (^{letter}) or $12$ (other)
-^^{other characters}
-acts as a command to produce the corresponding output character.  In
-addition you can get \TeX\ to produce character $n$ by issuing the
-command `|\char |$n$' \ctsref{\char}, ^^|\char| where $n$ is a
-\refterm{number} between $0$ and $255$.  The commands `|h|',
-|\char`h|, and |\char104| all have the same effect.  ($104$ is the
-\ascii\ code for `h'.)
+%An input character whose category code is $11$ (^{letter}) or $12$ (other)
+%^^{other characters}
+%acts as a command to produce the corresponding output character.  In
+%addition you can get \TeX\ to produce character $n$ by issuing the
+%command `|\char |$n$' \ctsref{\char}, ^^|\char| where $n$ is a
+%\refterm{number} between $0$ and $255$.  The commands `|h|',
+%|\char`h|, and |\char104| all have the same effect.  ($104$ is the
+%\ascii\ code for `h'.)
+类别码为 $11$（^{字母}）或 $12$（其他）^^{other characters}的输入字符，
+是一个生成对应输出字符的命令。
+另外，你也可以用 `|\char |$n$'\ctsref{\char}^^|\char| 让 \TeX\ 生成字符 $n$，
+其中$n$是介于$0$和$255$之间的\refterm{数}。
+命令 `|h|'，|\char`h| 和 |\char104| 的结果相同（$104$ 是`h' 的\ascii\ 编码。）
 
 \endconcept
 
 
-\concept class
+%\concept class
+\concept 类
 
-The \defterm{class} of a \refterm{character} specifies that character's
-role in math formulas.  The class of a character is encoded in its
-\refterm{mathcode}.  ^^{mathcodes//class encoded in} For example, the
-equals sign `|=|' is in class $3$ (Relation).  \TeX\ uses its knowledge
-of character classes to decide how much space to put between different
-components of a math formula.  \margin{clarifying material added} For
-example, here's a math formula shown first as \TeX\ normally prints it
-and then with the class of each character randomly changed:
+%The \defterm{class} of a \refterm{character} specifies that character's
+%role in math formulas.  The class of a character is encoded in its
+%\refterm{mathcode}.  ^^{mathcodes//class encoded in} For example, the
+%equals sign `|=|' is in class $3$ (Relation).  \TeX\ uses its knowledge
+%of character classes to decide how much space to put between different
+%components of a math formula.  \margin{clarifying material added} For
+%example, here's a math formula shown first as \TeX\ normally prints it
+%and then with the class of each character randomly changed:
+%$$\strut a+(b-a)=a \qquad
+%   \mathopen{a}\mathord{+}\mathrel{(}\mathclose{b}\mathclose{-}
+%   \mathop{a}\mathopen{)}\mathord{=}\mathopen{a}$$
+\refterm{字符}所属的\defterm{类}（class）指明该字符在数学公式中的角色。
+字符的类记录在它的\refterm{数学码}中。^^{mathcodes//class encoded in}
+例如，等号 `|=|' 属于第 $3$ 类（关系符号）。
+\TeX\ 利用字符类的知识确定数学公式的各部分的间隔的大小。
+\margin{clarifying material added}
+例如，下面这个公式首先用正常方式显示，然后用随机修改各字符类的方式显示：
 $$\strut a+(b-a)=a \qquad
    \mathopen{a}\mathord{+}\mathrel{(}\mathclose{b}\mathclose{-}
    \mathop{a}\mathopen{)}\mathord{=}\mathopen{a}$$
 
-See \xrefpg\mathord\ of this book for a list of the classes and
-\knuth{page~154} for their meanings.
+%See \xrefpg\mathord\ of this book for a list of the classes and
+%\knuth{page~154} for their meanings.
+参见本书\xrefpg\mathord 中各种类的列表，以及\knuth{第~154~页}中各种类的含义。
 
 \endconcept
 
 
-\conceptindex{commands}
-\concept command
+%\conceptindex{commands}
+%\concept command
+\concept 命令
 
-A \defterm{command} instructs \TeX\ to carry out a certain action.
-Every \refterm{token} that reaches \TeX's stomach \seeconcept{\anatomy}
-acts as a command, except for those that are parts of arguments to
-other commands (see below).
+%A \defterm{command} instructs \TeX\ to carry out a certain action.
+%Every \refterm{token} that reaches \TeX's stomach \seeconcept{\anatomy}
+%acts as a command, except for those that are parts of arguments to
+%other commands (see below).
+%^^{tokens//as commands}
+%A command can be invoked by a
+%\refterm{control sequence}, by an \refterm{active character}, or by an
+%ordinary character.  It might seem odd that \TeX\ treats an ordinary
+%character as a command, but in fact that's what it does:
+%when \TeX\ sees
+%an ordinary character
+%it constructs a \refterm{box} containing that character typeset in
+%the current font.
+\defterm{命令}（command）指导 \TeX\ 执行某种动作。
+到达\TeX\ 的胃\seeconcept{\anatomy}的每个\refterm{记号}都作为一个命令，
+那些作为其他命令的参量（见下面）的记号除外。
 ^^{tokens//as commands}
-A command can be invoked by a
-\refterm{control sequence}, by an \refterm{active character}, or by an
-ordinary character.  It might seem odd that \TeX\ treats an ordinary
-character as a command, but in fact that's what it does:
-when \TeX\ sees
-an ordinary character
-it constructs a \refterm{box} containing that character typeset in
-the current font.
+命令可以由\refterm{控制序列}，由\refterm{活动字符}，或者由普通字符产生。
+\TeX\ 将普通字符视为命令这事看来有些奇怪，但实际上它是这样做的：
+当 \TeX\ 看到一个普通字符时，它构造一个用当前字体排版该字符的\refterm{盒子}。
 
-A command can have arguments.
-The arguments of a command are single tokens or
-groups of tokens that complete the description of what
-the command is supposed to do.
-For example, the command `|\vskip 1in|' tells \TeX\ to skip
-$1$ inch vertically.  It has an argument `|1in|',
-which consists of three tokens.
-The description of what |\vskip| is supposed to do would be incomplete
-without specifying how far it is supposed to skip.
-The tokens in the arguments to a command are not themselves considered
-to be commands.
+%A command can have arguments.
+%The arguments of a command are single tokens or
+%groups of tokens that complete the description of what
+%the command is supposed to do.
+%For example, the command `|\vskip 1in|' tells \TeX\ to skip
+%$1$ inch vertically.  It has an argument `|1in|',
+%which consists of three tokens.
+%The description of what |\vskip| is supposed to do would be incomplete
+%without specifying how far it is supposed to skip.
+%The tokens in the arguments to a command are not themselves considered
+%to be commands.
+命令可以有参量。命令的参量为单个记号或一组记号，
+它们完成对命令该如何执行的说明。
+例如，命令 `|\vskip 1in|' 告诉 \TeX\ 竖直跳过 $1$ 英寸。
+它有一个参量 `|1in|' 包含三个记号。
+如果不指明跳过的距离，对 |\vskip| 如何执行的说明就是不完整的。
+这些出现在命令参量中的记号不被看成命令。
 
-Some examples of different kinds of \TeX\ commands are:
+%Some examples of different kinds of \TeX\ commands are:
+%\ulist\compact
+%\li Ordinary characters, such as `|W|', which instructs \TeX\
+%to produce a box containing a typeset `W'
+%\li Font-setting commands,
+%such as |\bf|, which begins boldface type
+%\li Accents, such as |\`|, which produces a grave accent as in `\`e'
+%\li Special symbols and ligatures, such as |\P| (\P) and |\ae| (\ae)
+%\li Parameters, such as |\parskip|, the amount of glue that
+%\TeX\ puts between paragraphs
+%\li Math symbols, such as |\alpha| ($\alpha$) and |\in| ($\in$)
+%\li Math operators, such as |\over|, which produces a fraction
+%\endulist
+%\endconcept
+各种类型的 \TeX\ 命令的一些例子如下：
 \ulist\compact
-\li Ordinary characters, such as `|W|', which instructs \TeX\
-to produce a box containing a typeset `W'
-\li Font-setting commands,
-such as |\bf|, which begins boldface type
-\li Accents, such as |\`|, which produces a grave accent as in `\`e'
-\li Special symbols and ligatures, such as |\P| (\P) and |\ae| (\ae)
-\li Parameters, such as |\parskip|, the amount of glue that
-\TeX\ puts between paragraphs
-\li Math symbols, such as |\alpha| ($\alpha$) and |\in| ($\in$)
-\li Math operators, such as |\over|, which produces a fraction
+\li 普通字符，比如 `|W|' 指导 \TeX\ 生成包含排版好的 `W' 的盒子
+\li 字体设置命令，比如 |\bf| 开始粗体形式
+\li 重音符，比如 |\`| 生成一个如同 `\`e' 的钝音符
+\li 特殊符号和连写，比如 |\P|（\P ）和 |\ae|（\ae ）
+\li 参数，比如 |\parskip| 说明 \TeX\ 在段落间添加的粘连的大小
+\li 数学符号，比如 |\alpha|（$\alpha$）和 |\in|（$\in$）
+\li 数学运算符，比如 |\over| 生成一个分式
 \endulist
 \endconcept
 
 
-\conceptindex{conditional tests}
-\concept {conditional test}
+%\conceptindex{conditional tests}
+%\concept {conditional test}
+\concept {条件测试}
 
-A \defterm{conditional test} is a command that tests whether or not a certain
-condition is true and
-causes \TeX\ either to expand or to skip some text, depending on
-the outcome.
-The general form of a conditional test is either:
+%A \defterm{conditional test} is a command that tests whether or not a certain
+%condition is true and
+%causes \TeX\ either to expand or to skip some text, depending on
+%the outcome.
+%The general form of a conditional test is either:
+%\display{
+%{\tt \\if}$\alpha$\<true text>{\tt \\else}\<false text>{\tt \\fi}}
+%^^|\else|^^|\fi|
+%\noindent or:\hfil\
+%\display{
+%{\tt \\if}$\alpha$\<true text>{\tt \\fi}}
+%\noindent where $\alpha$ specifies the particular test.
+%For example, |\ifvmode| tests the condition that \TeX\
+%is currently in a \refterm{vertical mode}.
+%If the condition is true, \TeX\ expands \<true text>.
+%If the condition is false, \TeX\ expands \<false text> (if it's present).
+%Conditional tests are interpreted in \TeX's gullet
+%\seeconcept{\anatomy}, so any expandable \minref{token}s in
+%the interpreted text are expanded after the test has been resolved.
+%The
+%various conditional tests are explained in \headcit{Conditional tests}%
+%{conds}.
+%
+%\endconcept
+\defterm{条件测试}（conditional test）是一个命令，它测试某个条件是否成立，
+并依此让 \TeX\ 展开或忽略某些文本。条件测试的一般形式是：
 \display{
 {\tt \\if}$\alpha$\<true text>{\tt \\else}\<false text>{\tt \\fi}}
 ^^|\else|^^|\fi|
-\noindent or:\hfil\
+\noindent 或者：\hfil\
 \display{
 {\tt \\if}$\alpha$\<true text>{\tt \\fi}}
-\noindent where $\alpha$ specifies the particular test.
-For example, |\ifvmode| tests the condition that \TeX\
-is currently in a \refterm{vertical mode}.
-If the condition is true, \TeX\ expands \<true text>.
-If the condition is false, \TeX\ expands \<false text> (if it's present).
-Conditional tests are interpreted in \TeX's gullet
-\seeconcept{\anatomy}, so any expandable \minref{token}s in
-the interpreted text are expanded after the test has been resolved.
-The
-various conditional tests are explained in \headcit{Conditional tests}%
-{conds}.
-
+\noindent 其中 $\alpha$ 指定某个特定的测试。
+例如，|\ifvmode| 测试 \TeX\ 是否位于\refterm{竖直模式}中。
+如果条件成立，\TeX\ 展开 \<true text>。
+如果条件不成立，\TeX\ 展开 \<false text>（如果它存在）。
+条件测试在 \TeX\ 的食道\seeconcept{\anatomy}中解释，
+因此在解释出的文本中，任何可展开\minref{记号}都被展开了。
+在\headcit{条件测试}{conds}中解释了各种条件测试。
 \endconcept
 
 
-\conceptindex{control sequences}
-\concept{control sequence}
+%\conceptindex{control sequences}
+%\concept{control sequence}
+\concept{控制序列}
 
-A \defterm{control sequence} is a name for a \TeX\ \refterm{command}.
-A control sequence always starts with an ^{escape character}, usually
-a backslash (|\|).
+%A \defterm{control sequence} is a name for a \TeX\ \refterm{command}.
+%A control sequence always starts with an ^{escape character}, usually
+%a backslash (|\|).
+%\indexchar \
+%A control sequence takes one of two forms:
+\defterm{控制序列}（control sequence）是 \TeX\ \refterm{命令}的名称。
+控制序列总是以^{转义符}开头，即以反斜杠（|\|）开头。
 \indexchar \
-A control sequence takes one of two forms:
+控制序列必为如下两种形式中的一种：
 
+%\ulist
+%
+%\li A \refterm{control word} is a control sequence consisting of an
+%\refterm{escape character} followed by one or more letters.
+%^^{control words}
+%The control
+%word ends when \TeX\ sees a nonletter.  For instance, when \TeX\ reads
+%`\hbox{|\hfill!visiblespace,!visiblespace!.the|}', it sees six
+%\refterm{tokens:token}:
+%the control sequence `|\hfill|', comma, space, `|t|', `|h|', `|e|'.  The
+%space after `|\hfill|' ends the control sequence and
+%is absorbed by \TeX\ when it scans the control sequence.
+%(For the text `|\hfill,!visiblespace!.the|', on the other hand,
+%the comma both ends the control sequence and counts as a character in its
+%own right.)
 \ulist
-
-\li A \refterm{control word} is a control sequence consisting of an
-\refterm{escape character} followed by one or more letters.
+\li \refterm{控制词}是由\refterm{转义符}紧跟一个或多个字母组成的控制序列。
 ^^{control words}
-The control
-word ends when \TeX\ sees a nonletter.  For instance, when \TeX\ reads
-`\hbox{|\hfill!visiblespace,!visiblespace!.the|}', it sees six
-\refterm{tokens:token}:
-the control sequence `|\hfill|', comma, space, `|t|', `|h|', `|e|'.  The
-space after `|\hfill|' ends the control sequence and
-is absorbed by \TeX\ when it scans the control sequence.
-(For the text `|\hfill,!visiblespace!.the|', on the other hand,
-the comma both ends the control sequence and counts as a character in its
-own right.)
-
-\li A \refterm{control symbol}
+控制词在 \TeX\ 碰到非字母符时结束。
+例如，当 \TeX\ 读取 `\hbox{|\hfill!visiblespace,!visiblespace!.the|}' 时，
+它看到六个\refterm{记号}：控制序列 `|\hfill|'、逗号、空格、`|t|'、`|h|'、`|e|'。
+在 \TeX\ 扫描控制序列时，`|\hfill|'之后的空格结束该控制序列并被吸收掉。%
+（另一方面，对于 `|\hfill,!visiblespace!.the|'，
+逗号不仅结束控制序列，而且自身也算作一个字符。）
+%\li A \refterm{control symbol}
+%^^{control symbols}
+%is a control sequence consisting of an
+%^{escape character} followed by any character other than a letter---%
+%even a space or an end of line.
+%A control symbol is self-delimited, i.e., \TeX\ knows where it ends without
+%having to look at what character comes after it.
+%The character after a control symbol is never absorbed by
+%the control symbol.
+%\endulist
+%\noindent See \xrefpg{spaces} for more information about spaces after control
+%sequences.
+\li \refterm{控制符}是由^{转义符}紧跟单个非字母符组成的控制序列%
+——非字母符也可以是空格符或者行尾符。
 ^^{control symbols}
-is a control sequence consisting of an
-^{escape character} followed by any character other than a letter---%
-even a space or an end of line.
-A control symbol is self-delimited, i.e., \TeX\ knows where it ends without
-having to look at what character comes after it.
-The character after a control symbol is never absorbed by
-the control symbol.
+控制符是自定界的，即 \TeX\ 无需读取后面的字符就知道它在哪里结束。
+控制符之后的字符永远不会被吸收掉。
 \endulist
-\noindent See \xrefpg{spaces} for more information about spaces after control
-sequences.
+\noindent 你可以参考\xrefpg{spaces}，其中有对控制序列后的空格的介绍。
 
-\TeX\ provides a great many predefined control sequences.  The
-\refterm{primitive} control sequences are built into the \TeX\ computer
-program and thus are available in all forms of \TeX.
+%\TeX\ provides a great many predefined control sequences.  The
+%\refterm{primitive} control sequences are built into the \TeX\ computer
+%program and thus are available in all forms of \TeX.
+%^^{primitive//control sequence}
+%Other
+%predefined control sequences are provided by \refterm{\plainTeX}, the
+%form of \TeX\ described in this book.
+\TeX\ 提供了许多预定义的控制序列。
+\refterm{原始的}控制序列内建于 \TeX\ 程序中，因此可以在各种 \TeX\ 形式中使用。
 ^^{primitive//control sequence}
-Other
-predefined control sequences are provided by \refterm{\plainTeX}, the
-form of \TeX\ described in this book.
+其他预定义的控制序列由\refterm{\plainTeX}（即本书描述的 \TeX\ 形式）提供。
 
-You can augment the predefined control sequences with ones of your own,
-using commands such as ^|\def| and ^|\let| to define them.
-\chapterref{eplain} of this book contains a
-collection of control sequence definitions that you may find
-useful.  In addition, your computing facility may
-be able to provide a collection of
-locally developed \TeX\ macros.
+%You can augment the predefined control sequences with ones of your own,
+%using commands such as ^|\def| and ^|\let| to define them.
+%\chapterref{eplain} of this book contains a
+%collection of control sequence definitions that you may find
+%useful.  In addition, your computing facility may
+%be able to provide a collection of
+%locally developed \TeX\ macros.
+%\endconcept
+你可以用自己的控制序列扩充预定义的控制序列，只需用 ^|\def| 和 ^|\let| 等命令定义它们。
+本书\chapterref{eplain}包含了一批实用的控制序列定义。
+此外，你的计算设备也可能提供一批本地开发的 \TeX\ 宏。
 \endconcept
 
 
-\conceptindex{control symbols}
-\concept{control symbol}
+%\conceptindex{control symbols}
+%\concept{control symbol}
+\concept{控制符}
 
-A \defterm{control symbol} is a \refterm{control sequence} that consists
-of an \refterm{escape character} followed by any character other than a
-letter---even a space or end of line.
+%A \defterm{control symbol} is a \refterm{control sequence} that consists
+%of an \refterm{escape character} followed by any character other than a
+%letter---even a space or end of line.
+%^^{escape character}
+%\endconcept
+\defterm{控制符}（control symbol）是由\refterm{转义符}紧跟单个非字母符组成的%
+\refterm{控制序列}——非字母符也可以是空格符或者行尾符。
 ^^{escape character}
 \endconcept
 
 
-\conceptindex{control words}
-\concept{control word}
+%\conceptindex{control words}
+%\concept{control word}
+\concept{控制词}
 
-A \defterm{control word} is a \refterm{control sequence} that consists
-of an \refterm{escape character} followed by one or more
-letters.\footnote{A ``letter'' here has the strict meaning of a
-character with category code $11$.}
-\TeX\
-ignores any spaces or ends-of-line that follow a control word, except to
-note that they end the control word.
+%A \defterm{control word} is a \refterm{control sequence} that consists
+%of an \refterm{escape character} followed by one or more
+%letters.\footnote{A ``letter'' here has the strict meaning of a
+%character with category code $11$.}
+%\TeX\
+%ignores any spaces or ends-of-line that follow a control word, except to
+%note that they end the control word.
+%^^{escape character}
+%\endconcept
+\defterm{控制词}（control word）是由\refterm{转义符}紧跟一个或多个字母
+组成的\refterm{控制序列}。\footnote{其中“字母”的确切含义是指类别码为 $11$ 的字符。}
+\TeX\ 忽略控制词之后的空格符或行尾符，仅仅用它们表示控制词的结束。
 ^^{escape character}
 \endconcept
 
@@ -1510,8 +1764,8 @@ note that they end the control word.
 \TeX\ 可以根据子公式的竖直尺寸（\refterm{高度}加\refterm{深度}）调整定界符大小，
 这就是定界符的本质特性。
 然而，要让 \TeX\ 对定界符作调整，定界符必须出现在“定界环境”中，
-即作为这些命令 ^|\left|、^|\right|、|\over!-with!-delims|、|\atop!-with!-delims|
-或 |\above!-with!-delims|（见\xrefn{\overwithdelims}，\xrefn{\left}页）之一的参量。
+即作为 ^|\left|、^|\right|、|\overwithdelims|、|\atopwithdelims|或 |\abovewithdelims|%
+（见\xrefn{\overwithdelims}，\xrefn{\left}页）这些命令之一的参量。
 ^^|\overwithdelims|
 ^^|\atopwithdelims|
 ^^|abovewithdelims|
@@ -2127,8 +2381,9 @@ end of the line as in `|{\input chapter2!visiblespace}|'.
 
 
 %\eject
-\conceptindex{fonts}
-\concept font
+%\conceptindex{fonts}
+%\concept font
+\concept 字体
 
 A \defterm{font} in \TeX\ is a collection of up to $256$ output
 characters, usually having the same typeface design, style (roman,
@@ -2524,7 +2779,7 @@ it cannot be done using only the facilities of \TeX\ itself.
 \li 要让文本^{左对齐}，可以在它右边放上一个可无限伸长的水平粘连。
 这个粘连将占用该行所有可用的多余间距。
 你可以用 ^|\leftline| 命令\ctsref{\leftline}或
-|\raggedright| 命令\ctsref{\raggedright}达到此目的。 
+|\raggedright| 命令\ctsref{\raggedright}达到此目的。
 \li 要让文本^{右对齐}，可以在它左边放上一个可无限伸长的水平粘连。
 如同上面，这个粘连将占用该行所有可用的多余间距。
 你可以用 ^|\rightline| 命令\ctsref{\rightline}达到此目的。
@@ -2966,7 +3221,8 @@ already in this section.}
 
 
 \bookmark{2}{以L开头}
-\concept leaders
+%\concept leaders
+\concept 指引线
 
 You can use \defterm{leaders} to fill a space with copies of
 a pattern, e.g.,
@@ -3597,7 +3853,7 @@ See \conceptcit{file}.
 你也可以缩放一个\refterm{字体}，
 以得到比它的“^{设计大小}”更小或更大的字体。
 对每个使用的缩放字体，你需要提供它的^{字形文件}给设备驱动程序%
-\seeconcept{font}——
+\seeconcept{字体}——
 除非该字体已经内嵌在打印机中，而设备驱动程序也知道它。
 在用 |\font| 命令\ctsref{\font}定义一个字体时，
 你可以用单词‘|scaled|’指定放大率。比如：
@@ -4608,7 +4864,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %\noindent
 %and no footer line.
 边距由四个参数 ^|\hoffset|，^|\voffset|，^|\hsize| 和 ^|\vsize| 共同确定
-（在\xrefpg{margins}的“边距”概念中有如何调整它们的指南）。
+（在\xrefpg{边距}的“边距”概念中有如何调整它们的指南）。
 \eix^^{margins}
 页眉是在每个页面顶部的一行内容，位于上边距区域中。
 通过将一个\refterm{记号}列表赋值给 ^|\headline| 参数（\xref{\headline}），

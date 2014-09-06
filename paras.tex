@@ -144,8 +144,8 @@
 \begindesc
 ^^{special characters}
 %
-\easy\ctspecialx # \ctsxrdef{@pound} {英镑符号 \# \footnote{zpxing: 位
-    于键盘的数字 3 之上， 英式键盘为英镑符号，美式键盘为数字符号 \#。}}
+\easy\ctspecialx # \ctsxrdef{@pound} {英镑符号 \# \footnote{译注：
+位于键盘的数字 3 之上，英式键盘为英镑符号，美式键盘为数字符号 \#。}}
 \ctspecialx $ \ctsxrdef{@bucks} {美元符号 \$}
 \ctspecialx % \ctsxrdef{@percent} {百分号 \%}
 \ctspecialx & \ctsxrdef{@and} {和 \&}
@@ -761,7 +761,7 @@ The Dormouse was {\it not} amused.
 \cts lowercase {\rqbraces{\<token list>}}
 \cts uppercase {\rqbraces{\<token list>}}
 \explain ^^{case conversion}
-这些命令按照|\lccode|和|\uccode|的值转换\<token list>中的字母（类别代码为$11$的）为它们的大写和小写形式。
+这些命令按照|\lccode|和|\uccode|的值转换\<token list>中的字母（类别码为$11$的）为它们的大写和小写形式。
 非字母字符不受影响，即使它们是\minref{macro}引用或其他展开成字母的命令。
 \example
 \def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
@@ -912,7 +912,7 @@ Yes.\ No.\ Maybe.
 \endolist
 \noindent
 但是，如果以|`\^^M|（control-M的ASCII 代码13）出现，|^^M|\emph{不会}结束一行。
-你可以修改\minref{类别代码}，从而赋予它新的含义。
+你可以修改\minref{类别码}，从而赋予它新的含义。
 关于|^^|更多的解释请参见\xrefpg{twocarets}。
 \example
 Hello.^^MGoodbye.
@@ -961,8 +961,9 @@ isn't it?}
 \begindesc
 \easy\ctsact ~ \xrdef{@not}
 \explain
-\minref{活动字符}`|~|'，叫做``^{tie}''，产生一个正常的单词间空白，同时保证前后两个单词之间不会断行。只要断行会有歧义，就应该使用tie。比如，在中间名之前，缩写词
-``Dr.''之后，或者``Fig.''之后：像``Fig.~8''。
+\minref{活动字符}`|~|'称为``^{带子}''（tie），它产生一个正常的单词间空白，
+同时保证前后两个单词之间不会断行。只要断行会有歧义，就应该使用带子。
+比如，在中间名之前，缩写词``Dr.''之后，或者``Fig.''之后：像``Fig.~8''。
 
 \example
 P.D.Q.~Bach (1807--1742), the youngest and most

@@ -521,9 +521,8 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \endexample\enddesc
 
 {\emergencystretch=2em
-\see |\hbadness| 和 |\vbadness| (\xref \vbadness),
-|\hfuzz| 和 |\vfuzz| (\xref \vfuzz),
-\conceptcit{leaders}.\par}
+\see |\hbadness| 和 |\vbadness|（\xref \vbadness ），
+|\hfuzz| 和 |\vfuzz|（\xref \vfuzz ），\conceptcit{指引线}。\par}
 \eix^^{space//producing}
 \eix^^{horizontal space}
 \eix^^{vertical space}
@@ -1046,7 +1045,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 
 %==========================================================================
 %\subsection {Struts, phantoms, and empty boxes}
-\subsection {结构体、幻影和空盒子}
+\subsection {支架、幻影和空盒子}
 
 \begindesc
 %\margin{This subsection is a merger of two previous subsections.
@@ -1068,7 +1067,12 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %in the line.  The strut will force the height and depth of the line
 %to be larger, but it won't print anything or consume any horizontal
 %space.
-这个命令产生一个宽度为零的盒子，盒子的高度 (|8.5pt|) 和深度 (|3.5pt|) 与用 \plainTeX\ 的默认字体 |cmr10| 排出的典型的一行文字是一致的。当你使用 |\offinter!-lineskip| ^^|\offinterlineskip| 或类似的命令关闭 \TeX\ 的行间间隔，如你正在构建一个阵列时，该命令主要用于强迫一行具有相同的高度。如果一行的自然高度过矮，你可以在行中插入一个 |\strut| 使它回到标准的高度。结构体将使得一行的高度和深度更大一些，但它不会打印出任何东西，或者消耗任何水平间隔。
+这个命令产生一个宽度为零的盒子，
+盒子的高度 (|8.5pt|) 和深度 (|3.5pt|) 与用 \plainTeX\ 的默认字体 |cmr10| 排出的典型的一行文字是一致的。
+当你使用 |\offinter!-lineskip| ^^|\offinterlineskip| 或类似的命令关闭 \TeX\ 的行间粘连，
+如你正在构建一个阵列时，该命令主要用于强迫一行具有相同的高度。
+如果一行的自然高度过矮，你可以在行中插入一个 |\strut| 使它回到标准的高度。
+支架将使得一行的高度和深度更大一些，但它不会打印出任何东西，或者消耗任何水平间隔。
 
 %If you're setting type in a font that's bigger or smaller than |cmr10|,
 %you should redefine |\strut| for that context.
@@ -1079,7 +1083,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 % 下面这些 vbox 中的句号在竖直方向不是等间距的。
 \vtop{\hbox{.}\hbox{.(}\hbox{.x}
    \hbox{.\vrule height 4pt depth 0pt}}\qquad
-% 因为结构体的缘故，
+% 因为支架的缘故，
 %下面这些 vbox 中的句号在竖直方向上则是等间距的。
 \vtop{\hbox{.\strut}\hbox{.(\strut}\hbox{.x\strut}
    \hbox{.\vrule height 4pt depth 0pt\strut}}
@@ -1109,7 +1113,10 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %It is much like ^|\strut| (\xref \strut),
 %except that it adjusts itself to the different \minref{style}s
 %that can occur in math formulas.
-这个命令产生一个宽度为零的幻影公式，它的高度与深度与左圆括号是一致的。|\mathstrut| 实际上的定义是 `|\vphantom(|'。它主要用于使得根号、下横线和上横线能与公式中其它的根号、下横线和上横线成行排列。除能根据出现在数学公式中的不同\minref{样式} 自动调节以外，它与 ^|\strut|（\xref \strut）非常相似。
+这个命令产生一个宽度为零的幻影公式，它的高度与深度与左圆括号是一致的。
+|\mathstrut| 实际上的定义是 `|\vphantom(|'。
+它主要用于使得根号、下横线和上横线能与公式中其它的根号、下横线和上横线成行排列。
+除能根据出现在数学公式中的不同\minref{样式}自动调节以外，它与 ^|\strut| （\xref \strut）非常相似。
 \example
 $$\displaylines{
 \overline{a_1a_2} \land \overline{b_1b_2}
@@ -1524,7 +1531,14 @@ one \a\a\hskip 2\lastkern three\par
 %contains a row of leaders and \TeX\ must be in a horizontal mode;
 %if \<skip command> is a vertical skip, the window
 %contains a column of leaders and \TeX\ must be in a vertical mode.
-这些命令用于产生\minref{指引线}，也就是用某一个模式\seeconcept{leaders}的复本填充水平或竖直的间隔。\<box> 或 \<rule> 确定一个指引体，即模式的单个复本，而 \<skip command> 确定了用一行或一列的指引体填充的窗体。模式将重复多次，直到填充了整个窗体。如果 \<skip command> 是一个水平的间距，窗体中包括的是行向的指引线，\TeX\ 必须处于水平模式下；如果 \<skip command> 是一个竖直的间距，窗体中包括的是列向的指引线，\TeX\ 必须处于竖直模式下。
+这些命令用于产生\minref{指引线}，
+也就是用某一个模式\seeconcept{指引线}的复本填充水平或竖直的间隔。
+\<box> 或 \<rule> 确定一个指引体，即模式的单个复本，
+而 \<skip command> 确定了用一行或一列的指引体填充的窗体。
+模式将重复多次，直到填充了整个窗体。如果 \<skip command> 是一个水平的间距，
+窗体中包括的是行向的指引线，\TeX\ 必须处于水平模式下；
+如果 \<skip command> 是一个竖直的间距，
+窗体中包括的是列向的指引线，\TeX\ 必须处于竖直模式下。
 
 %The commands differ in how they arrange the repeated pattern in the space
 %and where they put any leftover space:
@@ -1783,7 +1797,8 @@ one \a\a\hskip 2\lastkern three\par
 %A horizontal alignment can only appear when \TeX\ is in a vertical
 %\minref{mode}.  We recommend that you first study alignments in general
 %(\xref{alignment}) before you attempt to use this command.
-只有当 \TeX\ 位于竖直\minref{模式}下水平阵列才能出现。我们建议你在使用该命令之前首先学习一下常见的阵列（\xref{alignment}）。
+只有当 \TeX\ 位于竖直\minref{模式}下水平阵列才能出现。
+我们建议你在使用该命令之前首先学习一下常见的阵列（\xref{阵列}）。
 
 %An alignment consists of a ^{preamble}
 %followed by the text to be aligned. The preamble,
@@ -1812,11 +1827,13 @@ one \a\a\hskip 2\lastkern three\par
 %The |spread| form of this command instructs \TeX\
 %to make the alignment wider by \<dimen> than its natural width.
 %These forms are like the corresponding forms of |\hbox| \ctsref\hbox.
-这个命令的 |to| 形式指导 \TeX\ 构造一个宽度为 \<dimen> 的阵列，在需要的时候调节列的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身宽度再宽 \<dimen> 的阵列。这些形式与 |\hbox| \ctsref\hbox 相应的形式是类似的。
+这个命令的 |to| 形式指导 \TeX\ 构造一个宽度为 \<dimen> 的阵列，在需要的时候调节列的间距。
+这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身宽度再宽 \<dimen> 的阵列。
+这些形式与 |\hbox|\ctsref\hbox 相应的形式是类似的。
 
 %See |\tabskip| \ctsref\tabskip{} for an example using the
 %|to| form.
-参见 |\tabskip| \ctsref\tabskip{} 中使用 |to| 形式的例子。
+参见 |\tabskip| \ctsref\tabskip{}中使用 |to| 形式的例子。
 
 \example
 \tabskip = 1em \halign{%
@@ -1861,7 +1878,10 @@ one \a\a\hskip 2\lastkern three\par
 %alignments in general
 %(\xref{alignment}) and the |\halign| command (see above) before
 %you attempt to use the |\valign| command.
-只有当 \TeX\ 位于水平\minref{模式}下竖直阵列才能出现。因为竖直阵列（a）在概念上有一些困难，并且（b）不经常使，因此，我们建议在你试图使用 |\valign| 命令之前首先学习一下常见的阵列（\xref{alignment}）以及|\halign| 命令（参见上面的描述）。
+只有当 \TeX\ 位于水平\minref{模式}下竖直阵列才能出现。
+因为竖直阵列（a）在概念上有一些困难，并且（b）不经常使，
+因此，我们建议在你试图使用 |\valign| 命令之前首先学习一下常见的阵列（\xref{阵列}）%
+以及 |\halign| 命令（参见上面的描述）。
 
 %An alignment consists of a ^{preamble}
 %followed by the text to be aligned. The preamble,
@@ -1907,7 +1927,8 @@ one \a\a\hskip 2\lastkern three\par
 %template so that the rows don't come out crooked as a result
 %of the varying heights of the entries in the alignment.  You
 %can produce a strut with the |\strut| command.
-正常情况下，你需要在每个模板中包括\minref{结构体}^^{struts//in vertical alignments}，以便行不会由于阵列中条目高度的变化而变得弯曲。你可以使用 |\strut| 获得结构体。
+正常情况下，你需要在每个模板中包括\minref{支架}^^{struts//in vertical alignments}，
+以便行不会由于阵列中条目高度的变化而变得弯曲。你可以使用 |\strut| 获得支架。
 
 %The |to| form of this command instructs \TeX\
 %to make the vertical extent of the alignment be \<dimen>,
@@ -1915,7 +1936,9 @@ one \a\a\hskip 2\lastkern three\par
 %The |spread| form of this command instructs \TeX\
 %to make the alignment taller by \<dimen> than its natural height.
 %These forms are like the corresponding forms of |\vbox| \ctsref\vbox.
-这个命令的 |to| 形式指导 \TeX\ 构造一个竖直伸展为 \<dimen> 的阵列，在需要的时候调节行的间距。这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身高度再高 \<dimen> 的阵列。这些形式与 |\vbox| \ctsref\vbox 相应的形式是类似的。
+这个命令的 |to| 形式指导 \TeX\ 构造一个竖直伸展为 \<dimen> 的阵列，在需要的时候调节行的间距。
+这个命令的 |spread| 形式指导 \TeX\ 构造一个比其本身高度再高 \<dimen> 的阵列。
+这些形式与 |\vbox| \ctsref\vbox 相应的形式是类似的。
 
 \example
 {\hsize=1in \parindent=0pt
@@ -1931,8 +1954,8 @@ one \a\a\hskip 2\lastkern three\par
    ketchup&marinara&mayonnaise&mustard\cr
    rarebit&tartar\cr}}
 \nextexample
-% 与上例相同的内容，但没有结构体（这个例子显示了
-% 结构体存在的必要性）。
+% 与上例相同的内容，但没有支架
+%（这个例子显示了支架存在的必要性）。
 {\hsize=1in \parindent=0pt
 \valign{#&#&#&#\cr
    bernaise&curry&hoisin&hollandaise\cr
