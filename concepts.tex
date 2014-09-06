@@ -2194,33 +2194,50 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 
 
 \bookmark{2}{以E开头}
-\concept{escape character}
+%\concept{escape character}
+\concept{转义符}
 
-An \defterm{escape character} introduces a control sequence.  The escape
-character in \refterm{\plainTeX} is the backslash (|\|).
+%An \defterm{escape character} introduces a control sequence.  The escape
+%character in \refterm{\plainTeX} is the backslash (|\|).
+%\indexchar \
+%You can change the escape character from $c_1$ to $c_2$
+%by reassigning the category codes of $c_1$ and $c_2$
+%with the ^|\catcode| command \ctsref{\catcode}.
+%You can also define additional escape characters similarly.
+%If you want to typeset material containing literal escape characters, you must
+%either
+%(a) define a control sequence that stands for the printed escape character or
+%(b) temporarily
+%disable the escape character by changing its category code, using the
+%method shown on \xrefpg{verbatim}.  The definition:
+\defterm{转义符}（escape character）引入一个控制序列。
+\refterm{\PlainTeX} 的转义符是反斜杠(|\|)。
 \indexchar \
-You can change the escape character from $c_1$ to $c_2$
-by reassigning the category codes of $c_1$ and $c_2$
-with the ^|\catcode| command \ctsref{\catcode}.
-You can also define additional escape characters similarly.
-If you want to typeset material containing literal escape characters, you must
-either
-(a) define a control sequence that stands for the printed escape character or
-(b) temporarily
-disable the escape character by changing its category code, using the
-method shown on \xrefpg{verbatim}.  The definition:
+利用 ^|\catcode| 命令\ctsref{\catcode}重新定义 $c_1$ 和 $c_2$ 的类别码，
+你可以将转义符从 $c_1$ 改为 $c_2$。类似地你可以定义额外的转义符。
+如果你想排版包含字面转义符的材料，你必须或者
+(a) 定义一个表示打印转义符的控制序列，或者
+(b) 使用\xrefpg{verbatim}介绍的方法，改变转义符的类别码以临时取消转义。
+% 译注：这里给出的页码似乎有误。
+下述定义：
 
+%\csdisplay
+%\def\\{$\backslash$}
+%|
+%is one way of creating a control sequence that stands for `$\backslash$'
+%(a backslash typeset in a math font).
 \csdisplay
 \def\\{$\backslash$}
 |
-is one way of creating a control sequence that stands for `$\backslash$'
-(a backslash typeset in a math font).
+是一种生成表示 `$\backslash$' 的控制序列的方法（用数学字体排版反斜杠）。
 
-You can use the ^|\escapechar| parameter \ctsref{\escapechar} to specify
-how the escape character is represented in synthesized control sequences,
-e.g., those created by |\string| and |\message|.
-
-
+%You can use the ^|\escapechar| parameter \ctsref{\escapechar} to specify
+%how the escape character is represented in synthesized control sequences,
+%e.g., those created by |\string| and |\message|.
+%
+%\endconcept
+对于合成控制序列，比如那些由 |\string| 和 |\message| 生成的控制序列，
+你可以用 ^|\escapechar| 参数\ctsref{\escapechar}指定其中的转义符用哪个字符表示。
 \endconcept
 
 
