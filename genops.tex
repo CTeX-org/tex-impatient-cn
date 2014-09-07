@@ -2197,7 +2197,7 @@ terminal but omits the prompt.
 \eix^^{input files}
 \enddesc
 
-\secondprinting{\vfill\eject}
+%\secondprinting{\vfill\eject}
 
 
 %==========================================================================
@@ -2617,7 +2617,7 @@ within the boxes that aren't displayed.)
 ..etc.
 |
 \endexample
-\vfil\eject
+%\vfil\eject
 \example
 \vbox{A \hbox
    {formula
@@ -3057,19 +3057,35 @@ since the undefined control sequence |\oops| will cause another error.
 \eix^^{error messages}
 
 %==========================================================================
+%\section {Initializing \TeX}
 \section {初始化 \TeX}
 
+%\begindesc
+%\cts dump {}
+%\explain
+%This command, which must not appear inside a group, dumps the
+%contents of \TeX's memory
+%to a ^{format file} (\xref{format file}).
+%By using ^|virtex|, a special ``virgin'' form of \TeX,
+%you can then reload the format file at high speed and
+%continue in the same state that \TeX\ was in at the time of the dump.
+%|\dump| also ends the run.  Since |\dump| can only be used
+%in ^|initex|, not in production forms of \TeX, it is only useful
+%to people who are installing \TeX.
+%\enddesc
 \begindesc
 \cts dump {}
 \explain
-这个命令不能使用在组中, 它可以把 \TeX\ 记录的内容导出成一个^{格式文件}
-(\xref{format file}).
-如果使用的是^|virtex| (这是一种 \TeX\ 形式\footnote{译者注, |virtex| 和 |initex| 在现代的 \TeX\ 系统中不再被使用. 在远古时代, 人们必需使用 |initex| 命令来导出格式文件, 用 |virtex| 命令载入格式文件, 而 |tex| 程序不能导出或载入格式文件. 而在现代的发行版中, |tex| 命令可以处理这一切},
-你可以使用很快的速度载入这个格式文件,
-载入后的 \TeX\ 状态和你当初导出格式文件时的状态并无二致.
-|\dump| 命令会同时结束本次运行.
-由于 |\dump| 只能在 ^|initex| 中运行,
-而不是生产版本的 \TeX, 所以它仅仅在你安装 \TeX\ 时会用到.
+这个命令不能在编组中使用，它可以把 \TeX\ 记录的内容导出成一个^{格式文件}（\xref{格式文件}）。
+如果使用的是 ^|virtex| 这种特殊的 \TeX\ 形式，
+\footnote{译注：|virtex| 和 |initex| 在现代的 \TeX\ 系统中不再被使用。
+在远古时代，人们必须使用 |initex| 命令来导出格式文件，用 |virtex| 命令载入格式文件，
+而 |tex| 程序不能导出或载入格式文件。而在现代的发行版中，|tex| 命令可以处理这一切。}
+你能够以很快的速度载入这个格式文件，
+载入后的 \TeX\ 状态和你当初导出格式文件时的状态并无二致。
+|\dump| 命令会同时结束本次运行。
+由于 |\dump| 只能在 ^|initex| 中运行，
+而不是生产版本的 \TeX ，所以它仅仅在你安装 \TeX\ 时会用到。
 \enddesc
 
 \begindesc

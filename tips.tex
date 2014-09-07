@@ -201,11 +201,10 @@
 % You can get further information about \TeX's attempted line breaks by
 % setting |\tracingpages| (\xref\tracingpages) to $1$.
 
-有时，你会对一个或者几个自然段改变 ^|\looseness| 参数
-\ctsref\looseness{}，从而修改页面的长度。设置 |\looseness| 为负会让
-\TeX{} 试图缩减段落的行数；为正则增拓其行数。改变 |\looseness| 的缺点
-在于：受影响区域的单词间距不是最佳的。要了解更多的断行信息，可以设置
-|\tracingpages| (\xref\tracingpages) 为 $1$。
+有时，你可以改变一个或几个段落的 ^|\looseness| 参数\ctsref{\looseness}%
+以修改页面的长度。设置 |\looseness| 为负会让 \TeX{} 试图缩减段落的行数；
+为正则增加其行数。改变 |\looseness| 的缺点在于：受影响区域的单词间距不是最佳的。
+要了解更多的断行信息，可以设置 |\tracingpages|（\xref\tracingpages ）为 $1$。
 
 % \section Preserving the end of a page
 
@@ -1234,9 +1233,9 @@ Debbie was the * of the show.
 原文是“输入什么样，就是什么样”的文本。比较常见的是排版计算机输入，包
 括计算机程序和 \TeX{} 输入。
 ^^{computer programs, typesetting}
-计算机输入难于以原文呈现的原因是：
+计算机输入不易以原文呈现的原因是：
 \olist\compact
-\li 有些字符（控制字符，逃逸字符，大括号等）在 \TeX{} 里有特殊的含义。
+\li 有些字符（控制字符，转义符，花括号等）在 \TeX{} 里有特殊的含义。
 \li 行尾和多个空格会被转换为一个空格。
 \endolist
 \noindent
@@ -1262,7 +1261,7 @@ Debbie was the * of the show.
 % operation.  We'll explain how to do that in a moment, after considering
 % the other problem: disabling the translation of spaces and ends of line.
 
-要取消特殊含义，你可以改变那些的字符类别码。
+要取消特殊含义，你可以改变那些字符的类别码。
 ^^{category codes//for verbatim text}
 接下来的宏演示你如何做：
 \csdisplay
@@ -1276,7 +1275,7 @@ Debbie was the * of the show.
 }
 |
 小心！一旦这样改变了类别码，就不能再使用任何控制序列了，因为现在不
-再有逃逸字符了。你需要想法回到正常的操作模式。接下来，介绍完另一个问
+再有转义符了。你需要想法回到正常的操作模式。接下来，介绍完另一个问
 题：取消多个空格和行尾的转换以后，我们将予以解释。
 
 % \PlainTeX\ has two commands that together nearly solve the problem:
@@ -1287,9 +1286,9 @@ Debbie was the * of the show.
 % For that you need stronger measures---which are provided by
 % the ^|\obeywhitespace| macro that we are about to define.
 
-\PlainTeX{} 有两个命令：^|\obeyspaces| \ctsref{\obeyspaces} 和
-^|\obeylines| \ctsref{\obeylines}， 几乎已经解决了上述问题， 除了两件
-事：保留行首的空格以及保留多个空白行。对此，你需要更强大的方法---使用
+\PlainTeX{} 有两个命令：^|\obeyspaces|\ctsref{\obeyspaces}和
+^|\obeylines|\ctsref{\obeylines}， 几乎已经解决了上述问题， 除了两件
+事：保留行首的空格以及保留多个空白行。对此，你需要更强大的方法——使用
 我们将要定义的 ^|\obeywhitespace| 宏。
 
 % \TeX\ normally insists on collecting lines into paragraphs. One way to
@@ -1373,9 +1372,8 @@ Debbie was the * of the show.
 % will do the trick.  Within the verbatim text, you can use a double
 % vertical bar (|!|!||) to denote a single one, and you end the verbatim text
 % with |!|endverbatim|.
-
 为了在原文文本之后回到正常的操作模式，你需要选定一个原文文本中几乎不用
-的字符来作为临时的逃逸字符。竖线（|!||）经常是一个好的选择。为此，需要宏定
+的字符来作为临时的转义符。竖线（|!||）经常是一个好的选择。为此，需要宏定
 义：
 \csdisplay
 \def\verbatim{\par\begingroup\deactivate\obeywhitespace
@@ -1386,8 +1384,8 @@ Debbie was the * of the show.
 
 \def\!|{!|}
 |
-在原文文档中，你可以用双竖线（|!|!||）来代表单竖线，并用
-|!|endverbatim| 来结束原文部分。
+在原文文本中，你可以用双竖线（|!|!||）表示单竖线，
+并用 |!|endverbatim| 来结束原文部分。
 
 % There are many variations on this technique:
 % \ulist
@@ -1412,7 +1410,7 @@ Debbie was the * of the show.
 这个技巧可以有很多变化：
 \ulist
 \li 如果一种编程语言有关键字，你可以把关键字变为一个命令，来产生粗体的
-关键字。这时候每一个关键字前面都要跟一个临时逃逸字符。
+关键字。这时候每一个关键字前面都要跟一个临时转义符。
 \li 如果有一个字符（假设是竖线）在原文文本中从来没有用到，你可以激活它
 并且用它结束原文部分。宏定义将类似于：
 \csdisplay

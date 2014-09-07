@@ -691,8 +691,8 @@
 （见 \xref{mismatched}）。
 \endulist
 \noindent
-在\conceptcit{宏}这里有更多关于参数和参量的内容。
-在\knuth{第~203--204~页}你可以找到对于定界参量和非定界参量的精确规则。
+请参阅\conceptcit{宏}这里的更多关于参数和参量的内容。
+在\knuth{第~203--204~页}你能找到定界参量和非定界参量的精确规则。
 \endconcept
 
 
@@ -2245,42 +2245,65 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %\concept family
 \concept 族
 
-A \defterm{family} is a group of three related \refterm{fonts:font} used
-when \TeX\ is in \refterm{math mode}.
+%A \defterm{family} is a group of three related \refterm{fonts:font} used
+%when \TeX\ is in \refterm{math mode}.
+%^^{fonts//families of}
+%Outside of math mode, families
+%have no effect.  The three fonts in a family are used for normal symbols
+%(\refterm{text size}), subscripts and superscripts (\refterm{script
+%size}), and sub-subscripts, super-superscripts, etc.\
+%(\refterm{scriptscript size}).
+%^^{text size}
+%^^{script size}
+%^^{scriptscript size}
+%For example, the numeral `|2|' set in
+%these three fonts would give you `$2$', `$\scriptstyle 2$', and
+%`$\scriptscriptstyle 2$' (in \plainTeX).
+%Ordinarily you would set up the
+%three fonts in a family as different point sizes of the same typeface,
+%but nothing prevents you from using different typefaces for the three
+%fonts as well or using the same font twice in a family.
+\defterm{族}（family）是用于\refterm{数学模式}的，由三个相关\refterm{字体}组成的集合。
 ^^{fonts//families of}
-Outside of math mode, families
-have no effect.  The three fonts in a family are used for normal symbols
-(\refterm{text size}), subscripts and superscripts (\refterm{script
-size}), and sub-subscripts, super-superscripts, etc.\
-(\refterm{scriptscript size}).
+在数学模式之外，族没有任何作用。
+一个族的三个字体分别用于正常符号（\refterm{文本尺寸}），
+上标和下标（\refterm{标号尺寸}），以及次上标和次下标等（\refterm{小标号尺寸}）。
 ^^{text size}
 ^^{script size}
 ^^{scriptscript size}
-For example, the numeral `|2|' set in
-these three fonts would give you `$2$', `$\scriptstyle 2$', and
-`$\scriptscriptstyle 2$' (in \plainTeX).
-Ordinarily you would set up the
-three fonts in a family as different point sizes of the same typeface,
-but nothing prevents you from using different typefaces for the three
-fonts as well or using the same font twice in a family.
+例如，数字 `|2|' 用这三个字体分别显示为 `$2$'、`$\scriptstyle 2$' 和
+`$\scriptscriptstyle 2$'（在 \plainTeX\ 中）。
+通常你会将一个族的三个字体设定为相同字型且不同点数，
+但没人阻止你将这三个字体也设定为不同字型，或者将其中两个字体设定为完全一样。
 
-{\tighten
-\TeX\ provides for up to sixteen families, numbered $0$--$15$.  For
-example, family $0$ in \refterm{\plainTeX} consists of $10$-point roman
-for text, $7$-point roman for script, and $5$-point roman for
-scriptscript.
+%{\tighten
+%\TeX\ provides for up to sixteen families, numbered $0$--$15$.  For
+%example, family $0$ in \refterm{\plainTeX} consists of $10$-point roman
+%for text, $7$-point roman for script, and $5$-point roman for
+%scriptscript.
+%^^{\plainTeX//font families in}
+%\PlainTeX\ also defines family $1$ to consist of math
+%italic fonts and reserves families $2$ and $3$ for ^{special symbols} and
+%^{math extensions} respectively.\footnote{Families $2$ and $3$ are special
+%in that their font metric files must include parameters for math
+%spacing.} If you need to define a family for yourself, you should use
+%the ^|\newfam| command \ctsref{\@newfam} to get the number of a family that
+%isn't in use, and the ^|\textfont|, ^|\scriptfont|,
+%and ^|\scriptscriptfont| commands \ctsref{\scriptscriptfont}
+%to assign fonts to that family.
+%\par}
+%
+%\endconcept
+\TeX\ 提供多达十六个字体族，它们用 $0$--$15$ 编号。
+比如在\refterm{\plainTeX} 中，第 $0$ 族由用于文本尺寸的 $10$ 点罗马字体，
+用于标号尺寸的 $7$ 点罗马字体，以及用于小标号尺寸的 $5$ 点罗马字体组成。
 ^^{\plainTeX//font families in}
-\PlainTeX\ also defines family $1$ to consist of math
-italic fonts and reserves families $2$ and $3$ for ^{special symbols} and
-^{math extensions} respectively.\footnote{Families $2$ and $3$ are special
-in that their font metric files must include parameters for math
-spacing.} If you need to define a family for yourself, you should use
-the ^|\newfam| command \ctsref{\@newfam} to get the number of a family that
-isn't in use, and the ^|\textfont|, ^|\scriptfont|,
-and ^|\scriptscriptfont| commands \ctsref{\scriptscriptfont}
-to assign fonts to that family.
-\par}
-
+\PlainTeX\ 还将第 $1$ 族定义为由数学意大利字体组成，
+并将第 $2$ 族和第 $3$ 族分别保留给^{特殊符号}和^{数学扩展符号}。
+\footnote{第 $2$ 族和第 $3$ 族的特殊之处在于，它们的字体度量文件必须包含数学间隔参数。}
+如果你需要自己定义字体族，你应该使用 ^|\newfam| 命令\ctsref{\@newfam}获取未使用的族编号，
+再用 ^|\textfont|、^|\scriptfont| 和 ^|\scriptscriptfont|
+命令\ctsref{\scriptscriptfont}分别设定该族的各个字体。
 \endconcept
 
 
@@ -2288,111 +2311,170 @@ to assign fonts to that family.
 %\concept file
 \concept 文件
 
-A \defterm{file} is a stream of information that \TeX\ interprets or
-creates.  Files are managed by the ^{operating system} that supervises your
-\TeX\ run.  \TeX\ deals with files in four different contexts:
+%A \defterm{file} is a stream of information that \TeX\ interprets or
+%creates.  Files are managed by the ^{operating system} that supervises your
+%\TeX\ run.  \TeX\ deals with files in four different contexts:
+%\olist
+%\li A ``^{source file}'' is one that \TeX\ reads with its ``eyes''
+%\seeconcept{\anatomy} and interprets according to its ordinary rules.
+%Your primary input file---the one you specify after `|**|' or
+%on the command line when
+%you invoke \TeX---is a source file, and so is any file that you call for
+%with an ^|\input| command \ctsref \input.
+\defterm{文件}（file）是 \TeX\ 解释或者创建的信息流。
+文件由监督 \TeX\ 运行的^{操作系统}管理。
+\TeX\ 在四种不同的背景中用到文件：
 \olist
-\li A ``^{source file}'' is one that \TeX\ reads with its ``eyes''
-\seeconcept{\anatomy} and interprets according to its ordinary rules.
-Your primary input file---the one you specify after `|**|' or
-on the command line when
-you invoke \TeX---is a source file, and so is any file that you call for
-with an ^|\input| command \ctsref \input.
+\li “^{源码文件}”是 \TeX\ “眼睛”读取\seeconcept{\anatomy}，并根据它的一般法则解释的文件。
+你的主要输入文件——即调用 \TeX\ 时在 `|**|' 之后或者在命令行中指定的文件%
+——是一个源码文件，你用 ^|\input|命令\ctsref \input 请求的任何文件同样也是。
 
-\li A ``^{result file}'' is one that contains the results of
-running \TeX.  A \TeX\ run creates two result files: the
-\dvifile\ and the log file.
+%\li A ``^{result file}'' is one that contains the results of
+%running \TeX.  A \TeX\ run creates two result files: the
+%\dvifile\ and the log file.
+%^^{\dvifile//as a result file}
+%^^{log file//as a result file}
+%The \dvifile\ contains the information needed to print your document;
+%the
+%log file contains a record of what happened during the run, including any
+%error messages that \TeX\ generated.
+%If your primary source file is named
+%|screed.tex|, your \dvifile\ and log file will be named |screed.dvi|
+%and |screed.log|.\footnote{This is the usual convention, but
+%particular implementations of \TeX\ are free to change it.}
+\li “^{结果文件}”是包含 \TeX\ 运行结果的文件。
+\TeX\ 运行后产生两个结果文件：\dvifile 和日志文件。
 ^^{\dvifile//as a result file}
 ^^{log file//as a result file}
-The \dvifile\ contains the information needed to print your document;
-the
-log file contains a record of what happened during the run, including any
-error messages that \TeX\ generated.
-If your primary source file is named
-|screed.tex|, your \dvifile\ and log file will be named |screed.dvi|
-and |screed.log|.\footnote{This is the usual convention, but
-particular implementations of \TeX\ are free to change it.}
+\dvifile 包含打印文档所需的信息，而日志文件包含运行记录，包括 \TeX\ 生成的任何错误信息。
+若主要输入文件的名称是 |screed.tex|，则 \dvifile 和日志文件的名称分别是
+|screed.dvi| 和 |screed.log|。\footnote{这是通常的约定，
+但特定的 \TeX\ 实现可以自由地修改它。}
 
-\li To read from a file with the ^|\read|
-command \ctsref{\read} you need to associate the file with an input stream.
+%\li To read from a file with the ^|\read|
+%command \ctsref{\read} you need to associate the file with an input stream.
+%^^{input streams//reading with \b\tt\\read\e}
+%You can have up to $16$ input streams active
+%at once, numbered $0$--$15$.
+%The |\read| command reads a single line and makes it the value of a
+%designated \refterm{control sequence}, so reading with
+%|\read| is very different from reading with ^|\input| (which brings in an
+%entire file).
+%\TeX\ takes any input stream number not between
+%$0$ and $15$ to refer to the terminal,
+%so `|\read16|', say, reads the next line that you type at the terminal.
+\li 要用 ^|\read| 命令\ctsref{\read}读取一个文件，你需要将这个文件和一个输入流关联起来。
 ^^{input streams//reading with \b\tt\\read\e}
-You can have up to $16$ input streams active
-at once, numbered $0$--$15$.
-The |\read| command reads a single line and makes it the value of a
-designated \refterm{control sequence}, so reading with
-|\read| is very different from reading with ^|\input| (which brings in an
-entire file).
-\TeX\ takes any input stream number not between
-$0$ and $15$ to refer to the terminal,
-so `|\read16|', say, reads the next line that you type at the terminal.
+你最多可以有 $16$ 个同时活动的输入流，它们以 $0$--$15$ 编号。
+|\read| 命令读取一行并把它作为指定\refterm{控制序列}的值，
+因此用 |\read| 读取和用 ^|\input| 读取是大不相同的（后者读入整个文件）。
+\TeX\ 将编号不在 $0$ 和 $15$ 之间的输入流视为终端，
+因此，比如说 `|\read16|'，将读取你在终端中键入的下一行文本。
 
-\li To write to a file with the |\write|
-command \ctsref \write\ you need to associate the file
-with an output stream.
+%\li To write to a file with the |\write|
+%command \ctsref \write\ you need to associate the file
+%with an output stream.
+%^^|\write//output stream for|
+%^^{output streams}
+%You can have up to $16$ output streams active
+%at once, numbered $0$--$15$.
+%Input and output streams are independent.
+%Anything sent to an output stream with a negative number goes to the log
+%file; anything sent to an output stream with a number greater than $15$
+%goes both to the log file and to the terminal.
+%Thus `|\write16|', say, writes a line on the terminal and also sends
+%that line
+%to the log~file.
+%
+%\endolist
+\li 要用 |\write| 命令\ctsref \write 写入一个文件，你需要将这个文件和一个输出流关联起来。
 ^^|\write//output stream for|
 ^^{output streams}
-You can have up to $16$ output streams active
-at once, numbered $0$--$15$.
-Input and output streams are independent.
-Anything sent to an output stream with a negative number goes to the log
-file; anything sent to an output stream with a number greater than $15$
-goes both to the log file and to the terminal.
-Thus `|\write16|', say, writes a line on the terminal and also sends
-that line
-to the log~file.
-
+你最多可以有 $16$ 个同时活动的输出流，它们以 $0$--$15$ 编号。输入流和输出流是相互独立的。
+任何送到编号为负数的输出流的东西，将被写到日志文件中；
+而任何送到编号大于 $15$ 的输出流的东西，将同时被写到日志文件和终端中。
+因此，比如说 `|\write16|'，将在终端中写上一行文本并将它送到日志文件中。
 \endolist
 
-You must open a stream file before you can use it.
-An input stream file is opened with an ^|\openin|
-command  \ctsref \openin\ and an output stream file is opened with an
-^|\openout| command \ctsref\openout.
-For tidiness
-you should close a stream file when you're done with it, although
-\TeX\ will do that at the end of the run if you don't.
-The two commands for closing a stream file are ^|\closein| \ctsref\closein\
-and ^|\closeout| \ctsref\closeout.
-An advantage of closing a stream when
-you're done with it is that you can then reuse the stream for a different file.
-Doing this can be essential when you're reading a long sequence of files.
+%You must open a stream file before you can use it.
+%An input stream file is opened with an ^|\openin|
+%command  \ctsref \openin\ and an output stream file is opened with an
+%^|\openout| command \ctsref\openout.
+%For tidiness
+%you should close a stream file when you're done with it, although
+%\TeX\ will do that at the end of the run if you don't.
+%The two commands for closing a stream file are ^|\closein| \ctsref\closein\
+%and ^|\closeout| \ctsref\closeout.
+%An advantage of closing a stream when
+%you're done with it is that you can then reuse the stream for a different file.
+%Doing this can be essential when you're reading a long sequence of files.
+在使用流文件之前，你必须先打开它。输入流文件用 ^|\openin| 命令\ctsref \openin 打开，
+而输出流文件用 ^|\openout| 命令\ctsref\openout 打开。
+为保持整洁，你应该在完成后关闭流文件；
+然而即使你不这么做，\TeX\ 在运行结束时也会帮你关闭它。
+用于关闭流文件的两个命令分别是 ^|\closein|\ctsref\closein 和 ^|\closeout|\ctsref{\closeout}。
+在完成后关闭流文件的优点是，你可以把它重新用到另一个文件去。
+在读取一长串文件时，这样做是很有必要的。
 
-Although you can assign numbers yourself to input and output streams,
-it's better to do it with the ^|\newread| and
-^|\newwrite| \ctsref{\@newwrite} commands.
-You can have more than one stream associated with a particular file,
-but you'll get (probably undiagnosed) garbage unless all of the streams
-are input streams.  Associating more than one stream with an input file
-can be useful when you want to use the same input file for two different
-purposes.
+%Although you can assign numbers yourself to input and output streams,
+%it's better to do it with the ^|\newread| and
+%^|\newwrite| \ctsref{\@newwrite} commands.
+%You can have more than one stream associated with a particular file,
+%but you'll get (probably undiagnosed) garbage unless all of the streams
+%are input streams.  Associating more than one stream with an input file
+%can be useful when you want to use the same input file for two different
+%purposes.
+虽然你可以自己给输入流和输出流编号，
+但最好还是用 ^|\newread| 和 ^|\newwrite|\ctsref{\@newwrite}命令处理流编号。
+一个特定文件可以关联到多个流，
+但除非所有流都是输入流，否则你将会得到（也许是原因不明的）垃圾。
+当你想把同个输入文件用于两个不同目的时，一个输入文件关联多个流就很有用。
 
-\TeX\ ordinarily defers the actions of opening, writing to, or closing
-an output stream until it ships out a page with ^|\shipout|
-(see \knuth{page~227}
-for the details).  This behavior applies even to messages written to the
-terminal with |\write|.  But you can get \TeX\ to perform an action
-on an output stream immediately by preceding the action command with
-^|\immediate| \ctsref\immediate.  For example:
+%\TeX\ ordinarily defers the actions of opening, writing to, or closing
+%an output stream until it ships out a page with ^|\shipout|
+%(see \knuth{page~227}
+%for the details).  This behavior applies even to messages written to the
+%terminal with |\write|.  But you can get \TeX\ to perform an action
+%on an output stream immediately by preceding the action command with
+%^|\immediate| \ctsref\immediate.  For example:
+%\csdisplay
+%\immediate\write16{Do not pass GO!! Do not collect $200!!}
+%|
+%\endconcept
+一般地，\TeX\ 会推迟输出流的打开、写入和关闭操作，
+直到它用 ^|\shipout|送出一个页面（详情可见\knuth{第~227~页}）。
+甚至用 |\write| 输出消息到终端时也是这样的。
+然而，通过在操作命令之前加上 ^|\immediate|\ctsref\immediate ，
+你可以让 \TeX\ 立即执行输出流操作。比如：
 \csdisplay
 \immediate\write16{Do not pass GO!! Do not collect $200!!}
 |
 \endconcept
 
 
-\conceptindex{file names}
-\concept {file name}
+%\conceptindex{file names}
+%\concept {file name}
+\concept {文件名}
 
-A \defterm{file name} names a
-\refterm{file} that is known to the ^{operating system}
-that in turn
-supervises your \TeX\ run.  The syntax of a file name does \emph{not}
-follow the usual rules of \TeX\ syntax, and in fact it is different
-in different implementations of \TeX.
-In particular, most \TeX\ implementations consider a file name to be
-terminated by a blank or an end of line.  Thus \TeX\ is likely to
-misinterpret `|{\input chapter2}|'
-by taking the right brace as part of the file name.
-As a general rule, you should follow a file name by a blank or the
-end of the line as in `|{\input chapter2!visiblespace}|'.
+%A \defterm{file name} names a
+%\refterm{file} that is known to the ^{operating system}
+%that in turn
+%supervises your \TeX\ run.  The syntax of a file name does \emph{not}
+%follow the usual rules of \TeX\ syntax, and in fact it is different
+%in different implementations of \TeX.
+%In particular, most \TeX\ implementations consider a file name to be
+%terminated by a blank or an end of line.  Thus \TeX\ is likely to
+%misinterpret `|{\input chapter2}|'
+%by taking the right brace as part of the file name.
+%As a general rule, you should follow a file name by a blank or the
+%end of the line as in `|{\input chapter2!visiblespace}|'.
+\defterm{文件名}（file name）是\refterm{文件}在监督 \TeX\ 运行的^{操作系统}中的名称。
+文件名的语法\emph{并不}遵循 \TeX\ 语法的一般规则，
+而且实际上在不同的 \TeX\ 实现中它们各不相同。
+特别地，大多数 \TeX\ 实现都认为文件名在空格符或行尾符处结束。
+因此 \TeX\ 有可能曲解 `|{\input chapter2}|'，将右括号视为名称的一部分。
+一般来说，你应该在文件名后面添加一个空格符或行尾符，
+就像 `|{\input chapter2!visiblespace}|' 这样。
 
 \endconcept
 
@@ -2402,155 +2484,236 @@ end of the line as in `|{\input chapter2!visiblespace}|'.
 %\concept font
 \concept 字体
 
-A \defterm{font} in \TeX\ is a collection of up to $256$ output
-characters, usually having the same typeface design, style (roman,
-italic, bold, condensed, etc.),
-and point size.\footnote{\PlainTeX\ uses a special
-font for constructing ^{math symbols} in which the characters have
-different sizes.  Other special fonts are often useful for applications
-such as typesetting ^{logos}.} The ^{Computer Modern fonts} that
-generally come with \TeX\ have only $128$ characters. The colophon on
-the last page of this book describes the typefaces that we used to set
-this book.
+%A \defterm{font} in \TeX\ is a collection of up to $256$ output
+%characters, usually having the same typeface design, style (roman,
+%italic, bold, condensed, etc.),
+%and point size.\footnote{\PlainTeX\ uses a special
+%font for constructing ^{math symbols} in which the characters have
+%different sizes.  Other special fonts are often useful for applications
+%such as typesetting ^{logos}.} The ^{Computer Modern fonts} that
+%generally come with \TeX\ have only $128$ characters. The colophon on
+%the last page of this book describes the typefaces that we used to set
+%this book.
+在 \TeX\ 中，\defterm{字体}（font）是由不超过 $256$ 个输出字符组成的集合，
+这些字符通常有相同的设计、样式（罗马体、意大利体、粗体、窄体等）和点数。
+\footnote{\PlainTeX\ 用于构造^{数学符号}的特殊字体包含点数不同的字符。
+在排版^{标识}（logo）等应用中也经常使用其他的特殊字体。}
+\TeX\ 自带的^{计算机现代字体}一般只有 $128$ 个字符。
+在本书最后面的书尾页中描述了排版本书所用的字体。
 
-For instance, here is the alphabet in the Palatino Roman $10$ point font:
+%For instance, here is the alphabet in the Palatino Roman $10$ point font:
+%^^{Palatino fonts}
+%\vskip\abovedisplayskip{\narrower\tenpal
+%\noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
+%abcdefghijklmnopqrstuvwxyz\par
+%}\vskip\belowdisplayskip
+%\noindent
+%And here it is in the Computer Modern Bold Extended $12$
+%point font:
+%^^{Computer Modern fonts}
+%\vskip\abovedisplayskip{\narrower\font\twelvebf=cmbx12\twelvebf
+%\noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
+%abcdefghijklmnopqrstuvwxyz\par
+%}\vskip\belowdisplayskip
+%The characters in a font are numbered.
+%The numbering usually agrees with the ^{\ascii} numbering
+%for those characters that exist in the \ascii\ character set.
+%The code table for each font indicates what the character
+%with code $n$ looks like in that font.
+%Some fonts, such as the ones used for mathematical symbols, have no
+%letters at all in them.  You can produce a \refterm{box} containing the
+%character numbered $n$, typeset in the current font, by writing `|\char |$n$'
+% \ctsref{\char}.
+举个例子，这里是 $10$ 点 Palatino 罗马字体的字母表：
 ^^{Palatino fonts}
 \vskip\abovedisplayskip{\narrower\tenpal
 \noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
 abcdefghijklmnopqrstuvwxyz\par
 }\vskip\belowdisplayskip
 \noindent
-And here it is in the Computer Modern Bold Extended $12$
-point font:
+而这里是 $12$ 点计算机现代粗体扩展字体的字母表：
 ^^{Computer Modern fonts}
 \vskip\abovedisplayskip{\narrower\font\twelvebf=cmbx12\twelvebf
 \noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
 abcdefghijklmnopqrstuvwxyz\par
 }\vskip\belowdisplayskip
-The characters in a font are numbered.
-The numbering usually agrees with the ^{\ascii} numbering
-for those characters that exist in the \ascii\ character set.
-The code table for each font indicates what the character
-with code $n$ looks like in that font.
-Some fonts, such as the ones used for mathematical symbols, have no
-letters at all in them.  You can produce a \refterm{box} containing the
-character numbered $n$, typeset in the current font, by writing `|\char |$n$'
- \ctsref{\char}.
+字体中的字符都是编好号的。对于在 \ascii\ 字符表中存在的字符，
+它们的编号一般与其 ^{\ascii} 编码一致。
+每个字体的编码表指明该字体的第 $n$ 个字符是怎样的。
+有些字体，比如那些用于数学符号的字体，根本不包含任何字母字符。
+你可以用 `|\char |$n$'\ctsref{\char}生成包含第 $n$ 个字符的盒子，
+该字符用当前字体排版。
 
-In order to use a font in your document,
-you must first name it with a control sequence and load it.  Thereafter you
-can select it by typing
-that control sequence whenever you want to use it.
-\PlainTeX\ provides a number of fonts that are already named and~loaded.
+%In order to use a font in your document,
+%you must first name it with a control sequence and load it.  Thereafter you
+%can select it by typing
+%that control sequence whenever you want to use it.
+%\PlainTeX\ provides a number of fonts that are already named and~loaded.
+要在文档中使用某个字体，你必须先用控制序列给它命名再载入它。
+此后，在需要用到它的地方，你就可以键入该控制序列来选择它。
+\PlainTeX\ 提供了若干已经命名和载入的字体。
 
-You name and load a font as a single operation, using a
-command such as `|\font\twelvebf=cmbx12|'.  Here `|\twelvebf|' is the
-control sequence that you use to name the font
-and `|cmbx12|' identifies the font metrics file
-|cmbx12.tfm|
-in your computer's file system.
-You then can start to use the font by typing
-`|\twelvebf|'.  After that, the font will be in effect until
-either (a)~you select another font or (b)~you terminate the
-\refterm{group}, if any, in which you started the
-font.  For example, the input:
+%You name and load a font as a single operation, using a
+%command such as `|\font\twelvebf=cmbx12|'.  Here `|\twelvebf|' is the
+%control sequence that you use to name the font
+%and `|cmbx12|' identifies the font metrics file
+%|cmbx12.tfm|
+%in your computer's file system.
+%You then can start to use the font by typing
+%`|\twelvebf|'.  After that, the font will be in effect until
+%either (a)~you select another font or (b)~you terminate the
+%\refterm{group}, if any, in which you started the
+%font.  For example, the input:
+你可以用像 `|\font\twelvebf=cmbx12|' 这样的命令在同一个操作中命名并载入字体。
+这里的 `|\twelvebf|' 是用于命名该字体的控制序列，
+而 `|cmbx12|' 表示计算机文件系统中的字体度量文件 |cmbx12.tfm|。
+现在你可以通过键入 `|\twelvebf|' 开始使用这个字体。
+在此之后，这个字体将一直生效，直到
+(a)~你选择了另一个字体，或者 (b)~你结束了\refterm{编组}，
+如果在开始字体时就位于这个编组中。例如下面的输入：
 
+%\csdisplay
+%{\twelvebf white rabbits like carrots}
+%|
+%will cause the |cmbx12| font to be in effect just for the
+%text `|white rabbits like carrots|'.
 \csdisplay
 {\twelvebf white rabbits like carrots}
 |
-will cause the |cmbx12| font to be in effect just for the
-text `|white rabbits like carrots|'.
+将使得 |cmbx12| 字体只对文本 `|white rabbits like carrots|' 生效。
 
-You can use \TeX\ with fonts other than
-Computer Modern (look at the example on \xrefpg{palatino} and
-at the page headers).
-The files for such fonts need to be
-installed in your computer's file system in a place where \TeX\ can find
-them.  \TeX\ and its companion programs generally need two files for each font:
-one to give its metrics (|cmbx12.tfm|,
+%You can use \TeX\ with fonts other than
+%Computer Modern (look at the example on \xrefpg{palatino} and
+%at the page headers).
+%The files for such fonts need to be
+%installed in your computer's file system in a place where \TeX\ can find
+%them.  \TeX\ and its companion programs generally need two files for each font:
+%one to give its metrics (|cmbx12.tfm|,
+%^^{\tfmfile}
+%for example) and another to
+%give the shape of the characters (|cmbx12.pk|, for example).
+%\TeX\ itself uses only the metrics
+%file.  Another program, the device driver,
+%^^{device drivers}
+%converts the \dvifile\
+%^^{\dvifile//converted by driver}
+%produced by \TeX\ to a form that your printer
+%or other output device can handle.  The driver
+%uses the shape file (if it exists).
+在 \TeX\ 中你可以使用与计算机现代不同的字体（见\xrefpg{palatino}的例子以及页眉）。
+这些字体的文件需要安装在计算机文件系统的某个 \TeX\ 能找到的位置中。
+对每个字体，\TeX\ 及相关程序一般需要两个文件：
+一个给出各字符的度量（比如 |cmbx12.tfm|），
 ^^{\tfmfile}
-for example) and another to
-give the shape of the characters (|cmbx12.pk|, for example).
-\TeX\ itself uses only the metrics
-file.  Another program, the device driver,
+另一个给出各字符的形状（比如 |cmbx12.pk|）。
+\TeX\ 本身仅用到度量文件。另一个程序，设备驱动程序，
 ^^{device drivers}
-converts the \dvifile\
+把 \TeX\ 生成的 \dvifile 转换为能被打印机或其他输出设备处理的格式。
 ^^{\dvifile//converted by driver}
-produced by \TeX\ to a form that your printer
-or other output device can handle.  The driver
-uses the shape file (if it exists).
+设备驱动程序要用到形状文件（如果该文件存在）。
 
-The font metrics file contains the information that \TeX\ needs in
-order to allocate space for each typeset character.
-Thus it includes the size of each character, the ligatures and
-kerns that pertain to sequences of adjacent characters, and so on.
-What the metrics file
-\emph{doesn't} include is any information about the shapes
-of the characters in the font.
+%The font metrics file contains the information that \TeX\ needs in
+%order to allocate space for each typeset character.
+%Thus it includes the size of each character, the ligatures and
+%kerns that pertain to sequences of adjacent characters, and so on.
+%What the metrics file
+%\emph{doesn't} include is any information about the shapes
+%of the characters in the font.
+字体度量文件包含 \TeX\ 对每个排版字符所分配空间的信息。
+即它包含各个字符的尺寸，对相邻字符的连字和紧排，等等。
+字体度量文件\emph{并不}包含关于其字符的形状的任何信息。 
 
+%{\tighten
+%The shape (pixel) file \xrdef{shape}
+%^^{pixel file}^^{shape file}
+%may be in any of several
+%formats. The extension part of the name (the part after the dot)
+%tells the driver which format the shape file is in.  For example,
+%|cmbx12.pk| ^^{\pkfile} might be the shape file for font |cmbx12| in
+%packed format, while |cmbx12.gf| ^^{\gffile} might be the shape file
+%for font |cmbx12| in generic font format.
+%A shape file may not be needed for a font that's resident in your
+%output device.
+%\par}
 {\tighten
-The shape (pixel) file \xrdef{shape}
+形状（像素）文件\xrdef{shape}可以有多种格式。
 ^^{pixel file}^^{shape file}
-may be in any of several
-formats. The extension part of the name (the part after the dot)
-tells the driver which format the shape file is in.  For example,
-|cmbx12.pk| ^^{\pkfile} might be the shape file for font |cmbx12| in
-packed format, while |cmbx12.gf| ^^{\gffile} might be the shape file
-for font |cmbx12| in generic font format.
-A shape file may not be needed for a font that's resident in your
-output device.
+文件的扩展名（点号之后部分）告诉驱动文件该形状文件的格式。
+例如，|cmbx12| 字体的形状文件 可以是压缩格式的 |cmbx12.pk| ^^{\pkfile}，
+也可以是一般格式的 |cmbx12.gf| ^^{\gffile}。
+对存在于输出设备中的字体，其形状文件也许不是必需的。
 \par}
 
 \endconcept
 
 
-\conceptindex{footers}
-\concept footer
+%\conceptindex{footers}
+%\concept footer
+\concept 页脚
 
-A \defterm{footer} is material that \TeX\ puts at the bottom of every page,
-below the text of that page.
-The default footer in \plainTeX\ is a centered page number.
-Ordinarily a footer consists of a single line, which you can set by
-assigning a token list to ^|\footline| \ctsref\footline.
-See \xrefpg{bighead} for a method of producing multiline footers.
+%A \defterm{footer} is material that \TeX\ puts at the bottom of every page,
+%below the text of that page.
+%The default footer in \plainTeX\ is a centered page number.
+%Ordinarily a footer consists of a single line, which you can set by
+%assigning a token list to ^|\footline| \ctsref\footline.
+%See \xrefpg{bighead} for a method of producing multiline footers.
+\defterm{页脚}（footer）是放在每个页面底部，位于正文之下的素材。
+在 \plainTeX\ 中默认页脚是居中的页码。通常页脚只包含一行文本，
+你可以通过给 ^|\footline|\ctsref\footline 指定一个记号列来设定页脚。
+请参阅\xrefpg{bighead}中介绍的生成多行页脚的方法。
 
 \endconcept
 
 %k \vskip 0pt plus 2pt % to solve page break problem
 
-\concept {format file}
+%\concept {format file}
+\concept {格式文件}
 
-{\tighten
-A \defterm{format file} is a file that contains an image of
-\TeX's memory in a form in which it can be reloaded quickly.
-A format file can be created with the ^|\dump| command \ctsref\dump.
-The image contains a complete record
-of the definitions (of \refterm{fonts:font}, \refterm{macros:macro}, etc.)
-that were present when the dump took place.
-By using ^|virtex|, a special ``virgin'' form of \TeX,
-you can then reload the format file at high speed and
-continue in the same state that \TeX\ was in at the time of the dump.
-The advantage of a format file over an ordinary input
-file containing the same information is that \TeX\ can load it much
-faster.
-\par}
+%{\tighten
+%A \defterm{format file} is a file that contains an image of
+%\TeX's memory in a form in which it can be reloaded quickly.
+%A format file can be created with the ^|\dump| command \ctsref\dump.
+%The image contains a complete record
+%of the definitions (of \refterm{fonts:font}, \refterm{macros:macro}, etc.)
+%that were present when the dump took place.
+%By using ^|virtex|, a special ``virgin'' form of \TeX,
+%you can then reload the format file at high speed and
+%continue in the same state that \TeX\ was in at the time of the dump.
+%The advantage of a format file over an ordinary input
+%file containing the same information is that \TeX\ can load it much
+%faster.
+%\par}
+\defterm{格式文件}（format file）是一个包含 \TeX\ 的内存映像的文件，
+该文件以一种能够快速重新载入的形式存储。
+格式文件可以用 ^|\dump| 命令\ctsref\dump 建立。
+映像文件包含转储发生时存在的（\refterm{字体}和\refterm{宏}等）定义的完整记录。
+然后利用 ^|virtex|，\TeX\ 的一种特别的“原生”形式,
+你可以快速地重新载入该格式文件，并从 \TeX\ 转储时所在的状态中继续。
+相对于包含相同信息的普通输入文件，格式文件的优点是 \TeX\ 能够更快地载入它。
 
-Format files can only be created by ^|initex|, another special
-form of \TeX\ intended just for that purpose.
-Neither |virtex| nor |initex| has any
-facilities other than the primitives built into the
-\TeX\ program itself.
+%Format files can only be created by ^|initex|, another special
+%form of \TeX\ intended just for that purpose.
+%Neither |virtex| nor |initex| has any
+%facilities other than the primitives built into the
+%\TeX\ program itself.
+格式文件仅可以用 ^|initex| 建立，|initex| 是专用于此目的的另一种 \TeX\ 形式。
+除了内建于 \TeX\ 本身的原始命令，|virtex| 和 |initex| 均不包含其他任何命令。
 
-A ^{preloaded} form of \TeX\ is one that has a format file already
-loaded and is ready to accept user input.
-The form of \TeX\ that's called |tex|
-often has the \plainTeX\ definitions preloaded.
-(\PlainTeX\ is ordinarily  available in two other forms as well:
-as a format file and as a \TeX\ source file.
-In some environments, |tex| is equivalent to calling |virtex|
-and then loading |plain|.)
-Creating preloaded forms of \TeX\ requires a special program;
-it cannot be done using only the facilities of \TeX\ itself.
+%A ^{preloaded} form of \TeX\ is one that has a format file already
+%loaded and is ready to accept user input.
+%The form of \TeX\ that's called |tex|
+%often has the \plainTeX\ definitions preloaded.
+%(\PlainTeX\ is ordinarily  available in two other forms as well:
+%as a format file and as a \TeX\ source file.
+%In some environments, |tex| is equivalent to calling |virtex|
+%and then loading |plain|.)
+%Creating preloaded forms of \TeX\ requires a special program;
+%it cannot be done using only the facilities of \TeX\ itself.
+\TeX\ 的^{预载入}形式是一种已载入某个格式文件 ，并准备接收用户输入的形式。
+称为 |tex| 的 \TeX\ 形式通常都预载入了 \plainTeX\ 定义。%
+（\PlainTeX\ 通常还以另外两种形式出现：作为格式文件与作为\TeX\ 源码文件。
+在某些环境中，|tex| 等价于调用 |virtex| 然后载入 |plain|。）%
+仅仅用 \TeX\ 本身无法建立 \TeX\ 的预载入形式，它需要一个特别的程序。
 
 \endconcept
 
@@ -4068,7 +4231,7 @@ paragraph.}
 %retrieve the mark texts of the first and last marks of the split-off
 %portion with the ^|\splitfirstmark| and ^|\splitbotmark| commands
 %\ctsref{\splitfirstmark}.
-当你用 |\vsplit| 命令\ctsref{\vsplit}分割页面时，
+在用 |\vsplit| 命令\ctsref{\vsplit}分割页面时，
 用 |\splitfirstmark| 和 ^|\splitbotmark| 命令\ctsref{\splitfirstmark}%
 就可以取得分割的这部分中的第一个和最后一个标记的标记文本。
 

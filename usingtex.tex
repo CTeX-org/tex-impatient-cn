@@ -1080,54 +1080,132 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 %\section New \TeX\ versus old {\TeX}
 \section{新 \TeX\ 和老 \TeX}
 
+%\xrdef{newtex}
+%In 1989 Knuth made a major revision to \TeX\ in order to
+%adapt it to the
+%character sets needed to support typesetting for languages other than
+%English.\space ^^{foreign languages}
+%The revision included a few minor extra features that could be added
+%without disturbing anything else.
+%This book describes ``^{\newTeX}''.
+%If you're still using an older version
+%of \TeX\ (version $2.991$ or earlier),
+%you'll want to know what features of {\newTeX} you can't use.
+%The following features aren't available in the older versions:
+%\ulist\compact
+%\li ^|\badness| (\xref\badness)
+%\li ^|\emergencystretch| (\xref\emergencystretch)
+%\li ^|\errorcontextlines| (\xref\errorcontextlines)
+%\li ^|\holdinginserts| (\xref\holdinginserts)
+%\li ^|\language|, ^|\setlanguage|, and |\new!-lan!-guage|
+%(\pp\xrefn\language, \xrefn{\@newlanguage}) ^^|\newlanguage|
+%\li ^|\lefthyphenmin| and ^|\righthyphenmin| (\xref\lefthyphenmin)
+%\li ^|\noboundary| (\xref\noboundary)
+%\li ^|\topglue| (\xref\topglue)
+%\li The |^^|$xy$ notation for hexadecimal digits (\xref{hexchars})
+%\endulist
+%\noindent
+%We recommend that you obtain new \TeX\ if you can.
 \xrdef{newtex}
-在 1989 年, Knuth 对 \TeX\ 做了一次大幅的修改, 来使它可以处理非英语排版所需用的字符集.\space ^^{foreign languages}
-这次修改还包括了一些额外的不干扰其它东西的小功能,
-这本书介绍 ``^{\newTeX}''.
-This book describes ``^{\newTeX}''.
-如果你仍使用旧版本的 \TeX\ ($2.991$ 版或以前的版本)
-你可能会想知道哪些 {\newTeX} 的功能你是没法使用的.
-以下这些功能无法在旧版中使用:
+在 1989 年，Knuth 对 \TeX\ 做了一次大幅修改，
+使得它能够处理非英语排版所需的字符集。^^{foreign languages}
+这次修改还包括了一些额外的不干扰其它东西的小功能，
+这本书介绍 ``^{\newTeX}''。
+如果你仍使用旧版本的 \TeX （$2.991$ 版或以前的版本），
+你可能会想知道哪些 {\newTeX} 的功能你是没法使用的。
+以下这些功能无法在旧版中使用：
 \ulist\compact
-\li ^|\badness| (\xref\badness)
-\li ^|\emergencystretch| (\xref\emergencystretch)
-\li ^|\errorcontextlines| (\xref\errorcontextlines)
-\li ^|\holdinginserts| (\xref\holdinginserts)
-\li ^|\language|, ^|\setlanguage|, 和 |\new!-lan!-guage|
-(\pp\xrefn\language, \xrefn{\@newlanguage}) ^^|\newlanguage|
-\li ^|\lefthyphenmin| 和 ^|\righthyphenmin| (\xref\lefthyphenmin)
-\li ^|\noboundary| (\xref\noboundary)
-\li ^|\topglue| (\xref\topglue)
-\li 十六进制的数字表达方式 |^^|$xy$  (\xref{hexchars})
+\li ^|\badness|（\xref\badness ）
+\li ^|\emergencystretch|（\xref\emergencystretch ）
+\li ^|\errorcontextlines|（\xref\errorcontextlines ）
+\li ^|\holdinginserts|（\xref\holdinginserts ）
+\li ^|\language|、^|\setlanguage| 和 |\new!-lan!-guage|%
+（第 \xrefn\language 和 \xrefn{\@newlanguage}页）^^|\newlanguage|
+\li ^|\lefthyphenmin| 和 ^|\righthyphenmin|（\xref\lefthyphenmin ）
+\li ^|\noboundary|（\xref\noboundary ）
+\li ^|\topglue|（ \xref\topglue ）
+\li 十六进制的数字表达方式 |^^|$xy$（\xref{hexchars}）
 \endulist
 \noindent
-我们建议你尽可能地使用新版本的 \TeX.
+我们建议你尽可能地使用新版本的 \TeX 。
 
 %\section Resources
 \section 资源
 
+%\xrdef{resources}
+%A number of resources are available to help you in using \TeX.
+%\texbook\ is the definitive source of information on \TeX:
 \xrdef{resources}
-有很多资源可以帮助你使用 \TeX.
-\texbook\ 是最可靠的 \TeX\ 信息来源.
+有很多资源可以帮助你使用 \TeX ，其中 \texbook\ 是最可靠的 \TeX\ 信息来源。
 
+%\smallskip
+%{\narrower\noindent
+%^{Knuth, Donald E.}, \texbook.  Reading, Mass.: Addison-Wesley, 1984.\par}
+%\smallskip
+%\noindent
+%Be sure to get the seventeenth printing (January 1990) or later;
+%the earlier printings don't cover the features of new \TeX.
 \smallskip
 {\narrower\noindent
 ^{Knuth, Donald E.}, \texbook.  Reading, Mass.: Addison-Wesley, 1984.\par}
 \smallskip
 \noindent
-请一定使用第十七次 (1990 年 1 月) 及以后的印刷版本.
-早先的印刷版本不包括新 \TeX\ 的许多功能.
+请务必使用第十七次（1990 年 1 月）及以后的印刷版本。
+早先的印刷版本不包括新 \TeX\ 的许多功能。
 
-^{\LaTeX} 是一套为了简化使用 \TeX\ 而设计的命令集
-在这本书中有描述\footnote{译者注: 这本书中介绍的 \LaTeX\ 己经过时}:
+%^{\LaTeX} is a very popular collection of commands designed to simplify the use
+%of \TeX.  It is described in:
+%\smallskip
+%{\narrower\noindent\frenchspacing\spaceskip = 3.33pt plus 2pt minus 1.2pt
+%^{Lamport, Leslie}, {\sl The \LaTeX\ Document Preparation System}.
+%Reading, Mass.: Addison-Wesley, 1986.\par}
+%\smallskip
+%\noindent
+%^{\AMSTeX} is the collection of commands adopted by the American Mathematical
+%Society as a standard for submitting mathematical man\-u\-scripts
+%electronically.
+%It is described in:
+%\smallskip
+%{\narrower\noindent
+%^{Spivak, Michael~D.}, {\sl The Joy of \TeX}. Providence, R.I.:
+%American Mathematical Society, 1986.
+%\par}
+%\smallskip
+%\noindent
+%You can join the ^{\TUG} (TUG), which publishes a newsletter
+%called {\it ^{TUGBoat}}.
+%TUG is an excellent source not only for information about \TeX\ but also
+%for collections of macros, including \AMSTeX.
+%Its address is:
+%\smallskip
+%{\obeylines
+%^{\TUG}
+%c/o American Mathematical Society
+%P.O. Box 9506
+%Providence,  RI  02940
+%U.S.A.
+%}
+%\smallskip
+%\noindent
+%Finally, you can obtain copies of the ^|eplain.tex| macros
+%described in \chapterref{eplain} as well as the macros used in typesetting
+%this book.
+%They are available through the Internet network by anonymous \ftp\ from the
+%following hosts:
+%{\obeylines\display{\tt
+%labrea.stanford.edu [36.8.0.47]
+%ics.uci.edu [128.195.1.1]
+%june.cs.washington.edu [128.95.1.4]}}
+^{\LaTeX} 是一套为了简化 \TeX\ 的使用而设计的命令集，
+它在这本书里面有介绍\footnote{译注: 这本书中介绍的 \LaTeX\ 己经过时。}：
 \smallskip
 {\narrower\noindent\frenchspacing\spaceskip = 3.33pt plus 2pt minus 1.2pt
 ^{Lamport, Leslie}, {\sl The \LaTeX\ Document Preparation System}.
 Reading, Mass.: Addison-Wesley, 1986.\par}
 \smallskip
 \noindent
-^{\AMSTeX} 是一套美国数学学会定义的提交电子数学手稿的命令标准,
-在这里有描述:
+^{\AMSTeX} 是一套美国数学学会定义的提交电子数学手稿的命令标准，
+它在这里有介绍：
 \smallskip
 {\narrower\noindent
 ^{Spivak, Michael~D.}, {\sl The Joy of \TeX}. Providence, R.I.:
@@ -1135,9 +1213,9 @@ American Mathematical Society, 1986.
 \par}
 \smallskip
 \noindent
-你可以加入 ^{\TUG} (TUG), 这个组织出版一本名为 {\it ^{TUGBoad}} 的通讯.
-TUG 是一个很好的信息来源渠道, 它同时也提供包括 \AMSTeX\ 在内的很多 \TeX\ 宏包资源,
-它的地址是:
+你可以加入 ^{\TUG}（TUG），这个组织出版一本名为 {\it ^{TUGBoad}} 的通讯。
+TUG 是一个很好的信息来源渠道，它同时也提供包括 \AMSTeX\ 在内的很多 \TeX\ 宏包资源。
+它的地址是：
 \smallskip
 {\obeylines
 ^{\TUG}
@@ -1148,18 +1226,41 @@ U.S.A.
 }
 \smallskip
 \noindent
-最后, 你可以获取在 \chapterref{eplain} 介绍的用来排版本书的宏包 ^|eplain.tex|.
-它可以通过使用 \ftp\ 匿名登录获取:
+最后，你可以获取在\chapterref{eplain}介绍的用来排版本书的宏包 ^|eplain.tex|。
+它可以通过使用 \ftp 匿名登录获取：
 {\obeylines\display{\tt
 labrea.stanford.edu [36.8.0.47]
 ics.uci.edu [128.195.1.1]
 june.cs.washington.edu [128.95.1.4]}}
 
-电子版本还包括了斯坦弗大学的 Oren Patashnik ^^{Patashnik, Oren} 为 ^{\BibTeX} 计算机程序处理输入并且排印出其输出的宏.
-如果你在这个宏包中发现了错误, 或者想改进它, 你可以给 Karl 发电子邮件, Karl 的电子邮箱地址是 {\tt karl@cs.umb.edu}.
+%The electronic version includes additional macros
+%that format input for the
+%^{\BibTeX}\ computer program, written by Oren Patashnik at Stanford
+%University, ^^{Patashnik, Oren}
+%and print the output from that program.
+%If you find bugs in the macros, or think of improvements, you can send
+%electronic mail to Karl at {\tt karl@cs.umb.edu}.
+电子版本还包括了为 ^{\BibTeX} 程序处理输入并排印其输出的宏——
+\thinspace\BibTeX 程序是斯坦弗大学的 Oren Patashnik ^^{Patashnik, Oren} 编写的。
+如果你在这个宏包中发现了错误，或者想改进它，
+你可以给 Karl 发电子邮件。Karl 的电子邮箱地址是 {\tt karl@cs.umb.edu}。
 
-这个宏包可以通过向以下地址邮寄 10.00 美元购买 $5\frac1/4$\inches\
-或 $3\frac1/2$\inches\  软盘得到.
+%The macros are also available for US \$10.00 on $5\frac1/4$\inches\
+%or $3\frac1/2$\inches\ PC-format diskettes from:
+%\smallskip
+%{\obeylines
+%Paul Abrahams
+%214 River Road
+%Deerfield,  MA  01342
+%\vskip\tinyskipamount
+%Email: {\tt Abrahams\%Wayne-MTS@um.cc.umich.edu}
+%}
+%\smallskip
+%\noindent
+%These addresses are correct as of June 1990; please be aware that they may
+%change after that, particularly the electronic addresses.
+这个宏包还提供了 $5\frac1/4$\inches\ 或 $3\frac1/2$\inches\ 软盘，
+你可以向以下地址邮寄 10.00 美元购买：
 \smallskip
 {\obeylines
 Paul Abrahams
@@ -1170,6 +1271,6 @@ Email: {\tt Abrahams\%Wayne-MTS@um.cc.umich.edu}
 }
 \smallskip
 \noindent
-这个地址在 1990 年 6 月是正确的; 请注意在这之后它可能发生改变, 尤其是电子邮件地址.
+这个地址在 1990 年 6 月是正确的；请注意在这之后它可能发生改变，尤其是电子邮件地址。
 
 \endchapter\byebye
