@@ -2621,7 +2621,7 @@ abcdefghijklmnopqrstuvwxyz\par
 %of the characters in the font.
 字体度量文件包含 \TeX\ 对每个排版字符所分配空间的信息。
 即它包含各个字符的尺寸，对相邻字符的连字和紧排，等等。
-字体度量文件\emph{并不}包含关于其字符的形状的任何信息。 
+字体度量文件\emph{并不}包含关于其字符的形状的任何信息。
 
 %{\tighten
 %The shape (pixel) file \xrdef{shape}
@@ -3298,30 +3298,44 @@ from hyphenating it.
 
 
 \bookmark{2}{以J开头}
-\conceptindex{justification}
-\concept {justified text}
+%\conceptindex{justification}
+%\concept {justified text}
+\concept {对齐文本}
 
-\defterm{Justified text} is text that has been typeset so that both
-margins are even.  Unjustified text, on the other hand, has been typeset
-with ``ragged'' margins on one or both sides.
-Documents typed on old-fashioned typewriters almost always have
-ragged right margins.
-Although documents produced by \TeX\ are
-justified by default, you can if you wish produce documents (or
-sequences of lines) that have ^{ragged right}---or ^{ragged left}---margins.
-You can also get \TeX\ to center a sequence of lines, thus making both
-margins ragged.
+%\defterm{Justified text} is text that has been typeset so that both
+%margins are even.  Unjustified text, on the other hand, has been typeset
+%with ``ragged'' margins on one or both sides.
+%Documents typed on old-fashioned typewriters almost always have
+%ragged right margins.
+%Although documents produced by \TeX\ are
+%justified by default, you can if you wish produce documents (or
+%sequences of lines) that have ^{ragged right}---or ^{ragged left}---margins.
+%You can also get \TeX\ to center a sequence of lines, thus making both
+%margins ragged.
+%^^{centered text}
+%You can use the
+%^|\leftskip|, ^|\rightskip|, and  ^|\raggedright| commands
+%(\pp \xrefn{\leftskip},~\xrefn{\raggedright}) for these purposes.
+\defterm{对齐文本}（justified text）是两边对齐排版的文本。
+而非对齐文本是单边或两边“不对齐”排版的文本。
+老式打印机排版的文档几乎总是左对齐的。
+虽然 \TeX\ 默认生成两边对齐的文档，
+如果你需要也可以生成^{左对齐}或^{右对齐}的文档（或一些文本行）。
+你也可以让 \TeX\ 将一些文本行居中，从而让两边都不对齐。
 ^^{centered text}
-You can use the
-^|\leftskip|, ^|\rightskip|, and  ^|\raggedright| commands
-(\pp \xrefn{\leftskip},~\xrefn{\raggedright}) for these purposes.
+用 ^|\leftskip|，^|\rightskip| 和 ^|\raggedright| 命令%
+（第 \xrefn{\leftskip}，\xrefn{\raggedright}页）可以达到这些目的.
 
-When \TeX\ is producing justified text, it usually
-needs to stretch or shrink the glue within each line to make the margins
-come out even.  When \TeX\ is producing unjustified text, on the other
-hand, it usually leaves the glue within each line at its natural width.
-Many typographers prefer unjustified text because its interword
-spacing is more uniform.
+%When \TeX\ is producing justified text, it usually
+%needs to stretch or shrink the glue within each line to make the margins
+%come out even.  When \TeX\ is producing unjustified text, on the other
+%hand, it usually leaves the glue within each line at its natural width.
+%Many typographers prefer unjustified text because its interword
+%spacing is more uniform.
+%\endconcept
+在生成对齐文本时，\TeX\ 通常需要伸缩各行的粘连以让两边对齐。
+而在生成非对齐文本时，\TeX\ 通常让各行的粘连保持自然尺寸。
+很多印刷商更喜欢非对齐文本，因为它的字间距更加一致。
 \endconcept
 
 
