@@ -3114,8 +3114,9 @@ extends above its \refterm{baseline}.
 \endconcept
 
 
-\conceptindex{horizontal lists}
-\concept{horizontal list}
+%\conceptindex{horizontal lists}
+%\concept{horizontal list}
+\concept{水平列表}
 
 A \defterm{horizontal list} is a list of items
 that \TeX\ has produced while it is
@@ -3171,7 +3172,8 @@ put, say, a horizontal \refterm{alignment} inside an~hbox.
 \endconcept
 
 
-\concept{hyphenation}
+%\concept{hyphenation}
+\concept{连字}
 
 \TeX\ automatically hyphenates words as it is processing your document.
 \TeX\ is not eager to insert hyphens, preferring instead to find good
@@ -3418,75 +3420,147 @@ already in this section.}
 %\concept leaders
 \concept 指引线
 
-You can use \defterm{leaders} to fill a space with copies of
-a pattern, e.g.,
-to put repeated dots between a title and a page number in a table of contents.
-A leader is a single copy of the pattern.
-The specification of leaders contains three pieces of information:
+%You can use \defterm{leaders} to fill a space with copies of
+%a pattern, e.g.,
+%to put repeated dots between a title and a page number in a table of contents.
+%A leader is a single copy of the pattern.
+%The specification of leaders contains three pieces of information:
+%\olist\compact
+%\li what a single leader is
+%\li how much space needs to be filled
+%\li how the copies of the pattern should be arranged within the space
+%\endolist
+利用\defterm{指引线}（leaders），你可以用某个模式的复本填充空间，
+比如在目录中的用重复的点填充标题和页码之间的空间。
+指引体（leader）是模式的单个复本。
+要指定一个指引线，你需要给出三方面的信息：
 \olist\compact
-\li what a single leader is
-\li how much space needs to be filled
-\li how the copies of the pattern should be arranged within the space
+\li 单个指引体是怎样的
+\li 要填充的空间有多大
+\li 模式的复本在空间内应该如何组织
 \endolist
 
+%\bix^^|\leaders|
+%\bix^^|\cleaders|
+%\bix^^|\xleaders|
+%{\tighten
+%\TeX\ has three commands for specifying leaders:
+%|\leaders|, \hbox{|\cleaders|}, and |\xleaders| (\xref\leaders).  The
+%\refterm{argument} of each command specifies the leader.
+%The command must be followed by \refterm{glue}; the size of the glue
+%specifies how much space is to be filled.  The choice of command determines
+%how the leaders are arranged within the space.}
 \bix^^|\leaders|
 \bix^^|\cleaders|
 \bix^^|\xleaders|
-{\tighten
-\TeX\ has three commands for specifying leaders:
-|\leaders|, \hbox{|\cleaders|}, and |\xleaders| (\xref\leaders).  The
-\refterm{argument} of each command specifies the leader.
-The command must be followed by \refterm{glue}; the size of the glue
-specifies how much space is to be filled.  The choice of command determines
-how the leaders are arranged within the space.}
+\TeX\ 有三个用于指定指引线的命令：
+|\leaders|，\hbox{|\cleaders|} 和 |\xleaders|（\xref\leaders ）。
+各命令的\refterm{参量}指定了指引体。
+命令之后必须是一个\refterm{粘连}；粘连的大小指定了要填充空间的大小。
+命令的选择决定了指引体在空间内如何组织。
 
-Here's an example showing how |\leaders| works:
+%Here's an example showing how |\leaders| works:
+%\csdisplay
+%\def\dotting{\leaders\hbox to 1em{\hfil.\hfil}\hfil}
+%\line{The Political Process\dotting 18}
+%\line{Bail Bonds\dotting 26}
+%|
+%Here we've put the leaders and their associated glue into a \refterm{macro}
+%definition so that we can conveniently
+%use them in two places. This input produces:
+这里有个例子展示了 |\leaders| 的工作方式：
 \csdisplay
 \def\dotting{\leaders\hbox to 1em{\hfil.\hfil}\hfil}
 \line{The Political Process\dotting 18}
 \line{Bail Bonds\dotting 26}
 |
-Here we've put the leaders and their associated glue into a \refterm{macro}
-definition so that we can conveniently
-use them in two places. This input produces:
+其中我们将指引线及相关粘连放在一个\refterm{宏}定义中，
+以方便我们在两个地方使用它。这个例子的输出结果是：
 
+%\vdisplay{\advance\hsize by -\parindent
+%\def\dotting{\leaders\hbox to 1em{\hfil{.}\hfil}\hfill}%
+%\line{The Political Process{\dotting}18}
+%\line{Bail Bonds{\dotting}26}
+%}
 \vdisplay{\advance\hsize by -\parindent
 \def\dotting{\leaders\hbox to 1em{\hfil{.}\hfil}\hfill}%
 \line{The Political Process{\dotting}18}
 \line{Bail Bonds{\dotting}26}
 }
 
-The \refterm{hbox} following |\leaders| specifies
-the leader, namely, an hbox 1\em\ wide containing a dot
-at its center.
-The space is filled with copies of this box,
-effectively filling it
-with dots whose centers are 1\em{} apart.
-The following |\hfil| (the one at the
-end of the macro definition) is glue that
-specifies the space to be filled.
-In this case it's whatever space is needed to fill out the line.
-By choosing |\leaders| rather than |\cleaders| or |\xleaders| we've insured
-that the dots on different lines line up with each other.
+%The \refterm{hbox} following |\leaders| specifies
+%the leader, namely, an hbox 1\em\ wide containing a dot
+%at its center.
+%The space is filled with copies of this box,
+%effectively filling it
+%with dots whose centers are 1\em{} apart.
+%The following |\hfil| (the one at the
+%end of the macro definition) is glue that
+%specifies the space to be filled.
+%In this case it's whatever space is needed to fill out the line.
+%By choosing |\leaders| rather than |\cleaders| or |\xleaders| we've insured
+%that the dots on different lines line up with each other.
+|\leaders| 之后的\refterm{水平盒子}指定了指引体，即包含居中点的 1\em\ 宽的水平盒子。
+空间将用这个盒子的复本填充，实际上是用中心相隔 1\em{} 的点填充。
+随后的 |\hfil|（宏定义末尾那个）是一个粘连，它给出所要填充空间的大小。
+在这个例子中，它就是填满文本行所需的空间。
+我们选择 |\leaders| 而不是 |\cleaders| 或 |\xleaders|，是为了让不同行的点相互对齐。
 
-In general, the space to be filled acts as a window
-on the repeated copies of the leader.
-\TeX\ inserts as many copies as possible, but some space is
-usually left over---either because of where the leaders fall
-within the window or because
-the width of the window isn't an exact multiple of the width of the
-leader.
-The difference among the three  commands is in how they arrange the leaders
-within the window and how they distribute any leftover space:
+%In general, the space to be filled acts as a window
+%on the repeated copies of the leader.
+%\TeX\ inserts as many copies as possible, but some space is
+%usually left over---either because of where the leaders fall
+%within the window or because
+%the width of the window isn't an exact multiple of the width of the
+%leader.
+%The difference among the three  commands is in how they arrange the leaders
+%within the window and how they distribute any leftover space:
+一般地，所要填充的空间就作为包含指引体的多个复本的窗体。
+\TeX\ 插入尽可能多的复本，但通常会有些空间剩下——%
+或者是由于指引体在窗体内的位置问题，或者是由于窗体的宽度不是指引体宽度的整数倍。
+这三个命令的差异在于，在窗体内如何安排指引体和分配剩余空间：
 
+%\ulist
+%\li For |\leaders|, \TeX\ first produces a row of copies of the leader.
+%It then aligns the start of this row with the left end of the innermost
+%box $B$ that is to contain the result of the |\leaders| command.
+%In the two-line example above, $B$ is a box produced by |\line|.
+%Those leaders that fit entirely in the window are placed into $B$,
+%and the leftover space at the left and right ends is left empty.
+%The picture is like this:
+%\vdisplay{%
+%\def\dotting{\leaders\hbox to 1em{\hfil{.}\hfil}\hfill}%
+%\def\pp{The Political Process}
+%\line{\dotting}
+%\line{\hphantom\pp\hfil$\Downarrow$\hfil\hphantom{18}}
+%\vskip 4pt
+%\setbox0 = \hbox{\pp}
+%\setbox1 = \hbox{18}
+%\dimen0 = \hsize \advance\dimen0 by -\wd0 \advance \dimen0 by -\wd1
+%\advance\dimen0 by -0.8pt
+%\hbadness=10000
+%\line{\pp
+%   \vrule\vbox{\hrule width \dimen0\vskip 2pt
+%   \hbox to \dimen0{\hfil window\strut\hfil}
+%   \vskip 2pt\hrule width \dimen0}%
+%   \vrule 18}
+%\line{\hphantom\pp\hfil$\Downarrow$\hfil\hphantom{18}}
+%\vskip 2pt
+%\line{\pp{\dotting}18}
+%}
+%\vskip\medskipamount
+%{\tighten
+%\noindent
+%This procedure ensures that in the two-line example on the previous page,
+%the dots in the two lines
+%are vertically aligned (since the \refterm{reference points:reference point}
+%of the hboxes produced by |\line| are vertically aligned).
+%\par}
 \ulist
-\li For |\leaders|, \TeX\ first produces a row of copies of the leader.
-It then aligns the start of this row with the left end of the innermost
-box $B$ that is to contain the result of the |\leaders| command.
-In the two-line example above, $B$ is a box produced by |\line|.
-Those leaders that fit entirely in the window are placed into $B$,
-and the leftover space at the left and right ends is left empty.
-The picture is like this:
+\li 对于 |\leaders|, \TeX\ 首先生成一行指引体复本。
+然后该行复本的起始位置与包含 |\leaders| 命令的最内侧盒子 $B$ 的左侧对齐。
+在上面的两行例子中，$B$ 就是由 |\line| 生成的盒子。
+整个落入窗体的指引体将被放入 $B$ 中，而左右两边剩下的空间将空着。图形如下：
 \vdisplay{%
 \def\dotting{\leaders\hbox to 1em{\hfil{.}\hfil}\hfill}%
 \def\pp{The Political Process}
@@ -3508,74 +3582,104 @@ The picture is like this:
 \line{\pp{\dotting}18}
 }
 \vskip\medskipamount
-{\tighten
 \noindent
-This procedure ensures that in the two-line example on the previous page,
-the dots in the two lines
-are vertically aligned (since the \refterm{reference points:reference point}
-of the hboxes produced by |\line| are vertically aligned).
-\par}
+这个过程确保在上面的两行例子中，两行中的各个点是竖直对齐的%
+（由于用 |\line| 生成的水平盒子的\refterm{基准点}是竖直对齐的）。
 
-\li For |\cleaders|, \TeX\ centers the leaders within the window
-by dividing the leftover space between the two ends of the window.
-The leftover space is always less than the width of a single leader.
+%\li For |\cleaders|, \TeX\ centers the leaders within the window
+%by dividing the leftover space between the two ends of the window.
+%The leftover space is always less than the width of a single leader.
+\li 对于 |\cleaders|，\TeX\ 平分窗体两边的剩余空间以让指引线在窗体中居中。
+剩余空间总是小于单个指引体的宽度。
 
-\li For |\xleaders|, \TeX\ distributes the
-leftover space evenly within the window.
-In other words, if the leftover space is $w$ and the
-leader is repeated  $n$ times,
-\TeX\ puts space of width $w/(n+1)$ between adjacent leaders and
-at the two ends of the leaders.
-The effect is usually to spread out the leaders a little bit.
-The leftover space for |\xleaders|, like that for |\cleaders|,
-is always less than the width of a single leader.
+%\li For |\xleaders|, \TeX\ distributes the
+%leftover space evenly within the window.
+%In other words, if the leftover space is $w$ and the
+%leader is repeated  $n$ times,
+%\TeX\ puts space of width $w/(n+1)$ between adjacent leaders and
+%at the two ends of the leaders.
+%The effect is usually to spread out the leaders a little bit.
+%The leftover space for |\xleaders|, like that for |\cleaders|,
+%is always less than the width of a single leader.
+%\endulist
+\li 对于 |\xleaders|，\TeX\ 将剩余空间在窗体内均匀分布。
+也就是说，如果剩余空间是 $w$，指引体被重复 $n$ 次，
+\TeX\ 将在相邻指引体中间及指引线两端填充宽度为 $w/(n+1)$ 的空间。
+其效果通常是将指引体散开一点。和 |\cleaders| 类似，
+|\xleaders| 的剩余空间也总是小于单个指引体的宽度。
 \endulist
 
-So far we've assumed that the leaders consist of hboxes arranged
-horizontally.  Two variations are possible:
+%So far we've assumed that the leaders consist of hboxes arranged
+%horizontally.  Two variations are possible:
+%\olist
+%\li You can use a
+%rule instead of an hbox for the leader.
+%\TeX\ makes the rule as wide as necessary to extend
+%across the glue (and the three commands are equivalent).
+%\li You
+%can produce vertical leaders that run down the page by including them in
+%a \refterm{vertical list} rather than a \refterm{horizontal list}. In
+%this case you need vertical glue following the leaders.
+%\endolist
+%\noindent
+%See \knuth{pages~223--225} for the precise rules that \TeX\ uses
+%in typesetting leaders.
+%\eix^^|\leaders|
+%\eix^^|\cleaders|
+%\eix^^|\xleaders|
+%\endconcept
+到目前为止，我们都假定指引线由横向排列的水平盒子组成的。实际上指引线还有两个可能的变种：
 \olist
-\li You can use a
-rule instead of an hbox for the leader.
-\TeX\ makes the rule as wide as necessary to extend
-across the glue (and the three commands are equivalent).
-\li You
-can produce vertical leaders that run down the page by including them in
-a \refterm{vertical list} rather than a \refterm{horizontal list}. In
-this case you need vertical glue following the leaders.
+\li 你可以用标线代替水平盒子作为指引体。
+\TeX\ 将让标线尽可能宽以让它填满该粘连（从而这三个命令是等价的）。
+\li 你可以不在\refterm{水平列表}而在\refterm{竖直列表}中使用它，
+以在页面中生成向下排列的竖直指引线。在这种情形中指引线后面需要给出竖直粘连。
 \endolist
 \noindent
-See \knuth{pages~223--225} for the precise rules that \TeX\ uses
-in typesetting leaders.
+请参阅 \knuth{第~223--225~页}，其中给出了 \TeX\ 用于排版指引线的精确规则。
 \eix^^|\leaders|
 \eix^^|\cleaders|
 \eix^^|\xleaders|
 \endconcept
 
 
-\conceptindex{ligatures}
-\concept ligature
+%\conceptindex{ligatures}
+%\concept ligature
+\concept 连写
 
-A \defterm{ligature} is a single character that replaces a
-particular sequence of adjacent characters in a typeset document.
-For example, the word `|office|' is typeset as \hbox{``office''},
-not \hbox{``of{f}ice''}, by high-quality typesetting systems.
-Knowledge of ligatures is built into the
-\refterm{fonts:font} that you use, so there's nothing explicit you need do
-in order to get \TeX\ to produce them.  (You could defeat the ligature
-in ``office'', as we did just above, by writing `|of{f}ice|' in your input.)
-\TeX\ is also capable of using its ligature mechanism to typeset the
-first or last letter of a word differently than the same letter as it would
-appear in the middle of a word.
-You can defeat this effect (if you ever encounter it) by using the
-^|\noboundary| command (\xref\noboundary).
+%A \defterm{ligature} is a single character that replaces a
+%particular sequence of adjacent characters in a typeset document.
+%For example, the word `|office|' is typeset as \hbox{``office''},
+%not \hbox{``of{f}ice''}, by high-quality typesetting systems.
+%Knowledge of ligatures is built into the
+%\refterm{fonts:font} that you use, so there's nothing explicit you need do
+%in order to get \TeX\ to produce them.  (You could defeat the ligature
+%in ``office'', as we did just above, by writing `|of{f}ice|' in your input.)
+%\TeX\ is also capable of using its ligature mechanism to typeset the
+%first or last letter of a word differently than the same letter as it would
+%appear in the middle of a word.
+%You can defeat this effect (if you ever encounter it) by using the
+%^|\noboundary| command (\xref\noboundary).
+\defterm{连写}（ligature）是排版的文档中替换特定的相邻字符串的单个字符。
+例如，在高质量的排版系统中，
+单词 `|office|'将被排版为 \hbox{``office''}，而不是 \hbox{``of{f}ice''}。
+连写信息已经嵌入在你使用的\refterm{字体}中，因此什么也不用做你就可以让\TeX\ 生成它们。%
+（通过将输入写成 `|of{f}ice|' 可以取消 ``office'' 中的连写，正如我们刚才所做的。）
+利用此连写机制，对单词的开头或者末尾字母，\TeX\ 也可以使用与它在单词中间时不同的方式排版。
+用 ^|\noboundary| 命令（\xref\noboundary ）你可以取消这种效果（如果你曾经碰到它）。
 
-Sometimes you may need a ligature from a European language.
+%Sometimes you may need a ligature from a European language.
+%^^{European languages}
+%\TeX\ won't
+%produce these automatically unless you're using a font designed for that
+%language.  A number of these ligatures, e.g., `\AE', are available as
+%commands (see ``Letters and ligatures for European alphabets'',
+%\xref{fornlets}).
+%\endconcept
+有时候你会需要欧洲语言的连写。
 ^^{European languages}
-\TeX\ won't
-produce these automatically unless you're using a font designed for that
-language.  A number of these ligatures, e.g., `\AE', are available as
-commands (see ``Letters and ligatures for European alphabets'',
-\xref{fornlets}).
+除非你使用一个针对该语言设计的字体，否则 \TeX\ 不会自动生成这些连写。
+有一些连写，比如 `\AE'，可以用命令得到（见``欧洲语言字母和连写''，\xref{fornlets}）。
 \endconcept
 
 
@@ -3584,101 +3688,154 @@ commands (see ``Letters and ligatures for European alphabets'',
 \conceptindex{断行点}
 \concept{断行点}
 
-A \defterm{line break} is a place in your document where \TeX\ ends
-a line as it typesets a paragraph.
-When \TeX\ processes your document, it collects the contents of each
-paragraph in a \refterm{horizontal list}.
-When it has collected an entire paragraph,
-it analyzes the list to find what it considers to be the best possible
-line breaks.  \TeX\ associates ``^{demerits}'' with various symptoms of
-unattractive line breaks---lines that have too much or too little
-space between words, consecutive lines that end in hyphens, and so forth.  It
-then chooses the line breaks so as to minimize the total number of demerits.
-See \knuth{pages~96--101} for a full description of \TeX's line-breaking rules.
+%A \defterm{line break} is a place in your document where \TeX\ ends
+%a line as it typesets a paragraph.
+%When \TeX\ processes your document, it collects the contents of each
+%paragraph in a \refterm{horizontal list}.
+%When it has collected an entire paragraph,
+%it analyzes the list to find what it considers to be the best possible
+%line breaks.  \TeX\ associates ``^{demerits}'' with various symptoms of
+%unattractive line breaks---lines that have too much or too little
+%space between words, consecutive lines that end in hyphens, and so forth.  It
+%then chooses the line breaks so as to minimize the total number of demerits.
+%See \knuth{pages~96--101} for a full description of \TeX's line-breaking rules.
+\defterm{断行点}（line break）是文档中 \TeX\ 结束一行并开始新行的位置。
+在处理你的文档时，\TeX\ 将一个段落的内容收集到一个\refterm{水平列表}中。
+收集完整个段落之后，它分析该列表以找到它认为最佳的断行点。
+\TeX\ 附加``^{缺陷}''值给各种形态的丑陋断行点——%
+单词间隔太大或太小的行，连续以连字符结尾的行，诸如此类。
+然后它选择让总缺陷值最小的断行点。
+请参阅\knuth{第~96--101~页}中的 \TeX\ 的断行规则的完整说明。
 
-You can control \TeX's choice of line breaks in several ways:
+%You can control \TeX's choice of line breaks in several ways:
+%\ulist
+你可以用下面几种方式控制 \TeX\ 对断行点的选择：
 \ulist
 
-\li You can insert a \refterm{penalty} (\xref{hpenalty}) somewhere in
-the horizontal list that \TeX\ builds as it forms a paragraph.
+%\li You can insert a \refterm{penalty} (\xref{hpenalty}) somewhere in
+%the horizontal list that \TeX\ builds as it forms a paragraph.
+%^^{penalties//in horizontal lists}
+%A
+%positive penalty discourages \TeX\ from breaking the line there, while a
+%negative penalty---a bonus, in other words---encourages \TeX\ to break
+%the line there.  A penalty of $10000$ or more prevents a line break,
+%while a penalty of $-10000$ or less forces a line break.  You can get
+%the same effects with the ^|\break| and
+%^|\nobreak| commands (\pp\xrefn{hbreak},~\xrefn{hnobreak}).
+\li 你可以在 \TeX\ 形成段落时构建的水平列表的某处插入\refterm{惩罚}项（\xref{hpenalty}）。
 ^^{penalties//in horizontal lists}
-A
-positive penalty discourages \TeX\ from breaking the line there, while a
-negative penalty---a bonus, in other words---encourages \TeX\ to break
-the line there.  A penalty of $10000$ or more prevents a line break,
-while a penalty of $-10000$ or less forces a line break.  You can get
-the same effects with the ^|\break| and
-^|\nobreak| commands (\pp\xrefn{hbreak},~\xrefn{hnobreak}).
+正惩罚值阻碍 \TeX\ 在该处断行，而负惩罚值——即奖励值——鼓励 \TeX\ 在该处断行。
+大于或等于 $10000$ 的惩罚只阻止断行，而小于或等于 $-10000$ 强制断行。
+用 ^|\break| 和 ^|\nobreak| 命令（第~\xrefn{hbreak}，\xrefn{hnobreak}~页）可以达到相同效果。
 
-\li You can tell \TeX\ to allow a hyphen in a particular place by
-inserting a discretionary hyphen
+%\li You can tell \TeX\ to allow a hyphen in a particular place by
+%inserting a discretionary hyphen
+%^^{discretionary hyphens}
+%with the |\-| command \ctsref{\@minus}, or
+%otherwise control how \TeX\ hyphenates your document \seeconcept
+%{hyphenation}.
+%^^|\-//in line breaking|
+\li 你可以用 |\-| 命令\ctsref{\@minus}插入自定连字符，以允许 \TeX\ 在特定位置连字化。
 ^^{discretionary hyphens}
-with the |\-| command \ctsref{\@minus}, or
-otherwise control how \TeX\ hyphenates your document \seeconcept
-{hyphenation}.
+你也可以控制 \TeX\ 在你的文档中如何连字化\seeconcept{连字}。
 ^^|\-//in line breaking|
 
-\li You can tell \TeX\ to allow a line break after a ^{solidus} (/) between
-two words by inserting ^|\slash| \ctsref{\slash}
-between them, e.g., `|fur!-longs\slash fortnight|'.
+%\li You can tell \TeX\ to allow a line break after a ^{solidus} (/) between
+%two words by inserting ^|\slash| \ctsref{\slash}
+%between them, e.g., `|fur!-longs\slash fortnight|'.
+\li 你可以在两个单词间用 ^|\slash|\ctsref{\slash}插入^{斜线符号} (/)，
+并允许 \TeX\ 在斜线后断行，比如 `|fur!-longs\slash fortnight|'。
 
-\li You can tell \TeX\ not to break a line between two particular words by
-inserting a ^{tie} (|~|) between those words.
+%\li You can tell \TeX\ not to break a line between two particular words by
+%inserting a ^{tie} (|~|) between those words.
+%^^|~//in line breaking|
+\li 你可以通过在两个特定单词间插入^{带子} (|~|)，以禁止 \TeX\ 在该处断行。
 ^^|~//in line breaking|
 
-\li You can adjust the penalties associated with line breaking by
-assigning different values to \TeX's line-breaking
-\refterm{parameters:parameter}.
+%\li You can adjust the penalties associated with line breaking by
+%assigning different values to \TeX's line-breaking
+%\refterm{parameters:parameter}.
+\li 你可以给 \TeX\ 的断行\refterm{参数}赋予不同的值，以调整断行时附加的惩罚值。
 
-\li You can enclose a word or sequence of words in an \refterm{hbox},
-thus preventing \TeX\ from breaking the line anywhere within the hbox.
+%\li You can enclose a word or sequence of words in an \refterm{hbox},
+%thus preventing \TeX\ from breaking the line anywhere within the hbox.
+%^^{hboxes//controlling line breaks}
+%\endulist
+\li 你可以将一个单词或一列单词放在一个\refterm{水平盒子}中，
+从而阻止 \TeX\ 盒子里面的任何位置断行。
 ^^{hboxes//controlling line breaks}
 \endulist
 
-It's useful to know the places where \TeX\ can break a line:
+%It's useful to know the places where \TeX\ can break a line:
+%\ulist
+%\li at glue, provided that:
+%\olist
+%\li the item preceding the glue is one of the following:
+%a box, a discretionary item (e.g., a discretionary hyphen),
+%the end of a math formula,
+%a whatsit,
+%or vertical material produced by |\mark| or |\vadjust|
+%or |\insert|
+%\li the glue is not part of a math formula
+%\endolist
+%\noindent
+%When \TeX\ breaks a line at glue, it makes the break at the left edge
+%of the glue space and forgets about the rest of the glue.
+%\li at a kern that's immediately followed by glue,
+%provided that this kern isn't within a math formula
+%\li at the end of a math formula that's immediately followed by glue
+%\li at a penalty, even one within a math formula
+%\li at a discretionary break
+%\endulist
+%When \TeX\ breaks a line, it discards any
+%sequence of glue, kerns, and penalty items that follows the break point.
+%If such a sequence is followed by the beginning of a math formula, it
+%also discards any kern produced by the beginning of the formula.
+%\endconcept
+知道在什么地方 \TeX\ 可以断行也是有益的：
 \ulist
-\li at glue, provided that:
+\li 在粘连处，只要：
 \olist
-\li the item preceding the glue is one of the following:
-a box, a discretionary item (e.g., a discretionary hyphen),
-the end of a math formula,
-a whatsit,
-or vertical material produced by |\mark| or |\vadjust|
-or |\insert|
-\li the glue is not part of a math formula
+\li 粘连之前是下列项目之一：盒子、自定项目（比如自定连字符）、公式结尾、
+小玩意或者用|\mark| 或 |\vadjust| 或 |\insert| 生成的竖直素材
+\li 粘连不是数学公式的一部分
 \endolist
 \noindent
-When \TeX\ breaks a line at glue, it makes the break at the left edge
-of the glue space and forgets about the rest of the glue.
-\li at a kern that's immediately followed by glue,
-provided that this kern isn't within a math formula
-\li at the end of a math formula that's immediately followed by glue
-\li at a penalty, even one within a math formula
-\li at a discretionary break
+在粘连处断行时，\TeX\ 让断行点位于粘连的左边缘，并忽略粘连的其他部分。
+\li 在紧排处，只要其后直接跟着粘连，且该紧排不在数学公式中
+\li 在数学公式结尾处，只要其后直接跟着粘连
+\li 在惩罚项处，即使该惩罚项在数学公式中
+\li 在自定可断点处
 \endulist
-When \TeX\ breaks a line, it discards any
-sequence of glue, kerns, and penalty items that follows the break point.
-If such a sequence is followed by the beginning of a math formula, it
-also discards any kern produced by the beginning of the formula.
+在断行时，\TeX\ 丢弃断点之后的任意多个粘连、紧排和惩罚项。
+如果这些项目之后还是一个数学公式起点，它同样丢弃公式起点生成的任何紧排。
 \endconcept
 
 
-\conceptindex{lists}
-\concept list
+%\conceptindex{lists}
+%\concept list
+\concept 列表
 
-A \defterm{list} is a sequence of \refterm{items:item}
-(\refterm{boxes:box}, \refterm{glue}, \refterm{kerns:kern}, etc.)
-that comprise the contents of an hbox, a vbox,
-or a math formula.
-See \conceptcit{horizontal list}, \conceptcit{vertical list}.
+%A \defterm{list} is a sequence of \refterm{items:item}
+%(\refterm{boxes:box}, \refterm{glue}, \refterm{kerns:kern}, etc.)
+%that comprise the contents of an hbox, a vbox,
+%or a math formula.
+%See \conceptcit{horizontal list}, \conceptcit{vertical list}.
+\defterm{列表}（list）是一列用于组成水平列表、竖直列表或数学公式的\refterm{项目}%
+（\refterm{盒子}、\refterm{粘连}、\refterm{紧排}等）。
+请参阅\conceptcit{水平列表}，\conceptcit{竖直列表}。
 
 \endconcept
 
 
-\concept {log file}
+%\concept {log file}
+\concept {日志文件}
 
-See \conceptcit{file}.
+%See \conceptcit{file}.
+%\endconcept
+见\conceptcit{文件}。
 \endconcept
+
 
 \bookmark{2}{以M开头}
 %\conceptindex{macros}
@@ -5355,7 +5512,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \endconcept
 
 \bookmark{2}{以R开头}
-\concept {reference point}
+%\concept {reference point}
+\concept {基准点}
 
 ^^{baselines}
 ^^{boxes//reference point of}
@@ -5958,8 +6116,9 @@ first (and usually topmost) constituent list item.
 \endconcept
 
 
-\conceptindex{vertical lists}
-\concept{vertical list}
+%\conceptindex{vertical lists}
+%\concept{vertical list}
+\concept{竖直列表}
 
 A \defterm{vertical list} is a list of items
 that \TeX\ has produced while it is
