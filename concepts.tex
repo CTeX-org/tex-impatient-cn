@@ -3337,7 +3337,7 @@ from hyphenating it.
 %\endconcept
 在生成对齐文本时，\TeX\ 通常需要伸缩各行的粘连以让两边对齐。
 而在生成非对齐文本时，\TeX\ 通常让各行的粘连保持自然尺寸。
-很多印刷商更喜欢非对齐文本，因为它的字间距更加一致。
+很多排印工更喜欢非对齐文本，因为它的字间距更加一致。
 \endconcept
 
 
@@ -5515,203 +5515,316 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %\concept {reference point}
 \concept {基准点}
 
+%^^{baselines}
+%^^{boxes//reference point of}
+%The \defterm{reference point} of a \refterm{box} is the point where the
+%left edge of the box intersects its \refterm{baseline}.  When \TeX\ is
+%processing a \refterm{horizontal:horizontal list} or \refterm{vertical
+%list}, it uses the reference points of the boxes in the list to line up
+%those boxes horizontally or vertically \seeconcept{box}.
+%\endconcept
 ^^{baselines}
 ^^{boxes//reference point of}
-The \defterm{reference point} of a \refterm{box} is the point where the
-left edge of the box intersects its \refterm{baseline}.  When \TeX\ is
-processing a \refterm{horizontal:horizontal list} or \refterm{vertical
-list}, it uses the reference points of the boxes in the list to line up
-those boxes horizontally or vertically \seeconcept{box}.
+\refterm{盒子}的\defterm{基准点}（reference point）是盒子左边缘与\refterm{基线}的交点。
+在处理\refterm{水平列表}或\refterm{竖直列表}时，
+\TeX\ 用列表中各盒子的基准点水平或竖直对齐这些盒子\seeconcept{盒子}。
 \endconcept
 
-\conceptindex{registers}
-\concept register
+%\conceptindex{registers}
+%\concept register
+\concept 寄存器
 
-A \defterm{register} is a named location for storing a value.
-It is much like a variable in a programming language.
-\TeX\ has five kinds of registers, as shown in the following table:
+%A \defterm{register} is a named location for storing a value.
+%It is much like a variable in a programming language.
+%\TeX\ has five kinds of registers, as shown in the following table:
+\defterm{寄存器}（register）是用于存储数值的命名位置。
+它很像编程语言中的一个变量。\TeX\ 有五种寄存器，如下表所示：
 
+%\vdisplay{\tabskip 10pt\halign{\tt #\hfil &#\hfil\cr
+%{\it Register type}&{\it Contents}\cr
+%box&a \refterm{box} \idxref{box registers}\cr
+%count&a \refterm{number} \idxref{count registers}\cr
+%dimen&a \refterm{dimension} \idxref{dimension registers}\cr
+%muskip&\refterm{muglue} \idxref{muglue registers}\cr
+%skip&\refterm{glue} \idxref{glue registers}\cr
+%toks&a \refterm{token} list\idxref{token registers}\cr}}
 \vdisplay{\tabskip 10pt\halign{\tt #\hfil &#\hfil\cr
-{\it Register type}&{\it Contents}\cr
-box&a \refterm{box} \idxref{box registers}\cr
-count&a \refterm{number} \idxref{count registers}\cr
-dimen&a \refterm{dimension} \idxref{dimension registers}\cr
-muskip&\refterm{muglue} \idxref{muglue registers}\cr
-skip&\refterm{glue} \idxref{glue registers}\cr
-toks&a \refterm{token} list\idxref{token registers}\cr}}
+{\it 寄存器类型}&{\it 存储内容}\cr
+box&一个\refterm{盒子} \idxref{box registers}\cr
+count&一个\refterm{数} \idxref{count registers}\cr
+dimen&一个\refterm{尺寸} \idxref{dimension registers}\cr
+muskip&\refterm{数学粘连} \idxref{muglue registers}\cr
+skip&\refterm{粘连} \idxref{glue registers}\cr
+toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 
-The registers of each type are numbered from $0$ to $255$.
-You can access register $n$ of category $c$ by using the form `|\|$cn$',
-e.g., |\muskip192|.
-You can use a register
-anywhere that information of the appropriate type is called for.  For
-instance, you can use |\count12|
-in any context calling for a number or |\skip0|
-in any context calling for glue.
+%The registers of each type are numbered from $0$ to $255$.
+%You can access register $n$ of category $c$ by using the form `|\|$cn$',
+%e.g., |\muskip192|.
+%You can use a register
+%anywhere that information of the appropriate type is called for.  For
+%instance, you can use |\count12|
+%in any context calling for a number or |\skip0|
+%in any context calling for glue.
+每种类型的寄存器都从 $0$ 到 $255$ 编号。
+要存取第 $n$ 个类型为 $c$ 的寄存器，你可以用 `|\|$cn$' 这种形式，比如 |\muskip192|。
+寄存器可以用在任何需要相应类型信息的地方。例如，
+你可以在需要一个数的地方使用 |\count12|，或者在需要粘连的地方使用 |\skip0|。
 
-You put information into a register by \refterm{assigning:assignment}
-something to it:
+%You put information into a register by \refterm{assigning:assignment}
+%something to it:
+要将信息放入寄存器中，你可以给它\refterm{赋值}：
 
+%\csdisplay
+%\setbox3 = \hbox{lagomorphs are not mesomorphs}
+%\count255 = -1
+%|
+%The first assignment constructs an hbox and assigns it to
+%box register~$3$.
+%You can
+%subsequently use `|\box3|' wherever a box is called for, and you will
+%get just that hbox.\footnote{But note carefully: using a box register
+%also empties it so that its contents become void.  The other kinds of
+%registers don't behave that way. You can use the |\copy| command
+%\ctsref{\copy} to retrieve the contents of a box register without
+%emptying it.}
+%The second assignment assigns $-1$ to count register~$255$.
 \csdisplay
 \setbox3 = \hbox{lagomorphs are not mesomorphs}
 \count255 = -1
 |
-The first assignment constructs an hbox and assigns it to
-box register~$3$.
-You can
-subsequently use `|\box3|' wherever a box is called for, and you will
-get just that hbox.\footnote{But note carefully: using a box register
-also empties it so that its contents become void.  The other kinds of
-registers don't behave that way. You can use the |\copy| command
-\ctsref{\copy} to retrieve the contents of a box register without
-emptying it.}
-The second assignment assigns $-1$ to count register~$255$.
+第一个赋值构造一个水平盒子并把它分配给 $3$ 号盒子寄存器。
+此后你可以在需要盒子的地方用 `|\box3|' 得到该盒子。
+\footnote{但是要注意：使用盒子寄存器的同时也清空了该寄存器，
+从而它的内容变为空白。其他类型的寄存器不会这样。
+你可以用|\copy| 命令\ctsref{\copy}获取盒子寄存器的内容而不清空它。}
+第二个赋值将 $-1$ 分配给 $255$ 号计数寄存器。
 
-A register of a given type, e.g., a glue register, behaves just like
-a parameter of that type.
+%A register of a given type, e.g., a glue register, behaves just like
+%a parameter of that type.
+%^^{parameters//like registers}
+%You retrieve its value or assign to it
+%just as you would with a \refterm{parameter}.
+%Some \TeX\ parameters, e.g., |\pageno|,
+%are implemented as registers, in fact.
+给定类型的寄存器，比如粘连寄存器，就像该类型的参数一样。
 ^^{parameters//like registers}
-You retrieve its value or assign to it
-just as you would with a \refterm{parameter}.
-Some \TeX\ parameters, e.g., |\pageno|,
-are implemented as registers, in fact.
+你可以如同\refterm{参数}那样获取或赋予它的值。
+有些 \TeX\ 参数，比如 |\pageno|，实际上就是作为寄存器实现的。
 
-\PlainTeX\
-uses many registers for its own purposes, so you should not just
-pick an arbitrary
-register number when you need a register.  Instead you should ask
-\TeX\ to reserve a register by using one of the commands
-^|\newbox|, ^|\newcount|, ^|\newdimen|, ^|\newmuskip|, ^|\newskip|,
-or ^|\newtoks|
-\ctsref{\@newbox}.  These commands are outer, so you can't
-use them in a macro definition.
-If you could,
-you'd use up a register every time the macro was called and probably run out
-of registers before long.
+%\PlainTeX\
+%uses many registers for its own purposes, so you should not just
+%pick an arbitrary
+%register number when you need a register.  Instead you should ask
+%\TeX\ to reserve a register by using one of the commands
+%^|\newbox|, ^|\newcount|, ^|\newdimen|, ^|\newmuskip|, ^|\newskip|,
+%or ^|\newtoks|
+%\ctsref{\@newbox}.  These commands are outer, so you can't
+%use them in a macro definition.
+%If you could,
+%you'd use up a register every time the macro was called and probably run out
+%of registers before long.
+\PlainTeX\ 用了很多寄存器来实现自己的目标，因此在需要寄存器时你不能随意选择一个来用。
+你应该用下列这些命令之一让 \TeX\ 给你保留一个寄存器：^|\newbox|、
+^|\newcount|、^|\newdimen|、^|\newmuskip|、^|\newskip| 或 ^|\newtoks|\ctsref{\@newbox}。
+这些命令是外部的，因此你不能在宏定义中使用它们。
+要是可以这样做，每次调用宏时就会用掉一个寄存器，可能很快就用完所有寄存器。
 
-Nonetheless you can with some caution use any register temporarily
-within a \refterm{group}, even one that \TeX\ is using for something
-else.
-After \TeX\ finishes executing the commands in a group,
-it restores the contents of every register
-to what they were before it started executing the group.
-When you use an explicitly numbered register inside a group,
-you must be sure that the register isn't modified by any
-\refterm{macro}
-that you might call within the group.
-Be especially careful
-about using arbitrary registers in a group that calls macros
-that you didn't write yourself.
+%Nonetheless you can with some caution use any register temporarily
+%within a \refterm{group}, even one that \TeX\ is using for something
+%else.
+%After \TeX\ finishes executing the commands in a group,
+%it restores the contents of every register
+%to what they were before it started executing the group.
+%When you use an explicitly numbered register inside a group,
+%you must be sure that the register isn't modified by any
+%\refterm{macro}
+%that you might call within the group.
+%Be especially careful
+%about using arbitrary registers in a group that calls macros
+%that you didn't write yourself.
+即便如此，只需谨慎一点你就可以在\refterm{编组}内部临时使用寄存器，
+甚至是 \TeX\ 在其他地方用到的寄存器。
+在执行完编组内的命令后，\TeX 将每个寄存器的内容重置为开始执行编组前的内容。
+在编组内部使用显式编号的寄存器时，
+你必须确保该寄存器不会被你在编组内调用的\refterm{宏}所修改。
+如果编组内调用了非你所写的宏，在其中使用任意寄存器时需要特别小心。
 
-{\tighten
-\TeX\ reserves certain registers for special purposes: |\count0| through
-|\count9| for page numbering information and
+%{\tighten
+%\TeX\ reserves certain registers for special purposes: |\count0| through
+%|\count9| for page numbering information and
+%^^{page numbering}
+%^|\box255| for the contents
+%of a page just before it is offered to the \refterm{output routine}.
+%Registers |\dimen0|--|\dimen9|, |\skip0|--|\skip9|,
+%|\muskip0|--|\mu!-skip9|, |\box0|--|\box9|,
+%and the |255| registers other than |\box255|
+%are generally available as ``scratch'' registers.
+%Thus \plainTeX\ provides only one scratch register, |\count255|, for
+%counts.
+%See \knuth{pages~122 and 346} for conventions to follow
+%in choosing register numbers.
+%\par}
+\TeX\ 将某些寄存器保留作特别用途：|\count0| 到
+|\count9| 用作页面编号信息，而
 ^^{page numbering}
-^|\box255| for the contents
-of a page just before it is offered to the \refterm{output routine}.
-Registers |\dimen0|--|\dimen9|, |\skip0|--|\skip9|,
-|\muskip0|--|\mu!-skip9|, |\box0|--|\box9|,
-and the |255| registers other than |\box255|
-are generally available as ``scratch'' registers.
-Thus \plainTeX\ provides only one scratch register, |\count255|, for
-counts.
-See \knuth{pages~122 and 346} for conventions to follow
-in choosing register numbers.
-\par}
+^|\box255| 用作送到\refterm{输出例行程序}之前的页面内容。
+寄存器 |\dimen0|--|\dimen9|、|\skip0|--|\skip9|、|\muskip0|--|\mu!-skip9|、
+|\box0|--|\box9| 和 |\box255| 除外的 |255| 号寄存器一般用作“临时”寄存器。
+也就是说 \plainTeX\ 仅提供一个用于计数的临时寄存器 |\count255|。
+请参阅 \knuth{第~122 和 346~页}，其中有选择寄存器编号时要遵守的约定。
 
-You can examine the contents of registers during a \TeX\ run with the
-^|\showthe| command \ctsref\showthe, e.g., with `|\showthe\dimen0|'.
+%You can examine the contents of registers during a \TeX\ run with the
+%^|\showthe| command \ctsref\showthe, e.g., with `|\showthe\dimen0|'.
+%\endconcept
+要在 \TeX\ 运行时检查一个寄存器的内容，
+你可以用 ^|\showthe| 命令\ctsref\showthe ，比如 `|\showthe\dimen0|'。
 \endconcept
 
 
-\concept{restricted mode}
+%\concept{restricted mode}
+\concept{受限模式}
 
-A \defterm{restricted mode} is a \refterm{mode} that \TeX\ is in when it is
-assembling an \refterm{hbox} or a \refterm{vbox}.
-We follow \texbook\ in using the term ``internal vertical mode''
-for what you might expect to be ``restricted vertical mode''.
-See \conceptcit{horizontal
-mode} and \conceptcit{vertical mode}.\endconcept
+%A \defterm{restricted mode} is a \refterm{mode} that \TeX\ is in when it is
+%assembling an \refterm{hbox} or a \refterm{vbox}.
+%We follow \texbook\ in using the term ``internal vertical mode''
+%for what you might expect to be ``restricted vertical mode''.
+%See \conceptcit{horizontal
+%mode} and \conceptcit{vertical mode}.\endconcept
+\defterm{受限模式}（restricted mode）是 \TeX\ 组装\refterm{水平盒子}%
+或\refterm{竖直盒子}时所处的\refterm{模式}。
+我们使用 \texbook\ 中的术语``内部竖直模式''来命名我们所认为的``受限竖直模式''。
+请参阅\conceptcit{水平模式}和\conceptcit{竖直模式}。\endconcept
 
 
-\conceptindex{rules}
-\concept rule
+%\conceptindex{rules}
+%\concept rule
+\concept 标线
 
-A \defterm{rule} is a solid black rectangle.
-A rule, like a \refterm{box},
-has \refterm{width}, \refterm{height}, and \refterm{depth}.
-The vertical dimension of the rectangle
-is the sum of its height and its depth.
-An ordinary horizontal or vertical straight line is a special case of a rule.
+%A \defterm{rule} is a solid black rectangle.
+%A rule, like a \refterm{box},
+%has \refterm{width}, \refterm{height}, and \refterm{depth}.
+%The vertical dimension of the rectangle
+%is the sum of its height and its depth.
+%An ordinary horizontal or vertical straight line is a special case of a rule.
+\defterm{标线}（rule）是一个黑色实心矩形。
+标线和\refterm{盒子}一样也有\refterm{宽度}、\refterm{高度}和\refterm{深度}。
+该矩形的竖直尺寸是它的高度和深度之和。
+普通的水平或竖直直线是标线的特殊情形。
 
+%\bix^^{horizontal rules}
+%\bix^^{vertical rules}
+%\bix^^|\hrule|
+%\bix^^|\vrule|
+%A rule can be either horizontal or vertical.  The distinction between a
+%horizontal rule and a vertical one has to do with how you produce the
+%rule, since a vertical rule can be short and fat (and therefore look
+%like a horizontal line), while a horizontal rule can be tall and skinny
+%(and therefore look like a vertical line).  \TeX's notion of a rule is
+%more general than that of typographers, who think of a rule as a line
+%and would not usually call a square black box a rule.
 \bix^^{horizontal rules}
 \bix^^{vertical rules}
 \bix^^|\hrule|
 \bix^^|\vrule|
-A rule can be either horizontal or vertical.  The distinction between a
-horizontal rule and a vertical one has to do with how you produce the
-rule, since a vertical rule can be short and fat (and therefore look
-like a horizontal line), while a horizontal rule can be tall and skinny
-(and therefore look like a vertical line).  \TeX's notion of a rule is
-more general than that of typographers, who think of a rule as a line
-and would not usually call a square black box a rule.
+标线可以是水平的或者竖直的。水平标线和竖直标线的区别与你如何生成标线有关，
+因为竖直标线可以矮而胖（从而看似水平标线），
+而水平标线也可以高而瘦（从而看似竖直标线）。\TeX\ 所说的标线比排印工的更一般，
+它们认为标线就是一条线而通常不把黑色方块称为标线。
 
-You can produce a horizontal rule using the
-|\hrule| command and a vertical rule using
-the |\vrule| command \ctsref{\vrule}.
-For example, the control sequence |\hrule| by itself
-produces a thin rule that runs across the page, like this:
+%You can produce a horizontal rule using the
+%|\hrule| command and a vertical rule using
+%the |\vrule| command \ctsref{\vrule}.
+%For example, the control sequence |\hrule| by itself
+%produces a thin rule that runs across the page, like this:
+你可以用 |\hrule| 命令生成水平标线，用 |\vrule| 命令\ctsref{\vrule}生成竖直标线。
+例如，控制序列 |\hrule| 本身就生成一个横跨页面的细标线，如下：
 
+%{\offinterlineskip
+%\nobreak\medskip
+%\hrule
+%\medskip}
 {\offinterlineskip
 \nobreak\medskip
 \hrule
 \medskip}
 
-The command `|\vrule height .25in|' produces a vertical rule
-that runs $.25$~inches down the page like this:
+%The command `|\vrule height .25in|' produces a vertical rule
+%that runs $.25$~inches down the page like this:
+%\nobreak\vskip \abovedisplayskip
+%\leftline{\vrule height .25in}
+%\vskip \belowdisplayskip
+命令 `|\vrule height .25in|' 生成往下 $.25$ 英寸的竖直标线如下：
 \nobreak\vskip \abovedisplayskip
 \leftline{\vrule height .25in}
 \vskip \belowdisplayskip
 
-There are two differences between horizontal rules and vertical rules:
+%There are two differences between horizontal rules and vertical rules:
+%\olist
+%\li For a horizontal rule, \TeX\ defaults the width to the width of the
+%smallest \refterm{box} or \refterm{alignment} that encloses it.  For a
+%vertical rule, \TeX\ defaults the height and depth in the same way.  (The
+%default is the size that you get if you don't give a size explicitly for that
+%dimension.)
+水平标线和竖直标线有如下两个区别：
 \olist
-\li For a horizontal rule, \TeX\ defaults the width to the width of the
-smallest \refterm{box} or \refterm{alignment} that encloses it.  For a
-vertical rule, \TeX\ defaults the height and depth in the same way.  (The
-default is the size that you get if you don't give a size explicitly for that
-dimension.)
+\li 对于水平标线，\TeX\ 设定将其默认宽度为包含它的最小\refterm{盒子}或\refterm{阵列}的宽度。
+对于竖直标线，\TeX\ 用类似方法设定其默认高度和深度。%
+（如果你没有显式设定尺寸，默认为内容的尺寸。）
 
+%^^{horizontal lists//rule in}
+%^^{vertical lists//rule in}
+%\li
+%{\tighten
+%A horizontal rule is an inherently vertical item that cannot participate in
+%a \refterm{horizontal list},
+%while a vertical
+%rule is an inherently horizontal item
+%that cannot participate in a \refterm{vertical list}.  This behavior
+%may seem strange at first but there is good reason for it:
+%a horizontal rule ordinarily runs visually from left
+%to right and thus separates items in a vertical list,
+%while a vertical rule ordinarily runs visually from top to bottom
+%and thus separates items in a horizontal list.
+%%(Look at the rules that are shown above.)
+%\par}
+%\endolist
 ^^{horizontal lists//rule in}
 ^^{vertical lists//rule in}
 \li
-{\tighten
-A horizontal rule is an inherently vertical item that cannot participate in
-a \refterm{horizontal list},
-while a vertical
-rule is an inherently horizontal item
-that cannot participate in a \refterm{vertical list}.  This behavior
-may seem strange at first but there is good reason for it:
-a horizontal rule ordinarily runs visually from left
-to right and thus separates items in a vertical list,
-while a vertical rule ordinarily runs visually from top to bottom
-and thus separates items in a horizontal list.
+水平标线是本质上的竖直项目，不能放在\refterm{水平列表}中；
+而竖直标线是本质上的水平项目，不能放在\refterm{竖直列表}中；
+这种行为初看也许有些奇怪，但却是有合理原因的：
+水平标线在外观上通常是从左到右的，因而分开了竖直列表中的项目；
+而竖直标线在外观上通常是从上到下的，因而分开了水平列表中的项目；
 %(Look at the rules that are shown above.)
-\par}
 \endolist
 
-{\tighten
-If you construct a rule with three explicit dimensions, it will look the
-same whether you make it a horizontal rule or a vertical rule.
-For example, the command `|\vrule height1pt depth2pt width3in|' produces this
-horizontal-looking rule:
-\par}
+%{\tighten
+%If you construct a rule with three explicit dimensions, it will look the
+%same whether you make it a horizontal rule or a vertical rule.
+%For example, the command `|\vrule height1pt depth2pt width3in|' produces this
+%horizontal-looking rule:
+%\par}
+如果你构造一个有三个明确尺寸的标线，无论作为水平标线还是竖直标线它看起来都是一样的。
+例如，命令 `|\vrule height1pt depth2pt width3in|' 生成如下看似水平方向的标线：
 
+%{\offinterlineskip
+%\nobreak\medskip\nobreak\vskip3pt
+%\leftline{\vrule height1pt depth2pt width3in}
+%\medskip}
 {\offinterlineskip
 \nobreak\medskip\nobreak\vskip3pt
 \leftline{\vrule height1pt depth2pt width3in}
 \medskip}
 
-You'll find a precise statement of \TeX's treatment of rules on
-\knuth{pages~221--222}.
+%You'll find a precise statement of \TeX's treatment of rules on
+%\knuth{pages~221--222}.
+%\eix^^{horizontal rules}
+%\eix^^{vertical rules}
+%\eix^^|\hrule|
+%\eix^^|\vrule|
+%\endconcept
+在\knuth{第~221--222~页}中，你可以找到对 \TeX\ 如何处理标线的精确表述。
 \eix^^{horizontal rules}
 \eix^^{vertical rules}
 \eix^^|\hrule|

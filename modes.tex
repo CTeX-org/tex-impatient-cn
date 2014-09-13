@@ -608,7 +608,9 @@ hbox 的宽度取决于 |\hbox| 的参数：
 %The braces around \<vertical mode material> define a group.
 %\TeX\ is in internal vertical mode when it's assembling the box.
 %\TeX\ won't change the size of the box once it's been produced.
-这些命令产生一个 \minref{vbox}（竖直的\minref{盒子}）以容纳 \<vertical mode material>。\<vertical mode material> 两侧的大括号定义一个编组。当 \TeX\ 组装盒子时它处于内部竖直模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
+这些命令产生一个 \minref{vbox}（竖直\minref{盒子}）以容纳 \<vertical mode material>。
+\<vertical mode material> 两侧的大括号定义一个编组。
+当 \TeX\ 组装盒子时它处于内部竖直模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
 
 %The difference between |\vtop| and |\vbox| lies in where \TeX\ puts
 %the reference point of the constructed vbox.
@@ -621,7 +623,11 @@ hbox 的宽度取决于 |\hbox| 的参数：
 %will tend to have their tops nearly in a line,
 %while a row of vboxes all constructed with |\vbox|
 %will tend to have their bottoms nearly in a line.
-|\vtop| 和 |\vbox| 之间的不同点在于 \TeX\ 放置已构成的 vbox 的参考点的位置。通常情况下，由 |\vtop| 获得的参考点位于或接近于已构成的 vbox 的顶部；而 |\vbox| 获得的参考点位于或接近于已构成的 vbox 的底部。因此，一行全部由 |\vtop| 构成的 vbox，其顶部将会近似在一条线上，相应地，一行全部由 |\vbox| 构成的 vbox，其底部将会近似在一条线上。
+|\vtop| 和 |\vbox| 之间的不同点在于 \TeX\ 放置已构成的 vbox 的基准点的位置。
+通常情况下，由 |\vtop| 获得的基准点位于或接近于已构成的 vbox 的顶部；
+而 |\vbox| 获得的基准点位于或接近于已构成的 vbox 的底部。
+因此，一行全部由 |\vtop| 构成的 vbox，其顶部将会近似在一条线上；
+相应地，一行全部由 |\vbox| 构成的 vbox，其底部将会近似在一条线上。
 
 %|\vtop| and |\vbox| are often useful
 %when you want to keep some text together on a single page.
@@ -630,8 +636,10 @@ hbox 的宽度取决于 |\hbox| 的参数：
 %prevents \TeX\ from breaking pages in an acceptable
 %way, \TeX\ will complain that it's found an overfull or underfull vbox while
 %|\output| is active.
-当你希望将一些文字放在单独的一页上时，|\vtop| 和 |\vbox| 是有用的。
-（为了这个目的，它通常不在乎你使用的命令。）如果你使用这些命令使得 \TeX\ 不能以一种可以接受的方式分页时，\TeX\ 会在 |\output| 处于活动的情况下，给出 vbox 过满或不足的警告。
+当你希望将一些文字放在单独的一页上时，|\vtop| 和 |\vbox| 是有用的。%
+（为了这个目的，它通常不在乎你使用的命令。）%
+如果你使用这些命令使得 \TeX\ 不能以一种可以接受的方式分页时，
+\TeX\ 会在 |\output| 处于活动的情况下，给出 vbox 过满或不足的警告。
 
 %The height of a vbox depends on
 %the arguments to |\vtop| or |\vbox|.
@@ -654,10 +662,12 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \ulist\compact
 \li 如果你只设定 \<vertical mode material>，vbox 将具有参数本身的高度。
 \li 如果你设定 |to| \<dimen>，vbox 的高度将是 \<dimen>。
-\li 如果你设定了 |spread| \<dimen>，则 vbox 的高度将是参数本身的高度再加上 \<dimen>，也就是说，vbox 将在竖直方向上伸展 \<dimen>。
+\li 如果你设定了 |spread| \<dimen>，则 vbox 的高度将是参数本身的高度再加上 \<dimen>，
+也就是说，vbox 将在竖直方向上伸展 \<dimen>。
 \endulist
 \noindent
-对于 |\vtop|，\TeX\ 采用 |\vbox| 一样的规则来构造盒子，然后以下面描述的方法在高度和深度之间分配竖直方向上的扩展。
+对于 |\vtop|，\TeX\ 采用 |\vbox| 一样的规则来构造盒子，
+然后以下面描述的方法在高度和深度之间分配竖直方向上的扩展。
 
 %Ordinarily, the width of a constructed vbox is the width of the widest
 %item inside it.\footnote
@@ -684,18 +694,27 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %Then the depth is reduced to |\boxmaxdepth| and the height is adjusted
 %accordingly.}
 %\endulist
-通常，构造的 vbox 的宽度是其内部最宽项目的宽度。\footnote{更准确地说，是从参考点至构造的 vbox 最右侧之间的距离。因此，如果你使用 ^|\moveright| 或（负数距离的）^|\moveleft| 向右移动任何项目，那么构造的 vbox 则可能更宽。}
+通常，构造的 vbox 的宽度是其内部最宽项目的宽度。
+\footnote{更准确地说，是从基准点至构造的 vbox 最右侧之间的距离。
+因此，如果你使用 ^|\moveright| 或（负数距离的）^|\moveleft| 向右移动任何项目，
+那么构造的 vbox 则可能更宽。}
 在高度与深度间分配竖直扩展的规则更加复杂：
 \ulist
-\li 对于 |\vtop|，如果第一个项目是一个盒子或标线，则其高度是其第一个项目的高度。否则，其高度是零。深度是减去高度后的竖直扩展。
-\li 对于 |\vbox|，如果最后一个项目是一个盒子或标线，则其深度是其最后一个项目的深度。否则浓度是零。高度是减去深度后的竖直扩展。\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，则深度将会大于 ^|\boxmaxdepth|。 随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。}
+\li 对于 |\vtop|，如果第一个项目是一个盒子或标线，则其高度是其第一个项目的高度。
+否则，其高度是零。深度是减去高度后的竖直扩展。
+\li 对于 |\vbox|，如果最后一个项目是一个盒子或标线，则其深度是其最后一个项目的深度。
+否则浓度是零。高度是减去深度后的竖直扩展。
+\footnote{实际上，规则可以更加复杂。假定在深度确定后，使用给出的两条规则，
+则深度将会大于 ^|\boxmaxdepth|。 随后，深度将被缩小至 |\boxmaxdepth|，高度也相应地被调整。}
 \endulist
 
 %The |\vfil| command (\xref\vfil) is useful for filling out a vbox
 %^^|\vfil//filling a vbox|
 %with empty space when the material in the box isn't as tall as
 %the vertical extent of the box.
-当盒子中内容的高度没有盒子竖直伸展高，需要使用空白间隔来填充 vbox ^^|\vfil//filling a vbox|时，^|\vfil| 命令（\xref\vfil）是非常有用的。
+当盒子中内容的高度没有盒子竖直伸展高，
+需要使用空白间隔来填充 vbox ^^|\vfil//filling a vbox|时，
+^|\vfil| 命令（\xref\vfil ）是非常有用的。
 \example
 \hbox{\hsize = 10pc \raggedright\parindent = 1em
 \vtop{在这个例子中，我们将看到如何使用 vbox 产生双栏的效果。
@@ -789,7 +808,12 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %so that their bottom boundaries all lie on the same horizontal line.
 %\PlainTeX\ sets |\boxmaxdepth| to |\maxdimen| \ctsref{\maxdimen},
 %so |\boxmaxdepth| won't affect your boxes unless you change it.
-这个参数包含的是一个尺寸 $D$。如果盒子的深度超过 $D$，\TeX\ 将不会构造这个盒子。如果你生成一个盒子，其深度 $d$ 大于 $D$，\TeX\ 将超出的深度传递给盒子的高度，即高效地将盒子的\minref{参考点}向下移动 $d-D$。如果你将 |\boxmaxdepth| 设为零，\TeX\ 会将盒子向上排一列，以便它们的底线都位于同一个水平线上。\PlainTeX\ 将 |\boxmaxdepth| 设为 |\maxdimen| \ctsref{\maxdimen}，因此，|\boxmaxdepth| 不会影响你的盒子，除非你有意改动它。
+这个参数包含的是一个尺寸 $D$。如果盒子的深度超过 $D$，\TeX\ 将不会构造这个盒子。
+如果你生成一个盒子，其深度 $d$ 大于 $D$，\TeX\ 将超出的深度传递给盒子的高度，
+即高效地将盒子的\minref{基准点}向下移动 $d-D$。如果你将 |\boxmaxdepth| 设为零，
+\TeX\ 会将盒子向上排一列，以便它们的底线都位于同一个水平线上。
+\PlainTeX\ 将 |\boxmaxdepth| 设为 |\maxdimen|\ctsref{\maxdimen}，
+因此，|\boxmaxdepth| 不会影响你的盒子，除非你有意改动它。
 \enddesc
 
 \begindesc
