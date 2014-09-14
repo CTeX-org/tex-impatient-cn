@@ -6538,55 +6538,87 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\concept whatsit
 \concept 小玩意
 
-A \defterm{whatsit} is an item of information that
-tells \TeX\ to carry out some action
-that doesn't fit into its ordinary scheme of things.
-A whatsit can appear in a horizontal or vertical list, just like a box
-or a glue item.
-\TeX\ typesets a whatsit
-as a \refterm{box} having zero width, height, and depth---in other
-words, a box that contains nothing and occupies no space.
+%A \defterm{whatsit} is an item of information that
+%tells \TeX\ to carry out some action
+%that doesn't fit into its ordinary scheme of things.
+%A whatsit can appear in a horizontal or vertical list, just like a box
+%or a glue item.
+%\TeX\ typesets a whatsit
+%as a \refterm{box} having zero width, height, and depth---in other
+%words, a box that contains nothing and occupies no space.
+\defterm{小玩意}（whatsit）是一个信息项目，
+它用于让 \TeX\ 执行某些无法归入普通事物体系中的操作。
+小玩意可以出现在水平列表或竖直列表中，就像一个盒子或粘连项那样。
+\TeX\ 将小玩意排版为一个宽度、高度和深度都为零的\refterm{盒子}——%
+即一个不包含任何东西也不占用任何空间的盒子。
 
-Three sorts of whatsits are built into \TeX:
+%Three sorts of whatsits are built into \TeX:
+%\ulist
+%\li The |\openout|, |\closeout|, and |\write| commands
+%(\p\xrefn{\openout})
+%% (2nd) removed \xref to \write, since it's on the same page
+%produce a whatsit for operating on an output file.
+%^^|\openout//whatsit produced by|
+%^^|\write//whatsit produced by|
+%^^|\closeout//whatsit produced by|
+%\TeX\ postpones the operation until it next ships out a page
+%to the {\dvifile}
+%^^{\dvifile//whatsits in}
+%(unless the operation is preceded by ^|\immediate|).
+%\TeX\ uses a whatsit for these commands because they don't have anything
+%to do with what it's typesetting when it encounters them.
+%\li The ^|\special| command \ctsref{\special} tells \TeX\ to
+%insert certain text directly into the \dvifile.
+%As with the |\write| command, \TeX\ postpones the insertion
+%until it next ships out a page to the {\dvifile}.
+%^^{\dvifile//material inserted by \b\tt\\special\e}
+%A typical use of |\special| would be to
+%name a graphics file that the device driver should incorporate into
+%your final output.
+%\li When you change languages with the ^|\language| or ^|\setlanguage|
+%commands \ctsref{\language},
+%\TeX\ inserts a whatsit that instructs it to use a
+%certain set of hyphenation rules later on when it's breaking a paragraph
+%into lines.
+%\endulist
+%\noindent
+%A particular implementation of \TeX\ may provide additional whatsits.
+%\endconcept
+在 \TeX\ 中内建了三种类型的小玩意：
 \ulist
-\li The |\openout|, |\closeout|, and |\write| commands
-(\p\xrefn{\openout})
+\li |\openout|、|\closeout| 和 |\write| 命令（第~\xrefn{\openout}~页）%
 % (2nd) removed \xref to \write, since it's on the same page
-produce a whatsit for operating on an output file.
+生成用于操作输出文件的小玩意。
 ^^|\openout//whatsit produced by|
 ^^|\write//whatsit produced by|
 ^^|\closeout//whatsit produced by|
-\TeX\ postpones the operation until it next ships out a page
-to the {\dvifile}
+\TeX\ 将此操作推迟到下次送出页面到 \dvifile 时%
 ^^{\dvifile//whatsits in}
-(unless the operation is preceded by ^|\immediate|).
-\TeX\ uses a whatsit for these commands because they don't have anything
-to do with what it's typesetting when it encounters them.
-\li The ^|\special| command \ctsref{\special} tells \TeX\ to
-insert certain text directly into the \dvifile.
-As with the |\write| command, \TeX\ postpones the insertion
-until it next ships out a page to the {\dvifile}.
+（除非在该操作之前加上 ^|\immediate|）。
+\TeX\ 用小玩意表示这些命令，因为它们与当时正在排版的内容完全无关。
+\li ^|\special| 命令\ctsref{\special}让 \TeX\ 直接插入某些文本到 \dvifile 中。
+如同 |\write| 命令，\TeX\ 也将此操作推迟到下次送出页面到 \dvifile 时。
 ^^{\dvifile//material inserted by \b\tt\\special\e}
-A typical use of |\special| would be to
-name a graphics file that the device driver should incorporate into
-your final output.
-\li When you change languages with the ^|\language| or ^|\setlanguage|
-commands \ctsref{\language},
-\TeX\ inserts a whatsit that instructs it to use a
-certain set of hyphenation rules later on when it's breaking a paragraph
-into lines.
+|\special| 的典型用法是命名一个图片文件，以让设备驱动文件将它整合到最终输出中。
+\li 当你用 ^|\language| 或 ^|\setlanguage| 命令\ctsref{\language}改变语言时，
+\TeX\ 插入一个小玩意，以引导它在以后分段为行时使用特定集合的连字规则。
 \endulist
 \noindent
-A particular implementation of \TeX\ may provide additional whatsits.
+\TeX\ 的某些特别实现可能提供额外的小玩意。
 \endconcept
 
 
-\concept width
+%\concept width
+\concept 宽度
 
+%^^{boxes//width of}
+%The \defterm{width} of a \refterm{box} is the amount of horizontal space
+%that it occupies, i.e., the distance from its left edge to its
+%right edge.  The typeset material in a box can be wider than the box itself.
+%\endconcept
 ^^{boxes//width of}
-The \defterm{width} of a \refterm{box} is the amount of horizontal space
-that it occupies, i.e., the distance from its left edge to its
-right edge.  The typeset material in a box can be wider than the box itself.
+\refterm{盒子}的\defterm{宽度}（width）是它总共占用的水平间隔，
+即从它的左边缘到右边缘的距离。盒子内排版的素材可以比盒子本身还宽。
 \endconcept
 
 \endconcepts
