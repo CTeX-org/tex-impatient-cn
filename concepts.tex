@@ -800,88 +800,128 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %\concept badness
 \concept 劣度
 
-The \defterm{badness} of a line is a measure of how far the interword
-spaces ^^{interword spacing}
-in the line deviate from their natural values,
-i.e., the values specified in the \refterm{fonts:font} used in the line.
-The greater the
-deviation, the greater the badness.  Similarly, the badness of a page is
-a measure of how far the spaces between the boxes that
-make up the page deviate from their ideal values.  (Ordinarily, most of these
-boxes are single lines of paragraphs.)
+%The \defterm{badness} of a line is a measure of how far the interword
+%spaces ^^{interword spacing}
+%in the line deviate from their natural values,
+%i.e., the values specified in the \refterm{fonts:font} used in the line.
+%The greater the
+%deviation, the greater the badness.  Similarly, the badness of a page is
+%a measure of how far the spaces between the boxes that
+%make up the page deviate from their ideal values.  (Ordinarily, most of these
+%boxes are single lines of paragraphs.)
+文本行的\defterm{劣度}（badness）值测量该行的字间隔偏离它们的自然值多远，
+^^{interword spacing}
+其中自然值就是文本行所用\refterm{字体}中指定的值。
+偏离越大，劣度就越大。类似地，页面的劣度测量页面盒子的间隔偏离它们的理想值多远。%
+（一般地，这些盒子大多数是段落的文本行。）
 
-More precisely, the badness
-is a measure of how much the \refterm{glue} associated with these spaces needs
-to stretch or shrink to fill the line or page exactly.
-\TeX\ computes the badness as approximately $100$
-times the cube of the ratio by which it must stretch or shrink the glue
-in order to compose a line or a page of the required size.
+%More precisely, the badness
+%is a measure of how much the \refterm{glue} associated with these spaces needs
+%to stretch or shrink to fill the line or page exactly.
+%\TeX\ computes the badness as approximately $100$
+%times the cube of the ratio by which it must stretch or shrink the glue
+%in order to compose a line or a page of the required size.
+%^^{line breaks//badness for}^^{page breaks//badness for}
+%For example, stretching the glue by twice its stated stretch yields a ratio of
+%$2$ and a badness of $800$; stretching it by half its stated stretch yields
+%a ratio of $.5$ and a badness of $13$.
+%\TeX\ treats a badness greater than $10000$ as
+%equal to $10000$.
+更准确地说，劣度测量这些间隔对应的\refterm{粘连}要伸缩多少才能正好填满文本行或页面。
+\TeX\ 让劣度近似等于，为组成所需尺寸的行或页，粘连必须伸缩的比例的立方的 $100$ 倍。
 ^^{line breaks//badness for}^^{page breaks//badness for}
-For example, stretching the glue by twice its stated stretch yields a ratio of
-$2$ and a badness of $800$; stretching it by half its stated stretch yields
-a ratio of $.5$ and a badness of $13$.
-\TeX\ treats a badness greater than $10000$ as
-equal to $10000$.
+例如，粘连伸长了给定伸长量的两倍得到的比例为 $2$ 而劣度为 $800$；
+粘连伸长了给定伸长量的一半得到的比例为 $.5$ 而劣度为 $13$。
+\TeX\ 将超过 $10000$ 的劣度视为等于 $10000$。
 
-\TeX\ uses the badness of a line when it's breaking a paragraph into lines
-\seeconcept{line break}.  It uses this information in two stages:
+%\TeX\ uses the badness of a line when it's breaking a paragraph into lines
+%\seeconcept{line break}.  It uses this information in two stages:
+\TeX\ 分段为行时使用行劣度\seeconcept{断行点}。
+它在下面两个步骤中使用行劣度：
 
+%\olist
+%\li When \TeX\ is choosing line breaks,
+%it will eventually accept lines whose badness is less than or equal to
+%the value of |\tolerance| (\xref \tolerance).  If \TeX\ cannot avoid setting
+%a line whose badness exceeds this
+%value, it will set it as an underfull or overfull \refterm{hbox}.
+%\TeX\ will set
+%an overfull or underfull hbox only as a last resort, i.e., only if there's no
+%other way to break the paragraph into lines.
+%\li Assuming that all lines are tolerably bad, \TeX\ uses the badness of lines
+%in order to evaluate the different ways of breaking the paragraph into lines.
+%During this evaluation it associates ``demerits'' with each potential line.
+%The badness increases the number of \refterm{demerits}.
+%\TeX\ then
+%breaks the paragraph into lines in a way that minimizes the
+%total demerits for the paragraph.
+%Most
+%often \TeX\ arranges the paragraph in a way that minimizes the badness of the
+%worst line.  See \knuth{pages~97--98} for the details of how \TeX\
+%breaks a paragraph into lines.
+%\endolist
 \olist
-\li When \TeX\ is choosing line breaks,
-it will eventually accept lines whose badness is less than or equal to
-the value of |\tolerance| (\xref \tolerance).  If \TeX\ cannot avoid setting
-a line whose badness exceeds this
-value, it will set it as an underfull or overfull \refterm{hbox}.
-\TeX\ will set
-an overfull or underfull hbox only as a last resort, i.e., only if there's no
-other way to break the paragraph into lines.
-\li Assuming that all lines are tolerably bad, \TeX\ uses the badness of lines
-in order to evaluate the different ways of breaking the paragraph into lines.
-During this evaluation it associates ``demerits'' with each potential line.
-The badness increases the number of \refterm{demerits}.
-\TeX\ then
-breaks the paragraph into lines in a way that minimizes the
-total demerits for the paragraph.
-Most
-often \TeX\ arranges the paragraph in a way that minimizes the badness of the
-worst line.  See \knuth{pages~97--98} for the details of how \TeX\
-breaks a paragraph into lines.
+\li 在选择断行点时，\TeX\ 要求各行劣度小于或等于 |\tolerance| 值（\xref \tolerance ）。
+如果不得不放置一个劣度超过此值的行，\TeX\ 将把它设定为未满或过满\refterm{水平盒子}。
+\TeX\ 仅在万不得已时才会放置未满或过满水平盒子，即仅在没有其他方法分段为行时。
+\li 假设各行都相当糟糕，\TeX\ 用行劣度评价不同的分段为行方式。
+在评价过程中它对每个可能的行结合一个``缺陷''。劣度会增加\refterm{缺陷}值。
+然后 \TeX\ 选择让段落总缺陷最小的方式来分段为行。
+在多数情况下，\TeX\ 使用让最糟糕行的劣度最小的方式安排段落。
+请参阅\knuth{第~97--98~页}中 \TeX\ 如何分段为行的细节。
 \endolist
 
-\TeX's procedure for assembling a sequence of lines and other vertical
-mode material into pages is similar to its procedure for line breaking.
-However, assembling pages is
-not as complicated because \TeX\ only considers one page at a time
-when it looks for page breaks.
-Thus the only decision it must make is where to end the current page.
-In contrast, when \TeX\ is choosing line breaks it
-considers several of them simultaneously.
-(Most word processors choose line breaks one at a time,
-and thus don't do as good a job at it as \TeX\ does.)
-See \knuth{pages~111--113} for the details of how \TeX\ chooses its
-page breaks.
+%\TeX's procedure for assembling a sequence of lines and other vertical
+%mode material into pages is similar to its procedure for line breaking.
+%However, assembling pages is
+%not as complicated because \TeX\ only considers one page at a time
+%when it looks for page breaks.
+%Thus the only decision it must make is where to end the current page.
+%In contrast, when \TeX\ is choosing line breaks it
+%considers several of them simultaneously.
+%(Most word processors choose line breaks one at a time,
+%and thus don't do as good a job at it as \TeX\ does.)
+%See \knuth{pages~111--113} for the details of how \TeX\ chooses its
+%page breaks.
+%\endconcept
+\TeX 将一系列文本行和其他竖直模式素材组装为页面的过程与断行的过程类似。
+但是组装页面没那么复杂，这是由于 \TeX\ 寻找分页点时每次只考虑一个页面，
+因此只需要决定在哪里结束当前页面。
+与此相反，当选择断行点时 \TeX\ 要同时考虑多行。%
+（大多数文字处理器每次只选择一个断行点，因而断行做得不如 \TeX\ 。）%
+请参阅\knuth{第~111--113~页}中 \TeX\ 如何选择分页点的细节。
 \endconcept
 
 
-\conceptindex{baselines}
-\concept baseline
+%\conceptindex{baselines}
+%\concept baseline
+\concept 基线
 
-The \defterm{baseline} of a \refterm{box} is an imaginary line that runs
-across the box.
+%The \defterm{baseline} of a \refterm{box} is an imaginary line that runs
+%across the box.
+%^^{boxes//baselines of}
+%When \TeX\ is
+%assembling the boxes of a \refterm{horizontal list} into a larger box,
+%it lines up the boxes in the list so that their baselines coincide.
+%As an analogy, think of writing on a pad of ruled paper.  Each letter
+%that you write has
+%an implicit baseline.
+%In order to line up the letters horizontally,
+%you place them on the pad so that their baselines
+%agree with the light guidelines that are printed on the pad.
+盒子的\defterm{基线}（baseline）是一条想象中的横穿盒子的线。
 ^^{boxes//baselines of}
-When \TeX\ is
-assembling the boxes of a \refterm{horizontal list} into a larger box,
-it lines up the boxes in the list so that their baselines coincide.
-As an analogy, think of writing on a pad of ruled paper.  Each letter
-that you write has
-an implicit baseline.
-In order to line up the letters horizontally,
-you place them on the pad so that their baselines
-agree with the light guidelines that are printed on the pad.
+在将\refterm{水平列表}的盒子组装为更大的盒子时，
+\TeX\ 将列表中各盒子对齐，以让它们的基线重合。
+打个比方，想象你在标线本上写字，你所写的每个字母都有一条隐含基线。
+为让各字母水平对齐，你会让它们的基线和本子上印刷的浅色提示线重合。
 
-A box can and often does extend below its baseline.
-For instance, the letter `g' extends below the baseline of its box because
-it has a descender (the bottom loop of the `g').
+%A box can and often does extend below its baseline.
+%For instance, the letter `g' extends below the baseline of its box because
+%it has a descender (the bottom loop of the `g').
+%\endconcept
+盒子可以而且也经常会延伸到基线下边。
+比如，字母 `g' 就延伸到其盒子的基线下边，因为它有一个降部（`g' 底部弯曲部分）。
 \endconcept
 
 
@@ -889,40 +929,83 @@ it has a descender (the bottom loop of the `g').
 %\concept box
 \concept 盒子
 
-A \defterm{box}  is a rectangle of material to be typeset.  A single
-\refterm{character} is a box by itself,
-and an entire page is also a box.
-\TeX\ forms a page as a nest of boxes within boxes within boxes. The
-outermost box is the page itself, the innermost boxes are mostly
-single characters, and single lines are boxes that are
-somewhere in the middle.
+%A \defterm{box}  is a rectangle of material to be typeset.  A single
+%\refterm{character} is a box by itself,
+%and an entire page is also a box.
+%\TeX\ forms a page as a nest of boxes within boxes within boxes. The
+%outermost box is the page itself, the innermost boxes are mostly
+%single characters, and single lines are boxes that are
+%somewhere in the middle.
+\defterm{盒子}（box）是要排版的矩阵素材。
+单个\refterm{字符}自身就是一个盒子，整个页面同样也是一个盒子。
+\TeX\ 用盒子套盒子套盒子以形成页面。最外层盒子就是页面自身，
+最内层盒子多半是单个字符，而单个文本行的盒子在中间某个地方。
 
-\TeX\ carries out most of its box-building activities implicitly as it
-constructs paragraphs and pages.
-You can construct boxes explicitly
-using a number of \TeX\ \refterm{commands}, notably
-^|\hbox| \ctsref{\hbox},
-^|\vbox| \ctsref{\vbox}, and
-^|\vtop| \ctsref{\vtop}.
-The ^|\hbox| command
-constructs a box by appending smaller boxes horizontally from left to right;
-it operates on a \refterm{horizontal list} and yields
-an \refterm{hbox} ^^{hboxes} (horizontal box).
+%\TeX\ carries out most of its box-building activities implicitly as it
+%constructs paragraphs and pages.
+%You can construct boxes explicitly
+%using a number of \TeX\ \refterm{commands}, notably
+%^|\hbox| \ctsref{\hbox},
+%^|\vbox| \ctsref{\vbox}, and
+%^|\vtop| \ctsref{\vtop}.
+%The ^|\hbox| command
+%constructs a box by appending smaller boxes horizontally from left to right;
+%it operates on a \refterm{horizontal list} and yields
+%an \refterm{hbox} ^^{hboxes} (horizontal box).
+%^^{horizontal lists}
+%The ^|\vbox| and |\vtop| commands
+%construct a box by appending smaller boxes vertically from top to bottom;
+%^^{vboxes}
+%they operate on a \refterm{vertical list}
+%and yield a \refterm{vbox} ^^{vboxes} (vertical box).
+%^^{vertical lists}
+%These horizontal and vertical lists can include not just smaller boxes but
+%several other kinds of entities as well, e.g.,  \refterm{glue} and
+%kerns.
+%^^{kerns//as list items}
+\TeX\ 在构造段落和页面时隐式执行大多数盒子构建活动。
+利用一些 \TeX\ \refterm{命令}，比如 ^|\hbox|\ctsref{\hbox}、
+^|\vbox|\ctsref{\vbox}和 ^|\vtop|\ctsref{\vtop}，你可以显式构造盒子。
+^|\hbox| 命令通过从左到右水平添加较小的盒子构造一个盒子；
+它对一个\refterm{水平列表}进行操作以生成一个\refterm{水平盒子}^^{hboxes}（horizontal box）。
 ^^{horizontal lists}
-The ^|\vbox| and |\vtop| commands
-construct a box by appending smaller boxes vertically from top to bottom;
+^|\vbox| 和 |\vtop| 命令通过从上到下竖直添加较小的盒子构造一个盒子；
 ^^{vboxes}
-they operate on a \refterm{vertical list}
-and yield a \refterm{vbox} ^^{vboxes} (vertical box).
+它们对一个\refterm{竖直列表}进行操作以生成一个\refterm{竖直盒子}^^{vboxes}（vertical box）。
 ^^{vertical lists}
-These horizontal and vertical lists can include not just smaller boxes but
-several other kinds of entities as well, e.g.,  \refterm{glue} and
-kerns.
+这些水平列表和竖直列表不仅可以包含较小的盒子，
+还可以包含其他几种实体，比如\refterm{粘连}和紧排。
 ^^{kerns//as list items}
 
-A box has \refterm{height}, \refterm{depth}, and \refterm{width},
+%A box has \refterm{height}, \refterm{depth}, and \refterm{width},
+%^^{height} ^^{depth} ^^{width}
+%like this:
+%\vdisplay{\offinterlineskip\sevenrm
+%   \halign{#&#&\kern3pt \hfil#\hfil\cr
+%      &\hrulefill\cr
+%      &\vrule
+%         \vtop to .7in{\vss \hbox to .9in{\hss baseline\hss}\vskip4pt}%
+%       \vrule
+%      &\labelledheight{.7in}{height}\cr
+%      %
+%       \vbox to 0pt{
+%          \vss
+%          \hbox{reference point \hbox to 15pt{\rightarrowfill}%
+%          \hskip3pt}%
+%       \kern-4.5pt}&{\box\refpoint}\hrulefill\cr
+%      %
+%      \omit
+%      &\vrule\hfil\vrule
+%      &\labelledheight{.4in}{depth}\cr
+%      %
+%      &\hrulefill\cr
+%      %
+%   \noalign{\vskip3pt}%
+%      &\leftarrowfill { width }\rightarrowfill\cr
+%}}
+盒子有\refterm{高度}、\refterm{深度}和\refterm{宽度}，
 ^^{height} ^^{depth} ^^{width}
-like this:
+如下所示
 \vdisplay{\offinterlineskip\sevenrm
    \halign{#&#&\kern3pt \hfil#\hfil\cr
       &\hrulefill\cr
@@ -947,97 +1030,150 @@ like this:
       &\leftarrowfill { width }\rightarrowfill\cr
 }}
 
+%^^{baselines}
+%The \refterm{baseline} is like one of
+%the light guidelines on a pad of ruled paper.
+%The boxes for letters such as `g'
+%extend below the baseline; the boxes for letters such as `h' don't.
+%The height of a box is the distance that the box extends above its
+%baseline, while its depth is the distance that it extends below its
+%baseline. \bix^^{reference point}
+%The \minref{reference point}
+%of a box is the place where its baseline intersects its left edge.
 ^^{baselines}
-The \refterm{baseline} is like one of
-the light guidelines on a pad of ruled paper.
-The boxes for letters such as `g'
-extend below the baseline; the boxes for letters such as `h' don't.
-The height of a box is the distance that the box extends above its
-baseline, while its depth is the distance that it extends below its
-baseline. \bix^^{reference point}
-The \minref{reference point}
-of a box is the place where its baseline intersects its left edge.
+\refterm{基线}（baseline）如同标线本上的浅色提示线。
+像 `g' 这样的字母盒子延伸到基线下边；而像 `h' 这样的字母盒子却不会。
+盒子的高度是盒子在基线上边的延伸距离，而它的深度是在基线下边的延伸距离。
+\bix^^{reference point}
+盒子的\minref{基准点}（reference point）是它的基线与左边缘的交点。
 
-{\tighten
-\TeX\ builds an hbox $H$ from a horizontal list by assuming
-a reference point for $H$ and then appending the items in the list to $H$
-one by one from left to right.
-Each box in the list is placed so that its baseline coincides with the
-baseline of $H$\kern-2pt,
-i.e., the component boxes are lined up horizontally.%
-\footnote{If a box is moved up or down with ^|\raise| or
-^|\lower|, \TeX\ uses its reference point before the move when
-placing it.}
-The height of $H$ is the
-height of the tallest box in the list, and the depth of $H$ is the depth
-of the deepest box in the list.
-The width of $H$ is the sum of the
-widths of all the items in the list.
-If any of these items are \refterm{glue} and \TeX\ needs to stretch or shrink
-the glue,
-the width of $H$ will be larger or smaller accordingly.
-See \knuth{page~77} for the~details.
-\par}
+%{\tighten
+%\TeX\ builds an hbox $H$ from a horizontal list by assuming
+%a reference point for $H$ and then appending the items in the list to $H$
+%one by one from left to right.
+%Each box in the list is placed so that its baseline coincides with the
+%baseline of $H$\kern-2pt,
+%i.e., the component boxes are lined up horizontally.%
+%\footnote{If a box is moved up or down with ^|\raise| or
+%^|\lower|, \TeX\ uses its reference point before the move when
+%placing it.}
+%The height of $H$ is the
+%height of the tallest box in the list, and the depth of $H$ is the depth
+%of the deepest box in the list.
+%The width of $H$ is the sum of the
+%widths of all the items in the list.
+%If any of these items are \refterm{glue} and \TeX\ needs to stretch or shrink
+%the glue,
+%the width of $H$ will be larger or smaller accordingly.
+%See \knuth{page~77} for the~details.
+%\par}
+在从水平列表构建水平盒子 $H$ 时，\TeX\ 先设定 $H$ 的基准点，
+然后从左到右逐个添加列表中的项目到 $H$ 中。
+列表中的每个盒子按照其基线与 $H$ 的基线重合的方式放置，
+即让组成盒子水平排成一排。%
+\footnote{如果盒子被 ^|\raise| 或 ^|\lower| 升高或降低了，
+\TeX\ 放置时使用它移动之前的基准点。}
+$H$ 的高度等于列表中最高盒子的高度，而深度等于列表中最深盒子的深度。
+$H$ 的宽度等于列表中所有项目的宽度之和。
+如果这些项目中有的是\refterm{粘连}，\TeX\ 需要伸缩粘连，
+从而 $H$ 的宽度将相应地变大或变小。请参阅\knuth{第~77~页}的细节描述。
 
-Similarly, \TeX\ builds a vbox $V$ from a vertical list by assuming a
-temporary reference point for $V$ and then appending the items in the
-list to $V$ one by one from top to bottom.  Each box in the list is
-placed so that its reference point is lined up vertically with the
-reference point of \Vperiod.\footnote{If a box is moved left or right with
-^|\moveleft| or ^|\moveright|, \TeX\ uses its reference point before the
-move when placing it.} As each box other than the first one is added to
-\Vcomma, \TeX\ puts \minref{interline glue} just above it.  (This
-^{interline glue} has no analogue for hboxes.)  The width of $V$ is the
-width of the widest box in the list, and the vertical extent (height
-plus depth) of $V$ is the sum of the vertical extents of all the
-items in the list.
+%Similarly, \TeX\ builds a vbox $V$ from a vertical list by assuming a
+%temporary reference point for $V$ and then appending the items in the
+%list to $V$ one by one from top to bottom.  Each box in the list is
+%placed so that its reference point is lined up vertically with the
+%reference point of \Vperiod.\footnote{If a box is moved left or right with
+%^|\moveleft| or ^|\moveright|, \TeX\ uses its reference point before the
+%move when placing it.} As each box other than the first one is added to
+%\Vcomma, \TeX\ puts \minref{interline glue} just above it.  (This
+%^{interline glue} has no analogue for hboxes.)  The width of $V$ is the
+%width of the widest box in the list, and the vertical extent (height
+%plus depth) of $V$ is the sum of the vertical extents of all the
+%items in the list.
+类似地，在从竖直列表构建竖直盒子 $V$ 时，\TeX\ 先设定 $H$ 的临时基准点，
+然后从上到下逐个添加列表中的项目到 $V$ 中。
+列表中的每个盒子按照其基准点与 $V$ 的基准点竖直对齐的方式放置。%
+\footnote{如果盒子被 ^|\moveleft| 或 ^|\moveright| 左移或右移了，
+\TeX\ 放置时使用它移动之前的基准点。}
+在第一个除外的每个盒子加到 $V$ 时，\TeX\ 在它之前放置\minref{行间粘连}。%
+（在水平盒子中没有和^{行间粘连}对应的东西。）%
+$V$ 的宽度等于列表中最宽盒子的宽度，
+而 $V$ 的竖直长度（高度加深度）等于列表中所有项目的竖直长度之和。
 
+%\bix^^|\vbox|
+%\bix^^|\vtop|
+%The difference between |\vbox| and |\vtop| is in how they partition
+%the vertical extent of $V$ into a height and a depth.
+%Choosing the reference point of $V$ determines that partition.
+%\ulist
+%\li For |\vbox|, \TeX\ places the reference point on a horizontal line
+%with the reference point of the last component box
+%or rule of \Vcomma, except
+%that if the last box (or rule) is followed by glue or a kern, \TeX\ places the
+%reference point at the very bottom of \Vperiod.%
+%\footnote{The depth is limited by
+%the parameter ^|\boxmaxdepth| \ctsref{\boxmaxdepth}.}
 \bix^^|\vbox|
 \bix^^|\vtop|
-The difference between |\vbox| and |\vtop| is in how they partition
-the vertical extent of $V$ into a height and a depth.
-Choosing the reference point of $V$ determines that partition.
+|\vbox| 和 |\vtop| 的区别在于它们如何将 $V$ 的竖直长度划分为高度和深度。
+选定了 $V$ 的基准点就决定了划分方式。
 \ulist
-\li For |\vbox|, \TeX\ places the reference point on a horizontal line
-with the reference point of the last component box
-or rule of \Vcomma, except
-that if the last box (or rule) is followed by glue or a kern, \TeX\ places the
-reference point at the very bottom of \Vperiod.%
-\footnote{The depth is limited by
-the parameter ^|\boxmaxdepth| \ctsref{\boxmaxdepth}.}
+\li 对于 |\vbox|，\TeX\ 将基准点放在 $V$ 的最后一个组成盒子或标线的基准点所在的水平线上，
+除非最后一个盒子（或标线）之后还有粘连或紧排，此时 \TeX\ 将基准点放在 $V$ 的最底端。
+\footnote{深度还受 ^|\boxmaxdepth| 参数\ctsref{\boxmaxdepth}限制。}
 
-\li For |\vtop|, \TeX\ places the reference point on a horizontal line
-with the reference point of the first component box or rule of \Vcomma,
-except that if the first box (or rule)
-is preceded by glue or a kern, \TeX\ places
-the reference point at the very top of \Vperiod.
+%\li For |\vtop|, \TeX\ places the reference point on a horizontal line
+%with the reference point of the first component box or rule of \Vcomma,
+%except that if the first box (or rule)
+%is preceded by glue or a kern, \TeX\ places
+%the reference point at the very top of \Vperiod.
+\li 对于 |\vtop|，\TeX\ 将基准点放在 $V$ 的第一个组成盒子或标线的基准点所在的水平线上，
+除非第一个盒子（或标线）之前还有粘连或紧排，此时 \TeX\ 将基准点放在 $V$ 的最顶端。
 
+%\endulist
+%\noindent
+%Roughly speaking, then, |\vbox| puts the reference point near the bottom
+%of the vbox and |\vtop| puts it near the top.
+%When you want to align a
+%row of vboxes so that their tops line up horizontally,
+%you should usually use |\vtop| rather than |\vbox|.
+%See \knuth{pages~78 and 80--81} for the
+%details of how \TeX\ builds vboxes.
+%\eix^^|\vbox|
+%\eix^^|\vtop|
+%\eix^^{reference point}
 \endulist
 \noindent
-Roughly speaking, then, |\vbox| puts the reference point near the bottom
-of the vbox and |\vtop| puts it near the top.
-When you want to align a
-row of vboxes so that their tops line up horizontally,
-you should usually use |\vtop| rather than |\vbox|.
-See \knuth{pages~78 and 80--81} for the
-details of how \TeX\ builds vboxes.
+粗略地说，|\vbox| 将基准点放在靠近竖直盒子底部处，而|\vtop| 将基准点放在靠近顶部处。
+在你想对齐一行竖直盒子，让它们的顶部水平排成一排时，你通常应该使用 |\vtop| 而不是 |\vbox|。
+请参阅\knuth{第~78 和 80--81~页}中 \TeX\ 如何构建竖直盒子的详细信息。
 \eix^^|\vbox|
 \eix^^|\vtop|
 \eix^^{reference point}
 
-You have quite a lot of freedom in constructing boxes.  The typeset
-material in a box can extend beyond the boundaries of the box as it does
-for some letters (mostly italic or slanted ones).  The component boxes
-of a larger box can overlap.  A box can have negative width, depth, or
-height, though boxes like that are not often needed.
+%You have quite a lot of freedom in constructing boxes.  The typeset
+%material in a box can extend beyond the boundaries of the box as it does
+%for some letters (mostly italic or slanted ones).  The component boxes
+%of a larger box can overlap.  A box can have negative width, depth, or
+%height, though boxes like that are not often needed.
+在构造盒子时你有极大的自由度。盒子中排版的素材可以超出盒子的边界，
+就像某些字母那样（多半是那些意大利体或斜体字母）。
+大盒子的组成盒子可以相互重叠。
+盒子可以有负的宽度、深度或高度，尽管这种盒子不常用到。
 
-You can save a box in a box \refterm{register} and retrieve it later.
-Before using a box register,
+%You can save a box in a box \refterm{register} and retrieve it later.
+%Before using a box register,
+%^^{box registers}
+%you should reserve it and give it a name
+%with the ^|\newbox| command \ctsref{\@newbox}.  See
+%\conceptcit{register} for more information about box
+%registers.
+%\endconcept
+你可以把一个盒子保存在盒子\refterm{寄存器}中并在稍后取回它。
+在使用盒子寄存器之前，
 ^^{box registers}
-you should reserve it and give it a name
-with the ^|\newbox| command \ctsref{\@newbox}.  See
-\conceptcit{register} for more information about box
-registers.
+你应当用 ^|\newbox| 命令\ctsref{\@newbox}预留它并给它命名。
+请参阅\conceptcit{寄存器}中的关于盒子寄存器的更多信息。
 \endconcept
 
 \bookmark{2}{以C开头}
