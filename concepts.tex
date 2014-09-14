@@ -6411,21 +6411,35 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 
 
 \bookmark{2}{以V开头}
+%\conceptindex{vboxes}
+%\concept vbox
 \conceptindex{vboxes}
-\concept vbox
+\concept 竖直盒子
 
+%^^{vertical lists//vboxes formed from}
+%A \defterm{vbox} (vertical box) is a \refterm{box} that \TeX\ constructs
+%by placing the items of a \refterm{vertical list} one after another, top
+%to bottom.  A vbox, taken as a unit, is neither inherently horizontal
+%nor inherently vertical, i.e., it can appear as an item of either a
+%vertical list or a \refterm{horizontal list}.  You can construct a vbox
+%with the ^|\vbox| or the ^|\vtop| command
+%\ctsref{\vtop}.  The difference is that for |\vbox|,
+%the \refterm{reference point}
+%of the constructed vbox is derived from that of the last (and
+%usually bottommost) constituent list item, but for |\vtop|, it's that of the
+%first (and usually topmost) constituent list item.
+%\endconcept
 ^^{vertical lists//vboxes formed from}
-A \defterm{vbox} (vertical box) is a \refterm{box} that \TeX\ constructs
-by placing the items of a \refterm{vertical list} one after another, top
-to bottom.  A vbox, taken as a unit, is neither inherently horizontal
-nor inherently vertical, i.e., it can appear as an item of either a
-vertical list or a \refterm{horizontal list}.  You can construct a vbox
-with the ^|\vbox| or the ^|\vtop| command
-\ctsref{\vtop}.  The difference is that for |\vbox|,
-the \refterm{reference point}
-of the constructed vbox is derived from that of the last (and
-usually bottommost) constituent list item, but for |\vtop|, it's that of the
-first (and usually topmost) constituent list item.
+\defterm{竖直盒子}（vbox，vertical box）是 \TeX\
+从上到下逐个放置\refterm{竖直列表}的项目而构造出来的\refterm{盒子}。
+竖直盒子，作为一个单元，既不是本质上水平的也不是本质上竖直的，
+即它可以出现在竖直列表或\refterm{水平列表}中。
+你可以用 ^|\vbox| 或 ^|\vtop| 命令\ctsref{\vtop}构造竖直盒子。
+两者的区别在于，
+对于 |\vbox|，所构造的竖直盒子的\refterm{基准点}来源于%
+列表的最后一个（通常是最下面那个）组成项；
+而对于 |\vtop|，所构造的竖直盒子的\refterm{基准点}来源于%
+列表的第一个（通常是最上面那个）组成项。
 \endconcept
 
 
@@ -6433,11 +6447,13 @@ first (and usually topmost) constituent list item.
 %\concept{vertical list}
 \concept{竖直列表}
 
-A \defterm{vertical list} is a list of items
-that \TeX\ has produced while it is
-in one of its vertical modes, i.e.,
-assembling either a
-\refterm{vbox} or a page.  See ``vertical mode'' below.
+%A \defterm{vertical list} is a list of items
+%that \TeX\ has produced while it is
+%in one of its vertical modes, i.e.,
+%assembling either a
+%\refterm{vbox} or a page.  See ``vertical mode'' below.
+\defterm{竖直列表}（vertical list）是 \TeX\ 位于某种竖直模式时
+（即组装\refterm{竖直盒子}或页面时）生成的一列项目。见下面的``竖直模式''。
 
 \endconcept
 
@@ -6445,48 +6461,76 @@ assembling either a
 %\concept{vertical mode}
 \concept{竖直模式}
 
-^^{vboxes//vertical mode for} When \TeX\ is assembling either a
-\refterm{vbox} or the main vertical list from which pages are derived,
-it is in one of two \defterm{vertical modes}: ^{ordinary
-vertical mode} for assembling the main vertical list, and ^{internal
-vertical mode} for assembling vboxes.  Whenever \TeX\ is in a vertical mode
-its stomach \seeconcept{\anatomy} is constructing a \refterm{vertical
-list} of items (boxes, glue, penalties, etc.).
-\TeX\ typesets the items in the list
-one below another, top to bottom.
+%^^{vboxes//vertical mode for} When \TeX\ is assembling either a
+%\refterm{vbox} or the main vertical list from which pages are derived,
+%it is in one of two \defterm{vertical modes}: ^{ordinary
+%vertical mode} for assembling the main vertical list, and ^{internal
+%vertical mode} for assembling vboxes.  Whenever \TeX\ is in a vertical mode
+%its stomach \seeconcept{\anatomy} is constructing a \refterm{vertical
+%list} of items (boxes, glue, penalties, etc.).
+%\TeX\ typesets the items in the list
+%one below another, top to bottom.
+^^{vboxes//vertical mode for}
+在组装\refterm{竖直盒子}或者主竖直列（输出的页面来源于此）时，
+\TeX\ 位于两种\defterm{竖直模式}（vertical mode）之一:
+^{普通竖直模式}用于组装主竖直列，而^{内部竖直模式}用于组装竖直盒子。
+只要 \TeX\ 位于竖直模式中，它的胃\seeconcept{\anatomy}就在构造项目%
+（盒子、粘连、惩罚等）的\refterm{竖直列表}。
+\TeX\ 逐个排版列表中的项目，从上到下。
 
-A vertical list can't contain any items produced by
-inherently horizontal commands, e.g.,
+%A vertical list can't contain any items produced by
+%inherently horizontal commands, e.g.,
+%^^{vertical lists//can't contain horizontal commands}
+%|\hskip| or an ordinary (nonspace) character.
+%\footnote{\TeX\ \emph{ignores} any space characters
+%that it encounters while it's in a vertical mode.}
+竖直列表不能包含任何用本质上的水平命令，
 ^^{vertical lists//can't contain horizontal commands}
-|\hskip| or an ordinary (nonspace) character.
-\footnote{\TeX\ \emph{ignores} any space characters
-that it encounters while it's in a vertical mode.}
+比如 |\hskip| 或普通的（非空格）字符，生成的项目。
+\footnote{在竖直模式中 \TeX\ \emph{忽略}它遇到的任何空格符。}
 
+%\ulist
+%\li If \TeX\ is  assembling a vertical list in ordinary vertical mode and
+%encounters an inherently horizontal command, it switches to ordinary
+%\refterm{horizontal mode}.
+%\li If \TeX\ is  assembling a vertical list in internal vertical mode and
+%encounters an inherently horizontal command, it complains.
+%\endulist
 \ulist
-\li If \TeX\ is  assembling a vertical list in ordinary vertical mode and
-encounters an inherently horizontal command, it switches to ordinary
-\refterm{horizontal mode}.
-\li If \TeX\ is  assembling a vertical list in internal vertical mode and
-encounters an inherently horizontal command, it complains.
+\li 如果 \TeX\ 正在普通竖直模式中组装竖直列表，并碰到一个本质上的水平命令，
+它将切换到\refterm{水平模式}。
+\li 如果 \TeX\ 正在内部水平模式中组装竖直列表，并碰到一个本质上的水平命令，
+它将报错。
 \endulist
 
-Two commands that you might at first think are inherently vertical are
-in fact inherently horizontal: |\valign| \ctsref{\valign} and |\vrule|
-\ctsref{\vrule}.
+%Two commands that you might at first think are inherently vertical are
+%in fact inherently horizontal: |\valign| \ctsref{\valign} and |\vrule|
+%\ctsref{\vrule}.
+%^^|\valign//inherently horizontal|
+%^^|\vrule//inherently horizontal|
+%See \knuth{page~283} for a list of the
+%inherently horizontal commands.
+这两个命令你也许会认为是本质上竖直的，实际上却是本质上水平的：
+|\valign|\ctsref{\valign}和 |\vrule|\ctsref{\vrule}。
 ^^|\valign//inherently horizontal|
 ^^|\vrule//inherently horizontal|
-See \knuth{page~283} for a list of the
-inherently horizontal commands.
+在\knuth{第~283~页}中列出了所有本质上的水平命令。
 
-It's particularly important to be aware that \TeX\ considers an ordinary
-character other than a space character to be inherently horizontal.  If
-\TeX\ suddenly starts a new paragraph when you weren't expecting it,
-a likely cause is a
-character that \TeX\ encountered while in vertical mode.
-You can convince \TeX\
-not to treat that character as inherently horizontal by enclosing it in
-an \refterm{hbox} since the |\hbox| command, despite its name, is
-neither inherently horizontal nor inherently vertical.
+%It's particularly important to be aware that \TeX\ considers an ordinary
+%character other than a space character to be inherently horizontal.  If
+%\TeX\ suddenly starts a new paragraph when you weren't expecting it,
+%a likely cause is a
+%character that \TeX\ encountered while in vertical mode.
+%You can convince \TeX\
+%not to treat that character as inherently horizontal by enclosing it in
+%an \refterm{hbox} since the |\hbox| command, despite its name, is
+%neither inherently horizontal nor inherently vertical.
+%\endconcept
+有个特别重要的事实需要知道，即 \TeX\ 将任何普通的非空格符视为本质上水平的。
+如果 \TeX\ 在你预期之外突然开始一个新段落，
+这可能是由 \TeX\ 在竖直模式中遇到的字符引起的。
+要让 \TeX\ 不把该字符视为本质上水平的，你可以将它放入一个\refterm{水平盒子}中；
+这是因为，尽管看名字容易误解，|\hbox| 命令既不是本质上水平的也不是本质上竖直的。
 \endconcept
 
 
