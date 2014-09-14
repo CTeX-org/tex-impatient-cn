@@ -3212,40 +3212,59 @@ Please don't pour {\it any} more tea into my hat.
 
 
 \bookmark{2}{以H开头}
-\conceptindex{hboxes}
-\concept hbox
+%\conceptindex{hboxes}
+%\concept hbox
+\concept 水平盒子
 
-An \defterm{hbox} (horizontal box) is a \refterm{box} that \TeX\
-constructs by placing the items of a \refterm{horizontal list} one after
-another, left to right.
+%An \defterm{hbox} (horizontal box) is a \refterm{box} that \TeX\
+%constructs by placing the items of a \refterm{horizontal list} one after
+%another, left to right.
+%^^{horizontal lists//hboxes formed from}
+%An hbox, taken as a unit, is neither
+%inherently horizontal nor inherently vertical, i.e., it can appear as an
+%item of either a horizontal list or a \refterm{vertical list}.  You can
+%construct an hbox with the |\hbox| command \ctsref{\hbox}.
+%\endconcept
+\defterm{水平盒子}（hbox，horizontal box）是 \TeX\ 
+从左到右逐个放置\refterm{水平列表}的项目而构造出来的\refterm{盒子}。
 ^^{horizontal lists//hboxes formed from}
-An hbox, taken as a unit, is neither
-inherently horizontal nor inherently vertical, i.e., it can appear as an
-item of either a horizontal list or a \refterm{vertical list}.  You can
-construct an hbox with the |\hbox| command \ctsref{\hbox}.
+水平盒子，作为一个单元，既不是本质上水平的也不是本质上竖直的，
+即它可以出现在水平列表或\refterm{竖直列表}中。
+你可以用 |\hbox| 命令\ctsref{\hbox}构造水平盒子。
 \endconcept
 
 
-\conceptindex{headers}
-\concept header
+%\conceptindex{headers}
+%\concept header
+\concept 页眉
 
-A \defterm{header} is material that \TeX\ puts at the top of every page,
-above the text of that page.
-The header for a simple report
-might consist of the title on the left side of
-the page and the text ``Page $n$'' on the right side of the page.
-Ordinarily a header consists of a single line, which you can set by
-assigning a token list to ^|\headline| \ctsref\headline.
-The default \plainTeX\ header is blank.
-It's possible to produce multiline headers too; see \xrefpg{bighead} for
-how to do it.
+%A \defterm{header} is material that \TeX\ puts at the top of every page,
+%above the text of that page.
+%The header for a simple report
+%might consist of the title on the left side of
+%the page and the text ``Page $n$'' on the right side of the page.
+%Ordinarily a header consists of a single line, which you can set by
+%assigning a token list to ^|\headline| \ctsref\headline.
+%The default \plainTeX\ header is blank.
+%It's possible to produce multiline headers too; see \xrefpg{bighead} for
+%how to do it.
+%\endconcept
+\defterm{页眉}（header）是放在每个页面顶部，位于正文之上的素材。
+一个简单报告的页眉可能由左侧的标题和右侧的`第 $n$ 页''组成。
+通常页眉只包含一行文本，你可以通过给 ^|\headline|\ctsref\headline 指定一个记号列来设定页眉。
+在 \plainTeX\ 中默认页眉是空白的。
+你也可以生成多行页眉；请参阅\xrefpg{bighead}中介绍的方法。
 \endconcept
 
 
-\concept height
+%\concept height
+\concept 高度
 
-The \defterm{height} of a \refterm{box} is the distance that the box
-extends above its \refterm{baseline}.
+%The \defterm{height} of a \refterm{box} is the distance that the box
+%extends above its \refterm{baseline}.
+%^^{boxes//height of}
+%\endconcept
+\refterm{盒子}的\defterm{高度}（height）是盒子在\refterm{基线}之上的距离。
 ^^{boxes//height of}
 \endconcept
 
@@ -3254,56 +3273,85 @@ extends above its \refterm{baseline}.
 %\concept{horizontal list}
 \concept{水平列表}
 
-A \defterm{horizontal list} is a list of items
-that \TeX\ has produced while it is
-in one of its \refterm{horizontal modes:horizontal mode}, i.e., assembling
-either a paragraph or an hbox.  See ``horizontal mode'' below.
+%A \defterm{horizontal list} is a list of items
+%that \TeX\ has produced while it is
+%in one of its \refterm{horizontal modes:horizontal mode}, i.e., assembling
+%either a paragraph or an hbox.  See ``horizontal mode'' below.
+%\endconcept
+\defterm{水平列表}（horizontal list）是 \TeX\ 位于某种\refterm{水平模式}时
+（即组装段落或水平盒子时）生成的一列项目。见下面的``水平模式''。
 \endconcept
 
 
 %\concept {horizontal mode}
 \concept {水平模式}
 
+%^^{hboxes//horizontal mode for}
+%When \TeX\ is assembling a paragraph or an \refterm{hbox}, it is in one
+%of two \defterm{horizontal modes}: ^{ordinary horizontal
+%mode} for assembling paragraphs and ^{restricted horizontal mode} for
+%assembling hboxes.  Whenever \TeX\ is in a horizontal mode its stomach
+%\seeconcept{\anatomy} is constructing a \refterm{horizontal
+%list} of items (boxes, glue, penalties, etc.).
+%\TeX\ typesets the items in the list
+%one after another, left to right.
 ^^{hboxes//horizontal mode for}
-When \TeX\ is assembling a paragraph or an \refterm{hbox}, it is in one
-of two \defterm{horizontal modes}: ^{ordinary horizontal
-mode} for assembling paragraphs and ^{restricted horizontal mode} for
-assembling hboxes.  Whenever \TeX\ is in a horizontal mode its stomach
-\seeconcept{\anatomy} is constructing a \refterm{horizontal
-list} of items (boxes, glue, penalties, etc.).
-\TeX\ typesets the items in the list
-one after another, left to right.
+在组装段落或者\refterm{水平盒子}时，
+\TeX\ 位于两种\defterm{水平模式}（horizontal mode）之一: 
+^{普通水平模式}用于组装段落，而^{受限水平模式}用于组装水平盒子。
+只要 \TeX\ 位于水平模式中，它的胃\seeconcept{\anatomy}就在构造项目%
+（盒子、粘连、惩罚等）的\refterm{水平列表}。
+\TeX\ 逐个排版列表中的项目，从左到右。
 
-A horizontal list can't contain any
-items produced by inherently vertical commands, e.g., |\vskip|.
+%A horizontal list can't contain any
+%items produced by inherently vertical commands, e.g., |\vskip|.
+%^^{horizontal lists//can't contain vertical commands}
+水平列表不能包含任何用本质上的竖直命令，比如 |\vskip|，生成的项目。
 ^^{horizontal lists//can't contain vertical commands}
 
+%\ulist
+%\li If \TeX\ is  assembling a horizontal list in ordinary horizontal mode and
+%encounters an inherently vertical command, \TeX\ ends the paragraph and
+%enters \refterm{vertical mode}.
 \ulist
-\li If \TeX\ is  assembling a horizontal list in ordinary horizontal mode and
-encounters an inherently vertical command, \TeX\ ends the paragraph and
-enters \refterm{vertical mode}.
+\li 如果 \TeX\ 正在普通水平模式中组装水平列表，并碰到一个本质上的竖直命令，
+它将结束当前段落并进入\refterm{竖直模式}。
 
-\li If \TeX\ is assembling a horizontal list in restricted horizontal
-mode and encounters an inherently vertical command, it complains.
-\endulist Two commands that you might at first think are inherently
-horizontal are in fact inherently vertical: |\halign| \ctsref{\halign}
-and |\hrule| \ctsref{\hrule}.
+%\li If \TeX\ is assembling a horizontal list in restricted horizontal
+%mode and encounters an inherently vertical command, it complains.
+%\endulist Two commands that you might at first think are inherently
+%horizontal are in fact inherently vertical: |\halign| \ctsref{\halign}
+%and |\hrule| \ctsref{\hrule}.
+%^^|\hrule//inherently vertical|
+%^^|\halign//inherently vertical|
+%See \knuth{page~286} for a list
+%of the inherently vertical commands.
+\li 如果 \TeX\ 正在受限水平模式中组装水平列表，并碰到一个本质上的竖直命令，
+它将报错。
+\endulist 这两个命令你也许会认为是本质上水平的，实际上却是本质上竖直的：
+|\halign|\ctsref{\halign}和 |\hrule|\ctsref{\hrule}。
 ^^|\hrule//inherently vertical|
 ^^|\halign//inherently vertical|
-See \knuth{page~286} for a list
-of the inherently vertical commands.
+在\knuth{第~286~页}中列出了所有本质上的竖直命令。
 
-{\tighten
-You should be aware of a subtle but important property of restricted
-horizontal mode: \emph{you can't enter restricted horizontal mode
-when you're in ordinary horizontal mode}.  What this means in practice is that
-when \TeX\ is assembling an hbox it
-won't handle paragraph-like text, i.e., text for which it does
-\refterm{line breaking}.  You can get
-around this restriction by enclosing the paragraph-like text in a
-\refterm{vbox} within the hbox.  The same method works if you want to
-put, say, a horizontal \refterm{alignment} inside an~hbox.
-}% end scope of tighten
+%{\tighten
+%You should be aware of a subtle but important property of restricted
+%horizontal mode: \emph{you can't enter restricted horizontal mode
+%when you're in ordinary horizontal mode}.  What this means in practice is that
+%when \TeX\ is assembling an hbox it
+%won't handle paragraph-like text, i.e., text for which it does
+%\refterm{line breaking}.  You can get
+%around this restriction by enclosing the paragraph-like text in a
+%\refterm{vbox} within the hbox.  The same method works if you want to
+%put, say, a horizontal \refterm{alignment} inside an~hbox.
+%}% end scope of tighten
+对于受限水平模式，你要知道这个微小但是重要的特性：
+\emph{你无法从普通水平模式进入受限水平模式}。%
+\footnote{译注：此处似乎有误，应为“你无法从受限水平模式进入普通水平模式”。}
+在实践上，这意味着在组装水平盒子时 \TeX\ 无法处理类似段落的文本，
+即需要\refterm{断行:断行点}的文本。在水平盒子内部，
+通过把类似段落的文本放入一个\refterm{竖直盒子}中，你就可以绕过此限制。
+其他类似方法也可行，比如将一个水平\refterm{阵列}放在水平盒子内部。
 
 \endconcept
 
@@ -3311,30 +3359,46 @@ put, say, a horizontal \refterm{alignment} inside an~hbox.
 %\concept{hyphenation}
 \concept{连字}
 
-\TeX\ automatically hyphenates words as it is processing your document.
-\TeX\ is not eager to insert hyphens, preferring instead to find good
-line breaks by adjusting the spacing between words and moving words
-from one line to another.
-\TeX\ is clever enough to understand
-hyphens that are already in words.
+%\TeX\ automatically hyphenates words as it is processing your document.
+%\TeX\ is not eager to insert hyphens, preferring instead to find good
+%line breaks by adjusting the spacing between words and moving words
+%from one line to another.
+%\TeX\ is clever enough to understand
+%hyphens that are already in words.
+在处理文档时，\TeX\ 自动将单词连字化（hyphenation）。
+\TeX\ 并不急于插入连字符，它更喜欢通过调整单词间隔找到合适断行点，
+从而将单词用一行移动到另一行。
+\TeX\ 足够聪明，它可以理解已经出现在单词中的连字符。
 
-You can control \TeX's hyphenation in several ways:
+%You can control \TeX's hyphenation in several ways:
+%\ulist
+%\li You can tell \TeX\ to
+%allow a hyphen in a particular place by inserting a
+%discretionary hyphen
+%^^{discretionary hyphens}
+%with the ^|\-| command \ctsref{\@minus}.
+%\li You can tell \TeX\ how to
+%hyphenate particular words throughout your document with the ^|\hyphenation|
+%command \ctsref{\hyphenation}.
+%\li You can enclose a word in an \refterm{hbox}, thus preventing \TeX\
+%from hyphenating it.
+%\li You can set the value of penalties such as |\hyphenpenalty|
+%\ctsref\hyphenpenalty.
+%\endulist
+%\noindent If a word contains an explicit or discretionary hyphen,
+%\TeX\ will never break it elsewhere.
+%\endconcept
+你可以用如下几种方式控制 \TeX\ 的连字：
 \ulist
-\li You can tell \TeX\ to
-allow a hyphen in a particular place by inserting a
-discretionary hyphen
+\li 你可以用 ^|\-| 命令\ctsref{\@minus}插入自定连字符，
+以允许 \TeX\ 在特定位置连字化。
 ^^{discretionary hyphens}
-with the ^|\-| command \ctsref{\@minus}.
-\li You can tell \TeX\ how to
-hyphenate particular words throughout your document with the ^|\hyphenation|
-command \ctsref{\hyphenation}.
-\li You can enclose a word in an \refterm{hbox}, thus preventing \TeX\
-from hyphenating it.
-\li You can set the value of penalties such as |\hyphenpenalty|
-\ctsref\hyphenpenalty.
+\li 你可以用 ^|\hyphenation| 命令\ctsref{\hyphenation}%
+告诉 \TeX\ 在整个文档中如何对某个单词连字化。
+\li 你可以将单词放入一个\refterm{水平盒子}中，以阻止 \TeX\ 将它连字化。
+\li 你可以设定一些惩罚值，比如 |\hyphenpenalty|\ctsref\hyphenpenalty。
 \endulist
-\noindent If a word contains an explicit or discretionary hyphen,
-\TeX\ will never break it elsewhere.
+\noindent 如果单词中包含显式或自定连字符，\TeX\ 将不会在其他位置断开。
 \endconcept
 
 
