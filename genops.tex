@@ -2144,11 +2144,37 @@ Formula $\modes$; then \modes,
 \enddesc
 
 %==========================================================================
-\section {Registers}
+%\section {Registers}
+\section {寄存器}
 
 %==========================================================================
-\subsection {Using registers}
+%\subsection {Using registers}
+\subsection {使用寄存器}
 
+%\begindesc
+%\bix^^{registers}
+%\makecolumns 11/2:
+%\cts count {\<register> {\bt =} \<number>}
+%\cts dimen {\<register> {\bt =} \<dimen>}
+%\cts skip {\<register> {\bt =} \<glue>}
+%\cts muskip {\<register> {\bt =} \<muglue>}
+%\cts toks {\<register> {\bt =} \<token variable>}
+%\aux\cts toks {\<register> {\bt =} \rqbraces{\<token list>}}
+%\aux\cts count {\<register>}
+%\aux\cts dimen {\<register>}
+%\aux\cts skip {\<register>}
+%\aux\cts muskip {\<register>}
+%\aux\cts toks {\<register>}
+%\explain
+%^^{assignments//of registers}
+%The first six commands listed here assign something to a register.
+%The |=|'s in the assignments are optional.
+%The remaining five control sequences are not true commands
+%because they can only appear as part of an argument.
+%They yield the contents of the specified register.
+%Although you can't use these control sequences by themselves as commands
+%in text,  you can use ^|\the| to convert them to text so that
+%you can typeset their values.
 \begindesc
 \bix^^{registers}
 \makecolumns 11/2:
@@ -2165,31 +2191,41 @@ Formula $\modes$; then \modes,
 \aux\cts toks {\<register>}
 \explain
 ^^{assignments//of registers}
-The first six commands listed here assign something to a register.
-The |=|'s in the assignments are optional.
-The remaining five control sequences are not true commands
-because they can only appear as part of an argument.
-They yield the contents of the specified register.
-Although you can't use these control sequences by themselves as commands
-in text,  you can use ^|\the| to convert them to text so that
-you can typeset their values.
+左边列出的六个命令用于给寄存器赋值，其中的 `|=|' 是可选的。
+右边列出的五个控制序列并不是真正的命令，因为它们只能作为参量的一部分。
+它们给出了特定寄存器的内容。虽然在文本中你不能将这些控制序列单独用作命令，
+但你可以用 ^|\the| 命令将它们转换为文本再排版它们的值。
 
-You can name and reserve registers
-with the ^|\newcount| command and its relatives
-(\xref{\@newcount}).
-Using these commands is a safe way to obtain registers that
-are known not to have any conflicting usage.
+%You can name and reserve registers
+%with the ^|\newcount| command and its relatives
+%(\xref{\@newcount}).
+%Using these commands is a safe way to obtain registers that
+%are known not to have any conflicting usage.
+你可以用 ^|\newcount| 及相关命令命名和预留寄存器（\xref{\@newcount}）。
+用这些命令获取寄存器更加安全，因为它们保证不会造成冲突。
 
+%^^{count registers}
+%A |\count| register contains an integer, which can be either positive or
+%negative.
+%Integers can be as large as you're ever likely to need them to be.\footnote
+%{Here's the only exercise in this book: find out what's the largest
+%integer that \TeX\ will accept.}
+%\TeX\ uses count registers $0$--$9$ to keep track of the
+%page number (see \knuth{page~119}).
+%|\count255| is the only count register available for use
+%without a reservation.
+%\example
+%\count255 = 17 \number\count255
+%|
+%\produces
+%\count255 = 17 \number\count255
+%\endexample
 ^^{count registers}
-A |\count| register contains an integer, which can be either positive or
-negative.
-Integers can be as large as you're ever likely to need them to be.\footnote
-{Here's the only exercise in this book: find out what's the largest
-integer that \TeX\ will accept.}
-\TeX\ uses count registers $0$--$9$ to keep track of the
-page number (see \knuth{page~119}).
-|\count255| is the only count register available for use
-without a reservation.
+|\count| 寄存器存储一个整数，可正可负。
+该整数可以很大，比你可能需要的都大。\footnote
+{这里是本书仅有的一个练习：找出 \TeX\ 可以接受的最大整数。}
+\TeX\ 将计数寄存器 $0$--$9$ 用于记录页码（见\knuth{第~119~页}）。
+|\count255| 是无需预留就能使用的唯一计数寄存器。
 \example
 \count255 = 17 \number\count255
 |
@@ -2197,12 +2233,25 @@ without a reservation.
 \count255 = 17 \number\count255
 \endexample
 
+%\medskip\noindent
+%^^{dimension registers}
+%A |\dimen| register contains a dimension.
+%Registers |\dimen0| through |\dimen9| and |\dimen255| are available
+%for scratch use.
 \medskip\noindent
 ^^{dimension registers}
-A |\dimen| register contains a dimension.
-Registers |\dimen0| through |\dimen9| and |\dimen255| are available
-for scratch use.
+|\dimen| 寄存器存储一个尺寸。
+寄存器 |\dimen0| 到 |\dimen9| 及 |\dimen255| 都可用于临时用途。
 
+%\example
+%\dimen0 = 2.5in
+%\hbox to \dimen0{$\Leftarrow$\hfil$\Rightarrow$}
+%|
+%\produces
+%\dimen0 = 2.5in
+%\hbox to \dimen0{$\Leftarrow$\hfil$\Rightarrow$}
+%\doruler{\8\8\8}3{in}
+%\endexample
 \example
 \dimen0 = 2.5in
 \hbox to \dimen0{$\Leftarrow$\hfil$\Rightarrow$}
@@ -2213,14 +2262,28 @@ for scratch use.
 \doruler{\8\8\8}3{in}
 \endexample
 
+%\medskip\noindent
+%^^{skip registers}
+%A |\skip| register contains the dimensions of glue.
+%Unlike a |\dimen| register, it
+%records an amount of shrink and stretch as well as a natural size.
+%Registers |\skip0| through |\skip9| and |\skip255| are available
+%for use without a reservation.
 \medskip\noindent
 ^^{skip registers}
-A |\skip| register contains the dimensions of glue.
-Unlike a |\dimen| register, it
-records an amount of shrink and stretch as well as a natural size.
-Registers |\skip0| through |\skip9| and |\skip255| are available
-for use without a reservation.
+|\skip| 寄存器存储粘连的尺寸。
+与 |\dimen| 寄存器不同，它除了记录粘连的自然尺寸外，还记录其伸长量和收缩量。
+寄存器 |\skip0| 到 |\skip9| 及 |\skip255| 都可用于临时用途。
 
+%\example
+%\skip2 = 2in
+%$\Rightarrow$\hskip \skip2 $\Leftarrow$
+%|
+%\produces
+%\skip2 = 2in
+%$\Rightarrow$\hskip \skip2 $\Leftarrow$\par
+%\noindent\hphantom{$\Rightarrow$}\ruler{\8\8}2{in}
+%\endexample
 \example
 \skip2 = 2in
 $\Rightarrow$\hskip \skip2 $\Leftarrow$
@@ -2231,17 +2294,33 @@ $\Rightarrow$\hskip \skip2 $\Leftarrow$\par
 \noindent\hphantom{$\Rightarrow$}\ruler{\8\8}2{in}
 \endexample
 
+%\medskip\noindent
+%^^{muskip registers}
+%A |\muskip| register is like a |\skip| register,
+%but the glue in it is always measured in ^|mu|
+%\seeconcept{mathematical unit}.
+%The size of a |mu| depends on the current font.
+%For example, it's usually a little
+%smaller in a subscript than in ordinary text.
+%Registers |\muskip0| through |\muskip9| and |\muskip255| are available
+%for use without a reservation.
 \medskip\noindent
 ^^{muskip registers}
-A |\muskip| register is like a |\skip| register,
-but the glue in it is always measured in ^|mu|
-\seeconcept{mathematical unit}.
-The size of a |mu| depends on the current font.
-For example, it's usually a little
-smaller in a subscript than in ordinary text.
-Registers |\muskip0| through |\muskip9| and |\muskip255| are available
-for use without a reservation.
+|\muskip| 寄存器与 |\skip| 寄存器相似，
+但其中的粘连始终以 ^|mu| 为单位\seeconcept{数学单位}。
+一个 |mu| 的大小与当前字体有关，比如在下标中通常就比在普通文本中小一点。
+寄存器 |\muskip0| 到 |\muskip9| 及 |\muskip255| 都可用于临时用途。
 
+%\example
+%\muskip0 = 24mu % An em and a half, no stretch or shrink.
+%$\mathop{a \mskip\muskip0 b}\limits^{a \mskip\muskip0 b}$
+%% Note the difference in spacing.
+%|
+%\produces
+%\muskip0 = 24mu % an em and a half
+%$\mathop{a \mskip\muskip0 b}\limits^{a \mskip\muskip0 b}$
+%% Note the difference in spacing
+%\endexample
 \example
 \muskip0 = 24mu % An em and a half, no stretch or shrink.
 $\mathop{a \mskip\muskip0 b}\limits^{a \mskip\muskip0 b}$
@@ -2253,20 +2332,43 @@ $\mathop{a \mskip\muskip0 b}\limits^{a \mskip\muskip0 b}$
 % Note the difference in spacing
 \endexample
 
+%\medskip\noindent
+%^^{token registers}
+%You can assign either a token variable
+%(a register or a parameter) or a token list
+%to a |\toks| register.
+%When you assign a token list to a token register,
+%the tokens in the token list are \emph{not} expanded.
 \medskip\noindent
 ^^{token registers}
-You can assign either a token variable
-(a register or a parameter) or a token list
-to a |\toks| register.
-When you assign a token list to a token register,
-the tokens in the token list are \emph{not} expanded.
+你可以指定一个记号变量（一个寄存器或一个参数）或一个记号列给 |\toks| 寄存器。
+当你指定一个记号列给记号寄存器时，记号列中的记号\emph{不会}被展开。
 
-Once the tokens in a token list have been inserted into text
-using ^|\the|, they are
-expanded just like tokens that were read in directly.
-They have the category codes that they received when \TeX\ first
-saw them in the~\hbox{input}.
+%Once the tokens in a token list have been inserted into text
+%using ^|\the|, they are
+%expanded just like tokens that were read in directly.
+%They have the category codes that they received when \TeX\ first
+%saw them in the~\hbox{input}.
+一旦用 ^|\the| 命令将记号列中的记号插入文本中，\TeX\ 就像直接读入那样展开它们。
+它们的类别码是 \TeX\ 在\hbox{输入}中首次看到时给出的。
 
+%\example
+%\toks0 = {the \oystereaters\ were at the seashore}
+%% This assignment doesn't expand \oystereaters.
+%\def\oystereaters{Walrus and Carpenter}
+%\toks1 = \toks0
+%% the same tokens are now in \toks0 and \toks1
+%Alice inquired as to whether \the\toks1.
+%|
+%\produces
+%\toks0 = {the \oystereaters\ were at the seashore}
+%% This assignment doesn't expand \oystereaters
+%\def\oystereaters{Walrus and Carpenter}
+%\toks1 = \toks0
+%% the same tokens are now in \toks0 and \toks1
+%Alice inquired as to whether \the\toks1.
+%\endexample
+%\enddesc
 \example
 \toks0 = {the \oystereaters\ were at the seashore}
 % This assignment doesn't expand \oystereaters.
@@ -2285,14 +2387,25 @@ Alice inquired as to whether \the\toks1.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts maxdimen {}
+%\explain
+%^^{dimensions//maximum}
+%This control sequence yields a \<dimen> that is the
+%largest dimension acceptable to \TeX\ (nearly 18 feet).
+%It is not a true command because it can only appear as part of an argument
+%to another command.
+%\example
+%\maxdepth = \maxdimen % Remove restrictions on \maxdepth.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts maxdimen {}
 \explain
 ^^{dimensions//maximum}
-This control sequence yields a \<dimen> that is the
-largest dimension acceptable to \TeX\ (nearly 18 feet).
-It is not a true command because it can only appear as part of an argument
-to another command.
+这个控制序列生成 \TeX\ 所能接受的最大尺寸 \<dimen>（差不多为 18 英尺）。
+它不是真正的命令，因为它只能作为其他命令的参量的一部分。
 \example
 \maxdepth = \maxdimen % Remove restrictions on \maxdepth.
 |
@@ -2303,8 +2416,53 @@ to another command.
 |\divide| (\xref\divide), |\set!-box|, |\box| (\xref\box).
 
 %==========================================================================
-\subsection {Naming and reserving registers, etc.}
+%\subsection {Naming and reserving registers, etc.}
+\subsection {命名和预留寄存器等}
 
+%\begindesc
+%\bix^^{registers//reserving}
+%\makecolumns 11/2:
+%\ctspecial newcount \ctsxrdef{@newcount}
+%\ctspecial newdimen \ctsxrdef{@newdimen}
+%\ctspecial newskip \ctsxrdef{@newskip}
+%\ctspecial newmuskip \ctsxrdef{@newmuskip}
+%\ctspecial newtoks \ctsxrdef{@newtoks}
+%\ctspecial newbox \ctsxrdef{@newbox}
+%\ctspecial newread \ctsxrdef{@newread}
+%\ctspecial newwrite \ctsxrdef{@newwrite}
+%\ctspecial newfam \ctsxrdef{@newfam}
+%\ctspecial newinsert \ctsxrdef{@newinsert}
+%\ctspecial newlanguage \ctsxrdef{@newlanguage}
+%\explain
+%These commands
+%reserve and name an entity of the indicated type:
+%\ulist
+%{\tolerance = 5000
+%\fontdimen3\the\font = 2\fontdimen3\the\font % allow spaces to stretch more
+%\li |\new!-count|, |\newdimen|, |\newskip|, |\new!-mu!-skip|, |\new!-toks|,
+%and |\new!-box| each reserve a \minref{register} of the indicated type.
+%}
+%^^{count registers//reserved by \b\tt\\newcount\e}
+%^^{dimension registers//reserved by \b\tt\\newdimen\e}
+%^^{skip registers//reserved by \b\tt\\newskip\e}
+%^^{muskip registers//reserved by \b\tt\\newmuskip\e}
+%^^{token registers//reserved by \b\tt\\newtoks\e}
+%^^{box registers//reserved by \b\tt\\newbox\e}
+%\li |\newread| and |\newwrite| reserve an input stream and
+%an output stream \minrefs{input stream}\minrefs{output stream}
+%respectively.
+%^^{input streams//reserved by \b\tt\\newread\e}
+%^^{output streams//reserved by \b\tt\\newwrite\e}
+%\li |\newfam| reserves a \minref{family} of math fonts.
+%^^{family//reserved by \b\tt\\newfam\e}
+%\li |\newinsert| reserves an insertion type.
+%(Reserving an insertion type involves reserving several different registers.)
+%^^{insertions//numbers reserved by \b\tt\\newinsert\e}
+%\li |\newlanguage| reserves a set of hyphenation patterns.
+%\endulist
+%You should use these commands whenever you need one of these entities,
+%other than in a very local region,
+%in order to avoid numbering conflicts.
 \begindesc
 \bix^^{registers//reserving}
 \makecolumns 11/2:
@@ -2320,13 +2478,12 @@ to another command.
 \ctspecial newinsert \ctsxrdef{@newinsert}
 \ctspecial newlanguage \ctsxrdef{@newlanguage}
 \explain
-These commands
-reserve and name an entity of the indicated type:
+这些命令预留并命名一个指定类型的实体：
 \ulist
 {\tolerance = 5000
 \fontdimen3\the\font = 2\fontdimen3\the\font % allow spaces to stretch more
-\li |\new!-count|, |\newdimen|, |\newskip|, |\new!-mu!-skip|, |\new!-toks|,
-and |\new!-box| each reserve a \minref{register} of the indicated type.
+\li |\new!-count|、|\newdimen|、|\newskip|、|\new!-mu!-skip|、
+|\new!-toks| 以及 |\new!-box| 各自预留一个指定类型的\minref{寄存器}。
 }
 ^^{count registers//reserved by \b\tt\\newcount\e}
 ^^{dimension registers//reserved by \b\tt\\newdimen\e}
@@ -2334,48 +2491,85 @@ and |\new!-box| each reserve a \minref{register} of the indicated type.
 ^^{muskip registers//reserved by \b\tt\\newmuskip\e}
 ^^{token registers//reserved by \b\tt\\newtoks\e}
 ^^{box registers//reserved by \b\tt\\newbox\e}
-\li |\newread| and |\newwrite| reserve an input stream and
-an output stream \minrefs{input stream}\minrefs{output stream}
-respectively.
+\li |\newread| 和 |\newwrite| 分别预留一个输入流和输出流%
+\minrefs{input stream}\minrefs{output stream}。
 ^^{input streams//reserved by \b\tt\\newread\e}
 ^^{output streams//reserved by \b\tt\\newwrite\e}
-\li |\newfam| reserves a \minref{family} of math fonts.
+\li |\newfam| 预留一个数学字体\minref{族}。
 ^^{family//reserved by \b\tt\\newfam\e}
-\li |\newinsert| reserves an insertion type.
-(Reserving an insertion type involves reserving several different registers.)
+\li |\newinsert| 预留一个插入项类型。%
+（预留一个插入项类型包括预留几个不同的寄存器。）
 ^^{insertions//numbers reserved by \b\tt\\newinsert\e}
-\li |\newlanguage| reserves a set of hyphenation patterns.
+\li |\newlanguage| 预留一套连字模式。
 \endulist
-You should use these commands whenever you need one of these entities,
-other than in a very local region,
-in order to avoid numbering conflicts.
+为避免编号冲突，在需要这些实体之一时你应当使用这些命令，除非在很局部的范围中。
 
-There's an important difference among these commands:
+%There's an important difference among these commands:
+%\ulist
+%\li The control sequences defined by
+%|\newcount|, |\newdimen|, |\newskip|, |\newmuskip|, and |\newtoks|
+%each designate an entity of the appropriate type.
+%For instance, after the command:
+%\csdisplay
+%\newdimen\listdimen
+%|
+%the control sequence |\listdimen| can be used as a dimension.
+%\li The control sequences defined by
+%|\newbox|, |\newread|, |\newwrite|, |\newfam|, |\newinsert|,
+%and |\newlanguage|  each
+%evaluate to the \emph{number} of an entity of the appropriate type.
+%For instance, after the command:
+%\csdisplay
+%\newbox\figbox
+%|
+%the control sequence |\figbox| must be used in conjunction with
+%a |\box|-like command, e.g.:
+%\csdisplay
+%\setbox\figbox = \vbox{!dots}
+%|
+%\endulist
+%\enddesc
+这些命令之间还有一个很重要的区别：
 \ulist
-\li The control sequences defined by
-|\newcount|, |\newdimen|, |\newskip|, |\newmuskip|, and |\newtoks|
-each designate an entity of the appropriate type.
-For instance, after the command:
+\li 用 |\newcount|、|\newdimen|、|\newskip|、|\newmuskip| 以及
+|\newtoks| 定义的控制序列各自指明一个相应类型的实体。
+例如在执行命令
 \csdisplay
 \newdimen\listdimen
 |
-the control sequence |\listdimen| can be used as a dimension.
-\li The control sequences defined by
-|\newbox|, |\newread|, |\newwrite|, |\newfam|, |\newinsert|,
-and |\newlanguage|  each
-evaluate to the \emph{number} of an entity of the appropriate type.
-For instance, after the command:
+之后，控制序列 |\listdimen| 可以用作一个尺寸。
+\li 用 |\newbox|、|\newread|、|\newwrite|、|\newfam|、|\newinsert| 以及
+|\newlanguage| 定义的控制序列各自表示相应类型的实体的\emph{编号}。
+例如在执行命令
 \csdisplay
 \newbox\figbox
 |
-the control sequence |\figbox| must be used in conjunction with
-a |\box|-like command, e.g.:
+之后，控制序列 |\figbox| 必须和 类似 |\box| 的命令一起使用，比如：
 \csdisplay
 \setbox\figbox = \vbox{!dots}
 |
 \endulist
 \enddesc
 
+%\begindesc
+%\cts countdef {\<control sequence> {\bt =} \<register>}
+%\cts dimendef {\<control sequence> {\bt =} \<register>}
+%\cts skipdef {\<control sequence> {\bt =} \<register>}
+%\cts muskipdef {\<control sequence> {\bt =} \<register>}
+%\cts toksdef {\<control sequence> {\bt =} \<register>}
+%\explain
+%These commands define \<control sequence> to refer to the
+%\minref{register} of the indicated category whose number is \<register>.
+%Normally you should use the commands in the previous group
+%(|\newcount|, etc.) in preference to these commands in order to avoid
+%numbering conflicts.  The commands in the previous group are
+%defined in terms of the commands \hbox{in this group}.
+%\example
+%\countdef\hatters = 19 % \hatters now refers to \count19
+%\toksdef\hares = 200 % \hares now refers to \toks200
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts countdef {\<control sequence> {\bt =} \<register>}
 \cts dimendef {\<control sequence> {\bt =} \<register>}
@@ -2383,12 +2577,9 @@ a |\box|-like command, e.g.:
 \cts muskipdef {\<control sequence> {\bt =} \<register>}
 \cts toksdef {\<control sequence> {\bt =} \<register>}
 \explain
-These commands define \<control sequence> to refer to the
-\minref{register} of the indicated category whose number is \<register>.
-Normally you should use the commands in the previous group
-(|\newcount|, etc.) in preference to these commands in order to avoid
-numbering conflicts.  The commands in the previous group are
-defined in terms of the commands \hbox{in this group}.
+这些命令将 \<control sequence> 定义为指定类型的编号为 \<register> 的\minref{寄存器}。
+为避免编号冲突，通常你应当使用前面那些命令（|\newcount| 等），而不是使用这些命令。
+实际上，前面那些命令就是用这些命令来定义的.
 \example
 \countdef\hatters = 19 % \hatters now refers to \count19
 \toksdef\hares = 200 % \hares now refers to \toks200
@@ -2396,12 +2587,46 @@ defined in terms of the commands \hbox{in this group}.
 \endexample
 \enddesc
 
+%\see |\newif| (\xref{\@newif}), |\newhelp| (\xref{\@newhelp}).
+%\eix^^{registers//reserving}
 \see |\newif| (\xref{\@newif}), |\newhelp| (\xref{\@newhelp}).
 \eix^^{registers//reserving}
 
 %==========================================================================
-\subsection {Doing arithmetic in registers}
+%\subsection {Doing arithmetic in registers}
+\subsection {寄存器中的算术运算}
 
+%\begindesc
+%\bix^^{arithmetic}
+%\bix^^{registers//arithmetic in}
+%%
+%\cts advance {\<count register> {\bt by} \<number>}
+%\aux\cts advance {\<dimen register> {\bt by} \<dimen>}
+%\aux\cts advance {\<skip register> {\bt by} \<glue>}
+%\aux\cts advance {\<muskip register> {\bt by} \<muglue>}
+%\explain
+%This command adds a compatible quantity to a register.  For \<glue>
+%or \<muglue> all three components (natural value, stretch, and shrink)
+%\minrefs{glue} are added.
+%Any of the quantities can be negative.  For purposes of these calculations
+%(and other assignments as well), \<glue> can be converted to a
+%\<dimen> by dropping the stretch and shrink, and a \<dimen> can be converted
+%to a \<number> by taking its value in scaled points
+%\seeconcept{dimension}.
+%You can omit the word |by| in these commands---\TeX\ will understand them
+%anyway.
+%\example
+%\count0 = 18 \advance\count0 by -1 \number\count0\par
+%\skip0 = .5in \advance\skip0 by 0in plus 1in % add stretch
+%\hbox to 2in{a\hskip\skip0 b}
+%|
+%\produces
+%\count0 = 18 \advance\count0 by -1 \number\count0\par
+%\skip0 = .5in \advance\skip0 by 0in plus 1in % add stretch
+%\hbox to 2in{a\hskip\skip0 b}
+%\doruler{\8\8}2{in}
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{arithmetic}
 \bix^^{registers//arithmetic in}
@@ -2411,16 +2636,13 @@ defined in terms of the commands \hbox{in this group}.
 \aux\cts advance {\<skip register> {\bt by} \<glue>}
 \aux\cts advance {\<muskip register> {\bt by} \<muglue>}
 \explain
-This command adds a compatible quantity to a register.  For \<glue>
-or \<muglue> all three components (natural value, stretch, and shrink)
-\minrefs{glue} are added.
-Any of the quantities can be negative.  For purposes of these calculations
-(and other assignments as well), \<glue> can be converted to a
-\<dimen> by dropping the stretch and shrink, and a \<dimen> can be converted
-to a \<number> by taking its value in scaled points
-\seeconcept{dimension}.
-You can omit the word |by| in these commands---\TeX\ will understand them
-anyway.
+此命令给寄存器加上一个兼容的数量。对于 \<glue> 或 \<muglue>，
+三个部分（自然尺寸、伸长量和收缩量）\minrefs{粘连}都被加上。
+任何数量都可以是负的。为方便这些计算（以及其他的赋值），
+\<glue> 可以通过丢掉伸长量和收缩量转换为 \<dimen>，
+而 \<dimen> 可以通过取以 scaled point 为单位的值转换为 \<number>%
+\seeconcept{尺寸}。
+在这些命令中，你可以忽略单词 |by| ——这两种写法 \TeX\ 都能理解。
 \example
 \count0 = 18 \advance\count0 by -1 \number\count0\par
 \skip0 = .5in \advance\skip0 by 0in plus 1in % add stretch
@@ -2434,27 +2656,58 @@ anyway.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts multiply {\<register> {\bt by} \<number>}
+%\cts divide {\<register> {\bt by} \<number>}
+%\explain
+%These commands multiply and divide the value in \<register>
+%by \<number> (which can be negative).
+%The register can be a ^|\count|, ^|\dimen|, ^|\skip|, or ^|\muskip|
+%register.
+%For a ^|\skip| or ^|\muskip| register (\xref\skip),
+%all three components of the \minref{glue} in the register are modified.
+%You can omit the word |by| in these commands---\TeX\ will understand them
+%anyway.
 \begindesc
 \cts multiply {\<register> {\bt by} \<number>}
 \cts divide {\<register> {\bt by} \<number>}
 \explain
-These commands multiply and divide the value in \<register>
-by \<number> (which can be negative).
-The register can be a ^|\count|, ^|\dimen|, ^|\skip|, or ^|\muskip|
-register.
-For a ^|\skip| or ^|\muskip| register (\xref\skip),
-all three components of the \minref{glue} in the register are modified.
-You can omit the word |by| in these commands---\TeX\ will understand them
-anyway.
+这两个命令将 \<register> 中的值乘以或除以 \<number>（它可以为负数）。
+其中的寄存器可以是 ^|\count|、^|\dimen|、^|\skip| 或 ^|\muskip| 寄存器。
+对于 ^|\skip| 或 ^|\muskip| 寄存器（\xref\skip ），
+在寄存器中\minref{粘连}的三个部分都被修改。
+在这些命令中，你可以忽略单词 |by| ——这两种写法 \TeX\ 都能理解。
 
-You can also obtain a multiple of a \<dimen> by preceding it by a \<number>
-\minrefs{number}
-or decimal constant, e.g.,
-|-2.5\dimen2|.
-You can also use this notation for \<glue>, but watch out---the result
-is a \<dimen>, not \<glue>.
-Thus |2\baselineskip| yields a \<dimen> that is twice the natural size
-of |\baselineskip|, with no stretch or shrink.
+%You can also obtain a multiple of a \<dimen> by preceding it by a \<number>
+%\minrefs{number}
+%or decimal constant, e.g.,
+%|-2.5\dimen2|.
+%You can also use this notation for \<glue>, but watch out---the result
+%is a \<dimen>, not \<glue>.
+%Thus |2\baselineskip| yields a \<dimen> that is twice the natural size
+%of |\baselineskip|, with no stretch or shrink.
+%\example
+%\count0 = 9\multiply \count0 by 8 \number\count0 ;
+%\divide \count0 by 12 \number\count0 \par
+%\skip0 = 20pt plus 2pt minus 3pt \multiply \skip0 by 3
+%Multiplied value of skip0 is \the\skip0.\par
+%\dimen0 = .5in \multiply\dimen0 by 6
+%\hbox to \dimen0{a\hfil b}
+%|
+%\produces
+%\count0 = 9\multiply \count0 by 8 \number\count0 ;
+%\divide \count0 by 12 \number\count0 \par
+%\skip0 = 20pt plus 2pt minus 3pt \multiply \skip0 by 3
+%Multiplied value of skip0 is \the\skip0.\par
+%\dimen0 = .5in \multiply\dimen0 by 6
+%\hbox to \dimen0{a\hfil b}
+%\doruler{\8\8\8}3{in}
+%\endexample
+在 \<dimen> 前面加上 \<number>\minrefs{number}或小数，你可以得到它的倍数，
+比如 |-2.5\dimen2|。在 \<glue> 前面也可以使用此写法，
+但小心注意——结果是一个 \<dimen> 而不是 \<glue>。
+比如用 |2\baselineskip| 将得到一个 \<dimen>，
+它等于 |\baselineskip| 的自然尺寸的两倍，但没有伸长量和收缩量。
 \example
 \count0 = 9\multiply \count0 by 8 \number\count0 ;
 \divide \count0 by 12 \number\count0 \par
@@ -2473,6 +2726,10 @@ Multiplied value of skip0 is \the\skip0.\par
 \doruler{\8\8\8}3{in}
 \endexample
 
+%\eix^^{arithmetic}
+%\eix^^{registers//arithmetic in}
+%\eix^^{registers}
+%\enddesc
 \eix^^{arithmetic}
 \eix^^{registers//arithmetic in}
 \eix^^{registers}
