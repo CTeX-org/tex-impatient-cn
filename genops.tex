@@ -2736,23 +2736,37 @@ Multiplied value of skip0 is \the\skip0.\par
 \enddesc
 
 %==========================================================================
-\section {Ending the job}
+%\section {Ending the job}
+\section {结束任务}
 
+%\begindesc
+%^^{ending the job}
+%\easy\ctspecial bye \ctsxrdef{@bye}
+%\explain
+%This command tells \TeX\ to fill out and produce the last page, print
+%any held-over \minref{insertion}s, and end the job.
+%It is the usual way to end your input file.
+%\enddesc
 \begindesc
 ^^{ending the job}
 \easy\ctspecial bye \ctsxrdef{@bye}
 \explain
-This command tells \TeX\ to fill out and produce the last page, print
-any held-over \minref{insertion}s, and end the job.
-It is the usual way to end your input file.
+此命令让 \TeX\ 填满并生成最后的页面，打印遗留的\minref{插入项}，并结束任务。
+这是结束输入文件的常用方式。
 \enddesc
 
+%\begindesc
+%\cts end {}
+%\explain
+%This command tells \TeX\ to produce the last page and end the job.
+%It does not fill out the page, however,
+%so it's usually better to use |\bye| rather than |\end|.
+%\enddesc
 \begindesc
 \cts end {}
 \explain
-This command tells \TeX\ to produce the last page and end the job.
-It does not fill out the page, however,
-so it's usually better to use |\bye| rather than |\end|.
+此命令让 \TeX\ 生成最后的页面并结束任务。
+但由于它不会填满页面，一般情形用 |\bye| 比用 |\end| 更好些。
 \enddesc
 
 %==========================================================================
