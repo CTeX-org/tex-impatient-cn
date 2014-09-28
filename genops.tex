@@ -1239,26 +1239,60 @@ $\alphachar$
 \eix^^{macros//controlling expansion of}
 
 %==========================================================================
-\subsection {Conditional tests}
+%\subsection {Conditional tests}
+\subsection {条件测试}
 
+%\begindesc
+%\xrdef{conds}
+%\bix^^{conditional tests}
+%%
+%\ctspecial if {\<token$_1$> \<token$_2$>}\ctsxrdef{@if}
+%\explain
+%{\emergencystretch=1em
+%This command tests if \<token$_1$> and \<token$_2$>
+%have the same \minref{character} code, independent of their
+%\minref{category code}s.
+%Before performing the test, \TeX\ expands tokens following the |\if|
+%until it obtains two tokens that can't be expanded further.
+%These two tokens become \<token$_1$> and \<token$_2$>.
+%The expansion
+%includes replacing  a control sequence |\let| equal to a character token
+%by that character token.
+%A \minref{control sequence} that can't be further expanded is
+%considered to have character code $256$.\par}
+%\example
+%\def\first{abc}
+%\if\first true\else false\fi;
+%% ``c'' is left over from the expansion of \first.
+%% It lands in the unexecuted ``true'' part.
+%\if a\first\ true\else false\fi;
+%% Here ``bc'' is left over from the expansion of \first
+%\if \hbox\relax true\else false\fi
+%% Unexpandable control sequences test equal with ``if''
+%|
+%\produces
+%\def\first{abc}
+%\if\first true\else false\fi;
+%% ``c'' is left over from the expansion of \first.
+%% It lands in the unexecuted ``true'' part.
+%\if a\first\ true\else false\fi;
+%% Here ``bc'' is left over from the expansion of \first
+%\if \hbox\relax true\else false\fi
+%% Unexpandable control sequences test equal with ``if''
+%\endexample
+%\enddesc
 \begindesc
 \xrdef{conds}
 \bix^^{conditional tests}
 %
 \ctspecial if {\<token$_1$> \<token$_2$>}\ctsxrdef{@if}
 \explain
-{\emergencystretch=1em
-This command tests if \<token$_1$> and \<token$_2$>
-have the same \minref{character} code, independent of their
-\minref{category code}s.
-Before performing the test, \TeX\ expands tokens following the |\if|
-until it obtains two tokens that can't be expanded further.
-These two tokens become \<token$_1$> and \<token$_2$>.
-The expansion
-includes replacing  a control sequence |\let| equal to a character token
-by that character token.
-A \minref{control sequence} that can't be further expanded is
-considered to have character code $256$.\par}
+此命令测试 \<token$_1$> 和 \<token$_2$> 的\minref{字符}编码是否相同，
+不区分它们的\minref{类别码}。
+在测试之前，\TeX\ 展开 |\if| 之后的记号，直到得到两个无法继续展开的记号。
+这两个记号就是 \<token$_1$> 和 \<token$_2$>。
+展开过程也包括将控制序列替换为用 |\let| 设定的某个字符记号。
+\TeX\ 将无法继续展开的\minref{控制序列}视为字符编码 $256$ 的记号。
 \example
 \def\first{abc}
 \if\first true\else false\fi;
@@ -1281,20 +1315,46 @@ considered to have character code $256$.\par}
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifcat {\<token$_1$> \<token$_2$>}\ctsxrdef{@ifcat}
+%\explain
+%^^{category codes//testing}
+%This command tests if \<token$_1$> and \<token$_2$>
+%have the same \minref{category code}.
+%Before performing the test, \TeX\ expands tokens following the |\ifcat|
+%until it obtains two tokens that can't be expanded further.
+%These two tokens become \<token$_1$> and \<token$_2$>.
+%The expansion
+%includes replacing  a control sequence |\let| equal to a character token
+%by that character token.
+%A \minref{control sequence} that can't be further expanded is
+%considered to have category code $16$.
+%\example
+%\ifcat axtrue\else false\fi;
+%\ifcat ]}true\else false\fi;
+%\ifcat \hbox\day true\else false\fi;
+%\def\first{12345}
+%\ifcat (\first true\else false\fi
+%% ``2345'' lands in the true branch of the test
+%|
+%\produces
+%\ifcat axtrue\else false\fi;
+%\ifcat ]}true\else false\fi;
+%\ifcat \hbox\day true\else false\fi;
+%\def\first{12345}
+%\ifcat (\first true\else false\fi
+%% ``2345'' lands in the true branch of the test
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifcat {\<token$_1$> \<token$_2$>}\ctsxrdef{@ifcat}
 \explain
 ^^{category codes//testing}
-This command tests if \<token$_1$> and \<token$_2$>
-have the same \minref{category code}.
-Before performing the test, \TeX\ expands tokens following the |\ifcat|
-until it obtains two tokens that can't be expanded further.
-These two tokens become \<token$_1$> and \<token$_2$>.
-The expansion
-includes replacing  a control sequence |\let| equal to a character token
-by that character token.
-A \minref{control sequence} that can't be further expanded is
-considered to have category code $16$.
+此命令测试 \<token$_1$> 和 \<token$_2$> 的\minref{类别码}是否相同。
+在测试之前，\TeX\ 展开 |\ifcat| 之后的记号，直到得到两个无法继续展开的记号。
+这两个记号就是 \<token$_1$> 和 \<token$_2$>。
+展开过程也包括将控制序列替换为用 |\let| 设定的某个字符记号。
+\TeX\ 将无法继续展开的\minref{控制序列}视为类别码 $16$ 的记号。
 \example
 \ifcat axtrue\else false\fi;
 \ifcat ]}true\else false\fi;
@@ -1313,36 +1373,87 @@ considered to have category code $16$.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifx {\<token$_1$> \<token$_2$>}\ctsxrdef{@ifx}
+%\explain
+%This command tests if \<token$_1$> and \<token$_2$> agree.
+%Unlike |\if| and |\ifcat|, |\ifx| does \emph{not} expand the tokens
+%following |\ifx|, so \<token$_1$> and \<token$_2$> are the two
+%tokens immediately after |\ifx|.
+%There are three cases:
+%\olist
+%\li If one token is a \minref{macro} and the other one isn't,
+%the tokens don't agree.
+%\li If neither token is a macro, the tokens agree if:
+%\olist
+%\li both tokens are characters (or control sequences denoting characters) and
+%their \minref{character} codes and \minref{category code}s agree, or
+%\li both tokens refer to the same \TeX\ command,
+%font, etc.
+%\endolist
+%\li If both tokens are macros, the tokens agree if:
+%\olist\compact
+%\li their ``first level'' expansions, i.e.,
+%their replacement texts, are identical, and
+%\li they have the same status with respect to ^|\long| (\xref\long)
+%and ^|\outer| (\xref\outer).
+%\endolist
+%Note in particular that \emph{any two undefined control
+%sequences agree}.
+%\endolist
+%\noindent
+%This test is generally more useful than |\if|.
+%\example
+%\ifx\alice\rabbit true\else false\fi;
+%% true since neither \rabbit nor \alice is defined
+%\def\a{a}%
+%\ifx a\a true\else false\fi;
+%% false since one token is a macro and the other isn't
+%\def\first{\a}\def\second{\aa}\def\aa{a}%
+%\ifx \first\second true\else false\fi;
+%% false since top level expansions aren't the same
+%\def\third#1:{(#1)}\def\fourth#1?{(#1)}%
+%\ifx\third\fourth true\else false\fi
+%% false since parameter texts differ
+%|
+%\produces
+%\ifx\alice\rabbit true\else false\fi;
+%% true since neither \rabbit nor \alice is defined
+%\def\a{a}%
+%\ifx a\a true\else false\fi;
+%% false since one token is a macro and the other isn't
+%\def\first{\a}\def\second{\aa}\def\aa{a}%
+%\ifx \first\second true\else false\fi;
+%% false since top level expansions aren't the same
+%\def\third#1:{(#1)}\def\fourth#1?{(#1)}%
+%\ifx\third\fourth true\else false\fi
+%% false since parameter texts differ
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifx {\<token$_1$> \<token$_2$>}\ctsxrdef{@ifx}
 \explain
-This command tests if \<token$_1$> and \<token$_2$> agree.
-Unlike |\if| and |\ifcat|, |\ifx| does \emph{not} expand the tokens
-following |\ifx|, so \<token$_1$> and \<token$_2$> are the two
-tokens immediately after |\ifx|.
-There are three cases:
+此命令测试 \<token$_1$> 和 \<token$_2$> 是否相同。
+与 |\if| 和 |\ifcat| 不同，|\ifx| 命令\emph{不会}展开 |\ifx| 之后的记号，
+因此 \<token$_1$> 和 \<token$_2$> 就是紧随 |\ifx| 之后的两个记号。
+\TeX\ 按照如下三种情形处理：
 \olist
-\li If one token is a \minref{macro} and the other one isn't,
-the tokens don't agree.
-\li If neither token is a macro, the tokens agree if:
+\li 如果一个记号是\minref{宏}而另一个记号不是，则这两个记号不相同。
+\li 如果两个记号都不是宏，它们满足下面条件之一时相同：
 \olist
-\li both tokens are characters (or control sequences denoting characters) and
-their \minref{character} codes and \minref{category code}s agree, or
-\li both tokens refer to the same \TeX\ command,
-font, etc.
+\li 两个记号都是字符（或表示字符的控制序列），
+且它们的\minref{字符}编码和\minref{类别码}相同；
+\li 两个记号指代相同的 \TeX\ 命令或字体等。
 \endolist
-\li If both tokens are macros, the tokens agree if:
+\li 如果两个记号都是宏，它们满足下面两个条件时相同：
 \olist\compact
-\li their ``first level'' expansions, i.e.,
-their replacement texts, are identical, and
-\li they have the same status with respect to ^|\long| (\xref\long)
-and ^|\outer| (\xref\outer).
+\li 它们的``第一层''展开即它们的替换文本相同；
+\li 它们有相同的 ^|\long|（\xref\long ）和 ^|\outer|（\xref\outer ）状态。
 \endolist
-Note in particular that \emph{any two undefined control
-sequences agree}.
+注意特别地\emph{任何两个未定义的控制序列是相同的}。
 \endolist
 \noindent
-This test is generally more useful than |\if|.
+此测试通常比 |\if| 更为有用。
 \example
 \ifx\alice\rabbit true\else false\fi;
 % true since neither \rabbit nor \alice is defined
@@ -1371,18 +1482,36 @@ This test is generally more useful than |\if|.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifnum {\<number$_1$> \<relation> \<number$_2$>}\ctsxrdef{@ifnum}
+%\explain
+%^^{numbers//comparing}
+%This command tests if \<number$_1$> and \<number$_2$>
+%satisfy \<relation>, which must be either `|<|', `|=|', or `|>|'.
+%The numbers can be constants such as |127|, count registers such as
+%|\pageno| or |\count22|, or numerical parameters such as |\hbadness|.
+%Before performing the test, \TeX\ expands tokens following the |\ifnum|
+%until it obtains a sequence of tokens having
+%the form \<number$_1$> \<relation> \<number$_2$>, followed by a token
+%that can't be part of \<number$_2$>.
+%\example
+%\count255 = 19 \ifnum \count255 > 12 true\else false\fi
+%|
+%\produces
+%\count255 = 19 \ifnum \count255 > 12 true\else false\fi
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifnum {\<number$_1$> \<relation> \<number$_2$>}\ctsxrdef{@ifnum}
 \explain
 ^^{numbers//comparing}
-This command tests if \<number$_1$> and \<number$_2$>
-satisfy \<relation>, which must be either `|<|', `|=|', or `|>|'.
-The numbers can be constants such as |127|, count registers such as
-|\pageno| or |\count22|, or numerical parameters such as |\hbadness|.
-Before performing the test, \TeX\ expands tokens following the |\ifnum|
-until it obtains a sequence of tokens having
-the form \<number$_1$> \<relation> \<number$_2$>, followed by a token
-that can't be part of \<number$_2$>.
+此命令测试 \<number$_1$> 和 \<number$_2$> 是否满足 \<relation>，
+即 `|<|'、`|=|' 或者 `|>|' 关系。
+这两个数可以是类似 |127| 的常数、类似 |\pageno| 或 |\count22| 的计数寄存器%
+或者类似 |\hbadness| 的数值参数。
+在执行测试之前，\TeX\ 展开 |\ifnum| 之后的记号，
+直到它得到一串形如 \<number$_1$> \<relation> \<number$_2$> 的记号序列，
+而且随后的记号不能成为 \<number$_2$> 的一部分。
 \example
 \count255 = 19 \ifnum \count255 > 12 true\else false\fi
 |
@@ -1391,14 +1520,30 @@ that can't be part of \<number$_2$>.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifodd {\<number>}\ctsxrdef{@ifodd}
+%\explain
+%^^{numbers//testing for odd/even}
+%This command tests if \<number> is odd.
+%Before performing the test, \TeX\ expands tokens following the |\ifodd|
+%until it obtains a sequence of tokens having the form \<number>,
+%followed by a token that can't be part of \<number>.
+%\example
+%\count255 = 19
+%\ifodd 5 true\else false\fi
+%|
+%\produces
+%\ifodd 5 true\else false\fi
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifodd {\<number>}\ctsxrdef{@ifodd}
 \explain
 ^^{numbers//testing for odd/even}
-This command tests if \<number> is odd.
-Before performing the test, \TeX\ expands tokens following the |\ifodd|
-until it obtains a sequence of tokens having the form \<number>,
-followed by a token that can't be part of \<number>.
+此命令测试 \<number> 是否为奇数。
+在执行测试之前，\TeX\ 展开 |\ifodd| 之后的记号，
+直到它得到一串形如 \<number> 的记号序列，
+而且随后的记号不能成为 \<number> 的一部分。
 \example
 \count255 = 19
 \ifodd 5 true\else false\fi
@@ -1408,19 +1553,36 @@ followed by a token that can't be part of \<number>.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifdim {\<dimen$_1$> \<relation> \<dimen$_2$>}\ctsxrdef{@ifdim}
+%\explain
+%^^{dimensions//comparing}
+%This command tests if \<dimen$_1$> and \<dimen$_2$>
+%satisfy \<relation>, which must be either `|<|', `|=|', or `|>|'.
+%The dimensions can be constants such as |1in|, dimension registers
+%such as |\dimen6|, or dimension parameters such as |\parindent|.
+%Before performing the test, \TeX\ expands tokens following the |\ifdim|
+%until it obtains a sequence of tokens having
+%the form \<dimen$_1$> \<relation> \<dimen$_2$>, followed by a token
+%that can't be part of \<dimen$_2$>.
+%
+%\example
+%\dimen0 = 1000pt \ifdim \dimen0 > 3in true\else false\fi
+%|
+%\produces
+%\dimen0 = 1000pt \ifdim \dimen0 > 3in true\else false\fi
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifdim {\<dimen$_1$> \<relation> \<dimen$_2$>}\ctsxrdef{@ifdim}
 \explain
 ^^{dimensions//comparing}
-This command tests if \<dimen$_1$> and \<dimen$_2$>
-satisfy \<relation>, which must be either `|<|', `|=|', or `|>|'.
-The dimensions can be constants such as |1in|, dimension registers
-such as |\dimen6|, or dimension parameters such as |\parindent|.
-Before performing the test, \TeX\ expands tokens following the |\ifdim|
-until it obtains a sequence of tokens having
-the form \<dimen$_1$> \<relation> \<dimen$_2$>, followed by a token
-that can't be part of \<dimen$_2$>.
-
+此命令测试 \<dimen$_1$> 和 \<dimen$_2$> 是否满足 \<relation>，
+即 `|<|'、`|=|' 或 `|>|' 关系。这两个尺寸可以是类似 |1in| 的常数、
+类似 |\dimen6| 的尺寸寄存器或者类似 |\parindent| 的尺寸参数。
+在执行测试之前，\TeX\ 展开 |\ifdim| 之后的记号，
+直到它得到一串形如 \<dimen$_1$> \<relation> \<dimen$_2$> 的记号序列，
+而且随后的记号不能成为 \<dimen$_2$> 的一部分。
 \example
 \dimen0 = 1000pt \ifdim \dimen0 > 3in true\else false\fi
 |
@@ -1429,6 +1591,49 @@ that can't be part of \<dimen$_2$>.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifhmode {}\ctsxrdef{@ifhmode}
+%\ctspecial ifvmode {}\ctsxrdef{@ifvmode}
+%\ctspecial ifmmode {}\ctsxrdef{@ifmmode}
+%\ctspecial ifinner {}\ctsxrdef{@ifinner}
+%\explain
+%^^{horizontal mode//testing for}
+%^^{vertical mode//testing for}
+%^^{math mode//testing for}
+%^^{internal mode//testing for}
+%These commands test what \minref{mode} \TeX\ is in:
+%\ulist
+%\li |\ifhmode| is true if \TeX\ is in ordinary or restricted horizontal mode.
+%\li |\ifvmode| is true if \TeX\ is in ordinary or internal vertical mode.
+%\li |\ifmmode| is true if \TeX\ is in text math or display math mode.
+%\li |\ifinner| is true if \TeX\ is in an ``internal'' mode:
+%restricted horizontal, internal vertical, or text math.
+%\endulist
+%\example
+%\def\modes{{\bf
+%   \ifhmode
+%      \ifinner IH\else H\fi
+%   \else\ifvmode
+%      \ifinner \hbox{IV}\else \hbox{V}\fi
+%   \else\ifmmode \hbox{M}\else
+%      error\fi\fi\fi}}
+%Formula $\modes$; then \modes,
+%   \hbox{next \modes\ and \vbox{\modes}}.
+%\par\modes
+%|
+%\produces
+%\def\modes{{\bf
+%   \ifhmode
+%      \ifinner IH\else H\fi
+%   \else\ifvmode
+%      \ifinner \hbox{IV}\fi
+%   \else\ifmmode \hbox{M}\else
+%      error\fi\fi\fi}}
+%Formula $\modes$; then \modes,
+%   \hbox{next \modes\ and \vbox{\modes}}.
+%\par\noindent{\bf V} % sorry folks, we have to fake this one
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifhmode {}\ctsxrdef{@ifhmode}
 \ctspecial ifvmode {}\ctsxrdef{@ifvmode}
@@ -1439,13 +1644,13 @@ that can't be part of \<dimen$_2$>.
 ^^{vertical mode//testing for}
 ^^{math mode//testing for}
 ^^{internal mode//testing for}
-These commands test what \minref{mode} \TeX\ is in:
+这些命令测试 \TeX\ 处于何种模式中：
 \ulist
-\li |\ifhmode| is true if \TeX\ is in ordinary or restricted horizontal mode.
-\li |\ifvmode| is true if \TeX\ is in ordinary or internal vertical mode.
-\li |\ifmmode| is true if \TeX\ is in text math or display math mode.
-\li |\ifinner| is true if \TeX\ is in an ``internal'' mode:
-restricted horizontal, internal vertical, or text math.
+\li |\ifhmode| 为真，如果 \TeX\ 处于普通或受限水平模式中。
+\li |\ifvmode| 为真，如果 \TeX\ 处于普通或内部竖直模式中。
+\li |\ifmmode| 为真，如果 \TeX\ 处于文内数学或陈列数学模式中。
+\li |\ifinner| 为真，如果 \TeX\ 处于``内部''模式中：
+即位于受限水平模式、内部竖直模式或者文内数学模式中。
 \endulist
 \example
 \def\modes{{\bf
@@ -1473,6 +1678,40 @@ Formula $\modes$; then \modes,
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifhbox {\<register>}\ctsxrdef{@ifhbox}
+%\ctspecial ifvbox {\<register>}\ctsxrdef{@ifvbox}
+%\ctspecial ifvoid {\<register>}\ctsxrdef{@ifvoid}
+%\explain
+%^^{hboxes//testing for}
+%^^{vboxes//testing for}
+%^^{boxes//testing if void}
+%These commands test the contents of
+%the box register numbered \<reg\-ister>.
+%Let \<register> be $n$.  Then:
+%\ulist
+%\li |\ifhbox| is true if |\box|$\,n$ is an \minref{hbox}.
+%\li |\ifvbox| is true if |\box|$\,n$ is an \minref{vbox}.
+%\li |\ifvoid| is true if |\box|$\,n$ is void, i.e, doesn't have
+%a box in it.
+%\endulist
+%\example
+%\setbox0 = \vbox{} % empty but not void
+%\setbox1 = \hbox{a}
+%\setbox2 = \box1 % makes box1 void
+%\ifvbox0 true\else false\fi;
+%\ifhbox2 true\else false\fi;
+%\ifvoid1 true\else false\fi
+%|
+%\produces
+%\setbox0 = \vbox{}
+%\setbox1 = \hbox{a}
+%\setbox2 = \box1 % empties box1
+%\ifvbox0 true\else false\fi;
+%\ifhbox2 true\else false\fi;
+%\ifvoid1 true\else false\fi
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifhbox {\<register>}\ctsxrdef{@ifhbox}
 \ctspecial ifvbox {\<register>}\ctsxrdef{@ifvbox}
@@ -1481,14 +1720,12 @@ Formula $\modes$; then \modes,
 ^^{hboxes//testing for}
 ^^{vboxes//testing for}
 ^^{boxes//testing if void}
-These commands test the contents of
-the box register numbered \<reg\-ister>.
-Let \<register> be $n$.  Then:
+这些命令测试编号为 \<reg\-ister> 的盒子寄存器的内容。
+设编号 \<register> 为 $n$。则有：
 \ulist
-\li |\ifhbox| is true if |\box|$\,n$ is an \minref{hbox}.
-\li |\ifvbox| is true if |\box|$\,n$ is an \minref{vbox}.
-\li |\ifvoid| is true if |\box|$\,n$ is void, i.e, doesn't have
-a box in it.
+\li |\ifhbox| 为真，如果 |\box|$\,n$ 是一个\minref{水平盒子}。
+\li |\ifvbox| 为真，如果 |\box|$\,n$ 是一个\minref{竖直盒子}。
+\li |\ifvoid| 为真，如果 |\box|$\,n$ 是空的，即它不包含盒子。
 \endulist
 \example
 \setbox0 = \vbox{} % empty but not void
@@ -1508,17 +1745,54 @@ a box in it.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial ifeof {\<number>}\ctsxrdef{@ifeof}
+%\explain
+%^^{end of file, testing for}
+%\minrefs{file}
+%This command tests an input stream for end of file.
+%It is true if input stream \<number> has not been opened,
+%or has been opened and the associated file has been entirely read in
+%(or doesn't exist).
+%\enddesc
 \begindesc
 \ctspecial ifeof {\<number>}\ctsxrdef{@ifeof}
 \explain
 ^^{end of file, testing for}
 \minrefs{file}
-This command tests an input stream for end of file.
-It is true if input stream \<number> has not been opened,
-or has been opened and the associated file has been entirely read in
-(or doesn't exist).
+此命令测试输入流文件是否结束。
+它为真当且仅当第 \<number> 个输入流还没打开，
+或者已经打开但对应的文件已经全部读完（或文件不存在）。
 \enddesc
 
+%\begindesc
+%\ctspecial ifcase
+%{\<number>\<case$_0$ text> {\bt \\or }\<case$_1$ text> {\bt \\or}
+%   $\ldots$ {\bt \\or} \<case$_n$ text>\hfil\break
+%\hglue 3pc{\bt \\else} \<otherwise text> {\bt \\fi}}
+%\ctsxrdef{@ifcase}
+%\ctsxrdef{@or}
+%\explain
+%^^{case testing}
+%This command introduces a test with numbered multiple cases.
+%If \<num\-ber> has the value $k$, \TeX\ will expand \<case$_k$ text> if
+%it exists, and \<other\-wise text> if it doesn't.  You can omit the |\else|---%
+%in this case, \TeX\ won't expand anything if none of the cases are satisfied.
+%\example
+%\def\whichday#1{\ifcase #1<day 0>\or Sunday\or Monday%
+%   \or Tuesday\or Wednesday\or Thursday\or Friday%
+%   \or Saturday\else Nonday\fi
+%   \ is day \##1. }
+%\whichday2 \whichday3 \whichday9
+%|
+%\produces
+%\def\whichday#1{\ifcase #1<day 0>\or Sunday\or Monday%
+%   \or Tuesday\or Wednesday\or Thursday\or Friday%
+%   \or Saturday\else Nonday\fi
+%   \ is day \##1. }
+%\whichday2 \whichday3 \whichday9
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial ifcase
 {\<number>\<case$_0$ text> {\bt \\or }\<case$_1$ text> {\bt \\or}
@@ -1528,10 +1802,10 @@ or has been opened and the associated file has been entirely read in
 \ctsxrdef{@or}
 \explain
 ^^{case testing}
-This command introduces a test with numbered multiple cases.
-If \<num\-ber> has the value $k$, \TeX\ will expand \<case$_k$ text> if
-it exists, and \<other\-wise text> if it doesn't.  You can omit the |\else|---%
-in this case, \TeX\ won't expand anything if none of the cases are satisfied.
+此命令引入一个带编号的多重分支测试。
+假设 \<num\-ber> 的值为 $k$，在 \<case$_k$ text> 存在时 \TeX\ 将展开它，
+否则就展开 \<other\-wise text>。你可以省略 |\else| ——%
+此时，在各个分支都不满足时 \TeX\ 将不展开任何东西。
 \example
 \def\whichday#1{\ifcase #1<day 0>\or Sunday\or Monday%
    \or Tuesday\or Wednesday\or Thursday\or Friday%
@@ -1548,13 +1822,37 @@ in this case, \TeX\ won't expand anything if none of the cases are satisfied.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial iftrue {}\ctsxrdef{@iftrue}
+%\ctspecial iffalse {}\ctsxrdef{@iffalse}
+%\explain
+%These commands are equivalent to tests that are always true or always
+%false.  The main use of these commands is in defining macros that keep
+%track of the result of a test.
+%\example
+%\def\isbigger{\let\bigger=\iftrue}
+%\def\isnotbigger{\let\bigger=\iffalse}
+%% These \let's MUST be buried in macros!!  If they aren't,
+%% TeX erroneously tries to match them with \fi.
+%\def\test#1#2{\ifnum #1>#2 \isbigger\else\isnotbigger\fi}
+%\test{3}{6}
+%\bigger$3>6$\else$3\le6$\fi
+%|
+%\produces
+%\def\isbigger{\let\bigger=\iftrue}
+%\def\isnotbigger{\let\bigger=\iffalse}
+%% These \let's MUST be buried in macros!
+%% If they aren't, TeX erroneously tries to match them with \fi
+%\def\test#1#2{\ifnum #1>#2 \isbigger\else\isnotbigger\fi}
+%\test{3}{6}
+%\bigger$3>6$\else$3\le6$\fi
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial iftrue {}\ctsxrdef{@iftrue}
 \ctspecial iffalse {}\ctsxrdef{@iffalse}
 \explain
-These commands are equivalent to tests that are always true or always
-false.  The main use of these commands is in defining macros that keep
-track of the result of a test.
+这两个命令提供始终为真或始终为假的测试。它们主要用于在宏定义中记录测试结果。
 \example
 \def\isbigger{\let\bigger=\iftrue}
 \def\isnotbigger{\let\bigger=\iffalse}
@@ -1575,39 +1873,76 @@ track of the result of a test.
 \endexample
 \enddesc
 
+%\begindesc
+%\ctspecial else {} \ctsxrdef{@else}
+%\explain
+%This command introduces the ``false'' alternative of a conditional test.
+%\enddesc
 \begindesc
 \ctspecial else {} \ctsxrdef{@else}
 \explain
-This command introduces the ``false'' alternative of a conditional test.
+此命令提供条件测试为``假''时的另一选择。
 \enddesc
 
+%\begindesc
+%\ctspecial fi {} \ctsxrdef{@fi}
+%\explain
+%This command ends the text of a conditional test.
+%\enddesc
 \begindesc
 \ctspecial fi {} \ctsxrdef{@fi}
 \explain
-This command ends the text of a conditional test.
+此命令结束条件测试文本。
 \enddesc
 
+%\begindesc
+%\ctspecial newif {{\bt \\if}\<test name>}\ctsxrdef{@newif}
+%\explain
+%This command names a trio of control sequences with names |\alpha!-true|,
+%|\alphafalse|,
+%and |\ifalpha|, where |alpha| is \<test name>.
+%You can use them to define your own tests by
+%creating a logical variable that records
+%true\slash false information:
+%\ulist\compact
+%\li |\alphatrue| sets the  logical variable |alpha| true.
+%\li |\alphafalse| sets the logical variable |alpha| false
+%\li |\ifalpha| is a conditional test that is true if the logical
+%variable |alpha| is true and false otherwise.
+%\endulist
+%The logical variable |alpha| doesn't really exist, but \TeX\ behaves as
+%though it did.  After |\newif\ifalpha|, the logical variable is initially
+%false.
+%
+%|\newif| is an outer command, so you can't use it inside a macro
+%definition.
+%\example
+%\newif\iflong  \longtrue
+%\iflong Rabbits have long ears.
+%\else Rabbits don't have long ears.\fi
+%|
+%\produces
+%\newif\iflong
+%\longtrue
+%\iflong Rabbits have long ears.\else Rabbits don't have long ears.\fi
+%\endexample
+%\eix^^{conditional tests}
+%\enddesc
 \begindesc
 \ctspecial newif {{\bt \\if}\<test name>}\ctsxrdef{@newif}
 \explain
-This command names a trio of control sequences with names |\alpha!-true|,
-|\alphafalse|,
-and |\ifalpha|, where |alpha| is \<test name>.
-You can use them to define your own tests by
-creating a logical variable that records
-true\slash false information:
+假设 \<test name> 为 |alpha|，此命令命名了三个控制序列
+|\alpha!-true|、|\alphafalse| 和 |\ifalpha|。
+通过创建记录真\slash 假信息的逻辑变量，你可以定义自己的测试：
 \ulist\compact
-\li |\alphatrue| sets the  logical variable |alpha| true.
-\li |\alphafalse| sets the logical variable |alpha| false
-\li |\ifalpha| is a conditional test that is true if the logical
-variable |alpha| is true and false otherwise.
+\li |\alphatrue| 设定逻辑变量 |alpha| 为真；
+\li |\alphafalse| 设定逻辑变量 |alpha| 为假；
+\li |\ifalpha| 是一个条件测试，它为真当且仅当逻辑变量 |alpha| 为真。
 \endulist
-The logical variable |alpha| doesn't really exist, but \TeX\ behaves as
-though it did.  After |\newif\ifalpha|, the logical variable is initially
-false.
+该逻辑变量 |alpha| 实际上不存在，但 \TeX\ 假装它是存在的。
+在执行 |\newif\ifalpha| 后，该逻辑变量的初始值为假。
 
-|\newif| is an outer command, so you can't use it inside a macro
-definition.
+|\newif| 是一个外部命令，因此你不能在宏定义中使用它。
 \example
 \newif\iflong  \longtrue
 \iflong Rabbits have long ears.
@@ -1623,8 +1958,76 @@ definition.
 
 
 %==========================================================================
-\subsection {Repeated actions}
+%\subsection {Repeated actions}
+\subsection {重复操作}
 
+%{\def\test{{\bt \\if}$\Omega$}%
+%\begindesc
+%\bix^^{repeated actions}
+%\bix^^{loops}
+%\cts loop {$\alpha$ {\test} $\beta$ {\bt \\repeat}}
+%\ctspecial repeat {}\ctsxrdef{@repeat}
+%\explain
+%These commands provide a looping construct for \TeX.
+%Here $\alpha$ and $\beta$ are arbitrary sequences of commands
+%and \test\ is any of the conditional tests described in
+%\headcit{Conditional tests}{conds}.
+%The |\repeat| replaces the |\fi| corresponding to the test,
+%so you must not write an explicit |\fi| to terminate the test.
+%Nor, unfortunately, can you associate an |\else| with the test.
+%If you want to use the test in the opposite sense, you need to
+%rearrange the test or
+%define an auxiliary test with |\newif| (see above) and use that
+%test in the sense you want (see the second example below).
+%
+%\TeX\ expands |\loop| as follows:
+%\olist
+%\li $\alpha$ is expanded.
+%\li {\test} is performed.  If the result is false, the loop is terminated.
+%\li $\beta$ is expanded.
+%\li The cycle is repeated.
+%\endolist
+%\example
+%\count255 = 6
+%\loop
+%   \number\count255\
+%   \ifnum\count255 > 0
+%      \advance\count255 by -1
+%\repeat
+%|
+%\produces
+%\count255 = 6
+%\loop
+%   \number\count255\
+%   \ifnum\count255 > 0
+%      \advance\count255 by -1
+%\repeat
+%\nextexample
+%\newif\ifnotdone % \newif uses \count255 in its definition
+%\count255=6
+%\loop
+%   \number\count255\
+%   \ifnum\count255 < 1 \notdonefalse\else\notdonetrue\fi
+%   \ifnotdone
+%      \advance\count255 by -1
+%\repeat
+%|
+%\produces
+%\newif\ifnotdone
+%\count255=6
+%\loop
+%   \number\count255\
+%   \ifnum\count255 < 1 \notdonefalse\else\notdonetrue\fi
+%   \ifnotdone
+%      \advance\count255 by -1
+%\repeat
+%%
+%\eix^^{repeated actions}
+%\eix^^{loops}
+%%
+%\endexample
+%\enddesc
+%} % end scope of definition of \test
 {\def\test{{\bt \\if}$\Omega$}%
 \begindesc
 \bix^^{repeated actions}
@@ -1632,24 +2035,22 @@ definition.
 \cts loop {$\alpha$ {\test} $\beta$ {\bt \\repeat}}
 \ctspecial repeat {}\ctsxrdef{@repeat}
 \explain
-These commands provide a looping construct for \TeX.
-Here $\alpha$ and $\beta$ are arbitrary sequences of commands
-and \test\ is any of the conditional tests described in
-\headcit{Conditional tests}{conds}.
-The |\repeat| replaces the |\fi| corresponding to the test,
-so you must not write an explicit |\fi| to terminate the test.
-Nor, unfortunately, can you associate an |\else| with the test.
-If you want to use the test in the opposite sense, you need to
-rearrange the test or
-define an auxiliary test with |\newif| (see above) and use that
-test in the sense you want (see the second example below).
+这些命令提供了 \TeX\ 的循环结构。
+这里 $\alpha$ 和 $\beta$ 是任意的命令序列，
+而 \test\ 是在\headcit{条件测试}{conds}中描述的任何一种条件测试。
+|\repeat| 已经替代了对应于该测试的 |\fi|，
+因此你不可以显式写出 |\fi| 以结束测试。
+这也遗憾地导致你不可以给测试带上 |\else| 部分。
+如果你想在相反意义上使用测试，你需要重新安排该测试，
+或者用 |\newif|（见上面）定义一个辅助测试%
+并按照你的需要使用这个测试（见下面第二个例子）。
 
-\TeX\ expands |\loop| as follows:
+\TeX\ 按照下列步骤展开 |\loop| 循环：
 \olist
-\li $\alpha$ is expanded.
-\li {\test} is performed.  If the result is false, the loop is terminated.
-\li $\beta$ is expanded.
-\li The cycle is repeated.
+\li 展开 $\alpha$。
+\li 执行 {\test}。如果结果为假，循环就此中止。
+\li 展开 $\beta$。
+\li 重复此循环。
 \endolist
 \example
 \count255 = 6
@@ -1694,13 +2095,27 @@ test in the sense you want (see the second example below).
 } % end scope of definition of \test
 
 %==========================================================================
-\subsection {Doing nothing}
+%\subsection {Doing nothing}
+\subsection {什么也不做}
 
+%\begindesc
+%\cts relax {}
+%\explain
+%This command tells \TeX\ to do nothing.  It's useful in a context where
+%you need to provide a command but there's nothing that you want \TeX\ to do.
+%\example
+%\def\medspace{\hskip 12pt\relax}
+%% The \relax guards against the possibility that
+%% The next tokens are `plus' or `minus'.
+%|
+%
+%\endexample
+%\enddesc
 \begindesc
 \cts relax {}
 \explain
-This command tells \TeX\ to do nothing.  It's useful in a context where
-you need to provide a command but there's nothing that you want \TeX\ to do.
+此命令让 \TeX\ 不做任何事情。
+此命令常用在需要提供一个命令但却无事可做的环境中。
 \example
 \def\medspace{\hskip 12pt\relax}
 % The \relax guards against the possibility that
@@ -1710,11 +2125,19 @@ you need to provide a command but there's nothing that you want \TeX\ to do.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts empty {}
+%\explain
+%This command expands to no tokens at all.
+%It differs from |\relax| in that it disappears after macro expansion.
+%%
+%\xrdef{mac2}% end the section on macros
+%\eix^^{macros}
+%\enddesc
 \begindesc
 \cts empty {}
 \explain
-This command expands to no tokens at all.
-It differs from |\relax| in that it disappears after macro expansion.
+此命令展开后得不到任何记号。它与 |\relax| 的区别在于，在宏展开后它消失了。
 %
 \xrdef{mac2}% end the section on macros
 \eix^^{macros}
@@ -3088,13 +3511,20 @@ since the undefined control sequence |\oops| will cause another error.
 而不是生产版本的 \TeX ，所以它仅仅在你安装 \TeX\ 时会用到。
 \enddesc
 
+%\begindesc
+%\cts everyjob {\param{token list}}
+%\explain
+%This parameter contains a \minref{token} list that \TeX\ expands at the
+%start of every job.  Because an assignment to |\everyjob| cannot affect
+%the current run (by the time you've done the assignment it's already too
+%late), it is only useful to people who are preparing format files.
+%\enddesc
 \begindesc
 \cts everyjob {\param{token list}}
 \explain
-This parameter contains a \minref{token} list that \TeX\ expands at the
-start of every job.  Because an assignment to |\everyjob| cannot affect
-the current run (by the time you've done the assignment it's already too
-late), it is only useful to people who are preparing format files.
+此参数包含一个\minref{记号}列，\TeX\ 在开始每个任务时展开它们。
+由于对 |\everyjob| 的赋值无法影响当前任务（在你赋值时已经太迟了），
+它仅对制作格式文件的人有用。
 \enddesc
 
 
