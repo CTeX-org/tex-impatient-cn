@@ -3440,59 +3440,98 @@ be
 \enddesc
 
 %==========================================================================
-\section {Controlling interaction with \TeX}
+%\section {Controlling interaction with \TeX}
+\section {控制与 \TeX\ 的交互}
 
+%\begindesc
+%\bix^^{controlling \TeX}
+%\bix^^{running \TeX}
+%\cts errorstopmode {}
+%\explain
+%This command tells \TeX\
+%to stop for interaction whenever it finds an error.
+%This is the normal mode of operation.
+%\enddesc
 \begindesc
 \bix^^{controlling \TeX}
 \bix^^{running \TeX}
 \cts errorstopmode {}
 \explain
-This command tells \TeX\
-to stop for interaction whenever it finds an error.
-This is the normal mode of operation.
+此命令让 \TeX\ 遇到错误时暂停以和用户交互。
+这是 \TeX\ 运行的正常模式。
 \enddesc
 
+%\begindesc
+%\cts scrollmode {}
+%\explain
+%This command tells \TeX\
+%not to stop for most errors,
+%but to continue displaying the error messages on your terminal.
+%Typing `|S|' or `|s|' in response to an error message puts you
+%into scroll mode.
+%\enddesc
 \begindesc
 \cts scrollmode {}
 \explain
-This command tells \TeX\
-not to stop for most errors,
-but to continue displaying the error messages on your terminal.
-Typing `|S|' or `|s|' in response to an error message puts you
-into scroll mode.
+此命令让 \TeX\ 遇到大多数错误时不暂停，而仅在终端上显示错误信息。
+在回应错误信息时键入 `|S|' 或 `|s|' 就进入卷动模式。
 \enddesc
 
+%\begindesc
+%\cts nonstopmode {}
+%\explain
+%This command tells \TeX\
+%not to stop for errors, even those pertaining to files that
+%it can't find, but to continue displaying the error messages on your terminal.
+%Typing `|R|' or `|r|' in response to an error message puts you
+%into nonstop mode.
+%\enddesc
 \begindesc
 \cts nonstopmode {}
 \explain
-This command tells \TeX\
-not to stop for errors, even those pertaining to files that
-it can't find, but to continue displaying the error messages on your terminal.
-Typing `|R|' or `|r|' in response to an error message puts you
-into nonstop mode.
+此命令让 \TeX\ 遇到错误时不暂停，即使是那些无法找到文件的错误，
+而仅仅在终端上显示错误信息。
+在回应错误信息时键入 `|R|' 或 `|r|' 就进入直达模式。
 \enddesc
 
+%\begindesc
+%\cts batchmode {}
+%\explain
+%This command tells \TeX\
+%not to stop for errors and to suppress all further output to your terminal.
+%Typing `|Q|' or `|q|' in response to an error message puts you
+%into batch mode.
+%\enddesc
 \begindesc
 \cts batchmode {}
 \explain
-This command tells \TeX\
-not to stop for errors and to suppress all further output to your terminal.
-Typing `|Q|' or `|q|' in response to an error message puts you
-into batch mode.
+此命令让 \TeX\ 遇到错误时不暂停，且取消在终端上显示此后的输出。
+在回应错误信息时键入 `|Q|' 或 `|q|' 就进入批处理模式。
 \enddesc
 
+%\begindesc
+%\cts pausing {\param{number}}
+%\explain
+%If this parameter is greater than zero, \TeX\ will pause
+%at each line of input to give you an opportunity to
+%replace it with a different line.  If you type in a replacement,
+%\TeX\ will use that line instead of the original one; if you respond
+%with \asciichar{return}, \TeX\ will use the original line.
 \begindesc
 \cts pausing {\param{number}}
 \explain
-If this parameter is greater than zero, \TeX\ will pause
-at each line of input to give you an opportunity to
-replace it with a different line.  If you type in a replacement,
-\TeX\ will use that line instead of the original one; if you respond
-with \asciichar{return}, \TeX\ will use the original line.
+如果此参数大于零，\TeX\ 将在每个输入行后暂停，让你有机会将该行替换为另外一行。
+如果你键入替换行，\TeX\ 就将原来的行替换为此行；
+如果你键入\asciichar{return}符，\TeX\ 将使用原来的行。
 
-Setting |\pausing| to $1$ can be useful as a way of patching a document as
-\TeX\ is processing it.  For example,
-you can use this facility to insert ^|\show| commands (see below).
+%Setting |\pausing| to $1$ can be useful as a way of patching a document as
+%\TeX\ is processing it.  For example,
+%you can use this facility to insert ^|\show| commands (see below).
+%\eix^^{running \TeX}
+%\eix^^{controlling \TeX}
+%\enddesc
+将 |\pausing| 设定为 $1$，是在 \TeX\ 处理文档时修补它的常用方法。
+例如，你可以用这种方式插入 ^|\show| 命令（见下面）。
 \eix^^{running \TeX}
 \eix^^{controlling \TeX}
 \enddesc
