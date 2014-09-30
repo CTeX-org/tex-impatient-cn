@@ -389,19 +389,38 @@ Here's a line printed normally.\par
 \enddesc
 
 %==========================================================================
-\section {把信息转为标记}
+%\section {Converting information to tokens}
+\section {把信息转为记号}
 
+%\subsection {Numbers}
 \subsection {数值}
 
+%\begindesc
+%\xrdef{convert}
+%\bix^^{numbers//converting to characters}
+%%
+%\cts number {\<number>}
+%\explain
+%This command produces the representation of a \minref{number}
+%as a sequence of
+%character \minref{token}s.  The number can be either an explicit integer,
+%a \<number> parameter, or a \<number> register.
+%\example
+%\number 24 \quad \count13 = -10000 \number\count13
+%|
+%\produces
+%\number 24 \quad \count13 = -10000 \number\count13
+%\endexample
+%\enddesc
 \begindesc
 \xrdef{convert}
 \bix^^{numbers//converting to characters}
 %
 \cts number {\<number>}
 \explain
-这个命令可以把一个\minref{数}表示成字符\minref{标记}序列.
-这里的数可以是一个确定的整数, 或是一个 \<number> 参数,
-也可以是一个 \<number> 寄存器.
+这个命令可以把一个\minref{数}表示成字符\minref{记号}序列。
+这里的数可以是一个确定的整数，或是一个 \<number> 参数，
+也可以是一个 \<number> 寄存器。
 \example
 \number 24 \quad \count13 = -10000 \number\count13
 |
@@ -410,14 +429,35 @@ Here's a line printed normally.\par
 \endexample
 \enddesc
 
+%\begindesc
+%^^{Roman numerals}
+%\easy\cts romannumeral {\<number>}
+%\explain
+%This command produces the roman numeral representation of a \minref{number}
+%as a sequence of
+%character \minref{token}s.  The number can be either an explicit integer,
+%a \<number> parameter, or a \<number> register.
+%If the number is zero or negative, |\romannumeral| produces
+%no tokens.
+%\example
+%\romannumeral 24 \quad (\romannumeral -16)\quad
+%\count13 = 6000 \romannumeral\count13
+%|
+%\produces
+%\romannumeral 24 \quad (\romannumeral -16)\quad
+%\count13 = 6000 \romannumeral\count13
+%\endexample
+%
+%\eix^^{numbers//converting to characters}
+%\enddesc
 \begindesc
 ^^{Roman numerals}
 \easy\cts romannumeral {\<number>}
 \explain
-这个命令可以把一个\minref{数}表示成罗马字符\minref{标记}序列.
-这里的数可以是一个确定的整数, 或是一个 \<number> 参数,
-也可以是一个 \<number> 寄存器.
-如果这个数是负的, 则 |\romannumeral| 不产生任何标记.
+这个命令可以把一个\minref{数}表示成罗马字符\minref{记号}序列.
+这里的数可以是一个确定的整数，或是一个 \<number> 参数，
+也可以是一个 \<number> 寄存器。
+如果这个数是负的，则 |\romannumeral| 不产生任何记号。
 \example
 \romannumeral 24 \quad (\romannumeral -16)\quad
 \count13 = 6000 \romannumeral\count13
@@ -3537,10 +3577,46 @@ be
 \enddesc
 
 %==========================================================================
-\section {Diagnostic aids}
+%\section {Diagnostic aids}
+\section {帮助调试}
 
-\subsection{Displaying internal data}
+%\subsection{Displaying internal data}
+\subsection{显示内部数据}
 
+%\begindesc
+%\bix^^{tracing}
+%\bix^^{debugging}
+%\bix^^{diagnostic aids}
+%\cts show {\<token>}
+%\cts showthe {\<argument>}
+%\cts showbox {\<number>}
+%\cts showlists {}
+%\explain
+%These commands record information in the log of your \TeX\ run:
+%\ulist
+%\li |\show| records the meaning of \<token>.\minrefs{token}
+%^^{tokens//displayed by \b\tt\\show\e}
+%\li |\showthe| records
+% whatever tokens would be produced by
+%|\the| \<arg\-u\-ment> (see \xref \the).
+%\li |\showbox| records the contents of the \minref{box}
+%\minref{register} numbered \<num\-ber>.
+%The number of
+%leading dots in the log indicates the number of
+%levels of nesting of inner boxes.
+%\li |\showlists| records
+%the contents of each list that \TeX\ is currently constructing.
+%(These lists are nested one within another.)
+%See \knuth{pages~88--89} for further information about interpreting
+%the output of |\showlists|.
+%\endulist
+%For |\show| and |\showthe|, \TeX\ also displays the information at your
+%^{terminal}.
+%For |\showbox| and |\showlists|, \TeX\ displays the information at your
+%terminal only
+%if ^|\tracingonline| (\xref \tracingonline) is greater than zero;
+%if ^|\tracingonline| is zero or less (the default case),
+%the information is not displayed.
 \begindesc
 \bix^^{tracing}
 \bix^^{debugging}
@@ -3550,46 +3626,128 @@ be
 \cts showbox {\<number>}
 \cts showlists {}
 \explain
-These commands record information in the log of your \TeX\ run:
+这些命令在 \TeX\ 运行时记录信息到日志文件中：
 \ulist
-\li |\show| records the meaning of \<token>.\minrefs{token}
+\li |\show| 记录 \<token> 的含义。\minrefs{token}
 ^^{tokens//displayed by \b\tt\\show\e}
-\li |\showthe| records
- whatever tokens would be produced by
-|\the| \<arg\-u\-ment> (see \xref \the).
-\li |\showbox| records the contents of the \minref{box}
-\minref{register} numbered \<num\-ber>.
-The number of
-leading dots in the log indicates the number of
-levels of nesting of inner boxes.
-\li |\showlists| records
-the contents of each list that \TeX\ is currently constructing.
-(These lists are nested one within another.)
-See \knuth{pages~88--89} for further information about interpreting
-the output of |\showlists|.
+\li |\showthe| 记录用 |\the| \<arg\-u\-ment> 生成的所有记号（见 \xref\the ）。
+\li |\showbox| 记录编号为 \<num\-ber> 的\minref{盒子}\minref{寄存器}的内容。
+日志文件中的前导点号的个数表示内部盒子的嵌套层级。
+\li |\showlists| 记录 \TeX\ 正在构造的各个列表的内容。%
+（这些列表将会互相嵌套。）%
+见\knuth{第~88--89~页}中对 |\showlists| 的输出的进一步介绍。
 \endulist
-For |\show| and |\showthe|, \TeX\ also displays the information at your
-^{terminal}.
-For |\showbox| and |\showlists|, \TeX\ displays the information at your
-terminal only
-if ^|\tracingonline| (\xref \tracingonline) is greater than zero;
-if ^|\tracingonline| is zero or less (the default case),
-the information is not displayed.
+对于 |\show| 和 |\showthe|，\TeX\ 还在^{终端}中显示这些信息。
+对于 |\showbox| 和 |\showlists|，
+\TeX\ 仅在 ^|\tracingonline|（\xref \tracingonline ）大于零时才在终端显示信息；
+如果 ^|\tracingonline| 小于或等于零（默认情形），这些信息就不在终端显示。
 
-Whenever \TeX\ encounters a |\show|-type command it
-stops for interaction.  The request for interaction does \emph{not}
-indicate an error, but it does give you an opportunity to ask \TeX\ to
-show you something else.  If you don't want to see anything else, just
-press \asciichar{return}.
+%Whenever \TeX\ encounters a |\show|-type command it
+%stops for interaction.  The request for interaction does \emph{not}
+%indicate an error, but it does give you an opportunity to ask \TeX\ to
+%show you something else.  If you don't want to see anything else, just
+%press \asciichar{return}.
+在遇到类似 |\show| 的命令时，\TeX\ 暂停以和用户交互。
+请求交互\emph{并不}表示有错误发生，但这确实给你机会让 \TeX\ 显示其他东西。
+如果你不想看到其他东西，键入\asciichar{return}符即可。
 
-You can control the amount of output produced by |\showbox| by setting
-|\show!-box!-breadth| and |\show!-box!-depth| (\xref\showboxbreadth).
+%You can control the amount of output produced by |\showbox| by setting
+%|\show!-box!-breadth| and |\show!-box!-depth| (\xref\showboxbreadth).
+%^^|\showboxbreadth| ^^|\showboxdepth|
+%These parameters respectively have default values of $5$
+%and $3$, which is why
+%just five items appear for each box described
+%in the log output below.  (The `|..etc.|' indicates additional items
+%within the boxes that aren't displayed.)
+要控制 |\showbox| 生成的输出的数量，
+你可以设定 |\show!-box!-breadth| 和 |\show!-box!-depth|（\xref\showboxbreadth ）。
 ^^|\showboxbreadth| ^^|\showboxdepth|
-These parameters respectively have default values of $5$
-and $3$, which is why
-just five items appear for each box described
-in the log output below.  (The `|..etc.|' indicates additional items
-within the boxes that aren't displayed.)
+这两个参数的默认值分别为 $5$ 和 $3$，
+因而在下面的日志输出中每个盒子只显示五个项目。%
+（`|..etc.|' 表示盒子内的其他未显示的项目。）
+%\example
+%\show a
+%\show \hbox
+%\show \medskip
+%\show &
+%|
+%\logproduces
+%> the letter a.
+%> \hbox=\hbox.
+%> \medskip=macro:
+%->\vskip \medskipamount .
+%> alignment tab character &.
+%|
+%\nextexample
+%\showthe\medskipamount
+%\toks27={\hbox{Joe's\quad\ Diner}}
+%\showthe\toks27
+%|
+%\logproduces
+%> 6.0pt plus 2.0pt minus 2.0pt.
+%> \hbox {Joe's\quad \ Diner}.
+%|
+%\nextexample
+%\setbox 3=\vbox{\hbox{A red dog.}\hrule A black cat.}
+%\showbox 3
+%|
+%\logproduces
+%> \box3=
+%\vbox(16.23332+0.0)x53.05565
+%.\hbox(6.94444+1.94444)x46.41675
+%..\tenrm A
+%..\glue 3.33333 plus 1.66498 minus 1.11221
+%..\tenrm r
+%..\tenrm e
+%..\tenrm d
+%..etc.
+%.\rule(0.4+0.0)x*
+%.\hbox(6.94444+0.0)x53.05565
+%..\tenrm A
+%..\glue 3.33333 plus 1.66498 minus 1.11221
+%..\tenrm b
+%..\tenrm l
+%..\tenrm a
+%..etc.
+%|
+%\endexample
+%%\vfil\eject
+%\example
+%\vbox{A \hbox
+%   {formula
+%       $x \over y\showlists$}}
+%|
+%\logproduces
+%### math mode entered at line 3
+%\mathord
+%.\fam1 y
+%this will be denominator of:
+%\fraction, thickness = default
+%\\mathord
+%\.\fam1 x
+%### restricted horizontal mode entered at line 2
+%\tenrm f
+%\tenrm o
+%\tenrm r
+%\tenrm m
+%\kern-0.27779
+%\tenrm u
+%\tenrm l
+%\tenrm a
+%\glue 3.33333 plus 1.66666 minus 1.11111
+%spacefactor 1000
+%### horizontal mode entered at line 1
+%\hbox(0.0+0.0)x20.0
+%\tenrm A
+%\glue 3.33333 plus 1.66498 minus 1.11221
+%spacefactor 999
+%### internal vertical mode entered at line 1
+%prevdepth ignored
+%### vertical mode entered at line 0
+%prevdepth ignored
+%|
+%\endexample
+%\enddesc
 \example
 \show a
 \show \hbox
@@ -3674,34 +3832,85 @@ prevdepth ignored
 \endexample
 \enddesc
 
-\see |\showboxbreadth|, |\showboxdepth| \ctsref\showboxbreadth.
+%\see |\showboxbreadth|, |\showboxdepth| \ctsref\showboxbreadth.
+\see |\showboxbreadth|、|\showboxdepth|\ctsref\showboxbreadth 。
 
-\subsection{Specifying what is traced}
+%\subsection{Specifying what is traced}
+\subsection{指定追踪的内容}
 
+%\begindesc
+%\cts tracingonline {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will display the results of tracing
+%(including ^|\showbox| and ^|\showlists|)
+%at your terminal in addition to recording them in the log file.
+%\enddesc
 \begindesc
 \cts tracingonline {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will display the results of tracing
-(including ^|\showbox| and ^|\showlists|)
-at your terminal in addition to recording them in the log file.
+如果此参数大于零，除了记录到日志文件外，
+\TeX\ 还在终端上显示追踪的结果（包括 ^|\showbox| 和 ^|\showlists|）。
 \enddesc
 
+%\begindesc
+%\cts tracingcommands {\param{number}}
+%\explain
+%If this parameter is $1$ or greater,
+%\TeX\ will record in the log file most commands that it executes.
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
+%Typesetting the first character of a word counts as a command,
+%but (for the purposes of the trace only)
+%the actions of typesetting the subsequent characters
+%and any punctuation following them
+%do not count as commands.
+%If |\tracingcommands| is $2$ or greater,
+%\TeX\ will also record commands that are expanded
+%rather than executed, e.g., conditional tests and their outcomes.
 \begindesc
 \cts tracingcommands {\param{number}}
 \explain
-If this parameter is $1$ or greater,
-\TeX\ will record in the log file most commands that it executes.
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
-Typesetting the first character of a word counts as a command,
-but (for the purposes of the trace only)
-the actions of typesetting the subsequent characters
-and any punctuation following them
-do not count as commands.
-If |\tracingcommands| is $2$ or greater,
-\TeX\ will also record commands that are expanded
-rather than executed, e.g., conditional tests and their outcomes.
+如果此参数大于或等于 $1$，\TeX\ 将在日志文件中记录它执行的大多数命令。
+如果 ^|\tracingonline| 大于或等于零，这些信息还将出现在终端上。
+排版一个单词的首个字符算作一个命令，
+但（仅对追踪的目的而言）排版之后的字符和标点却不算作命令。
+如果 |\tracingcommands| 大于或等于 $2$，
+\TeX\ 还将记录展开但不执行的命令，比如条件测试及它们的输出。
+%\example
+%\tracingcommands = 1 If $x+y>0$ we quit.\par
+%On the other hand, \tracingcommands = 0
+%|
+%\logproduces
+%{vertical mode: the letter I}
+%{horizontal mode: the letter I}
+%{blank space  }
+%{math shift character $}
+%{math mode: the letter x}
+%{the character +}
+%{the letter y}
+%{the character >}
+%{the character 0}
+%{math shift character $}
+%{horizontal mode: blank space  }
+%{the letter w}
+%{blank space  }
+%{the letter q}
+%{blank space  }
+%{\par}
+%{vertical mode: the letter O}
+%{horizontal mode: the letter O}
+%{blank space  }
+%{the letter t}
+%{blank space  }
+%{the letter o}
+%{blank space  }
+%{the letter h}
+%{blank space  }
+%{\tracingcommands}
+%|
+%\endexample
+%\enddesc
 \example
 \tracingcommands = 1 If $x+y>0$ we quit.\par
 On the other hand, \tracingcommands = 0
@@ -3737,16 +3946,34 @@ On the other hand, \tracingcommands = 0
 \endexample
 \enddesc
 
+%\begindesc
+%\cts tracinglostchars {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will record an indication in the log file of each time
+%that it drops an output character because that character does not exist
+%in the current font.
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
+%\PlainTeX\ defaults it to $1$ (unlike the others).
+%\example
+%\tracinglostchars = 1
+%A {\nullfont few} characters.
+%|
+%\logproduces
+%Missing character: There is no f in font nullfont!!
+%Missing character: There is no e in font nullfont!!
+%Missing character: There is no w in font nullfont!!
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts tracinglostchars {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will record an indication in the log file of each time
-that it drops an output character because that character does not exist
-in the current font.
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
-\PlainTeX\ defaults it to $1$ (unlike the others).
+如果此参数大于零，每次因某字符不在当前字体中而丢弃它时，
+\TeX\ 将在日志文件中记录一个声明。
+如果 ^|\tracingonline| 大于零，此信息还将显示在终端上。
+\PlainTeX\ 设定该参数的默认值为 $1$（与其他参数不一样）。
 \example
 \tracinglostchars = 1
 A {\nullfont few} characters.
@@ -3759,19 +3986,43 @@ Missing character: There is no w in font nullfont!!
 \endexample
 \enddesc
 
+%\begindesc
+%\cts tracingmacros {\param{number}}
+%\explain
+%If this parameter is $1$ or greater,
+%\TeX\ will record in the log file the expansion and arguments
+%of every macro that it executes.
+%^^{macros//tracing}
+%If |\tracingmacros| is $2$ or greater,
+%\TeX\ will record, in addition,
+%every expansion of a \minref{token} list such as
+%|\output| or |\everycr|.
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
+%\example
+%\def\a{first \b, then \c}
+%\def\b{b} \def\c{c}
+%\tracingmacros = 2
+%Call \a once.
+%|
+%\logproduces
+%\a ->first \b , then \c
+%
+%\b ->b
+%
+%\c ->c
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts tracingmacros {\param{number}}
 \explain
-If this parameter is $1$ or greater,
-\TeX\ will record in the log file the expansion and arguments
-of every macro that it executes.
+如果此参数大于或等于 $1$，
+\TeX\ 将在日志文件中记录它执行的每个宏的展开和参量。
 ^^{macros//tracing}
-If |\tracingmacros| is $2$ or greater,
-\TeX\ will record, in addition,
-every expansion of a \minref{token} list such as
-|\output| or |\everycr|.
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
+如果 |\tracingmacros| 大于或等于 $2$，
+\TeX\ 还将记录每个\minref{记号}列的展开，比如 |\output| 或 |\everycr|。
+如果 ^|\tracingonline| 大于零，这些信息还将显示在终端上。
 \example
 \def\a{first \b, then \c}
 \def\b{b} \def\c{c}
@@ -3788,23 +4039,66 @@ Call \a once.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts tracingoutput {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will record in the log file the contents of every box that
+%it sends to the \dvifile.
+%^^{\dvifile//boxes recorded in log file}
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
+%The number of leading dots in each line of the trace output indicates
+%the nesting level of the box at that line.
+%You can control the amount of tracing by setting
+%^|\showboxbreadth| and ^|\showboxdepth| (\xref\showboxbreadth).
 \begindesc
 \cts tracingoutput {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will record in the log file the contents of every box that
-it sends to the \dvifile.
+如果此参数大于零，
+\TeX\ 将在日志文件中记录它送出到 \dvifile 的每个盒子的内容。
 ^^{\dvifile//boxes recorded in log file}
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
-The number of leading dots in each line of the trace output indicates
-the nesting level of the box at that line.
-You can control the amount of tracing by setting
-^|\showboxbreadth| and ^|\showboxdepth| (\xref\showboxbreadth).
+如果 ^|\tracingonline| 大于零，这些信息还将显示在终端上。
+追踪输出中每行开头的点号个数表示该行盒子的嵌套层级。
+你可以用 ^|\showboxbreadth| 和 ^|\showboxdepth|（\xref\showboxbreadth ）%
+控制追踪的数量。
 
-Setting |\tracingoutput| to $1$ can be particularly helpful when you're trying
-to determine why you've gotten ^{extra space} on a page.
+%Setting |\tracingoutput| to $1$ can be particularly helpful when you're trying
+%to determine why you've gotten ^{extra space} on a page.
+若你想确定页面为何出现^{多余空格}，
+设定 |\tracingoutput| 为 $1$ 就特别有用。
 
+%\example
+%% This is the entire file.
+%\tracingoutput = 1 \nopagenumbers
+%One-line page. \bye
+%|
+%\logproduces
+%Completed box being shipped out [1]
+%\vbox(667.20255+0.0)x469.75499
+%.\vbox(0.0+0.0)x469.75499, glue set 13.99998fil
+%..\glue -22.5
+%..\hbox(8.5+0.0)x469.75499, glue set 469.75499fil
+%...\vbox(8.5+0.0)x0.0
+%...\glue 0.0 plus 1.0fil
+%..\glue 0.0 plus 1.0fil minus 1.0fil
+%.\vbox(643.20255+0.0)x469.75499, glue set 631.2581fill
+%..\glue(\topskip) 3.05556
+%..\hbox(6.94444+1.94444)x469.75499, glue set 386.9771fil
+%...\hbox(0.0+0.0)x20.0
+%...\tenrm O
+%...\tenrm n
+%...\tenrm e
+%...\tenrm -
+%...etc.
+%..\glue 0.0 plus 1.0fil
+%..\glue 0.0 plus 1.0fill
+%.\glue(\baselineskip) 24.0
+%.\hbox(0.0+0.0)x469.75499, glue set 469.75499fil
+%..\glue 0.0 plus 1.0fil
+%|
+%\endexample
+%\enddesc
 \example
 % This is the entire file.
 \tracingoutput = 1 \nopagenumbers
@@ -3837,90 +4131,163 @@ Completed box being shipped out [1]
 \endexample
 \enddesc
 
+%\begindesc
+%\cts tracingpages {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will record in the log file its calculations of the cost of
+%various page breaks that it tries.
+%^^{page breaks//tracing}
+%If |\tracing!-online| ^^|\tracingonline|
+%is greater than zero, this information will also appear
+%at your terminal.
+%\TeX\ produces a line of this output
+%whenever it first places a box or \minref{insertion}
+%on the current page list, and also whenever it processes a potential
+%break point for the page.
+%Examining this output can be helpful when you're trying to determine
+%the cause of a bad page break.
+%See \knuth{pages~112--114} for an illustration and explanation of
+%this output.
 \begindesc
 \cts tracingpages {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will record in the log file its calculations of the cost of
-various page breaks that it tries.
+如果此参数大于零，
+\TeX\ 将在日志文件中记录它尝试各种分页所计算的代价。
 ^^{page breaks//tracing}
-If |\tracing!-online| ^^|\tracingonline|
-is greater than zero, this information will also appear
-at your terminal.
-\TeX\ produces a line of this output
-whenever it first places a box or \minref{insertion}
-on the current page list, and also whenever it processes a potential
-break point for the page.
-Examining this output can be helpful when you're trying to determine
-the cause of a bad page break.
-See \knuth{pages~112--114} for an illustration and explanation of
-this output.
+如果 |\tracing!-online| ^^|\tracingonline| 大于零，
+这些信息还将显示在终端上。
+在放置一个盒子或\minref{插入项}到当前的页面列表，
+或者在处理页面的某个可能分页点时，\TeX\ 都在日志输出中写上一行。
+检查此输出将有助于你确定糟糕分页的起因。
+见\knuth{第~112--114~页}中此类输出的示例和解释。
 
-Some production forms of \TeX\ ignore the value of |\tracingpages|
-so that they can run faster.
-If you need to use this parameter, be sure to use a form that
-responds to it.
+%Some production forms of \TeX\ ignore the value of |\tracingpages|
+%so that they can run faster.
+%If you need to use this parameter, be sure to use a form that
+%responds to it.
+%\enddesc
+某些 \TeX\ 实现形式忽略 |\tracingpages| 的取值以更快地运行。
+如果你需要此参数，确保你用的 \TeX\ 形式能用此参数。
 \enddesc
 
+%\begindesc
+%\cts tracingparagraphs {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will record in the log file its calculations of the cost of
+%various line breaks that it tries.
+%^^{line breaking//tracing}
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
+%\TeX\  produces this output when it reaches the end of each paragraph.
+%See \knuth{pages~98--99} for an illustration and explanation of
+%this output.
 \begindesc
 \cts tracingparagraphs {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will record in the log file its calculations of the cost of
-various line breaks that it tries.
+如果此参数大于零，
+\TeX\ 将在日志文件中记录它尝试各种断行所计算的代价。
 ^^{line breaking//tracing}
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
-\TeX\  produces this output when it reaches the end of each paragraph.
-See \knuth{pages~98--99} for an illustration and explanation of
-this output.
+如果 |\tracingonline| ^^|\tracingonline| 大于零，
+这些信息还将显示在终端上。
+\TeX\ 在段落的结尾处生成这些输出。
+见\knuth{第~98--99~页}中此类输出的示例和解释。
 
-Some production forms of \TeX\ ignore the value of |\tracing!-para!-graphs|
-so that they can run faster.
-If you need to use this parameter, be sure to use a form that
-responds to it.
+%Some production forms of \TeX\ ignore the value of |\tracing!-para!-graphs|
+%so that they can run faster.
+%If you need to use this parameter, be sure to use a form that
+%responds to it.
+%\enddesc
+某些 \TeX\ 实现形式忽略 |\tracing!-para!-graphs| 的取值以更快地运行。
+如果你需要此参数，确保你用的 \TeX\ 形式能用此参数。
 \enddesc
 
+%\begindesc
+%\cts tracingrestores {\param{number}}
+%\explain
+%If this parameter is greater than zero,
+%\TeX\ will record in the log file
+%the values that it restores when it encounters the end of a \minref{group}.
+%If ^|\tracingonline| is greater than zero, this information will also appear
+%at your terminal.
 \begindesc
 \cts tracingrestores {\param{number}}
 \explain
-If this parameter is greater than zero,
-\TeX\ will record in the log file
-the values that it restores when it encounters the end of a \minref{group}.
-If ^|\tracingonline| is greater than zero, this information will also appear
-at your terminal.
+如果此参数大于零，
+\TeX\ 将在日志文件中记录那些在\minref{编组}结尾处被还原的值。
+如果 |\tracingonline| ^^|\tracingonline| 大于零，
+这些信息还将显示在终端上。
 
-Some production forms of \TeX\ ignore the value of |\tracing!-restores|
-so that they can run faster.
-If you need to use this parameter, be sure to use a form that
-responds to it.
+%Some production forms of \TeX\ ignore the value of |\tracing!-restores|
+%so that they can run faster.
+%If you need to use this parameter, be sure to use a form that
+%responds to it.
+%\enddesc
+某些 \TeX\ 实现形式忽略 |\tracing!-restores| 的取值以更快地运行。
+如果你需要此参数，确保你用的 \TeX\ 形式能用此参数。
 \enddesc
 
+%\begindesc
+%\cts tracingstats {\param{number}}
+%\explain
+%If this parameter is $1$ or greater, \TeX\ will
+%include a report on the resources that it used to run your job
+%(see \knuth{page~300} for a list and explanation of these resources).
+%Moreover, if |\tracingstats| is $2$ or greater,
+%\TeX\ will report on its memory usage whenever it does a
+%^|\shipout| (\xref \shipout) for a page.
+%The report appears at the end of the log file.
+%^^{log file//tracing statistics in}
+%If ^|\tracingonline| is greater than zero, the information will also appear
+%at your terminal.
+%If you're having trouble with \TeX\ exceeding one of its
+%capacities, the information provided by |\tracingstats| may help you
+%pinpoint the cause of the difficulty.
 \begindesc
 \cts tracingstats {\param{number}}
 \explain
-If this parameter is $1$ or greater, \TeX\ will
-include a report on the resources that it used to run your job
-(see \knuth{page~300} for a list and explanation of these resources).
-Moreover, if |\tracingstats| is $2$ or greater,
-\TeX\ will report on its memory usage whenever it does a
-^|\shipout| (\xref \shipout) for a page.
-The report appears at the end of the log file.
+如果此参数大于或等于 $1$，
+\TeX\ 将报告它运行任务时所用的各种资源%
+（见\knuth{第~300~页}中这些资源的列表和解释）。
+另外，如果 |\tracingstats| 大于或等于 $2$，
+\TeX\ 将在 ^|\shipout|（\xref \shipout ）页面时报告所用的内存占用。
+这些报告写在日志文件的末尾。
 ^^{log file//tracing statistics in}
-If ^|\tracingonline| is greater than zero, the information will also appear
-at your terminal.
-If you're having trouble with \TeX\ exceeding one of its
-capacities, the information provided by |\tracingstats| may help you
-pinpoint the cause of the difficulty.
+如果 |\tracingonline| ^^|\tracingonline| 大于零，
+这些信息还将显示在终端上。
+如果出现 \TeX\ 超出其中某个容量的问题，
+|\tracingstats| 提供的这些信息将帮助你准确定位问题的起因。
 
-Some production forms of \TeX\ ignore the value of |\tracingstats|
-so that they can run faster.
-If you need to use this parameter, be sure to use a form that
-responds to it.
+%Some production forms of \TeX\ ignore the value of |\tracingstats|
+%so that they can run faster.
+%If you need to use this parameter, be sure to use a form that
+%responds to it.
+某些 \TeX\ 实现形式忽略 |\tracingstats| 的取值以更快地运行。
+如果你需要此参数，确保你用的 \TeX\ 形式能用此参数。
 
-The following example shows a sample of
-the tracing output you'd get on one implementation
-of \TeX.  It may be different on other implementations.
+%The following example shows a sample of
+%the tracing output you'd get on one implementation
+%of \TeX.  It may be different on other implementations.
+%{\codefuzz = 1in
+%\example
+%\tracingstats=1
+%|
+%\logproduces
+%Here is how much of TeX's memory you used:
+% 4 strings out of 5540
+% 60 string characters out of 72328
+% 5956 words of memory out of 262141
+% 921 multiletter control sequences out of 9500
+% 14794 words of font info for 50 fonts, out of 72000 for 255
+% 14 hyphenation exceptions out of 607
+% 7i,4n,1p,68b,22s stack positions out of 300i,40n,60p,3000b,4000s
+%|
+%\endexample
+%}% end scope of codefuzz
+%\enddesc
+下面的例子显示了在某个 \TeX\ 实现中实际的追踪输出。
+在其他 \TeX\ 实现中也许会有所不同。
 {\codefuzz = 1in
 \example
 \tracingstats=1
@@ -3939,70 +4306,126 @@ Here is how much of TeX's memory you used:
 }% end scope of codefuzz
 \enddesc
 
+%\begindesc
+%\cts tracingall {}
+%\explain
+%This command tells \TeX\ to
+%turn on every available form of tracing.
+%It also sets ^|\tracingonline| to $1$ so that the trace output will appear
+%at your terminal.
+%\enddesc
 \begindesc
 \cts tracingall {}
 \explain
-This command tells \TeX\ to
-turn on every available form of tracing.
-It also sets ^|\tracingonline| to $1$ so that the trace output will appear
-at your terminal.
+此命令让 \TeX\ 打开所有可用的追踪形式，
+并设定 ^|\tracingonline| 为 $1$ 以让追踪输出显示在终端上。
 \enddesc
 
+%\begindesc
+%\cts showboxbreadth {\param{number}}
+%\explain
+%This parameter specifies the maximum number of list items
+%that \TeX\ displays for one level of one box when it is producing
+%the output for ^|\showbox| or ^|\tracingoutput|.
+%\PlainTeX\ sets |\showboxbreadth| to $5$.
+%\enddesc
 \begindesc
 \cts showboxbreadth {\param{number}}
 \explain
-This parameter specifies the maximum number of list items
-that \TeX\ displays for one level of one box when it is producing
-the output for ^|\showbox| or ^|\tracingoutput|.
-\PlainTeX\ sets |\showboxbreadth| to $5$.
+此参数指定 \TeX\ 为 ^|\showbox| 或 ^|\tracingoutput| 生成输出时，%
+对各级盒子的列表项显示的最大数目。
+\PlainTeX\ 设定 |\showboxbreadth| 等于 $5$。
 \enddesc
 
+%\begindesc
+%\cts showboxdepth {\param{number}}
+%\explain
+%This parameter specifies the
+%level of the deepest list that \TeX\ displays when
+%it is producing the output for ^|\showbox| or ^|\showlists|.
+%\PlainTeX\ sets |\showboxdepth| is $3$.
+%\eix^^{tracing}
+%\eix^^{debugging}
+%\eix^^{diagnostic aids}
+%\enddesc
 \begindesc
 \cts showboxdepth {\param{number}}
 \explain
-This parameter specifies the
-level of the deepest list that \TeX\ displays when
-it is producing the output for ^|\showbox| or ^|\showlists|.
-\PlainTeX\ sets |\showboxdepth| is $3$.
+此参数指定 \TeX\ 为 ^|\showbox| 或 ^|\tracingoutput| 生成输出时，%
+所显示的列表的最深层级。
+\PlainTeX\ 设定 |\showboxdepth| 等于 $3$。
 \eix^^{tracing}
 \eix^^{debugging}
 \eix^^{diagnostic aids}
 \enddesc
 
 %==========================================================================
-\subsection {Sending messages}
+%\subsection {Sending messages}
+\subsection {传送信息}
 
+%\begindesc
+%\bix^^{messages, sending}
+%\bix^^{error messages}
+%\cts message {\rqbraces{\<token list>}}
+%\cts errmessage {\rqbraces{\<token list>}}
+%\explain
+%These commands display the message given by \<token list> on your
+%terminal and also enter it into the log.  Any \minref{macro}s in the
+%message are expanded, but no commands are executed.  This is the same rule
+%that \TeX\ uses for |\edef| (\xref \edef).
 \begindesc
 \bix^^{messages, sending}
 \bix^^{error messages}
 \cts message {\rqbraces{\<token list>}}
 \cts errmessage {\rqbraces{\<token list>}}
 \explain
-These commands display the message given by \<token list> on your
-terminal and also enter it into the log.  Any \minref{macro}s in the
-message are expanded, but no commands are executed.  This is the same rule
-that \TeX\ uses for |\edef| (\xref \edef).
+这两个命令在终端上显示由 \<token list> 给出的信息，并将它们记录到日志中。
+信息中的任何\minref{宏}都将被展开 ，但是命令不会被执行。
+这与 \TeX\ 用于 |\edef|（\xref\edef ）的规则一样。
 
-For |\errmessage|, \TeX\ pauses
-in the same way that it does for one of its own error messages
-and displays the |\errhelp| tokens if you ask for help.
+%For |\errmessage|, \TeX\ pauses
+%in the same way that it does for one of its own error messages
+%and displays the |\errhelp| tokens if you ask for help.
+对于 |\errmessage|，\TeX\ 如同显示自己的错误信息一样暂停运行，
+并在请求帮助时显示 |\errhelp| 记号列。
 
-You can generate multiline messages by using the ^|\newlinechar|
-character (\xref \newlinechar).
+%You can generate multiline messages by using the ^|\newlinechar|
+%character (\xref \newlinechar).
+%\example
+%\message{Starting a new section.}
+%|
+%\endexample
+%\enddesc
+要生成多行的信息，你可以用 ^|\newlinechar| 字符（\xref \newlinechar ）。
 \example
 \message{Starting a new section.}
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts wlog {\rqbraces{\<token list>}}
+%\explain
+%This command writes \<token list> on the log file.
+%^^{log file//written by \b\tt\\wlog\e}
+%\minrefs{log file}
+%\TeX\ expands \<token list> according to the same rules that it uses
+%for |\edef| (\xref\edef).
+%\example
+%\wlog{Take two aspirins and call me in the morning.}
+%|
+%\logproduces
+%Take two aspirins and call me in the morning.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts wlog {\rqbraces{\<token list>}}
 \explain
-This command writes \<token list> on the log file.
+此命令在日志文件写入 \<token list>。
 ^^{log file//written by \b\tt\\wlog\e}
 \minrefs{log file}
-\TeX\ expands \<token list> according to the same rules that it uses
-for |\edef| (\xref\edef).
+\TeX\ 按照与 |\edef|（\xref\edef ）一样的规则展开 \<token list>。
 \example
 \wlog{Take two aspirins and call me in the morning.}
 |
@@ -4012,29 +4435,66 @@ Take two aspirins and call me in the morning.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts errhelp {\param{token list}}
+%\explain
+%This parameter contains the token list that \TeX\ displays
+%when you ask for help in response to an |\errmessage| command.
+%We recommend that when
+%you're generating an error message with |\errmessage|, you
+%set |\errhelp| to a string that describes the nature of the
+%error and use |\newhelp| to produce that string.
+%You can use the ^|\newlinechar| character to produce multiline messages.
+%\enddesc
 \begindesc
 \cts errhelp {\param{token list}}
 \explain
-This parameter contains the token list that \TeX\ displays
-when you ask for help in response to an |\errmessage| command.
-We recommend that when
-you're generating an error message with |\errmessage|, you
-set |\errhelp| to a string that describes the nature of the
-error and use |\newhelp| to produce that string.
-You can use the ^|\newlinechar| character to produce multiline messages.
+此参数包含 \TeX\ 用户在 |\errmessage| 命令中请求帮助时显示的记号列表。
+我们建议在用 |\errmessage| 生成错误信息时，
+将|\errhelp| 设定为描述错误形式的字符串，并用 |\newhelp| 生成该字符串。
+你可以用 ^|\newlinechar| 字符生成多行的信息。
 \enddesc
 
+%\begindesc
+%\ctspecial newhelp \ctsxrdef{@newhelp} {\<control sequence>
+%   \rqbraces{\<help text>}}
+%\explain
+%This command assigns the ^{help message} given by \<help text> to
+%\<control sequence>.  It provides an efficient way of defining
+%the ^{help text} that further explains an error message.
+%Before issuing the error message with the |\errmessage| command,
+%you should assign \<control sequence> to ^|\errhelp|.  The help text
+%will then appear if the user types `|H|'
+%or `|h|' in response to the error message.
+%\example
+%\newhelp\pain{Your input includes a token that I find^^J
+%   to be offensive. Don't bother me again with this^^J
+%   document until you've removed it.}
+%\errhelp = \pain \newlinechar = `\^^J
+%% ^^J will start a new line
+%\errmessage{I do not appreciate receiving this token}
+%|
+%\logproduces
+%!! I do not appreciate receiving this token.
+%l.8 ...t appreciate receiving this token.}
+%
+%? H
+%\Your input includes a token that I find
+% to be offensive. Don't bother me again with this
+% document until you've removed it.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \ctspecial newhelp \ctsxrdef{@newhelp} {\<control sequence>
    \rqbraces{\<help text>}}
 \explain
-This command assigns the ^{help message} given by \<help text> to
-\<control sequence>.  It provides an efficient way of defining
-the ^{help text} that further explains an error message.
-Before issuing the error message with the |\errmessage| command,
-you should assign \<control sequence> to ^|\errhelp|.  The help text
-will then appear if the user types `|H|'
-or `|h|' in response to the error message.
+此命令将 \<help text> 给出的^{错误信息}赋予 \<control sequence>。
+它提供一种定义^{帮助文本}的快捷方式，帮助文本进一步解释了错误信息。
+在用 |\errmessage| 命令报出错误之前，
+你应当将 \<control sequence> 赋予 ^|\errhelp|。
+这样在显示错误信息时，如果用户键入 `|H|' 或 `|h|'，
+\TeX\ 将显示出帮助文本。
 \example
 \newhelp\pain{Your input includes a token that I find^^J
    to be offensive. Don't bother me again with this^^J
@@ -4055,23 +4515,38 @@ l.8 ...t appreciate receiving this token.}
 \endexample
 \enddesc
 
+%\begindesc
+%\cts errorcontextlines {\param{number}}
+%\explain
+%This parameter determines the number of pairs of context lines,
+%not counting the top and bottom pairs, that \TeX\ prints when it
+%encounters an error.  By setting it to $0$ you can get rid of long
+%error messages.
+%You can still force out the full context by typing something like:
+%\csdisplay
+%I\errorcontextlines=100\oops
+%|
+%in response to an error,
+%since the undefined control sequence |\oops| will cause another error.
+%\PlainTeX\ sets |\error!-context!-lines| to $5$.
+%\enddesc
 \begindesc
 \cts errorcontextlines {\param{number}}
 \explain
-This parameter determines the number of pairs of context lines,
-not counting the top and bottom pairs, that \TeX\ prints when it
-encounters an error.  By setting it to $0$ you can get rid of long
-error messages.
-You can still force out the full context by typing something like:
+此命令确定 \TeX\ 遇到错误时打印的上文和下文的行数，不包括最上面和最下面这两行。
+将它设为 $0$ 就可以去掉冗长的错误信息。
+你仍然可以强制显示完整的上下文，只要在回应错误时这样输入：
 \csdisplay
 I\errorcontextlines=100\oops
 |
-in response to an error,
-since the undefined control sequence |\oops| will cause another error.
-\PlainTeX\ sets |\error!-context!-lines| to $5$.
+这是因为未定义的控制序列将引起另一个错误。
+\PlainTeX\ 设定 |\error!-context!-lines| 等于 $5$。
 \enddesc
 
-\see |\write| (\xref \write), |\escapechar| (\xref \escapechar).
+%\see |\write| (\xref \write), |\escapechar| (\xref \escapechar).
+%\eix^^{messages, sending}
+%\eix^^{error messages}
+\see |\write|（\xref \write ）、|\escapechar|（\xref \escapechar ）。
 \eix^^{messages, sending}
 \eix^^{error messages}
 
