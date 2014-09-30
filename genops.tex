@@ -2770,35 +2770,59 @@ Multiplied value of skip0 is \the\skip0.\par
 \enddesc
 
 %==========================================================================
-\section {Input and output}
+%\section {Input and output}
+\section {输入和输出}
 
 %==========================================================================
-\subsection {Operations on input files}
+%\subsection {Operations on input files}
+\subsection {操作输入文件}
 
+%\begindesc
+%\bix^^{files}
+%\bix^^{input files}
+%\easy\cts input {\<filename>}
+%\explain
+%\minrefs{file}\minrefs{file name}
+%This command tells \TeX\ to read its input from file \<filename>.
+%When that file is exhausted, \TeX\ returns to reading from its previous
+%input source.  You can nest input files to any level you like
+%(within reason).
 \begindesc
 \bix^^{files}
 \bix^^{input files}
 \easy\cts input {\<filename>}
 \explain
 \minrefs{file}\minrefs{file name}
-This command tells \TeX\ to read its input from file \<filename>.
-When that file is exhausted, \TeX\ returns to reading from its previous
-input source.  You can nest input files to any level you like
-(within reason).
+此命令让 \TeX\ 从文件 \<filename> 读取输入。
+当该文件用完后，\TeX\ 回到之前的输入来源继续读取。
+你可以嵌套输入文件到任何层级（在合理范围内）。
 
-When you're typesetting a large document, it's usually a good idea to
-structure your main file as a sequence of |\input| commands that refer
-to the subsidiary parts of the document.  That way you can process the
-individual parts easily as you're working on drafts.  It's also a good
-practice to put all of your \minref{macro} definitions into a separate file and
-summon that file with an |\input| command as the first action in your
-main file.
+%When you're typesetting a large document, it's usually a good idea to
+%structure your main file as a sequence of |\input| commands that refer
+%to the subsidiary parts of the document.  That way you can process the
+%individual parts easily as you're working on drafts.  It's also a good
+%practice to put all of your \minref{macro} definitions into a separate file and
+%summon that file with an |\input| command as the first action in your
+%main file.
+在排版一个大文档时，通常在主文件写上一系列 |\input| 命令，以引入文档的各个子文件。
+用这种方式，在打草稿阶段你可以很方便地处理文档的单个部分。
+还有个好习惯就是，将所有\minref{宏定义}放在一个独立文件中，
+并在主文件一开始用 |\input| 命令引入它。
 
-\TeX\ uses different rules for scanning file names than it does for scanning
-\minref{token}s in general (see \xref{file name}).
-If your implementation expects file names to have extensions (usually
-indicated by a preceding dot), then \TeX\ provides a default extension
-of |.tex|.
+%\TeX\ uses different rules for scanning file names than it does for scanning
+%\minref{token}s in general (see \xref{file name}).
+%If your implementation expects file names to have extensions (usually
+%indicated by a preceding dot), then \TeX\ provides a default extension
+%of |.tex|.
+%\example
+%\input macros.tex
+%\input chap1 % equivalent to chap1.tex
+%|
+%\endexample
+%\enddesc
+\TeX\ 扫描文件名的规则一般和扫描\minref{记号}的不同（见\xref{文件名}）。
+如果 \TeX\ 系统要求文件名包含扩展名（通常在前面加上点号表示），
+则 \TeX\ 以 |.tex| 作为默认扩展名。
 \example
 \input macros.tex
 \input chap1 % equivalent to chap1.tex
@@ -2806,39 +2830,69 @@ of |.tex|.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts endinput {}
+%\explain
+%This command tells \TeX\ to stop reading input from the current file when it
+%next reaches the end of a line.
+%\enddesc
 \begindesc
 \cts endinput {}
 \explain
-This command tells \TeX\ to stop reading input from the current file when it
-next reaches the end of a line.
+此命令让 \TeX\ 在这一行读完后停止从当前文件读取输入。
 \enddesc
 
+%\begindesc
+%\cts inputlineno {}
+%\explain
+%This command yields a number (not a string) giving the line number of the
+%current line, defined to be the number that would appear in an error message
+%if an error occurred at this point.
+%\enddesc
 \begindesc
 \cts inputlineno {}
 \explain
-This command yields a number (not a string) giving the line number of the
-current line, defined to be the number that would appear in an error message
-if an error occurred at this point.
+此命令生成一个给出当前行编号的数（不是字符串），
+当此处有错误时，它就是写在错误信息中的行数。
 \enddesc
 
+%\begindesc
+%\cts openin {\<number> {\bt =} \<filename>}
+%\explain
+%This command tells \TeX\ to open the file named \<filename>
+%and make it available for reading  via the input stream
+%designated by \<number>.
+%^^{input streams//opening}
+%\<number> must be between $0$ and $15$.
+%Once you've opened a file and connected it to an input stream,
+%you can read from the file using the |\read| command
+%with the input stream's number.
 \begindesc
 \cts openin {\<number> {\bt =} \<filename>}
 \explain
-This command tells \TeX\ to open the file named \<filename>
-and make it available for reading  via the input stream
-designated by \<number>.
+此命令让 \TeX\ 打开名为 \<filename> 的文件，
+让我们可以通过编号为 \<number> 的输入流读取它。
 ^^{input streams//opening}
-\<number> must be between $0$ and $15$.
-Once you've opened a file and connected it to an input stream,
-you can read from the file using the |\read| command
-with the input stream's number.
+\<number> 必须在 $0$ 和 $15$ 之间。
+一旦打开了一个文件并将它连接到一个输入流，
+你就可以用|\read| 命令以输入流编号读取其内容。
 
-You can associate more than one input stream with the same
-file.  You can then read from several different positions within
-the file, one for each input stream.
+%You can associate more than one input stream with the same
+%file.  You can then read from several different positions within
+%the file, one for each input stream.
+你可以把同一个文件和多个输入流连接。
+这样你就可以从文件的多个不同位置读取内容，每个输入流对应一个位置。
 
-You should allocate stream numbers for |\openin| using
-|\new!-read| (\xref{\@newread}).
+%You should allocate stream numbers for |\openin| using
+%|\new!-read| (\xref{\@newread}).
+%\example
+%\newread\auxfile  \openin\auxfile = addenda.aux
+%% \auxfile now denotes the number of this opening
+%% of addenda.aux.
+%|
+%\endexample
+%\enddesc
+你应当用 |\new!-read|（\xref{\@newread}）命令分配 |\openin| 的流编号。
 \example
 \newread\auxfile  \openin\auxfile = addenda.aux
 % \auxfile now denotes the number of this opening
@@ -2847,42 +2901,76 @@ You should allocate stream numbers for |\openin| using
 \endexample
 \enddesc
 
-\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\cts closein {\<number>}
+%\explain
+%This command tells \TeX\ to close the \minref{input stream} numbered
+%\<number>, i.e.,
+%end the association between the input stream and its file.
+%The input stream with this number then becomes available for use with a
+%different file.
+%You should close an input stream once you're finished using its file.
+%\example
+%\closein\auxfile
+%|
+%\endexample
+%\enddesc
+\begindesc%\secondprinting{\vglue-.5\baselineskip\vskip0pt}
 \cts closein {\<number>}
 \explain
-This command tells \TeX\ to close the \minref{input stream} numbered
-\<number>, i.e.,
-end the association between the input stream and its file.
-The input stream with this number then becomes available for use with a
-different file.
-You should close an input stream once you're finished using its file.
+此命令让 \TeX\ 关闭编号为 \<number> 的\minref{输入流}，
+结束输入流与文件之间的关联。
+此编号的输入流以后就可以用于其他文件。
+在文件使用完成后你应当关闭输入流。
 \example
 \closein\auxfile
 |
 \endexample
 \enddesc
 
-\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\cts read {\<number> {\bt to} \<control sequence>}
+%\explain
+%^^{input streams//reading with \b\tt\\read\e}
+%^^{reading a file}
+%This command tells \TeX\ to read a line from the file
+%associated with the \minref{input stream}
+%designated by \<number> and assign the tokens on that line to
+%\<control sequence>.  The \minref{control sequence} then becomes a
+%parameterless \minref{macro}.  No macro expansion takes place
+%during the reading operation.  If the line contains any unmatched
+%left braces, \TeX\ will read additional lines until the braces are
+%all matched.  If \TeX\ reaches the end of the file without matching all the
+%braces, it will complain.
+\begindesc%\secondprinting{\vglue-.5\baselineskip\vskip0pt}
 \cts read {\<number> {\bt to} \<control sequence>}
 \explain
 ^^{input streams//reading with \b\tt\\read\e}
 ^^{reading a file}
-This command tells \TeX\ to read a line from the file
-associated with the \minref{input stream}
-designated by \<number> and assign the tokens on that line to
-\<control sequence>.  The \minref{control sequence} then becomes a
-parameterless \minref{macro}.  No macro expansion takes place
-during the reading operation.  If the line contains any unmatched
-left braces, \TeX\ will read additional lines until the braces are
-all matched.  If \TeX\ reaches the end of the file without matching all the
-braces, it will complain.
+此命令让 \TeX\ 从编号 \<number> 的\minref{输入流}关联的文件中读取一行，
+并将该行的记号赋予 \<control sequence>。
+该\minref{控制序列}就成为一个不带参数的\minref{宏}。
+在读取操作中 \TeX\ 不会执行宏展开。如果该行包含未配对的左花括号，
+\TeX\ 将读取额外的行直到花括号全部配对。
+如果直到文件结束还无法配对所有花括号，\TeX\ 将报错。
 
-If \<number> is greater than $15$ or hasn't been associated with a file
-using ^|\openin|, \TeX\ prompts you with `\<control sequence> |=|'
-on your terminal and waits for you to type a line of input.
-It then assigns the input line to \<control sequence>.
-If \<number> is less than zero, it reads a line of input from your
-terminal but omits the prompt.
+%If \<number> is greater than $15$ or hasn't been associated with a file
+%using ^|\openin|, \TeX\ prompts you with `\<control sequence> |=|'
+%on your terminal and waits for you to type a line of input.
+%It then assigns the input line to \<control sequence>.
+%If \<number> is less than zero, it reads a line of input from your
+%terminal but omits the prompt.
+%\example
+%\read\auxfile to \holder
+%% Expanding \holder will produce the line just read.
+%|
+%\endexample
+%\eix^^{input files}
+%\enddesc
+如果 \<number> 大于 $15$ 或者还未用 ^|\openin| 关联文件，
+\TeX\ 将在终端上显示提示符 `\<control sequence> |=|'，
+等待你键入一行输入，然后将该行输入赋予 \<control sequence>。
+如果 \<number> 小于零，它同样从终端读取输入，但不显示提示符。
 \example
 \read\auxfile to \holder
 % Expanding \holder will produce the line just read.
@@ -2895,31 +2983,54 @@ terminal but omits the prompt.
 
 
 %==========================================================================
-\subsection {Operations on output files}
+%\subsection {Operations on output files}
+\subsection {操作输出文件}
 
+%\bix^^{output files}
+%\begindesc
+%\cts openout {\<number> {\bt =} \<filename>}
+%\explain
+%^^{output streams//opening}
+%This command tells \TeX\ to open the file named \<filename>
+%and make it available for writing  via the \minref{output stream}
+%designated by \<number>.
+%\<number> must be between $0$ and $15$.
+%Once you've opened a file and connected it to an output stream,
+%you can write to the file using the |\write| command
+%with the output stream's number.
 \bix^^{output files}
 \begindesc
 \cts openout {\<number> {\bt =} \<filename>}
 \explain
 ^^{output streams//opening}
-This command tells \TeX\ to open the file named \<filename>
-and make it available for writing  via the \minref{output stream}
-designated by \<number>.
-\<number> must be between $0$ and $15$.
-Once you've opened a file and connected it to an output stream,
-you can write to the file using the |\write| command
-with the output stream's number.
+此命令让 \TeX\ 打开名为 \<filename> 的文件，
+让我们可以通过编号为 \<number> 的\minref{输出流}写入它。
+\<number> 必须在 $0$ 和 $15$ 之间。
+一旦打开了一个文件并将它连接到一个输出流，
+你就可以用 |\write| 命令以输出流编号读取其内容。
 
-An |\openout| generates a whatsit that becomes part of a box.
-The |\openout| does not take effect until \TeX\ ships out that box
-to the \dvifile,
-unless you've preceded the |\openout| with ^|\immediate|.
+%An |\openout| generates a whatsit that becomes part of a box.
+%The |\openout| does not take effect until \TeX\ ships out that box
+%to the \dvifile,
+%unless you've preceded the |\openout| with ^|\immediate|.
+|\openout| 命令生成一个作为盒子一部分的小玩意。
+直到 \TeX\ 将该盒子送出到 \dvifile 时 |\openout| 才会起作用，
+除非你在 |\openout| 之前加上 ^|\immediate| 命令。
 
-\TeX\ won't complain if you associate more than one output stream with the
-same file, but you'll get garbage in the file if you try it!
+%\TeX\ won't complain if you associate more than one output stream with the
+%same file, but you'll get garbage in the file if you try it!
+如果你把同一个文件和多个输出流关联，\TeX\ 不会报错，但这样做将得到一些垃圾！
 
-You should allocate stream numbers for |\openout| using
-|\newwrite| (\xref{\@newwrite}).
+%You should allocate stream numbers for |\openout| using
+%|\newwrite| (\xref{\@newwrite}).
+%\example
+%\newwrite\auxfile  \openout\auxfile = addenda.aux
+%% \auxfile now denotes the number of this opening
+%% of addenda.aux.
+%|
+%\endexample
+%\enddesc
+你应当用 |\newwrite|（\xref{\@newwrite}）为 |\openout| 分配编号。
 \example
 \newwrite\auxfile  \openout\auxfile = addenda.aux
 % \auxfile now denotes the number of this opening
@@ -2928,54 +3039,96 @@ You should allocate stream numbers for |\openout| using
 \endexample
 \enddesc
 
+%\begindesc
+%\cts closeout {\<number>}
+%\explain
+%^^{output streams//closing}
+%This command tells \TeX\ to close the \minref{output stream} numbered
+%\<number>. i.e.,
+%end the association between the output stream and its file.
+%The output stream with this number then becomes available for use with a
+%different file.
+%You should close an output stream once you're finished using its file.
 \begindesc
 \cts closeout {\<number>}
 \explain
 ^^{output streams//closing}
-This command tells \TeX\ to close the \minref{output stream} numbered
-\<number>. i.e.,
-end the association between the output stream and its file.
-The output stream with this number then becomes available for use with a
-different file.
-You should close an output stream once you're finished using its file.
+此命令让 \TeX\ 关闭编号为 \<number> 的\minref{输出流}，
+结束输出流与文件之间的关联。
+此编号的输出流以后就可以用于其他文件。
+在文件使用完成后你应当关闭输出流。
 
-A |\closeout| generates a whatsit that becomes part of a box.
-The |\closeout| does not take effect until \TeX\ ships out that box
-to the \dvifile,
-unless you've preceded the |\closeout| with ^|\immediate|.
+%A |\closeout| generates a whatsit that becomes part of a box.
+%The |\closeout| does not take effect until \TeX\ ships out that box
+%to the \dvifile,
+%unless you've preceded the |\closeout| with ^|\immediate|.
+%\example
+%\closeout\auxfile
+%|
+%\endexample
+%\enddesc
+|\closeout| 命令生成一个作为盒子一部分的小玩意。
+直到 \TeX\ 将该盒子送出到 \dvifile 时 |\closeout| 才会起作用，
+除非你在 |\closeout| 之前加上 ^|\immediate| 命令。
 \example
 \closeout\auxfile
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts write {\<number> \rqbraces{\<token list>}}
+%\explain
+%^^{output streams//writing}
+%^^{writing a file}
+%This command tells \TeX\ to write \<token list> to the file
+%associated with the \minref{output stream}
+%designated by \<number>.
+%It generates a whatsit that becomes part of a box.
+%The actual writing does not take place until \TeX\ ships out that box
+%to the \dvifile,
+%unless you've preceded the |\write| with ^|\immediate|.
 \begindesc
 \cts write {\<number> \rqbraces{\<token list>}}
 \explain
 ^^{output streams//writing}
 ^^{writing a file}
-This command tells \TeX\ to write \<token list> to the file
-associated with the \minref{output stream}
-designated by \<number>.
-It generates a whatsit that becomes part of a box.
-The actual writing does not take place until \TeX\ ships out that box
-to the \dvifile,
-unless you've preceded the |\write| with ^|\immediate|.
+此命令让 \TeX\ 将 \<token list> 写入编号为 \<number> 的\minref{输出流}的关联文件中。
+它生成一个作为盒子一部分的小玩意。
+直到 \TeX\ 将该盒子送出到 \dvifile 时才会实际写入文件，
+除非你在 |\write|  之前加上 ^|\immediate| 命令。
 
-For a |\write| that is not immediate, \TeX\ does not expand macros in
-\<token list> until the token list is actually written to the file.
-The macro expansions follow the same rules as |\edef| (\xref\edef).
-In particular, any control sequence that is not
-the name of a macro is written as
-^|\escapechar| followed by the control sequence name
-and a space.  Any `|#|' tokens
-in \<token list> are doubled, i.e., written as `|##|'.
+%For a |\write| that is not immediate, \TeX\ does not expand macros in
+%\<token list> until the token list is actually written to the file.
+%The macro expansions follow the same rules as |\edef| (\xref\edef).
+%In particular, any control sequence that is not
+%the name of a macro is written as
+%^|\escapechar| followed by the control sequence name
+%and a space.  Any `|#|' tokens
+%in \<token list> are doubled, i.e., written as `|##|'.
+对于非立即（immediate）的 |\write|，
+\TeX\ 直到实际写入文件时才展开 \<token list> 中的宏。
+宏展开遵循与 |\edef|（\xref\edef ）一样的规则。
+任何不是宏名称的控制序列被写成 ^|\escapechar| 加上控制序列名，
+后面再加一个空格。\<token list> 中的任何 `|#|' 记号被重复两遍，即写成 `|##|'。
 
-If \<number> is not in the range from $0$ to $15$, \TeX\ writes
-\<token list> to the log file.
+%If \<number> is not in the range from $0$ to $15$, \TeX\ writes
+%\<token list> to the log file.
+%^^{log file//written by \b\tt\\write\e}
+%If \<number> is greater than $15$ or isn't associated with an output
+%stream, \TeX\ also writes \<token list> to the terminal.
+%\example
+%\def\aa{a a}
+%\write\auxfile{\hbox{$x#y$} \aa}
+%% Writes the string `\hbox {$x##y$} a a' to \auxfile.
+%|
+%\endexample
+%\enddesc
+如果 \<number> 不在 $0$ 到 $15$ 的范围中，
+\TeX\ 将 \<token list> 写入到日志文件。
 ^^{log file//written by \b\tt\\write\e}
-If \<number> is greater than $15$ or isn't associated with an output
-stream, \TeX\ also writes \<token list> to the terminal.
+如果 \<number> 大于 $15$ 或该输出流未关联文件，
+\TeX\ 还同时将 \<token list> 写到终端中。
 \example
 \def\aa{a a}
 \write\auxfile{\hbox{$x#y$} \aa}
@@ -2984,35 +3137,64 @@ stream, \TeX\ also writes \<token list> to the terminal.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts immediate {}
+%\explain
+%This command should precede an |\openout|, |\closeout|, or |\write|.
+%^^|\write//with {\tt\\immediate}|
+%^^|\openout//with {\tt\\immediate}|
+%^^|\closeout//with {\tt\\immediate}|
+%It tells \TeX\ to perform the specified file operation without delay.
+%\example
+%\immediate\write 16{I'm stuck!!}
+%% has the same effect as \message
+%|
+%\endexample\enddesc
 \begindesc
 \cts immediate {}
 \explain
-This command should precede an |\openout|, |\closeout|, or |\write|.
+此命令应当放在 |\openout|、|\closeout| 或 |\write| 之前。
 ^^|\write//with {\tt\\immediate}|
 ^^|\openout//with {\tt\\immediate}|
 ^^|\closeout//with {\tt\\immediate}|
-It tells \TeX\ to perform the specified file operation without delay.
+它让 \TeX\ 立即执行指定的文件操作。
 \example
 \immediate\write 16{I'm stuck!!}
 % has the same effect as \message
 |
 \endexample\enddesc
 
+%\begindesc
+%\cts special {\rqbraces{\<token list>}}
+%\explain
+%This command tells \TeX\ to
+%write \<token list> directly to the \dvifile\ when it next
+%ships out a page.
+%A typical use of |\special| would be to tell the device driver to incorporate
+%the contents of a named graphics file into the output page.
+%^^{device drivers//instructions from \b\tt\\special\e}
+%The |\special| command produces a whatsit that associates
+%\<token list> with a particular position on the page, namely,
+%the position that a zero-size box would have had if such a box
+%had appeared instead of the |\special| command.
+%Any use you might make of |\special| depends strictly on
+%the ^{device drivers} that you have available.
+%\example
+%\special{graphic expic}
+%% Display the graphics file `expic' here.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts special {\rqbraces{\<token list>}}
 \explain
-This command tells \TeX\ to
-write \<token list> directly to the \dvifile\ when it next
-ships out a page.
-A typical use of |\special| would be to tell the device driver to incorporate
-the contents of a named graphics file into the output page.
+此命令让 \TeX\ 下次送出页面时将 \<token list> 直接写入 \dvifile 中。
+|\special| 的一个典型用法是，
+让设备驱动器将指定名称的图片文件整合到输出页面中。
 ^^{device drivers//instructions from \b\tt\\special\e}
-The |\special| command produces a whatsit that associates
-\<token list> with a particular position on the page, namely,
-the position that a zero-size box would have had if such a box
-had appeared instead of the |\special| command.
-Any use you might make of |\special| depends strictly on
-the ^{device drivers} that you have available.
+|\special| 命令生成一个包含 \<token list> 和一个特定位置的小玩意，
+该位置是将 |\special| 命令换成零尺寸盒子时该盒子应该出现的位置。
+你可以怎样使用 |\special| 命令，完全取决于你可用的^{设备驱动器}。
 \example
 \special{graphic expic}
 % Display the graphics file `expic' here.
@@ -3020,18 +3202,37 @@ the ^{device drivers} that you have available.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts newlinechar {\param{number}}
+%\explain
+%This parameter contains a character that indicates a new line on
+%output.  When \TeX\ encounters this character
+%while reading the argument of
+%a |\write|, |\message|, or
+%|\errmessage| command, it starts a new line.
+%If |\newlinechar| is not in the range $0$--$255$,
+%there is no character that indicates
+%a new line on output.
+%\PlainTeX\ sets |\newlinechar| to $-1$.
+%\example
+%\newlinechar = `\^^J
+%\message{This message appears^^Jon two lines.}
+%|
+%\logproduces
+%This message appears
+%on two lines.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts newlinechar {\param{number}}
 \explain
-This parameter contains a character that indicates a new line on
-output.  When \TeX\ encounters this character
-while reading the argument of
-a |\write|, |\message|, or
-|\errmessage| command, it starts a new line.
-If |\newlinechar| is not in the range $0$--$255$,
-there is no character that indicates
-a new line on output.
-\PlainTeX\ sets |\newlinechar| to $-1$.
+此参数表示输出时所用的换行符。
+在读取 |\write|、|\message| 或 |\errmessage| 命令的参量时，
+如果 \TeX\ 遇到这个字符，它就新起一行。
+如果 |\newlinechar| 不在 $0$--$255$ 的范围内，
+输出中就不会任何换行符。
+\PlainTeX\ 设定 |\newlinechar| 等于 $-1$。
 \example
 \newlinechar = `\^^J
 \message{This message appears^^Jon two lines.}
@@ -3043,22 +3244,39 @@ on two lines.
 \endexample
 \enddesc
 
+%\see |\newread|, |\newwrite| (\xref{\@newwrite}).
+%\eix^^{files}
+%\eix^^{output files}
 \see |\newread|, |\newwrite| (\xref{\@newwrite}).
 \eix^^{files}
 \eix^^{output files}
 
 %==========================================================================
-\subsection {Interpreting input characters}
+%\subsection {Interpreting input characters}
+\subsection {解释输入字符}
 
+%\begindesc
+%\cts catcode {\<charcode> \tblentry{number}}
+%\explain
+%^^{category codes//in \b\tt\\catcode\e\ table}
+%This table entry contains the \minref{category code} of the character
+%whose \ascii\ code is \<charcode>.
+%The category codes are listed on \xrefpg{catcodes}.
+%By changing the category code of a character you can get \TeX\ to treat
+%that character differently.
+%\example
+%\catcode `\[ = 1 \catcode `\] = 2
+%% Make [ and ] act like left and right braces.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts catcode {\<charcode> \tblentry{number}}
 \explain
 ^^{category codes//in \b\tt\\catcode\e\ table}
-This table entry contains the \minref{category code} of the character
-whose \ascii\ code is \<charcode>.
-The category codes are listed on \xrefpg{catcodes}.
-By changing the category code of a character you can get \TeX\ to treat
-that character differently.
+此表格项表示 \ascii\ 码为 \<charcode> 的字符的\minref{类别码}。
+\xrefpg{catcodes}列出了所有的类别码。
+通过修改一个字符的类别码，你可以让 \TeX\ 用不同方式处理该字符。
 \example
 \catcode `\[ = 1 \catcode `\] = 2
 % Make [ and ] act like left and right braces.
@@ -3066,23 +3284,44 @@ that character differently.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts active {}
+%\explain
+%This command contains the
+%category code for an active character, namely, the number $13$.
+%\example
+%\catcode `\@ = \active % Make @ an active character.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts active {}
 \explain
-This command contains the
-category code for an active character, namely, the number $13$.
+此命令表示活动字符的类别码，即数字 $13$。
 \example
 \catcode `\@ = \active % Make @ an active character.
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts mathcode {\<charcode> \tblentry{number}}
+%\explain
+%This table entry contains the \minref{mathcode} of the character
+%whose \ascii\ code is \<charcode> \seeconcept{mathcode}.
+%The mathcode specifies that character's interpretation in math mode.
+%\example
+%\mathcode\> = "313E % as in plain TeX
+%% The > character has class 3 (relation), family 1 (math
+%% italic), and character code "3E
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts mathcode {\<charcode> \tblentry{number}}
 \explain
-This table entry contains the \minref{mathcode} of the character
-whose \ascii\ code is \<charcode> \seeconcept{mathcode}.
-The mathcode specifies that character's interpretation in math mode.
+此表格项表示 \ascii\ 码为 \<charcode> 的字符的\minref{数学码}\seeconcept{数学码}。
+数学码指明在数学模式中如何解释该字符。
 \example
 \mathcode\> = "313E % as in plain TeX
 % The > character has class 3 (relation), family 1 (math
@@ -3091,56 +3330,103 @@ The mathcode specifies that character's interpretation in math mode.
 \endexample
 \enddesc
 
+%\begindesc
+%\margin{{\tt\\delcode} was explained in two places.  This explanation
+%combines them.  (The other place was in the math section.)}
+%\cts delcode {\<charcode>\tblentry{number}}
+%\explain
+%^^{delimiter codes}
+%This table entry specifies the \minref{delimiter} code for the input character
+%whose \ascii\ code is \<charcode>.
+%The delimiter code tells \TeX\ how to find the best output character to use
+%for typesetting the indicated input character as a delimiter.
 \begindesc
 \margin{{\tt\\delcode} was explained in two places.  This explanation
 combines them.  (The other place was in the math section.)}
 \cts delcode {\<charcode>\tblentry{number}}
 \explain
 ^^{delimiter codes}
-This table entry specifies the \minref{delimiter} code for the input character
-whose \ascii\ code is \<charcode>.
-The delimiter code tells \TeX\ how to find the best output character to use
-for typesetting the indicated input character as a delimiter.
+此表格项表示 \ascii\ 码为 \<charcode> 的输入字符的定界码。
+定界码指引 \TeX\ 找到最佳输出字符以将该输入字符排版为定界符。
 
-\<number> is normally written in hexadecimal notation.
-Suppose that \<number> is the hexadecimal number $s_1s_2s_3\,
-l_1l_2l_3$.  Then when the character is used as a delimiter,
-\TeX\ takes the character to have small variant
-$s_1s_2s_3$ and large variant $l_1l_2l_3$.  Here $s_1s_2s_3$ indicates
-the math character found in position $s_2s_3$ of family $s_1$, and
-similarly for $l_1l_2l_3$.  This is the same convention as the one
-used for ^|\mathcode| (\xref \mathcode),
-except that |\mathcode| also specifies a class.
+%\<number> is normally written in hexadecimal notation.
+%Suppose that \<number> is the hexadecimal number $s_1s_2s_3\,
+%l_1l_2l_3$.  Then when the character is used as a delimiter,
+%\TeX\ takes the character to have small variant
+%$s_1s_2s_3$ and large variant $l_1l_2l_3$.  Here $s_1s_2s_3$ indicates
+%the math character found in position $s_2s_3$ of family $s_1$, and
+%similarly for $l_1l_2l_3$.  This is the same convention as the one
+%used for ^|\mathcode| (\xref \mathcode),
+%except that |\mathcode| also specifies a class.
+%\example
+%\delcode `( = "028300  % As in plain TeX.
+%|
+%\endexample
+%\enddesc
+通常以十六进制表示 \<number>。
+假设 \<number> 等于十六进制数 $s_1s_2s_3\,l_1l_2l_3$。
+则当该字符用作定界符时，该字符的小型变体为 $s_1s_2s_3$，大型变体为 $l_1l_2l_3$。
+这里 $s_1s_2s_3$ 表示在第 $s_1$ 族的 $s_2s_3$ 位置的数学字符，$l_1l_2l_3$ 类似。
+这与 ^|\mathcode|（\xref\mathcode ）中的用法一样，
+只是 |\mathcode| 还另外指定了字符类。
 \example
 \delcode `( = "028300  % As in plain TeX.
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts endlinechar {\param{number}}
+%\explain
+%This parameter
+%contains the character code for the  character that
+%\TeX\ appends to the end of each input line.
+%^^{input lines}
+%A value not in the range $0$--$255$
+%indicates that no character should be appended.
+%\PlainTeX\ leaves |\end!-line!-char| at
+%|`\^^M| (the {\ascii} code for \asciichar{return}).
+%\enddesc
 \begindesc
 \cts endlinechar {\param{number}}
 \explain
-This parameter
-contains the character code for the  character that
-\TeX\ appends to the end of each input line.
+此参数表示 \TeX\ 在每个输入行后添加的行尾符。
 ^^{input lines}
-A value not in the range $0$--$255$
-indicates that no character should be appended.
-\PlainTeX\ leaves |\end!-line!-char| at
-|`\^^M| (the {\ascii} code for \asciichar{return}).
+取不在 $0$--$255$ 范围内的值则表示不添加行尾符。
+\PlainTeX\ 设定 |\end!-line!-char| 为 |`\^^M|%
+（即 \asciichar{return} 符的{\ascii}码）。
 \enddesc
 
+%\begindesc
+%\cts ignorespaces {}
+%\explain
+%This command tells \TeX\ to read and expand tokens until it finds one that
+%is not a space \minref{token}, ignoring any space tokens
+%that it finds on the way.
+%|\ignorespaces| is often useful at the end of a \minref{macro} as a way
+%of making the macro insensitive to any spaces or ends of line
+%that might follow calls on it.
+%(An empty line after |\ignorespaces| still produces a |\par| token,
+%however.)
+%\example
+%\def\aa#1{yes #1\ignorespaces}
+%\aa{may}
+%be
+%|
+%\produces
+%\def\aa#1{yes #1\ignorespaces}
+%\aa{may}
+%be
+%\endexample
+%\enddesc
 \begindesc
 \cts ignorespaces {}
 \explain
-This command tells \TeX\ to read and expand tokens until it finds one that
-is not a space \minref{token}, ignoring any space tokens
-that it finds on the way.
-|\ignorespaces| is often useful at the end of a \minref{macro} as a way
-of making the macro insensitive to any spaces or ends of line
-that might follow calls on it.
-(An empty line after |\ignorespaces| still produces a |\par| token,
-however.)
+此命令让 \TeX\ 读取和展开记号，
+直到找到一个非空格\minref{记号}，并忽略它找到的任何空格记号。
+|\ignorespaces| 常用在\minref{宏}结尾处，
+使得调用宏时不受后面的空格符或换行符的影响。%
+（但是 |\ignorespaces| 之后的空行依然生成 |\par| 记号）。
 \example
 \def\aa#1{yes #1\ignorespaces}
 \aa{may}
