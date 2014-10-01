@@ -2324,21 +2324,42 @@ $$\cos^2 \theta + \sin^2 \theta = 1\leqno{(12)}$$
 
 
 %==========================================================================
-\section {Multiline displays}
+%\section {Multiline displays}
+\section {多行陈列公式}
 
+%\begindesc
+%\bix^^{displays//multiline}
+%\cts displaylines
+%   {{\bt \rqbraces{\<line>\ths\\cr$\ldots$\<line>\ths\\cr}}}
+%\explain
+%This command produces a multiline math display in which each line is
+%centered independently of the other lines.
+%You can use the |\noalign| command (\xref \noalign) to change the amount
+%of space between two lines of a multiline display.
 \begindesc
 \bix^^{displays//multiline}
 \cts displaylines
    {{\bt \rqbraces{\<line>\ths\\cr$\ldots$\<line>\ths\\cr}}}
 \explain
-This command produces a multiline math display in which each line is
-centered independently of the other lines.
-You can use the |\noalign| command (\xref \noalign) to change the amount
-of space between two lines of a multiline display.
+此命令排印一个多行陈列公式，其中的各行独立地居中放置。
+你可以使用 |\noalign| 命令（\xref\noalign ）改变多行陈列公式中两行的间隔。
 
-If you want to attach equation numbers to some or all of the equations
-in a multiline math display, you should use |\eqalignno| or
-|\leqalignno|.
+%If you want to attach equation numbers to some or all of the equations
+%in a multiline math display, you should use |\eqalignno| or
+%|\leqalignno|.
+%\example
+%$$\displaylines{(x+a)^2 = x^2+2ax+a^2\cr
+%                (x+a)(x-a) = x^2-a^2\cr}$$
+%|
+%\dproduces\centereddisplays
+%$$\displaylines{
+%(x+a)^2 = x^2+2ax+a^2\cr
+%(x+a)(x-a) = x^2-a^2\cr
+%}$$
+%\endexample
+%\enddesc
+如果你希望给多行陈列公式的某个或某些方程添加编号，
+你应当使用|\eqalignno| 或 |\leqalignno|。
 \example
 $$\displaylines{(x+a)^2 = x^2+2ax+a^2\cr
                 (x+a)(x-a) = x^2-a^2\cr}$$
@@ -2351,6 +2372,21 @@ $$\displaylines{
 \endexample
 \enddesc
 
+%\begindesc
+%\cts eqalign {}
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\cts eqalignno {}
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\cts leqalignno {}
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\explain
+%^^{equation numbers}
+%These commands produce a multiline math display
+%in which certain corresponding parts of the lines are lined up vertically.
+%The |\eqalignno| and |\leqalignno| commands also let you
+%provide equation numbers for some or all of the lines.
+%|\eqalignno| puts the equation numbers on the right and
+%|\leqalignno| puts them on the left.
 \begindesc
 \cts eqalign {}
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
@@ -2360,23 +2396,71 @@ $$\displaylines{
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
 \explain
 ^^{equation numbers}
-These commands produce a multiline math display
-in which certain corresponding parts of the lines are lined up vertically.
-The |\eqalignno| and |\leqalignno| commands also let you
-provide equation numbers for some or all of the lines.
-|\eqalignno| puts the equation numbers on the right and
-|\leqalignno| puts them on the left.
+这些命令排印一个多行陈列公式，其中某些行的对应部分竖直对齐。
+|\eqalignno| 和 |\leqalignno| 命令还允许你给某个或某些行添加方程编号。
+|\eqalignno| 将方程编号放在右侧，
+而 |\leqalignno| 将编号放在左侧。
 
-Each line in the display is ended by |\cr|.  Each of the parts to be aligned
-(most often an equals sign) is preceded by
-`|&|'.  An `|&|' also precedes each equation number, which comes at the
-end of a line.
-You can put more than one of these commands in a single display in order
-to produce several groups of equations.  In this case, only the rightmost
-or leftmost group can be produced by |\eqalignno| or |\leqalignno|.
+%Each line in the display is ended by |\cr|.  Each of the parts to be aligned
+%(most often an equals sign) is preceded by
+%`|&|'.  An `|&|' also precedes each equation number, which comes at the
+%end of a line.
+%You can put more than one of these commands in a single display in order
+%to produce several groups of equations.  In this case, only the rightmost
+%or leftmost group can be produced by |\eqalignno| or |\leqalignno|.
+陈列公式的每行用 |\cr| 结尾。
+各行需要对齐的各部分（多半是等号）前面加上 `|&|'。
+方程编号放在公式末尾，它的前面也要加上 `|&|'。
+你可以在单个陈列公式中多次使用这些命令以排印多组方程。
+在这种情形中，
+只有最右边或最左边的那组方程可以用 |\eqalignno| 或 |\leqalignno| 编号。
 
-You can use the |\noalign| command (\xref \noalign) to change the amount
-of space between two lines of a multiline display.
+%You can use the |\noalign| command (\xref \noalign) to change the amount
+%of space between two lines of a multiline display.
+%\example
+%$$\left\{\eqalign{f_1(t) &= 2t\cr f_2(t) &= t^3\cr
+%         f_3(t) &= t^2-1\cr}\right\}
+%  \left\{\eqalign{g_1(t) &= t\cr g_2(t) &= 1}\right\}$$
+%|
+%\dproduces
+%$$\left\{\eqalign{f_1(t) &= 2t\cr f_2(t) &= t^3\cr
+%   f_3(t) &= t^2-1\cr}\right\}
+%\left\{\eqalign{g_1(t) &= t\cr g_2(t) &= 1}\right\}$$
+%\nextexample
+%$$\eqalignno{
+%\sigma^2&=E(x-\mu)^2&(12)\cr
+%   &={1 \over n}\sum_{i=0}^n (x_i - \mu)^2&\cr
+%   &=E(x^2)-\mu^2\cr}$$
+%|
+%\produces
+%\abovedisplayskip = -\baselineskip
+%$$\eqalignno{
+%\sigma^2&=E(x-\mu)^2&(12)\cr
+%   &={1 \over n}\sum_{i=0}^n (x_i - \mu)^2&\cr
+%   &=E(x^2)-\mu^2\cr}$$
+%\nextexample
+%$$\leqalignno{
+%\sigma^2&=E(x-\mu)^2&(6)\cr
+%   &=E(x^2)-\mu^2&(7)\cr}$$
+%|
+%\produces
+%\abovedisplayskip = -\baselineskip
+%$$\leqalignno{
+%\sigma^2&=E(x-\mu)^2&(6)\cr
+%   &=E(x^2)-\mu^2&(7)\cr}$$
+%\nextexample
+%$$\eqalignno{
+%  &(x+a)^2 = x^2+2ax+a^2&(19)\cr
+%  &(x+a)(x-a) = x^2-a^2\cr}$$
+%% same effect as \displaylines but with an equation number
+%|
+%\dproduces
+%$$\eqalignno{
+%&(x+a)^2 = x^2+2ax+a^2&(19)\cr
+%&(x+a)(x-a) = x^2-a^2\cr
+%}$$
+%% same effect as \displaylines but with an equation number
+你可以使用 |\noalign| 命令（\xref\noalign ）改变多行陈列公式中两行的间隔。
 \example
 $$\left\{\eqalign{f_1(t) &= 2t\cr f_2(t) &= t^3\cr
          f_3(t) &= t^2-1\cr}\right\}
@@ -2421,9 +2505,13 @@ $$\eqalignno{
 }$$
 % same effect as \displaylines but with an equation number
 
+%\eix^^{displays//multiline}
+%\endexample
+%\enddesc
 \eix^^{displays//multiline}
 \endexample
 \enddesc
+
 
 %==========================================================================
 \section {Fonts in math formulas}
