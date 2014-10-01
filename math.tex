@@ -1332,11 +1332,37 @@ mathchoice.
 \enddesc
 
 %==========================================================================
-\section {Compound symbols}
+%\section {Compound symbols}
+\section {复合符号}
 
 %==========================================================================
-\subsection {Math accents}
+%\subsection {Math accents}
+\subsection {数学重音}
 
+%\begindesc
+%\xrdef{mathaccent}
+%^^{accents}
+%^^{math//accents}
+%%
+%\easy\ctsx acute {^{acute accent} as in $\acute x$}
+%\ctsx b {^{bar-under accent} as in $\b x$}
+%\ctsx bar {^{bar accent} as in $\bar x$}
+%\ctsx breve {^{breve accent} as in $\breve x$}
+%\ctsx check {^{check accent} as in $\check x$}
+%\ctsx ddot {^{double dot accent} as in $\ddot x$}
+%\ctsx dot {^{dot accent} as in $\dot x$}
+%\ctsx grave {^{grave accent} as in $\grave x$}
+%\ctsx hat {^{hat accent} as in $\hat x$}
+%\ctsx widehat {^{wide hat accent} as in $\widehat {x+y}$}
+%\ctsx tilde {^{tilde accent} as in $\tilde x$}
+%\ctsx widetilde {^{wide tilde accent} as in $\widetilde {z+a}$}
+%\ctsx vec {^{vector accent} as in $\vec x$}
+%\explain
+%These commands produce accent marks in math formulas.  You'll ordinarily
+%need to leave a space after any one of them.
+%A wide accent can be applied to a multicharacter subformula;
+%\TeX\ will center the accent over the subformula.
+%The other accents are usefully applied only to a single character.
 \begindesc
 \xrdef{mathaccent}
 ^^{accents}
@@ -1356,12 +1382,16 @@ mathchoice.
 \ctsx widetilde {^{wide tilde accent} as in $\widetilde {z+a}$}
 \ctsx vec {^{vector accent} as in $\vec x$}
 \explain
-These commands produce accent marks in math formulas.  You'll ordinarily
-need to leave a space after any one of them.
-A wide accent can be applied to a multicharacter subformula;
-\TeX\ will center the accent over the subformula.
-The other accents are usefully applied only to a single character.
+这些命令在数学公式上排印重音标记。你通常需要在它们后面留下空格。
+宽重音可以应用到多字符子公式中；\TeX\ 将把重音放在子公式的中间。
+其他重音仅在应用到单个字符时才有用。
 
+%\example
+%$\dot t^n \qquad \widetilde{v_1 + v_2}$
+%|
+%\produces
+%$\dot t^n \qquad \widetilde{v_1 + v_2}$
+%\endexample
 \example
 $\dot t^n \qquad \widetilde{v_1 + v_2}$
 |
@@ -1369,27 +1399,56 @@ $\dot t^n \qquad \widetilde{v_1 + v_2}$
 $\dot t^n \qquad \widetilde{v_1 + v_2}$
 \endexample
 
+%\begindesc
+%\cts mathaccent {\<mathcode>}
+%\explain
+%This command tells \TeX\ to typeset a math accent
+%whose family and character code are given by \<mathcode>.  (\TeX\ ignores
+%the class of the \minref{mathcode}.)
+%See \knuth{Appendix~G} for the details of how \TeX\ positions such an accent.
+%The usual way to use |\mathaccent| is to put it in a macro definition
+%that gives a name to a math accent.
+%\example
+%\def\acute{\mathaccent "7013}
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts mathaccent {\<mathcode>}
 \explain
-This command tells \TeX\ to typeset a math accent
-whose family and character code are given by \<mathcode>.  (\TeX\ ignores
-the class of the \minref{mathcode}.)
-See \knuth{Appendix~G} for the details of how \TeX\ positions such an accent.
-The usual way to use |\mathaccent| is to put it in a macro definition
-that gives a name to a math accent.
+此命令让 \TeX\ 排版字体族和字符编码由 \<mathcode> 给出的数学重音。%
+（\TeX\ 忽略\minref{数学码}中的类。）
+请参阅\knuth{附录~G}对 \TeX\ 如何放置该重音的详细介绍。
+经常将 |\mathaccent| 放在宏定义中，以给数学重音一个名称。
 \example
 \def\acute{\mathaccent "7013}
 |
 \endexample
 \enddesc
 
-\see ``Accents'' (\xref {accents}).
+%\see ``Accents'' (\xref {accents}).
+%\enddesc
+\see ``Accents''（\xref {accents}）。
 \enddesc
 
 %==========================================================================
-\subsection {Fractions and other stacking operations}
+%\subsection {Fractions and other stacking operations}
+\subsection {分式和其他堆叠运算}
 
+%\begindesc
+%\bix^^{fractions}
+%\bix^^{stacking subformulas}
+%\easy\cts over {}
+%\cts atop {}
+%\cts above {\<dimen>}
+%\cts choose {}
+%\cts brace {}
+%\cts brack {}
+%\explain
+%{\def\fri{\<formula$_1$>}%
+%\def\frii{\<formula$_2$>}%
+%These commands stack one subformula on top of another one.  We will explain how
+%|\over| works, and then relate the other commands to it.
 \begindesc
 \bix^^{fractions}
 \bix^^{stacking subformulas}
@@ -1402,49 +1461,92 @@ that gives a name to a math accent.
 \explain
 {\def\fri{\<formula$_1$>}%
 \def\frii{\<formula$_2$>}%
-These commands stack one subformula on top of another one.  We will explain how
-|\over| works, and then relate the other commands to it.
+这些命令将一个子公式堆放在另一个子公式之上。
+我们将解释 |\over| 如何作用，然后说明其他命令与它的关系。
 
-|\over| is the command that you'd normally use to produce a fraction.
+%|\over| is the command that you'd normally use to produce a fraction.
+%^^{fractions//produced by \b\tt\\over\e}
+%If you write something in one of the following forms:
+%\csdisplay
+%$$!fri\over!frii$$
+%$!fri\over!frii$
+%\left!<delim>!fri\over!frii\right!<delim>
+%{!fri\over!frii}
+%|
+%you'll get a fraction with numerator \fri\  and denominator \<for\-mu\-la$_2$>,
+%i.e., \fri\ over \frii.
+%In the first three of
+%these forms the |\over| is not implicitly contained in a group;
+%it absorbs
+%everything to its left and to its right until it comes to a boundary,
+%namely, the beginning or end of a group.
+|\over| 命令通常用于排印分式。
 ^^{fractions//produced by \b\tt\\over\e}
-If you write something in one of the following forms:
+如果你按下面几种形式之一撰写：
 \csdisplay
 $$!fri\over!frii$$
 $!fri\over!frii$
 \left!<delim>!fri\over!frii\right!<delim>
 {!fri\over!frii}
 |
-you'll get a fraction with numerator \fri\  and denominator \<for\-mu\-la$_2$>,
-i.e., \fri\ over \frii.
-In the first three of
-these forms the |\over| is not implicitly contained in a group;
-it absorbs
-everything to its left and to its right until it comes to a boundary,
-namely, the beginning or end of a group.
+你将得到分子为 \fri\ 分母为 \<for\-mu\-la$_2$> 的分式，
+即 \fri\ 除以 \frii 。
+在前面三种形式中，|\over| 非显式地包含在一个编组中；
+它吸收左边和右边的内容直到遇到边界，即编组的开头和结尾。
 
-You can't use |\over| or any of the other commands in this group
-more than once in a formula.
-Thus a formula such as:
+%You can't use |\over| or any of the other commands in this group
+%more than once in a formula.
+%Thus a formula such as:
+%\csdisplay
+%$$a \over n \choose k$$
+%|
+%isn't legal.
+%This is not a severe restriction because
+%you can always enclose one of the commands in braces.
+%The reason for the restriction is that if you had two of these commands
+%in a single formula, \TeX\ wouldn't know how to group them.
+你不可以在一个公式中多次使用 |\over| 或这批命令的其他命令。
+因此下面的公式：
 \csdisplay
 $$a \over n \choose k$$
 |
-isn't legal.
-This is not a severe restriction because
-you can always enclose one of the commands in braces.
-The reason for the restriction is that if you had two of these commands
-in a single formula, \TeX\ wouldn't know how to group them.
+是不合法的。这不是什么严重的限制，因为你总可以将其中一个命令放在花括号中。
+作此限制的原因是，如果你把这些命令的其中两个放在同一个公式中，
+\TeX\ 将不知道如何划分它们。
 
-The other commands are similar to |\over|, with the following exceptions:
+%The other commands are similar to |\over|, with the following exceptions:
+%\ulist\compact
+%\li |\atop| leaves out the fraction bar.
+%\li |\above| provides a fraction bar of thickness \<dimen>.
+%\li |\choose|
+%leaves out the fraction bar and encloses the construct in parentheses.
+%(It's called ``choose'' because $n \choose k$ is the notation for the
+%number of ways of choosing $k$ things out of $n$ things.)
+%\li |\brace| leaves out the fraction bar and encloses the construct in braces.
+%\li |\brack|
+%leaves out the fraction bar and encloses the construct in brackets.
+%\endulist
+%}%
+%\example
+%$${n+1 \over n-1}      \qquad {n+1 \atop n-1}   \qquad
+%  {n+1 \above 2pt n-1} \qquad {n+1 \choose n-1} \qquad
+%  {n+1 \brace n-1}     \qquad {n+1 \brack n-1}$$
+%|
+%\dproduces
+%$${n+1 \over n-1}      \qquad {n+1 \atop n-1}   \qquad
+%  {n+1 \above 2pt n-1} \qquad {n+1 \choose n-1} \qquad
+%  {n+1 \brace n-1}     \qquad {n+1 \brack n-1}$$
+%\endexample
+%\enddesc
+其他命令与 |\over| 类似，但有所不同：
 \ulist\compact
-\li |\atop| leaves out the fraction bar.
-\li |\above| provides a fraction bar of thickness \<dimen>.
-\li |\choose|
-leaves out the fraction bar and encloses the construct in parentheses.
-(It's called ``choose'' because $n \choose k$ is the notation for the
-number of ways of choosing $k$ things out of $n$ things.)
-\li |\brace| leaves out the fraction bar and encloses the construct in braces.
-\li |\brack|
-leaves out the fraction bar and encloses the construct in brackets.
+\li |\atop| 去掉分式的横线。
+\li |\above| 给出厚度为 \<dimen> 的分式横线。
+\li |\choose| 去掉分式横线，并将结构放在圆括号中。%
+（称它为``选择''，
+是因为 $n \choose k$ 表示从 $n$ 个东西中任取 $k$ 个的所有选取方式的数目。）%
+\li |\brace| 去掉分式横线，并将结构放在花括号中。
+\li |\brack| 去掉分式横线，并将结构放在方括号中。
 \endulist
 }%
 \example
@@ -1459,16 +1561,36 @@ $${n+1 \over n-1}      \qquad {n+1 \atop n-1}   \qquad
 \endexample
 \enddesc
 
+%\begindesc
+%\cts overwithdelims {\<delim$_1$> \<delim$_2$>}
+%\cts atopwithdelims {\<delim$_1$> \<delim$_2$>}
+%\cts abovewithdelims {\<delim$_1$> \<delim$_2$> \<dimen>}
+%\explain
+%Each of these commands stacks one subformula on top of another one and
+%surrounds the entire construct with \<delim$_1$> on the left and
+%\<delim$_2$> on the right.  These commands follow the same rules as
+%|\over|, |\atop|, and |\above|. The \<dimen> in |\abovewithdelims|
+%specifies the thickness of the fraction bar.
+%\example
+%$${m \overwithdelims () n}\qquad
+%  {m \atopwithdelims !|!| n}\qquad
+%  {m \abovewithdelims \{\} 2pt n}$$
+%|
+%\dproduces
+%$${m \overwithdelims () n}\qquad
+%  {m \atopwithdelims || n}\qquad
+%  {m \abovewithdelims \{\} 2pt n}$$
+%\endexample
+%\enddesc
 \begindesc
 \cts overwithdelims {\<delim$_1$> \<delim$_2$>}
 \cts atopwithdelims {\<delim$_1$> \<delim$_2$>}
 \cts abovewithdelims {\<delim$_1$> \<delim$_2$> \<dimen>}
 \explain
-Each of these commands stacks one subformula on top of another one and
-surrounds the entire construct with \<delim$_1$> on the left and
-\<delim$_2$> on the right.  These commands follow the same rules as
-|\over|, |\atop|, and |\above|. The \<dimen> in |\abovewithdelims|
-specifies the thickness of the fraction bar.
+这里的每个命令都将一个子公式堆放在另一个子公式之上，
+并将整个结构的左边用 \<delim$_1$>，右边用 \<delim$_2$> 包围。
+这些命令遵循与 |\over|、|\atop| 和 |\above| 相同的规则。
+|\abovewithdelims| 后面的 \<dimen> 指定分式横线的厚度。
 \example
 $${m \overwithdelims () n}\qquad
   {m \atopwithdelims !|!| n}\qquad
@@ -1481,17 +1603,36 @@ $${m \overwithdelims () n}\qquad
 \endexample
 \enddesc
 
+%\begindesc
+%\cts cases {}
+%\explain
+%^^{combinations, notation for}
+%This command produces the mathematical form that denotes a choice among
+%several cases.
+%Each case has two parts, separated by `|&|'.
+%\TeX\ treats the first part as a math formula
+%and the second part as ordinary text.  Each
+%case must be followed by |\cr|.
 \begindesc
 \cts cases {}
 \explain
 ^^{combinations, notation for}
-This command produces the mathematical form that denotes a choice among
-several cases.
-Each case has two parts, separated by `|&|'.
-\TeX\ treats the first part as a math formula
-and the second part as ordinary text.  Each
-case must be followed by |\cr|.
+此命令排印一个表示从多个情形中选择的数学形式。
+每种情形由两部分组成，两者以 `|&|' 分隔。
+\TeX\ 将第一部分视为数学公式，第二部分视为普通文本。
+每个情形之后必须加上 |\cr|。
 
+%\example
+%$$g(x,y) = \cases{f(x,y),&if $x<y$\cr
+%                  f(y,x),&if $x>y$\cr
+%                  0,&otherwise.\cr}$$
+%|
+%\dproduces
+%$$g(x,y) = \cases{f(x,y),&if $x<y$\cr
+%                  f(y,x),&if $x>y$\cr
+%                  0,&otherwise.\cr}$$
+%\endexample
+%\enddesc
 \example
 $$g(x,y) = \cases{f(x,y),&if $x<y$\cr
                   f(y,x),&if $x>y$\cr
@@ -1504,6 +1645,46 @@ $$g(x,y) = \cases{f(x,y),&if $x<y$\cr
 \endexample
 \enddesc
 
+%\begindesc
+%\cts underbrace {\<argument>}
+%\cts overbrace {\<argument>}
+%\cts underline {\<argument>}
+%\cts overline {\<argument>}
+%\cts overleftarrow {\<argument>}
+%\cts overrightarrow {\<argument>}
+%\explain
+%These commands place extensible ^{braces}, lines, or ^{arrows}
+%over or under the subformula given by \<argument>.
+%\TeX\ will make these constructs as wide as they need to be for
+%the context.
+%When \TeX\ produces the extended braces, lines, or arrows, it considers
+%only the dimensions of the \minref{box} containing \<argument>.
+%If you use more than one of these commands in a single formula, the
+%braces, lines, or arrows they produce
+%may not line up properly with each other.
+%You can use the |\mathstrut| command (\xref \mathstrut)
+%to overcome this difficulty.
+%\example
+%$$\displaylines{
+%\underbrace{x \circ y}\qquad \overbrace{x \circ y}\qquad
+%\underline{x \circ y}\qquad \overline{x \circ y}\qquad
+%\overleftarrow{x \circ y}\qquad
+%\overrightarrow{x \circ y}\cr
+%{\overline r + \overline t}\qquad
+%{\overline {r \mathstrut} + \overline {t \mathstrut}}\cr
+%}$$
+%|
+%\dproduces
+%$$\displaylines{
+%\underbrace{x \circ y}\qquad \overbrace{x \circ y}\qquad
+%\underline{x \circ y}\qquad \overline{x \circ y}\qquad
+%\overleftarrow{x \circ y}\qquad
+%\overrightarrow{x \circ y}\cr
+%{\overline r + \overline t}\qquad
+%{\overline {r \mathstrut} + \overline {t \mathstrut}}\cr
+%}$$
+%\endexample
+%\enddesc
 \begindesc
 \cts underbrace {\<argument>}
 \cts overbrace {\<argument>}
@@ -1512,17 +1693,14 @@ $$g(x,y) = \cases{f(x,y),&if $x<y$\cr
 \cts overleftarrow {\<argument>}
 \cts overrightarrow {\<argument>}
 \explain
-These commands place extensible ^{braces}, lines, or ^{arrows}
-over or under the subformula given by \<argument>.
-\TeX\ will make these constructs as wide as they need to be for
-the context.
-When \TeX\ produces the extended braces, lines, or arrows, it considers
-only the dimensions of the \minref{box} containing \<argument>.
-If you use more than one of these commands in a single formula, the
-braces, lines, or arrows they produce
-may not line up properly with each other.
-You can use the |\mathstrut| command (\xref \mathstrut)
-to overcome this difficulty.
+这些命令将可伸长的^{花括号}、横线或^{箭头}%
+放在由 \<argument> 给出的子公式的上边或下边。
+\TeX\ 将让这些结构足够宽以适应内容。
+当 \TeX\ 排印可伸长的花括号、横线或箭头时，
+它只考虑包含 \<argument> 的 \minref{盒子}的尺寸。
+如果你在一个公式中使用这些命令中的两个以上，
+其中排印的花括号、横线或箭头之间可能无法恰当地对齐。
+你可以使用 |\mathstrut| 命令（\xref\mathstrut ）克服此困难。
 \example
 $$\displaylines{
 \underbrace{x \circ y}\qquad \overbrace{x \circ y}\qquad
@@ -1545,19 +1723,34 @@ $$\displaylines{
 \endexample
 \enddesc
 
-\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\begindesc\secondprinting{\vglue-.5\baselineskip\vskip0pt}
+%\cts buildrel {\<formula> {\bt \\over} \<relation>}
+%\explain
+%^^{relations//putting formulas above}
+%This command produces a \minref{box} in which \<formula>
+%is placed on top of \<relation>. \TeX\ treats the result as a relation
+%for spacing purposes \seeconcept{class}.
+%\example
+%$\buildrel \rm def \over \equiv$
+%|
+%\produces
+%$\buildrel \rm def \over \equiv$
+\begindesc%\secondprinting{\vglue-.5\baselineskip\vskip0pt}
 \cts buildrel {\<formula> {\bt \\over} \<relation>}
 \explain
 ^^{relations//putting formulas above}
-This command produces a \minref{box} in which \<formula>
-is placed on top of \<relation>. \TeX\ treats the result as a relation
-for spacing purposes \seeconcept{class}.
+此命令将 \<formula> 所在的\minref{盒子}放在 \<relation> 上边。
+\TeX\ 处理间隔时将结果视为一个关系符\seeconcept{类}。
 \example
 $\buildrel \rm def \over \equiv$
 |
 \produces
 $\buildrel \rm def \over \equiv$
 
+%\eix^^{fractions}
+%\eix^^{stacking subformulas}
+%\endexample
+%\enddesc
 \eix^^{fractions}
 \eix^^{stacking subformulas}
 \endexample
@@ -1567,17 +1760,33 @@ $\buildrel \rm def \over \equiv$
 
 
 %==========================================================================
-\subsection {Dots}
+%\subsection {Dots}
+\subsection {圆点}
 
+%\begindesc
+%\bix^^{dots}
+%\easy\cts ldots {}
+%\cts cdots {}
+%\explain
+%These commands produce three ^{dots} in a row.  For |\ldots|, the dots
+%are on the baseline; for |\cdots|, the dots are centered with respect to
+%the axis (see the explanation of |\vcenter|, \xref\vcenter).
 \begindesc
 \bix^^{dots}
 \easy\cts ldots {}
 \cts cdots {}
 \explain
-These commands produce three ^{dots} in a row.  For |\ldots|, the dots
-are on the baseline; for |\cdots|, the dots are centered with respect to
-the axis (see the explanation of |\vcenter|, \xref\vcenter).
+这两个命令都排印三个一排的^{圆点}。对于 |\ldots|，
+圆点放在基线上；对于 |\cdots|，圆点放在中轴线上%
+（见 \xref\vcenter 对 |\vcenter| 的解释）。
 
+%\example
+%$t_1 + t_2 + \cdots + t_n \qquad x_1,x_2, \ldots\,, x_r$
+%|
+%\produces
+%$t_1 + t_2 + \cdots + t_n \qquad x_1,x_2, \ldots\,, x_r$
+%\endexample
+%\enddesc
 \example
 $t_1 + t_2 + \cdots + t_n \qquad x_1,x_2, \ldots\,, x_r$
 |
@@ -1586,10 +1795,27 @@ $t_1 + t_2 + \cdots + t_n \qquad x_1,x_2, \ldots\,, x_r$
 \endexample
 \enddesc
 
+%\begindesc
+%\easy\cts vdots {}
+%\explain
+%This command produces three vertical dots.
+%\example
+%$$\eqalign{f(\alpha_1)& = f(\beta_1)\cr
+%   \noalign{\kern -4pt}%
+%   &\phantom{a}\vdots\cr % moves the dots right a bit
+%   f(\alpha_k)& = f(\beta_k)\cr}$$
+%|
+%\dproduces
+%$$\eqalign{f(\alpha_1)& = f(\beta_1)\cr
+%   \noalign{\kern -4pt}%
+%   &\phantom{a}\vdots\cr
+%   f(\alpha_k)& = f(\beta_k)\cr}$$
+%\endexample
+%\enddesc
 \begindesc
 \easy\cts vdots {}
 \explain
-This command produces three vertical dots.
+此命令排印三个竖直的圆点。
 \example
 $$\eqalign{f(\alpha_1)& = f(\beta_1)\cr
    \noalign{\kern -4pt}%
@@ -1604,11 +1830,24 @@ $$\eqalign{f(\alpha_1)& = f(\beta_1)\cr
 \endexample
 \enddesc
 
+%\begindesc
+%\cts ddots {}
+%\explain
+%This command produces three dots on a diagonal.
+%Its most common use is to indicate repetition along the diagonal of a matrix.
+%\example
+%$$\pmatrix{0&\ldots&0\cr
+%           \vdots&\ddots&\vdots\cr
+%           0&\ldots&0\cr}$$
+%|
+%\dproduces
+%$$\pmatrix{0&\ldots&0\cr
+%           \vdots&\ddots&\vdots\cr
+%           0&\ldots&0\cr}$$
 \begindesc
 \cts ddots {}
 \explain
-This command produces three dots on a diagonal.
-Its most common use is to indicate repetition along the diagonal of a matrix.
+此命令排印斜线上的三个圆点。它常用于表示沿矩阵对角线的重复。
 \example
 $$\pmatrix{0&\ldots&0\cr
            \vdots&\ddots&\vdots\cr
@@ -1619,25 +1858,47 @@ $$\pmatrix{0&\ldots&0\cr
            \vdots&\ddots&\vdots\cr
            0&\ldots&0\cr}$$
 
+%\eix^^{dots}
+%\endexample
+%\enddesc
 \eix^^{dots}
 \endexample
 \enddesc
 
-\see |\dots| \ctsref\dots.
+%\see |\dots| \ctsref\dots.
+\see |\dots|\ctsref\dots 。
 
 %==========================================================================
-\subsection {Delimiters}
+%\subsection {Delimiters}
+\subsection {定界符}
 
+%\begindesc
+%\bix^^{delimiters}
+%%
+%\cts lgroup {}
+%\cts rgroup {}
+%\explain
+%These commands produce large left and right ^{parentheses}
+%that are defined as opening and closing \minref{delimiter}s.
+%The smallest available size for these delimiters is |\Big|.
+%If you use smaller sizes, you'll get weird characters.
+%\example
+%$$\lgroup\dots\rgroup\qquad\bigg\lgroup\dots\bigg\rgroup$$
+%|
+%\dproduces
+%$$\lgroup\dots\rgroup\qquad\bigg\lgroup\dots\bigg\rgroup$$
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{delimiters}
 %
 \cts lgroup {}
 \cts rgroup {}
 \explain
-These commands produce large left and right ^{parentheses}
-that are defined as opening and closing \minref{delimiter}s.
-The smallest available size for these delimiters is |\Big|.
-If you use smaller sizes, you'll get weird characters.
+这两个命令排印大号的左和右^{圆括号}，
+它们分别作为开定界符和闭\minref{定界符}。
+这两个定界符的最小可用尺寸为 |\Big|。
+如果使用更小的尺寸，你将得到奇怪的字符。
 \example
 $$\lgroup\dots\rgroup\qquad\bigg\lgroup\dots\bigg\rgroup$$
 |
@@ -1646,32 +1907,62 @@ $$\lgroup\dots\rgroup\qquad\bigg\lgroup\dots\bigg\rgroup$$
 \endexample
 \enddesc
 
+%\begindesc
+%\margin{{\tt\\vert} and {\tt\\Vert} were explained elsewhere.}
+%\easy\cts left {}
+%\cts right {}
+%\explain
+%These commands must be used together in the pattern:
+%\display
+%{{\bt \\left} \<delim$_1$> \<subformula> {\bt \\right} \<delim$_2$>}
+%This construct causes \TeX\ to produce \<subformula>,
+%enclosed in the \minref{delimiter}s \<delim$_1$> and \<delim$_2$>.
+%The vertical size of the delimiter is adjusted to fit the
+%vertical size (height plus depth) of \<subformula>.  \<delim$_1$> and
+%\<delim$_2$> need not correspond.
+%For instance, you could use `|]|' as a left delimiter
+%and `|(|' as a right delimiter in a single use of |\left|
+%and |\right|.
 \begindesc
 \margin{{\tt\\vert} and {\tt\\Vert} were explained elsewhere.}
 \easy\cts left {}
 \cts right {}
 \explain
-These commands must be used together in the pattern:
+这两个命令必须按照下面模式一起使用：
 \display
 {{\bt \\left} \<delim$_1$> \<subformula> {\bt \\right} \<delim$_2$>}
-This construct causes \TeX\ to produce \<subformula>,
-enclosed in the \minref{delimiter}s \<delim$_1$> and \<delim$_2$>.
-The vertical size of the delimiter is adjusted to fit the
-vertical size (height plus depth) of \<subformula>.  \<delim$_1$> and
-\<delim$_2$> need not correspond.
-For instance, you could use `|]|' as a left delimiter
-and `|(|' as a right delimiter in a single use of |\left|
-and |\right|.
+这个构造将让 \TeX\ 排印 \<subformula>，
+并用\minref{定界符} \<delim$_1$> 和 \<delim$_2$> 包围它。
+\TeX\ 调整定界符的竖直尺寸以适应 \<subformula> 的竖直尺寸（高度加深度）。
+\<delim$_1$> 和 \<delim$_2$> 不需要相对应。
+举个例子，在使用 |\left| 和 |\right| 时，
+你可以将 `|]|' 作为左定界符，而将 `|(|' 作为右定界符。
 
-|\left| and |\right| have the important property that they define a
-group, i.e., they act like left and right braces.  This grouping
-property is particularly useful when you put ^|\over| (\xref{\over}) or
-a related command between |\left| and |\right|, since you don't need to
-put braces around the fraction constructed by |\over|.
+%|\left| and |\right| have the important property that they define a
+%group, i.e., they act like left and right braces.  This grouping
+%property is particularly useful when you put ^|\over| (\xref{\over}) or
+%a related command between |\left| and |\right|, since you don't need to
+%put braces around the fraction constructed by |\over|.
+|\left| 和 |\right| 有个重要性质是它们定义了一个编组，
+即它们能够充当左和右花括号。
+当你在|\left| 和 |\right| 之间放上 ^|\over|（\xref{\over}）或其他相关命令时，
+此编组性质就很有用，因为你无需在 |\over| 构造的分式两边加上花括号。
 
-If you want a left delimiter but not a right delimiter, you can use `|.|' in
-place of the delimiter you don't want and it will turn into empty space
-(of width ^|\nulldelimiterspace|).
+%If you want a left delimiter but not a right delimiter, you can use `|.|' in
+%place of the delimiter you don't want and it will turn into empty space
+%(of width ^|\nulldelimiterspace|).
+%\example
+%$$\left\Vert\matrix{a&b\cr c&d\cr}\right\Vert
+%  \qquad \left\uparrow q_1\atop q_2\right.$$
+%|
+%\dproduces
+%$$\left\Vert\matrix{a&b\cr c&d\cr}\right\Vert
+%  \qquad \left\uparrow q_1\atop q_2\right.$$
+%\endexample
+%\enddesc
+如果你需要左定界符但不需要右定界符，
+你可以用 `|.|' 代替你不需要的定界符，
+这样它就变成一个空白（宽度为 ^|\nulldelimiterspace|）。
 \example
 $$\left\Vert\matrix{a&b\cr c&d\cr}\right\Vert
   \qquad \left\uparrow q_1\atop q_2\right.$$
@@ -1682,28 +1973,57 @@ $$\left\Vert\matrix{a&b\cr c&d\cr}\right\Vert
 \endexample
 \enddesc
 
+%\begindesc
+%\cts delimiter {\<number>}
+%\explain
+%This command produces a delimiter whose characteristics are given by
+%\<number>.  \<number> is normally written in hexadecimal notation.
+%You can use the |\delimiter| command instead of a character in any context
+%where \TeX\ expects a delimiter (although the command is rarely used
+%outside of a macro definition).
+%Suppose that \<number> is the hexadecimal number $cs_1s_2s_3
+%l_1l_2l_3$.  Then \TeX\ takes the delimiter to have
+%\minref{class} $c$, small variant
+%$s_1s_2s_3$, and large variant $l_1l_2l_3$.  Here $s_1s_2s_3$ indicates
+%the math character found in position $s_2s_3$ of family $s_1$, and
+%similarly for $l_1l_2l_3$.  This is the same convention as the one
+%used for ^|\mathcode| (\xref\mathcode).
+%\example
+%\def\vert{\delimiter "026A30C} % As in plain TeX.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts delimiter {\<number>}
 \explain
-This command produces a delimiter whose characteristics are given by
-\<number>.  \<number> is normally written in hexadecimal notation.
-You can use the |\delimiter| command instead of a character in any context
-where \TeX\ expects a delimiter (although the command is rarely used
-outside of a macro definition).
-Suppose that \<number> is the hexadecimal number $cs_1s_2s_3
-l_1l_2l_3$.  Then \TeX\ takes the delimiter to have
-\minref{class} $c$, small variant
-$s_1s_2s_3$, and large variant $l_1l_2l_3$.  Here $s_1s_2s_3$ indicates
-the math character found in position $s_2s_3$ of family $s_1$, and
-similarly for $l_1l_2l_3$.  This is the same convention as the one
-used for ^|\mathcode| (\xref\mathcode).
+此命令排印用 \<number> 刻画其特性的定界符。\<number> 通常用十六进制表示。
+在 \TeX\ 需要定界符的任何地方你都可以用 |\delimiter| 命令代替一个字符%
+（尽管此命令很少在宏定义之外的地方使用）。
+假设 \<number> 为十六进制数 $cs_1s_2s_3l_1l_2l_3$。
+则 \TeX\ 知道该定界符属于第$c$\minref{类}，
+小号变体为 $s_1s_2s_3$, 而大号变体为 $l_1l_2l_3$。
+这里 $s_1s_2s_3$ 表示第 $s_1$ 族位置 $s_2s_3$ 的数学字符，
+$l_1l_2l_3$ 类似。这里使用与 ^|\mathcode|（\xref\mathcode ）一样的约定。
 \example
 \def\vert{\delimiter "026A30C} % As in plain TeX.
 |
 \endexample
 \enddesc
 
-
+%\begindesc
+%\margin{{\tt\\delcode} was explained in two places.  The
+%combined explanation is now in `General operations'.}
+%\cts delimiterfactor {\param{number}}
+%\cts delimitershortfall {\param{number}}
+%\explain
+%^^{delimiters//height of}
+%These parameters together tell \TeX\ how the height of a \minref{delimiter}
+%should be related to the vertical size of the subformula
+%with which the delimiter is associated.
+%|\delimiterfactor| gives the minimum
+%ratio of the delimiter size to the vertical size of the subformula, and
+%|\delimitershortfall| gives the maximum by which the height of the
+%delimiter will be reduced from that of the vertical size of the subformula.
 \begindesc
 \margin{{\tt\\delcode} was explained in two places.  The
 combined explanation is now in `General operations'.}
@@ -1711,35 +2031,72 @@ combined explanation is now in `General operations'.}
 \cts delimitershortfall {\param{number}}
 \explain
 ^^{delimiters//height of}
-These parameters together tell \TeX\ how the height of a \minref{delimiter}
-should be related to the vertical size of the subformula
-with which the delimiter is associated.
-|\delimiterfactor| gives the minimum
-ratio of the delimiter size to the vertical size of the subformula, and
-|\delimitershortfall| gives the maximum by which the height of the
-delimiter will be reduced from that of the vertical size of the subformula.
+这两个参数共同确定了\minref{定界符}高度与其中子公式的竖直尺寸的关系。
+|\delimiterfactor| 给出定界符高度相对子公式竖直尺寸的最小比例，
+而 |\delimitershortfall| 给出定界符高度相对子公式竖直尺寸的最大差距。
 
-Suppose that the \minref{box} containing the subformula
-has height $h$ and depth $d$, and let $y=2\,\max(h,d)$.
-Let the value of |\delimiterfactor| be $f$ and the value of
-|\delimitershortfall| be $\delta$.
-Then \TeX\ takes the minimum delimiter size to be at least $y \cdot
-f/1000$ and at least $y-\delta$.  In particular, if |\delimiterfactor|
-is exactly $1000$ then \TeX\ will try to make a delimiter at least as tall
-as the formula to which it is attached.
-See \knuth{page~152 and page~446 (Rule 19)}
-for the exact details of how \TeX\ uses these parameters.
-\PlainTeX\ sets |\delimiter!-factor| to $901$ and
-|\delimiter!-shortfall| to |5pt|.
+%Suppose that the \minref{box} containing the subformula
+%has height $h$ and depth $d$, and let $y=2\,\max(h,d)$.
+%Let the value of |\delimiterfactor| be $f$ and the value of
+%|\delimitershortfall| be $\delta$.
+%Then \TeX\ takes the minimum delimiter size to be at least $y \cdot
+%f/1000$ and at least $y-\delta$.  In particular, if |\delimiterfactor|
+%is exactly $1000$ then \TeX\ will try to make a delimiter at least as tall
+%as the formula to which it is attached.
+%See \knuth{page~152 and page~446 (Rule 19)}
+%for the exact details of how \TeX\ uses these parameters.
+%\PlainTeX\ sets |\delimiter!-factor| to $901$ and
+%|\delimiter!-shortfall| to |5pt|.
+%\enddesc
+假设包含子公式的\minref{盒子}的高度为 $h$ 深度为 $d$，
+且令 $y=2\,\max(h,d)$。
+设 |\delimiterfactor| 的值为 $f$，|\delimitershortfall| 的值为 $\delta$。
+则 \TeX\ 选取的定界符高度至少为 $y \cdot f/1000$，且至少为 $y-\delta$。
+特别地，如果 |\delimiterfactor| 恰好为 $1000$，
+则 \TeX\ 将试着生成一个至少和其中的子公式一样高的定界符。
+见\knuth{第~152~页和第~446~页（规则19）}中 \TeX\ 如何使用这些参数的细节。
+\PlainTeX\ 设定 |\delimiter!-factor| 为 $901$，
+|\delimiter!-shortfall| 为 |5pt|。
 \enddesc
 
-\see |\delcode| (\xref\delcode), |\vert|, |\Vert|,
-and |\backslash| (\xref\vert).
+%\see |\delcode| (\xref\delcode), |\vert|, |\Vert|,
+%and |\backslash| (\xref\vert).
+%\eix^^{delimiters}
+\see |\delcode|（\xref\delcode )、|\vert|、|\Vert| 和 |\backslash|（\xref\vert ）。
 \eix^^{delimiters}
 
 %==========================================================================
-\subsection {Matrices}
+%\subsection {Matrices}
+\subsection {矩阵}
 
+%\begindesc
+%\cts matrix
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\cts pmatrix
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\cts bordermatrix
+%   {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
+%\explain
+%Each of these three commands produces a ^{matrix}.
+%The elements of each row of the input matrix
+%are separated by `|&|' and each row in turn is ended
+%by |\cr|.
+%(This is the same form that is used for an
+%\minref{alignment}.)
+%The commands differ in the following ways:
+%\ulist\compact
+%\li |\matrix| produces a matrix without any surrounding or inserted
+%\minref{delimiter}s.
+%\li |\pmatrix| produces a matrix surrounded by parentheses.
+%\li |\bordermatrix| produces a matrix in which the first row and the first
+%column are treated as labels.  (The first element of the first row is
+%usually left blank.)  The rest of the matrix is enclosed in
+%parentheses.
+%\endulist
+%\TeX\ can make the parentheses for |\pmatrix| and |\bordermatrix| as large as
+%they need to be by inserting vertical extensions.  If you want a matrix
+%to be surrounded by delimiters other than parentheses, you should use
+%|\matrix| in conjunction with |\left| and |\right| (\xref \left).
 \begindesc
 \cts matrix
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
@@ -1748,27 +2105,54 @@ and |\backslash| (\xref\vert).
 \cts bordermatrix
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
 \explain
-Each of these three commands produces a ^{matrix}.
-The elements of each row of the input matrix
-are separated by `|&|' and each row in turn is ended
-by |\cr|.
-(This is the same form that is used for an
-\minref{alignment}.)
-The commands differ in the following ways:
+这三个命令每个都排印一个^{矩阵}，
+输入矩阵时各行的元素之间用 `|&|' 分隔，而各行用 |\cr| 结尾。%
+（这里使用与\minref{阵列}一样的形式。）%
+这些命令之间的区别如下：
 \ulist\compact
-\li |\matrix| produces a matrix without any surrounding or inserted
-\minref{delimiter}s.
-\li |\pmatrix| produces a matrix surrounded by parentheses.
-\li |\bordermatrix| produces a matrix in which the first row and the first
-column are treated as labels.  (The first element of the first row is
-usually left blank.)  The rest of the matrix is enclosed in
-parentheses.
+\li |\matrix| 排印一个四周空白不带\minref{定界符}的矩阵。
+\li |\pmatrix| 排印一个两边带圆括号的矩阵。
+\li |\bordermatrix| 排印一个将第一行和第一列视为标号的矩阵。%
+（第一行的第一个元素通常为空白。）%
+矩阵的其他元素被圆括号包含。
 \endulist
-\TeX\ can make the parentheses for |\pmatrix| and |\bordermatrix| as large as
-they need to be by inserting vertical extensions.  If you want a matrix
-to be surrounded by delimiters other than parentheses, you should use
-|\matrix| in conjunction with |\left| and |\right| (\xref \left).
+通过增加竖直延伸，\TeX\ 能够为 |\pmatrix| 和 |\bordermatrix| 制作足够大的圆括号。
+如果你需要用不同于圆括号的定界符包围矩阵，你应当将
+|\matrix| 与 |\left| 和 |\right|（\xref\left ）合起来使用。
 
+%\example
+%$$\displaylines{
+%   \matrix{t_{11}&t_{12}&t_{13}\cr
+%           t_{21}&t_{22}&t_{23}\cr
+%           t_{31}&t_{32}&t_{33}\cr}\qquad
+%\left\{\matrix{t_{11}&t_{12}&t_{13}\cr
+%           t_{21}&t_{22}&t_{23}\cr
+%           t_{31}&t_{32}&t_{33}\cr}\right\}\cr
+%\pmatrix{t_{11}&t_{12}&t_{13}\cr
+%           t_{21}&t_{22}&t_{23}\cr
+%           t_{31}&t_{32}&t_{33}\cr}\qquad
+%\bordermatrix{&c_1&c_2&c_3\cr
+%           r_1&t_{11}&t_{12}&t_{13}\cr
+%           r_2&t_{21}&t_{22}&t_{23}\cr
+%           r_3&t_{31}&t_{32}&t_{33}\cr}\cr}$$
+%|
+%\dproduces
+%$$\displaylines{
+%   \matrix{t_{11}&t_{12}&t_{13}\cr
+%   t_{21}&t_{22}&t_{23}\cr
+%   t_{31}&t_{32}&t_{33}\cr}\qquad
+%\left\{\matrix{t_{11}&t_{12}&t_{13}\cr
+%   t_{21}&t_{22}&t_{23}\cr
+%   t_{31}&t_{32}&t_{33}\cr}\right\}\cr
+%\pmatrix{t_{11}&t_{12}&t_{13}\cr
+%   t_{21}&t_{22}&t_{23}\cr
+%   t_{31}&t_{32}&t_{33}\cr}\qquad
+%\bordermatrix{&c_1&c_2&c_3\cr
+%   r_1&t_{11}&t_{12}&t_{13}\cr
+%   r_2&t_{21}&t_{22}&t_{23}\cr
+%   r_3&t_{31}&t_{32}&t_{33}\cr}\cr}$$
+%\endexample
+%\enddesc
 \example
 $$\displaylines{
    \matrix{t_{11}&t_{12}&t_{13}\cr
@@ -1804,12 +2188,24 @@ $$\displaylines{
 \enddesc
 
 %==========================================================================
-\subsection {Roots and radicals}
+%\subsection {Roots and radicals}
+\subsection {根号与根数}
 
+%\begindesc
+%\easy\cts sqrt {\<argument>}
+%\explain
+%This command produces the notation for the square root of \<argument>.
+%\example
+%$$x = {-b\pm\sqrt{b^2-4ac} \over 2a}$$
+%|
+%\dproduces
+%$$x = {-b\pm\sqrt{b^2-4ac} \over 2a}$$
+%\endexample
+%\enddesc
 \begindesc
 \easy\cts sqrt {\<argument>}
 \explain
-This command produces the notation for the square root of \<argument>.
+此命令排印 \<argument> 的平方根。
 \example
 $$x = {-b\pm\sqrt{b^2-4ac} \over 2a}$$
 |
@@ -1818,11 +2214,22 @@ $$x = {-b\pm\sqrt{b^2-4ac} \over 2a}$$
 \endexample
 \enddesc
 
+%\begindesc
+%\easy\cts root {\<argument$_1$> {\bt \\of} \<argument$_2$>}
+%\explain
+%This command produces the notation for a root of \<argument$_2$>, where the
+%root is given by \<argument$_1$>.
+%\example
+%$\root \alpha \of {r \cos \theta}$
+%|
+%\produces
+%$\root \alpha \of {r \cos \theta}$
+%\endexample
+%\enddesc
 \begindesc
 \easy\cts root {\<argument$_1$> {\bt \\of} \<argument$_2$>}
 \explain
-This command produces the notation for a root of \<argument$_2$>, where the
-root is given by \<argument$_1$>.
+此命令排印 \<argument$_2$> 的 \<argument$_1$> 次根号。
 \example
 $\root \alpha \of {r \cos \theta}$
 |
@@ -1831,15 +2238,26 @@ $\root \alpha \of {r \cos \theta}$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts radical {\<number>}
+%\explain
+%This command produces a radical sign
+%whose characteristics are given by
+%\<number>.  It uses the same representation as the delimiter code
+%^^{delimiter codes}
+%in the ^|\delcode| command (\xref \delcode).
 \begindesc
 \cts radical {\<number>}
 \explain
-This command produces a radical sign
-whose characteristics are given by
-\<number>.  It uses the same representation as the delimiter code
+此命令排印用 \<number> 刻画其特性的根数符号。
+它使用的定界码表示法与 ^|\delcode| 命令（\xref\delcode ）的相同。
 ^^{delimiter codes}
-in the ^|\delcode| command (\xref \delcode).
 
+%\example
+%\def\sqrt{\radical "270370} % as in plain TeX
+%|
+%\endexample
+%\enddesc
 \example
 \def\sqrt{\radical "270370} % as in plain TeX
 |
