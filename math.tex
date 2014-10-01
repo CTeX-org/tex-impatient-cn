@@ -1082,8 +1082,29 @@ $f \colon t \quad f : t$
 
 %==========================================================================
 %\secondprinting{\vfill\eject\null\vglue-30pt\vskip0pt}
-\section {Superscripts and subscripts}
+%\section {Superscripts and subscripts}
+\section {上标和下标}
 
+%\begindesc
+%\margin{Two groups of commands have been combined here.}
+%\bix^^{superscripts}
+%\bix^^{subscripts}
+%\secondprinting{\vglue-12pt}
+%\makecolumns 4/2:
+%\easy\ctsact _ \xrdef{@underscore} {\<argument>}
+%\cts sb {\<argument>}
+%\ctsact ^ \xrdef{@hat} {\<argument>}
+%\cts sp {\<argument>}
+%\secondprinting{\vglue-4pt}
+%\explain
+%The commands in each column are equivalent.  The commands in the first
+%column typeset \<argument> as a subscript, and those in the second
+%column typeset \<argument> as a superscript.  The |\sb| and |\sp|
+%commands are mainly useful if you're working on a terminal that lacks an
+%underscore or caret, or if you've redefined `|_|' or `|^|' and need
+%access to the original definition.  These commands are also used for
+%setting lower and upper limits on summations and integrals.  ^^{lower
+%limits} ^^{upper limits}
 \begindesc
 \margin{Two groups of commands have been combined here.}
 \bix^^{superscripts}
@@ -1096,33 +1117,56 @@ $f \colon t \quad f : t$
 \cts sp {\<argument>}
 \secondprinting{\vglue-4pt}
 \explain
-The commands in each column are equivalent.  The commands in the first
-column typeset \<argument> as a subscript, and those in the second
-column typeset \<argument> as a superscript.  The |\sb| and |\sp|
-commands are mainly useful if you're working on a terminal that lacks an
-underscore or caret, or if you've redefined `|_|' or `|^|' and need
-access to the original definition.  These commands are also used for
-setting lower and upper limits on summations and integrals.  ^^{lower
-limits} ^^{upper limits}
+各栏的两个命令都是等价的。第一栏的命令将 \<argument> 排版为下标，
+而第二栏的命令将 \<argument> 排版为上标。
+|\sb| 和 |\sp| 命令主要用于无法使用下划线和插入符的终端中，
+或者用在重新定义了 `|_|' or `|^|' 但需要其原始定义的情况下。
+这些命令也用于设定求和号和积分号的下极限和和极限。
+^^{lower limits} ^^{upper limits}
 
-If a subscript or superscript is not a single \minref{token}, you need
-to enclose it in a \minref{group}.  \TeX\ does not prioritize subscripts
-or superscripts, so it will reject formulas such as |a_i_j|, |a^i^j|, or
-|a^i_j|.
+%If a subscript or superscript is not a single \minref{token}, you need
+%to enclose it in a \minref{group}.  \TeX\ does not prioritize subscripts
+%or superscripts, so it will reject formulas such as |a_i_j|, |a^i^j|, or
+%|a^i_j|.
+如果下标或上标不是单个\minref{记号}，你需要将它放在\minref{编组}中。
+\TeX\ 并不处理下标和上标的优先级，
+因此它将拒绝类似 |a_i_j|、|a^i^j| 或 |a^i_j| 的公式。
 
-Subscripts and superscripts are normally typeset in ^{script style}, or
-in ^{scriptscript style} if they are second-order, e.g., a subscript on
-a subscript or a superscript on a a subscript.  You can set \emph{any}
-text in a math formula in a script or scriptscript \minref{style} with
-the ^|\scriptstyle| and ^|\scriptscriptstyle| commands (\xref
-\scriptscriptstyle).
+%Subscripts and superscripts are normally typeset in ^{script style}, or
+%in ^{scriptscript style} if they are second-order, e.g., a subscript on
+%a subscript or a superscript on a a subscript.  You can set \emph{any}
+%text in a math formula in a script or scriptscript \minref{style} with
+%the ^|\scriptstyle| and ^|\scriptscriptstyle| commands (\xref
+%\scriptscriptstyle).
+下标和上标排版时通常用^{标号样式}，或者^{小标号样式}，
+如果它们是二阶标号，比如下标中的下标或下标中的上标。
+利用 ^|\scriptstyle| 和 ^|\scriptscriptstyle| 命令（\xref\scriptscriptstyle ），
+你可以将数学公式的\emph{任何}文本设为标号或小标号\minref{样式}。
 
-You can apply a subscript or superscript to any of the commands that
-produce named mathematical functions in roman type (see
-\xref{namedfns}).  In certain cases (again, see \xref{namedfns}) the
-subscript or superscript appears directly above or under the function
-name as shown in the examples of ^|\lim| and ^|\det| below.
+%You can apply a subscript or superscript to any of the commands that
+%produce named mathematical functions in roman type (see
+%\xref{namedfns}).  In certain cases (again, see \xref{namedfns}) the
+%subscript or superscript appears directly above or under the function
+%name as shown in the examples of ^|\lim| and ^|\det| below.
+对任何以罗马字体排印命名数学函数（见\xref{namedfns}）的命令，
+你都可以给它添加下标和上标。
+在某些情形中（同样见\xref{namedfns}），
+下标和上标分别出现在函数名的下边和上边，
+如下面例子中的 ^|\lim| 和 ^|\det| 所示。
 
+%\example
+%$x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
+%   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
+%   \int_0^\infty{f(x)\,dx}$
+%$$\lim_{x\leftarrow0}f(x)\qquad\det^{z\in A}\qquad\sin^2t$$
+%|
+%\produces
+%\secondprinting{\divide\abovedisplayskip by 2}
+%$x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
+%   \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
+%   \int_0^\infty{f(x)\,dx}$
+%$$\lim_{x \leftarrow 0} f(x)\qquad
+%   \det^{z \in A}\qquad \sin^2 t$$
 \example
 $x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
    \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
@@ -1130,13 +1174,17 @@ $x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
 $$\lim_{x\leftarrow0}f(x)\qquad\det^{z\in A}\qquad\sin^2t$$
 |
 \produces
-\secondprinting{\divide\abovedisplayskip by 2}
+%\secondprinting{\divide\abovedisplayskip by 2}
 $x_3 \quad t_{\max} \quad a_{i_k} \quad \sum_{i=1}^n{q_i}
    \quad x^3\quad e^{t \cos\theta}\quad r^{x^2}\quad
    \int_0^\infty{f(x)\,dx}$
 $$\lim_{x \leftarrow 0} f(x)\qquad
    \det^{z \in A}\qquad \sin^2 t$$
 
+%\eix^^{superscripts}
+%\eix^^{subscripts}
+%\endexample
+%\enddesc
 \eix^^{superscripts}
 \eix^^{subscripts}
 \endexample
@@ -1145,8 +1193,30 @@ $$\lim_{x \leftarrow 0} f(x)\qquad
 %\secondprinting{\vfill\eject}
 
 %==========================================================================
-\subsection {Selecting and using styles}
+%\subsection {Selecting and using styles}
+\subsection {选用样式}
 
+%\begindesc
+%\bix^^{styles}
+%\cts textstyle {}
+%\cts scriptstyle {}
+%\cts scriptscriptstyle {}
+%\cts displaystyle {}
+%\explain
+%^^{text style} ^^{script style} ^^{scriptscript style} ^^{display style}
+%These commands override the normal \minref{style} and hence the
+%font that \TeX\ uses in setting a formula.  Like
+%font-setting commands such as |\it|, they are in
+%effect until the end of the group containing them.
+%They are useful when \TeX's choice of style is inappropriate for the formula
+%you happen to be setting.
+%\example
+%$t+{\scriptstyle t + {\scriptscriptstyle t}}$
+%|
+%\produces
+%$t+{\scriptstyle t + {\scriptscriptstyle t}}$
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{styles}
 \cts textstyle {}
@@ -1155,12 +1225,9 @@ $$\lim_{x \leftarrow 0} f(x)\qquad
 \cts displaystyle {}
 \explain
 ^^{text style} ^^{script style} ^^{scriptscript style} ^^{display style}
-These commands override the normal \minref{style} and hence the
-font that \TeX\ uses in setting a formula.  Like
-font-setting commands such as |\it|, they are in
-effect until the end of the group containing them.
-They are useful when \TeX's choice of style is inappropriate for the formula
-you happen to be setting.
+这些命令覆盖 \TeX\ 排版公式时通常使用的\minref{样式}及其字体。
+如同类似 |\it| 的字体设置命令，它们在其所在编组结束前一直有效。
+当 \TeX\ 给你要排版的公式选用了不合适的样式时，你可以使用这些命令。
 \example
 $t+{\scriptstyle t + {\scriptscriptstyle t}}$
 |
@@ -1169,7 +1236,31 @@ $t+{\scriptstyle t + {\scriptscriptstyle t}}$
 \endexample
 \enddesc
 
-
+%\begindesc
+%\cts mathchoice {%
+%   \rqbraces{\<math$_1$>}
+%   \rqbraces{\<math$_2$>}
+%   \rqbraces{\<math$_3$>}
+%   \rqbraces{\<math$_4$>}}
+%\explain
+%This command tells \TeX\ to typeset one of the subformulas
+%\<math$_1$>, \<math$_2$>, \<math$_3$>, or \<math$_4$>, making its choice
+%according to the current \minref{style}.
+%That is, if \TeX\ is in
+%display style it sets the |\mathchoice| as \<math$_1$>; in text style it sets
+%it as \<math$_2$>; in script style it sets it as \<math$_3$>;
+%and in scriptscript style it sets it as \<math$_4$>.
+%\example
+%\def\mc{{\mathchoice{D}{T}{S}{SS}}}
+%The strange formula $\mc_{\mc_\mc}$ illustrates a
+%mathchoice.
+%|
+%\produces
+%\def\mc{{\mathchoice{D}{T}{S}{SS}}}
+%The strange formula $\mc_{\mc_\mc}$ illustrates a
+%mathchoice.
+%\endexample
+%\enddesc
 \begindesc
 \cts mathchoice {%
    \rqbraces{\<math$_1$>}
@@ -1177,13 +1268,11 @@ $t+{\scriptstyle t + {\scriptscriptstyle t}}$
    \rqbraces{\<math$_3$>}
    \rqbraces{\<math$_4$>}}
 \explain
-This command tells \TeX\ to typeset one of the subformulas
-\<math$_1$>, \<math$_2$>, \<math$_3$>, or \<math$_4$>, making its choice
-according to the current \minref{style}.
-That is, if \TeX\ is in
-display style it sets the |\mathchoice| as \<math$_1$>; in text style it sets
-it as \<math$_2$>; in script style it sets it as \<math$_3$>;
-and in scriptscript style it sets it as \<math$_4$>.
+此命令让 \TeX\ 根据当前\minref{样式}选择并排版其中一个子公式
+\<math$_1$>、\<math$_2$>、\<math$_3$> 或 \<math$_4$>。
+也就是说，如果在陈列样式中，\TeX\ 将 |\mathchoice| 排版为 \<math$_1$>；
+在文本样式中排版为 \<math$_2$>，在标号样式中排版为 \<math$_3$>；
+而在小标号样式中排版为 \<math$_4$>。
 \example
 \def\mc{{\mathchoice{D}{T}{S}{SS}}}
 The strange formula $\mc_{\mc_\mc}$ illustrates a
@@ -1196,27 +1285,49 @@ mathchoice.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts mathpalette {\<argument$_1$> \<argument$_2$>}
+%\explain
+%^^{math symbols}
+%This command provides a convenient way of
+%producing a math construct that works in all four \minref{style}s.
+%To use it, you'll normally need to define an additional macro,
+%which we'll call |\build|.
+%The call on |\math!-palette| should then have the form
+%|\mathpalette|\allowbreak|\build|\<argument>.
 \begindesc
 \cts mathpalette {\<argument$_1$> \<argument$_2$>}
 \explain
 ^^{math symbols}
-This command provides a convenient way of
-producing a math construct that works in all four \minref{style}s.
-To use it, you'll normally need to define an additional macro,
-which we'll call |\build|.
-The call on |\math!-palette| should then have the form
-|\mathpalette|\allowbreak|\build|\<argument>.
+此命令提供一种生成适用于四种\minref{样式}的数学结构的简便方法。%
+\footnote{译注：该宏定义为
+|\def\mathpalette#1#2{\mathchoice{#1\displaystyle{#2}}|\break
+|{#1\textstyle{#2}}{#1\scriptstyle{#2}}{#1\scriptscriptstyle{#2}}}|。}
+要使用它，通常你需要定义一个额外的宏，假设我们称它为 |\build|。
+调用 |\math!-palette| 就应该用
+|\mathpalette|\allowbreak|\build|\<argument> 这种形式。
 
-|\build| tests what style \TeX\ is in and typesets \<argu\-ment> accordingly.
-It should be defined to have two parameters.
-When you call |\math!-palette|, it will in turn call |\build|,
-with |#1| being a
-command that selects the current style and |#2| being \<argument>.
-Thus, within the definition of |\build| you can typeset something
-in the current style by preceding it with `|#1|'.
-See \knuth{page~360} for examples of using |\mathpalette|
-and \knuth{page~151} for a further explanation of how it works.
 
+%|\build| tests what style \TeX\ is in and typesets \<argu\-ment> accordingly.
+%It should be defined to have two parameters.
+%When you call |\math!-palette|, it will in turn call |\build|,
+%with |#1| being a
+%command that selects the current style and |#2| being \<argument>.
+%Thus, within the definition of |\build| you can typeset something
+%in the current style by preceding it with `|#1|'.
+%See \knuth{page~360} for examples of using |\mathpalette|
+%and \knuth{page~151} for a further explanation of how it works.
+|\build| 测试 \TeX\ 位于何种样式，并相应地排版 \<argu\-ment>。
+它应该定义为有两个参数。
+当你调用 |\math!-palette| 时，它以 |#1| 为选择样式的命令，
+|#2| 为 \<argument> 转而调用 |\build|。
+因此，在 |\build| 的定义中，
+通过将某些东西放在 `|#1|' 前面，就可以用当前样式排版它。
+在\knuth{第~360~页}中有如何使用 |\mathpalette| 的例子，
+而在\knuth{第~151~页}中有它如何运作的进一步解释。
+
+%\eix^^{styles}
+%\enddesc
 \eix^^{styles}
 \enddesc
 
