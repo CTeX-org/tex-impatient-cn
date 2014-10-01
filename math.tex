@@ -2264,23 +2264,49 @@ $\root \alpha \of {r \cos \theta}$
 \endexample
 \enddesc
 
-%==========================================================================
-\section {Equation numbers}
 
+%==========================================================================
+%\section {Equation numbers}
+\section {方程编号}
+
+%\begindesc
+%\easy\cts eqno {}
+%\cts leqno {}
+%\explain
+%These commands attach an equation number to a displayed formula.
+%|\eqno| puts the equation number on the right and |\leqno| puts it on
+%the left.
+%The commands must be given at the end of the formula.
+%If you have a multiline display and you want to number more than one
+%of the lines, use the |\eq!-alignno| or |\leq!-alignno| command
+%(\xref \eqalignno).
 \begindesc
 \easy\cts eqno {}
 \cts leqno {}
 \explain
-These commands attach an equation number to a displayed formula.
-|\eqno| puts the equation number on the right and |\leqno| puts it on
-the left.
-The commands must be given at the end of the formula.
-If you have a multiline display and you want to number more than one
-of the lines, use the |\eq!-alignno| or |\leq!-alignno| command
-(\xref \eqalignno).
+这两个命令给陈列公式加上方程编号。
+|\eqno| 将编号放在右侧，而|\leqno| 将编号放在左侧。
+这两个命令必须放在公式末尾。
+如果你有个多行陈列公式，而你希望给不止一行编号，
+你可以用 |\eq!-alignno| 或 |\leq!-alignno| 命令（\xref\eqalignno ）。
 
-These commands are valid only in display math mode.
+%These commands are valid only in display math mode.
+这两个命令只能在陈列数学模式中使用。
 
+%\example
+%$$e^{i\theta} = \cos \theta + i \sin \theta\eqno{(11)}$$
+%|
+%\produces
+%$$e^{i\theta} = \cos \theta + i \sin \theta\eqno{(11)}$$
+%\endexample
+%\example
+%$$\cos^2 \theta + \sin^2 \theta = 1\leqno{(12)}$$
+%|
+%\produces
+%\abovedisplayskip = -\baselineskip
+%$$\cos^2 \theta + \sin^2 \theta = 1\leqno{(12)}$$
+%\endexample
+%\enddesc
 \example
 $$e^{i\theta} = \cos \theta + i \sin \theta\eqno{(11)}$$
 |
