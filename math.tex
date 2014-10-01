@@ -9,8 +9,8 @@
 \bix^^{math}
 \chapterdef{math}
 
-这一章包括了排印数学公式所需要的命令.
-在 \headcit{命令描述}{cmddesc} 一节中, 给出了这章的惯例.
+这一章包括了排印数学公式所需要的命令。
+在\headcit{命令描述}{cmddesc}这一节中给出了这章的惯例。
 
 \begindescriptions
 %==========================================================================
@@ -94,7 +94,8 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \enddesc
 
 %==========================================================================
-\subsection {各种各样的普通数学符号}
+%\subsection {Miscellaneous ordinary math symbols}
+\subsection {各种普通数学符号}
 
 \begindesc
 \xrdef{specsyms}
@@ -364,8 +365,35 @@ $\triangle ABF \not\sim \triangle ACF$.
 \enddesc
 
 %==========================================================================
-\subsection {左右分界符}
+%\subsection {Left and right delimiters}
+\subsection {左右定界符}
 
+%\begindesc
+%\bix^^{delimiters}
+%%
+%\dothreecolumns 12
+%\easy\ctsdisplay lbrace {}
+%\ctsydisplay { @lbrace {}
+%\ctsdisplay rbrace {}
+%\ctsydisplay } @rbrace {}
+%\ctsdisplay lbrack {}
+%\ctsdisplay rbrack {}
+%\ctsdisplay langle {}
+%\ctsdisplay rangle {}
+%\ctsdisplay lceil {}
+%\ctsdisplay rceil {}
+%\ctsdisplay lfloor {}
+%\ctsdisplay rfloor {}
+%\egroup
+%\explain
+%These commands produce left and right \minref{delimiter}s.
+%Mathematicians use delimiters to indicate the boundaries between parts
+%of a formula.  Left delimiters are also called ``^{opening}s'', and
+%right delimiters are also called ``^{closing}s''.  Openings and closings
+%are two of \TeX's \minref{class}es of math symbols.  \TeX\ puts
+%different amounts of space around different \minref{class}es of math
+%symbols. You might expect the space that \TeX\ puts around openings and
+%closings to be symmetrical, but in fact it isn't.
 \begindesc
 \bix^^{delimiters}
 %
@@ -384,49 +412,115 @@ $\triangle ABF \not\sim \triangle ACF$.
 \ctsdisplay rfloor {}
 \egroup
 \explain
-These commands produce left and right \minref{delimiter}s.
-Mathematicians use delimiters to indicate the boundaries between parts
-of a formula.  Left delimiters are also called ``^{opening}s'', and
-right delimiters are also called ``^{closing}s''.  Openings and closings
-are two of \TeX's \minref{class}es of math symbols.  \TeX\ puts
-different amounts of space around different \minref{class}es of math
-symbols. You might expect the space that \TeX\ puts around openings and
-closings to be symmetrical, but in fact it isn't.
+这些命令排印各种左右\minref{定界符}。
+数学家用定界符指明公式各部分的边界。
+左定界符又称为``^{开符号}''，右定界符又称为``^{闭符号}''。
+开符号和闭符号是 \TeX\ 数学公式中的两种字符类。
+\TeX\ 在不同\minref{类}的数学符号之间留下不同大小的间隔。
+你也许认为在开符号和闭符号旁边的间隔是对称的，但实际上并非如此。
 
-Some left and right delimiters have more than one command that you can
-use to produce them:
+%Some left and right delimiters have more than one command that you can
+%use to produce them:
+有些左定界符和右定界符可以用不止一个命令排印：
 
+%\ulist\compact
+%\li `$\{$' (|\lbrace| and |\{|)
+%\li `$\}$' (|\rbrace| and |\}|)
+%\li `$[$' (|\lbrack| and `|[|')
+%\li `$]$' (|\rbrack| and `|]|')
+%\endulist
+%\noindent You can also use the left and right bracket characters
+%(in either form) outside of math mode.
 \ulist\compact
-\li `$\{$' (|\lbrace| and |\{|)
-\li `$\}$' (|\rbrace| and |\}|)
-\li `$[$' (|\lbrack| and `|[|')
-\li `$]$' (|\rbrack| and `|]|')
+\li `$\{$' (|\lbrace| 和 |\{|)
+\li `$\}$' (|\rbrace| 和 |\}|)
+\li `$[$' (|\lbrack| 和 `|[|')
+\li `$]$' (|\rbrack| 和 `|]|')
 \endulist
-\noindent You can also use the left and right bracket characters
-(in either form) outside of math mode.
+\noindent 左右方括号（两种形式皆可）在数学模式之外也可以使用。
 
-In addition to these commands, \TeX\ treats `|(|' as a left
-delimiter and `|)|' as a right delimiter.
+%In addition to these commands, \TeX\ treats `|(|' as a left
+%delimiter and `|)|' as a right delimiter.
+除这些命令之外，\TeX\ 还将 `|(|' 视为左定界符，将 `|)|' 视为右定界符。
 
-You can have \TeX\
-choose the size for a delimiter by using |\left| and |\right| (\xref\left).
-Alternatively,
-you can get a delimiter of a specific size by using one of the |\big|$x$
-commands (see |\big| et al., \xref{\big}).
+%You can have \TeX\
+%choose the size for a delimiter by using |\left| and |\right| (\xref\left).
+%Alternatively,
+%you can get a delimiter of a specific size by using one of the |\big|$x$
+%commands (see |\big| et al., \xref{\big}).
+利用 |\left| 和 |\right|（\xref\left ）命令，
+你可以让 \TeX\ 选择定界符的尺寸。
+或者利用某个 |\big|$x$ 命令（见 |\big| 等，\xref{\big}），
+你可以选择特定尺寸的定界符。
 
+%\example
+%The set $\{\,x \mid x>0\,\}$ is empty.
+%|
+%\produces
+%The set $\{\,x \mid x>0\,\}$ is empty.
 \example
 集合 $\{\,x \mid x>0\,\}$ 是空集.
 |
 \produces
 集合 $\{\,x \mid x>0\,\}$ 是空集.
 
+%\eix^^{delimiters}
+%\endexample
+%\enddesc
 \eix^^{delimiters}
 \endexample
 \enddesc
 
 %==========================================================================
-\subsection {Arrows}
+%\subsection {Arrows}
+\subsection {箭头}
 
+%\begindesc
+%\bix^^{arrows}
+%\xrdef{arrows}
+%%
+%{\symbolspace=24pt \makecolumns 34/2:
+%\easy%
+%\ctsdisplay leftarrow {}
+%\ctsdisplay gets {}
+%\ctsdisplay Leftarrow {}
+%\ctsdisplay rightarrow {}
+%\ctsdisplay to {}
+%\ctsdisplay Rightarrow {}
+%\ctsdisplay leftrightarrow {}
+%\ctsdisplay Leftrightarrow {}
+%\ctsdisplay longleftarrow {}
+%\ctsdisplay Longleftarrow {}
+%\ctsdisplay longrightarrow {}
+%\ctsdisplay Longrightarrow {}
+%\ctsdisplay longleftrightarrow {}
+%\ctsdisplay Longleftrightarrow {}
+%\basicdisplay {$\Longleftrightarrow$}{\\iff}\pix\ctsidxref{iff}\xrdef{\iff}
+%\ctsdisplay hookleftarrow {}
+%\ctsdisplay hookrightarrow {}
+%\ctsdisplay leftharpoondown {}
+%\ctsdisplay rightharpoondown {}
+%\ctsdisplay leftharpoonup {}
+%\ctsdisplay rightharpoonup {}
+%\ctsdisplay rightleftharpoons {}
+%\ctsdisplay mapsto {}
+%\ctsdisplay longmapsto {}
+%\ctsdisplay downarrow {}
+%\ctsdisplay Downarrow {}
+%\ctsdisplay uparrow {}
+%\ctsdisplay Uparrow {}
+%\ctsdisplay updownarrow {}
+%\ctsdisplay Updownarrow {}
+%\ctsdisplay nearrow {}
+%\ctsdisplay searrow {}
+%\ctsdisplay nwarrow {}
+%\ctsdisplay swarrow {}
+%}
+%\explain
+%These commands provide arrows of different kinds.  They
+%are classified as relations (\xref{relations}).
+%The vertical arrows in the list are also \minref{delimiter}s, so you can make
+%them larger by using |\big| et al.\ (\xref \big).
 \begindesc
 \bix^^{arrows}
 \xrdef{arrows}
@@ -469,30 +563,89 @@ commands (see |\big| et al., \xref{\big}).
 \ctsdisplay swarrow {}
 }
 \explain
-These commands provide arrows of different kinds.  They
-are classified as relations (\xref{relations}).
-The vertical arrows in the list are also \minref{delimiter}s, so you can make
-them larger by using |\big| et al.\ (\xref \big).
+这些命令提供各种箭头。它们被划分为关系符号（\xref{relations}）。
+上面的竖直箭头同时也是\minref{定界符}，
+因此你可以用 |\big| 等命令让它们变大（\xref \big ）。
 
-The command |\iff| differs from |\Longleftrightarrow| in that
-it produces extra space to the left and right of the arrow.
+%The command |\iff| differs from |\Longleftrightarrow| in that
+%it produces extra space to the left and right of the arrow.
+命令 |\iff| 和 |\Longleftrightarrow| 的差别之处在于，
+它在箭头两边生成额外间隔。
 
-You can place symbols or other legends on top of a left or right arrow
-with |\buildrel| (\xref \buildrel).
+%You can place symbols or other legends on top of a left or right arrow
+%with |\buildrel| (\xref \buildrel).
+你可以用 |\buildrel|（\xref \buildrel ）命令将符号或者其他文字放在箭头上边。
 
+%\example
+%$$f(x)\mapsto f(y) \iff x \mapsto y$$
+%|
+%\dproduces
+%$$f(x)\mapsto f(y) \iff x \mapsto y$$
 \example
 $$f(x)\mapsto f(y) \iff x \mapsto y$$
 |
 \dproduces
 $$f(x)\mapsto f(y) \iff x \mapsto y$$
 
+%\eix^^{arrows}
+%\endexample
+%\enddesc
 \eix^^{arrows}
 \endexample
 \enddesc
 
 %==========================================================================
-\subsection {Named mathematical functions}
+%\subsection {Named mathematical functions}
+\subsection {已命名的数学函数}
 
+%\begindesc
+%\xrdef{namedfns}
+%\bix^^{functions, names of}
+%{\symbolspace = 36pt
+%\threecolumns 32
+%\easy\ctsdisplay cos {}
+%\ctsdisplay sin {}
+%\ctsdisplay tan {}
+%\ctsdisplay cot {}
+%\ctsdisplay csc {}
+%\ctsdisplay sec {}
+%\ctsdisplay arccos {}
+%\ctsdisplay arcsin {}
+%\ctsdisplay arctan {}
+%\ctsdisplay cosh {}
+%\ctsdisplay coth {}
+%\ctsdisplay sinh {}
+%\ctsdisplay tanh {}
+%\ctsdisplay det {}
+%\ctsdisplay dim {}
+%\ctsdisplay exp {}
+%\ctsdisplay ln {}
+%\ctsdisplay log {}
+%\ctsdisplay lg {}
+%\ctsdisplay arg {}
+%\ctsdisplay deg {}
+%\ctsdisplay gcd {}
+%\ctsdisplay hom {}
+%\ctsdisplay ker {}
+%\ctsdisplay inf {}
+%\ctsdisplay sup {}
+%\ctsdisplay lim {}
+%\ctsdisplay liminf {}
+%\ctsdisplay limsup {}
+%\ctsdisplay max {}
+%\ctsdisplay min {}
+%\ctsdisplay Pr {}
+%\egroup}
+%\explain
+%These commands set the names of various mathematical functions
+%in roman type, as is customary.
+%If you apply a superscript or subscript to one of these commands,
+%\TeX\ will in most cases typeset it in the usual place.
+%In display style, \TeX\ typesets superscripts and subscripts
+%on |\det|, |\gcd|, |\inf|, |\lim|, |\liminf|,
+%|\limsup|, |\max|, |\min|, |\Pr|, and |\sup|
+%as though they were limits,
+%i.e., directly above or directly below the function name.
 \begindesc
 \xrdef{namedfns}
 \bix^^{functions, names of}
@@ -532,16 +685,20 @@ $$f(x)\mapsto f(y) \iff x \mapsto y$$
 \ctsdisplay Pr {}
 \egroup}
 \explain
-These commands set the names of various mathematical functions
-in roman type, as is customary.
-If you apply a superscript or subscript to one of these commands,
-\TeX\ will in most cases typeset it in the usual place.
-In display style, \TeX\ typesets superscripts and subscripts
-on |\det|, |\gcd|, |\inf|, |\lim|, |\liminf|,
-|\limsup|, |\max|, |\min|, |\Pr|, and |\sup|
-as though they were limits,
-i.e., directly above or directly below the function name.
+这些命令以惯用的罗马字体排印各种数学函数的名称。
+如果你给这些命令中的任何一个加上上标或下标，
+\TeX\ 将在通常的位置排版它。
+在陈列样式中，对于 |\det|、|\gcd|、|\inf|、|\lim|、|\liminf|、
+|\limsup|、|\max|、|\min|、|\Pr| 和 |\sup|，
+\TeX\ 将上标和下标当成极限那样排版，
+即将它们直接放在函数名的上边或下边。
 
+%\example
+%$\cos^2 x + \sin^2 x = 1\qquad\max_{a \in A} g(a) = 1$
+%|
+%\produces
+%$\cos^2 x + \sin^2 x = 1\qquad\max_{a \in A} g(a) = 1$
+%\endexample\enddesc
 \example
 $\cos^2 x + \sin^2 x = 1\qquad\max_{a \in A} g(a) = 1$
 |
@@ -549,11 +706,22 @@ $\cos^2 x + \sin^2 x = 1\qquad\max_{a \in A} g(a) = 1$
 $\cos^2 x + \sin^2 x = 1\qquad\max_{a \in A} g(a) = 1$
 \endexample\enddesc
 
+%\begindesc
+%\cts bmod {}
+%\explain
+%This command produces a binary operation for indicating a ^{modulus}
+%within a formula.
+%\example
+%$$x = (y+1) \bmod 2$$
+%|
+%\dproduces
+%$$x = (y+1) \bmod 2$$
+%\endexample
+%\enddesc
 \begindesc
 \cts bmod {}
 \explain
-This command produces a binary operation for indicating a ^{modulus}
-within a formula.
+此命令排印一个标明公式内的^{模运算}的二元运算符。
 \example
 $$x = (y+1) \bmod 2$$
 |
@@ -562,24 +730,66 @@ $$x = (y+1) \bmod 2$$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts pmod {}
+%\explain
+%This command provides a notation for indicating a ^{modulus} in parentheses
+%at the end of a formula.
+%\example
+%$$x \equiv y+1 \pmod 2$$
+%|
+%\dproduces
+%$$x \equiv y+1 \pmod 2$$
 \begindesc
 \cts pmod {}
 \explain
-This command provides a notation for indicating a ^{modulus} in parentheses
-at the end of a formula.
+此命令在公式末尾排印放在圆括号中的^{模运算}。
 \example
 $$x \equiv y+1 \pmod 2$$
 |
 \dproduces
 $$x \equiv y+1 \pmod 2$$
 
+%\eix^^{functions, names of}
+%\endexample
+%\enddesc
 \eix^^{functions, names of}
 \endexample
 \enddesc
 
-%==========================================================================
-\subsection {Large operators}
 
+%==========================================================================
+%\subsection {Large operators}
+\subsection {巨算符}
+
+%\begindesc
+%\bix^^{operators//large}
+%\threecolumns 15
+%\easy\ctsdoubledisplay bigcap {}
+%\ctsdoubledisplay bigcup {}
+%\ctsdoubledisplay bigodot {}
+%\ctsdoubledisplay bigoplus {}
+%\ctsdoubledisplay bigotimes {}
+%\ctsdoubledisplay bigsqcup {}
+%\ctsdoubledisplay biguplus {}
+%\ctsdoubledisplay bigvee {}
+%\ctsdoubledisplay bigwedge {}
+%\ctsdoubledisplay coprod {}
+%{\symbolspace = 42pt\basicdisplay {\hskip 26pt$\smallint$}%
+%   {\\smallint}\ddstrut}%
+%   \xrdef{\smallint} \pix\ctsidxref{smallint}
+%\ctsdoubledisplay int {}
+%\ctsdoubledisplay oint {}
+%\ctsdoubledisplay prod {}
+%\ctsdoubledisplay sum {}
+%}
+%\explain
+%These commands produce various large operator symbols.
+%\TeX\ produces the smaller size when it's in ^{text style}
+%\minrefs{math mode} and the larger size when it's in ^{display style}.
+%Operators are one of \TeX's \minref{class}es of math symbols.
+%\TeX\ puts different amounts of space
+%around different classes of math symbols.
 \begindesc
 \bix^^{operators//large}
 \threecolumns 15
@@ -602,27 +812,48 @@ $$x \equiv y+1 \pmod 2$$
 \ctsdoubledisplay sum {}
 }
 \explain
-These commands produce various large operator symbols.
-\TeX\ produces the smaller size when it's in ^{text style}
-\minrefs{math mode} and the larger size when it's in ^{display style}.
-Operators are one of \TeX's \minref{class}es of math symbols.
-\TeX\ puts different amounts of space
-around different classes of math symbols.
+这些命令排印各种巨算符。
+\TeX\ 在^{文内样式}中排印小号字符，
+\minrefs{math mode}而在^{陈列样式}中排印大号字符.
+巨算符是 \TeX\ 数学符号的其中一\minref{类}。
+\TeX\ 在不同类数学符号间留下不同大小的间隔。
 
-The large operator symbols with `|big|' in their names are different
-from the corresponding binary operations (see \xref{binops}) such as
-|\cap| ($\cap$) since they usually appear at the beginning
-of a formula.  \TeX\ uses different spacing for a large operator
-than it does for a binary operation.
+%The large operator symbols with `|big|' in their names are different
+%from the corresponding binary operations (see \xref{binops}) such as
+%|\cap| ($\cap$) since they usually appear at the beginning
+%of a formula.  \TeX\ uses different spacing for a large operator
+%than it does for a binary operation.
+名称中带有 `|big|' 的巨算符和对应的二元运算符%
+（比如 |\cap| ($\cap$)，见\xref{binops}）不同，
+因为它们通常出现公式的开头。
+\TeX\ 给巨算符留下的间隔与二元运算符的不同。
 
-Don't confuse `$\sum$' (|\sum|) with `$\Sigma$'^^|\Sigma| (|\Sigma|)
-or confuse `$\prod$' (|\prod|) with `$\Pi$' ^^|\Pi| (|\Pi|).
-|\Sigma| and |\Pi| produce capital Greek letters, which are smaller and
-have a different appearance.
+%Don't confuse `$\sum$' (|\sum|) with `$\Sigma$'^^|\Sigma| (|\Sigma|)
+%or confuse `$\prod$' (|\prod|) with `$\Pi$' ^^|\Pi| (|\Pi|).
+%|\Sigma| and |\Pi| produce capital Greek letters, which are smaller and
+%have a different appearance.
+不要混淆 `$\sum$' (|\sum|) 和 `$\Sigma$'^^|\Sigma| (|\Sigma|)，
+或者 `$\prod$' (|\prod|) 和 `$\Pi$' ^^|\Pi| (|\Pi|)。
+|\Sigma| 和 |\Pi| 排印大写希腊字母，它们尺寸更小，外观也不同。
 
-A large operator can have ^{limits}.  The lower limit is specified as a
-subscript and the upper limit as a superscript.
+%A large operator can have ^{limits}.  The lower limit is specified as a
+%subscript and the upper limit as a superscript.
+巨算符可以带有^{极限}。下极限用下标指定，而上极限用上标指定。
 
+%\example
+%$$\bigcap_{k=1}^r (a_k \cup b_k)$$
+%|
+%\dproduces
+%$$\bigcap_{k=1}^r (a_k \cup b_k)$$
+%\endexample
+%\interexampleskip
+%\example
+%$${\int_0^\pi \sin^2 ax\,dx} = {\pi \over 2}$$
+%|
+%\dproduces
+%$${\int_0^\pi \sin^2 ax\,dx} = {\pi \over 2}$$
+%\endexample
+%\enddesc
 \example
 $$\bigcap_{k=1}^r (a_k \cup b_k)$$
 |
@@ -638,16 +869,32 @@ $${\int_0^\pi \sin^2 ax\,dx} = {\pi \over 2}$$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts limits {}
+%\explain
+%When it's in text style, \TeX\ normally places limits after a large operator.
+%This command tells \TeX\ to place
+%limits above and below a large operator rather than after it.
 \begindesc
 \cts limits {}
 \explain
-When it's in text style, \TeX\ normally places limits after a large operator.
-This command tells \TeX\ to place
-limits above and below a large operator rather than after it.
+在文内样式中，\TeX\ 通常将极限放在巨算符后边。
+此命令让 \TeX\ 将极限放在巨算符的上边和下边，而不是在后边。
 
-If you specify more than one of |\limits|, |\nolimits|,
-and |\display!-limits|, the last command rules.
+%If you specify more than one of |\limits|, |\nolimits|,
+%and |\display!-limits|, the last command rules.
+如果你多次使用 |\limits|、|\nolimits| 或 |\display!-limits|，
+仅最后一个命令生效。
 
+%\example
+%Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least
+%two elements.
+%|
+%\produces
+%Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least
+%two elements.
+%\endexample
+%\enddesc
 \example
 Suppose that $\bigcap\limits_{i=1}^Nq_i$ contains at least
 two elements.
@@ -658,20 +905,36 @@ two elements.
 \endexample
 \enddesc
 
+%\begindesc
+%\cts nolimits {}
+%\explain
+%When it's in display
+%style, \TeX\ normally places limits above and below a large operator.
+%(The |\int| operator is an exception---\TeX\
+%places limits for |\int| after the operator in all cases.)
+%^^|\int//limits after|
+%This command tells \TeX\ to place
+%limits after a large operator rather than above and below it.
 \begindesc
 \cts nolimits {}
 \explain
-When it's in display
-style, \TeX\ normally places limits above and below a large operator.
-(The |\int| operator is an exception---\TeX\
-places limits for |\int| after the operator in all cases.)
+在陈列样式中，\TeX\ 通常将极限放在巨算符的上边和下边。%
+（|\int| 算符是一个例外—— \TeX\ 总是将极限放在算符的后边。）%
 ^^|\int//limits after|
-This command tells \TeX\ to place
-limits after a large operator rather than above and below it.
+此命令让 \TeX\ 将极限放在巨算符后边，而不是上边和下边。
 
-If you specify more than one of |\limits|, |\nolimits|,
-and |\display!-limits|, the last command rules.
+%If you specify more than one of |\limits|, |\nolimits|,
+%and |\display!-limits|, the last command rules.
+如果你多次使用 |\limits|、|\nolimits| 或 |\display!-limits|，
+仅最后一个命令生效。
 
+%\example
+%$$\bigcap\nolimits_{i=1}^Nq_i$$
+%|
+%\dproduces
+%$$\bigcap\nolimits_{i=1}^Nq_i$$
+%\endexample
+%\enddesc
 \example
 $$\bigcap\nolimits_{i=1}^Nq_i$$
 |
@@ -680,29 +943,53 @@ $$\bigcap\nolimits_{i=1}^Nq_i$$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts displaylimits {}
+%\explain
+%This command tells \TeX\ to
+%follow its normal rules for placement of limits:
+%\olist\compact
+%\li Limits on ^|\int| are placed after the operator.
+%\li Limits on other large operators are placed after the
+%operator in text style.
+%\li Limits on other large operators are placed above and below the operator
+%in display style.
+%\endolist
+%It's usually simpler to use |\limits| or |\nolimits|
+%to produce a specific effect, but |\display!-limits| is sometimes
+%useful in \minref{macro} definitions.
 \begindesc
 \cts displaylimits {}
 \explain
-This command tells \TeX\ to
-follow its normal rules for placement of limits:
+此命令让 \TeX\ 按照通常方式放置极限：
 \olist\compact
-\li Limits on ^|\int| are placed after the operator.
-\li Limits on other large operators are placed after the
-operator in text style.
-\li Limits on other large operators are placed above and below the operator
-in display style.
+\li ^|\int| 算符的极限总放在算符后边。%
+\footnote{译注：此处似乎有误，在 |\displaylimits| 下 ^|\int| 和其他算符应该有相同的表现。}
+\li 在文内样式中，其他巨算符的极限放在算符的后边。
+\li 在陈列样式中，其他巨算符的极限放在算符的上边和下边。
 \endolist
-It's usually simpler to use |\limits| or |\nolimits|
-to produce a specific effect, but |\display!-limits| is sometimes
-useful in \minref{macro} definitions.
+用 |\limits| 或 |\nolimits| 来排印特定效果更为简单，
+但 |\display!-limits| 在\minref{宏}定义中有时会用到。
 
-Note that \plainTeX\ defines ^|\int| as a macro that sets |\nolimits|,
-so |\int\displaylimits| in text style restores the |\limits|
-convention.
+%Note that \plainTeX\ defines ^|\int| as a macro that sets |\nolimits|,
+%so |\int\displaylimits| in text style restores the |\limits|
+%convention.
+注意 \plainTeX\ 在定义 ^|\int| 时就带有 |\nolimits|，
+因此文内样式的 |\int\displaylimits| 将恢复 |\limits| 约定。%
+\footnote{译注：此处似乎有误，在文内样式中，|\int\displaylimits| 的极限应该还是在后边。}
 
-If you specify more than one of |\limits|, |\nolimits|,
-and |\display!-limits|, the last command rules.
+%If you specify more than one of |\limits|, |\nolimits|,
+%and |\display!-limits|, the last command rules.
+如果你多次使用 |\limits|、|\nolimits| 或 |\display!-limits|，
+仅最后一个命令生效。
 
+%\example
+%$$a(\lambda) = {1 \over {2\pi}} \int\displaylimits
+%_{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
+%|
+%\dproduces
+%$$a(\lambda) = {1 \over {2\pi}} \int\displaylimits
+%_{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
 \example
 $$a(\lambda) = {1 \over {2\pi}} \int\displaylimits
 _{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
@@ -711,25 +998,46 @@ _{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
 $$a(\lambda) = {1 \over {2\pi}} \int\displaylimits
 _{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
 
+%\eix^^{operators//large}
+%\endexample
+%\enddesc
 \eix^^{operators//large}
 \endexample
 \enddesc
 
 
 %==========================================================================
-\subsection {Punctuation}
+%\subsection {Punctuation}
+\subsection {标点}
 
+%\begindesc
+%\bix^^{punctuation in math formulas}
+%\cts cdotp {}
+%\cts ldotp {}
+%\explain
+%These two commands respectively produce a centered dot and a dot
+%positioned on the \minref{baseline}.  They are valid only in math
+%\minref{mode}.  \TeX\ treats them as punctuation, putting no extra space in
+%front of them but a little extra space after them.
+%In contrast, \TeX\ puts an equal amount of space on both sides
+%of a centered dot generated by the ^|\cdot| command (\xref \cdot).
+%\example
+%$x \cdotp y \quad x \ldotp y \quad x \cdot y$
+%|
+%\produces
+%$x \cdotp y \quad x \ldotp y \quad x \cdot y$
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{punctuation in math formulas}
 \cts cdotp {}
 \cts ldotp {}
 \explain
-These two commands respectively produce a centered dot and a dot
-positioned on the \minref{baseline}.  They are valid only in math
-\minref{mode}.  \TeX\ treats them as punctuation, putting no extra space in
-front of them but a little extra space after them.
-In contrast, \TeX\ puts an equal amount of space on both sides
-of a centered dot generated by the ^|\cdot| command (\xref \cdot).
+这两个命令分别排印居中的圆点和在\minref{基线}上的圆点。
+它们仅可用于数学\minref{模式}中。
+\TeX\ 将它们视为标点，在前面不留间隔而在后面留下一点间隔。
+与此相反，对于用 ^|\cdot| 命令（\xref\cdot ）生成的居中圆点，
+\TeX\ 在其两侧留下相同大小的间隔。
 \example
 $x \cdotp y \quad x \ldotp y \quad x \cdot y$
 |
@@ -738,20 +1046,35 @@ $x \cdotp y \quad x \ldotp y \quad x \cdot y$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts colon {}
+%\explain
+%This command produces a colon punctation symbol.
+%It is valid only in math mode.
+%The difference between |\colon| and the colon character (|:|) is that
+%`|:|' is an operator, so \TeX\ puts extra space to the left of it whereas
+%it doesn't put extra space to the left of |\colon|.
+%\example
+%$f \colon t \quad f : t$
+%|
+%\produces
+%$f \colon t \quad f : t$
 \begindesc
 \cts colon {}
 \explain
-This command produces a colon punctation symbol.
-It is valid only in math mode.
-The difference between |\colon| and the colon character (|:|) is that
-`|:|' is an operator, so \TeX\ puts extra space to the left of it whereas
-it doesn't put extra space to the left of |\colon|.
+此命令排印一个冒号标点，它只能用在数学模式中。
+冒号标点 |\colon| 和冒号字符(|:|)的区别在于，
+`|:|' 是一个运算符，因此 \TeX\ 在其左侧留下额外间隔，
+然而在 |\colon| 左侧却不留额外间隔。
 \example
 $f \colon t \quad f : t$
 |
 \produces
 $f \colon t \quad f : t$
 
+%\eix^^{punctuation in math formulas}
+%\endexample
+%\enddesc
 \eix^^{punctuation in math formulas}
 \endexample
 \enddesc
