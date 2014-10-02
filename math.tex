@@ -2673,11 +2673,47 @@ ${\cal XYZ} \quad
 
 
 %==========================================================================
-\section {Constructing math symbols}
+%\section {Constructing math symbols}
+\section {构造数学符号}
 
 %==========================================================================
-\subsection {Making delimiters bigger}
+%\subsection {Making delimiters bigger}
+\subsection {增大定界符}
 
+%\begindesc
+%\makecolumns 16/4:
+%\easy\cts big {}
+%\cts bigl {}
+%\cts bigm {}
+%\cts bigr {}
+%\cts Big {}
+%\cts Bigl {}
+%\cts Bigm {}
+%\cts Bigr {}
+%\cts bigg {}
+%\cts biggl {}
+%\cts biggm {}
+%\cts biggr {}
+%\cts Bigg {}
+%\cts Biggl {}
+%\cts Biggm {}
+%\cts Biggr {}
+%\explain
+%^^{delimiters//enlarging}
+%These commands make \minref{delimiter}s bigger than their normal size.
+%The commands in the four columns
+%produce successively larger sizes.  The difference between |\big|,
+%|\bigl|, |\bigr|, and |bigm| has to do with the \minref{class} of the
+%enlarged delimiter:
+%\ulist\compact
+%\li |\big| produces an ordinary symbol.
+%\li |\bigl| produces an opening symbol.
+%\li |\bigr| produces a closing symbol.
+%\li |\bigm| produces a relation symbol.
+%\endulist
+%\noindent
+%\TeX\ uses the class of a symbol in order to decide how much space to put
+%around that symbol.
 \begindesc
 \makecolumns 16/4:
 \easy\cts big {}
@@ -2698,24 +2734,34 @@ ${\cal XYZ} \quad
 \cts Biggr {}
 \explain
 ^^{delimiters//enlarging}
-These commands make \minref{delimiter}s bigger than their normal size.
-The commands in the four columns
-produce successively larger sizes.  The difference between |\big|,
-|\bigl|, |\bigr|, and |bigm| has to do with the \minref{class} of the
-enlarged delimiter:
+这些命令让\minref{定界符}比它们的正常尺寸还大。
+这四栏中的命令生成依次增大的尺寸。|\big|、|\bigl|、|\bigr|
+和 |\bigm| 的区别在于增大的定界符所属的\minref{类}：
 \ulist\compact
-\li |\big| produces an ordinary symbol.
-\li |\bigl| produces an opening symbol.
-\li |\bigr| produces a closing symbol.
-\li |\bigm| produces a relation symbol.
+\li |\big| 生成一个普通符号。
+\li |\bigl| 生成一个开符号。
+\li |\bigr| 生成一个闭符号。
+\li |\bigm| 生成一个关系符号。
 \endulist
 \noindent
-\TeX\ uses the class of a symbol in order to decide how much space to put
-around that symbol.
+\TeX\ 从字符所属的类确定要在该字符两边留下多大的空格。
 
-These commands, unlike |\left| and |\right|,
-do \emph{not} define a group.
+%These commands, unlike |\left| and |\right|,
+%do \emph{not} define a group.
 
+%\example
+%$$(x) \quad \bigl(x\bigr) \quad \Bigl(x\Bigr) \quad
+%   \biggl(x\biggr) \quad \Biggl(x\Biggr)\qquad
+%[x] \quad \bigl[x\bigr] \quad \Bigl[x\Bigr] \quad
+%   \biggl[x\biggr] \quad \Biggl[x\Biggr]$$
+%|
+%\dproduces
+%$$(x) \quad \bigl(x\bigr) \quad \Bigl(x\Bigr) \quad
+%\biggl(x\biggr) \quad \Biggl(x\Biggr)\qquad
+%[x] \quad \bigl[x\bigr] \quad \Bigl[x\Bigr] \quad
+%\biggl[x\biggr] \quad \Biggl[x\Biggr]$$
+%\endexample
+%\enddesc
 \example
 $$(x) \quad \bigl(x\bigr) \quad \Bigl(x\Bigr) \quad
    \biggl(x\biggr) \quad \Biggl(x\Biggr)\qquad
@@ -2731,18 +2777,35 @@ $$(x) \quad \bigl(x\bigr) \quad \Bigl(x\Bigr) \quad
 \enddesc
 
 %==========================================================================
-\subsection {Parts of large symbols}
+%\subsection {Parts of large symbols}
+\subsection {大符号的一部分}
 
+%\begindesc
+%\cts downbracefill {}
+%\cts upbracefill {}
+%\explain
+%These commands respectively produce upward-pointing
+%and downward-pointing extensible ^{horizontal braces}. ^^{braces}
+%\TeX\ will make the braces as wide as necessary.
+%These commands
+%are used in the definitions of ^|\overbrace| and ^|\underbrace|
+%(\xref \overbrace).
+%\example
+%$$\hbox to 1in{\downbracefill} \quad
+%   \hbox to 1in{\upbracefill}$$
+%|
+%\dproduces
+%$$\hbox to 1in{\downbracefill} \quad
+%   \hbox to 1in{\upbracefill}$$
+%\endexample
+%\enddesc
 \begindesc
 \cts downbracefill {}
 \cts upbracefill {}
 \explain
-These commands respectively produce upward-pointing
-and downward-pointing extensible ^{horizontal braces}. ^^{braces}
-\TeX\ will make the braces as wide as necessary.
-These commands
-are used in the definitions of ^|\overbrace| and ^|\underbrace|
-(\xref \overbrace).
+这两个命令分别排印朝上和朝下的可伸展^{水平花括号}。^^{braces}
+\TeX\ 将让花括号足够宽。
+这两个命令用于定义 ^|\overbrace| 和 ^|\underbrace|（\xref\overbrace ）。
 \example
 $$\hbox to 1in{\downbracefill} \quad
    \hbox to 1in{\upbracefill}$$
@@ -2753,6 +2816,29 @@ $$\hbox to 1in{\downbracefill} \quad
 \endexample
 \enddesc
 
+%\begindesc
+%\cts arrowvert {}
+%\cts Arrowvert {}
+%\cts lmoustache {}
+%\cts rmoustache {}
+%\cts bracevert {}
+%\explain
+%These commands produce portions of certain large
+%delimiters
+%^^{delimiters//parts of}
+%and can themselves be used as delimiters.
+%They refer to characters in the ^|cmex10| math font.
+%\example
+%$$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
+%  \Big\lmoustache \cdots \Big\rmoustache \cdots
+%  \Big\bracevert \cdots$$
+%|
+%\dproduces
+%$$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
+%  \Big\lmoustache \cdots \Big\rmoustache \cdots
+%  \Big\bracevert \cdots$$
+%\endexample
+%\enddesc
 \begindesc
 \cts arrowvert {}
 \cts Arrowvert {}
@@ -2760,11 +2846,10 @@ $$\hbox to 1in{\downbracefill} \quad
 \cts rmoustache {}
 \cts bracevert {}
 \explain
-These commands produce portions of certain large
-delimiters
+这些命令排印某些大定界符的一部分，
 ^^{delimiters//parts of}
-and can themselves be used as delimiters.
-They refer to characters in the ^|cmex10| math font.
+把它们也用作定界符。
+它们取自 ^|cmex10| 数学字体中的字符。
 \example
 $$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
   \Big\lmoustache \cdots \Big\rmoustache \cdots
