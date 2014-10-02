@@ -3483,8 +3483,25 @@ $\ab^{\ab}$
 
 
 %==========================================================================
-\section {Categorizing math constructs}
+%\section {Categorizing math constructs}
+\section {分类数学结构}
 
+%\begindesc
+%\makecolumns 7/2:
+%\cts mathord {}
+%\cts mathop {}
+%\cts mathbin {}
+%\cts mathrel {}
+%\cts mathopen {}
+%\cts mathclose {}
+%\cts mathpunct {}
+%\explain
+%These commands tell \TeX\ to treat the construct that follows as belonging
+%to a particular ^{class} (see \knuth{page~154} for the definition
+%of the classes).  They are listed here in the order of the class numbers,
+%from $0$ to $6$.  Their primary
+%effect is to adjust the spacing around the construct
+%to be whatever it is for the specified class.
 \begindesc
 \makecolumns 7/2:
 \cts mathord {}
@@ -3495,13 +3512,18 @@ $\ab^{\ab}$
 \cts mathclose {}
 \cts mathpunct {}
 \explain
-These commands tell \TeX\ to treat the construct that follows as belonging
-to a particular ^{class} (see \knuth{page~154} for the definition
-of the classes).  They are listed here in the order of the class numbers,
-from $0$ to $6$.  Their primary
-effect is to adjust the spacing around the construct
-to be whatever it is for the specified class.
-
+这些命令让 \TeX\ 把随后的结构归入指定的^{类}（见\knuth{第~154~页}对类的定义）。
+它们按照类编号的大小顺序排列，从 $0$ 到 $6$。
+它们主要用于按照指定的类调整该结构两边的间隔大小。
+%\example
+%$\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
+%% By treating minmax as a math operator, we can get TeX to
+%% put something underneath it.
+%|
+%\produces
+%$\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
+%\endexample
+%\enddesc
 \example
 $\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
 % By treating minmax as a math operator, we can get TeX to
@@ -3512,12 +3534,18 @@ $\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts mathinner {}
+%\explain
+%This command tells \TeX\ to treat the construct that follows
+%as an ``inner formula'', e.g., a fraction, for spacing purposes.
+%It resembles the class commands given just above.
+%\enddesc
 \begindesc
 \cts mathinner {}
 \explain
-This command tells \TeX\ to treat the construct that follows
-as an ``inner formula'', e.g., a fraction, for spacing purposes.
-It resembles the class commands given just above.
+此命令让 \TeX\ 将随后的结构视为``内部公式''，比如分式，并据此调整间隔。
+它与上面刚提到的类命令类似。
 \enddesc
 
 %==========================================================================
