@@ -2864,21 +2864,39 @@ $$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
 
 
 %==========================================================================
-\section {Aligning parts of a formula}
+%\section {Aligning parts of a formula}
+\section {对齐部分公式}
 
 %==========================================================================
-\subsection {Aligning accents}
+%\subsection {Aligning accents}
+\subsection {对齐数学重音}
 
+%\begindesc
+%\bix^^{accents//aligning}
+%\cts skew {\<number> \<argument$_1$> \<argument$_2$>}
+%\explain
+%This command shifts the accent \<argument$_1$> by
+%\<number> \minref{mathematical unit}s to the right of its normal position
+%with respect to \<argu\-ment$_2$>.
+%The most common use of this command is for
+%modifying the position of an accent that's over
+%another accent.
+%\example
+%$$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
+%  \skew 4\tilde{\hat x}$$
+%|
+%\dproduces
+%$$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
+%  \skew 4\tilde{\hat x}$$
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{accents//aligning}
 \cts skew {\<number> \<argument$_1$> \<argument$_2$>}
 \explain
-This command shifts the accent \<argument$_1$> by
-\<number> \minref{mathematical unit}s to the right of its normal position
-with respect to \<argu\-ment$_2$>.
-The most common use of this command is for
-modifying the position of an accent that's over
-another accent.
+此命令将重音 \<argument$_1$> 相对 \<argu\-ment$_2$> 
+从它的正常位置往右移动 \<number> 个\minref{数学单位}。
+此命令常用于调整在其他重音之上的重音的位置。
 \example
 $$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
   \skew 4\tilde{\hat x}$$
@@ -2889,69 +2907,118 @@ $$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
 \endexample
 \enddesc
 
+%\begindesc
+%\cts skewchar {\<font>\param{number}}
+%\explain
+%The |\skewchar| of a font
+%is the character in the font whose kerns,
+%as defined in the font's metrics file, determine the positions
+%of math accents. That is, suppose that \TeX\ is applying a math accent
+%to the character `|x|'.  \TeX\ checks if the character pair
+%`|x\skewchar|' has a kern; if so, it moves the accent by the amount of
+%that kern. The complete algorithm that \TeX\ uses to position math
+%accents (which involves many more things) is in \knuth{Appendix~G}.
 \begindesc
 \cts skewchar {\<font>\param{number}}
 \explain
-The |\skewchar| of a font
-is the character in the font whose kerns,
-as defined in the font's metrics file, determine the positions
-of math accents. That is, suppose that \TeX\ is applying a math accent
-to the character `|x|'.  \TeX\ checks if the character pair
-`|x\skewchar|' has a kern; if so, it moves the accent by the amount of
-that kern. The complete algorithm that \TeX\ uses to position math
-accents (which involves many more things) is in \knuth{Appendix~G}.
+字体的 |\skewchar| 是字体中的某个字符，
+它在字体度量文件中定义的紧排确定了数学重音的位置。
+也就是说，假设 \TeX\ 要给字符 `|x|' 加上数学重音，
+则 \TeX\ 检查字符对 `|x\skewchar|' 是否有个紧排；
+如果有，它就以该紧排的值移动该重音。
+\TeX\ 放置数学重音的完整算法（这涉及到很多事情）在\knuth{附录~G}中描述。
 
-If the value of |\skewchar| is not in the range $0$--$255$,
-\TeX\ takes the kern value to be zero.
+%If the value of |\skewchar| is not in the range $0$--$255$,
+%\TeX\ takes the kern value to be zero.
+如果 |\skewchar| 的值不在 $0$--$255$ 的范围内，\TeX\ 将紧排的值当作零。
 
-Note that \<font> is a control sequence
-that names a font, not a \<font\-name> that names font files.
-Beware:
-an assignment to |\skewchar| is \emph{not} undone at the end
-of a group.
-If you want to change |\skewchar| locally, you'll need to
-save and restore its original value explicitly.
+%Note that \<font> is a control sequence
+%that names a font, not a \<font\-name> that names font files.
+%Beware:
+%an assignment to |\skewchar| is \emph{not} undone at the end
+%of a group.
+%If you want to change |\skewchar| locally, you'll need to
+%save and restore its original value explicitly.
+%\enddesc
+注意 \<font> 是一个控制序列，它是字体的名称，而不是字体文件的名称 \<font\-name>。
+小心：对 |\skewchar| 的赋值在编组结束时\emph{并不会}还原。
+如果你想局部改变|\skewchar|，你需要显式地保存和还原它的原始值。
 \enddesc
 
+%\begindesc
+%\cts defaultskewchar {\param{number}}
+%\explain
+%When \TeX\ reads the metrics file
+%^^{metrics file//default skew character in}
+%for a font in response to a
+%^|\font| command, it sets the font's ^|\skewchar| to
+%|\default!-skewchar|.
+%If the value of |\default!-skewchar| is
+%not in the range $0$--$255$, \TeX\ does not assign any
+%skew characters by default.
+%\PlainTeX\ sets |\defaultskewchar| to $-1$, and it's usually best
+%to leave it there.
+%\margin{Misleading example deleted.}
+%\eix^^{accents//aligning}
+%\enddesc
 \begindesc
 \cts defaultskewchar {\param{number}}
 \explain
-When \TeX\ reads the metrics file
+在执行 ^|\font| 命令读取字体的度量文件时，
 ^^{metrics file//default skew character in}
-for a font in response to a
-^|\font| command, it sets the font's ^|\skewchar| to
-|\default!-skewchar|.
-If the value of |\default!-skewchar| is
-not in the range $0$--$255$, \TeX\ does not assign any
-skew characters by default.
-\PlainTeX\ sets |\defaultskewchar| to $-1$, and it's usually best
-to leave it there.
+\TeX\ 设定该字体的 ^|\skewchar| 等于 |\default!-skewchar|。
+如果 |\default!-skewchar| 的值不在 $0$--$255$ 的范围内，
+\TeX\ 默认就不设定 |\skewchar| 的值。
+\PlainTeX\ 设定 |\defaultskewchar| 等于 $-1$，一般不需要改动它。
 \margin{Misleading example deleted.}
 \eix^^{accents//aligning}
 \enddesc
 
 %==========================================================================
-\subsection {Aligning material vertically}
+%\subsection {Aligning material vertically}
+\subsection {竖直对齐素材}
 
+%\begindesc
+%\cts vcenter {\rqbraces{\<vertical mode material>}}
+%\ctsbasic {\\vcenter to \<dimen> \rqbraces{\<vertical mode material>}}{}
+%\ctsbasic {\\vcenter spread \<dimen> \rqbraces{\<vertical mode material>}}{}
+%\explain
+%Every math formula has an invisible
+%``^{axis}'' that \TeX\ treats as a kind of
+%horizontal centering line for that formula.
+%For instance, the axis of a formula consisting of a
+%fraction is at the center of the fraction bar.
+%The |\vcenter| command tells \TeX\ to place the \<vertical mode material>
+%in a \minref{vbox} and to center the vbox
+%with respect to the axis of the formula it is currently constructing.
 \begindesc
 \cts vcenter {\rqbraces{\<vertical mode material>}}
 \ctsbasic {\\vcenter to \<dimen> \rqbraces{\<vertical mode material>}}{}
 \ctsbasic {\\vcenter spread \<dimen> \rqbraces{\<vertical mode material>}}{}
 \explain
-Every math formula has an invisible
-``^{axis}'' that \TeX\ treats as a kind of
-horizontal centering line for that formula.
-For instance, the axis of a formula consisting of a
-fraction is at the center of the fraction bar.
-The |\vcenter| command tells \TeX\ to place the \<vertical mode material>
-in a \minref{vbox} and to center the vbox
-with respect to the axis of the formula it is currently constructing.
+每个数学公式都有一个不可见的``^{轴线}''，\TeX\ 将它作为该公式的水平中心线。
+举个例子，由分式组成的公式的轴线就在分数线的中心。
+|\vcenter| 命令让 \TeX\ 将 \<vertical mode material> 放入\minref{竖直盒子}中，
+并将该竖直盒子与当前公式的轴线居中对齐。
 
-The first form of the command
-centers the material as given.  The second and third
-forms expand or shrink the material vertically as in the |\vbox| command
-(\xref \vbox).
+%The first form of the command
+%centers the material as given.  The second and third
+%forms expand or shrink the material vertically as in the |\vbox| command
+%(\xref \vbox).
+此命令的第一种形式如上所述居中放置素材。
+后两种形式竖直扩展或收缩素材，如同 |\vbox| 命令（\xref\vbox ）。
 
+%\example
+%$${n \choose k} \buildrel \rm def \over \equiv \>
+%\vcenter{\hsize 1.5 in \noindent the number of
+%combinations of $n$ things taken $k$ at a time}$$
+%|
+%\dproduces
+%$${n \choose k} \buildrel \rm def \over \equiv \>
+%\vcenter{\hsize 1.5 in \noindent the number of
+%combinations of $n$ things taken $k$ at a time}$$
+%\endexample
+%\enddesc
 \example
 $${n \choose k} \buildrel \rm def \over \equiv \>
 \vcenter{\hsize 1.5 in \noindent the number of
@@ -2963,6 +3030,7 @@ $${n \choose k} \buildrel \rm def \over \equiv \>
 combinations of $n$ things taken $k$ at a time}$$
 \endexample
 \enddesc
+
 
 %==========================================================================
 \section {Producing spaces}
