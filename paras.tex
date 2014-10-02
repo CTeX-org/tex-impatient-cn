@@ -527,7 +527,7 @@ l'H\accent94 otel des Invalides
 \xrdef{selfont}
 %==========================================================================
 %\subsection {Particular fonts}
-\subsection {专用字体}
+\subsection {特定字体}
 
 % \begindesc
 % ^^{fonts}
@@ -613,8 +613,10 @@ See how I've reduced my weight---from
 这个命令选择一种 \TeX{} 内置的没有任何字符的空字体。在一族数学字体
 中，\TeX{} 将用它取代其中没有定义的字体。
 \enddesc
+
 %==========================================================================
-\subsection {Type styles}
+%\subsection {Type styles}
+\subsection {字体风格}
 
 % \xrdef{seltype}
 % \begindesc
@@ -645,7 +647,6 @@ See how I've reduced my weight---from
 % The Dormouse was {\it not} amused.
 % \endexample
 % \enddesc
-
 \xrdef{seltype}
 \begindesc
 ^^{type styles}
@@ -655,9 +656,12 @@ See how I've reduced my weight---from
 \ctsx sl {斜体}
 \ctsx tt {打字机字体}
 \explain
-这些命令选择一种字体风格，而不改变字体或者字号。\footnote{
-\TeX\ 并不提供预定义的命令来改变字号，比如，|\eightpoint|。要支持这样的命令，需要大量的字体，可能很多从来都不会用到。这样的命令曾被用来排版\texbook。}
-一般情况下，这些字体风格命令和相应的文本被一起包含在一个编组里。如果放在编组之外，效果将会作用于文档剩余部分（除非用另外一个这样的命令覆盖它）。
+这些命令选择一种字体风格，而不改变字样或者字号。
+\footnote{译注：注意区分字样（typeface）和字体（font），字样指一整套统一设计的字体。}
+\footnote{\TeX\ 并不提供预定义的命令来改变字号，比如，|\eightpoint|。要支持这样的命令，
+需要大量的字体，可能很多从来都不会用到。这样的命令曾被用来排版\texbook。}
+一般情况下，这些字体风格命令和相应的文本被一起包含在一个编组里。
+如果放在编组之外，效果将会作用于文档剩余部分（除非用另外一个这样的命令覆盖它）。
 \example
 The Dormouse was {\it not} amused.
 |
@@ -667,7 +671,8 @@ The Dormouse was {\it not} amused.
 \enddesc
 
 % \see ``Fonts in math formulas'' (\xref{mathfonts}).
-\see ``数学公式字体'' (\xref{mathfonts}).
+\see ``数学公式字体''（\xref{mathfonts}）。
+
 %==========================================================================
 % \section {Uppercase and lowercase}
 \section {大写和小写}
@@ -693,11 +698,11 @@ The Dormouse was {\it not} amused.
 \cts lccode {\<charcode> \tblentry{number}}
 \cts uccode {\<charcode> \tblentry{number}}
 \explain
-|\lccode|和|\uccode|的值为$256$个输入字符设定大小写的对应关系。
-|\lowercase|和|\uppercase|命令以及\TeX{}的断词算法将会使用这些值。
+|\lccode| 和 |\uccode| 的值为$256$个输入字符设定大小写的对应关系。
+|\lowercase| 和 |\uppercase| 命令以及 \TeX\ 的断词算法将会使用这些值。
 
 % \TeX\ initializes the values of |\lccode| and |\uccode| as follows:
-\TeX{}这样来初始化|\lccode|和|\uccode|的值：
+\TeX\ 这样初始化 |\lccode|和|\uccode|的值：
 %\ulist\compact
 %\li The |\lccode| of a lowercase letter is the {\ascii} code for that letter.
 %\li The |\lccode| of an uppercase letter is the {\ascii} code for the
@@ -762,7 +767,7 @@ The Dormouse was {\it not} amused.
 \cts uppercase {\rqbraces{\<token list>}}
 \explain ^^{case conversion}
 这些命令按照|\lccode|和|\uccode|的值转换\<token list>中的字母（类别码为$11$的）为它们的大写和小写形式。
-非字母字符不受影响，即使它们是\minref{macro}引用或其他展开成字母的命令。
+非字母字符不受影响，即使它们是\minref{宏}调用或其他展开成字母的命令。
 \example
 \def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
 |
@@ -817,7 +822,7 @@ The Dormouse was {\it not} amused.
 %\enddesc
 
 
-如果哦你想打印出`\vs' ^^{visible space}空格，可以输入
+如果你想打印出`\vs' ^^{visible space}空格，可以输入
 |{\tt \char `\ }|.
 
 \example
@@ -847,7 +852,7 @@ The Dormouse was a \TeX\ expert, but he never let on.
 \begindesc
 \cts space {}
 \explain
-这个命令等价于一个输入的空格字符。和^|\ |不同，它的宽度\emph{会}受到前面标点的影响。
+这个命令等价于一个输入的空格字符。和 ^|\ | 不同，它的宽度\emph{会}受到前面标点的影响。
 \example
 Yes.\space No.\space Maybe.\par
 Yes.\!vs!.No.\!vs!.Maybe.
@@ -899,8 +904,6 @@ Yes.\ No.\ Maybe.
 %\endexample
 %\enddesc
 %
-
-
 \begindesc
 \ctsact  ^^M \xrdef{@newline}
 \explain
@@ -911,7 +914,7 @@ Yes.\ No.\ Maybe.
 \li 结束一行，使\TeX{}忽略剩余的字符。
 \endolist
 \noindent
-但是，如果以|`\^^M|（control-M的ASCII 代码13）出现，|^^M|\emph{不会}结束一行。
+但是，如果以|`\^^M|（即 control-M 的 ASCII 代码 13）出现，|^^M|\emph{不会}结束一行。
 你可以修改\minref{类别码}，从而赋予它新的含义。
 关于|^^|更多的解释请参见\xrefpg{twocarets}。
 \example
@@ -1137,7 +1140,7 @@ that's clear.
 \begindesc
 \cts obeyspaces {}
 \explain
-\TeX{}把连续的空格处理为一个空格。
+\TeX\ 把连续的空格处理为一个空格。
 |\obeyspaces|的作用是输入多少空格，就输出多少。
 但是|\obeyspaces|不会显示行首的空格。这时候推荐使用|\obey!-white!-space|，其定义在|eplain.tex|中(\xref{ewhitesp})。
 ^^|\obeywhitespace|
@@ -1185,28 +1188,28 @@ These     spaces    are    closed   up
 %% Correction made by A-W production.
 %In addition, if $f\ge2000$ the interword space is further increased by the
 %``extra space'' parameter associated with the current font.
-
-
-
 \begindesc
 \cts spacefactor {\param{number}}
 \cts spaceskip {\param{glue}}
 \cts xspaceskip {\param{glue}}
 \cts sfcode {\<charcode> \tblentry{number}}
 \explain
-这些基本\minref{参数}影响相邻的单词间的空白，即^{单词间距}。
+这些基本\minref{参数}影响相邻单词之间的空白，即^{单词间距}。
 默认的单词间距由当前字体决定。
-当\TeX{}处理一个\minref{horizontal list}时，会监视|\spacefactor|中的^{距离因子} $f$。
-每当一个输入字符$c$被处理时，$f$就会随$f_c$（$c$的距离因子代码）的值而更新。
-大多数的字符，$f_c$是$1000$，因此\TeX{}设定$f$为$1000$。（$f$的初始值也是$1000$。）
-当\TeX{}遇到一个单词间空格的时候，就会调整空格的大小，乘以$f/1000$来伸，除以$1000/f$来压缩。
+当\TeX\ 处理一个\minref{水平列表}时，会监视 |\spacefactor| ^{间隔因子} $f$。
+每当一个输入字符$c$被处理时，$f$就会随$f_c$（$c$的间隔因子代码）的值而更新。
+大多数的字符，$f_c$是$1000$，因此\TeX\ 设定$f$为$1000$。（$f$的初始值也是$1000$。）
+当\TeX\ 遇到一个单词间空格的时候，就会调整间隔的大小，
+给该间隔的伸长量和收缩量分别乘以 $f/1000$ 和 $1000/f$。
 所以：
 \olist\compact
 \li 当$f=1000$时，单词间距为默认值。
-\li 当$f<1000$时，单词间距被\minref{压缩}。
-\li 当$f>1000$时，单词间距被\minref{拉伸}。
+\li 当$f<1000$时，单词间距有更少\minref{伸长量}更多\minref{收缩量}。
+\li 当$f>1000$时，单词间距有更多\minref{伸长量}更少\minref{收缩量}。
 \endolist
-另外，如果$f\ge2000$，以上与当前字体相关的额外空白的参数会让单词间距会进一步增大。
+% > changed to \ge on the next line after second edition was typeset.
+% Correction made by A-W production.
+另外，如果$f\ge2000$，当前字体的``额外空白''参数会让单词间距进一步增大。
 
 %Each
 %input character $c$ has an entry in the |\sfcode| (space factor code)
@@ -1228,15 +1231,17 @@ These     spaces    are    closed   up
 %(see the rule above for the case $f\ge2000$).
 %Noncharacter items in a horizontal list, e.g., vertical rules,
 %generally act like characters with a space factor of $1000$.
-
-每一个输入字符$c$对应于|\sfcode|（距离因子代码）表中的一项。
-|\sfcode|表项与字体无关。通常\TeX{}处理完$c$之后就让$f$等于$f_c$。但是：
+每一个输入字符$c$对应于|\sfcode|（间隔因子代码）表中的一项。
+|\sfcode|表项与字体无关。通常\TeX\ 处理完$c$之后就让$f$等于$f_c$。
+但是：
 \ulist
-\li 如果$f_c$为零，$f$将不变。所以\plainTeX{}中$f_c$为零的字符，如`|)|'，对于单词间距的演算毫无影响。
-\li 如果$f<1000<f_c$，\TeX{}会让$f$为$1000$而不是$f_c$，也就是，不会让$f$快速地增加。
+\li 如果$f_c$为零，$f$将不变。所以\plainTeX\ 中$f_c$为零的字符，
+如`|)|'，对于单词间距的计算毫无影响。
+\li 如果$f<1000<f_c$，\TeX\ 会让$f$为$1000$而不是$f_c$，也就是，不会让$f$快速地增加。
 \endulist
-句点的|\sfcode|值通常是$3000$，所以\TeX{}会在句点之后增加额外的空白。
-（参见上面$f\ge2000$的情形）。水平列表中的非字符，比如垂线，一般类似于字符，距离因子为$1000$。
+句号的|\sfcode|值通常是$3000$，所以\TeX\ 会在句号之后增加额外的空白。%
+（参见上面$f\ge2000$的情形）。水平列表中的非字符，
+比如竖直标线，一般视为间隔因子为 $1000$ 字符。
 
 %You can change the space factor explicitly by assigning
 %a different numerical value to |\spacefactor|.
@@ -1253,29 +1258,27 @@ These     spaces    are    closed   up
 %the |\spaceskip| glue, like that of the ordinary interword glue,
 %is modified according to the value of $f$.
 %\endulist
-%
+通过修改 |\spacefactor| 的值，就可以显式地调整间隔因子。
+通过修改 |\xspaceskip| 或者 |\spaceskip| 的值，你还可以覆盖默认的单词间距：
+\ulist
+\li |\xspaceskip| 设定 $f\ge2000$ 时的粘连；如果 |\xspaceskip| 是零，就取默认值。
+\li |\spaceskip| 设定 $f<2000$ 或者 |\xspaceskip| 为零时的粘连；
+如果|\spaceskip|是零，就取默认值。
+|\spaceskip| 粘连的伸长或收缩依$f$的值而变，就像普通的单词间距一样。
+\endulist
+
 %See \knuth{page~76} for the precise rules that \TeX\ uses in calculating
 %interword \minref{glue}, and \knuth{pages~285--287} for the adjustments
 %made to |\spacefactor| after various items in a horizontal list.
 %\eix^^{spaces//interword}
 %\enddesc
-改变|\spacefactor|的值，就可以方便地调整单词间距。
-默认的单词间距通过|\xspaceskip|或者|\spaceskip|来改变：
-\ulist
-\li |\xspaceskip|设定$f\ge2000$时的粘连；如果|\xspaceskip|是零, 就取默认值。
-\li |\spaceskip|设定$f<2000$或者
-\hbox{|\xspaceskip|}为零时的粘连；如果|\spaceskip|是零，取默认值。
-|\spaceskip| 粘连的拉伸或压缩依$f$的值而变，就像普通的单词间距一样。
-\endulist
-
-\knuth{page~76} 对\TeX\ 计算单词间\minref{粘连}的规则有一个具体的解释。
-\knuth{pages~285--287}详细描述了水平列表中不同项目之后|\spacefactor|的计算、修正。
+\knuth{第~76~页} 对 \TeX\ 计算单词间\minref{粘连}的规则有一个具体的解释。
+\knuth{第~285--287~页}详细描述了水平列表的各种项目之后|\spacefactor|的调整。
 \eix^^{spaces//interword}
 \enddesc
 
 %==========================================================================
 %\section {Centering and justifying lines}
-
 \section {行的居中和平均分布}
 
 %\begindesc
@@ -1295,29 +1298,6 @@ These     spaces    are    closed   up
 %several consecutive lines, you must apply
 %it to each one individually.
 %See \xrefpg{eplaincenter} for an alternate approach.
-%
-%Don't use these commands within a paragraph---if you do,
-%\TeX\ probably won't be able to break the paragraph into lines and
-%will complain about an overfull hbox.
-%\example
-%\centerline{Grand Central Station}
-%\leftline{left of Karl Marx}
-%\rightline{right of Genghis Khan}
-%|
-%\produces
-%\centerline{Grand Central Station}
-%\leftline{left of Karl Marx}
-%\rightline{right of Genghis Khan}
-%
-%\eix^^{centering}
-%\eix^^{flush left}
-%\eix^^{flush right}
-%\eix^^{justification}
-%
-%\endexample
-%\enddesc
-
-
 \begindesc
 \bix^^{centering}
 \bix^^{flush left}
@@ -1327,8 +1307,10 @@ These     spaces    are    closed   up
 \cts leftline {\<argument>}
 \cts rightline {\<argument>}
 \explain
-命令 |\centerline| 产生产生一个与当前行同宽的 \minref{hbox} 并把 \<argument> 在里面居中放置。命令 |\leftline| 和|\rightline| 的作用类似：把 \<argument> 放在盒子里靠左或者靠右的位置。如果想让几行内容都有同样的效果，每一行都必须这样操作。
-其他的办法，请看\xrefpg{eplaincenter}。
+命令 |\centerline| 产生产生一个与当前行同宽的\minref{水平盒子}，
+并把 \<argument> 在里面居中放置。命令 |\leftline| 和|\rightline| 的作用类似：
+把 \<argument> 放在盒子里靠左或者靠右的位置。如果想让几行内容都有同样的效果，
+每一行都必须这样操作。其他的办法，请看\xrefpg{eplaincenter}。
 
 %Don't use these commands within a paragraph---if you do,
 %\TeX\ probably won't be able to break the paragraph into lines and
@@ -1350,9 +1332,7 @@ These     spaces    are    closed   up
 %
 %\endexample
 %\enddesc
-
-
-这些命令不能用在段落里，否则拆段成行的时候，\TeX{}可能会遇到麻烦并警告盒子溢出了。
+这些命令不能用在段落里，否则分段成行的时候，\TeX\ 可能会遇到麻烦并警告盒子溢出了。
 \example
 \centerline{Grand Central Station}
 \leftline{left of Karl Marx}
@@ -1362,12 +1342,10 @@ These     spaces    are    closed   up
 \centerline{Grand Central Station}
 \leftline{left of Karl Marx}
 \rightline{right of Genghis Khan}
-
 \eix^^{centering}
 \eix^^{flush left}
 \eix^^{flush right}
 \eix^^{justification}
-
 \endexample
 \enddesc
 
@@ -1386,8 +1364,6 @@ These     spaces    are    closed   up
 %\endexample
 %
 %\enddesc
-
-
 \begindesc
 \easy\cts line {\<argument>}
 \explain
@@ -1400,8 +1376,8 @@ hbox的宽度和当前行宽相同，即从左边距延伸到右边距。
 \produces
 \line{ugly \hfil suburban \hfil sprawl}%
 \endexample
-
 \enddesc
+
 %\begindesc
 %^^{overlapping text}
 %\cts llap {\<argument>}

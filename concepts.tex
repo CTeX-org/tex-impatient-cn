@@ -2437,6 +2437,7 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 \PlainTeX\ 还将第 $1$ 族定义为由数学意大利字体组成，
 并将第 $2$ 族和第 $3$ 族分别保留给^{特殊符号}和^{数学扩展符号}。
 \footnote{第 $2$ 族和第 $3$ 族的特殊之处在于，它们的字体度量文件必须包含数学间隔参数。}
+\footnote{译注：第 $4$--$7$ 族分别定义为 |\itfam|、|\slfam|、|\bffam| 和 |\ttfam|。}
 如果你需要自己定义字体族，你应该使用 ^|\newfam| 命令\ctsref{\@newfam}获取未使用的族编号，
 再用 ^|\textfont|、^|\scriptfont| 和 ^|\scriptscriptfont|
 命令\ctsref{\scriptscriptfont}分别设定该族的各个字体。
@@ -3225,7 +3226,7 @@ Please don't pour {\it any} more tea into my hat.
 %item of either a horizontal list or a \refterm{vertical list}.  You can
 %construct an hbox with the |\hbox| command \ctsref{\hbox}.
 %\endconcept
-\defterm{水平盒子}（hbox，horizontal box）是 \TeX\ 
+\defterm{水平盒子}（hbox，horizontal box）是 \TeX\
 从左到右逐个放置\refterm{水平列表}的项目而构造出来的\refterm{盒子}。
 ^^{horizontal lists//hboxes formed from}
 水平盒子，作为一个单元，既不是本质上水平的也不是本质上竖直的，
@@ -3297,7 +3298,7 @@ Please don't pour {\it any} more tea into my hat.
 %one after another, left to right.
 ^^{hboxes//horizontal mode for}
 在组装段落或者\refterm{水平盒子}时，
-\TeX\ 位于两种\defterm{水平模式}（horizontal mode）之一: 
+\TeX\ 位于两种\defterm{水平模式}（horizontal mode）之一:
 ^{普通水平模式}用于组装段落，而^{受限水平模式}用于组装水平盒子。
 只要 \TeX\ 位于水平模式中，它的胃\seeconcept{\anatomy}就在构造项目%
 （盒子、粘连、惩罚等）的\refterm{水平列表}。
