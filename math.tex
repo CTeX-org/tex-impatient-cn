@@ -2514,8 +2514,33 @@ $$\eqalignno{
 
 
 %==========================================================================
-\section {Fonts in math formulas}
+%\section {Fonts in math formulas}
+\section {数学公式字体}
 
+%\begindesc
+%^^{fonts}
+%\xrdef{mathfonts}
+%%
+%\easy\ctsx cal {use calligraphic uppercase font}
+%\ctsx mit {use math italic font}
+%\ctsx oldstyle {use old style digit font}
+%\explain
+%These commands cause \TeX\ to typeset the following text in the
+%specified font.  You can only use them in \minref{math mode}.
+%The |\mit| command is useful for producing slanted capital ^{Greek letters}.
+%You can also use the commands given in
+%\headcit{Selecting fonts}{selfont} to change fonts in math mode.
+%\example
+%${\cal XYZ} \quad
+%{\mit AaBb\Gamma \Delta \Sigma} \quad
+%{\oldstyle 0123456789}$
+%|
+%\produces
+%${\cal XYZ} \quad
+%{\mit AaBb\Gamma \Delta \Sigma} \quad
+%{\oldstyle 0123456789}$
+%\endexample
+%\enddesc
 \begindesc
 ^^{fonts}
 \xrdef{mathfonts}
@@ -2524,11 +2549,10 @@ $$\eqalignno{
 \ctsx mit {use math italic font}
 \ctsx oldstyle {use old style digit font}
 \explain
-These commands cause \TeX\ to typeset the following text in the
-specified font.  You can only use them in \minref{math mode}.
-The |\mit| command is useful for producing slanted capital ^{Greek letters}.
-You can also use the commands given in
-\headcit{Selecting fonts}{selfont} to change fonts in math mode.
+这些命令让 \TeX\ 用指定的字体排版之后的文本。
+你只能在\minref{数学模式}中使用它们。
+|\mit| 命令可用于排印斜体大写^{希腊字母}。
+你还可以用\headcit{选择字体}{selfont}中的那些命令改变数学模式中的字体。
 \example
 ${\cal XYZ} \quad
 {\mit AaBb\Gamma \Delta \Sigma} \quad
@@ -2541,6 +2565,17 @@ ${\cal XYZ} \quad
 \endexample
 \enddesc
 
+%^^{type styles}
+%\begindesc
+%\ctsx itfam {family for italic type}
+%\ctsx bffam {family for boldface type}
+%\ctsx slfam {family for slanted type}
+%\ctsx ttfam {family for typewriter type}
+%\explain
+%These commands define type families \minrefs{family} for use in
+%\minref{math mode}.  Their principal use is in defining the
+%|\it|, |\bf|, |\sl|, and |\tt| commands so that they work in math mode.
+%\enddesc
 ^^{type styles}
 \begindesc
 \ctsx itfam {family for italic type}
@@ -2548,39 +2583,75 @@ ${\cal XYZ} \quad
 \ctsx slfam {family for slanted type}
 \ctsx ttfam {family for typewriter type}
 \explain
-These commands define type families \minrefs{family} for use in
-\minref{math mode}.  Their principal use is in defining the
-|\it|, |\bf|, |\sl|, and |\tt| commands so that they work in math mode.
+这些命令定义几种用于\minref{数学模式}的字体族\minrefs{族}。
+它们主要用在 |\it|、|\bf|、|\sl| 和 |\tt| 命令的定义中，使这些命令能在数学模式中使用。
 \enddesc
 
+%\begindesc
+%\cts fam {\param{number}}
+%\explain
+%When \TeX\ is in \minref{math mode}, it ordinarily typesets a character
+%using the font family ^^{class} given in its \minref{mathcode}.
+%^^{family//given by \b\tt\\fam\e}
+%However, when \TeX\ is in math mode and encounters a character whose
+%\minref{class} is $7$ (Variable), it typesets that character using
+%the font \minref{family} given by the value of |\fam|, provided that the
+%value of |\fam| is between $0$ and $15$.
+%If the value of |\fam| isn't in that range, \TeX\ uses the family in
+%the character's mathcode as in the ordinary case.
+%\TeX\ sets |\fam| to $-1$ whenever it enters math mode.
+%Outside of math mode, |\fam| has no effect.
 \begindesc
 \cts fam {\param{number}}
 \explain
-When \TeX\ is in \minref{math mode}, it ordinarily typesets a character
-using the font family ^^{class} given in its \minref{mathcode}.
-^^{family//given by \b\tt\\fam\e}
-However, when \TeX\ is in math mode and encounters a character whose
-\minref{class} is $7$ (Variable), it typesets that character using
-the font \minref{family} given by the value of |\fam|, provided that the
-value of |\fam| is between $0$ and $15$.
-If the value of |\fam| isn't in that range, \TeX\ uses the family in
-the character's mathcode as in the ordinary case.
-\TeX\ sets |\fam| to $-1$ whenever it enters math mode.
-Outside of math mode, |\fam| has no effect.
+在\minref{数学模式}时，\TeX\ 通常用字符的\minref{数学码}指定的字体族排版该字符。
+^^{class}^^{family//given by \b\tt\\fam\e}
+但是，如果 \TeX\ 在数学模式中遇到第 $7$ \minref{类}（变量）字符，
+它将用由 |\fam| 的值给出的字体\minref{族}排版该字符，
+只要 |\fam| 的值在 $0$ 和 $15$ 之间。
+如果 |\fam| 的值不在该范围内，
+\TeX\ 就像通常情形那样使用字符的数学码指定的字体族。
+\TeX\ 在进入数学模式时设定 |\fam| 为 $-1$。
+在数学模式之外，|\fam| 无任何效果。
 
-By assigning a value to
-|\fam| you can change the way that \TeX\ typesets ordinary
-characters such as variables.
-For instance, by setting |\fam| to |\ttfam|, you cause \TeX\ to typeset
-variables using a typewriter font.
-\PlainTeX\ defines |\tt| as a \minref{macro} that, among other things,
-sets |\fam| to |\ttfam|.
+%By assigning a value to
+%|\fam| you can change the way that \TeX\ typesets ordinary
+%characters such as variables.
+%For instance, by setting |\fam| to |\ttfam|, you cause \TeX\ to typeset
+%variables using a typewriter font.
+%\PlainTeX\ defines |\tt| as a \minref{macro} that, among other things,
+%sets |\fam| to |\ttfam|.
+%\example
+%\def\bf{\fam\bffam\tenbf} % As in plain TeX.
+%|
+%\endexample
+%\enddesc
+通过赋予 |\fam| 不同的值，你能让 \TeX\ 用不同方式排版普通字符，比如变量。
+举个例子，设定了 |\fam| 为 |\ttfam| ，你可以让 \TeX\ 用打字机字体排版变量。
+\PlainTeX\ 在定义 |\tt| \minref{宏}时，除了其他设定之外，
+还设定 |\fam| 等于 |\ttfam|。
 \example
 \def\bf{\fam\bffam\tenbf} % As in plain TeX.
 |
 \endexample
 \enddesc
 
+%\begindesc
+%\cts textfont {\<family>\param{fontname}}
+%\cts scriptfont {\<family>\param{fontname}}
+%\cts scriptscriptfont {\<family>\param{fontname}}
+%\explain
+%^^{text style}
+%^^{script style}
+%^^{scriptscript style}
+%Each of these parameters specifies the font that \TeX\ is to use for
+%typesetting the indicated \minref{style} in the indicated \minref{family}.
+%These choices have no effect outside of \minref{math mode}.
+%\example
+%\scriptfont2 = \sevensy % As in plain TeX.
+%|
+%\endexample
+%\enddesc
 \begindesc
 \cts textfont {\<family>\param{fontname}}
 \cts scriptfont {\<family>\param{fontname}}
@@ -2589,16 +2660,18 @@ sets |\fam| to |\ttfam|.
 ^^{text style}
 ^^{script style}
 ^^{scriptscript style}
-Each of these parameters specifies the font that \TeX\ is to use for
-typesetting the indicated \minref{style} in the indicated \minref{family}.
-These choices have no effect outside of \minref{math mode}.
+这三个参数分别选择 \TeX\ 排版指定\minref{族}的指定\minref{样式}时所用的字体。
+这些选择在\minref{数学模式}之外无任何效果。
 \example
 \scriptfont2 = \sevensy % As in plain TeX.
 |
 \endexample
 \enddesc
 
-\see ``Type styles'' (\xref{seltype}).
+%\see ``Type styles'' (\xref{seltype}).
+\see ``字体风格''（\xref{seltype}）。
+
+
 %==========================================================================
 \section {Constructing math symbols}
 
