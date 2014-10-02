@@ -3549,20 +3549,42 @@ $\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
 \enddesc
 
 %==========================================================================
-\section {Special actions for math formulas}
+%\section {Special actions for math formulas}
+\section {特殊处理数学公式}
 
+%\begindesc
+%\cts everymath {\param{token list}}
+%\cts everydisplay {\param{token list}}
+%\explain
+%^^{displays//actions for every display}
+%These parameters specify \minref{token} lists that \TeX\ inserts
+%at the start of every text math or display math formula, respectively.
+%You can
+%take special actions at the start of each math formula by
+%assigning those actions to |\everymath| or
+%|\everydisplay|.  Don't forget that if you want both kinds of formulas to
+%be affected, you need to set \emph{both} parameters.
+%\example
+%\everydisplay={\heartsuit\quad}
+%\everymath = {\clubsuit}
+%$3$ is greater than $2$ for large values of $3$.
+%$$4>3$$
+%|
+%\produces
+%\everydisplay={\heartsuit\quad}
+%\everymath = {\clubsuit}
+%$3$ is greater than $2$ for large values of $3$.
+%$$4>3$$
+%\endexample
+%\enddesc
 \begindesc
 \cts everymath {\param{token list}}
 \cts everydisplay {\param{token list}}
 \explain
 ^^{displays//actions for every display}
-These parameters specify \minref{token} lists that \TeX\ inserts
-at the start of every text math or display math formula, respectively.
-You can
-take special actions at the start of each math formula by
-assigning those actions to |\everymath| or
-|\everydisplay|.  Don't forget that if you want both kinds of formulas to
-be affected, you need to set \emph{both} parameters.
+这两个命令分别指定 \TeX\ 在每个文内公式或陈列公式开头插入的\minref{记号}列。
+你可以利用 |\everymath| 或 |\everydisplay| 在每个数学公式开头作特殊处理。
+你务必清楚，若你需要同时处理两种公式，你必须\emph{同时}设定这两个参数。
 \example
 \everydisplay={\heartsuit\quad}
 \everymath = {\clubsuit}
@@ -3577,6 +3599,10 @@ $$4>3$$
 \endexample
 \enddesc
 
+%\enddescriptions
+%\eix^^{math}
+%\endchapter
+%\byebye
 \enddescriptions
 \eix^^{math}
 \endchapter
