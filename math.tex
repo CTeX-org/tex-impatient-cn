@@ -3033,11 +3033,39 @@ combinations of $n$ things taken $k$ at a time}$$
 
 
 %==========================================================================
-\section {Producing spaces}
+%\section {Producing spaces}
+\section {生成间隔}
 
 %==========================================================================
-\subsection {Fixed-width math spaces}
+%\subsection {Fixed-width math spaces}
+\subsection {固定宽度数学间隔}
 
+%\begindesc
+%\bix^^{space//in math formulas}
+%\ctspecial ! \ctsxrdef{@shriek}
+%\ctspecial , \ctsxrdef{@comma}
+%\ctspecial > \ctsxrdef{@greater}
+%\ctspecial ; \ctsxrdef{@semi}
+%\explain
+%These commands produce various amounts of ^{extra space} in formulas.  They
+%are defined in terms of \minref{mathematical unit}s, so \TeX\ adjusts
+%the amount of space according to the current \minref{style}.
+%\ulist
+%\li |\!!| produces a negative thin space, i.e., it reduces the space
+%between its neighboring subformulas by the amount of a thin space.
+%\li |\,| produces a thin space.
+%\li |\>| produces a medium space.
+%\li |\;| produces a thick space.
+%\endulist
+%\example
+%$$00\quad0\!!0\quad0\,0\quad0\>0\quad0\;0\quad
+%{\scriptstyle 00\quad0\!!0\quad0\,0\quad0\>0\quad0\;0}$$
+%|
+%\dproduces
+%$$00\quad0\!0\quad0\,0\quad0\>0\quad0\;0\quad
+%{\scriptstyle 00\quad0\!0\quad0\,0\quad0\>0\quad0\;0}$$
+%\endexample
+%\enddesc
 \begindesc
 \bix^^{space//in math formulas}
 \ctspecial ! \ctsxrdef{@shriek}
@@ -3045,15 +3073,14 @@ combinations of $n$ things taken $k$ at a time}$$
 \ctspecial > \ctsxrdef{@greater}
 \ctspecial ; \ctsxrdef{@semi}
 \explain
-These commands produce various amounts of ^{extra space} in formulas.  They
-are defined in terms of \minref{mathematical unit}s, so \TeX\ adjusts
-the amount of space according to the current \minref{style}.
+这些命令在公式中生成各种大小的^{额外间隔}。
+它们使用\minref{数学单位}来定义，
+因此 \TeX\ 会根据当前\minref{样式}调整间隔的大小。
 \ulist
-\li |\!!| produces a negative thin space, i.e., it reduces the space
-between its neighboring subformulas by the amount of a thin space.
-\li |\,| produces a thin space.
-\li |\>| produces a medium space.
-\li |\;| produces a thick space.
+\li |\!!| 生成负的细小间隔，即它让相邻子公式的间隔减去该细小间隔的大小。
+\li |\,| 生成细小间隔。
+\li |\>| 生成中等间隔。
+\li |\;| 生成较大间隔。
 \endulist
 \example
 $$00\quad0\!!0\quad0\,0\quad0\>0\quad0\;0\quad
@@ -3065,13 +3092,28 @@ $$00\quad0\!0\quad0\,0\quad0\>0\quad0\;0\quad
 \endexample
 \enddesc
 
+%\begindesc
+%\cts thinmuskip {\param{muglue}}
+%\cts medmuskip {\param{muglue}}
+%\cts thickmuskip {\param{muglue}}
+%\explain
+%These parameters define thin, medium, and thick spaces in
+%math mode.
+%\example
+%$00\quad0\mskip\thinmuskip0\quad0\mskip\medmuskip0
+%   \quad0\mskip\thickmuskip0$
+%|
+%\produces
+%$00\quad0\mskip\thinmuskip0\quad0\mskip\medmuskip0
+%   \quad0\mskip\thickmuskip0$
+%\endexample
+%\enddesc
 \begindesc
 \cts thinmuskip {\param{muglue}}
 \cts medmuskip {\param{muglue}}
 \cts thickmuskip {\param{muglue}}
 \explain
-These parameters define thin, medium, and thick spaces in
-math mode.
+这些参数定义了数学模式中细小、中等和较大间隔的大小。
 \example
 $00\quad0\mskip\thinmuskip0\quad0\mskip\medmuskip0
    \quad0\mskip\thickmuskip0$
@@ -3082,28 +3124,58 @@ $00\quad0\mskip\thinmuskip0\quad0\mskip\medmuskip0
 \endexample
 \enddesc
 
+%\begindesc
+%\cts jot {\param{dimen}}
+%\explain
+%This parameter defines a distance that is equal to three points (unless
+%you change it).
+%The |\jot| is a convenient unit of measure for opening up \hbox{math displays}.
+%\enddesc
 \begindesc
 \cts jot {\param{dimen}}
 \explain
-This parameter defines a distance that is equal to three points (unless
-you change it).
-The |\jot| is a convenient unit of measure for opening up \hbox{math displays}.
+此参数定义为三个点的距离（除非你改变了它）。
+|\jot| 是用 |\openup| 命令分开陈列公式各行时的一个实用的度量单位。
+\footnote{译注：下面的例子为译者所加。请参阅 |\openup| 命令（\xref\openup ）。}
+\example
+$$\vbox{\halign{$\hfil#\hfil$\cr x\cr y\cr}}$$
+$$\openup2\jot\vbox{\halign{$\hfil#\hfil$\cr x\cr y\cr}}$$
+|
+\produces
+$$\vbox{\halign{$\hfil#\hfil$\cr x\cr y\cr}}$$
+$$\openup2\jot\vbox{\halign{$\hfil#\hfil$\cr x\cr y\cr}}$$
+\endexample
 \enddesc
 
 %==========================================================================
-\subsection {Variable-width math spaces}
+%\subsection {Variable-width math spaces}
+\subsection {可变宽度数学间隔}
 
+%\begindesc
+%\cts mkern {\<mudimen>}
+%\explain
+%^^{kerns//in math formulas}
+%This command
+%produces a \minref{kern}, i.e., blank space, of width \<mudimen>.
+%The kern is measured
+%in \minref{mathematical unit}s, which vary according to the style.
+%Aside from its unit of measurement, this command behaves just like
+%|\kern| (\xref \kern) does in horizontal mode.
 \begindesc
 \cts mkern {\<mudimen>}
 \explain
 ^^{kerns//in math formulas}
-This command
-produces a \minref{kern}, i.e., blank space, of width \<mudimen>.
-The kern is measured
-in \minref{mathematical unit}s, which vary according to the style.
-Aside from its unit of measurement, this command behaves just like
-|\kern| (\xref \kern) does in horizontal mode.
+此命令生成一个宽度为 \<mudimen> 的\minref{紧排}，即空白间隔。
+该紧排用\minref{数学单位}表示，因此在不同样式中有不同的尺寸。
+除了使用数学单位外，此命令与水平模式的|\kern|（\xref\kern ）的表现类似。
 
+%\example
+%$0\mkern13mu 0 \qquad {\scriptscriptstyle 0 \mkern13mu 0}$
+%|
+%\produces
+%$0\mkern13mu 0 \qquad {\scriptscriptstyle 0 \mkern13mu 0}$
+%\endexample
+%\enddesc
 \example
 $0\mkern13mu 0 \qquad {\scriptscriptstyle 0 \mkern13mu 0}$
 |
@@ -3112,18 +3184,34 @@ $0\mkern13mu 0 \qquad {\scriptscriptstyle 0 \mkern13mu 0}$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts mskip {\<mudimen$_1$> {\bt plus} \<mudimen$_2$> {\bt minus}
+%   \<mudimen$_3$>}
+%\explain
+%^^{glue}
+%This command produces horizontal \minref{glue}
+%that has natural width \<mu\-dimen$_1$>, stretch \<mudimen$_2$>,
+%and shrink \<mudimen$_3$>.
+%The glue is measured in \minref{mathematical unit}s, which vary according
+%to the style.  Aside from its units of measurement, this command behaves
+%just like |\hskip| (\xref \hskip).
 \begindesc
 \cts mskip {\<mudimen$_1$> {\bt plus} \<mudimen$_2$> {\bt minus}
    \<mudimen$_3$>}
 \explain
 ^^{glue}
-This command produces horizontal \minref{glue}
-that has natural width \<mu\-dimen$_1$>, stretch \<mudimen$_2$>,
-and shrink \<mudimen$_3$>.
-The glue is measured in \minref{mathematical unit}s, which vary according
-to the style.  Aside from its units of measurement, this command behaves
-just like |\hskip| (\xref \hskip).
+此命令生成一个水平\minref{粘连}，它的自然宽度为 \<mu\-dimen$_1$>，
+伸长量为 \<mudimen$_2$>，收缩量为 \<mudimen$_3$>。
+该粘连用\minref{数学单位}表示，因此将随着样式的变化而变化。
+除了使用数学单位外，此命令与 |\hskip|（\xref\hskip ）的表现类似。
 
+%\example
+%$0\mskip 13mu 0 \quad {\scriptscriptstyle 0 \mskip 13mu 0}$
+%|
+%\produces
+%$0\mskip 13mu 0 \quad {\scriptscriptstyle 0 \mskip 13mu 0}$
+%\endexample
+%\enddesc
 \example
 $0\mskip 13mu 0 \quad {\scriptscriptstyle 0 \mskip 13mu 0}$
 |
@@ -3132,18 +3220,34 @@ $0\mskip 13mu 0 \quad {\scriptscriptstyle 0 \mskip 13mu 0}$
 \endexample
 \enddesc
 
+%\begindesc
+%\cts nonscript {}
+%\explain
+%When \TeX\ is currently typesetting in script or scriptscript
+%\minref{style} and encounters this command
+%immediately in front of glue or a kern,
+%it cancels the glue or kern.
+%|\nonscript| has no effect in the other styles.
 \begindesc
 \cts nonscript {}
 \explain
-When \TeX\ is currently typesetting in script or scriptscript
-\minref{style} and encounters this command
-immediately in front of glue or a kern,
-it cancels the glue or kern.
-|\nonscript| has no effect in the other styles.
+在排版标号或小标号\minref{样式}时，如果 \TeX\ 在粘连或紧排跟前遇到此命令，
+它就丢弃该粘连或紧排。|\nonscript| 在其他样式中无任何效果。
 
-This command provides a way of ``tightening up'' the spacing in
-script and scriptscript styles, which generally are set in smaller type.
-It is of little use outside of macro definitions.
+%This command provides a way of ``tightening up'' the spacing in
+%script and scriptscript styles, which generally are set in smaller type.
+%It is of little use outside of macro definitions.
+%\example
+%\def\ab{a\nonscript\; b}
+%$\ab^{\ab}$
+%|
+%\produces
+%\def\ab{a\nonscript\; b}
+%$\ab^{\ab}$
+%\endexample
+%\enddesc
+此命令提供一种``收紧''标号和小标号样式中的间隔的方法；
+通常用小号字体排版这两个样式。在宏定义之外的地方，此命令很少用到。
 \example
 \def\ab{a\nonscript\; b}
 $\ab^{\ab}$
@@ -3154,137 +3258,229 @@ $\ab^{\ab}$
 \endexample
 \enddesc
 
-\see |\kern| (\xref\kern), |\hskip| (\xref\hskip).
+%\see |\kern| (\xref\kern), |\hskip| (\xref\hskip).
+%\eix^^{space//in math formulas}
+\see |\kern|（\xref\kern ）和 |\hskip|（\xref\hskip ）。
 \eix^^{space//in math formulas}
 
-
 %==========================================================================
-\subsection {Spacing parameters for displays}
+%\subsection {Spacing parameters for displays}
+\subsection {陈列公式的间隔参数}
 
+%\begindesc
+%\bix^^{displays//spacing parameters for}
+%\cts displaywidth {\param{dimen}}
+%\explain
+%This parameter specifies the maximum width that
+%\TeX\ allows for a math display.  If \TeX\ cannot fit the display
+%into a space of this width, it sets an overfull \minref{hbox}
+%and complains.
+%\TeX\ sets the value of |\displaywidth| when it encounters the `|$$|'
+%that starts the display.  This initial value is
+%|\hsize| (\xref \hsize) unless it's overridden by changes to the
+%paragraph shape.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \bix^^{displays//spacing parameters for}
 \cts displaywidth {\param{dimen}}
 \explain
-This parameter specifies the maximum width that
-\TeX\ allows for a math display.  If \TeX\ cannot fit the display
-into a space of this width, it sets an overfull \minref{hbox}
-and complains.
-\TeX\ sets the value of |\displaywidth| when it encounters the `|$$|'
-that starts the display.  This initial value is
-|\hsize| (\xref \hsize) unless it's overridden by changes to the
-paragraph shape.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此参数指定 \TeX\ 对陈列公式所允许的最大宽度。
+如果 \TeX\ 无法将陈列公式放入这样宽的空间中，
+它将生成一个过满的\minref{水平盒子}并给出警告。
+\TeX\ 在遇到 `|$$|' 开始陈列公式时就设定 |\displaywidth| 的值。
+它的初始值为 |\hsize|（\xref\hsize ），除非段落形状改变了。
+见\knuth{第~188--189~页}中对此参数的更仔细的说明。
 \enddesc
 
+%\begindesc
+%\cts displayindent {\param{dimen}}
+%\explain
+%This parameter specifies the space by which \TeX\ indents a
+%math display.
+%\TeX\ sets the value of |\displayindent| when it encounters the `|$$|'
+%that starts the display.  Usually this initial value is zero,
+%but if the paragraph shape indicates that the display should
+%be shifted by an amount $s$,
+%\TeX\ will set |\displayindent| to $s$.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \cts displayindent {\param{dimen}}
 \explain
-This parameter specifies the space by which \TeX\ indents a
-math display.
-\TeX\ sets the value of |\displayindent| when it encounters the `|$$|'
-that starts the display.  Usually this initial value is zero,
-but if the paragraph shape indicates that the display should
-be shifted by an amount $s$,
-\TeX\ will set |\displayindent| to $s$.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此参数指定 \TeX\ 对陈列公式的缩进量。
+\TeX\ 在遇到 `|$$|' 开始陈列公式时就设定 |\displayindent| 的值。
+通常它的初始值为零，但如果段落形状表明该陈列公式需要移动距离 $s$，
+\TeX\ 就设定 |\displayindent| 等于 $s$。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 \enddesc
 
+%\begindesc
+%\cts predisplaysize {\param{dimen}}
+%\explain
+%\TeX\ sets this parameter to the width of the line preceding
+%a math display.
+%\TeX\ uses |\predisplaysize| to determine whether or not
+%the display starts to
+%the left of where the previous line ends, i.e., whether or not it visually
+%overlaps the previous line.
+%If there is overlap, it uses the |\abovedisplayskip| and
+%|\belowdisplayskip| glue in setting the display;
+%otherwise it uses the |\abovedisplay!-shortskip| and
+%|\belowdisplay!-shortskip| glue.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \cts predisplaysize {\param{dimen}}
 \explain
-\TeX\ sets this parameter to the width of the line preceding
-a math display.
-\TeX\ uses |\predisplaysize| to determine whether or not
-the display starts to
-the left of where the previous line ends, i.e., whether or not it visually
-overlaps the previous line.
-If there is overlap, it uses the |\abovedisplayskip| and
-|\belowdisplayskip| glue in setting the display;
-otherwise it uses the |\abovedisplay!-shortskip| and
-|\belowdisplay!-shortskip| glue.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+\TeX\ 设定此参数等于陈列公式之前的文本行的宽度。
+\TeX\ 利用 |\predisplaysize| 确定是否让陈列公式的起始点位于前一行结尾处的左边，
+即它在外观上是否可能与前一行重叠。如果会有重叠，
+\TeX\ 在排版陈列公式时使用|\abovedisplayskip| 和 |\belowdisplayskip| 粘连；
+否则 \TeX\ 使用 |\abovedisplay!-shortskip| 和 |\belowdisplay!-shortskip| 粘连。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 \enddesc
 
+%\begindesc
+%\cts abovedisplayskip {\param{glue}}
+%\explain
+%This parameter specifies the amount of vertical glue that
+%\TeX\ inserts before a display when the display starts to
+%the left of where the previous line ends, i.e., when it visually
+%overlaps the previous line.
+%\PlainTeX\ sets |\abovedisplayskip| to |12pt plus3pt minus9pt|.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \cts abovedisplayskip {\param{glue}}
 \explain
-This parameter specifies the amount of vertical glue that
-\TeX\ inserts before a display when the display starts to
-the left of where the previous line ends, i.e., when it visually
-overlaps the previous line.
-\PlainTeX\ sets |\abovedisplayskip| to |12pt plus3pt minus9pt|.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此命令指定当陈列公式的起始点位于前一行结尾处的左边时，
+即它在外观上可能与前一行有重叠时，
+\TeX\ 在陈列公式之前插入的竖直粘连的大小。
+\PlainTeX\ 设定 |\abovedisplayskip| 等于 |12pt plus3pt minus9pt|。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 \enddesc
 
+%\begindesc
+%\cts belowdisplayskip {\param{glue}}
+%\explain
+%This parameter specifies the amount of vertical glue that
+%\TeX\ inserts after a display when the display starts to
+%the left of where the previous line ends, i.e., when it visually
+%overlaps the previous line.
+%\PlainTeX\ sets |\belowdisplay!-skip| to |12pt plus3pt minus9pt|.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \cts belowdisplayskip {\param{glue}}
 \explain
-This parameter specifies the amount of vertical glue that
-\TeX\ inserts after a display when the display starts to
-the left of where the previous line ends, i.e., when it visually
-overlaps the previous line.
-\PlainTeX\ sets |\belowdisplay!-skip| to |12pt plus3pt minus9pt|.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此命令指定当陈列公式的起始点位于前一行结尾处的左边时，
+即它在外观上可能与前一行有重叠时，
+\TeX\ 在陈列公式之后插入的竖直粘连的大小。
+\PlainTeX\ 设定 |\belowdisplay!-skip| 等于 |12pt plus3pt minus9pt|。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 \enddesc
 
+%\begindesc
+%\cts abovedisplayshortskip {\param{glue}}
+%\explain
+%This parameter specifies the amount of vertical glue that
+%\TeX\ inserts before a math display
+%when the display starts to
+%the right of where the previous line ends, i.e., when it does not visually
+%overlap the previous line.
+%\PlainTeX\ sets |\abovedisplay!-shortskip| to |0pt plus3pt|.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+%\enddesc
 \begindesc
 \cts abovedisplayshortskip {\param{glue}}
 \explain
-This parameter specifies the amount of vertical glue that
-\TeX\ inserts before a math display
-when the display starts to
-the right of where the previous line ends, i.e., when it does not visually
-overlap the previous line.
-\PlainTeX\ sets |\abovedisplay!-shortskip| to |0pt plus3pt|.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此命令指定当陈列公式的起始点位于前一行结尾处的右边时，
+即它在外观上不会与前一行有重叠时，
+\TeX\ 在陈列公式之前插入的竖直粘连的大小。
+\PlainTeX\ 设定 |\abovedisplay!-shortskip| 等于 |0pt plus3pt|。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 \enddesc
 
+%\begindesc
+%\cts belowdisplayshortskip {\param{glue}}
+%\explain
+%This parameter specifies the amount of vertical glue that
+%\TeX\ inserts after a display
+%when the display starts to
+%the right of where the previous line ends, i.e., when it does not visually
+%overlap the previous line.
+%\PlainTeX\ sets |\belowdisplay!-shortskip| to |7pt plus3pt minus4pt|.
+%See \knuth{pages~188--189} for a more detailed explanation of this parameter.
 \begindesc
 \cts belowdisplayshortskip {\param{glue}}
 \explain
-This parameter specifies the amount of vertical glue that
-\TeX\ inserts after a display
-when the display starts to
-the right of where the previous line ends, i.e., when it does not visually
-overlap the previous line.
-\PlainTeX\ sets |\belowdisplay!-shortskip| to |7pt plus3pt minus4pt|.
-See \knuth{pages~188--189} for a more detailed explanation of this parameter.
+此命令指定当陈列公式的起始点位于前一行结尾处的右边时，
+即它在外观上不会与前一行有重叠时，
+\TeX\ 在陈列公式之后插入的竖直粘连的大小。
+\PlainTeX\ 设定 |\belowdisplay!-shortskip| 等于 |7pt plus3pt minus4pt|。
+见\knuth{第~188--189~页}中对此参数的更仔细的介绍。
 
+%\eix^^{displays//spacing parameters for}
+%\enddesc
 \eix^^{displays//spacing parameters for}
 \enddesc
 
 
 %==========================================================================
-\subsection {Other spacing parameters for math}
+\subsection {其他的数学间隔参数}
 
+%\begindesc
+%\cts mathsurround {\param{dimen}}
+%\explain
+%This parameter specifies the amount of space that \TeX\
+%inserts before and after a math formula in text mode (i.e., a formula
+%surrounded by single |$|'s).  See \knuth{page~162} for further details about
+%its behavior.
+%\PlainTeX\ leaves |\mathsurround| at |0pt|.
+%\enddesc
 \begindesc
 \cts mathsurround {\param{dimen}}
 \explain
-This parameter specifies the amount of space that \TeX\
-inserts before and after a math formula in text mode (i.e., a formula
-surrounded by single |$|'s).  See \knuth{page~162} for further details about
-its behavior.
-\PlainTeX\ leaves |\mathsurround| at |0pt|.
+此参数指定 \TeX\ 在文内数学公式（即放在两个|$|之间的公式）两边插入的间隔的大小。
+见\knuth{第~162~页}对此行为的进一步解释。
+\PlainTeX\ 设定 |\mathsurround| 为 |0pt|。
 \enddesc
 
+%\begindesc
+%\cts nulldelimiterspace {\param{dimen}}
+%\explain
+%^^{delimiters//null, space for}
+%This parameter specifies the width of the
+%space produced by a null \minref{delimiter}.
+%\PlainTeX\ sets |\nulldelimiterspace| to |1.2pt|.
+%\enddesc
 \begindesc
 \cts nulldelimiterspace {\param{dimen}}
 \explain
 ^^{delimiters//null, space for}
-This parameter specifies the width of the
-space produced by a null \minref{delimiter}.
-\PlainTeX\ sets |\nulldelimiterspace| to |1.2pt|.
+此参数指定空\minref{定界符}生成的间隔的大小。
+\PlainTeX\ 设定 |\null!-delimiterspace| 等于 |1.2pt|。
 \enddesc
 
+%\begindesc
+%\cts scriptspace {\param{dimen}}
+%\explain
+%This parameter specifies the amount of space that \TeX\
+%inserts before and after a subscript or superscript.
+%The |\nonscript| command (\xref\nonscript) ^^|\nonscript|
+%after a subscript or superscript cancels this space.
+%\PlainTeX\ sets |\script!-space| to |0.5pt|.
+%\enddesc
 \begindesc
 \cts scriptspace {\param{dimen}}
 \explain
-This parameter specifies the amount of space that \TeX\
-inserts before and after a subscript or superscript.
-The |\nonscript| command (\xref\nonscript) ^^|\nonscript|
-after a subscript or superscript cancels this space.
-\PlainTeX\ sets |\script!-space| to |0.5pt|.
+此参数指定 \TeX\ 在上标或下标前后插入的间隔的大小。
+上标或下标之后的 |\nonscript| 命令（\xref\nonscript ）^^|\nonscript|
+可以取消此间隔。
+\PlainTeX\ 设定 |\script!-space| 等于 |0.5pt|。
 \enddesc
+
 
 %==========================================================================
 \section {Categorizing math constructs}
