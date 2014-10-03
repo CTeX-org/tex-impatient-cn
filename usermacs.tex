@@ -3,29 +3,41 @@
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
-\input macros 
+\input macros
 %\chapter{A compendium \linebreak of useful macros}
 \chapter{实用宏集概述}
 
 \chapterdef{eplain}
 
-This section describes |eplain.tex|, a collection of macros and other
-definitions that extend  plain \TeX.
+%This section describes |eplain.tex|, a collection of macros and other
+%definitions that extend  plain \TeX.
+%\bix^^|eplain.tex|
+%The descriptions of the various macros explain their purposes,
+%but usually do not explain how they
+%work or provide explicit details on
+%how to use them.  That information is contained in the source files for
+%|eplain.tex| and in the documentation that comes with it.
+%See \headcit{Resources}{resources} for how to obtain |eplain.tex|.
+这一章描述 |eplain.tex|，一组用于扩展 plain \TeX\ 的宏和其他定义。
 \bix^^|eplain.tex|
-The descriptions of the various macros explain their purposes,
-but usually do not explain how they
-work or provide explicit details on
-how to use them.  That information is contained in the source files for
-|eplain.tex| and in the documentation that comes with it.
-See \headcit{Resources}{resources} for how to obtain |eplain.tex|.
+对各种宏的描述解释了它们的目的，但通常不解释它们的工作原理或给出如何使用它们的详情。
+那些信息包含在 |eplain.tex| 源码文件以及它的文档中。
+在\headcit{资源}{resources}中介绍了获取 |eplain.tex| 的方法。
 
 
-\section{Preliminaries}
+%\section{Preliminaries}
+\section{预备知识}
 
-We start with some macros for changing category codes and convenient
-definitions for two of the commonly used ones.
+%We start with some macros for changing category codes and convenient
+%definitions for two of the commonly used ones.
+%^^{category codes//useful definitions for}
+我们先介绍几个修改类别码及定义两种常用类别码的宏。
 ^^{category codes//useful definitions for}
 
+%\pix^^|\makeactive|
+%\pix^^|\letter|
+%\pix^^|\other|
+%\pix^^|\uncatcodespecials|
 \pix^^|\makeactive|
 \pix^^|\letter|
 \pix^^|\other|
@@ -39,18 +51,29 @@ definitions for two of the commonly used ones.
    \dospecials}% Defined in plain.
 |
 
-In order to define `|^^M|' as an active character, you need to encase
-the definition in a group and invoke some extra machinery.
+%In order to define `|^^M|' as an active character, you need to encase
+%the definition in a group and invoke some extra machinery.
+%\ttidxref{^^M}
+%The \pix^|\letreturn| macro lets you define `|^^M|' without that
+%extra machinery (which you can see in the definition below).
+为了将 `|^^M|' 定义为活动字符，你需要将定义放在编组中，并借助某些额外机制。
 \ttidxref{^^M}
-The \pix^|\letreturn| macro lets you define `|^^M|' without that
-extra machinery (which you can see in the definition below).
+\pix^|\letreturn| 宏让你无需额外机制就可以定义 `|^^M|'（它的定义在下面可以看到）。 
 
 \csdisplay
 {\makeactive\^^M \long\gdef\letreturn#1{\let^^M = #1}}%
 |
 
-These macros consume one, two, or three arguments.
+%These macros consume one, two, or three arguments.
+这些宏用于吸收一个、两个或三个参量。
 
+%\pix^^|\gobble|
+%\pix^^|\gobbletwo|
+%\pix^^|\gobblethree|
+%\csdisplay
+%\def\gobble#1{}\def\gobbletwo#1#2{}%
+%\def\gobblethree#1#2#3{}%
+%|
 \pix^^|\gobble|
 \pix^^|\gobbletwo|
 \pix^^|\gobblethree|
@@ -59,11 +82,15 @@ These macros consume one, two, or three arguments.
 \def\gobblethree#1#2#3{}%
 |
 
-Now we establish some conventions for reading the rest of the file.
-Within the file we allow ``private'' control sequences that contain
-`|@|' in their names.
-These control sequences aren't accessible outside of this file (unless
-you change the category code of `|@|' again).
+%Now we establish some conventions for reading the rest of the file.
+%Within the file we allow ``private'' control sequences that contain
+%`|@|' in their names.
+%These control sequences aren't accessible outside of this file (unless
+%you change the category code of `|@|' again).
+%\xrdef{eplainconv}
+现在我们建立一些惯例，用于读取这个文件的其他部分。
+在这个文件中我们允许名称带有 `|@|' 的``私有''控制序列。
+这些控制序列在这个文件之外无法使用（除非你再次修改 `|@|' 的类别码）。
 \xrdef{eplainconv}
 
 \csdisplay
@@ -73,13 +100,17 @@ you change the category code of `|@|' again).
 \newlinechar = `^^J
 |
 
-The next two macros provide convenient forms of diagnostic output.
-\pix^|\loggingall|  turns on all tracing, but causes the trace
-output to appear only in the log file and not at your terminal.
-\pix^|\tracingboxes| causes boxes to be displayed completely when
-they're traced.  (\TeX\ normally shows only three levels of boxing
-and five items within each box.)
-
+%The next two macros provide convenient forms of diagnostic output.
+%\pix^|\loggingall|  turns on all tracing, but causes the trace
+%output to appear only in the log file and not at your terminal.
+%\pix^|\tracingboxes| causes boxes to be displayed completely when
+%they're traced.  (\TeX\ normally shows only three levels of boxing
+%and five items within each box.)
+接下来两个宏提供了诊断输出的便捷方式。
+\pix^|\loggingall| 打开所有追踪，
+但让追踪输出仅写在日志文件中，而不在终端上显示。
+\pix^|\tracingboxes| 使得盒子被追踪时其内容完全显示。%
+（\TeX\ 通常只显示嵌套到三层的盒子，每个盒子显示五个项目。）
 
 \csdisplay
 \def\loggingall{\tracingcommands\tw@\tracingstats\tw@
@@ -91,19 +122,25 @@ and five items within each box.)
    \showboxdepth = \maxdimen}%
 |
 
-
-The default thickness of rules is $0.4$\pt.
-You can produce rules of any default thickness you choose by redefining
-|\vruledefaultwidth|, |\hruledefaultheight|, and |\hruledefaultdepth|
-and then using
-\pix^^|\ehrule|
-|\eh!-rule|
-and \pix^|\evrule|
-instead of |\hrule| and |\vrule|. (The `e'  stands for
-``eplain''.)
+%The default thickness of rules is $0.4$\pt.
+%You can produce rules of any default thickness you choose by redefining
+%|\vruledefaultwidth|, |\hruledefaultheight|, and |\hruledefaultdepth|
+%and then using
+%\pix^^|\ehrule|
+%|\eh!-rule|
+%and \pix^|\evrule|
+%instead of |\hrule| and |\vrule|. (The `e'  stands for
+%``eplain''.)
+%^^{rules//thickness of}
+%If you give an explicit
+%dimension (e.g., |\ehrule height 16pt|), \TeX\ will use it.
+标线的默认厚度为 $0.4$\pt 。
+要生成默认厚度为任何值的标线，
+你可以重新定义 |\vruledefaultwidth|、|\hruledefaultheight| 及 |\hrule!-defaultdepth|，
+并将 |\hrule| 和 |\vrule| 换为 \pix^|\ehrule| 和 \pix^|\evrule|。%
+（名称中的 `e' 代表 ``eplain''。）%
 ^^{rules//thickness of}
-If you give an explicit
-dimension (e.g., |\ehrule height 16pt|), \TeX\ will use it.
+如果你显式给出尺寸（比如 |\ehrule height 16pt|），\TeX\ 将使用它。
 
 \csdisplay
 \newdimen\hruledefaultheight  \hruledefaultheight = 0.4pt
@@ -114,13 +151,18 @@ dimension (e.g., |\ehrule height 16pt|), \TeX\ will use it.
 \def\evrule{\vrule width\vruledefaultwidth}%
 |
 
-The |\%| convention for writing a `|%|' character doesn't work when you 
-want to include that character in the token list of |\write|.
+%The |\%| convention for writing a `|%|' character doesn't work when you
+%want to include that character in the token list of |\write|.
+%^^|\write//writing \b\tt\%\e\ with|
+%^^|%//writing out|
+%You can use ^|\percentchar| to achieve this.
+%We also redefine ^|^^L| to be nonouter so that you can use it in a
+%macro definition or argument.
+|\%| 通常用于写出 `|%|' 字符，但它无法包含在 |\write| 的记号列中。
 ^^|\write//writing \b\tt\%\e\ with|
 ^^|%//writing out|
-You can use ^|\percentchar| to achieve this.
-We also redefine ^|^^L| to be nonouter so that you can use it in a
-macro definition or argument.
+你可以用 ^|\percentchar| 达到此目的。
+我们还将 ^|^^L| 重新定义为非外部宏，因此你可以在宏定义或者参量中使用它。
 
 \csdisplay
 {\catcode`\% = \other \gdef\percentchar{%}}%
@@ -128,17 +170,23 @@ macro definition or argument.
 }%
 |
 
-\pix^|\tokstostring| converts its argument into a list of ^{character
-tokens}.  
-It uses only expansions that are handled in \TeX's gullet.
-This property is necessary
-for it to work with |\edef|.  It is used by the cross-referencing
-macros (\xref{xrefs}).
+%\pix^|\tokstostring| converts its argument into a list of ^{character
+%tokens}.
+%It uses only expansions that are handled in \TeX's gullet.
+%This property is necessary
+%for it to work with |\edef|.  It is used by the cross-referencing
+%macros (\xref{xrefs}).
+\pix^|\tokstostring| 将它的参量转换为一列^{字符记号}。
+它仅用到在 \TeX\ 的食道中处理的展开。
+此特性是和 |\edef| 一起使用时所必需的。它用于宏的交叉引用（\xref{xrefs}）。
 
-In order to split the argument up at spaces, we have to use two
-subsidiary macros. |\@ttsA| finds the spaces, and |\@ttsB| handles a
-token sequence without any spaces.  Each space is replaced by the
-expansion of \pix^|\spacesub|.
+%In order to split the argument up at spaces, we have to use two
+%subsidiary macros. |\@ttsA| finds the spaces, and |\@ttsB| handles a
+%token sequence without any spaces.  Each space is replaced by the
+%expansion of \pix^|\spacesub|.
+为了将参量在空格处分开，我们要用到两个子宏。 
+|\@ttsA| 用于寻找空格，而 |\@ttsB| 用于处理不带空格的控制序列。
+每个空格都被替换为 \pix^|\spacesub| 的展开。
 
 \csdisplay
 \def\tokstostring#1{\@ttsA#1 \ttsmarkA}%
@@ -153,8 +201,10 @@ expansion of \pix^|\spacesub|.
 \def\spacesub{+}%
 |
 
+%\noindent
+%\pix^|\ifempty| tests if its argument is empty.
 \noindent
-\pix^|\ifempty| tests if its argument is empty.
+\pix^|\ifempty| 检测它的参量是否为空。
 
 \csdisplay
 \def\ifempty#1{\@ifempty #1\@emptymarkA\@emptymarkB}%
@@ -162,9 +212,11 @@ expansion of \pix^|\spacesub|.
 \def\@emptymarkA{\@emptymarkA}%
 |
 
-The ^|\for|  macro implements a \TeX\ version of the ^{for loop} in
-traditional programming languages.  These macros come directly from
-\LaTeX.
+%The ^|\for|  macro implements a \TeX\ version of the ^{for loop} in
+%traditional programming languages.  These macros come directly from
+%\LaTeX.
+^|\for| 宏实现了其他传统编程语言中的^{for循环}的 \TeX\ 版本。
+这些宏直接取自 \LaTeX 。
 
 \csdisplay
 \def\for#1:=#2\do#3{\edef\@fortmp{#2}%
@@ -175,19 +227,28 @@ traditional programming languages.  These macros come directly from
 \def\@forloop#1,#2,#3\@@#4#5{\def#4{#1}\ifx #4\@nnil
    \else #5\def#4{#2} ifx #4\@nnil \else
       #5\@iforloop #3\@@#4{#5}\fi\fi}%
-\def\@iforloop#1,#2\@@#3#4{\def#3{#1}\ifx #3\@nnil 
+\def\@iforloop#1,#2\@@#3#4{\def#3{#1}\ifx #3\@nnil
    \let\@nextwhile=\@fornoop \else #4\relax
       \let\@nextwhile=\@iforloop\fi
          \@nextwhile#2\@@#3{#4}}%
 |
 
-\pix^|\obeywhitespace| is useful for reproducing line breaks, blank lines,
-and spaces in your input. It combines the effects of |\obey!-lines| and
-|\obey!-spaces|,
+%\pix^|\obeywhitespace| is useful for reproducing line breaks, blank lines,
+%and spaces in your input. It combines the effects of |\obey!-lines| and
+%|\obey!-spaces|,
+%^^|\obeylines| ^^|\obeyspaces|
+%and also causes spaces at the start of a line to
+%be printed. Tab characters are not affected by this; they still produce
+%normal glue.
+%\xrdef{ewhitesp}
+%^^{space characters}
+%^^|\fontdimen|
+%^^|\font|
+%^^|\letreturn|
+\pix^|\obeywhitespace| 用于重新生成你的输入中的换行、空行和空格。
+它结合了|\obey!-lines| 和 |\obey!-spaces| 的效果，
 ^^|\obeylines| ^^|\obeyspaces|
-and also causes spaces at the start of a line to
-be printed. Tab characters are not affected by this; they still produce
-normal glue.
+并把行首的空格也打印出来。制表符不受它影响；它们仍然生成正常的粘连。
 \xrdef{ewhitesp}
 ^^{space characters}
 ^^|\fontdimen|
@@ -204,10 +265,13 @@ normal glue.
 \def\@removebox{\setbox0=\lastbox}
 |
 
-\pix^|\frac| is a good way to print fractions in text when you don't
-want to use |\over| and
-``1/2'' just doesn't look right.  This macro is the answer to
-\knuth{Exercise~11.6}.^^{fractions//slashed form}
+%\pix^|\frac| is a good way to print fractions in text when you don't
+%want to use |\over| and
+%``1/2'' just doesn't look right.  This macro is the answer to
+%\knuth{Exercise~11.6}.^^{fractions//slashed form}
+当你不想用 |\over|，而 ``1/2'' 看来又不够好时，
+你最好用 \pix^|\frac| 在正文中打印分式。
+这个宏是\knuth{练习~11.6}的答案。^^{fractions//slashed form}
 
 \csdisplay
 \def\frac#1/#2{\leavevmode
@@ -216,12 +280,26 @@ want to use |\over| and
    \kern-.15em \lower .25ex \hbox{\the\scriptfont0 #2}}%
 |
 
-The following macros produce logos that are useful in the \TeX\ world.
-The \AMSTeX\ logo is from \knuth{page~420}.  The \LaTeX\ logo is
-slightly modified from the one in |latex.tex| (we use a different font
-for the `A'); similarly, the \BibTeX\ logo uses |\sevenrm| instead of a
-true caps-and-small-caps font. The |.mf| source file for the \MF\ logo
-is given in the \MF\ manual:
+%The following macros produce logos that are useful in the \TeX\ world.
+%The \AMSTeX\ logo is from \knuth{page~420}.  The \LaTeX\ logo is
+%slightly modified from the one in |latex.tex| (we use a different font
+%for the `A'); similarly, the \BibTeX\ logo uses |\sevenrm| instead of a
+%true caps-and-small-caps font. The |.mf| source file for the \MF\ logo
+%is given in the \MF\ manual:
+%\smallskip
+%{\narrower\noindent
+%^{Knuth, Donald E.},{\sl The {\logosl METAFONT}book}.
+%  Reading, Mass.: Addison-Wesley, 1986.\par}
+%\smallskip
+%\pix^^|\LaTeX|
+%\pix^^|\AMSTeX|
+%\pix^^|\BibTeX|
+%\pix^^|\MF|
+下面这些宏生成 \TeX\ 圈中常用的标识。
+\AMSTeX\ 标识取自 \knuth{第~420~页}。
+\LaTeX\ 标识取自 |latex.tex| 并稍作修改（我们修改了 `A' 的字体）；
+类似地，\BibTeX\ 标识用 |\sevenrm| 字体代替真正的小型大写字体。
+\MF\ 标识的 |.mf| 源文件出现在 \MF\ 手册中：
 \smallskip
 {\narrower\noindent
 ^{Knuth, Donald E.},{\sl The {\logosl METAFONT}book}.
@@ -244,11 +322,15 @@ is given in the \MF\ manual:
 \def\MF{{\mflogo META}{\tenrm \-}{\mflogo FONT}}%
 |
 
-The next two macros produce boxes.  \pix^|\blackbox| produces a ``square
-bullet'', used in the list macros (\xref{listmacs}).
-\pix^|\makeblankbox| (from \knuth{page~311}) produces an unfilled
-rectangle, with the thickness of the border rules given by the
-arguments.
+%The next two macros produce boxes.  \pix^|\blackbox| produces a ``square
+%bullet'', used in the list macros (\xref{listmacs}).
+%\pix^|\makeblankbox| (from \knuth{page~311}) produces an unfilled
+%rectangle, with the thickness of the border rules given by the
+%arguments.
+接下来的两个宏用于生成盒子。
+\pix^|\blackbox| 生成一个方块，它用在列表宏中（\xref{listmacs}）。
+\pix^|\makeblankbox|（取自\knuth{第~311~页}）生成一个空心矩形，
+它的边框厚度由参量指定。
 
 \csdisplay
 \def\blackbox{\vrule height .8ex width .6ex depth -.2ex}%
@@ -266,9 +348,11 @@ arguments.
    \advance\dimen0 by #2 \vrule width\dimen0}\kern-#2}%
 |
 
-\pix^|\numbername| produces the written-out form of a number.  (If the
-number is greater than ten, the macro just reproduces the numerals
-of its argument.)
+%\pix^|\numbername| produces the written-out form of a number.  (If the
+%number is greater than ten, the macro just reproduces the numerals
+%of its argument.)
+\pix^|\numbername| 从数字生成其书面名称%
+（若数字大于十，这个宏仅重新生成参量的数值。）
 
 \csdisplay
 \def\numbername#1{\ifcase#1%
@@ -276,11 +360,15 @@ of its argument.)
    \or six\or seven\or eight\or nine\or ten\or #1\fi}%
 |
 
-\pix^|\testfileexistence| determines whether a file |\jobname.#1| is
-non\-empty and sets |\if!-fileexists| appropriately.
+%\pix^|\testfileexistence| determines whether a file |\jobname.#1| is
+%non\-empty and sets |\if!-fileexists| appropriately.
+%^^{files//testing for existence of}
+%The file name in the argument need not end in a space token since
+%the macro provides the space token.
+\pix^|\testfileexistence| 判定文件 |\jobname.#1| 是否非空，
+并相应地设定 |\if!-fileexists| 的值。
 ^^{files//testing for existence of}
-The file name in the argument need not end in a space token since
-the macro provides the space token.
+参量中的文件名无需以空格记号结尾，因为这个宏已经提供了空格记号。
 
 \csdisplay
 \newif\iffileexists
@@ -336,7 +424,7 @@ These macros are based on the code on \knuth{page~376}.
 
 You can format displays differently by defining your own macro,
 analogous to \pix^|\leftdisplays|.
-The macro definition must 
+The macro definition must
 place a call on |\display!-setup| in |\every!-display| ^^|\everydisplay|
 so as to ensure
 that |\dis!-play!-setup| ^^|\displaysetup| is called at the start of
@@ -347,7 +435,7 @@ every display. The macro definition must also include a definition of
 \newtoks\previouseverydisplay
 \def\leftdisplays{%
    \previouseverydisplay = \everydisplay
-   \everydisplay = 
+   \everydisplay =
      {\the\previouseverydisplay \displaysetup}%
    \def\generaldisplay{%
       \leftline{%
@@ -455,7 +543,7 @@ them.
 For either of these, items inside the lists begin
 with \pix^|\li| (``list item'').  You can put \pix^|\listcompact|
 at the beginning of a list if
-you don't want any additional space between the items of that list. 
+you don't want any additional space between the items of that list.
 Lists can be nested arbitrarily.
 
 You can control the spacing between the items more generally by
@@ -467,21 +555,21 @@ The left indentation of each list item is given by |\par!-indent| plus
 is given by |\list!-right!-indent|.
 
 \csdisplay
-\newskip\abovelistskip  \abovelistskip = .5\baselineskip 
+\newskip\abovelistskip  \abovelistskip = .5\baselineskip
 \newskip\interitemskip  \interitemskip = 0pt
 \newskip\belowlistskip  \belowlistskip = .5\baselineskip
-\newdimen\listleftindent  \listleftindent = \parindent   
-\newdimen\listrightindent \listrightindent = 0pt        
+\newdimen\listleftindent  \listleftindent = \parindent
+\newdimen\listrightindent \listrightindent = 0pt
 \def\listcompact{\interitemskip = 0pt \relax}%
 |
 
 Both numbered and unnumbered lists use the macros that follow.
-We don't change |\parindent|, since many existing macros, e.g., 
+We don't change |\parindent|, since many existing macros, e.g.,
 |\footnote|, depend on |\parindent|.
 We must account for the
 possibility that items are more than one paragraph long. In this case, all
 paragraphs after the first will be indented.
-We use 
+We use
 |\leftskip| and |\rightskip| to indent the list items.
 Indentation of displays is accounted for by changes to |\every!-dis!-play|.
 ^^|\everydisplay|
@@ -601,7 +689,7 @@ The macro \pix^|\writetocentry| writes a macro call to the file
 ``chapter'', is used to compose the name of the called macro. The second
 argument is the text to appear in the table of contents entry.
 |\writetocentry| appends the page number to the macro call.  For
-example: 
+example:
 \csdisplay
 \writetocentry{chapter}{Introduction}
 |
@@ -708,7 +796,7 @@ the same symbol.
 \def\xrefnumber#1{%
    \xrlabel{#1}%
    % \@xrlabeltoks now has the control sequence name.
-   \toks0 = 
+   \toks0 =
       \expandafter{\csname\the\@xrlabeltoks\endcsname}%
    \expandafter \ifx\the\toks0\relax
       \ifxrefwarning \message{Undefined label
@@ -853,7 +941,7 @@ We also define help messages for each of the errors above.
 \csdisplay
 \newhelp\@unnamedendgrouphelp{%
    Most likely, you just forgot an^^J%
-   \string\endenvironment. 
+   \string\endenvironment.
    Maybe you should try inserting another^^J%
    \string\endgroup to recover.}%
 \newhelp\@isolatedendenvironmenthelp{%
@@ -993,7 +1081,7 @@ by changing
    \divide \@columndepth by #2
    \@linestogoincolumn = \@columndepth \@linestogo = #1
    \def\@endcolumnactions{%
-      \ifnum \@linestogo<2 
+      \ifnum \@linestogo<2
          \the\crtok \egroup \endgroup \par
             % End \valign and \makecolumns.
       \else
