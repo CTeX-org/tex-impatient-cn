@@ -31,7 +31,8 @@
 %Your second goal (if you're working interactively)
 %should be to catch as many errors as you can in a single run.
 你的第一个目标应当是理解什么东西导致 \TeX\ 报错。
-第二个目标（如果是交互式使用 \TeX ）应当是在一次运行中捕获尽可能多的错误。
+第二个目标（如果是交互式使用 \TeX ）应当是在一次运行中捕获尽可能多的错误。%
+\footnote{译注：本章的各个节标题为译者所加。}
 
 \section{第一个例子}
 
@@ -425,6 +426,32 @@ l.29 \hbox{One \vskip
 %Each component of the message after the first line
 %(the one with the `!') occupies a pair of lines.
 %Here's what the successive pairs of lines mean:
+这里还有个相似的例子，它的错误信息比你之前看到的都要长：
+\csdisplay
+\leftline{Skip \smallskip a little further.} But no more.
+|
+错误在于 |\smallskip| 只能在竖直模式中使用。给出的错误信息如下：
+\csdisplay
+!! Missing } inserted.
+<inserted text>
+                }
+<to be read again>
+                   \vskip
+\smallskip ->\vskip
+                    \smallskipamount
+<argument> Skip \smallskip
+                           a little further.
+\leftline #1->\line {#1
+                       \hss }
+l.93 ...Skip \smallskip a little further.}
+                                           But no more.
+|
+这些错误信息带你巡视了在 \plainTeX\ 中用于实现 |\leftline| 的各个宏——%
+这些宏也许是你并不在乎的。
+第一行告诉你 \TeX\ 试图通过插入右花括号解决此问题。
+\TeX\ 还未读到右花括号，因此若你想的话你可以删除它。
+第一行（带 `!' 的那行）之后的信息每部分都由两行组成。
+下面是各部分的两行信息的含义：
 %\olist
 %\li The first pair indicates that \TeX\ has inserted, but not yet read,
 %a right brace.
@@ -462,6 +489,27 @@ l.29 \hbox{One \vskip
 %input line that isn't shown.  This preceding part, in fact, includes
 %the |\leftline| control sequence that made the |\vskip| illegal.
 %\endolist
+\olist
+\li 第一对双行表示 \TeX\ 已经插入，但尚未读到的右花括号。
+\li 第二对双行表示在读取右花括号后，
+\TeX\ 将重新读取 `|\vskip|' 命令（它来自 |\smallskip| 宏的定义中）。
+\li 第三对双行表示 \TeX\ 是在展开 |\smallskip| 时发现的错误。
+此部分也显示 |\smallskip| 的定义，并表示在展开和执行该定义时已经读到哪里。
+具体地说，它是在执行|\vskip| 命令时失败的。
+一般地，以控制序列加 `|->|' 开始的信息行表示 \TeX\ 已展开执行的宏的名称。
+\li 第四对双行表示 \TeX\ 在处理宏参量时发现了 |\smallskip|，
+同时也表示 \TeX\ 在该参量中的位置，即它正在处理 |\smallskip|（失败了）。
+通过往前查找接下来两行，你可以看到此参量是传递给 |\leftline| 的。
+\li 第五对双行表示 \TeX\ 是在展开 |\leftline| 宏是发现的错误。%
+（在这个例子中，错误发生在 \TeX\ 解释多个不同层级的宏定义的中间。）%
+在 |#1| 后面的位置表示它最后读取到的是 |\leftline| 的第一个（在这里也是唯一的）参量。
+\li 最后对双行表示 \TeX\ 在你的输入文件的位置。
+注意此位置远远超出它插入右花括号并重新读取 `|\vskip|' 的位置。
+这是因为 \TeX\ 已经从输入文件读取了 |\leftline| 的完整参量，
+即使它仅仅处理该参量的一部分。
+这两行信息开头的圆点表示输入行前面一部分内容没显示出来。
+前面那部分内容实际上就包括让 |\vskip| 变得不合法的 |\leftline| 控制序列。
+\endolist
 %\noindent
 %In a long message like this, you'll generally find only the first line and the
 %last pair of lines to be useful; but it sometimes helps to know what the other
@@ -473,86 +521,14 @@ l.29 \hbox{One \vskip
 %Note in particular that in this case \TeX\ puts any text you might insert
 %\emph{not} into your input text but into a macro definition
 %several levels down. (The original macro definition is of course not modified.)
-Here's a similar example in which the error message is longer
-than any we've seen so far:
-\csdisplay
-\leftline{Skip \smallskip a little further.} But no more.
-|
-The mistake here is that |\smallskip| only works in a vertical mode.
-The error message is something like:
-\csdisplay
-!! Missing } inserted.
-<inserted text>
-                }
-<to be read again>
-                   \vskip
-\smallskip ->\vskip
-                    \smallskipamount
-<argument> Skip \smallskip
-                           a little further.
-\leftline #1->\line {#1
-                       \hss }
-l.93 ...Skip \smallskip a little further.}
-                                           But no more.
-|
-The error messages here give you a tour through the macros that are used in
-\plainTeX's implementation of |\leftline|---macros
-that you probably don't care about.
-The first line tells you that \TeX\ intends to cure the problem by
-inserting a right brace.
-\TeX\ hasn't actually read the
-right brace yet, so you can delete it if you choose to.
-Each component of the message after the first line
-(the one with the `!') occupies a pair of lines.
-Here's what the successive pairs of lines mean:
-\olist
-\li The first pair indicates that \TeX\ has inserted, but not yet read,
-a right brace.
-\li The next pair indicates that after reading the right brace, \TeX\ will
-again read a `|\vskip|' command (gotten from the macro definition
-of |\smallskip|).
-\li The third pair indicates that \TeX\ was expanding the |\smallskip|
-macro when it found the error.  The pair also displays the definition of
-|\smallskip| and indicates how far \TeX\ has gotten in expanding and
-executing that definition.  Specifically, it's just attempted
-unsuccessfully to execute the |\vskip| command.  In general, a
-diagnostic line that starts with a control sequence followed by `|->|'
-indicates that \TeX\ has been expanding and executing a macro by that
-name.
-\li The fourth pair indicates that \TeX\ was processing a macro argument
-when it found the |\smallskip| and also indicates \TeX's position in that
-argument, i.e., it's just processed the |\smallskip| (unsuccessfully).
-By looking ahead to the next pair of lines
-we can see that the argument was passed to
-|\leftline|.
-\li The fifth pair indicates that \TeX\ was expanding
-the |\leftline|
-macro when it found the error.
-(In this example the error occurred while \TeX\ was
-in the middle of interpreting several
-macro definitions at different levels of expansion.)
-Its position after |#1| indicates that the last thing it saw was the
-first (and in this case the only) argument to |\leftline|.
-\li The last pair indicates where \TeX\ is positioned in your input file.
-Note that this position is well beyond the position where it's
-inserting the right brace and reading `|\vskip|' again.
-That's because \TeX\ has already read the entire argument to |\leftline|
-from your input file, even though it's only processed part of that argument.
-The dots at the beginning of the pair indicate a preceding part of the
-input line that isn't shown.  This preceding part, in fact, includes
-the |\leftline| control sequence that made the |\vskip| illegal.
-\endolist
 \noindent
-In a long message like this, you'll generally find only the first line and the
-last pair of lines to be useful; but it sometimes helps to know what the other
-lines are about.  Any text that you insert or delete will be
-inserted or deleted at the
-innermost level.  In this example the insertion or deletion would occur
-just before the
-inserted right brace.
-Note in particular that in this case \TeX\ puts any text you might insert
-\emph{not} into your input text but into a macro definition
-several levels down. (The original macro definition is of course not modified.)
+在类似这样的长篇信息中，你通常发现只有第一行和最后两行是有用的；
+但知道其他行是怎么回事有时候也有益处。
+任何你插入或删除的文本将在最内层级中插入或删除。
+在这里例子中，插入或删除将出现在 \TeX\ 插入的右花括号前。
+特别要注意，在此情形中 \TeX\ 将\emph{不会}把你可能插入的文本放在你的输入文本中，
+而是放在多层宏定义的最里面。%
+（原始的宏定义当然并不会被改动。）
 
 %You can use the ^|\errorcontextlines| command \ctsref{\errorcontextlines}
 %to limit the
@@ -560,12 +536,11 @@ several levels down. (The original macro definition is of course not modified.)
 %If you're not interested in all the information that \TeX\ is giving you,
 %you can set |\error!-contextlines| to $0$. That will give you just the first
 %and last pairs of lines.
-You can use the ^|\errorcontextlines| command \ctsref{\errorcontextlines}
-to limit the
-number of pairs of error context lines that \TeX\ produces.
-If you're not interested in all the information that \TeX\ is giving you,
-you can set |\error!-contextlines| to $0$. That will give you just the first
-and last pairs of lines.
+你可以用 ^|\errorcontextlines|\ctsref{\errorcontextlines}命令限制
+\TeX\ 生成的错误信息双行的数目。
+如果你并非对 \TeX\ 给你的所有信息都感兴趣，
+你可以设定 |\error!-contextlines| 为 $0$。
+这样错误信息将只有最前面两行和最后面两行。
 
 %Finally,
 %we'll mention two other indicators that can appear at the start of a pair
@@ -578,16 +553,12 @@ and last pairs of lines.
 %\TeX\ will detect such an error when it is actually doing the |\write|
 %(during a |\shipout|), rather than when it first encounters the |\write|.
 %\endulist
-Finally,
-we'll mention two other indicators that can appear at the start of a pair
-of error message lines:
+最后，我们提及可能出现在错误信息行对开头的另外两个指示词：
 \ulist
-\li ^|<output>| indicates that \TeX\ was in the middle of its output routine
-when this error occurred.
-\li ^|<write>| indicates that \TeX\ was in the middle of executing a
-|\write| command when this error occurred.
-\TeX\ will detect such an error when it is actually doing the |\write|
-(during a |\shipout|), rather than when it first encounters the |\write|.
+\li ^|<output>| 表示 \TeX\ 在它的输出例行程序中间遇到此错误。
+\li ^|<write>| 表示 \TeX\ 在执行 |\write| 命令时遇到此错误。
+\TeX\ 将在实际执行 |\write| 时才检测这样的错误（在 |\shipout| 时），
+而不是在刚遇到 |\write| 命令时。
 \endulist
 
 %\eix^^{error messages}
