@@ -315,13 +315,12 @@ l.340 Skip across \hskip 3cn
 %in `|s are trumps.|'.
 %(If you just let \TeX\ continue, it will typeset `|s are trumps|'
 %in math mode.)
-If you type something that's only valid in math mode, \TeX\ will switch over
-to math mode for you whether or not that's what you really wanted.
-For example:
+如果你输入某些仅可用于数学模式的内容，\TeX\ 将帮你切换到数学模式，
+不管这是否你真正想要的。例如：
 \csdisplay
 So \spadesuit s are trumps.
 |
-Here's \TeX's error message:
+下面是 \TeX\ 的错误信息：
 \csdisplay
 !! Missing $ inserted.
 <inserted text>
@@ -331,15 +330,13 @@ Here's \TeX's error message:
 l.330 So \spadesuit
                   s are trumps.
 |
-Since the |\spadesuit| symbol is only allowed in math mode,
-\TeX\ has inserted a `|$|' in front of it.
-After \TeX\ inserts a token, it's positioned in \emph{front} of
-that token, in this case the `|$|', ready to read it.
-Typing `|2|' will cause \TeX\ to skip both the `|$|'
-and the `|\spadesuit|' tokens, leaving it ready to process the `|s|'
-in `|s are trumps.|'.
-(If you just let \TeX\ continue, it will typeset `|s are trumps|'
-in math mode.)
+由于 |\spadesuit| 符号仅可在数学模式中使用，
+\TeX\ 已经在它前面插入一个 `|$|'。
+在插入某个记号之后，\TeX\ 位于该记号的\emph{前面}，
+在此情形中就是位于 `|$|' 前面，并准备读取输入。
+键入 `|2|' 将让 \TeX\ 跳过 `|$|' 和 `|\spadesuit|' 记号，
+让它准备处理 `|s are trumps.|' 中的 `|s|'。%
+（若你只是让 \TeX\ 继续，它将在数学模式中排版 `|s are trumps|'。）
 
 \section{第四个例子}
 
