@@ -46,14 +46,18 @@
 %|\tracingonline| is positive, \TeX\ also sends that output to the
 %terminal. We use the noun ``display'' to refer to math displays (see
 %\xref{display math}), i.e., material between |$$|'s.
-\li 除非有其它说明，“显示”一词应用于 \TeX\ 发送至^{日志文件}中的信息。如果 |\tracingonline| 是正值，\TeX\ 也会将其发送至终端。%%%FIXME{我们使用名词“显示”表示数学显示（参见 \xref{显示数学}），即在 |$$| 之间的内容。}
+\li 除非有其它说明，“显示”一词应用于 \TeX\ 发送至^{日志文件}中的信息。
+如果 |\tracingonline| 是正值，\TeX\ 也会将其发送至终端。
+我们使用名词“陈列”表示陈列公式（参见\xref{陈列公式}），即在 |$$| 之间的内容。
 
 %\li The phrase ``produce $x$'' indicates that the command will typeset
 %$x$ and put the result in a box.
 %We sometimes omit ``produce'' when the omission is unlikely to
 %cause confusion. For example, we describe |\alpha| as ``math Greek
 %letter $\alpha$'', not ``produce the math Greek letter $\alpha$''.
-\li 短语“输出 $x$”表明指定命令将对 $x$ 进行排版，并将结果放在盒子中。在不会引起歧义的情况下，我们有时会省略“输出”一词。比如，我们对 |\alpha| 的描述是“数学希腊字母 $\alpha$”，而不是“输出数学希腊字母 $\alpha$”。
+\li 短语“输出 $x$”表明指定命令将对 $x$ 进行排版，并将结果放在盒子中。
+在不会引起歧义的情况下，我们有时会省略“输出”一词。
+比如，我们对 |\alpha| 的描述是“数学希腊字母 $\alpha$”，而不是“输出数学希腊字母 $\alpha$”。
 %\margin{Remove explanations of ``space'' and ``glue''}
 \margin{去掉了对 ``space'' 和 ``glue'' 的解释}
 
@@ -99,7 +103,7 @@
 %\capcs - {specify a legal hyphenation point}*{\@minus}
 \capcs - {指定合法的断字点}*{\@minus}
 %\capcs . {dot accent for text, as in \.n}{}{\@dot}
-\capcs . {文本中的点重音符，比如 \.n 中那样}{}{\@dot}%%%FIXME
+\capcs . {文本中的点重音符，比如 \.n 中那样}{}{\@dot}
 %\capcs / {italic correction for the previous character}*{\@slash}
 \capcs / {对之前字符的斜体校正}*{\@slash}
 %\capcs ; {thick space for math}{}{\@semi}
@@ -141,7 +145,7 @@
 %\capac ~ {interword space at which a line will not break}{}{@not}
 \capac ~ {字间间隔，该处不能断行}{}{@not}
 %\capcs ~ {tilde accent for text, as in \~a}{}{\@not}
-\capcs ~ {文本中的颚化符号重间符，比如 \~a 中那样}{}{\@not}%%%FIXME
+\capcs ~ {文本中的颚化符，比如 \~a 中那样}{}{\@not}
 \bookmark{2}{从A到G}%
 %\capcs aa {Scandinavian letter: \aa}{}{}
 \capcs aa {斯堪的纳维亚字母： \aa}{}{}
@@ -152,23 +156,25 @@
 %\capcs abovedisplayshortskip {glue \TeX\ inserts before a display when the
 %   previous line fits in the display's indentation, by
 %   default 0\pt\ plus 3\pt}*{}
-\capcs abovedisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之前插入的粘连，其默认值是 0\pt\ plus 3\pt}*{}%%%FIXME
+\capcs abovedisplayshortskip {当前一行可以放在陈列公式的缩进部分时，
+\TeX\ 在陈列公式之前插入的粘连，其默认值是 0\pt\ plus 3\pt}*{}
 %\capcs abovedisplayskip {glue \TeX\ inserts before a display when the previous
 %   line doesn't fit in the display's indentation, by default 12\pt\
 %   plus 3\pt\ minus 9\pt}*{}
-\capcs abovedisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之前插入的粘连，其默认值是 12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
+\capcs abovedisplayskip {当前一行不能放在陈列公式的缩进部分时，
+\TeX\ 在陈列公式之前插入的粘连，其默认值是 12\pt\ plus 3\pt\ minus 9\pt}*{}
 %\capcs abovewithdelims {produce a fraction with a bar of specified thickness
 %   and surrounded by specified delimiters}*{}
 \capcs abovewithdelims {输出带有指定厚度横线且被指定定界符围绕的分式}*{}
 %\capcs accent {put specified accent over the next character}*{}
 \capcs accent {将指定重间符加在后接字符之上}*{}
 %\capcs active {category code for active characters, viz., the number $13$}{}{}
-\capcs active {用于活动字符的范畴符号，即数字 $13$}{}{}%%%FIXME
+\capcs active {活动字符的类别码，即数字 $13$}{}{}
 %\capcs acute {acute accent for math, as in $\acute x$}{}{}
 \capcs acute {数学中的尖音符，比如 $\acute x$ 中那样}{}{}
 %\capcs adjdemerits {additional demerits for a line break which would result in
 %   adjacent lines with incompatible word spacing, by default~10000}*{}
-\capcs adjdemerits {对造成相邻行在字间间隔不相容的断行的额外缺点，其默认值为 10000}*{}%%%FIXME
+\capcs adjdemerits {对造成相邻行单词间距不相容的断行附加的额外缺陷，其默认值为 10000}*{}
 %\capcs advance {add a number to a |\\count| register}*{}
 \capcs advance {向 |\\count| 寄存器增加一个数}*{}
 %\capcs advancepageno {if |\\pageno| is positive, add one;
@@ -192,11 +198,11 @@
 %\capcs alpha {math Greek letter $\alpha$}{}{}
 \capcs alpha {数学希腊字母 $\alpha$}{}{}
 %\capcs amalg {amalgamation operator: $\amalg$}{}{}
-\capcs amalg {合并运算符：$\amalg$}{}{}%%%FIXME
+\capcs amalg {合并运算符：$\amalg$}{}{}
 %\capcs angle {angle symbol: $\angle$}{}{}
 \capcs angle {角度符号：$\angle$}{}{}
 %\capcs approx {approximation relation: $\approx$}{}{}
-\capcs approx {逼近关系：$\approx$}{}{}%%%FIXME
+\capcs approx {近似关系：$\approx$}{}{}
 %\capcs arccos {arc cosine function: $\arccos$}{}{}
 \capcs arccos {反余弦函数：$\arccos$}{}{}
 %\capcs arcsin {arc sine function: $\arcsin$}{}{}
@@ -224,7 +230,7 @@
 \capcs backslash {反斜线符号：$\backslash$}{}{}
 %\capcs badness {the badness of the glue setting in the last box
 %   made}*{}
-\capcs badness {生成的是后一个盒子中粘连设置的恶劣状态}*{}%%%FIXME
+\capcs badness {在上一个生成的盒子中设定的粘连的劣度}*{}
 %\capcs bar {bar accent for math, as in $\bar x$}{}{}
 \capcs bar {数学中横线重音符，比如 $\bar x$ 中那样}{}{}
 %\capcs baselineskip {glue for the normal vertical distance from one baseline
@@ -240,11 +246,13 @@
 %\capcs belowdisplayshortskip {glue \TeX\ inserts after a display when the
 %   previous line fits in the display's indentation,
 %      by default 7\pt\ plus 0.3\pt\ minus 4\pt}*{}
-\capcs belowdisplayshortskip {当前一行适应于显示的缩进时，\TeX 在一个显示之后插入的粘连，其默认值是 7\pt\ plus 0.3\pt\ minus 4\pt}*{}%%%FIXME
+\capcs belowdisplayshortskip {当前一行可以放在陈列公式的缩进部分时，
+\TeX\ 在陈列公式之后插入的粘连，其默认值是 7\pt\ plus 0.3\pt\ minus 4\pt}*{}
 %\capcs belowdisplayskip {glue \TeX\ inserts after a display when the previous
 %   line doesn't fit in the display's indentation,
 %   by default 12\pt\ plus 3\pt\ minus 9\pt}*{}
-\capcs belowdisplayskip {当前一行不适应于显示的缩进时，\TeX 在一个显示之后插入的粘连，其默认值是  12\pt\ plus 3\pt\ minus 9\pt}*{}%%%FIXME
+\capcs belowdisplayskip {当前一行不能放在陈列公式的缩进部分时，
+\TeX\ 在陈列公式之后插入的粘连，其默认值是  12\pt\ plus 3\pt\ minus 9\pt}*{}
 %\capcs beta {math Greek letter $\beta$}{}{}
 \capcs beta {数学希腊字母 $\beta$}{}{}
 %\capcs bf {use boldface, i.e., do |\\tenbf\\fam=\\bffam|}{}{}
@@ -255,9 +263,9 @@
 \capcs bgroup {隐式编组开始字符}{}{}
 %\capcs big {make the specified delimiter larger than an ordinary one, but
 %   still small enough for text}{}{}
-\capcs big {使得指定定界符大于正常大小，但对于文本依旧足够小}{}{}%%%FIXME
+\capcs big {使得指定定界符大于正常大小，但对于文本依旧足够小}{}{}
 %\capcs Big {make the specified delimiter about 11.5\pt\ tall}{}{}
-\capcs Big {使得指定定界符高度约 11.5\pt}{}{}
+\capcs Big {使得指定定界符约 11.5\pt 高}{}{}
 %\capcs bigbreak {indicate desirable page break with |\\penalty-200|
 %   and produce |\\bigskipamount| glue}{}{}
 \capcs bigbreak {用 |\\penalty-200| 给出合适分页点，
@@ -266,50 +274,50 @@
 %   capital letter!): $\bigcap$}{}{}
 \capcs bigcap {大的求交运算符（它不是用来输出大写字母的！）：$\bigcap$}{}{}
 %\capcs bigcirc {large circle operator: $\bigcirc$}{}{}
-\capcs bigcirc {大的圆圈运算符：$\bigcirc$}{}{}%%%FIXME
+\capcs bigcirc {大的圆圈运算符：$\bigcirc$}{}{}
 %\capcs bigcup {large cup operator: $\bigcup$}{}{}
-\capcs bigcup {大的求并运算符：$\bigcup$}{}{}%%%FIXME
+\capcs bigcup {大的求并运算符：$\bigcup$}{}{}
 %\capcs bigg {make the specified delimiter about 14.5\pt\ tall}{}{}
 \capcs bigg {使得指定定界符高度约 14.5\pt}{}{}
 %\capcs Bigg {make specified delimiter about 17.5\pt\ tall}{}{}
 \capcs Bigg {使得指定定界符高度约 17.5\pt}{}{}
 %\capcs biggl {sized like |\\bigg|, but spaced as an opening}{}{}
-\capcs biggl {大小与 |\\bigg| 一样，但间隔与开放的符号一样}{}{}%%%FIXME
+\capcs biggl {大小与 |\\bigg| 一样，但间隔与开符号一样}{}{}
 %\capcs Biggl {sized like |\\Bigg|, but spaced as an opening}{}{}
-\capcs Biggl {大小与 |\\Bigg| 一样，但间隔与开放的符号一样}{}{}%%%FIXME
+\capcs Biggl {大小与 |\\Bigg| 一样，但间隔与开符号一样}{}{}
 %\capcs biggm {sized like |\\bigg|, but spaced as a relation}{}{}
-\capcs biggm {大小与 |\\bigg| 一样，但间隔与关系符号一样}{}{}%%%FIXME
+\capcs biggm {大小与 |\\bigg| 一样，但间隔与关系符号一样}{}{}
 %\capcs Biggm {sized like |\\Bigg|, but spaced as a relation}{}{}
-\capcs Biggm {大小与 |\\Bigg|一样，但间隔与关系符号一样}{}{}%%%FIXME
+\capcs Biggm {大小与 |\\Bigg|一样，但间隔与关系符号一样}{}{}
 %\capcs biggr {sized like |\\bigg|, but spaced as a closing}{}{}
-\capcs biggr {大小与 |\\bigg| 一样，但间隔与闭合的符号一样}{}{}%%%FIXME
+\capcs biggr {大小与 |\\bigg| 一样，但间隔与闭符号一样}{}{}
 %\capcs Biggr {sized like |\\Bigg|, but spaced as a closing}{}{}
-\capcs Biggr {大小与 |\\Bigg| 一样，但间隔与闭合的符号一样}{}{}%%%FIXME
+\capcs Biggr {大小与 |\\Bigg| 一样，但间隔与闭符号一样}{}{}
 %\capcs bigl {sized like |\\big|, but spaced as an opening}{}{}
-\capcs bigl {大小与 |\\big| 一样，但间隔与开放的符号一样}{}{}%%%FIXME
+\capcs bigl {大小与 |\\big| 一样，但间隔与开符号一样}{}{}
 %\capcs Bigl {sized like |\\Big|, but spaced as an opening}{}{}
-\capcs Bigl {大小与 |\\Big| 一样，但间隔与开放的符号一样}{}{}%%%FIXME
+\capcs Bigl {大小与 |\\Big| 一样，但间隔与开符号一样}{}{}
 %\capcs bigm {sized like |\\big|, but spaced as a relation}{}{}
-\capcs bigm {大小与 |\\big|一样，但间隔与关系符号一样}{}{}%%%FIXME
+\capcs bigm {大小与 |\\big|一样，但间隔与关系符号一样}{}{}
 %\capcs Bigm {sized like |\\Big|, but spaced as a relation}{}{}
-\capcs Bigm {大小与 |\\Big|一样，但间隔与关系符号一样}{}{}%%%FIXME
+\capcs Bigm {大小与 |\\Big|一样，但间隔与关系符号一样}{}{}
 %\capcs bigodot {large circled dot operator: $\bigodot$}{}{}
-\capcs bigodot {大的圆圈点运算符：$\bigodot$}{}{}%%%FIXME
+\capcs bigodot {大的圆圈点运算符：$\bigodot$}{}{}
 %\capcs bigoplus {large circled plus operator: $\bigoplus$}{}{}
-\capcs bigoplus {大的圆圈加号运算符：$\bigoplus$}{}{}%%%FIXME
+\capcs bigoplus {大的圆圈加号运算符：$\bigoplus$}{}{}
 %\capcs bigotimes {large circled times operator: $\bigotimes$}{}{}
-\capcs bigotimes {大的圆圈乘号运算符：$\bigotimes$}{}{}%%%FIXME
+\capcs bigotimes {大的圆圈乘号运算符：$\bigotimes$}{}{}
 %\capcs bigr {sized like |\\big|, but spaced as a closing}{}{}
-\capcs bigr {大小与 |\\big| 一样，但间隔与闭合的符号一样}{}{}%%%FIXME
+\capcs bigr {大小与 |\\big| 一样，但间隔与闭符号一样}{}{}
 %\capcs Bigr {sized like |\\Big|, but spaced as a closing}{}{}
-\capcs Bigr {大小与 |\\Big| 一样，但间隔与闭合的符号一样}{}{}%%%FIXME
+\capcs Bigr {大小与 |\\Big| 一样，但间隔与闭符号一样}{}{}
 %\capcs bigskip {produce |\\bigskipamount| glue}{}{}
 \capcs bigskip {输出 |\\bigskipamount| 粘连}{}{}
 %\capcs bigskipamount {glue for a big vertical skip, by default 12\pt\
 %   plus 4\pt\ minus 4\pt}{}{}
 \capcs bigskipamount {用于大的竖直间距的粘连，其默认值为 12\pt\ plus 4\pt\ minus 4\pt}{}{}
 %\capcs bigsqcup {large square cup operator: $\bigsqcup$}{}{}
-\capcs bigsqcup {大的方形求并运算符：$\bigsqcup$}{}{}%%%FIXME
+\capcs bigsqcup {大的方形求并运算符：$\bigsqcup$}{}{}
 %\capcs bigtriangledown {triangle operator pointing downward:
 %   $\bigtriangledown$}{}{}
 \capcs bigtriangledown {向下的三角运算符：$\bigtriangledown$}{}{}
@@ -329,11 +337,11 @@
 %\capcs bordermatrix {produce matrix with labelled rows and columns}{}{}
 \capcs bordermatrix {带有行和列标志的矩阵}{}{}
 %\capcs bot {lattice bottom symbol: $\bot$}{}{}
-\capcs bot {格底符号：$\bot$}{}{}%%%FIXME
+\capcs bot {格底符号：$\bot$}{}{}
 %\capcs botmark {the last mark item on the page just boxed}*{}
-\capcs botmark {刚处于盒子内的页面的最后一个标记项}*{}%%%FIXME
+\capcs botmark {在刚放入盒子的页面内的最后一个标记项}*{}
 %\capcs bowtie {bowtie relation: $\bowtie$}{}{}
-\capcs bowtie {领结关系：$\bowtie$}{}{}%%%FIXME
+\capcs bowtie {领结关系：$\bowtie$}{}{}
 %\capcs box {append the box in a specified box register
 %   to the current list, and void the register}*{}
 \capcs box {将一指定的盒子寄存器中的盒子附加到当前列表中，并使寄存器失效}*{}
@@ -353,16 +361,16 @@
 \capcs breve {数学中的短音重音符，象 $\breve x$ 中一样}{}{}
 %\capcs brokenpenalty {penalty for line break at a discretionary item, by
 %   default~100}*{}
-\capcs brokenpenalty {在任意项目处断行的惩罚，默认值是 100}*{}%%%FIXME
+\capcs brokenpenalty {在自定项目处断行的惩罚，默认值是 100}*{}
 %\capcs buildrel {produce specified formula over the specified relation}{}{}
 \capcs buildrel {在一指定关系上方输出指定公式}{}{}
 %\capcs bullet {bullet operation: $\bullet$}{}{}
-\capcs bullet {圆点运算符：$\bullet$}{}{}%%%FIXME
+\capcs bullet {圆点运算符：$\bullet$}{}{}
 %\capcs bye {|\\vfill| the last page with blank space, |\\supereject| it,
 %   and |\\end| the job}{}{\@bye}
 \capcs bye {用空白间隔 |\\vfill| 最后一页，|\\supereject| 它，并且 |\\end| 作业}{}{\@bye}
 %\capcs c {cedilla accent for text, as in \c c}{}{}
-\capcs c {文本中的变音符号重音符，比如 \c c 中那样}{}{}%%%FIXME
+\capcs c {文本中的变音符号重音符，比如 \c c 中那样}{}{}
 %\capcs cal {use calligraphic font for uppercase letters in math,
 %   as in $\cal XYZ$}{}{}
 \capcs cal {数学中，对于大写字母使用书法字体，比如 $\cal XYZ$ 中那样}{}{}
@@ -371,13 +379,13 @@
 %\capcs cases {produce cases for math, as in $\bigl\{{\cdots\atop\cdots}$}{}{}
 \capcs cases {输出数学中的条件式，比如 $\bigl\{{\cdots\atop\cdots}$ 中那样}{}{}
 %\capcs catcode {the category code of a specified character}*{}
-\capcs catcode {指定字符的范畴符号}*{}%%%FIXME
+\capcs catcode {指定字符的类别码}*{}
 %\capcs cdot {centered dot operator: $\cdot$}{}{}
-\capcs cdot {居中点操作符：$\cdot$}{}{}%%%FIXME
+\capcs cdot {居中点操作符：$\cdot$}{}{}
 %\capcs cdotp {centered dot punctuation: $\cdotp$}{}{}
 \capcs cdotp {居中句号：$\cdotp$}{}{}
 %\capcs cdots {centered dots for math: $\cdots$}{}{}
-\capcs cdots {数学中的居中多点：$\cdots$}{}{}%%%FIXME
+\capcs cdots {数学中的居中多点：$\cdots$}{}{}
 %\capcs centerline {produce line with its text centered}{}{}
 \capcs centerline {输出文字居中的行}{}{}
 %\capcs char {produce the character from the current font with the specified
@@ -385,7 +393,7 @@
 \capcs char {从当前字体中输出指定编码的字符}*{}
 %\capcs chardef {define a specified control sequence to be a character's
 %   code, a number between 0 and $255$}*{}
-\capcs chardef {定义指定控制序列，使之成为 0 至 $255$ 之间的字符编码}*{}%%%FIXME
+\capcs chardef {定义指定控制序列，使之成为 0 至 $255$ 之间的字符编码}*{}
 %\capcs check {check accent for math, as in $\check x$}{}{}
 \capcs check {数学中的抑制重音符，比如 $\check x$ 中那样}{}{}
 %\capcs chi {math Greek letter $\chi$}{}{}
@@ -394,12 +402,12 @@
 %   $n \choose k$}{}{}
 \capcs choose {|\char36 n\\choose k\char36| 输出组合标记：$n \choose k$}{}{}
 %\capcs circ {circle operation: $\circ$}{}{}
-\capcs circ {圆圈操作符：$\circ$}{}{}%%%FIXME
+\capcs circ {圆圈操作符：$\circ$}{}{}
 %\capcs cleaders {produce leaders with half of leftover space before
 %   the first box, and half after the last}*{}
 \capcs cleaders {输出在第一盒子之前和最后一个盒子之后保留一半剩余空间的指引线}*{}
 %\capcs cleartabs {clear all the tabs for tabbing alignments}{}{}
-\capcs cleartabs {为制表符对齐清除所有的制表符}{}{}%%%FIXME
+\capcs cleartabs {为制表阵列清除所有的制表符}{}{}
 %\capcs closein {close a specified input stream}*{}
 \capcs closein {关闭指定的输入流}*{}
 %\capcs closeout {close a specified output stream}*{}
@@ -444,7 +452,7 @@
 %\capcs cup {cup operator: $\cup$}{}{}
 \capcs cup {求并运算符：$\cup$}{}{}
 %\capcs d {underdot accent for text, as in \d r}{}{}
-\capcs d {文本中底点重音符，比如 \d r 中那样}{}{}%%%FIXME
+\capcs d {文本中底点重音符，比如 \d r 中那样}{}{}
 %\capcs dag {dagger symbol for text: \dag}{}{}
 \capcs dag {文本中的剑形符号：\dag}{}{}
 %\capcs dagger {dagger operator for math: $\dagger$}{}{}
@@ -504,20 +512,20 @@
 %   after a line break, the third for no line break}*{}
 \capcs discretionary {指定三个文本，前两个分别用在分行前后，第三个为不分行时用}*{}
 %\capcs displayindent {\TeX\ sets this to the indentation of a display}*{}
-\capcs displayindent {\TeX\ 设定该值为显示的缩进量}*{}
+\capcs displayindent {\TeX\ 设定该值为陈列公式的缩进量}*{}
 %\capcs displaylimits {place limits above and below operators only in display
 %   styles}*{}
-\capcs displaylimits {只在显示样式中，将极限放在运算符的上或下}*{}
+\capcs displaylimits {只在陈列样式中，将极限放在运算符的上或下}*{}
 %\capcs displaylines {produce specified multiline display with each
 %   line centered}{}{}
-\capcs displaylines {输出指定的每行居中的多行显示}{}{}
+\capcs displaylines {输出指定的每行居中的多行显示陈列公式}{}{}
 %\capcs displaystyle {use displaystyle size in a formula}*{}
-\capcs displaystyle {在数学公式中使用显示样式尺寸}*{}
+\capcs displaystyle {在公式中使用陈列样式尺寸}*{}
 %\capcs displaywidowpenalty {penalty for a single line beginning a page
 %   just before a display, by default~50}*{}
-\capcs displaywidowpenalty {在一页开始处单行位于显示前的惩罚，默认值为 50}*{}
+\capcs displaywidowpenalty {在一页开始处单行位于陈列公式前的惩罚，默认值为 50}*{}
 %\capcs displaywidth {\TeX\ sets this to the width of a display}*{}
-\capcs displaywidth {\TeX\ 该定该值为显示的宽度}*{}
+\capcs displaywidth {\TeX\ 该定该值为陈列公式的宽度}*{}
 %\capcs div {division operator: $\div$}{}{}
 \capcs div {除号运算符：$\div$}{}{}
 %\capcs divide {divide a specified |\\count| register by a specified integer}*{}
@@ -589,27 +597,27 @@
 \capcs epsilon {数学希腊字母 $\epsilon$}{}{}
 %\capcs eqalign {produce specified multiline display whose indicated parts
 %   are vertically aligned}{}{}
-\capcs eqalign {输出指定的多行显示，其指示部分是竖直对齐的}{}{}
+\capcs eqalign {输出指定的多行显示陈列公式，其指定部分是竖直对齐的}{}{}
 %\capcs eqalignno {produce specified multiline display
 %   with equation numbers whose indicated parts are vertically aligned}{}{}
-\capcs eqalignno {输出带有公式编号的多行显示，其指示间分是竖直对齐的}{}{}
+\capcs eqalignno {输出带有公式编号的多行陈列公式，其指定部分是竖直对齐的}{}{}
 %\capcs eqno {put a specified equation number on the right of a display}*{}
-\capcs eqno {放指定的公式编号放在显示的右侧}*{}
+\capcs eqno {放指定的公式编号放在陈列公式的右侧}*{}
 %\capcs equiv {equivalence relation: $\equiv$}{}{}
 \capcs equiv {等价关系：$\equiv$}{}{}
 %\capcs errhelp {token list whose expansion \TeX\ displays when the user asks
 %   for help in response to an |\\errmessage|}*{}
-\capcs errhelp {当用户在面对 |\\errmessage| 寻求帮助时，\TeX\ 显示展开的记号列表}*{}
+\capcs errhelp {当用户在面对 |\\errmessage| 寻求帮助时，\TeX\ 展开并显示的记号列}*{}
 %\capcs errmessage {give specified error message}*{}
 \capcs errmessage {给出指定的错误信息}*{}
 %\capcs errorcontextlines {the number of lines of context \TeX\
 %   displays at an error, by default~5}*{}
-\capcs errorcontextlines {\TeX\ 显示在错误时显示的上下文的行数，默认值为 5}*{}
+\capcs errorcontextlines {\TeX\ 遇到错误时显示的双行信息的数目，默认值为 5}*{}
 %\capcs errorstopmode {stop for interaction at error messages}*{}
 \capcs errorstopmode {在错误信息处停下来等待交互过程}*{}
 %\capcs escapechar {character with which \TeX\ precedes control sequence
 %   names that are displayed}*{}
-\capcs escapechar {\TeX\ 处理显示的控制序列名称时带的字符}*{}
+\capcs escapechar {\TeX\ 显示控制序列名称时的前导字符}*{}
 %\capcs eta {math Greek letter $\eta$}{}{}
 \capcs eta {数学希腊字母 $\eta$}{}{}
 %\capcs everycr {token list \TeX\ expands after a |\\cr|, or a |\\crcr|
@@ -730,7 +738,7 @@
 \capcs hat {数学中的帽子重音符，比如 $\hat x$ 中那样}{}{}
 %\capcs hbadness {badness threshold for reporting underfull or overfull
 %   hboxes, by default 1000}*{}
-\capcs hbadness {报告未满或过满的恶劣状态的阈值，默认值为 1000}*{}
+\capcs hbadness {报告未满或过满水平盒子的劣度的阈值，默认值为 1000}*{}
 %\capcs hbar {math symbol: $\hbar$}{}{}
 \capcs hbar {数学符号：$\hbar$}{}{}
 %\capcs hbox {produce a specified hbox}*{}
@@ -780,7 +788,7 @@
 \capcs hskip {输出指定的水平粘连}*{}
 %\capcs hss {produce horizontal glue that is infinitely stretchable and
 %   infinitely shrinkable}*{}
-\capcs hss {输出可无限扩展和压缩的水平粘连}*{}
+\capcs hss {输出可无限扩展和收缩的水平粘连}*{}
 %\capcs ht {the height of the box in a specified box register}*{}
 \capcs ht {在指定盒子寄存器中盒子的高度}*{}
 %\capcs hyphenation {add specified words to the
@@ -964,9 +972,9 @@
 \capcs leq {等同于 |\\le|}{}{}
 %\capcs leqalignno {produce specified multiline display with equation numbers
 %   on the left whose indicated parts are vertically aligned}{}{}
-\capcs leqalignno {输出公式编号在左侧，且指示部分竖直对齐的指定的多行显示}{}{}
+\capcs leqalignno {生成公式编号在左侧，且指定部分竖直对齐的多行陈列公式}{}{}
 %\capcs leqno {put a specified equation number on the left of a display}*{}
-\capcs leqno {在显示的左侧放置指定的公式编号}*{}
+\capcs leqno {在陈列公式的左侧放置指定的公式编号}*{}
 %\capcs let {define a control sequence to be the next token}*{}
 \capcs let {定义控制序列为随后的记号}*{}
 %\capcs lfloor {left floor delimiter: $\lfloor$}{}{}
@@ -1116,7 +1124,7 @@
 %   plus 2\pt\ minus 2\pt}{}{}
 \capcs medskipamount {中等竖直间隔的粘连，默认值为 6\pt plus 2\pt\ minus 2\pt}{}{}
 %\capcs message {show expansion of the specified text on the terminal}*{}
-\capcs message {在终端上显示指定文的扩展}*{}
+\capcs message {展开并显示指定文本到终端上}*{}
 %\capcs mid {middle relation: $\mid$}{}{}
 \capcs mid {中项关系：$\mid$}{}{}
 %\capcs midinsert {produce the specified text at the current position if
@@ -1363,7 +1371,7 @@
 \capcs pageno {|\\count0| 寄存器，它包括（可能是负的）页码}{}{}
 %\capcs pageshrink {\TeX\ sets this to the total amount of shrinkability
 %   on the current page}*{}
-\capcs pageshrink {\TeX\ 将其设置为在当前页面总的可压缩量}*{}
+\capcs pageshrink {\TeX\ 将其设置为在当前页面总的可收缩量}*{}
 %\capcs pagestretch {\TeX\ sets this to the total amount of stretchability
 %   on the current page}*{}
 \capcs pagestretch {\TeX\ 将其设置为在当前页面总的可伸展量}*{}
@@ -1417,7 +1425,7 @@
 \capcs pmod {放置于公式结尾处的带圆括号的模数标记，比如 $x \equiv y+1 \pmod 2$ 中那样}{}{}
 %\capcs postdisplaypenalty {additional penalty for a line break
 %   just after a display, by default~0}*{}
-\capcs postdisplaypenalty {恰好在显示之后的断行的额外惩罚，其默认值为 0}*{}
+\capcs postdisplaypenalty {恰好在显示陈列公式之后的断行的额外惩罚，其默认值为 0}*{}
 %\capcs Pr {probability function: $\Pr$}{}{}
 \capcs Pr {概率函数：$\Pr$}{}{}
 %\capcs prec {precedes relation: $\prec$}{}{}
@@ -1426,13 +1434,13 @@
 \capcs preceq {优先或等于关系：$\preceq$}{}{}
 %\capcs predisplaypenalty {additional penalty for a line break just
 %   before a display, by default~0}*{}
-\capcs predisplaypenalty {恰好在显示之前断行的额外惩罚，其默认值为 0}*{}
+\capcs predisplaypenalty {恰好在陈列公式之前断行的额外惩罚，其默认值为 0}*{}
 %\capcs predisplaysize {\TeX\ sets this to the width of the
 %   line preceding a display}*{}
-\capcs predisplaysize {\TeX\ 将其设置为显示之前的行的宽度}*{}
+\capcs predisplaysize {\TeX\ 将其设置为显示陈列公式之前的行的宽度}*{}
 %\capcs pretolerance {badness tolerance for line breaks without
 %   hyphenation, by default~100}*{}
-\capcs pretolerance {没有断字的断行的恶劣情况的限值，默认值为 100}*{}
+\capcs pretolerance {不断字断行时劣度的容许值，默认值为 100}*{}
 %\capcs prevdepth {depth of the last nonrule box on the
 %   current vertical list}*{}
 \capcs prevdepth {在当前竖直列表中最后一个非标线盒子的深度}*{}
@@ -1499,7 +1507,7 @@
 \capcs Rightarrow {关系：$\Rightarrow$}{}{}
 %\capcs rightarrowfill {fill enclosing hbox with a |\\rightarrow|:
 %   \hbox to 3.5em{\rightarrowfill}}{}{}
-\capcs rightarrowfill {使用 |\\rightarrow| 填充闭合的 hbox：\hbox to 3.5em{\rightarrowfill}}{}{}
+\capcs rightarrowfill {使用 |\\rightarrow| 填充所在的水平盒子：\hbox to 3.5em{\rightarrowfill}}{}{}
 %\capcs rightharpoondown {relation: $\rightharpoondown$}{}{}
 \capcs rightharpoondown {关系：$\rightharpoondown$}{}{}
 %\capcs rightharpoonup {relation: $\rightharpoonup$}{}{}
@@ -1581,9 +1589,9 @@
 \capcs showbox {显示指定盒子寄存器的内容}*{}
 %\capcs showboxbreadth {maximum number of items shown on each nesting
 %   level, by default~5}*{}
-\capcs showboxbreadth {可显示的每个嵌套层次上项目的最大数量，默认值为 5}*{}
+\capcs showboxbreadth {在每个嵌套层次上显示的项目的最大数量，默认值为 5}*{}
 %\capcs showboxdepth {maximum nesting level shown, by default~3}*{}
-\capcs showboxdepth {可显示的最大嵌套层次，默认值为 3}*{}
+\capcs showboxdepth {显示的最大嵌套层次，默认值为 3}*{}
 %\capcs showhyphens {show, in the log
 %   and on the terminal, hyphenations in the specified text}{}{}
 \capcs showhyphens {在日志文件中和终端上显示指定文本的断字}{}{}
@@ -1640,7 +1648,7 @@
 \capcs space {输出正常的字间粘连}{}{}
 %\capcs spacefactor {modifies stretch and shrink of interword glue
 %   if not 1000}*{}
-\capcs spacefactor {修改字间粘连的伸展与压缩，如果不是 1000}*{}
+\capcs spacefactor {修改字间粘连的伸展量与收缩量，如果不是 1000}*{}
 %\capcs spaceskip {if nonzero and |\\spacefactor|${}<2000$, overrides
 %    the normal interword glue}*{}
 \capcs spaceskip {如果非零且 |\\spacefactor|${}<2000$，抑制正常的字间粘连}*{}
@@ -1764,7 +1772,7 @@
 %   corresponding to a |\\toks| register}*{}
 \capcs toksdef {定一指定的控制序列使之成为与 |\\toks| 寄存器相对应的数值}*{}
 %\capcs tolerance {badness tolerance for line breaks with hyphenation}*{}
-\capcs tolerance {带有断字的断行的恶劣程度的容许值}*{}
+\capcs tolerance {带断字断行时劣度的容许值}*{}
 %\margin{{\tt\\topglue} command added; recent addition to \TeX}
 \margin{加入命令 {\tt\\topglue}，新近加入 \TeX}
 %\capcs to {mapping relation: $\to$}{}{}
@@ -1797,7 +1805,7 @@
 %\capcs tracingpages {display page break calculations}*{}
 \capcs tracingpages {显示分页计算}*{}
 %\capcs tracingparagraphs {display line break calculations}*{}
-\capcs tracingparagraphs {显示分行计算}*{}
+\capcs tracingparagraphs {显示断行计算}*{}
 %\capcs tracingrestores {display values restored at the end
 %   of a group}*{}
 \capcs tracingrestores {显示在编组结束处保存的值}*{}
@@ -1894,10 +1902,10 @@
 \capcs vartheta {异体的数学希腊字母 $\vartheta$}{}{}
 %\capcs vbadness {badness threshold for reporting underfull or overfull
 %   vboxes, by default~1000}*{}
-\capcs vbadness {报告未满或过满 vbox 使用的恶劣情况阈值，默认值为 1000}*{}
+\capcs vbadness {报告未满或过满竖直盒子使用的劣度阈值，默认值为 1000}*{}
 %\capcs vbox {produce a vbox whose baseline is that of the bottom box
 %   enclosed}*{}
-\capcs vbox {输出 vbox，其基线是闭合的底下盒子的基线}*{}
+\capcs vbox {输出竖直盒子，其基线是闭合的底下盒子的基线}*{}
 %\capcs vcenter {center the specified text on the math axis}*{}
 \capcs vcenter {在数学轴上居中指定文本}*{}
 %\capcs vdash {left turnstile symbol: $\vdash$}{}{}
@@ -1945,9 +1953,9 @@
 \capcs vsplit {将指定的盒子寄存器的内容分隔为指定的高度}*{}
 %\capcs vss {produce vertical glue that is infinitely stretchable and
 %   infinitely shrinkable}*{}
-\capcs vss {输出可无限扩展与压缩的竖直粘连}*{}
+\capcs vss {输出可无限扩展与收缩的竖直粘连}*{}
 %\capcs vtop {produce a vbox whose baseline is that of the top box enclosed}*{}
-\capcs vtop {输出 vbox，它的基线是闭合的顶部盒子的基线}*{}
+\capcs vtop {输出竖直盒子，它的基线是闭合的顶部盒子的基线}*{}
 %\capcs wd {the width of the box in a specified box register}*{}
 \capcs wd {指定盒子寄存器中盒子的宽度}*{}
 %\capcs wedge {logical ``and'' operator: $\wedge$}{}{}
@@ -1979,7 +1987,7 @@
 \capcs xleaders {输出剩余空白均匀分布于指引线盒子之间的指引线}*{}
 %\capcs xspaceskip {if nonzero and |\\spacefactor|${}\ge2000$,
 %   overrides the normal interword glue}*{}
-\capcs xspaceskip {如果非零，且 |\\spacefactor|${}\ge2000$, 抑制正常的字间粘连}*{}
+\capcs xspaceskip {如果非零，且 |\\spacefactor|${}\ge2000$，覆盖正常的字间粘连}*{}
 %\capcs year {the current year, as a number}*{}
 \capcs year {以数值形式输出当前年份}*{}
 %\capcs zeta {math Greek letter $\zeta$}{}{}

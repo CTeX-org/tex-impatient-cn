@@ -1,15 +1,4 @@
 % -*- coding: utf-8 -*-
-%box: 盒子
-%space: 间隔
-%rule: 嵌线
-%leader: 指引线
-%alignment: 排列
-%kern: 字符间距
-%glue: 橡皮间距
-%group: 集合
-%restricted mode: 受限模式
-%token: 记号
-%
 % This is part of the book TeX for the Impatient.
 % Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
@@ -119,7 +108,7 @@ The horror, the horror\negthinspace, the horror of it all!
 %\TeX\ can break a line \minrefs{line break} at such glue.
 %The width of these glues (which are relative to the current font)
 %are as follows for |cmr10|, the default \plainTeX\ font:
-这里的每个命令都产生一个既不能伸展也不能压缩的水平\minref{粘连}。\TeX\ 不能在这些粘连处断行。对于 \plainTeX\ 的默认字体 |cmr10| 来说，这些粘连的宽度（与当前字体有关）如下：
+这里的每个命令都产生一个既不能伸展也不能收缩的水平\minref{粘连}。\TeX\ 不能在这些粘连处断行。对于 \plainTeX\ 的默认字体 |cmr10| 来说，这些粘连的宽度（与当前字体有关）如下：
 \medskip
 
 \def\distance#1{\hbox{\strut $\rightarrow$\vrule\hskip #1\vrule$\leftarrow$}}
@@ -164,7 +153,8 @@ en\enskip skip; quad\quad skip; qquad\qquad skip
 %|\smallskip| skips by $3$ points and can stretch or
 %shrink by $1$ point.  |\med!-skip| is equivalent to two |\smallskip|s
 %and |\bigskip| is equivalent to two |\medskip|s.
-|\smallskip| 产生 $3$ 点的竖直间隔，并可以伸展或压缩 1 点。|\med!-skip| 相当于两个 |\smallskip|，而 |\bigskip| 相当于两个 |\medskip|。
+|\smallskip| 产生 $3$ 点的竖直间隔，并可以伸展或收缩 1 点。
+|\med!-skip| 相当于两个 |\smallskip|，而 |\bigskip| 相当于两个 |\medskip|。
 
 %These commands end a paragraph since they are inherently vertical.
 %The skips that they produce
@@ -348,7 +338,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %end of a line or a page, it discards the kern.
 %If you want to get the effect of a kern that never disappears,
 %use ^|\hglue| or ^|\vglue|.
-紧排与\minref{粘连}相似，不同的是 (a)~紧排不能被伸展或压缩；(b)~如果紧排后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在紧排处断行或分页。如果 \TeX\ 发现紧排位于一行或一页的结尾，该紧排将会被忽略。如果你希望得到不会消失的紧排的效果，使用 ^|\hglue| 或 ^|\vglue|。
+紧排与\minref{粘连}相似，不同的是 (a)~紧排不能被伸展或收缩；(b)~如果紧排后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在紧排处断行或分页。如果 \TeX\ 发现紧排位于一行或一页的结尾，该紧排将会被忽略。如果你希望得到不会消失的紧排的效果，使用 ^|\hglue| 或 ^|\vglue|。
 
 %You can use |\kern| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
@@ -450,11 +440,12 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %infinitely shrinkable. The glue can shrink
 %to a negative distance, producing the effect of backspacing along a line
 %(for |\hss|) or moving back up a page (for |\vss|).
-这些命令产生水平和竖直的可无限伸展和压缩的粘连。粘连可以压缩至负的距离，产生的效果是（对于 |\hss|而言）沿一行向回移动或（对于 |\vss| 而言）向页面顶部移动。
+这些命令产生水平和竖直的可无限伸展和收缩的粘连。
+粘连可以收缩至负的距离，产生的效果是（对于 |\hss|而言）沿一行向回移动或（对于 |\vss| 而言）向页面顶部移动。
 
 \example
 \line{正文文本\hfil\hbox to 0pt{页边空白\hss}}
-% `页边空白\hss' 压缩到宽度为零的 hbox 中。
+% `页边空白\hss' 收缩到宽度为零的水平盒子中。
 |
 \produces
 %\line{text\hfil\hbox to 0pt{margin\hss}}
