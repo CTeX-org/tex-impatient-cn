@@ -255,11 +255,11 @@ I\quad
 %l.340 Skip across \hskip 3cn
 %                           by 3 centimeters.
 %|
-Here's an example of another common error:
+这里是另一种常见错误的例子：
 \csdisplay
 Skip across \hskip 3cn by 3 centimeters.
 |
-The error message for this is:
+这个例子的错误信息为：
 \csdisplay
 !! Illegal unit of measure (pt inserted).
 <to be read again>
@@ -270,12 +270,10 @@ l.340 Skip across \hskip 3cn
                              by 3 centimeters.
 |
 ^^|<to be read again>|
-In this case \TeX\ has observed that `|3|' is followed by something that
-isn't a proper unit of measure, and so it's assumed the unit of measure to be
-points.  \TeX\ will read the tokens of `|cn|' again and insert them into
-your input, which is not what you want.  In this case you can get a better
-result by first typing `|2|' to bypass the `|cn|'.
-You'll get the message:
+这里 \TeX\ 注意到 `|3|' 后面不是一个正确的度量单位，因此它假设该度量单位为点。
+\TeX\ 将重新读取 `|cn|' 的记号并将它们插入你的输入中，而这并不是你想要的。
+在这种情形下若想得到更好的结果，你可以先键入 `|2|' 以跳过 `|cn|'。
+这样你将得到如下信息：
 \csdisplay
 <recently read> n
 
@@ -287,10 +285,8 @@ l.340 Skip across \hskip 3cn
 %`|I\hskip 3cm|' to get the skip you wanted (in addition to the |3pt| skip
 %that you've already gotten).\footnote
 %{By typing `|I\unskip\hskip 3cm|' you can get rid of the |3pt| skip.}
-Now you can type
-`|I\hskip 3cm|' to get the skip you wanted (in addition to the |3pt| skip
-that you've already gotten).\footnote
-{By typing `|I\unskip\hskip 3cm|' you can get rid of the |3pt| skip.}
+现在你可以键入 `|I\hskip 3cm|' 以得到你所要的间距（加上你已经得到的 |3pt| 间距）。%
+\footnote{若改为键入 `|I\unskip\hskip 3cm|'，你就可以去掉这个 |3pt| 的间距。}
 
 \section{第三个例子}
 
