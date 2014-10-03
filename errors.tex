@@ -368,11 +368,11 @@ l.330 So \spadesuit
 %insertion of the right brace.
 %Your best bet is to type `|5|', skipping past all the tokens
 %in `|}\vskip 1in|'.
-Here's an example where \TeX's error diagnostic is downright wrong:
+在下面这个例子中，\TeX\ 对错误的诊断是完全不正确的：
 \csdisplay
 \hbox{One \vskip 1in two.}
 |
-The error message is:
+它给出的错误信息如下：
 \csdisplay
 !! Missing } inserted.
 <inserted text>
@@ -383,19 +383,13 @@ l.29 \hbox{One \vskip
                      1in two.}
 |
 ^^|<inserted text>|
-The problem is that you can't use |\vskip| when \TeX\ is in
-restricted horizontal mode, i.e, constructing an hbox.
-But instead of rejecting the |\vskip|, \TeX\ has inserted a right brace
-in front of it in an attempt to close out the hbox.
-If you accept \TeX's correction, \TeX\ will complain again
-when it gets to the correct right brace later on. It will also complain
-about anything before that right brace that isn't allowed in vertical mode.
-These additional complaints will be particularly confusing
-because the errors they indicate are bogus, a
-result of the propagated effects of the inappropriate
-insertion of the right brace.
-Your best bet is to type `|5|', skipping past all the tokens
-in `|}\vskip 1in|'.
+问题在于，当 \TeX\ 位于受限水平模式中，即正在构建水平盒子时，不能使用 |\vskip|。
+但 \TeX\ 不是丢掉 |\vskip|，而是在它前面插入一个右花括号，以结束该水平盒子。
+如果你接受 \TeX\ 的修改，\TeX\ 遇到稍后的正确右花括号时将再次报错。
+它还将对该右花括号之前的任何不能出现在竖直模式的东西报错。
+这些额外的错误将是特别让人迷惑的，因为这些错误所说的都是假的，
+它们是不恰当插入右花括号后产生的结果。
+你的最佳做法是键入 `|5|' 以跳过在 `|}\vskip 1in|' 中的所有记号。
 
 \section{第五个例子}
 
