@@ -1187,26 +1187,37 @@
 \eix^^{centered text}
 
 
-\section Tables
+%\section Tables
+\section 表格
 
-The \pix^|\makecolumns| macro enables you to give all the entries in a
-table without having to worry about where the columns break.  For
-example, if you're typing a long alphabetical list that will be
-formatted in several columns, you usually won't know in advance where
-one column ends and the next begins.  Moreover, if another item gets
-added, the column breaks will change.
+%The \pix^|\makecolumns| macro enables you to give all the entries in a
+%table without having to worry about where the columns break.  For
+%example, if you're typing a long alphabetical list that will be
+%formatted in several columns, you usually won't know in advance where
+%one column ends and the next begins.  Moreover, if another item gets
+%added, the column breaks will change.
+\pix^|\makecolumns| 宏允许你给出表格的所有元素，而无需担心如何分栏。
+例如，在输入一个冗长的按字母排序的名单，并分多栏显示时，
+你通常不知道在何处结束一栏开始下一栏。
+另外，如果添加了另一项，各栏的划分将会改变。
 
-|\makecolumns| takes two (delimited) arguments: the total number of
-entries in the table and the number of columns in the table.  For
-example, `|\makecolumns 37/3:|' specifies a three-column table whose
-entries are the next $37$ lines.  You can adjust the positioning of the
-table on the page by changing |\parindent|, which determines the space
-to the left, and |\hsize|, which determines the space from the left
-margin of the page to the right of the block.  You can allow a page
-break above the |\valign|
-^^|\valign//used in {\tt\\makecolumns}|
-by changing
-\pix^|\abovecolumnspenalty|.
+%|\makecolumns| takes two (delimited) arguments: the total number of
+%entries in the table and the number of columns in the table.  For
+%example, `|\makecolumns 37/3:|' specifies a three-column table whose
+%entries are the next $37$ lines.  You can adjust the positioning of the
+%table on the page by changing |\parindent|, which determines the space
+%to the left, and |\hsize|, which determines the space from the left
+%margin of the page to the right of the block.  You can allow a page
+%break above the |\valign|
+%^^|\valign//used in {\tt\\makecolumns}|
+%by changing
+%\pix^|\abovecolumnspenalty|.
+|\makecolumns| 有两个（定界）参量：表格元素的总数以及表格的栏数。
+例如，`|\makecolumns 37/3:|' 指定一个三栏表格，其元素为接下来的 $37$ 行。
+要调整表格在页面上的位置，你可以修改 |\parindent| 以确定表格左侧的空白，
+以及 |\hsize| 以确定从页面左边缘到表格右侧的距离。
+要允许在 |\valign| ^^|\valign//used in {\tt\\makecolumns}| 之前分页，
+你可以修改 \pix^|\abovecolumnspenalty|。
 
 \csdisplay
 \newcount\abovecolumnspenalty
