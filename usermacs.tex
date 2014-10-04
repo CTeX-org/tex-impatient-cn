@@ -745,37 +745,50 @@
 |
 
 
-\section Tables of contents
+%\section Tables of contents
+\section 目录
 
+%\null ^^{table of contents}
+%The macro \pix^|\writetocentry| writes a macro call to the file
+%|\jobname.toc|.  The first argument of |\writetocentry|, e.g.,
+%``chapter'', is used to compose the name of the called macro. The second
+%argument is the text to appear in the table of contents entry.
+%|\writetocentry| appends the page number to the macro call.  For
+%example:
 \null ^^{table of contents}
-The macro \pix^|\writetocentry| writes a macro call to the file
-|\jobname.toc|.  The first argument of |\writetocentry|, e.g.,
-``chapter'', is used to compose the name of the called macro. The second
-argument is the text to appear in the table of contents entry.
-|\writetocentry| appends the page number to the macro call.  For
-example:
+\pix^|\writetocentry| 宏在 |\jobname.toc| 文件中写入一个宏调用。
+|\write!-tocentry| 的第一个参量，比如``chapter''，用于构成所调用的宏的名称。
+第二个参量是显示在目录项中的文本。
+|\writetocentry| 添加页码到宏调用中。例如：
 \csdisplay
 \writetocentry{chapter}{Introduction}
 |
+%\noindent
+%will produce the line:
 \noindent
-will produce the line:
+将生成下列这行：
 \csdisplay
 \tocchapterentry{Introduction}{2}
 |
-\noindent in the |.toc| file, indicating
-that `Introduction' started on page 2.
+%\noindent in the |.toc| file, indicating
+%that `Introduction' started on page 2.
+\noindent 到 |.toc| 文件中，表示 `Introduction' 从第2页开始。
 
-You can use |\writenumberedtocentry| to provide a third parameter, such
-as a chapter number. For example:
+%You can use |\writenumberedtocentry| to provide a third parameter, such
+%as a chapter number. For example:
+利用 |\writenumberedtocentry| 你还可以提供第三个参数，比如章编号。例如：
 \csdisplay
 \writenumberedtocentry{chapter}{The second chapter}{2}
 |
-\noindent will write a line:
+%\noindent will write a line:
+\noindent 将写入这一行：
 \csdisplay
 \tocchapterentry{The second chapter}{2}{14}
 |
+%\noindent
+%You can also |\write| to |\tocfile| yourself.
 \noindent
-You can also |\write| to |\tocfile| yourself.
+你也可以自己用 |\write| 命令写入 |\tocfile|。
 
 \csdisplay
 \newwrite\tocfile \newif\iftocfileopened
@@ -797,13 +810,18 @@ You can also |\write| to |\tocfile| yourself.
 \ignorespaces\fi}%
 |
 
-To produce a table of contents, read the |.toc| file with
-\pix^|\readtocfile|. You should call |\read!-tocfile| before the first
-|\write!-toc!-entry|.  When you're processing the table of contents
-without regenerating it, you should not rewrite
-the |.toc| file---if you do, its contents will be lost.
-The command
-|\rewrite!-tocfile!-false| will prevent the rewrite.
+%To produce a table of contents, read the |.toc| file with
+%\pix^|\readtocfile|. You should call |\read!-tocfile| before the first
+%|\write!-toc!-entry|.  When you're processing the table of contents
+%without regenerating it, you should not rewrite
+%the |.toc| file---if you do, its contents will be lost.
+%The command
+%|\rewrite!-tocfile!-false| will prevent the rewrite.
+要排印出目录，只需用 \pix^|\readtocfile| 读取 |.toc| 文件。
+你应该在首次使用 |\write!-toc!-entry| 之前调用 |\read!-tocfile|。
+在处理目录且不想重新生成它时，
+务必不要改写 |.toc| 文件——如果你这样做，文件内容将会丢失。
+命令 |\rewrite!-tocfile!-false| 将禁止这种改写。
 
 \csdisplay
 \newif\ifrewritetocfile \rewritetocfiletrue
@@ -814,9 +832,11 @@ The command
    \fi}%
 |
 
-Here are some definitions of possible |\toc|\dots|entry| macros.  These
-definitions are meant only as examples---running leaders across the line
-is usually not the best way to typeset a table of contents.
+%Here are some definitions of possible |\toc|\dots|entry| macros.  These
+%definitions are meant only as examples---running leaders across the line
+%is usually not the best way to typeset a table of contents.
+这里给出可能出现的 |\toc|\dots|entry| 宏的一些定义。
+这些定义只是作为例子而已——在目录中使用指引线通常不是最好的做法。
 
 \csdisplay
 \def\tocchapterentry#1#2{\line{\bf #1 \dotfill\ #2}}%
