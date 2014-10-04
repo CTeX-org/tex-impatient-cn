@@ -26,7 +26,7 @@
 
 
 %\section{Preliminaries}
-\section{预备知识}
+\section{预备定义}
 
 %We start with some macros for changing category codes and convenient
 %definitions for two of the commonly used ones.
@@ -58,7 +58,7 @@
 %extra machinery (which you can see in the definition below).
 为了将 `|^^M|' 定义为活动字符，你需要将定义放在编组中，并借助某些额外机制。
 \ttidxref{^^M}
-\pix^|\letreturn| 宏让你无需额外机制就可以定义 `|^^M|'（它的定义在下面可以看到）。 
+\pix^|\letreturn| 宏让你无需额外机制就可以定义 `|^^M|'（它的定义在下面可以看到）。
 
 \csdisplay
 {\makeactive\^^M \long\gdef\letreturn#1{\let^^M = #1}}%
@@ -184,7 +184,7 @@
 %subsidiary macros. |\@ttsA| finds the spaces, and |\@ttsB| handles a
 %token sequence without any spaces.  Each space is replaced by the
 %expansion of \pix^|\spacesub|.
-为了将参量在空格处分开，我们要用到两个子宏。 
+为了将参量在空格处分开，我们要用到两个子宏。
 |\@ttsA| 用于寻找空格，而 |\@ttsB| 用于处理不带空格的控制序列。
 每个空格都被替换为 \pix^|\spacesub| 的展开。
 
@@ -381,22 +381,32 @@
 |
 
 
-\section Displays
+%\section Displays
+\section 陈列公式
 
-By default, \TeX\ centers displayed material (the material between
-|$$|'s).  ^^{displays, formatting} \pix^|\leftdisplays| causes displays
-to be left-justified by default.  You can return to centered displays
-with \pix^|\centereddisplays|.
+%By default, \TeX\ centers displayed material (the material between
+%|$$|'s).  ^^{displays, formatting} \pix^|\leftdisplays| causes displays
+%to be left-justified by default.  You can return to centered displays
+%with \pix^|\centereddisplays|.
+\TeX\ 默认将陈列公式（放在 |$$| 之间的公式）居中显示。
+^^{displays, formatting}\pix^|\leftdisplays| 让陈列公式默认为左对齐显示。
+你也可以用 \pix^|\centereddisplays| 命令恢复居中显示。
 
-The macros here are more general than they need to be just for doing
-left-justified displays.  For every display,
-\pix^|\ifeqno| will be true if an |\eqno| occurred in the display.
-\pix^|\ifleqno| will be true if an |\leqno| occurred.  If either
-kind of equation number occurred, \pix^|\eqn| produces the text of the
-equation number.  \pix^|\eq|  always produces the text of the
-equation itself.
+%The macros here are more general than they need to be just for doing
+%left-justified displays.  For every display,
+%\pix^|\ifeqno| will be true if an |\eqno| occurred in the display.
+%\pix^|\ifleqno| will be true if an |\leqno| occurred.  If either
+%kind of equation number occurred, \pix^|\eqn| produces the text of the
+%equation number.  \pix^|\eq|  always produces the text of the
+%equation itself.
+这些宏提供让陈列公式左对齐显示之外的更多功能。
+对每个陈列公式，若 |\eqno| 存在则 \pix^|\ifeqno| 为真，
+若 |\leqno| 存在则 \pix^|\ifleqno| 为真。
+如果其中一种公式编号存在，\pix^|\eqn| 将排印公式编号的内容。
+而 \pix^|\eq| 始终排印公式本身的内容。
 
-These macros are based on the code on \knuth{page~376}.
+%These macros are based on the code on \knuth{page~376}.
+这些宏基于\knuth{第~376~页}中的代码。
 
 \csdisplay
 \newif\ifeqno \newif\ifleqno
@@ -422,14 +432,18 @@ These macros are based on the code on \knuth{page~376}.
    \fi}%
 |
 
-You can format displays differently by defining your own macro,
-analogous to \pix^|\leftdisplays|.
-The macro definition must
-place a call on |\display!-setup| in |\every!-display| ^^|\everydisplay|
-so as to ensure
-that |\dis!-play!-setup| ^^|\displaysetup| is called at the start of
-every display. The macro definition must also include a definition of
-^|\generaldisplay|.
+%You can format displays differently by defining your own macro,
+%analogous to \pix^|\leftdisplays|.
+%The macro definition must
+%place a call on |\display!-setup| in |\every!-display| ^^|\everydisplay|
+%so as to ensure
+%that |\dis!-play!-setup| ^^|\displaysetup| is called at the start of
+%every display. The macro definition must also include a definition of
+%^|\generaldisplay|.
+通过自己定义类似 \pix^|\leftdisplays| 的宏，你可以给陈列公式设定不同的形式。
+这个宏定义中必须在 |\every!-display| ^^|\everydisplay|中调用 |\display!-setup|，
+以确保 |\dis!-play!-setup| ^^|\displaysetup|在每个陈列公式开始都被调用。
+这个宏定义必须也包含 ^|\generaldisplay| 的定义。
 
 \csdisplay
 \newtoks\previouseverydisplay
@@ -456,17 +470,25 @@ every display. The macro definition must also include a definition of
 \def\centereddisplays{\let\displaysetup = \relax}%
 |
 
-\filbreak
-\pix^|\leftdisplays| must go to some pains to make sure that
-|\dis!-play!-lines|, ^^|\displaylines|
-^|\eqalignno|,  and ^|\leqalignno| still work properly.
-|\eq| is typeset in math mode,
-and |\halign| is illegal in math mode.
+%\filbreak
+%\pix^|\leftdisplays| must go to some pains to make sure that
+%|\dis!-play!-lines|, ^^|\displaylines|
+%^|\eqalignno|,  and ^|\leqalignno| still work properly.
+%|\eq| is typeset in math mode,
+%and |\halign| is illegal in math mode.
+%^^|\halign//illegal in math mode|
+%We use ^|\vcenter| to change the context so that  |\halign| becomes
+%legal again. We also remove the |\hfil| commands at the left of the template
+%to obtain the flush left formatting. Other than those changes, the macros
+%are the same as in |plain.tex|.
+%\filbreak
+\pix^|\leftdisplays| 必须历经辛苦地确保 |\dis!-play!-lines|^^|\displaylines|、
+^|\eqalignno| 和 ^|\leqalignno| 还能正常使用。
+|\eq| 在数学模式中排版，而 |\halign| 在数学模式中是不合法的。
 ^^|\halign//illegal in math mode|
-We use ^|\vcenter| to change the context so that  |\halign| becomes
-legal again. We also remove the |\hfil| commands at the left of the template
-to obtain the flush left formatting. Other than those changes, the macros
-are the same as in |plain.tex|.
+我们用 ^|\vcenter| 改变环境，以让 |\halign| 重新变成合法的。
+我们还去掉模板左边的 |\hfil| 命令以得到左对齐格式。
+除这些改变之外，这些宏与 |plain.tex| 中的相同。
 
 \csdisplay
 \def\@redefinealignmentdisplays{%
