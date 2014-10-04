@@ -515,16 +515,22 @@
 |
 
 
-\section Time of day
+%\section Time of day
+\section 日期时间
 
-When \TeX\ starts up, it sets the values of the
-^|\time|, ^|\day|, ^|\month|, and ^|\year| parameters.
+%When \TeX\ starts up, it sets the values of the
+%^|\time|, ^|\day|, ^|\month|, and ^|\year| parameters.
+%^^{time of day}^^{date}
+%\pix^|\monthname|
+%produces the name of the month, abbreviated to three letters.
+%\pix^|\timestring| produces the current time, as in ``1:14\thinspace
+%p.m.''. \pix^|\timestamp| produces the text of the complete date, as
+%in ``23 Apr 1964\quad 1:14\thinspace p.m.''.
+\TeX\ 开始运行时设定了 ^|\time|、^|\day|、^|\month| 和 ^|\year| 参数的值。
 ^^{time of day}^^{date}
-\pix^|\monthname|
-produces the name of the month, abbreviated to three letters.
-\pix^|\timestring| produces the current time, as in ``1:14\thinspace
-p.m.''. \pix^|\timestamp| produces the text of the complete date, as
-in ``23 Apr 1964\quad 1:14\thinspace p.m.''.
+\pix^|\monthname| 排印月份名称的三字母缩写。
+\pix^|\timestring| 排印类似当前时间，类似于 ``1:14\thinspace p.m.''。
+\pix^|\timestamp| 排印完整日期文本，类似于 ``23 Apr 1964\quad 1:14\thinspace p.m.''。
 
 \csdisplay
 \def\monthname{%
