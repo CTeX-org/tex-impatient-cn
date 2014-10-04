@@ -847,24 +847,37 @@
 |
 
 
-\section Cross-references
+%\section Cross-references
+\section 交叉引用
 
+%\null ^^{cross-references}
+%\xrdef{xrefs}
+%The macros that follow provide symbolic
+%cross-referencing, so that you can refer to something in another part of
+%a document by name instead of by its actual page number.
+%\pix^|\xrdef||{foo}| defines a label |foo| to be the current page
+%number, and \pix^|\xrefn||{foo}| produces that page number, e.g., $77$.
+%More often you'll want to say something like ``see p.\thinspace77'', so
+%\pix^|\xref||{foo}| produces ``p.\thinspace 77''.  If |foo| is not
+%defined, a warning message will be given.  |\xrefwarningfalse|
+%suppresses the warning.
 \null ^^{cross-references}
 \xrdef{xrefs}
-The macros that follow provide symbolic
-cross-referencing, so that you can refer to something in another part of
-a document by name instead of by its actual page number.
-\pix^|\xrdef||{foo}| defines a label |foo| to be the current page
-number, and \pix^|\xrefn||{foo}| produces that page number, e.g., $77$.
-More often you'll want to say something like ``see p.\thinspace77'', so
-\pix^|\xref||{foo}| produces ``p.\thinspace 77''.  If |foo| is not
-defined, a warning message will be given.  |\xrefwarningfalse|
-suppresses the warning.
+接下来的宏提供了符号式的交叉引用，
+让你可以在文档中通过名称而非实际页码提及其它部分的东西。
+\pix^|\xrdef||{foo}| 定义标签 |foo| 为当前页码，
+而 \pix^|\xrefn||{foo}| 生成该页码，比如 $77$。
+你更常用的是类似 ``see p.\thinspace77'' 的写法，
+因此 \pix^|\xref||{foo}| 生成 ``p.\thinspace 77''。
+如果 |foo| 未定义，就会得到一个警告信息。
+|\xrefwarningfalse| 取消这种警告。
 
-These macros provide no protection against duplicate definitions.  You can
-check for duplicate definitions by sorting the cross-reference file and
-checking, either mechanically or by eye, for adjacent definitions of
-the same symbol.
+%These macros provide no protection against duplicate definitions.  You can
+%check for duplicate definitions by sorting the cross-reference file and
+%checking, either mechanically or by eye, for adjacent definitions of
+%the same symbol.
+这些宏没有提供对重复定义的保护。要检查重复定义，
+你可以将交叉引用文件排序，并用工具或肉眼检查同一个符号的相邻定义。
 
 \csdisplay
 \newif\ifxrefwarning  \xrefwarningtrue
@@ -893,9 +906,11 @@ the same symbol.
 \def\xrefn#1{\xrefnumber{#1}}%
 |
 
-This macro turns a label into a list of character tokens in the token
-register |\labeltoks|.  A label can include blanks and control sequences in
-it as well as normal characters, but it can't include braces.
+%This macro turns a label into a list of character tokens in the token
+%register |\labeltoks|.  A label can include blanks and control sequences in
+%it as well as normal characters, but it can't include braces.
+这个宏将一个标签转换为一列字符记号，并放在寄存器 |\labeltoks| 中。
+除了普通字符之外，标签还可以包含空格和控制序列，但不能包含花括号。
 
 \csdisplay
 \newtoks\@xrlabeltoks
@@ -905,11 +920,15 @@ it as well as normal characters, but it can't include braces.
    \endgroup}%
 |
 
-It takes two passes to get the cross-references right, since the
-definitions are written out to the auxiliary file |\jobname.aux|.
-\pix^|\readreffile| reads them back in. If you don't issue this command
-before the first definition, you'll lose all the definitions from the
-previous run.
+%It takes two passes to get the cross-references right, since the
+%definitions are written out to the auxiliary file |\jobname.aux|.
+%\pix^|\readreffile| reads them back in. If you don't issue this command
+%before the first definition, you'll lose all the definitions from the
+%previous run.
+需要运行两遍才能得到正确的交叉引用，
+因为这些定义是写出到辅助文件|\jobname.aux| 里的。
+\pix^|\readreffile| 命令用于将它们读取回来。
+如果你不在第一个定义之前执行此命令，你将丢失上一遍运行得到的定义。
 
 \csdisplay
 \newwrite\reffile \newif\ifreffileopened
@@ -941,10 +960,13 @@ previous run.
    \catcode`( = \letter \catcode`) = \letter}%
 |
 
+%^^{equations, labelling}
+%You can give symbolic names to equations in a similar way, using
+%\pix^|\eqdef| and \pix^|\eqref|.  |\eqdef| inserts its own |\eqno|
+%command, so it must be invoked in a place where |\eqno| is legal.
 ^^{equations, labelling}
-You can give symbolic names to equations in a similar way, using
-\pix^|\eqdef| and \pix^|\eqref|.  |\eqdef| inserts its own |\eqno|
-command, so it must be invoked in a place where |\eqno| is legal.
+按同样的方式，你可以用 \pix^|\eqdef| 和 \pix^|\eqref| 给出公式的符号式名称。
+|\eqdef| 插入自己的 |\eqno| 命令，因此它必须用在能用 |\eqno| 的地方。
 
 \csdisplay
 \newcount\eqnumber
@@ -958,10 +980,13 @@ command, so it must be invoked in a place where |\eqno| is legal.
    \eqprint{\the\eqnumber}}%
 |
 
-|\eqref| produces ``(equation number)''.  You can handle fancier
-formatting by redefining \pix^|\eqprint|. For example, you could redefine
-it so that the equation numbers include
-the chapter number.
+%|\eqref| produces ``(equation number)''.  You can handle fancier
+%formatting by redefining \pix^|\eqprint|. For example, you could redefine
+%it so that the equation numbers include
+%the chapter number.
+|\eqref| 生成``(公式编号)''。
+通过重新定义 \pix^|\eqprint|，你可以实现更加复杂的格式。
+举个例子，你可以重新定义它，使得公式编号中包含章编号。
 
 \csdisplay
 \def\eqref#1{%
