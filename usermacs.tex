@@ -711,18 +711,25 @@
 \eix^^{enumerations}
 
 
-\section Verbatim listing
+%\section Verbatim listing
+\section 原文呈现
 
-The \pix^|\listing| macro produces a verbatim listing of a specified
-file in the |\tt| font.
-It is based on the code on \knuth{page~380}.
-Tabs produce a fixed amount of space, and form
-feeds produce a page break.  Other control characters produce whatever
-happens to be at that font position, which is generally not very useful.
-By redefining |\setup!-listing!-hook|,
-\pix^^|\setuplistinghook|
-you can take additional actions that are appropriate for your particular
-fonts and\slash or environment before the file is read in.
+%The \pix^|\listing| macro produces a verbatim listing of a specified
+%file in the |\tt| font.
+%It is based on the code on \knuth{page~380}.
+%Tabs produce a fixed amount of space, and form
+%feeds produce a page break.  Other control characters produce whatever
+%happens to be at that font position, which is generally not very useful.
+%By redefining |\setup!-listing!-hook|,
+%\pix^^|\setuplistinghook|
+%you can take additional actions that are appropriate for your particular
+%fonts and\slash or environment before the file is read in.
+\pix^|\listing| 宏用 |\tt| 字体排印指定文件的原文呈现。
+它基于\knuth{第~380~页}中的代码。
+制表符生成固定大小的间隔，而换页符生成一个分页。
+其他控制字符生成该字体所在位置的字符，这通常不太有用。
+通过重新定义 |\setup!-listing!-hook|\pix^^|\setuplistinghook|，
+你可以在读入文件前针对特别字体和\slash 或使用环境作额外定制。
 
 \csdisplay
 \def\listing#1{%
