@@ -559,28 +559,42 @@
 |
 
 
-\section Lists
+%\section Lists
+\section 列表
 
+%\null
+%\xrdef{listmacs}
+%\bix^^{itemized lists}
+%\bix^^{enumerations}
+%\pix^|\numberedlist| produces numbered lists; |\endnumberedlist| ends
+%them.
+%\pix^|\unorderedlist| is analogous.
+%For either of these, items inside the lists begin
+%with \pix^|\li| (``list item'').  You can put \pix^|\listcompact|
+%at the beginning of a list if
+%you don't want any additional space between the items of that list.
+%Lists can be nested arbitrarily.
 \null
 \xrdef{listmacs}
 \bix^^{itemized lists}
 \bix^^{enumerations}
-\pix^|\numberedlist| produces numbered lists; |\endnumberedlist| ends
-them.
-\pix^|\unorderedlist| is analogous.
-For either of these, items inside the lists begin
-with \pix^|\li| (``list item'').  You can put \pix^|\listcompact|
-at the beginning of a list if
-you don't want any additional space between the items of that list.
-Lists can be nested arbitrarily.
+\pix^|\numberedlist| 排印编号列表；|\endnumberedlist| 结束该列表。
+类似地，\pix^|\unorderedlist| 排印无序列表。
+这两种列表中的项目以 \pix^|\li|（``list item''）开头。
+如果不需要列表项目间的额外间隔，你可以在列表开始处加上 \pix^|\listcompact|。
+列表可以任意嵌套。
 
-You can control the spacing between the items more generally by
-assigning values to the registers listed below.  If the items in
-your lists tend to be long, you might want to make |\interitemskip|
-nonzero.
-The left indentation of each list item is given by |\par!-indent| plus
-|\list!-left!-indent|; the right indentation of each list item
-is given by |\list!-right!-indent|.
+%You can control the spacing between the items more generally by
+%assigning values to the registers listed below.  If the items in
+%your lists tend to be long, you might want to make |\interitemskip|
+%nonzero.
+%The left indentation of each list item is given by |\par!-indent| plus
+%|\list!-left!-indent|; the right indentation of each list item
+%is given by |\list!-right!-indent|.
+更一般地，你可以通过改变下列寄存器的值控制列表项目间的间隔。
+如果列表项目经常比较长，你也许希望设定非零的 |\interitemskip|。
+各列表项目的左缩进量等于 |\par!-indent| 加 |\list!-left!-indent|；
+各列表项目的右缩进量等于 |\list!-right!-indent|。
 
 \csdisplay
 \newskip\abovelistskip  \abovelistskip = .5\baselineskip
@@ -591,15 +605,23 @@ is given by |\list!-right!-indent|.
 \def\listcompact{\interitemskip = 0pt \relax}%
 |
 
-Both numbered and unnumbered lists use the macros that follow.
-We don't change |\parindent|, since many existing macros, e.g.,
-|\footnote|, depend on |\parindent|.
-We must account for the
-possibility that items are more than one paragraph long. In this case, all
-paragraphs after the first will be indented.
-We use
-|\leftskip| and |\rightskip| to indent the list items.
-Indentation of displays is accounted for by changes to |\every!-dis!-play|.
+%Both numbered and unnumbered lists use the macros that follow.
+%We don't change |\parindent|, since many existing macros, e.g.,
+%|\footnote|, depend on |\parindent|.
+%We must account for the
+%possibility that items are more than one paragraph long. In this case, all
+%paragraphs after the first will be indented.
+%We use
+%|\leftskip| and |\rightskip| to indent the list items.
+%Indentation of displays is accounted for by changes to |\every!-dis!-play|.
+%^^|\everydisplay|
+编号列表和无序列表都使用下面这些宏。
+我们并不改变 |\parindent| 的值，
+因为很多现有的宏比如 |\footnote| 依赖于 |\parindent|。
+我们必须考虑到项目包含不止一个段落的可能性。
+在这种情形中，除第一个之外的所有段落都将被缩进。
+我们用 |\leftskip| 和 |\rightskip| 缩进列表项目。
+我们通过改变 |\every!-dis!-play| 设定陈列公式的缩进。
 ^^|\everydisplay|
 
 \csdisplay
@@ -622,9 +644,12 @@ Indentation of displays is accounted for by changes to |\every!-dis!-play|.
 \def\endlist{\vskip\belowlistskip}%
 |
 
+%\noindent
+%You can change the way the item labels are typeset by
+%redefining the |\numbered!-marker| macro.
+%\pix^^|\numberedmarker|
 \noindent
-You can change the way the item labels are typeset by
-redefining the |\numbered!-marker| macro.
+通常重新定义 |\numbered!-marker| 宏，你可以改变项目标签的样式。
 \pix^^|\numberedmarker|
 
 \csdisplay
@@ -639,9 +664,11 @@ redefining the |\numbered!-marker| macro.
    \fi}%
 |
 
-\noindent Here are the definitions of |\numberedlist| and
-|\unorderedlist|.
-Both definitions have the same structure.
+%\noindent Here are the definitions of |\numberedlist| and
+%|\unorderedlist|.
+%Both definitions have the same structure.
+\noindent 这里是 |\numberedlist| 和 |\unorderedlist| 的定义。
+这两个定义的结构是相同的。
 
 \csdisplay
 \def\numberedlist{\environment{@numbered-list}%
@@ -678,6 +705,8 @@ Both definitions have the same structure.
    \endenvironment{@unordered-list}\endlist}%
 |
 
+%\eix^^{itemized lists}
+%\eix^^{enumerations}
 \eix^^{itemized lists}
 \eix^^{enumerations}
 
