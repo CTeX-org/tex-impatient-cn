@@ -1000,23 +1000,34 @@
 |
 
 
-\section Environments
+%\section Environments
+\section 环境
 
-\null ^^{environments} These macros let you define your own named groups
-(environments) for parts of your manuscript.  Like \TeX\ groups, these
-groups can be nested, and in fact their nesting can be intertwined with
-the nesting of \TeX\ groups.  If the names at the beginning and end of
-an environment don't match, you'll get an error message. The macros are
-designed so that the message you get when such an error occurs will give
-you a good chance of localizing the cause of the error easily.
+%\null ^^{environments} These macros let you define your own named groups
+%(environments) for parts of your manuscript.  Like \TeX\ groups, these
+%groups can be nested, and in fact their nesting can be intertwined with
+%the nesting of \TeX\ groups.  If the names at the beginning and end of
+%an environment don't match, you'll get an error message. The macros are
+%designed so that the message you get when such an error occurs will give
+%you a good chance of localizing the cause of the error easily.
+\null ^^{environments}这些宏让你可以将手稿的一部分定义为命名编组（环境）。
+类似 \TeX\ 的编组，这些编组也可以嵌套，
+而且实际上它们的嵌套可以与 \TeX\ 编组的嵌套相互交织。
+如果开始的名称和结束的名称不匹配，你将得到一个错误信息。
+这些宏如此设计，使得当你得到这种错误信息时，你有机会方便地定位错误的来源。
 
-You begin an environment with
-\pix^^|\environment|
-|\envi!-ron!-ment| |{foo}| and end it with |\endenvironment{foo}|, where
-|foo| is the name of the environment.  Our macros slightly improve on
-the answer to Exercise~5.7 of \texbook, by doing some checks on
-|\begingroup| and |\endgroup| pairs, as well as making sure
-|\environment| and |\endenvironment| pairs match.
+%You begin an environment with
+%\pix^^|\environment|
+%|\envi!-ron!-ment| |{foo}| and end it with |\endenvironment{foo}|, where
+%|foo| is the name of the environment.  Our macros slightly improve on
+%the answer to Exercise~5.7 of \texbook, by doing some checks on
+%|\begingroup| and |\endgroup| pairs, as well as making sure
+%|\environment| and |\endenvironment| pairs match.
+用 \pix^^|\environment||\envi!-ron!-ment| |{foo}| 开始一个环境，
+用 |\endenvironment{foo}| 结束该环境，其中 |foo| 是该环境的名称。
+我们的宏稍微改进了 \texbook\ 练习~5.7，
+添加对 |\begingroup| 和 |\endgroup| 是否配对的检查，
+并确保 |\environment| 和 |\endenvironment| 能够匹配。
 
 \csdisplay
 \def\environment#1{\ifx\@groupname\undefined\else
@@ -1044,7 +1055,9 @@ the answer to Exercise~5.7 of \texbook, by doing some checks on
    \let\@groupname = \undefined \ignorespaces}%
 |
 
-We also define help messages for each of the errors above.
+%We also define help messages for each of the errors above.
+%^^|\newhelp|
+你也可以给上述这些错误定义它们各自的帮助信息。
 ^^|\newhelp|
 
 \csdisplay
@@ -1068,12 +1081,15 @@ We also define help messages for each of the errors above.
    of the names.}%
 |
 
-Some environments should not be allowed to occur within
-another environment.  Let's call these environments
-``outer environments''. |\check!-env| checks that no outer environment
-is currently in effect and complains if one is. To use |\check!-env|, you
-must issue the command |\environment!-true| at the beginning of every
-outer environment.
+%Some environments should not be allowed to occur within
+%another environment.  Let's call these environments
+%``outer environments''. |\check!-env| checks that no outer environment
+%is currently in effect and complains if one is. To use |\check!-env|, you
+%must issue the command |\environment!-true| at the beginning of every
+%outer environment.
+某些环境应当不允许出现在其他环境内部。我们称这些环境为``外部环境''。
+|\check!-env| 检测是否不存在当前有效的外部环境，若存在的话给出警告信息。
+要使用 |\checkenv|，你必须在每个外部环境开头处执行 |\environment!-true| 命令。
 
 \csdisplay
 \newif\ifenvironment
