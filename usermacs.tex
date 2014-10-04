@@ -1106,19 +1106,29 @@
 |
 
 
-\section Justification
+%\section Justification
+\section 对齐
 
+%\bix^^{flush left}
+%\bix^^{flush right}
+%\bix^^{centered text}
+%The three macros \pix^|\flushleft|, \pix^|\flushright|, and
+%\xrdef{eplaincenter}
+%\pix^|\center| justify  the text on the following lines in the indicated way.
+%The command should appear on a line by itself.
+%Both the command and the text should be enclosed in a group---%
+%the end of the group indicates the end of the text.
+%The entire group is set as a single paragraph, with lines filled out
+%on one side or another as appropriate.  Blank lines are reproduced.
 \bix^^{flush left}
 \bix^^{flush right}
 \bix^^{centered text}
-The three macros \pix^|\flushleft|, \pix^|\flushright|, and
-\xrdef{eplaincenter}
-\pix^|\center| justify  the text on the following lines in the indicated way.
-The command should appear on a line by itself.
-Both the command and the text should be enclosed in a group---%
-the end of the group indicates the end of the text.
-The entire group is set as a single paragraph, with lines filled out
-on one side or another as appropriate.  Blank lines are reproduced.
+这三个宏 \pix^|\flushleft|、\pix^|\flushright| 和
+\xrdef{eplaincenter}\pix^|\center| 将后面各行文本以指定方式对齐。
+这种命令必须单独写在一行中。
+命令和文本应该包含在一个编组中——编组的结束就表示文本的结束。
+整个编组作为一个段落排版，各行视情况在一边或两边用空白填充。
+空行依原样显示。
 
 \csdisplay
 \begingroup
@@ -1139,10 +1149,13 @@ on one side or another as appropriate.  Blank lines are reproduced.
 \endgroup
 |
 
-The following commands are called as a result of the |\after!-group|
-^^|\aftergroup|
-in the definitions of |\flush!-left|, |\flush!-right|, and |\center|.
-They perform the necessary cleanup operations.
+%The following commands are called as a result of the |\after!-group|
+%^^|\aftergroup|
+%in the definitions of |\flush!-left|, |\flush!-right|, and |\center|.
+%They perform the necessary cleanup operations.
+在 |\flush!-left|、|\flush!-right| 和 |\center| 的定义中，
+下述这些命令出现在 ^|\aftergroup| 的后面；
+它们在编组结束后被调用，以执行一些必需的清理工作。
 
 \csdisplay
 \def\@endflushleft{\unpenalty
@@ -1166,6 +1179,9 @@ They perform the necessary cleanup operations.
    \checkenv \environmenttrue}%
 |
 
+%\eix^^{flush left}
+%\eix^^{flush right}
+%\eix^^{centered text}
 \eix^^{flush left}
 \eix^^{flush right}
 \eix^^{centered text}
