@@ -1303,19 +1303,26 @@
 |
 
 
-\section Double columns
+%\section Double columns
+\section 双栏
 
-\null ^^{double columns} The |\doublecolumns| command begins
-double-column output, while the |\single!-column|
-\pix^^|\singlecolumn|
-command restores
-single-column output.  You can switch back and forth between them
-on a single page.
-The glue specified by |\above!-double!-column!-skip| and
-|\below!-double!-column!-skip| is inserted before and after the
-double-column material.
+%\null ^^{double columns} The |\doublecolumns| command begins
+%double-column output, while the |\single!-column|
+%\pix^^|\singlecolumn|
+%command restores
+%single-column output.  You can switch back and forth between them
+%on a single page.
+%The glue specified by |\above!-double!-column!-skip| and
+%|\below!-double!-column!-skip| is inserted before and after the
+%double-column material.
+\null ^^{double columns} |\doublecolumns| 命令开始双栏输出，
+而 |\single!-column| \pix^^|\singlecolumn| 命令恢复单栏输出。
+两者可以在同个页面上相互切换。
+用 |\above!-double!-column!-skip| 和 |\below!-double!-column!-skip|
+指定的粘连插入到双栏素材的前面和后面。
 
-The approach is derived from \knuth{page~417}.
+%The approach is derived from \knuth{page~417}.
+它们的实现方式来源于\knuth{第~417~页}。
 
 \csdisplay
 \newskip\abovedoublecolumnskip
@@ -1339,13 +1346,18 @@ The approach is derived from \knuth{page~417}.
    \hsize = \doublecolumnhsize \vsize = 2\vsize}%
 |
 
-The |\@double!-column!-split| macro does the actual splitting.
-Insertions are assumed to be single-column material.  If you don't want
-this to be the case, you'll have to modify the output routine.  After
-|\@double!-column!-split| has done its work, |\box255| will have the
-double-column material.  The double-column material will be preceded by
-any single-column material that was typeset before |\doublecolumns| was
-invoked. |\box4| will have the material that didn't fit on the page.
+%The |\@double!-column!-split| macro does the actual splitting.
+%Insertions are assumed to be single-column material.  If you don't want
+%this to be the case, you'll have to modify the output routine.  After
+%|\@double!-column!-split| has done its work, |\box255| will have the
+%double-column material.  The double-column material will be preceded by
+%any single-column material that was typeset before |\doublecolumns| was
+%invoked. |\box4| will have the material that didn't fit on the page.
+|\@double!-column!-split| 宏执行实际的分栏。插入项被当作单栏素材；
+如果这不是你想要的，你需要修改输出例行程序。
+在 |\@double!-column!-split| 完成之后，|\box255| 将包含双栏素材。
+双栏素材前面是调用 |\doublecolumns| 前的单栏素材。
+|\box4| 将包含无法放入该页面的素材。
 
 \csdisplay
 \def\@doublecolumnsplit{%
@@ -1366,9 +1378,12 @@ invoked. |\box4| will have the material that didn't fit on the page.
       \hbox to \singlecolumnhsize{\box1\hfil\box3}%
       \vfill}}%
 |
+%\needspace{.5in}
+%|\double!-column!-out!-put| is the real output routine.  We call the old
+%|\output| to do the work of actually shipping out the box.
 \needspace{.5in}
-|\double!-column!-out!-put| is the real output routine.  We call the old
-|\output| to do the work of actually shipping out the box.
+|\double!-column!-out!-put| 是真正的输出例行程序。
+我们调用 |\output| 执行实际的盒子送出工作。
 
 \csdisplay
 \def\doublecolumnoutput{\@doublecolumnsplit
@@ -1376,8 +1391,9 @@ invoked. |\box4| will have the material that didn't fit on the page.
    \previousoutput \unvbox4}%
 |
 
-|\singlecolumn| resumes typesetting in one column.  It assumes that
-|\doublecolumns| has been called.
+%|\singlecolumn| resumes typesetting in one column.  It assumes that
+%|\doublecolumns| has been called.
+|\singlecolumn| 恢复单栏排版。它假定已调用了 |\doublecolumns|。
 
 \csdisplay
 \def\singlecolumn{\par % Don't start in horizontal mode.
@@ -1397,6 +1413,7 @@ invoked. |\box4| will have the material that didn't fit on the page.
    \unvbox255}%
 |
 
+%\margin{`Sensible paragraph skips' section deleted}
 \margin{`Sensible paragraph skips' section deleted}
 
 
