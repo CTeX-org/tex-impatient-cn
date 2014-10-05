@@ -1256,21 +1256,32 @@
 |
 
 
-\section Footnotes
+%\section Footnotes
+\section 脚注
 
+%\null ^^{footnotes}
+%Footnotes are most commonly typeset by using a raised number as the
+%reference mark.  We define the \pix^|\numberedfootnote| macro to do
+%this.  It also redefines ^|\vfootnote| to allow slightly more general
+%formatting of footnotes than \plainTeX\ does. The dimension register
+%\pix^^|\footnotemarkseparation| |\foot!-note!-mark!-sepa!-ra!-tion|
+%controls the space between the footnote mark (e.g., the number) and the
+%beginning of the text. The \pix^|\everyfootnote| tokens are inserted
+%before producing the footnote.
 \null ^^{footnotes}
-Footnotes are most commonly typeset by using a raised number as the
-reference mark.  We define the \pix^|\numberedfootnote| macro to do
-this.  It also redefines ^|\vfootnote| to allow slightly more general
-formatting of footnotes than \plainTeX\ does. The dimension register
-\pix^^|\footnotemarkseparation| |\foot!-note!-mark!-sepa!-ra!-tion|
-controls the space between the footnote mark (e.g., the number) and the
-beginning of the text. The \pix^|\everyfootnote| tokens are inserted
-before producing the footnote.
+脚注通常用升高的数字作为参考符号。
+我们定义的 \pix^|\numberedfootnote| 宏就是这样的。
+它还重新定义了 ^|\vfootnote|，以支持比 \plainTeX\ 更一般的脚注格式。
+尺寸寄存器 \pix^^|\footnotemarkseparation| |\foot!-note!-mark!-sepa!-ra!-tion|
+控制脚注符号（比如数字）与脚注文本之间的间隔。
+\pix^|\everyfootnote| 记号在每个脚注之前插入。
 
-The \plainTeX\ definitions of |\footnote| and |\vfootnote| are
-preserved in |\@plain!-footnote| and |\@plain!-vfootnote| in case you should
-need them.
+%The \plainTeX\ definitions of |\footnote| and |\vfootnote| are
+%preserved in |\@plain!-footnote| and |\@plain!-vfootnote| in case you should
+%need them.
+\PlainTeX\ 中的 |\footnote| 和 |\vfootnote| 定义保留在
+|\@plain!-footnote| 和 |\@plain!-vfootnote| 中，以备不时之需。
+
 \csdisplay
 \newcount\footnotenumber \newtoks\everyfootnote
 \newdimen\footnotemarkseparation
