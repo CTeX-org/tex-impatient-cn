@@ -1195,8 +1195,8 @@
    \backfalse
    \shorttocfonts
    \let\tocchapterentry = \shorttocchapter
-   \let\tocsectionentry = \gobblethree
-   \let\tocsubsectionentry = \gobblethree
+   \let\tocsectionentry = \gobbletwo
+   \let\tocsubsectionentry = \gobbletwo
    \halign{\hfil\strut##&\strut ##\hfil\cr
       \readtocfile
    \crcr}}%
@@ -1242,13 +1242,13 @@
    \noalign{\nobreak\vskip2pt}%
 }
 
-\def\tocsectionentry#1#2#3{%
+\def\tocsectionentry#1#2{%
    \noalign{\penalty-500 \vskip\medsmallskipamount}%
-   &\it #1\quad \openbox$\,\,$\rm #3\cr
+   &\it #1\quad \openbox$\,\,$\rm #2\cr
 }
 
-\def\tocsubsectionentry#1#2#3{%
-   &\qquad #1\quad $\cdot\,$#3\cr
+\def\tocsubsectionentry#1#2{%
+   &\qquad #1\quad $\cdot\,$#2\cr
 }
 
 \def\openbox{\ht0 = 1.75pt \dp0 = 1.75pt \wd0 = 3.5pt
@@ -1382,7 +1382,7 @@
    \xdef\examplepage{\number\count255}%
    \markinfo{例#1: #2}
    \ifrewritetocfile
-      \write\tocfile{\string\tocsectionentry{#2}{}{\examplepage}}%
+      \write\tocfile{\string\tocsectionentry{#2}{\examplepage}}%
    \fi
 }
 % Let's number examples automatically; it makes it easier to move them

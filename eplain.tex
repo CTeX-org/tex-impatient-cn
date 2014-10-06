@@ -818,7 +818,9 @@
     \opentocfile
     \toks0 = {\expandafter\noexpand \csname toc#1entry\endcsname}%
     \def\temp{#2}%
-    \def\cs{#3}%
+    %\def\cs{#3}% fixed %
+    \toks2 = \expandafter{#3}%
+    \edef\cs{\the\toks2}%
     \edef\@wr{%
       \write\tocfile{%
         \the\toks0
