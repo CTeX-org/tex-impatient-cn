@@ -788,7 +788,15 @@
 %\noindent
 %You can also |\write| to |\tocfile| yourself.
 \noindent
-你也可以自己用 |\write| 命令写入 |\tocfile|。
+你也可以自己用 |\write| 命令写入 |\tocfile|。%
+\footnote{译注：原文的代码中遗漏 |\writetocentry| 的定义，
+而将 |\writenumberedtocentry| 的定义重复写了两遍，译文已修正此问题。
+实际上，在本书所用的 |eplain.tex| 1.9 中，
+|\writetocentry| 调用 |\writenumberedtocentry|，
+并在后者中根据第三个参数是否非空写入不同的目录项。
+但在 |\writenumberedtocentry| 的定义中有问题，
+导致写入 |tocfile| 文件的目录项始终有三个参数。
+在翻译时译者也同时修正 |eplain.tex| 中的这个错误。}
 
 \csdisplay
 \newwrite\tocfile \newif\iftocfileopened
@@ -796,11 +804,11 @@
       \tocfileopenedtrue
       \immediate\openout\tocfile = \jobname.toc
 \fi}%
-\def\writenumberedtocentry#1#2#3{\ifrewritetocfile
+\def\writetocentry#1#2{\ifrewritetocfile
    \opentocfile
    \write\tocfile{%
       \expandafter\noexpand \csname toc#1entry\endcsname
-      {#2}{#3}{\folio}}%
+      {#2}{\folio}}%
 \ignorespaces\fi}%
 \def\writenumberedtocentry#1#2#3{\ifrewritetocfile
    \opentocfile
