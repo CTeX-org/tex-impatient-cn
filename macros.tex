@@ -35,7 +35,7 @@
 \endgroup
 
 % This must come before config.tex.
-\input eplain
+\input eplain3
 
 % Define configuration switches and then read their values.
 %
@@ -48,6 +48,7 @@
 \newif\iftrimpage
 \newif\ifadobefont
 \newif\ifxecjk
+\newif\ifoldeplain \ifx\undefined\interitemskipamount\oldeplaintrue\fi
 
 %\xrefwarningfalse
 
@@ -66,6 +67,18 @@
 % Initial definitions.  (These should come before \input fonts.)
 %
 \catcode`\@ = \letter % For the macro file only.
+
+% Dirty hacks for eplain 2.0+
+\ifoldeplain\else
+\def\stringify{\expandafter\strip@prefix\meaning\temp}%
+   \let\oldxrdef = \xrdef
+   \def\xrdef#1{\def\temp{#1}\oldxrdef{\stringify}}%
+   \let\oldxrefn = \xrefn
+   \def\xrefn#1{\def\temp{#1}\oldxrefn{\stringify}}%
+   \let\old@definelabel = \@definelabel
+   \def\@definelabel#1{\def\temp{#1}\old@definelabel{\stringify}}%
+   \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
+\fi
 
 % We don't want register allocation information in the log,
 % so we redefine the relevant macro from plain.tex.
@@ -294,9 +307,18 @@
 
 \footnotemarkseparation = .16666em
 
-\abovelistskip = \smallskipamount
-\interitemskip = \tinyskipamount
-\belowlistskip = \smallskipamount
+\ifoldeplain % eplain 1.9
+  \let\abovelistskipa = \abovelistskip
+  \let\interitemskipa = \interitemskip
+  \let\belowlistskipa = \belowlistskip
+\else % eplain 2.0+
+  \let\abovelistskipa = \abovelistskipamount
+  \let\interitemskipa = \interitemskipamount
+  \let\belowlistskipa = \belowlistskipamount
+\fi
+\abovelistskipa = \smallskipamount
+\interitemskipa = \tinyskipamount
+\belowlistskipa = \smallskipamount
 \listleftindent = 0pt
 
 % Displays involve text and math.  We don't want as much flexibility in
@@ -1261,7 +1283,7 @@
 % chapters (really, only the index).
 %
 \def\backmatter{\write\tocfile{\noexpand\setback}\backtrue}
-\def\setback{\noalign{\bigskip\global\backtrue}}
+\def\setback{\ifoldeplain\noalign{\bigskip\global\backtrue}\fi}
 
 
 
