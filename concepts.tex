@@ -462,7 +462,9 @@
 其中控制序列总是以\refterm{转义符}开始。
 注意空格符以及行尾符自身也是字符，
 只是 \TeX\ 将输入中的多个空格合并为一个空格记号。
-在\knuth{第~46--47~页}中介绍了 \TeX\ 将字符组合为记号的规则。
+在\knuth{第~46--47~页}
+\footnote{译注：或见该书中文翻译版第35--37页。}
+中介绍了 \TeX\ 将字符组合为记号的规则。
 ^^{tokens//assembled from characters}
 
 %\li Using its ``\pix^{gullet}'', {\TeX} expands any macros, conditionals, and
@@ -479,7 +481,8 @@
 \li 使用“\pix^{食道}”，{\TeX} 展开任何宏、条件句，
 ^^{macros//expanded in \TeX's stomach}
 ^^{tokens//passed to \TeX's stomach}
-以及它找到的类似结构（见\knuth{第~212--216~页}），
+以及它找到的类似结构（见\knuth{第~212--216~页}
+\footnote{译注：或见该书中文翻译版第170--173页。}），
 并将得到的一系列\refterm{记号}传给 \TeX\ 的胃。
 展开一个记号也许会得到本身也需要展开的其他记号。
 {\TeX} 按照从左到右的顺序执行记号展开，
@@ -692,7 +695,9 @@
 \endulist
 \noindent
 请参阅\conceptcit{宏}这里的更多关于参数和参量的内容。
-在\knuth{第~203--204~页}你能找到定界参量和非定界参量的精确规则。
+在\knuth{第~203--204~页}
+\footnote{译注：或见该书中文翻译版第161--163页。}
+你能找到定界参量和非定界参量的精确规则。
 \endconcept
 
 
@@ -889,7 +894,9 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 因此只需要决定在哪里结束当前页面。
 与此相反，当选择断行点时 \TeX\ 要同时考虑多行。%
 （大多数文字处理器每次只选择一个断行点，因而断行做得不如 \TeX\ 。）%
-请参阅\knuth{第~111--113~页}中 \TeX\ 如何选择分页点的细节。
+请参阅\knuth{第~111--113~页}
+\footnote{译注：或见该书中文翻译版第85--87页。}
+中 \TeX\ 如何选择分页点的细节。
 \endconcept
 
 
@@ -1071,12 +1078,14 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 然后从左到右逐个添加列表中的项目到 $H$ 中。
 列表中的每个盒子按照其基线与 $H$ 的基线重合的方式放置，
 即让组成盒子水平排成一排。%
-\footnote{如果盒子被 ^|\raise| 或 ^|\lower| 升高或降低了，
+\footnote{若盒子被 ^|\raise| 或 ^|\lower| 升高或降低了，
 \TeX\ 放置时使用它移动之前的基准点。}
 $H$ 的高度等于列表中最高盒子的高度，而深度等于列表中最深盒子的深度。
 $H$ 的宽度等于列表中所有项目的宽度之和。
 如果这些项目中有的是\refterm{粘连}，\TeX\ 需要伸缩粘连，
-从而 $H$ 的宽度将相应地变大或变小。请参阅\knuth{第~77~页}的细节描述。
+从而 $H$ 的宽度将相应地变大或变小。请参阅\knuth{第~77~页}
+\footnote{译注：或见该书中文翻译版第57页。}
+的细节描述。
 
 %Similarly, \TeX\ builds a vbox $V$ from a vertical list by assuming a
 %temporary reference point for $V$ and then appending the items in the
@@ -1146,7 +1155,9 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 \noindent
 粗略地说，|\vbox| 将基准点放在靠近竖直盒子底部处，而|\vtop| 将基准点放在靠近顶部处。
 在你想对齐一行竖直盒子，让它们的顶部水平排成一排时，你通常应该使用 |\vtop| 而不是 |\vbox|。
-请参阅\knuth{第~78 和 80--81~页}中 \TeX\ 如何构建竖直盒子的详细信息。
+请参阅\knuth{第~78 和 80--81~页}
+\footnote{译注：或见该书中文翻译版第58和60--61页。}
+中 \TeX\ 如何构建竖直盒子的详细信息。
 \eix^^|\vbox|
 \eix^^|\vtop|
 \eix^^{reference point}
@@ -1514,7 +1525,9 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 类别码影响 \TeX\ 读取字符时对该字符的解释。
 在读取宏定义时，\TeX\ 判定（并记住）宏里面的字符的类别码。
 在用它的眼睛读取字符时\seeconcept{\anatomy}，\TeX\ 执行一些“过滤”，
-比如将连续多个空格压缩为一个。在\knuth{第~46--48~页}中描述了过滤的细节。
+比如将连续多个空格压缩为一个。在\knuth{第~46--48~页}
+\footnote{译注：或见该书中文翻译版第35--37页。}
+中描述了过滤的细节。
 
 %The \ascii\
 %``^{control characters}'' have codes $0$--$31$ and $127$--$255$.
@@ -1623,7 +1636,9 @@ $$\strut a+(b-a)=a \qquad
 
 %See \xrefpg\mathord\ of this book for a list of the classes and
 %\knuth{page~154} for their meanings.
-参见本书\xrefpg\mathord 中各种类的列表，以及\knuth{第~154~页}中各种类的含义。
+参见本书\xrefpg\mathord 中各种类的列表，以及\knuth{第~154~页}
+\footnote{译注：或见该书中文翻译版第120页。}
+中各种类的含义。
 
 \endconcept
 
@@ -2046,7 +2061,9 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 \noindent
 这些定界符（`|(|'，`|)|' 和 `|/|' 除外）都出现在%
 第~\xrefn{\lbrace}--\xrefn{\Uparrow}页的符号列表中。
-它们也都出现在\knuth{第~146~页}的列表中。
+它们也都出现在\knuth{第~146~页}
+\footnote{译注：或见该书中文翻译版第113页。}
+的列表中。
 
 %A delimiter can belong to any class.
 %^^{class//of a delimiter}
@@ -2106,7 +2123,8 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 %about the organization of font ^{metrics file}s, a topic that is not just beyond
 %the scope of this book but beyond the scope of \texbook\ as well.
 定界码（delimiter code）告诉 \TeX\ 如何搜索合适的输出字符来表示一个定界符。
-这些搜索规则相当复杂（见\knuth{第~156 和 442~页}）。
+这些搜索规则相当复杂（见\knuth{第~156 和 442~页}
+\footnote{译注：或见该书中文翻译版第122页。}）。
 要完全理解这些规则需要熟悉字体^{度量文件}的结构，
 而这个主题不仅超出本书范围，也超出 \texbook\ 的范围。
 
@@ -2169,7 +2187,9 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 ^^{badness}
 \TeX\ 的目标是合理地分配各行文本，以让段落的总缺陷最小，
 其中总缺陷由各行的缺陷加起来。
-参见 \knuth{第~97--98~页}以了解 \TeX\ 分段为行的细节。
+参见 \knuth{第~97--98~页}
+\footnote{译注：或见该书中文翻译版第74--75页。}
+以了解 \TeX\ 分段为行的细节。
 \TeX\ 选择分页点时不使用缺陷；它使用的是被称为分页“代价”的类似概念。
 \endconcept
 
@@ -2267,7 +2287,9 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 因子之前可以带有加号或减号，因此尺寸可正可负。
 ^^{dimensions//negative}
 即使数值为零，度量单位也必须写上。数值和度量单位之间可以有也可以没有空格。
-在\knuth{第~270~页}中有尺寸的精确定义。下面这些是尺寸的例子：
+在\knuth{第~270~页}
+\footnote{译注：或见该书中文翻译版第221页。}
+中有尺寸的精确定义。下面这些是尺寸的例子：
 
 %\csdisplay
 %5.9in    0pt    -2,5 pc    2fil
@@ -2579,7 +2601,8 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %|
 %\endconcept
 一般地，\TeX\ 会推迟输出流的打开、写入和关闭操作，
-直到它用 ^|\shipout|送出一个页面（详情可见\knuth{第~227~页}）。
+直到它用 ^|\shipout|送出一个页面（详情可见\knuth{第~227~页}
+\footnote{译注：或见该书中文翻译版第183页。}）。
 甚至用 |\write| 输出消息到终端时也是这样的。
 然而，通过在操作命令之前加上 ^|\immediate|\ctsref\immediate ，
 你可以让 \TeX\ 立即执行输出流操作。比如：
@@ -3333,7 +3356,9 @@ Please don't pour {\it any} more tea into my hat.
 |\halign|\ctsref{\halign}和 |\hrule|\ctsref{\hrule}。
 ^^|\hrule//inherently vertical|
 ^^|\halign//inherently vertical|
-在\knuth{第~286~页}中列出了所有本质上的竖直命令。
+在\knuth{第~286~页}
+\footnote{译注：或见该书中文翻译版第236页。}
+中列出了所有本质上的竖直命令。
 
 %{\tighten
 %You should be aware of a subtle but important property of restricted
@@ -3465,7 +3490,9 @@ Please don't pour {\it any} more tea into my hat.
 ^|\footnote|，^|\topinsert|，|\mid!-insert| 和 ^|\pageinsert|，
 ^^|\midinsert|
 以及原始命令 ^|\insert| 本身（见~\xrefn\footnote--\xrefn{endofinsert}~页）。
-\TeX\ 插入项的处理机制是相当复杂的；你可以在\knuth{第~122--125~页}中看到详细介绍。
+\TeX\ 插入项的处理机制是相当复杂的；你可以在\knuth{第~122--125~页}
+\footnote{译注：或见该书中文翻译版第95--97页。}
+中看到详细介绍。
 \endconcept
 
 
@@ -3837,7 +3864,9 @@ already in this section.}
 以在页面中生成向下排列的竖直指引线。在这种情形中指引线后面需要给出竖直粘连。
 \endolist
 \noindent
-请参阅 \knuth{第~223--225~页}，其中给出了 \TeX\ 用于排版指引线的精确规则。
+请参阅 \knuth{第~223--225~页}
+\footnote{译注：或见该书中文翻译版第180--182页。}，
+其中给出了 \TeX\ 用于排版指引线的精确规则。
 \eix^^|\leaders|
 \eix^^|\cleaders|
 \eix^^|\xleaders|
@@ -3906,7 +3935,9 @@ already in this section.}
 \TeX\ 附加``^{缺陷}''值给各种形态的丑陋断行点——%
 单词间隔太大或太小的行，连续以连字符结尾的行，诸如此类。
 然后它选择让总缺陷值最小的断行点。
-请参阅\knuth{第~96--101~页}中的 \TeX\ 的断行规则的完整说明。
+请参阅\knuth{第~96--101~页}
+\footnote{译注：或见该书中文翻译版第73--77页。}
+中的 \TeX\ 的断行规则的完整说明。
 
 %You can control \TeX's choice of line breaks in several ways:
 %\ulist
@@ -4610,7 +4641,9 @@ paragraph.}
 %See \knuth{pages~258--260} for a more precise explanation of how
 %to create and retrieve marks.
 %\endconcept
-在\knuth{第~258--260~页}中，对如何生成和取回标记作了更准确的解释。
+在\knuth{第~258--260~页}
+\footnote{译注：或见该书中文翻译版第211--213页。}
+中，对如何生成和取回标记作了更准确的解释。
 \endconcept
 
 
@@ -4643,7 +4676,9 @@ paragraph.}
 %math mode. If it encounters a command in math mode that doesn't make
 %sense in a formula, it will complain.
 这两种数学模式有个重要特性，即\emph{其中的输入空格都被忽略}。
-\knuth{第~290--293~页}详细介绍了在数学模式中 \TeX\ 如何处理各种不同命令。
+\knuth{第~290--293~页}
+\footnote{译注：或见该书中文翻译版第239--242页。}
+详细介绍了在数学模式中 \TeX\ 如何处理各种不同命令。
 
 \endconcept
 
@@ -4686,7 +4721,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 每个字体族包含三个字体：一个用于\refterm{文本尺寸}，
 一个用于\refterm{标号尺寸}，另一个用于\refterm{小标号尺寸}。
 \TeX\ 根据上下文选择特定字符的尺寸，从而选择它的字体。
-一个字符的类指定了它在公式中扮演的角色（见\knuth{第~154~页}）。
+一个字符的类指定了它在公式中扮演的角色（见\knuth{第~154~页}
+\footnote{译注：或见该书中文翻译版第120页。}）。
 例如，等号‘|=|’属于第$3$类（关系符号）。
 \TeX\ 根据字符所属的类确定数学公式各部分的间距大小。
 
@@ -4912,7 +4948,9 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 它们分别表示从 $0$ 到 $15$ 的数值。
 ^^{hexadecimal numbers}
 然而，你不能用小写字母来表示十六进制数。
-在\knuth{43--44~页}中你可以找到八进制和十六进制数的解释。
+在\knuth{43--44~页}
+\footnote{译注：或见该书中文翻译版第33--34页。}
+中你可以找到八进制和十六进制数的解释。
 
 %A decimal, octal, or hexadecimal number
 %ends at the first character that can't be part of the number.
@@ -4927,7 +4965,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 因此，任何字母都会结束一个十进制数，
 而`|A|'和`|F|'之间的字母却不能结束一个十六进制数。
 你也可以用一个或多个空格结束一个数，
-\TeX\ 通常将忽略这些空格。\footnote{
+\TeX\ 通常将忽略这些空格。\footnote{%
 在定义一个以数结尾的宏时，
 你应该始终在该数后面加上空格；
 否则到后面 \TeX\ 可能将该数和其他字符结合在一起。}
@@ -5202,7 +5240,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 ——添加惩罚项。
 然后它选择代价最小的分页点，
 其中分页代价由分页点的惩罚值以及所得页面的劣度加起来得到
-（代价计算公式可以见\knuth{第~111~页}）。
+（代价计算公式可以见\knuth{第~111~页}
+\footnote{译注：或见该书中文翻译版第85页。}）。
 如果找到多个代价相同的分页点，它选择最后一个。
 
 %{\tighten
@@ -5263,7 +5302,9 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 （可能在批量的中间）。
 由于项目可能被从一个页面移动到另一个页面，
 你无法假定 \TeX\ 处理输入时的当前页码准确表示了对应输出中显示的页码。
-在 \knuth{第~110--114~页}中有 \TeX\ 的分页规则的完整说明。
+在 \knuth{第~110--114~页}
+\footnote{译注：或见该书中文翻译版第83--88页。}
+中有 \TeX\ 的分页规则的完整说明。
 \par}
 
 \endconcept
@@ -5619,7 +5660,9 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %You'll find a complete list of the \TeX\ parameters on \knuth{pages~272--275}.
 你可以将 \TeX\ 参数视为内置的\refterm{寄存器}。
 ^^{registers//parameters as}
-在\knuth{第~272--275~页}中你可以找到 \TeX\ 参数的完整列表。
+在\knuth{第~272--275~页}
+\footnote{译注：或见该书中文翻译版第223--226页。}
+中你可以找到 \TeX\ 参数的完整列表。
 
 %A \refterm{macro} parameter is a placeholder for text that is to be
 %plugged into the definition of a macro.  See \conceptcit{macro}
@@ -5872,7 +5915,9 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 寄存器 |\dimen0|--|\dimen9|、|\skip0|--|\skip9|、|\muskip0|--|\mu!-skip9|、
 |\box0|--|\box9| 和 |\box255| 除外的 |255| 号寄存器一般用作“临时”寄存器。
 也就是说 \plainTeX\ 仅提供一个用于计数的临时寄存器 |\count255|。
-请参阅 \knuth{第~122 和 346~页}，其中有选择寄存器编号时要遵守的约定。
+请参阅 \knuth{第~122 和 346~页} 
+\footnote{译注：或见该书中文翻译版第95页。}，
+其中有选择寄存器编号时要遵守的约定。
 
 %You can examine the contents of registers during a \TeX\ run with the
 %^|\showthe| command \ctsref\showthe, e.g., with `|\showthe\dimen0|'.
@@ -6025,7 +6070,9 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %\eix^^|\hrule|
 %\eix^^|\vrule|
 %\endconcept
-在\knuth{第~221--222~页}中，你可以找到对 \TeX\ 如何处理标线的精确表述。
+在\knuth{第~221--222~页}
+\footnote{译注：或见该书中文翻译版第178--179页。}
+中，你可以找到对 \TeX\ 如何处理标线的精确表述。
 \eix^^{horizontal rules}
 \eix^^{vertical rules}
 \eix^^|\hrule|
@@ -6289,7 +6336,9 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\knuth{pages~140--141} for the details of how \TeX\ selects the style.
 另外四种样式被称为^{狭窄变体}。
 在这些变体中，上标升高得没那么多，因而公式和原来相比占用更少的竖直间隔。
-在\knuth{第~140--141~页}中详细介绍了 \TeX\ 如何选择样式。
+在\knuth{第~140--141~页}
+\footnote{译注：或见该书中文翻译版第108--109页。}
+中详细介绍了 \TeX\ 如何选择样式。
 
 %\TeX\ chooses a size of type according to the style:
 \TeX\ 依照样式选择尺寸类型：
@@ -6515,7 +6564,9 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 |\valign|\ctsref{\valign}和 |\vrule|\ctsref{\vrule}。
 ^^|\valign//inherently horizontal|
 ^^|\vrule//inherently horizontal|
-在\knuth{第~283~页}中列出了所有本质上的水平命令。
+在\knuth{第~283~页}
+\footnote{译注：或见该书中文翻译版第234页。}
+中列出了所有本质上的水平命令。
 
 %It's particularly important to be aware that \TeX\ considers an ordinary
 %character other than a space character to be inherently horizontal.  If
