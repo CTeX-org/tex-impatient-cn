@@ -164,7 +164,9 @@
 \chardef \\ = `\\ % Let \\ denote a backslash.
 ~^^{fonts} ^^{characters//special} ^^{accents}
 ~^^{music symbols} ^^{card suits}
+~\ifoldeplain
 ~^^|$| ^^|&| ^^|#| ^^|_| ^^|%| ^^|^| ^^|~| ^^|{| ^^|}| \indexchar \
+~\fi
 ~%{\it Here are a few words in an italic font}, {\bf a
 ~%few words in a boldface font}, {\it and a\/ {\bf mixture}
 ~%of the two, with two\/ {\rm roman words} inserted}.

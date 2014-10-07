@@ -147,7 +147,7 @@
 每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“单元”组成%
 ^^{entry (column or row)}
 \xrdef{@and}
-\ttidxref{&}
+\ifoldeplain\ttidxref{&}\fi
 （单元是行和列的交叉部分），并以 ^|\cr| 结束。
 如果某行的单元数目比该阵列的列数少，\TeX\ 就用空白单元填充它们。
 
@@ -233,7 +233,7 @@
 }%
 
 \eix^^|\settabs|
-\eix\ctsidxref{+}
+\eix\ifoldeplain\ctsidxref{+}\fi
 \bix^^|\halign|
 %Horizontal alignments are constructed with |\halign| \ctsref\halign.
 %\TeX\ adjusts the column widths of a horizontal alignment according to
@@ -268,9 +268,9 @@
 \li 导言由一系列\pix^{模板}组成，一个模板对应一列，
 指明该列的文本应该如何排版。
 每个模板中都必须包含一个|#|字符，
-\ttidxref{#}\xrdef{@asharp}
+\ifoldeplain\ttidxref{#}\fi\xrdef{@asharp}
 用于给出 \TeX\ 将单元的文本放入模板的位置。
-各个模板之间用 |&| 分隔，\ttidxref{&} 并以 |\cr| 结束该导言。
+各个模板之间用 |&| 分隔，\ifoldeplain\ttidxref{&}\fi 并以 |\cr| 结束该导言。
 利用合适的模板你可以让某列居中，左对齐或右对齐，
 或者使用某个特定的\refterm{字体}。
 
@@ -1311,38 +1311,38 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 \it 编码&\it 意义&\it 字符\cr
 \noalign{\vskip\tinyskipamount}
 0&转义符    & |\| ^^{escape character//category code of}
-   {\recat!ttidxref[\//category code of]]
+   %{\recat!ttidxref[\//category code of]]
    \cr
 1&编组开始符& |{| ^^{groups}
-   {\recat!ttidxref[{//category code of]]
+   %{\recat!ttidxref[{//category code of]]
    \cr
 2&编组结束符& |}|
-   {\recat!ttidxref[}//category code of]]
+   %{\recat!ttidxref[}//category code of]]
    \cr
 3&数学环境符& |$| ^^{math shift}
-   {\recat!ttidxref[$//category code of]]
+   %{\recat!ttidxref[$//category code of]]
    \cr
 4&阵列制表符& |&| ^^{tabs} ^^{alignments//tab character for}
-   \ttidxref{&//category code of} \cr
+   \ifoldeplain\ttidxref{&//category code of}\fi \cr
 5&行结束符  & |^^M| \tequiv \ascii\ \asciichar{return}
-   ^^{end of line} \ttidxref{^^M//category code of}\cr
+   ^^{end of line} \ifoldeplain\ttidxref{^^M//category code of}\fi\cr
 6&宏参数符  & |#|
    ^^{macros//parameters of}
    ^^{parameters//indicated by \b\tt\#\e}
-   \ttidxref{#//category code of} \cr
+   \ifoldeplain\ttidxref{#//category code of}\fi \cr
 7&上标符    & |^| 和 |^^K| ^^{superscripts}
    \ttidxref{^^K}
-   \ttidxref{^//category code of} \cr
+   \ifoldeplain\ttidxref{^//category code of}\fi \cr
 8&下标符    & |_| 和 |^^A| ^^{subscripts}
    \ttidxref{^^A}
-   \ttidxref{_//category code of} \cr
+   \ifoldeplain\ttidxref{_//category code of}\fi \cr
 9&可忽略符  & |^^@| \tequiv \ascii\ \asciichar{null}
   ^^{ignored characters} \indexchar ^^@ \cr
 10&空格符   & \visiblespace\ 和 |^^I| \tequiv \ascii\
   \asciichar{horizontal\ tab}
   ^^{horizontal tab}
   ^^{space characters//category code of} \indexchar ^^I
-  {\recat!ttidxref[ ]]
+  %{\recat!ttidxref[ ]]
   \cr
 11&字母符   & |A| \dots |Z| 和 |a| \dots |z| ^^{letter}\cr
 12&其他字符 &（不属于其他类别的字符）
@@ -1350,7 +1350,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 13&活动字符 & |~| 和 |^^L| \tequiv\ascii\ \asciichar{form\ feed}
    ^^{active characters} ^^{form feed} \indexchar ~ \indexchar ^^L \cr
 14&注释符   & |%| ^^{comments}
-   {\recat!ttidxref[%//category code of]]
+   %{\recat!ttidxref[%//category code of]]
    \cr
 15&无效字符 & |^^?| \tequiv \ascii\ \asciichar{delete}
   ^^{invalid character} \indexchar ^^? \cr
@@ -2038,7 +2038,7 @@ $( \>) \>[ \>] \>\{ \>\}
 \>\vert \>\Vert
 \>\uparrow \>\downarrow \>\updownarrow
 \>\Uparrow \>\Downarrow \>\Updownarrow$}
-^^|)| ^^|)| ^^|[| ^^|]| ^^|\lbrack| ^^|\rbrack|
+\ifoldeplain ^^|(| ^^|)| ^^|[| ^^|]| \fi ^^|\lbrack| ^^|\rbrack|
 ^^|\{| ^^|\}| ^^|\lbrace| ^^|\rbrace|
 ^^|\lfloor| ^^|\rfloor|  ^^|\lceil|  ^^|\rceil|
 ^^|\langle|  ^^|\rangle|  ^^|/|  ^^|\backslash|
@@ -2346,7 +2346,7 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 \defterm{陈列公式}（display math）表示在单独一行显示的公式；
 \TeX 在陈列公式上边和下边添加额外间隔，以隔开周围文本。
 陈列公式两边用 `|$$|' 括起来。
-\ttidxref{$$}
+\ifoldeplain\ttidxref{$$}\fi
 \TeX\ 在陈列数学\refterm{模式}中读取陈列公式。
 \endconcept
 

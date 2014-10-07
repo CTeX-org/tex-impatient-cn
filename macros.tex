@@ -70,7 +70,7 @@
 
 % Dirty hacks for eplain 2.0+
 \ifoldeplain\else
-\def\stringify{\expandafter\strip@prefix\meaning\temp}%
+   \def\stringify{\expandafter\strip@prefix\meaning\temp}%
    \let\oldxrdef = \xrdef
    \def\xrdef#1{\def\temp{#1}\oldxrdef{\stringify}}%
    \let\oldxrefn = \xrefn
@@ -78,6 +78,7 @@
    \let\old@definelabel = \@definelabel
    \def\@definelabel#1{\def\temp{#1}\old@definelabel{\stringify}}%
    \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
+   %\enablehyperlinks[dvipdfm]
 \fi
 
 % We don't want register allocation information in the log,
@@ -1076,7 +1077,7 @@
 % \idxref generates an index entry for #1. If #1 contains any control
 % sequences, they are treated literally.
 %
-\def\idxref#1{\indexwrite{#1}N\ignorespaces}
+\def\idxref#1{\ifoldeplain\indexwrite{#1}N\ignorespaces\else\sidx{#1}\fi}
 
 
 % For creating an index entry for control space.
@@ -1133,7 +1134,7 @@
 % should not have a preceding backslash, so that the proper call for
 % indexing \alpha is \ctsidxref{alpha}.
 %
-\def\ctsidxref #1{\indexwrite{#1}C\ignorespaces}
+\def\ctsidxref #1{\ifoldeplain\indexwrite{#1}C\ignorespaces\else\sidx{#1}\fi}
 
 % \indexchar is needed to generate index entries for three especially
 % difficult single characters: {, }, and \.  They are blank-delimited.
@@ -1820,7 +1821,7 @@
 \def\ctspecial{\begingroup \deactivate \ctspecialA}
 \def\ctspecialA#1 {\endgroup
    \ctsbasic{\\#1}{}%
-   \pix\ctsidxref{#1}%
+   \pix\ifoldeplain\ctsidxref{#1}\fi%
 }
 
 % \ctspecialx is like \ctspecial, but leaves more space after its
@@ -1831,7 +1832,7 @@
 \def\ctspecialx{\begingroup \deactivate \mapquotes \ctspecialxA}
 \def\ctspecialxA#1 {\endgroup
    \ctsbasic{\\#1}{}\quad
-   \pix\ctsidxref{#1}%
+   \pix\ifoldeplain\ctsidxref{#1}\fi%
 }
 
 % \ctsdisplay has a blank-delimited argument consisting of a control
@@ -2035,6 +2036,10 @@
       \par
    \endit{INDEX ENTRY}%
 }
+
+\ifoldeplain\else
+   \hookaction{beginindex}{\let \b = \bgroup \let \e = \egroup}
+\fi
 
 % Nah, let's forget printing the initial.
 %

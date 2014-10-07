@@ -33,7 +33,7 @@ indicates a principal or defining entry.
 
 \let\+ = 0 % This can't occur in a macro...
 
-\input book.sdx
+\ifoldeplain\input book.sdx \else\readindexfile{i}\fi
 
 \endindex
 

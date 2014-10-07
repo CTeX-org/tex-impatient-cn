@@ -754,6 +754,7 @@ There is no `q' in this sentence.
 \csdisplay
     $  #  &  %  _  ^  ~  {  }  \
 |
+\ifoldeplain
 ^^|$//在普通文本中|
 ^^|#//在普通文本中|
 ^^|&//在普通文本中|
@@ -764,14 +765,17 @@ There is no `q' in this sentence.
 ^^|{//在普通文本中|
 ^^|}//在普通文本中|
 {\recat!ttidxref[\//在普通文本中]]
+\fi
 \noindent
 要在排版的文档中生成它们，你需要使用间接的方法。
 对前面五个字符，你需要键入：
+\ifoldeplain
 ^^|\$|
 ^^|\#|
 ^^|\&|
 ^^|\%|
 ^^|\_|
+\fi
 \csdisplay
     \$  \#  \&  \%  \_
 |
@@ -908,7 +912,7 @@ We have {\bf a few boldface words} in this sentence.
 ^^{陈列公式}
 文内公式两边用单个美元符（|$|）括起来，
 而陈列公式两边用双个美元符（|$$|）括起来。
-\ttidxref{$}\ttidxref{$$}
+\ifoldeplain\ttidxref{$}\ttidxref{$$}\fi
 例如：
 
 %\csdisplay
