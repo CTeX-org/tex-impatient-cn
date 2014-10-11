@@ -213,9 +213,9 @@
 %\pix^^{spaces//visible}
 通常我们按照你输入空格的方式显示空格，以免让你看花眼。
 但为了强调某些空格，我们用`\visiblespace'字符表示它。
-{\catcode `\ =\other\pix^^| |}%
+\ifoldeplain{\catcode `\ =\other\pix^^| |}\fi%
 这个字符很自然地被称为\emph{可见空格}.
-\pix^^{空格//可见}
+\pix^^{空格//可见空格}
 
 
 %\section Descriptions of the commands
@@ -233,7 +233,7 @@
 %in the definition of \plainTeX\ (\knuth{Appendix~B}).
 %The commands are organized as follows:
 第~\chapternum{paras}--\chapternum{general}~章描述了几乎每个\TeX\ 命令，
-^^{命令}包括原始命令^^{原始//命令}和 ^{\plainTeX} 命令。
+^^{命令}包括原始命令^^{原始的//原始命令}和 ^{\plainTeX} 命令。
 原始命令是那些内建于 \TeX\ 程序中的命令，
 而 \plainTeX{} 命令是那些在标准辅助定义文件中定义的命令（见\xref\plainTeX ）。
 我们仅仅忽略那些只在\plainTeX\ (\knuth{附录~B})定义中用到的局部命令。
@@ -386,12 +386,12 @@ register&寄存器编号，在$0$到$255$之间\cr
 % ^^{registers//parameters as}
 
 有些命令是参数 (\xref{introparms}) 或表格项.
-^^{parameters//as commands}
+^^{参数//作为命令}
 这会在命令的列表中指示出来.
 你可以将这个参数作为一个命令的参量，也可以给它赋值。
 表格项也是如此。
 我们使用``参数''这个术语来指代这些条目, 比如本是寄存器但可当参数使用的 |\pageno|.
-^^{registers//parameters as}
+^^{寄存器//作为参数}
 
 
 \section 翻译说明
@@ -400,6 +400,11 @@ register&寄存器编号，在$0$到$255$之间\cr
 考虑到此书需要和 \texbook\ 一起阅读，
 书中概念的翻译尽量保持和 \texbook\ 的翻译一致或接近。
 
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter
 \byebye
