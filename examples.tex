@@ -40,6 +40,10 @@
    \doexamples {xmptext}% Typeset the actual examples.
 }%
 
+\ifoldeplain\else\ifcompletebook\else
+\vfil\eject{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter
 \byebye

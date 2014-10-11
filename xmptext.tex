@@ -20,8 +20,8 @@
 ~\ifrewritetocfile
 ~\write\tocfile{\string\tocsectionentry{输入简单文本}{\examplepage}}%
 ~\fi
-~^^{footnotes} ^^{comments} ^^{punctuation} ^^{quotation marks}
-~^^{space characters} ^^{dashes} ^^{paragraphs//ending}
+~^^{脚注} ^^{注释} ^^{标点} ^^{引号}
+~^^{空格符} ^^{横线号} ^^{段落//结束段落}
 ~\edef\examplepageno{\number\count255}%
 ~%It's easy to prepare ordinary text for \TeX\ since
 ~%\TeX\ usually doesn't care about how you break up your input into
@@ -86,7 +86,7 @@
 :::
 ~%\xmpheader !xmpnum/{Indentation}% !xmpheaddef
 \xmpheader !xmpnum/{缩进}% !xmpheaddef
-~^^{indentation} ^^{margins} ^^{paragraphs//narrow}
+~^^{缩进} ^^{边距} ^^{段落//窄段落}
 ~%\noindent Now let's see how to control indentation.  If an
 ~%ordinary word processor can do it, so surely can \TeX. Note
 ~%that this paragraph isn't indented.
@@ -162,8 +162,8 @@
 ~%\xmpheader !xmpnum/{Fonts and special characters}% !xmpheaddef
 \xmpheader !xmpnum/{字体和特殊字符}% !xmpheaddef
 \chardef \\ = `\\ % Let \\ denote a backslash.
-~^^{fonts} ^^{characters//special} ^^{accents}
-~^^{music symbols} ^^{card suits}
+~^^{字体} ^^{字符//特殊字符} ^^{重音}
+~^^{音符} ^^{花色}
 ~\ifoldeplain
 ~^^|$| ^^|&| ^^|#| ^^|_| ^^|%| ^^|^| ^^|~| ^^|{| ^^|}| \indexchar \
 ~\fi
@@ -226,8 +226,8 @@
 \bye % 结束此文档
 :::
 ~%\xmpheader !xmpnum/{Interline spacing}% !xmpheaddef
-\xmpheader !xmpnum/{行间间距}% !xmpheaddef
-~^^{spacing//interline} ^^{baselines}
+\xmpheader !xmpnum/{行间距}% !xmpheaddef
+~^^{间隔//行间距} ^^{基线}
 \baselineskip = 2\baselineskip % double spacing
 \parskip = \baselineskip % Skip a line between paragraphs.
 \parindent = 3em % Increase indentation of paragraphs.
@@ -277,7 +277,7 @@
 :::
 ~%\xmpheader !xmpnum/{Spacing, rules, and boxes}% !xmpheaddef
 \xmpheader !xmpnum/{间隔、标线和盒子}% !xmpheaddef
-~^^{description lists} ^^{boxes//drawing} ^^{revision bars}
+~^^{描述列表} ^^{盒子//绘制盒子} ^^{修订线}
 ~%Here's an example of a ``description list''.  In practice you'd
 ~%be better off using a macro to avoid the repetitive constructs
 ~%and to make sure that the subhead widths are wide enough:
@@ -334,8 +334,8 @@ of Mock Turtle Soup.
 :::
 ~%\xmpheader !xmpnum/{Odds and ends}% !xmpheaddef
 \xmpheader !xmpnum/{杂项}% !xmpheaddef
-~^^{hyphenation} ^^{theorems} ^^{lemmas} ^^{itemized lists}
-~^^{flush left} ^^{flush right} ^^{centering}
+~^^{连字} ^^{定理} ^^{引理} ^^{有序列表}
+~^^{居左对齐} ^^{居右对齐} ^^{居中对齐}
 ~%\chardef \\ = `\\ % Let \\ denote a backslash.
 \chardef \\ = `\\ % 用 \\ 表示反斜杠。
 \footline{\hfil{\tenit - \folio -}\hfil}
@@ -421,7 +421,7 @@ $N^6$-ethe\-no\-adeno\-sine 时，
 ~\xrdef{palatino}
 ~\idxref{Palatino fonts}
 ~\idxref{Zapf, Hermann}
-~\idxref{Computer Modern fonts} ^^{\Metafont}
+~\idxref{计算机现代字体} ^^{\Metafont}
 \font\tenrm = pplr % Palatino
 % Define a macro for invoking Palatino.
 \def\pal{\let\rm = \tenrm \baselineskip=12.5pt \rm}
