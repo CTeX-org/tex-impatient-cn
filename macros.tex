@@ -1074,10 +1074,23 @@
 
 % Indexing macros for external use.
 
+% replace // in index string with ! for new eplain
+%
+\def\replaceit#1{\@replace#1//\@replaceMark}
+\def\@replace#1//#2\@replaceMark{%
+  \ifempty{#2}\noexpand#1\else#1!\@replace#2\@replaceMark\fi
+}
+
 % \idxref generates an index entry for #1. If #1 contains any control
 % sequences, they are treated literally.
 %
-\def\idxref#1{\ifoldeplain\indexwrite{#1}N\ignorespaces\else\sidx{#1}\fi}
+\def\idxref#1{%
+  \ifoldeplain\indexwrite{#1}N\ignorespaces\else
+    \let\b\begingroup\let\e\endgroup\let\tt\eighttt
+    \edef\z{\replaceit{#1}}%
+    \expandafter\sidx\expandafter{\z}%
+  \fi
+}
 
 
 % For creating an index entry for control space.
@@ -1127,14 +1140,22 @@
 % \ttidxref generates an index entry for #1 in the program font.
 % If #1 contains any control sequences, they are treated literally.
 %
-\def\ttidxref#1{\indexwrite{#1}T\ignorespaces}
-
+\def\ttidxref#1{%
+  \ifoldeplain\indexwrite{#1}T\ignorespaces\else
+    \sidx{\tt\tokstostring{#1}\rm}%
+  \fi
+}
 
 % \ctsidxref generates an index entry for a control sequence.  #1
 % should not have a preceding backslash, so that the proper call for
 % indexing \alpha is \ctsidxref{alpha}.
 %
-\def\ctsidxref #1{\ifoldeplain\indexwrite{#1}C\ignorespaces\else\sidx{#1}\fi}
+\def\ctsidxref #1{%
+  \ifoldeplain\indexwrite{#1}C\ignorespaces\else
+    \edef\z{\noexpand\tt\noexpand\\\replaceit{#1}\noexpand\rm}%
+    \expandafter\sidx\expandafter{\z}%
+  \fi
+}
 
 % \indexchar is needed to generate index entries for three especially
 % difficult single characters: {, }, and \.  They are blank-delimited.
