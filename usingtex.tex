@@ -21,64 +21,140 @@
 %\subsection Programs and files you need
 \subsection 所需的程序和文件
 
+%In order to produce a \TeX\ document, you'll need to run the \TeX\
+%program and several related programs as well.  You'll also need
+%supporting files for \TeX\ and possibly for these other programs.  In
+%this book we can tell you about \TeX, but we can't tell you about the
+%other programs and the supporting files except in very general terms
+%because they depend on your local \TeX\ environment.  The people who
+%provide you with \TeX\ should be able to supply you with what we call
+%\emph{local information}.
+%\pix^^{local information}
+%The local information tells you how to
+%start up \TeX, how to use the related programs, and how to gain access
+%to the supporting files.
 为了制作一个 \TeX\ 文档, 你必需运行 \TeX\ 及其相关软件.
 你同时也需要一些 \TeX\ 及其相关软件所用到的辅助文件.
 在这本书中, 我们仅仅谈论 \TeX\ 和一些通用的软件及辅助文件,
 不过我们不会介绍其它的, 因为它们仅仅和你自己的 \TeX\ 环境相关.
 为你提供 \TeX\ 的人可以为你提供我们所说的\emph{本地信息}.
-\pix^^{local information}
+\pix^^{本地信息}
 这些本地信息可以告诉你如何去启动 \TeX, 如何去使用相关的程序,
 以及如何去访问这些所用到的辅助文件.
 
-
+%Input to \TeX\ consists of a file of ordinary text that you can prepare
+%with a ^{text editor}.  A \TeX\ input file, unlike an input file for a
+%typical word processor, doesn't ordinarily contain any invisible
+%^{control characters}.
+%Everything that \TeX\ sees is visible to you too if you
+%look at a listing of the file.
 你可以使用一个 ^{文本编辑器} 来编写一个可以输入到 \TeX\ 的普通文本文件.
 一个 \TeX\ 输入文件和一个文字处理软件的输入文件不同, 它通常并不存在任何不可见的^{控制字符}.
 任何 \TeX\ 读到的字符对你来说, 都是你可以看到的.
 
+%Your input file may turn out to be little more than a skeleton that
+%calls for other input files.  \TeX\ users often organize large documents
+%such as books this way.  You can use the ^|\input| command (\xref\input)
+%to embed one input file within another.  In particular, you can use
+%|\input| to incorporate files containing \emph{macro definitions}---%
+%^^{macros//in auxiliary files}
+%auxiliary definitions that enhance \TeX's capabilities.
+%If any macro files are available at your \TeX\ installation, the local
+%information about \TeX\ should tell you how to get at the macro files
+%and what they can do for you.  The standard form of \TeX,
+%the one described in this book, incorporates a
+%collection of macros and other definitions known as ^{\plainTeX}
+%(\xref{\plainTeX}).
 你的输入文件, 可以仅仅是一个引用其它输入文件的框架.
 \TeX\ 用户往往把大的文档, 比如说这本书, 组织成这种形式.
 你可以使用 ^|\input| 命令 (\xref\input) 来把一个输入文件篏入到另一个中.
 特别地, 你可以使用 |\input|来调入包含\emph{宏定义}的文件,
-^^{macros//in auxiliary files}
+^^{宏//在辅助文件中}
 宏定义是一些辅助的定义, 它可以来增强 \TeX\ 的功能.
 如果你的 \TeX\ 系统中包含任何的宏文件,
 和 \TeX\ 相关的本地信息会告诉你如何得到这些宏文件,
 以及它们的功能.
-\TeX\ 的标准安装形式, 也就是在这本书中所描述的, 包括了一个被称为 ^{\plainTeX} (\xref{\plainTeX}) 的宏集.
+\TeX\ 的标准安装形式, 也就是在这本书中所描述的, 
+包括了一个被称为 ^{\plainTeX} (\xref{\plainTeX}) 的宏集.
 
+%When \TeX\ processes your document, it produces a file called the
+%^{\dvifile}.  The abbreviation ``|dvi|'' stands for ``device
+%independent''.  The abbreviation was chosen because the information in
+%the \dvifile\ is independent of the device that you use to print or
+%display your document.
 当 \TeX\ 处理你的文档时, 它会产生一种叫做  ^{\dvifile} 的文件.
 其中, ``|dvi|'' 的全称为 ``device independent (设备无关)''.
 之所以选用这个缩写, 是因为 \dvifile\ 中所包含的信息和你的打印或显示设备无关.
 
-
-当你需要打印或使用\emph{阅览器}查看你的文档时, ^^{previewer}
-你需要使用相应的\emph{设备驱动}来处理之. ^^{device drivers}
+%To print your document or view it with a \emph{previewer},
+%^^{previewer}
+%you need to process the ^{\dvifile} with
+%a \emph{device driver\/} program.
+%^^{device drivers}
+%(A previewer is a program  that
+%enables you to see on a screen some approximation of what the typeset
+%output will look like.)
+%Different output devices usually
+%require different device drivers.
+%After running the device driver,
+%you may also need to transfer the output of the device driver to the
+%printer or other output device.
+%^^{printers} ^^{output devices}
+%The local information about \TeX\ should tell
+%you how to get the correct device driver and use it.
+当你需要打印或使用\emph{阅览器}查看你的文档时, ^^{阅览器}
+你需要使用相应的\emph{设备驱动}来处理之. ^^{设备驱动}
 (阅览器是一个程序, 它能把和打印出来的结果差不多的排版内容显示在屏幕上.)
 不同的输出设备往往需要不同的设备驱动. 在运行设备驱动以后,
 你还需要把设备驱动输出的内容传输到打印机或者其它输出设备上.
-^^{printers} ^^{output devices}
+^^{打印机} ^^{输出设备}
 和 \TeX\ 相关的本地信息会告诉你如何得到正确的设备驱动和如何使用它.
 
+%Since \TeX\ has no built-in knowledge of particular fonts, it uses
+%\emph{font files}
+%^^{font files}
+%to obtain information about the fonts used in your
+%document.  The font files should also be part of your local \TeX\
+%environment.  Each font normally requires two files: one containing the
+%dimensions of the characters in the font (the \emph{metrics file})
+%^^{metrics file}
+%and one containing the shapes of the characters (the \emph{shape file}).
+%^^{shape file}
+%Magnified versions of a font share the metrics file but have
+%different shape files. ^^{magnification} Metrics files are sometimes
+%referred to as ^{\tfmfile}s, and the different varieties of shape files
+%are sometimes referred to as ^{\pkfile}s, ^{\pxlfile}s, and ^{\gffile}s.
+%These names correspond to the names of the files that \TeX\ and its
+%companion programs use.  For example, |cmr10.tfm| is the metrics file
+%for the |cmr10| font (10-point Computer Modern Roman).
 因为 \TeX\ 内部并没有任何关于一个特定字体的任何信息,
 它使用\emph{字体文件}
-^^{font files}
+^^{字体文件}
 来得到你文档中所使用的字体的信息.
 字体文件也是你本地 \TeX\ 环境的一个组成部分.
 一个字体一般对应两个文件:
-一个文件 (\emph{字体信息文件}) ^^{metrics file} 包括了字体中每个字符的大小信息,
-另一个文件 (\emph{字体轮廓文件}) ^^{shape file} 则描述了字体中字符的形状.
-一个字体的缩放版本使用同样的字体信息文件, 不过并不使用相同的字体轮廓文件.
-^^{magnification}
-字体信息文件往往用来指称 ^{\tfmfile},
+一个文件 (\emph{字体度量文件}) ^^{度量文件} 包括了字体中每个字符的大小信息,
+另一个文件 (\emph{字体轮廓文件}) ^^{轮廓文件} 则描述了字体中字符的形状.
+一个字体的缩放版本使用同样的字体度量文件, 不过并不使用相同的字体轮廓文件.
+^^{放大率}
+字体度量文件往往用来指称 ^{\tfmfile},
 而字体轮廓文件则往往用来指称 ^{\pkfile}, ^{\pxlfile} 和 ^{\gffile} 等不同的种类.
 这些名称和 \TeX\ 以及相关软件所使用的文件的文件名所对应.
-比如, |cmr10.tfm| 为 |cmr10| 字体的字体信息文件 (10-点的计算机现代字体).
+比如, |cmr10.tfm| 为 |cmr10| 字体的字体度量文件 (10-点的计算机现代字体).
 
-\TeX\ 本身仅使用字体信息文件, 因为它只关心这个字体的字符占用了多大的空间,
+%\TeX\ itself uses only the metrics file, since it doesn't care what the
+%characters look like but only how much space they occupy.  The device
+%driver ordinarily uses the shape file, since it's responsible for
+%creating the printed image of each typeset character.  Some device
+%drivers need to use the metrics file as well.  Some device drivers can
+%utilize fonts that are resident in a printer and don't need shape files
+%for those fonts.
+%\secondprinting{\vfill\eject}
+\TeX\ 本身仅使用字体度量文件, 因为它只关心这个字体的字符占用了多大的空间,
 而并不关心这个字体的外形是什么样子的.
 设备驱动则往往需要使用字体轮廓文件,
 因为它需要负责把每个排出的字符变成印出的图形.
-某些设备驱动也需要使用字体信息文件.
+某些设备驱动也需要使用字体度量文件.
 一些设备驱动可以使用打印机中包含的字体,
 所以可以不需要这些字体的字体轮廓文件.
 %\secondprinting{\vfill\eject}
@@ -87,10 +163,42 @@
 %\subsection Running {\TeX}
 \subsection{运行 \TeX}
 
-\bix^^{running \TeX}
-
+%\bix^^{running \TeX}
+%You can run \TeX\ on an input file |screed.tex| by typing
+%^^{input files}
+%something like `|run tex|' or just `|tex|' (check your local information).
+%\TeX\ will respond with something like:
+%% 4/23/90 is Shakespeare's 426th birthday, and Karl's 26th.
+%\csdisplay
+%This is TeX, Version 3.0 (preloaded format=plain 90.4.23)
+%**
+%|
+%The ``preloaded format'' here refers to a predigested form of the
+%^{\plainTeX} macros that come with \TeX.
+%You can now type `|screed|' to get \TeX\ to process your file.
+%When it's done, you'll see something like:
+%\csdisplay
+%(screed.tex [1] [2] [3] )
+%Output written on screed.dvi (3 pages, 400 bytes).
+%Transcript written on screed.log.
+%|
+%displayed on your terminal, or printed in the record of your
+%run if you're not working at a terminal.  Most of this output is
+%self-explanatory.
+%The numbers in brackets are page numbers that \TeX\ displays when it
+%ships out each page of your document to the \dvifile.
+%\TeX\ will usually assume an
+%extension `|.tex|' to an input file name
+%if the input file name you gave doesn't
+%have an extension.  For some forms of \TeX\ you may be able to
+%invoke \TeX\ directly for an input file by typing:
+%\csdisplay
+%tex screed
+%|
+%or something like this.
+\bix^^{运行 \TeX}
 你可以通过输入类似 `|run tex|' 或 `|tex|' (查看你的本地信息) 来运行 \TeX\ 来处理一个输入文件 |screed.tex|.
-^^{input files}
+^^{输入文件}
 \TeX\ 会作出如下显示
 % 4/23/90 is Shakespeare's 426th birthday, and Karl's 26th.
 \csdisplay
@@ -141,7 +249,7 @@ tex screed
 %them with a file by looking for the most recent unclosed left parenthesis.
 当你的输入文件包含其他嵌入的输入文件时，
 显示的信息中表明了 \TeX\ 何时开始和结束处理每个嵌入文件。
-^^{输入文件//嵌入}
+^^{输入文件//嵌入输入文件}
 \xrdef{infiles}
 当 \TeX\ 开始处理一个文件时它显示一个左圆括号和该文件名，
 而结束时显示一个对应的右圆括号。
@@ -153,7 +261,7 @@ tex screed
 %\eix^^{running \TeX}
 要得到如何运行\TeX\ 的更完整解释，
 可以见\knuth{第~6~章}以及你的^{本地信息}.
-\eix^^{运行\TeX}
+\eix^^{运行 \TeX}
 
 
 %\section Preparing an input file
@@ -165,7 +273,7 @@ tex screed
 %^^{input, preparing}
 在这一节中，我们解释准备 \TeX\ 输入文件时必须遵循的一些约定。
 其中的有些信息同样出现在本书\chapterref{examples}的例子中。
-^^{输入, 准备}
+^^{输入文件//准备输入文件}
 
 %\subsection Commands and control sequences
 \subsection 命令和控制序列
@@ -181,8 +289,8 @@ tex screed
 %(|\|), though you can change that convention if you need to.
 %\xrdef{@backslash}
 %For instance, the input:
-\bix^^{commands}
-\bix^^{control sequences}
+\bix^^{命令}
+\bix^^{控制序列}
 \TeX\ 的输入由一系列指引 \TeX\ 如何排版文档的命令组成。
 大部分字符如同一种特别简单的命令：``排版我''。
 比如，字母 `|a|' 是作为命令将排版出 `a'。
@@ -261,7 +369,7 @@ She plunged a dagger (\dag) into the villain's heart.
 %or the `|{}|'.
 \noindent
 控制词后的任何空格或行结束符将被忽略（但控制符后不会这样）。
-^^{控制系列//忽略空格}
+^^{控制序列//忽略空格}
 如果你真要在控制词后得到一个空格，
 可以在该控制词后键入一个^{控制空格}（|\!visiblespace|）或者`|{}|'。
 因而这样输入：
@@ -455,7 +563,7 @@ The wonders of \TeX shall never cease!
 %^^{paragraphs//ending}
 %Several blank lines are equivalent to a single one.
 输入中的一个空行结束当前段落。
-^^{段落//结束}
+^^{段落//结束段落}
 多个空行也等同于一个空行。
 
 %\TeX\ ignores input spaces within math formulas (see below).  Thus you can
@@ -561,7 +669,7 @@ The wonders of \TeX shall never cease!
 注释以百分号（|%|）开始，一直延续到该输入行结束。
 \TeX\ 既忽略注释也忽略该行的结束符，
 因此注释有另外的重要用法：将两个输入行连接起来，
-^^{断行//删除}
+^^{断行//删除断行}
 使得 \TeX\ 看不到两行间的行结束符，
 从而不会在输出中生成空格或换行。
 例如，对如下的输入：
@@ -812,7 +920,7 @@ There is no `q' in this sentence.
 %|
 %\noindent you'll get:
 %\display{We have {\bf a few boldface words} in this sentence.}
-\bix^^{groups}
+\bix^^{编组}
 包含在配对的左右花括号（|{| 和 |}|）中的内容组成一个\emph{编组}。
 ^^|{//开始编组|
 ^^|}//结束编组|
@@ -884,10 +992,10 @@ We have {\bf a few boldface words} in this sentence.
 对于 |\halign| 和 |\valign| 命令，编组只有平凡的效果；
 这是由于编组中的一切东西要么不会到达胃里（因为它在模板中），
 要么包含在更深一层的编组中。
-^^|\halign//grouping for|
-^^|\valign//grouping for|
+^^|\halign//阵列中的编组|
+^^|\valign//阵列中的编组|
 }
-\eix^^{groups}
+\eix^^{编组}
 
 
 %\subsection Math formulas
@@ -904,7 +1012,7 @@ We have {\bf a few boldface words} in this sentence.
 %and a displayed formula in double dollar signs (|$$|).
 %\ttidxref{$}\ttidxref{$$}
 %For example:
-\bix^^{math}
+\bix^^{数学}
 \xrdef{mathform}
 数学公式可以出现在正文中（\emph{文内公式}），
 ^^{文内公式}
@@ -933,7 +1041,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.
 If $a<b$, then the relation $$e^a < e^b$$ holds.}
 \smallskip
 \noindent \chapterref{math}描述了数学公式中常用的命令。
-\eix^^{math}
+\eix^^{数学}
 
 
 %\section How \TeX\ works
@@ -978,7 +1086,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 ^^{展开记号}
 ^{胃}执行原始命令指定的操作，生成一些页面。
 最后，^{肠道}将每个页面转换为 \dvifile 所需的形式并发送给它。
-^^{\dvifile//由 \TeX\ 的肠道制造}
+^^{\dvifile//由 \TeX\ 的肠道生成}
 这些活动在\chapterref{concepts}的\conceptcit{\anatomy}中有更详细的描述。
 ^^{\anatomy}
 
@@ -1112,7 +1220,7 @@ If $a<b$, then the relation $$e^a < e^b$$ holds.}
 %We recommend that you obtain new \TeX\ if you can.
 \xrdef{newtex}
 在 1989 年，Knuth 对 \TeX\ 做了一次大幅修改，
-使得它能够处理非英语排版所需的字符集。^^{foreign languages}
+使得它能够处理非英语排版所需的字符集。^^{外语}
 这次修改还包括了一些额外的不干扰其它东西的小功能，
 这本书介绍 ``^{\newTeX}''。
 如果你仍使用旧版本的 \TeX （$2.991$ 版或以前的版本），
@@ -1212,7 +1320,7 @@ Reading, Mass.: Addison-Wesley, 1986.\par}
 它在这里有介绍：
 \smallskip
 {\narrower\noindent
-^{Spivak, Michael~D.}, {\sl The Joy of \TeX}. Providence, R.I.:
+^{Spivak, Michael D.}, {\sl The Joy of \TeX}. Providence, R.I.:
 American Mathematical Society, 1986.
 \par}
 \smallskip
@@ -1276,5 +1384,10 @@ Email: {\tt Abrahams\%Wayne-MTS@um.cc.umich.edu}
 \smallskip
 \noindent
 这个地址在 1990 年 6 月是正确的；请注意在这之后它可能发生改变，尤其是电子邮件地址。
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter\byebye
