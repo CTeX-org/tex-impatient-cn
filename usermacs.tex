@@ -32,7 +32,7 @@
 %definitions for two of the commonly used ones.
 %^^{category codes//useful definitions for}
 我们先介绍几个修改类别码及定义两种常用类别码的宏。
-^^{category codes//useful definitions for}
+^^{类别码//有用的类别码定义}
 
 %\pix^^|\makeactive|
 %\pix^^|\letter|
@@ -139,7 +139,7 @@
 你可以重新定义 |\vruledefaultwidth|、|\hruledefaultheight| 及 |\hrule!-defaultdepth|，
 并将 |\hrule| 和 |\vrule| 换为 \pix^|\ehrule| 和 \pix^|\evrule|。%
 （名称中的 `e' 代表 ``eplain''。）%
-^^{rules//thickness of}
+^^{标线//标线的厚度}
 如果你显式给出尺寸（比如 |\ehrule height 16pt|），\TeX\ 将使用它。
 
 \csdisplay
@@ -159,8 +159,8 @@
 %We also redefine ^|^^L| to be nonouter so that you can use it in a
 %macro definition or argument.
 |\%| 通常用于写出 `|%|' 字符，但它无法包含在 |\write| 的记号列中。
-^^|\write//writing \b\tt\%\e\ with|
-%^^|%//writing out|
+^^|\write//用它写出 \b\tt\%\e\|
+%^^|%//写出该字符|
 你可以用 ^|\percentchar| 达到此目的。
 我们还将 ^|^^L| 重新定义为非外部宏，因此你可以在宏定义或者参量中使用它。
 
@@ -250,7 +250,7 @@
 ^^|\obeylines| ^^|\obeyspaces|
 并把行首的空格也打印出来。制表符不受它影响；它们仍然生成正常的粘连。
 \xrdef{ewhitesp}
-^^{space characters}
+^^{空格符}
 ^^|\fontdimen|
 ^^|\font|
 ^^|\letreturn|
@@ -271,7 +271,7 @@
 %\knuth{Exercise~11.6}.^^{fractions//slashed form}
 当你不想用 |\over|，而 ``1/2'' 看来又不够好时，
 你最好用 \pix^|\frac| 在正文中打印分式。
-这个宏是\knuth{练习~11.6}的答案。^^{fractions//slashed form}
+这个宏是\knuth{练习~11.6}的答案。^^{分式//斜线形式}
 
 \csdisplay
 \def\frac#1/#2{\leavevmode
@@ -367,7 +367,7 @@
 %the macro provides the space token.
 \pix^|\testfileexistence| 判定文件 |\jobname.#1| 是否非空，
 并相应地设定 |\if!-fileexists| 的值。
-^^{files//testing for existence of}
+^^{文件//检测文件是否存在}
 参量中的文件名无需以空格记号结尾，因为这个宏已经提供了空格记号。
 
 \csdisplay
@@ -389,7 +389,7 @@
 %to be left-justified by default.  You can return to centered displays
 %with \pix^|\centereddisplays|.
 \TeX\ 默认将陈列公式（放在 |$$| 之间的公式）居中显示。
-^^{displays, formatting}\pix^|\leftdisplays| 让陈列公式默认为左对齐显示。
+^^{陈列公式//显示形式}\pix^|\leftdisplays| 让陈列公式默认为左对齐显示。
 你也可以用 \pix^|\centereddisplays| 命令恢复居中显示。
 
 %The macros here are more general than they need to be just for doing
@@ -485,7 +485,7 @@
 \pix^|\leftdisplays| 必须历经辛苦地确保 |\dis!-play!-lines|^^|\displaylines|、
 ^|\eqalignno| 和 ^|\leqalignno| 还能正常使用。
 |\eq| 在数学模式中排版，而 |\halign| 在数学模式中是不合法的。
-^^|\halign//illegal in math mode|
+^^|\halign//在数学模式中不合法|
 我们用 ^|\vcenter| 改变环境，以让 |\halign| 重新变成合法的。
 我们还去掉模板左边的 |\hfil| 命令以得到左对齐格式。
 除这些改变之外，这些宏与 |plain.tex| 中的相同。
@@ -527,7 +527,7 @@
 %p.m.''. \pix^|\timestamp| produces the text of the complete date, as
 %in ``23 Apr 1964\quad 1:14\thinspace p.m.''.
 \TeX\ 开始运行时设定了 ^|\time|、^|\day|、^|\month| 和 ^|\year| 参数的值。
-^^{time of day}^^{date}
+^^{日期时间}^^{日期}
 \pix^|\monthname| 排印月份名称的三字母缩写。
 \pix^|\timestring| 排印类似当前时间，类似于 ``1:14\thinspace p.m.''。
 \pix^|\timestamp| 排印完整日期文本，类似于 ``23 Apr 1964\quad 1:14\thinspace p.m.''。
@@ -576,8 +576,8 @@
 %Lists can be nested arbitrarily.
 \null
 \xrdef{listmacs}
-\bix^^{itemized lists}
-\bix^^{enumerations}
+\bix^^{编号列表}
+\bix^^{列举}
 \pix^|\numberedlist| 排印编号列表；|\endnumberedlist| 结束该列表。
 类似地，\pix^|\unorderedlist| 排印无序列表。
 这两种列表中的项目以 \pix^|\li|（``list item''）开头。
@@ -707,8 +707,8 @@
 
 %\eix^^{itemized lists}
 %\eix^^{enumerations}
-\eix^^{itemized lists}
-\eix^^{enumerations}
+\eix^^{编号列表}
+\eix^^{列举}
 
 
 %\section Verbatim listing
@@ -755,7 +755,7 @@
 %argument is the text to appear in the table of contents entry.
 %|\writetocentry| appends the page number to the macro call.  For
 %example:
-\null ^^{table of contents}
+\null ^^{目录}
 \pix^|\writetocentry| 宏在 |\jobname.toc| 文件中写入一个宏调用。
 |\write!-tocentry| 的第一个参量，比如``chapter''，用于构成所调用的宏的名称。
 第二个参量是显示在目录项中的文本。
@@ -869,7 +869,7 @@
 %\pix^|\xref||{foo}| produces ``p.\thinspace 77''.  If |foo| is not
 %defined, a warning message will be given.  |\xrefwarningfalse|
 %suppresses the warning.
-\null ^^{cross-references}
+\null ^^{交叉引用}
 \xrdef{xrefs}
 接下来的宏提供了符号式的交叉引用，
 让你可以在文档中通过名称而非实际页码提及其它部分的东西。
@@ -972,7 +972,7 @@
 %You can give symbolic names to equations in a similar way, using
 %\pix^|\eqdef| and \pix^|\eqref|.  |\eqdef| inserts its own |\eqno|
 %command, so it must be invoked in a place where |\eqno| is legal.
-^^{equations, labelling}
+^^{公式编号}
 按同样的方式，你可以用 \pix^|\eqdef| 和 \pix^|\eqref| 给出公式的符号式名称。
 |\eqdef| 插入自己的 |\eqno| 命令，因此它必须用在能用 |\eqno| 的地方。
 
@@ -1018,7 +1018,7 @@
 %an environment don't match, you'll get an error message. The macros are
 %designed so that the message you get when such an error occurs will give
 %you a good chance of localizing the cause of the error easily.
-\null ^^{environments}这些宏让你可以将手稿的一部分定义为命名编组（环境）。
+\null ^^{环境}这些宏让你可以将手稿的一部分定义为命名编组（环境）。
 类似 \TeX\ 的编组，这些编组也可以嵌套，
 而且实际上它们的嵌套可以与 \TeX\ 编组的嵌套相互交织。
 如果开始的名称和结束的名称不匹配，你将得到一个错误信息。
@@ -1128,9 +1128,9 @@
 %the end of the group indicates the end of the text.
 %The entire group is set as a single paragraph, with lines filled out
 %on one side or another as appropriate.  Blank lines are reproduced.
-\bix^^{flush left}
-\bix^^{flush right}
-\bix^^{centered text}
+\bix^^{居左对齐}
+\bix^^{居右对齐}
+\bix^^{居中文本}
 这三个宏 \pix^|\flushleft|、\pix^|\flushright| 和
 \xrdef{eplaincenter}\pix^|\center| 将后面各行文本以指定方式对齐。
 这种命令必须单独写在一行中。
@@ -1190,9 +1190,9 @@
 %\eix^^{flush left}
 %\eix^^{flush right}
 %\eix^^{centered text}
-\eix^^{flush left}
-\eix^^{flush right}
-\eix^^{centered text}
+\eix^^{居左对齐}
+\eix^^{居右对齐}
+\eix^^{居中文本}
 
 
 %\section Tables
@@ -1224,7 +1224,7 @@
 例如，`|\makecolumns 37/3:|' 指定一个三栏表格，其元素为接下来的 $37$ 行。
 要调整表格在页面上的位置，你可以修改 |\parindent| 以确定表格左侧的空白，
 以及 |\hsize| 以确定从页面左边缘到表格右侧的距离。
-要允许在 |\valign| ^^|\valign//used in {\tt\\makecolumns}| 之前分页，
+要允许在 |\valign| ^^|\valign//用于 {\tt\\makecolumns}| 之前分页，
 你可以修改 \pix^|\abovecolumnspenalty|。
 
 \csdisplay
@@ -1276,7 +1276,7 @@
 %controls the space between the footnote mark (e.g., the number) and the
 %beginning of the text. The \pix^|\everyfootnote| tokens are inserted
 %before producing the footnote.
-\null ^^{footnotes}
+\null ^^{脚注}
 脚注通常用升高的数字作为参考符号。
 我们定义的 \pix^|\numberedfootnote| 宏就是这样的。
 它还重新定义了 ^|\vfootnote|，以支持比 \plainTeX\ 更一般的脚注格式。
@@ -1323,7 +1323,7 @@
 %The glue specified by |\above!-double!-column!-skip| and
 %|\below!-double!-column!-skip| is inserted before and after the
 %double-column material.
-\null ^^{double columns} |\doublecolumns| 命令开始双栏输出，
+\null ^^{双栏} |\doublecolumns| 命令开始双栏输出，
 而 |\single!-column| \pix^^|\singlecolumn| 命令恢复单栏输出。
 两者可以在同个页面上相互切换。
 用 |\above!-double!-column!-skip| 和 |\below!-double!-column!-skip|
@@ -1445,6 +1445,11 @@
 
 %\eix^^|eplain.tex|
 \eix^^|eplain.tex|
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter
 \byebye
