@@ -20,7 +20,7 @@
 %A few simple rules will go a long way in helping you to understand \TeX's
 %error messages and get the most benefit from them.
 \codefuzz = 4pc % for this chapter only (in scope of \chapter)
-\bix^^{error messages}
+\bix^^{错误信息}
 解释 \TeX\ 的错误信息有时候就像，
 你跟医生抱怨你感觉疲乏无力，医生却递给你一份血生化细目表。
 对你的痛苦的解释也许就在那里，但却不容易弄清楚它是什么。
@@ -74,7 +74,7 @@ l.291 We skip \quid
 ?
 |
 此信息将同时出现在终端上和日志文件中。
-^^{log file//error messages}
+^^{日志文件//错误信息}
 第一行始终以感叹号(|!!|)开头，告诉你出现了什么问题。
 在 `|?|' 提示符之前的最后两行（在此例子中同样也是接下来的两行）%
 告诉你 \TeX\ 在何处发现此错误。
@@ -564,6 +564,12 @@ l.93 ...Skip \smallskip a little further.}
 %\eix^^{error messages}
 %\endchapter
 %\byebye
-\eix^^{error messages}
+\eix^^{错误信息}
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
+
 \endchapter
 \byebye
