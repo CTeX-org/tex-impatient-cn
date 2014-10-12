@@ -144,12 +144,12 @@
 要构造一个制表阵列，你首先需要用 |\settabs| 命令
 \ctsref{\settabs} 确定 \TeX\ 如何将可用空白水平地分为多列。
 然后你就可以逐行地填充表格的各行。
-每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“单元”组成%
-^^{单元（在行或列中）}
+每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“条目”组成%
+^^{条目（在行或列中）}
 \xrdef{@and}
 \ifoldeplain\ttidxref{&}\fi
-（单元是行和列的交叉部分），并以 ^|\cr| 结束。
-如果某行的单元数目比该阵列的列数少，\TeX\ 就用空白单元填充它们。
+（条目是行和列的交叉部分），并以 ^|\cr| 结束。
+如果某行的条目数目比该阵列的列数少，\TeX\ 就用空白条目填充它们。
 
 %As long as it's preceded by a |\settabs| command, you can put a row of a
 %tabbing alignment anywhere in your document.  In particular, you can put
@@ -244,8 +244,8 @@
 水平阵列用 |\halign| \ctsref\halign 命令构造。
 \TeX\ 将根据各列内容调整水平阵列的列宽。
 当 \TeX\ 碰到 |\halign| 命令要开始一个水平阵列时，
-它首先检查该阵列的各行，看看各单元都有多宽。
-然后设定各列宽度以容纳该列中最宽的单元。
+它首先检查该阵列的各行，看看各条目都有多宽。
+然后设定各列宽度以容纳该列中最宽的条目。
 
 %A horizontal alignment governed by |\halign| consists of a
 %``\pix^{preamble}'' that indicates the row layout followed by the rows
@@ -269,7 +269,7 @@
 指明该列的文本应该如何排版。
 每个模板中都必须包含一个|#|字符，
 \ifoldeplain\ttidxref{#}\fi\xrdef{@asharp}
-用于给出 \TeX\ 将单元的文本放入模板的位置。
+用于给出 \TeX\ 将条目的文本放入模板的位置。
 各个模板之间用 |&| 分隔，\ifoldeplain\ttidxref{&}\fi 并以 |\cr| 结束该导言。
 利用合适的模板你可以让某列居中，左对齐或右对齐，
 或者使用某个特定的\refterm{字体}。
@@ -287,9 +287,9 @@
 %that follow |\halign|.  Each |\halign| alignment must include
 %its own preamble.
 \li 除了要省略各行开头的 |\+|，各行的写法都和制表阵列一样：
-一行的各单元之间用 |&| 分隔，并以 |\cr| 结束该行。
-\TeX\ 将各个单元都看作一个\refterm{编组}，
-因此对某列模板的字体设定或其他\refterm{赋值}都只对该列各个单元有效。
+一行的各条目之间用 |&| 分隔，并以 |\cr| 结束该行。
+\TeX\ 将各个条目都看作一个\refterm{编组}，
+因此对某列模板的字体设定或其他\refterm{赋值}都只对该列各个条目有效。
 \endulist
 \noindent 导言和各行都必须放在 |\halign| 后的花括号里面。
 每个 |\halign| 阵列都必须包含各自的导言。
@@ -419,7 +419,7 @@
   ten&eleven\cr}}
 }
 模板中的 ^|\strut| 命令 \ctsref{\strut} 是必不可少的，
-因为它让一行的各单元合适地排成一行，
+因为它让一行的各条目合适地排成一行，
 即让它们有共同的\refterm{基线}，并让基线间的距离保持一致。
 \eix\ctsidxref{cr}
 \eix^^{表格}

@@ -28,11 +28,11 @@
 %\subsection {Fixed-width horizontal space}
 \subsection {固定宽度水平间隔}
 
-\begindesc
-\bix^^{space//producing}
-\bix^^{horizontal space}
-\cts thinspace {}
-\explain
+%\begindesc
+%\bix^^{space//producing}
+%\bix^^{horizontal space}
+%\cts thinspace {}
+%\explain
 %This command produces a positive \minref{kern}
 %whose width is one-sixth of an em
 %(\xref{dimdefs})
@@ -42,6 +42,11 @@
 %and you want to separate the levels of quotes.
 %\TeX\ won't break a line at
 %a |\thinspace|.\minrefs{line break}
+\begindesc
+\bix^^{间隔//产生间隔}
+\bix^^{水平间隔}
+\cts thinspace {}
+\explain
 该命令产生一个正的\minref{紧排}，它的宽度是 1/6 em（\xref{dimdefs}），也就是说，它使得 \TeX\ 向右移动一个相应的距离。例如，当你需要嵌套引用，并希望将不同层次的引号分开时，它便非常有用。\TeX\ 不会在 |\thinspace| 处断行。\minrefs{line break}
 
 \example
@@ -113,9 +118,24 @@ The horror, the horror\negthinspace, the horror of it all!
 
 \def\distance#1{\hbox{\strut $\rightarrow$\vrule\hskip #1\vrule$\leftarrow$}}
 
+%{\def\l#1{\hfil$#1$\thinspace em}
+%\tabskip 3pc \halign{#&#&\hfil#\hfil\cr
+%{\it Command}&{\it Space}&{\it Illustration}\cr
+%\noalign{\vskip 4pt}
+%|\enskip|&\l{\frac 1/2}&\distance{.5em}\cr
+%|\quad|&\l1&\distance{1em}\cr
+%|\qquad|&\l2&\distance{2em}\cr
+%}}
+%\example
+%en\enskip skip; quad\quad skip; qquad\qquad skip
+%|
+%\produces
+%en\enskip skip; quad\quad skip; qquad\qquad skip
+%\endexample
+%\eix^^{horizontal space}
+%\enddesc
 {\def\l#1{\hfil$#1$\thinspace em}
 \tabskip 3pc \halign{#&#&\hfil#\hfil\cr
-%{\it Command}&{\it Space}&{\it Illustration}\cr
 {\it 命令}&{\it 间距}&{\it 图示}\cr
 \noalign{\vskip 4pt}
 |\enskip|&\l{\frac 1/2}&\distance{.5em}\cr
@@ -128,21 +148,27 @@ en\enskip skip; quad\quad skip; qquad\qquad skip
 \produces
 en\enskip skip; quad\quad skip; qquad\qquad skip
 \endexample
-\eix^^{horizontal space}
+\eix^^{水平间隔}
 \enddesc
 
 %==========================================================================
 %\subsection {Fixed-length vertical space}
 \subsection {固定长度竖直间隔}
 
+%\begindesc
+%\bix^^{vertical space}
+%\easy\cts smallskip {}
+%\cts medskip {}
+%\cts bigskip {}
+%\explain
+%These commands produce successively larger
+%amounts of vertical space:
 \begindesc
-\bix^^{vertical space}
+\bix^^{竖直间隔}
 \easy\cts smallskip {}
 \cts medskip {}
 \cts bigskip {}
 \explain
-%These commands produce successively larger
-%amounts of vertical space:
 这些命令可以产生连续较大的竖直间隔：
 \display{{\def\bar{\kern 2pt\hrule width 5pc}
 \def\lbl#1{\hbox to 5pc{\hfil #1skip\hfil}}
@@ -182,11 +208,13 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %We recommend that you maintain this ratio by changing
 %these values whenever
 %you change |\baselineskip| (\xref\baselineskip).
+%^^|\baselineskip//and {\tt\\smallskipamount}, etc.|
+%\eix^^{vertical space}
 这些参数用于确定由 |\small!-skip|、|\med!-skip| 和 |\big!-skip| 命令产生的粘连的量。
 通过更改这些参数，你可以改变命令的效果。（对于 \plainTeX ）它们相应的默认值是 1/4 、1/2 以及 1 行距。
 我们建议你保持这个比例，无论何时，你可以通过修改 |\baselineskip|（\xref\baselineskip ）来修改参数值。
-^^|\baselineskip//and {\tt\\smallskipamount}, etc.|
-\eix^^{vertical space}
+^^|\baselineskip//和 {\tt\\smallskipamount} 等|
+\eix^^{竖直间隔}
 
 \enddesc
 
@@ -194,14 +222,14 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %\subsection {Variable-size space}
 \subsection {可变尺寸间隔}
 
-\begindesc
-\easy\cts hskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
-\cts vskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
-^^{vertical skip}^^{vertical glue}
-^^{horizontal skip}^^{horizontal glue}
-\bix^^{horizontal space}
-\bix^^{vertical space}
-\explain
+%\begindesc
+%\easy\cts hskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
+%\cts vskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
+%^^{vertical skip}^^{vertical glue}
+%^^{horizontal skip}^^{horizontal glue}
+%\bix^^{horizontal space}
+%\bix^^{vertical space}
+%\explain
 %These commands produce horizontal and vertical glue respectively.
 %In the simplest and most common case when only \<dimen$_1$> is present,
 %|\hskip| skips to the right by \<dimen$_1$>
@@ -214,6 +242,14 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %If both are present, the |plus| must come before the |minus|.
 %An omitted value
 %is taken to be zero. Any of the \<dimen>s can be negative.
+\begindesc
+\easy\cts hskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
+\cts vskip {\<dimen$_1$> {\bt plus} \<dimen$_2$> {\bt minus} \<dimen$_3$>}
+^^{竖直间距}^^{竖直粘连}
+^^{水平间距}^^{水平粘连}
+\bix^^{水平间隔}
+\bix^^{竖直间隔}
+\explain
 这些命令可以分别产生水平的和竖直的粘连。
 在最简单以及最常见的情况下，即当只有 \<dimen$_1$> 存在时，
 |\hskip| 向右移动 \<dimen$_1$>，而 |\vskip| 向页面下方移动 \<dimen$_1$>。
@@ -265,8 +301,8 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \begindesc
 \cts hglue {\<glue>}
 \cts vglue {\<glue>}
-^^{vertical glue}
-^^{horizontal glue}
+^^{竖直粘连}
+^^{水平粘连}
 \explain
 %The |\hglue| command produces horizontal \minref{glue} that won't disappear at
 %a line break; the |\vglue| command
@@ -292,13 +328,20 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %More precisely, it's a distance |\topskip| above the origin as given by
 %|\hoffset| and |\voffset|.
 \margin{加入的命令；新近加入到 \TeX}
-该命令\footnote{|\topglue| 是在 \TeX\ 3.0 中引入的，比其它由^{\newTeX}（\xref{newtex}）引入的增强特性稍晚。在 \texbook 的 \emph{18th\/} 版中第一次得到描述。} 可以精确地产生从页面顶部至该页上第一个盒子顶部的间隔。可以认为页面顶部位于页面第一行之上的一行无形文字的基线处。更加准确地，它在 |\hoffset| 和 |\voffset| 确定的原点之上，且间距等于 |\topskip|。
+该命令
+\footnote{|\topglue| 是在 \TeX\ 3.0 中引入的，
+比其它由^{\newTeX}（\xref{newtex}）引入的增强特性稍晚。
+在 \texbook 的 \emph{18th\/} 版中第一次得到描述。}
+可以精确地产生从页面顶部至该页上第一个盒子顶部的间隔。
+可以认为页面顶部位于页面第一行之上的一行无形文字的基线处。
+更加准确地，它在 |\hoffset| 和 |\voffset| 确定的原点之上，且间距等于 |\topskip|。
 
 %This command is useful because \TeX\ ordinarily adjusts the glue
 %produced by |\topskip| in a complex way.  By using |\topglue| you can
 %control the position of the first box on the page without worrying about
 %those adjustments.
-由于 \TeX\ 通常以非常复杂的方式调整由 |\topskip| 产生的粘连，所以这个命令是非常有用的。通过使用 |\topglue|，你能够控制页面上第一个盒子的位置，而不必担心那些复杂的调整。
+由于 \TeX\ 通常以非常复杂的方式调整由 |\topskip| 产生的粘连，所以这个命令是非常有用的。
+通过使用 |\topglue|，你能够控制页面上第一个盒子的位置，而不必担心那些复杂的调整。
 
 \enddesc
 
@@ -328,7 +371,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %instead of bringing them closer together.
 因此，正的紧排产生空白的间隔，而负的紧排使得 \TeX\ 倒退到已经存在的东西上。
 在 \TeX 中，正的紧排将两个字母\emph{分开}，而不是使它们更近一些。
-紧排^^{kerns}的这一设计与一些计算化排版系统是不同的。
+^{紧排}的这一设计与一些计算化排版系统是不同的。
 
 %A kern is similar to
 %\minref{glue}, except that (a)~a kern can neither stretch nor shrink,
@@ -338,15 +381,21 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %end of a line or a page, it discards the kern.
 %If you want to get the effect of a kern that never disappears,
 %use ^|\hglue| or ^|\vglue|.
-紧排与\minref{粘连}相似，不同的是 (a)~紧排不能被伸展或收缩；(b)~如果紧排后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在紧排处断行或分页。如果 \TeX\ 发现紧排位于一行或一页的结尾，该紧排将会被忽略。如果你希望得到不会消失的紧排的效果，使用 ^|\hglue| 或 ^|\vglue|。
+紧排与\minref{粘连}相似，不同的是 (a)~紧排不能被伸展或收缩；
+(b)~如果紧排后紧接粘连，并且不是数学公式的一部分时，\TeX\ 不能在紧排处断行或分页。
+如果 \TeX\ 发现紧排位于一行或一页的结尾，该紧排将会被忽略。
+如果你希望得到不会消失的紧排的效果，使用 ^|\hglue| 或 ^|\vglue|。
 
 %You can use |\kern| in math mode, but you can't use |mu| units
 %\seeconcept{mathematical unit}
 %for \<dimen>.  If you want |mu| units, use |\mkern|
 %(\xref\mkern) instead.
-你可以在数学模式中使用 |\kern|，但你不能使用 |mu| 作为 \<dimen> 的单位\seeconcept{数学单位}。如果你希望使用 |mu| 作为单位，可以使用 |\mkern| （\xref\mkern）代替之。
-^^{line breaks//kerns at}
-^^{page breaks//kerns at}
+%^^{line breaks//kerns at}
+%^^{page breaks//kerns at}
+你可以在数学模式中使用 |\kern|，但你不能使用 |mu| 作为 \<dimen> 的单位\seeconcept{数学单位}。
+如果你希望使用 |mu| 作为单位，可以使用 |\mkern| （\xref\mkern ）代替之。
+^^{断行//断行处的紧排}
+^^{分页//分页处的紧排}
 
 \example
 \centerline{$\Downarrow$}\kern 3pt % 竖直的紧排
@@ -367,6 +416,19 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \endexample
 \enddesc
 
+%\begindesc
+%\makecolumns 4/2:
+%\cts hfil {}
+%\cts hfill {}
+%\cts vfil {}
+%\cts vfill {}
+%\explain
+%\bix^^{glue//infinitely stretchable}
+%These commands produce infinitely stretchable horizontal
+%and vertical glue that
+%overwhelms any finite stretch that may be present.
+%|\hfil| and |\hfill| produce horizontal glue, while
+%|\vfil| and |\vfill| produce vertical glue.
 \begindesc
 \makecolumns 4/2:
 \cts hfil {}
@@ -374,12 +436,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \cts vfil {}
 \cts vfill {}
 \explain
-\bix^^{glue//infinitely stretchable}
-%These commands produce infinitely stretchable horizontal
-%and vertical glue that
-%overwhelms any finite stretch that may be present.
-%|\hfil| and |\hfill| produce horizontal glue, while
-%|\vfil| and |\vfill| produce vertical glue.
+\bix^^{粘连//可无限伸展的粘连}
 这些命令产生可无限伸展的水平或竖直的粘连，它们将取代任何存在的有限伸展。|\hfil| 和 |\hfill| 产生水平的粘连，而 |\vfil| 和 |\vfill| 产生竖直的粘连。
 
 %|\hfill| is infinitely larger than |\hfil|.
@@ -428,7 +485,9 @@ Hop \smallskip skip \medskip and \bigskip jump.
    \hbox{上}\vfil\hbox{中}\vfill\hbox{下}}}
 \endexample
 
-\eix^^{glue//infinitely stretchable}
+%\eix^^{glue//infinitely stretchable}
+%\enddesc
+\eix^^{粘连//可无限伸展的粘连}
 \enddesc
 
 \begindesc
@@ -467,11 +526,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \endexample
 \enddesc
 
-\begindesc
-\cts hfilneg {}
-\cts vfilneg {}
-\explain
-^^{glue//negative}
+%\begindesc
+%\cts hfilneg {}
+%\cts vfilneg {}
+%\explain
+%^^{glue//negative}
 %These commands cancel the effect of a preceding |\hfil|
 %or |\vfil|. While |\hfil| and |\vfil|
 %produce infinitely stretchable positive \minref{glue}, |\hfilneg|
@@ -481,6 +540,11 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %The main use of |\hfilneg| and |\vfilneg|
 %is to counteract the effect of an |\hfil| or |\vfil|
 %inserted by a \minref{macro}.
+\begindesc
+\cts hfilneg {}
+\cts vfilneg {}
+\explain
+^^{粘连//负粘连}
 这些命令可以消除其前接的 |\hfil| 或 |\vfil| 产生的效果。当 |\hfil| 和 |\vfil| 产生正的无限可伸展的粘连时，|\hfilneg| 和 |\vfilneg| 产生负的无限可伸展粘连。（因此，$n$ |\hfilneg| 消除 $n$ ^|\hfil| 产生的效果，对于 |\vfilneg| 也是相似的。）|\hfilneg| 和 |\vfilneg| 主要的用途是抵消由\minref{宏} 引入的 |\hfil| 或 |\vfil| 产生的效果。
 
 %|\hfilneg| and |\vfilneg| have
@@ -511,12 +575,18 @@ Hop \smallskip skip \medskip and \bigskip jump.
    \vfilneg \hbox to 2pc{\hfil 3}}
 \endexample\enddesc
 
-{\emergencystretch=2em
+%{\emergencystretch=2em
+%\see |\hbadness| and |\vbadness| (\xref \vbadness),
+%|\hfuzz| and |\vfuzz| (\xref \vfuzz),
+%\conceptcit{leaders}.\par}
+%\eix^^{space//producing}
+%\eix^^{horizontal space}
+%\eix^^{vertical space}
 \see |\hbadness| 和 |\vbadness|（\xref \vbadness ），
-|\hfuzz| 和 |\vfuzz|（\xref \vfuzz ），\conceptcit{指引线}。\par}
-\eix^^{space//producing}
-\eix^^{horizontal space}
-\eix^^{vertical space}
+|\hfuzz| 和 |\vfuzz|（\xref \vfuzz ），及\conceptcit{指引线}。
+\eix^^{间隔//产生间隔}
+\eix^^{水平间隔}
+\eix^^{竖直间隔}
 
 %==========================================================================
 %\section {Manipulating boxes}
@@ -526,9 +596,12 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %\subsection {Constructing hboxes and vboxes}
 \subsection {构造 hbox 和 vbox}
 
+%\begindesc
+%\bix^^{box commands}
+%^^{hboxes//constructing with \b\tt\\hbox\e}
 \begindesc
-\bix^^{box commands}
-^^{hboxes//constructing with \b\tt\\hbox\e}
+\bix^^{盒子命令}
+^^{水平盒子//用 \b\tt\\hbox\e 构造}
 %
 \cts hbox {\rqbraces{\<horizontal mode material>}}
 \aux\cts hbox {{\bt to} \<dimen> \rqbraces{\<horizontal mode material>}}
@@ -566,7 +639,7 @@ hbox 的宽度取决于 |\hbox| 的参数：
 %The ^|\hfil| command (\xref\hfil) is useful for filling out an
 %hbox with empty space when the material in the box isn't as wide as
 %the width of the box.
-当盒子中内容的宽度没有盒子宽，需要使用空白间隔来填充 hbox 时，^|\hfil| 命令（\xref\hfil）是非常有用的。
+当盒子中内容的宽度没有盒子宽，需要使用空白间隔来填充 hbox 时，^|\hfil| 命令（\xref\hfil ）是非常有用的。
 \example
 \hbox{ugly suburban sprawl}
 \hbox to 2in{ugly \hfil suburban \hfil sprawl}
@@ -584,6 +657,21 @@ hbox 的宽度取决于 |\hbox| 的参数：
 \endexample
 \enddesc
 
+%\begindesc
+%\cts vtop {\<vertical mode material>}
+%\aux\cts vtop {{\bt to} \<dimen> \rqbraces{\<vertical mode material>}}
+%\aux\cts vtop {{\bt spread} \<dimen> \rqbraces{\<vertical mode material>}}
+%\cts vbox {\rqbraces{\<vertical mode material>}}
+%\aux\cts vbox {{\bt to} \<dimen> \rqbraces{\<vertical mode material>}}
+%\aux\cts vbox {{\bt spread} \<dimen> \rqbraces{\<vertical mode material>}}
+%\explain
+%^^{hbox//constructing with \b\tt\\hbox\e}
+%These commands
+%produce a \minref{vbox} (vertical \minref{box})
+%containing \<vertical mode material>.
+%The braces around \<vertical mode material> define a group.
+%\TeX\ is in internal vertical mode when it's assembling the box.
+%\TeX\ won't change the size of the box once it's been produced.
 \begindesc
 \cts vtop {\<vertical mode material>}
 \aux\cts vtop {{\bt to} \<dimen> \rqbraces{\<vertical mode material>}}
@@ -592,13 +680,7 @@ hbox 的宽度取决于 |\hbox| 的参数：
 \aux\cts vbox {{\bt to} \<dimen> \rqbraces{\<vertical mode material>}}
 \aux\cts vbox {{\bt spread} \<dimen> \rqbraces{\<vertical mode material>}}
 \explain
-^^{hbox//constructing with \b\tt\\hbox\e}
-%These commands
-%produce a \minref{vbox} (vertical \minref{box})
-%containing \<vertical mode material>.
-%The braces around \<vertical mode material> define a group.
-%\TeX\ is in internal vertical mode when it's assembling the box.
-%\TeX\ won't change the size of the box once it's been produced.
+^^{水平盒子//用 \b\tt\\hbox\e 构造}
 这些命令产生一个 \minref{vbox}（竖直\minref{盒子}）以容纳 \<vertical mode material>。
 \<vertical mode material> 两侧的大括号定义一个编组。
 当 \TeX\ 组装盒子时它处于内部竖直模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
@@ -704,7 +786,7 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %with empty space when the material in the box isn't as tall as
 %the vertical extent of the box.
 当盒子中内容的高度没有盒子竖直伸展高，
-需要使用空白间隔来填充 vbox ^^|\vfil//filling a vbox|时，
+需要使用空白间隔来填充 vbox ^^|\vfil//填充竖直盒子|时，
 ^|\vfil| 命令（\xref\vfil ）是非常有用的。
 \example
 \hbox{\hsize = 10pc \raggedright\parindent = 1em
@@ -839,20 +921,29 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %\subsection {Setting and retrieving the contents of boxes}
 \subsection {设置和获取盒子的内容}
 
-\begindesc
-\bix^^{box registers}
-%
-\cts setbox {\<register>\thinspace{\bt =}\thinspace\<box>}
-\cts box {\<register>}
-\explain
-^^{assignments//of boxes}
+%\begindesc
+%\bix^^{box registers}
+%%
+%\cts setbox {\<register>\thinspace{\bt =}\thinspace\<box>}
+%\cts box {\<register>}
+%\explain
+%^^{assignments//of boxes}
 %These commands respectively set and retrieve the contents
 %of the box register
 %whose number is \<register>.
 %Note that you set a box register a little differently than
 %you set the other kinds of registers: you use
 %|\setbox|$\,n$~|=| rather than |\box|$\,n$~|=|.
-这些命令分别设置和获取编号为 \<register> 的盒子寄存器的内容。需要注意，设置盒子寄存器与设置其它寄存器有细微的差别：你应该使用 |\setbox|$\,n$~|=|，而不是 |\box|$\,n$~|=|。
+\begindesc
+\bix^^{盒子寄存器}
+%
+\cts setbox {\<register>\thinspace{\bt =}\thinspace\<box>}
+\cts box {\<register>}
+\explain
+^^{赋值//给盒子赋值}
+这些命令分别设置和获取编号为 \<register> 的盒子寄存器的内容。
+需要注意，设置盒子寄存器与设置其它寄存器有细微的差别：
+你应该使用 |\setbox|$\,n$~|=|，而不是 |\box|$\,n$~|=|。
 
 %\emph{Retrieving the contents of a box register
 %with these commands has the side effect of emptying it,
@@ -876,17 +967,23 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \endexample
 \enddesc
 
-\begindesc
-\cts copy {\<register>}
-\explain
-^^{boxes//copying}%\minrefs{box}
-\minrefs{盒子}
+%\begindesc
+%\cts copy {\<register>}
+%\explain
+%^^{boxes//copying}%\minrefs{box}
+%\minrefs{盒子}
 %This command
 %produces a copy of box register \<register>.
 %This command is useful when you want to retrieve the contents of a box
 %register but don't want to destroy the contents.
 %(Retrieving the register contents with ^|\box| makes the register void.)
-这个命令可以产生盒子寄存器 \<register> 的一个拷贝。当你希望获取一个盒子的内容，但又不希望破坏其中的内容时是有用的。（使用 ^|\box| 获取寄取器内容会使寄存器失效。）
+\begindesc
+\cts copy {\<register>}
+\explain
+^^{盒子//复制盒子}%\minrefs{box}
+\minrefs{盒子}
+这个命令可以产生盒子寄存器 \<register> 的一个拷贝。当你希望获取一个盒子的内容，
+但又不希望破坏其中的内容时是有用的。（使用 ^|\box| 获取寄取器内容会使寄存器失效。）
 \example
 \setbox0 = \hbox{美好}
 祝你拥有 \copy0 \box0 \box0 的一天！
@@ -899,11 +996,11 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \endexample
 \enddesc
 
-\begindesc
-\cts unhbox {\<register>}
-\cts unvbox {\<register>}
-^^{boxes//extracting contents of}
-\explain
+%\begindesc
+%\cts unhbox {\<register>}
+%\cts unvbox {\<register>}
+%^^{boxes//extracting contents of}
+%\explain
 %These commands produce the list contained in box register \<register> and make
 %that box register void.
 %|\unhbox| applies to box registers containing
@@ -912,7 +1009,15 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %(see below)
 %when you don't care about what's in the box register after you've used it,
 %so as not to exhaust \TeX's memory by filling it with obsolete boxes.
-这些命令可以给出盒子寄存器 \<register> 容纳的列表，并且使盒子寄存器失效。|\unhbox| 适用于包含 hbox 的盒子寄存器，而 |\unvbox| 适用于包含 vbox 的盒子寄存器。当你不在乎你使用之后的盒子寄存器中的内容，你应该优先使用这些命令而不是 |\unhcopy| 和 |\unvcopy|，这样可以不致于用废弃的盒子来消耗 \TeX\ 的内存。
+\begindesc
+\cts unhbox {\<register>}
+\cts unvbox {\<register>}
+^^{盒子//提取盒子的内容}
+\explain
+这些命令可以给出盒子寄存器 \<register> 容纳的列表，并且使盒子寄存器失效。
+|\unhbox| 适用于包含 hbox 的盒子寄存器，而 |\unvbox| 适用于包含 vbox 的盒子寄存器。
+当你不在乎你使用之后的盒子寄存器中的内容，你应该优先使用这些命令而不是 |\unhcopy| 和 |\unvcopy|，
+这样可以不致于用废弃的盒子来消耗 \TeX\ 的内存。
 \example
 \setbox0=\hbox{素甲鱼深深地叹息着，用一只手背抹着眼泪。}
 \setbox1=\hbox{他想说话，可是有好一阵子泣不成声。}
@@ -935,18 +1040,26 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \endexample
 \enddesc
 
+%\begindesc
+%\cts unhcopy {\<register>}
+%\cts unvcopy {\<register>}
+%^^{boxes//extracting contents of}
+%^^{boxes//copying }%\minrefs{box}
+%\minrefs{盒子}
+%\explain
 \begindesc
 \cts unhcopy {\<register>}
 \cts unvcopy {\<register>}
-^^{boxes//extracting contents of}
-^^{boxes//copying }%\minrefs{box}
+^^{盒子//提取盒子的内容}
+^^{盒子//复制盒子}%\minrefs{box}
 \minrefs{盒子}
 \explain
 %These commands produce the list contained in box register \<register> and
 %leave the contents of the register undisturbed.
 %|\unhcopy| applies to box registers containing hboxes
 %and |\unvcopy| applies to box registers containing vboxes.
-这些命令可以给出盒子寄存器 \<register> 容纳的列表，并且保持寄存器的内容不被改变。|\unhcopy| 适用于包含 hbox 的盒子寄存器，而 |\unvcopy| 适用于包含 vbox 的盒子寄存器。
+这些命令可以给出盒子寄存器 \<register> 容纳的列表，并且保持寄存器的内容不被改变。
+|\unhcopy| 适用于包含 hbox 的盒子寄存器，而 |\unvcopy| 适用于包含 vbox 的盒子寄存器。
 \example
 \setbox0=\hbox{素甲鱼深深地叹息着，用一只手背抹着眼泪。}
 \setbox1=\hbox{他想说话，可是有好一阵子泣不成声。}
@@ -969,24 +1082,34 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \endexample
 \enddesc
 
-\see |\wd|, |\dp|, |\ht| (\xref\ht).
-\eix^^{box registers}
+%\see |\wd|, |\dp|, |\ht| (\xref\ht).
+%\eix^^{box registers}
+\see |\wd|, |\dp|, |\ht|（\xref\ht ）。
+\eix^^{盒子寄存器}
 
 %==========================================================================
 %\subsection {Shifting boxes}
 \subsection {移动盒子}
 
-\begindesc
-\cts moveleft {\<dimen> \<box>}
-\cts moveright {\<dimen> \<box>}
-\bix^^{boxes//shifting}
-%\minrefs{box}
-\minrefs{盒子}
-\explain
+%\begindesc
+%\cts moveleft {\<dimen> \<box>}
+%\cts moveright {\<dimen> \<box>}
+%\bix^^{boxes//shifting}
+%%\minrefs{box}
+%\minrefs{盒子}
+%\explain
 %These commands move \<box> left or right by \<dimen> (which can be
 %negative). You can only apply |\moveleft| and |\moveright| to a box
 %that's in a \minref{vertical list}.
-这些命令将 \<box> 向左或右移动 \<dimen>（这个数值可以是负的）。你只能对存在于\minref{竖直列表} 中的盒子使用 |\moveleft| 和 |\moveright|。
+\begindesc
+\cts moveleft {\<dimen> \<box>}
+\cts moveright {\<dimen> \<box>}
+\bix^^{盒子//移动盒子}
+%\minrefs{box}
+\minrefs{盒子}
+\explain
+这些命令将 \<box> 向左或右移动 \<dimen>（这个数值可以是负的）。
+你只能对存在于\minref{竖直列表} 中的盒子使用 |\moveleft| 和 |\moveright|。
 \example
 \vbox{\vbox{Phoebe}\vbox{walked}%
 \moveleft 20pt\vbox{a}\moveright 20pt\vbox{crooked}%
@@ -1020,27 +1143,36 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
                 \raise 6pt \hbox{沮丧}吗？
 \endexample
 
-\eix^^{boxes//shifting}
+\eix^^{盒子//移动盒子}
 \enddesc
 
 %==========================================================================
 %\subsection {Dimensions of box registers}
 \subsection {盒子寄存器的尺寸}
 
-\begindesc
-\bix^^{box registers}
-\bix^^{dimensions//of box registers}
-\cts ht {\<register>\param{dimen}}
-\cts dp {\<register>\param{dimen}}
-\cts wd {\<register>\param{dimen}}
-\explain
+%\begindesc
+%\bix^^{box registers}
+%\bix^^{dimensions//of box registers}
+%\cts ht {\<register>\param{dimen}}
+%\cts dp {\<register>\param{dimen}}
+%\cts wd {\<register>\param{dimen}}
+%\explain
 %These parameters refer to the ^{height}, ^{depth}, and ^{width}
 %respectively of \minref{box} \minref{register} \<register>.
 %You can use them to find out the dimensions of a box.
 %You can also change the dimensions of a box, but it's a tricky business;
 %if you want to be adventurous you can
 %learn all about it from \knuth{pages~388--389}.
-这些参数分别表示\minref{盒子}\minref{寄存器} \<register> 的^{高度}、^{深度}和^{宽度}。你可以使用这些命令获得一个盒子的尺寸。你也可以改变一个盒子的尺寸，但这是一个需要技巧的事情；如果你希望成为冒险者，你可以从 \knuth{pages~388--389} 中获得全部的技巧。
+\begindesc
+\bix^^{盒子寄存器}
+\bix^^{尺寸//盒子寄存器的尺寸}
+\cts ht {\<register>\param{dimen}}
+\cts dp {\<register>\param{dimen}}
+\cts wd {\<register>\param{dimen}}
+\explain
+这些参数分别表示\minref{盒子}\minref{寄存器} \<register> 的^{高度}、^{深度}和^{宽度}。
+你可以使用这些命令获得一个盒子的尺寸。你也可以改变一个盒子的尺寸，但这是一个需要技巧的事情；
+如果你希望成为冒险者，你可以从 \knuth{pages~388--389} 中获得全部的技巧。
 \example
 \setbox0 = \vtop{\hbox{一个}\hbox{米黄色的}\hbox{兔子}}%
 那个盒子的宽度是 \the\wd0，高度是 \the\ht0，
@@ -1053,9 +1185,13 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 \setbox0 = \vtop{\hbox{一个}\hbox{米黄色的}\hbox{兔子}}%
 那个盒子的宽度是 \the\wd0，高度是 \the\ht0，
 深度是 \the\dp0。
+%\endexample
+%\eix^^{box registers}
+%\eix^^{dimensions//of box registers}
+%\enddesc
 \endexample
-\eix^^{box registers}
-\eix^^{dimensions//of box registers}
+\eix^^{盒子}
+\eix^^{尺寸//盒子寄存器的尺寸}
 \enddesc
 
 %==========================================================================
@@ -1066,9 +1202,9 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %\margin{This subsection is a merger of two previous subsections.
 %The commands have also been reordered.}
 \margin{这一小节是前两个小节的联合体。相应的命令也被重新排序。}
-\bix^^{struts}
-\cts strut {}
-\explain
+%\bix^^{struts}
+%\cts strut {}
+%\explain
 %This command produces a box whose width is zero
 %and whose height (|8.5pt|) and depth (|3.5pt|)
 %are those of a more or less typical line of type in |cmr10|,
@@ -1082,6 +1218,9 @@ vbox 的高度取决于 |\vtop| 或 |\vbox| 的参数。对于 |\vbox|，\TeX\ �
 %in the line.  The strut will force the height and depth of the line
 %to be larger, but it won't print anything or consume any horizontal
 %space.
+\bix^^{支架}
+\cts strut {}
+\explain
 这个命令产生一个宽度为零的盒子，
 盒子的高度 (|8.5pt|) 和深度 (|3.5pt|) 与用 \plainTeX\ 的默认字体 |cmr10| 排出的典型的一行文字是一致的。
 当你使用 |\offinter!-lineskip| ^^|\offinterlineskip| 或类似的命令关闭 \TeX\ 的行间粘连，
@@ -1149,20 +1288,26 @@ $$\displaylines{
 \sqrt{\epsilon} + \sqrt{\xi} \quad{\rm versus}\quad
 \sqrt{\epsilon\mathstrut} + \sqrt{\xi\mathstrut}\cr}$$
 \endexample
-\eix^^{struts}
+\eix^^{支架}
 \enddesc
 
-\begindesc
-\cts phantom {\<argument>}
-\explain
-\bix^^{boxes//phantom}
-\bix^^{phantoms}
+%\begindesc
+%\cts phantom {\<argument>}
+%\explain
+%\bix^^{boxes//phantom}
+%\bix^^{phantoms}
 %This command produces an empty \minref{box}
 %having the same size and placement
 %that \<argument> would have were it typeset.
 %One use of |\phantom| is for reserving space for a symbol that for some
 %reason needs to be drawn in by hand.
-这个命令产生一个空的\minref{盒子}，它具有与假定被排版出来的 \<argument> 一样的大小与位置。因为某种原因为一个需要手工绘出的符号保留一定的空间是 |\phantom| 的用途之一。
+\begindesc
+\cts phantom {\<argument>}
+\explain
+\bix^^{盒子//幻影盒子}
+\bix^^{幻影}
+这个命令产生一个空的\minref{盒子}，它具有与假定被排版出来的 \<argument> 一样的大小与位置。
+因为某种原因为一个需要手工绘出的符号保留一定的空间是 |\phantom| 的用途之一。
 \example
 $1\phantom{9}2$
 |
@@ -1221,15 +1366,22 @@ $${\smash{r_m \brace r_n}\vphantom{r}} \Longrightarrow r$$
 \kern 4pt
 $${\smash{r_m \brace r_n}\vphantom{r}} \Longrightarrow r$$
 \endexample
-\eix^^{boxes//phantom}
-\eix^^{phantoms}
+%\eix^^{boxes//phantom}
+%\eix^^{phantoms}
+%\enddesc
+\eix^^{盒子//幻影盒子}
+\eix^^{幻影}
 \enddesc
 
+%\begindesc
+%^^{boxes//empty}
+%\cts null {}
+%\explain
+%This command produces an empty \minref{hbox}.
 \begindesc
-^^{boxes//empty}
+^^{盒子//空盒子}
 \cts null {}
 \explain
-%This command produces an empty \minref{hbox}.
 这个命令产生一个空的 \minref{hbox}。
 \example
 \setbox0 = \null
@@ -1250,15 +1402,20 @@ $${\smash{r_m \brace r_n}\vphantom{r}} \Longrightarrow r$$
 %\subsection {Parameters pertaining to malformed boxes}
 \subsection {有关畸形盒子的参数}
 
-\begindesc
-\bix^^{boxes//overfull}
-\bix^^{boxes//underfull}
-\cts overfullrule {\param{dimen}}
-\explain
+%\begindesc
+%\bix^^{boxes//overfull}
+%\bix^^{boxes//underfull}
+%\cts overfullrule {\param{dimen}}
+%\explain
 %This parameter specifies the width of the rule
 %that \TeX\ appends to an overfull \minref{hbox}.
 %\PlainTeX\ sets it to |5pt|.
-这个参数设定 \TeX\ 附加在一个过满的 \minref{hbox} 后的标线的宽度。\PlainTeX\ 将其设为 |5pt|。
+\begindesc
+\bix^^{盒子//过满盒子}
+\bix^^{盒子//未满盒子}
+\cts overfullrule {\param{dimen}}
+\explain
+这个参数设定 \TeX\ 附加在过满\minref{水平盒子}后的标线的宽度。\PlainTeX\ 将其设为 |5pt|。
 \enddesc
 
 \begindesc
@@ -1308,7 +1465,8 @@ Underfull \hbox (badness 5091) detected at line 4
 %(either horizontal or vertical) that \TeX\ has most recently produced.
 %If the box was overfull, |\badness| will be $1000000$; in all other cases
 %it will be between $0$ and $10000$.
-该命令给出 \TeX\ 刚刚产生的（水平的或竖直的）\minref{盒子}的恶劣状态的数值。如果盒子是过满的，|\badness| 将是 $1000000$；在所有其它情况下，它将在 $0$ 至 $10000$ 之间。
+该命令给出 \TeX\ 刚刚产生的（水平的或竖直的）\minref{盒子}的恶劣状态的数值。
+如果盒子是过满的，|\badness| 将是 $1000000$；在所有其它情况下，它将在 $0$ 至 $10000$ 之间。
 \enddesc
 
 \begindesc
@@ -1320,7 +1478,8 @@ Underfull \hbox (badness 5091) detected at line 4
 %overfull. ^^{boxes//overfull}
 %|\hfuzz| applies to hboxes and |\vfuzz| applies to vboxes.
 %\PlainTeX\ sets both parameters to |0.1pt|.
-这些参数设置在 \TeX\ 认为一个盒子过满之前，一个\minref{盒子} 能够超出其本身大小的量。^^{boxes//overfull}|\hfuzz| 适用于 hbox，而 |\vfuzz| 适用于 vbox。\PlainTeX\ 将两个参数均设为 |0.1pt|。
+这些参数设置在 \TeX\ 认为一个盒子过满之前，一个\minref{盒子} 能够超出其本身大小的量。
+^^{盒子//过满盒子}|\hfuzz| 适用于水平盒子，而 |\vfuzz| 适用于竖直盒子。\PlainTeX\ 将两个参数均设为 |0.1pt|。
 \example
 \hfuzz = .5in
 \hbox to 2in{This box is longer than two inches.}
@@ -1333,23 +1492,34 @@ Underfull \hbox (badness 5091) detected at line 4
 \doruler{\8\8\8}3{in}
 \endexample
 
-\eix^^{boxes//overfull}
-\eix^^{boxes//underfull}
-\eix^^{box commands}
+%\eix^^{boxes//overfull}
+%\eix^^{boxes//underfull}
+%\eix^^{box commands}
+%\enddesc
+\eix^^{盒子//过满盒子}
+\eix^^{盒子//未满盒子}
+\eix^^{盒子命令}
 \enddesc
 
-\see |\tolerance| \ctsref{\tolerance}.
+%\see |\tolerance| \ctsref{\tolerance}.
+\see |\tolerance| \ctsref{\tolerance}。
+
 %==========================================================================
 %\section {Retrieving the last item from a list}
 \section {从列表中获取最后的项目}
 
-\begindesc
-^^{boxes//last box in a list}
-^^{kerns//last kern in a list}
-^^{penalties//last penalty in a list}
-^^{glue//last glue item in a list}
+%\begindesc
+%^^{boxes//last box in a list}
+%^^{kerns//last kern in a list}
+%^^{penalties//last penalty in a list}
+%^^{glue//last glue item in a list}
 %\margin{This section has been moved in its entirety from the chapter
 %(`Commands for general operations')}
+\begindesc
+^^{盒子//列表中最后一个盒子}
+^^{紧排//列表中最后一个紧排}
+^^{惩罚//列表中最后一个惩罚项}
+^^{粘连//列表中最后一个粘连}
 \margin{这一节整个儿地从（“常规操作命令”）一章中移过来的。}
 \cts lastkern {}
 \cts lastskip {}
@@ -1423,10 +1593,14 @@ one \a\a\hskip 2\lastkern three\par
 %\section {Rules and leaders}
 \section {标线与指引线}
 
+%\begindesc
+%\bix^^{rules}
+%\bix^^{horizontal rules}
+%\bix^^{vertical rules}
 \begindesc
-\bix^^{rules}
-\bix^^{horizontal rules}
-\bix^^{vertical rules}
+\bix^^{标线}
+\bix^^{水平标线}
+\bix^^{竖直标线}
 %
 \cts hrule {}
 \aux\cts hrule {\bt height \<dimen> width \<dimen> depth \<dimen>}
@@ -1474,10 +1648,12 @@ one \a\a\hskip 2\lastkern three\par
 %from left to right and separates vertical items in a sequence, while
 %a vertical rule runs up and down and
 %separates horizontal items in a sequence.
-\TeX\ 以内在的竖直项目处理水平标线，而以内在的水平项目处理竖直标线。因此，水平标线只有\minref{竖直模式}下是有效的，而竖直标线只在\minref{水平模式}下是有效的。
-%^^{horizontal mode//rules in}
-%^^{vertical mode//rules in}
-如果觉得意外，可以直观化地观测。水平标线从左向右移动，并且将竖直的项目有序地分开，而竖直标线从上到下，将水平项目有序地分开。
+\TeX\ 以内在的竖直项目处理水平标线，而以内在的水平项目处理竖直标线。
+因此，水平标线只有\minref{竖直模式}下是有效的，而竖直标线只在\minref{水平模式}下是有效的。
+^^{水平模式//水平模式中的标线}
+^^{竖直模式//竖直模式中的标线}
+如果觉得意外，可以直观化地观测。水平标线从左向右移动，并且将竖直的项目有序地分开，
+而竖直标线从上到下，将水平项目有序地分开。
 
 \example
 \hrule\smallskip
@@ -1522,17 +1698,21 @@ one \a\a\hskip 2\lastkern three\par
    {\vrule height 13pt depth 7pt} x)}
 \endexample
 
-\eix^^{rules}
-\eix^^{horizontal rules}
-\eix^^{vertical rules}
+%\eix^^{rules}
+%\eix^^{horizontal rules}
+%\eix^^{vertical rules}
+%\enddesc
+\eix^^{标线}
+\eix^^{水平标线}
+\eix^^{竖直标线}
 \enddesc
 
-\begindesc
-\bix^^{leaders}
-\easy\cts leaders {\<box or rule> \<skip command>}
-\cts cleaders {\<box or rule> \<skip command>}
-\cts xleaders {\<box or rule> \<skip command>}
-\explain
+%\begindesc
+%\bix^^{leaders}
+%\easy\cts leaders {\<box or rule> \<skip command>}
+%\cts cleaders {\<box or rule> \<skip command>}
+%\cts xleaders {\<box or rule> \<skip command>}
+%\explain
 %These commands produce \minref{leaders}, i.e., they fill a
 %horizontal or vertical space with
 %copies of a pattern \seeconcept{leaders}.
@@ -1546,6 +1726,12 @@ one \a\a\hskip 2\lastkern three\par
 %contains a row of leaders and \TeX\ must be in a horizontal mode;
 %if \<skip command> is a vertical skip, the window
 %contains a column of leaders and \TeX\ must be in a vertical mode.
+\begindesc
+\bix^^{指引线}
+\easy\cts leaders {\<box or rule> \<skip command>}
+\cts cleaders {\<box or rule> \<skip command>}
+\cts xleaders {\<box or rule> \<skip command>}
+\explain
 这些命令用于产生\minref{指引线}，
 也就是用某一个模式\seeconcept{指引线}的复本填充水平或竖直的间隔。
 \<box> 或 \<rule> 确定一个指引体，即模式的单个复本，
@@ -1622,18 +1808,24 @@ one \a\a\hskip 2\lastkern three\par
 }\hrule
 \endexample\enddesc
 
-\begindesc
-\cts dotfill {}
-\cts hrulefill {}
-\explain
-^^{fill}
+%\begindesc
+%\cts dotfill {}
+%\cts hrulefill {}
+%\explain
+%^^{fill}
 %These commands respectively fill the enclosing horizontal space with
 %a row of dots on the baseline and with
 %a horizontal line on the baseline.
 %It's usually a good idea to leave a space between
 %|\dotfill| or |\hrulefill|
 %and any text that precedes or follows it (see the example below).
-这些命令分别采用一行位于基线上的点和水平线填充封闭的水平空间。通常，在 |\dotfill| 或 |\hrulefill| 与任何其之前或之后的文字之间留一个空格是一个好的主意（参见下面的例子）。
+\begindesc
+\cts dotfill {}
+\cts hrulefill {}
+\explain
+^^{填充}
+这些命令分别采用一行位于基线上的点和水平线填充封闭的水平空间。
+通常，在 |\dotfill| 或 |\hrulefill| 与任何其之前或之后的文字之间留一个空格是一个好的主意（参见下面的例子）。
 \example
 \hbox to 3in{开始 {\dotfill} 结束}
 \hbox to 3in{瑞典语 {\hrulefill} 芬兰语}
@@ -1643,13 +1835,18 @@ one \a\a\hskip 2\lastkern three\par
 \hbox to 3in{瑞典语 {\hrulefill} 芬兰语}
 \endexample\enddesc
 
+%\begindesc
+%\cts leftarrowfill {}
+%\cts rightarrowfill {}
+%\explain
+%^^{fill}
+%These commands fill the enclosing horizontal space with
+%left-pointing or right-pointing ^{arrows}.
 \begindesc
 \cts leftarrowfill {}
 \cts rightarrowfill {}
 \explain
-^^{fill}
-%These commands fill the enclosing horizontal space with
-%left-pointing or right-pointing ^{arrows}.
+^^{填充}
 这些命令用向左或向右的^{箭头}来填充封闭的水平空间。
 \example
 \hbox to 3in{\vrule \rightarrowfill \ 3 in
@@ -1661,7 +1858,9 @@ one \a\a\hskip 2\lastkern three\par
         \leftarrowfill\vrule}
 \endexample
 
-\eix^^{leaders}
+%\eix^^{leaders}
+%\enddesc
+\eix^^{指引线}
 \enddesc
 
 %==========================================================================
@@ -1672,9 +1871,18 @@ one \a\a\hskip 2\lastkern three\par
 %\subsection {Tabbing alignments}
 \subsection {制表阵列}
 
+%\begindesc
+%\bix^^{tabbing alignments}
+%\bix^^{alignments//commands for}
+%%
+%\ctspecial + {{\bt \<text>\thinspace\&\thinspace\<text>%
+%   \thinspace\& $\cdots$ \\cr}}
+%\ctsxrdef{@plus}
+%\cts tabalign {}
+%\explain
 \begindesc
-\bix^^{tabbing alignments}
-\bix^^{alignments//commands for}
+\bix^^{制表阵列}
+\bix^^{阵列//用于阵列的命令}
 %
 \ctspecial + {{\bt \<text>\thinspace\&\thinspace\<text>%
    \thinspace\& $\cdots$ \\cr}}
@@ -1724,7 +1932,9 @@ one \a\a\hskip 2\lastkern three\par
 %\<number> equal parts.  \TeX\ takes the length of a line to be
 %|\hsize|, as usual.  You can make the alignment narrower by decreasing
 %|\hsize|.
-这个命令的第一种形式为制表\minref{阵列}定义一系列制表符的停止位置。它告诉 \TeX\ 设置制表符停止位置以便将每一行分成 \<number> 等份。\TeX\ 仍将行的长度设为 |\hsize|。你可以通过减小 |\hsize| 来使得阵列更加紧密。
+这个命令的第一种形式为制表\minref{阵列}定义一系列制表符^^{制表符}的停止位置。
+它告诉 \TeX\ 设置制表符停止位置以便将每一行分成 \<number> 等份。
+\TeX\ 仍将行的长度设为 |\hsize|。你可以通过减小 |\hsize| 来使得阵列更加紧密。
 %\margin{paragraph ``The tab settings $\ldots$'' moved to below.}
 \margin{``制表符设定 $\ldots$''一段被移到下面了。}
 \example
@@ -1788,8 +1998,9 @@ one \a\a\hskip 2\lastkern three\par
 \enddesc
 
 %\see |\cr|, |\endline|, |\crcr| (\xref \endline).
-\see |\cr|、|\endline|、|\crcr|（\xref \endline）。
-\eix^^{tabbing alignments}
+%\eix^^{tabbing alignments}
+\see |\cr|、|\endline|、|\crcr|（\xref \endline ）。
+\eix^^{制表阵列}
 
 %==========================================================================
 %\subsection {General alignments}
@@ -1820,16 +2031,21 @@ one \a\a\hskip 2\lastkern three\par
 %which describes the layout of the rows that follow, consists of a
 %sequence of column templates, separated by `|&|' and ended
 %by |\cr|.
-阵列由^{导言}和随后的需要排列的文字构成。导言描述随后行的版式，由一系列列的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
-\bix^^{template}
-\bix^^{entry (column or row)}
+阵列由^{导言}和随后的需要排列的文字构成。导言描述随后行的版式，
+由一系列列的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
+%\bix^^{template}
+%\bix^^{entry (column or row)}
 %Each row consists of a sequence of column
 %entries, also separated by `|&|' and ended by |\cr|. Within
 %a template, `|#|' indicates where \TeX\ should insert the
 %corresponding text of a column entry.
 %In contrast, |\settabs| uses a fixed implicit template of `|#|',
 %i.e., it just inserts the text as is.
-每一行由一系列列的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。在模板中，`|#|' 表示 \TeX\ 应该在一个列条目中插入相应文字的位置。与之相反，|\settabs| 使用 `|#|' 的固定隐式模板，即它只插入文字本身。
+\bix^^{模板}
+\bix^^{条目（在行或列中）}
+每一行由一系列列的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。
+在模板中，`|#|' 表示 \TeX\ 应该在一个列条目中插入相应文字的位置。
+与之相反，|\settabs| 使用 `|#|' 的固定隐式模板，即它只插入文字本身。
 
 %\TeX\ typesets each column entry in restricted horizontal mode,
 %i.e., as the contents of an \minref{hbox},
@@ -1884,7 +2100,8 @@ one \a\a\hskip 2\lastkern three\par
 %of row entries.
 %\TeX\ adjusts the heights of the row entries to accommodate the tallest one
 %in each row.
-这一命令产生由一系列列组成的竖直的\minref{阵列}，每一列又包括了一系列的行。\TeX\ 调节行的高度以容纳每一列中最高的那一个条目。
+这一命令产生由一系列列组成的竖直的\minref{阵列}，每一列又包括了一系列的行。
+\TeX\ 调节行的高度以容纳每一列中最高的那一个条目。
 
 %A vertical alignment
 %can only appear when \TeX\ is in a horizontal \minref{mode}.
@@ -1904,13 +2121,16 @@ one \a\a\hskip 2\lastkern three\par
 %consists of a
 %sequence of row templates, separated by `|&|' and ended
 %by |\cr|.
-阵列由^{导言}和随后的需要排列的文字构成。导言描述随后列的版式，由一系列行的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
-\bix^^{template}
+阵列由^{导言}和随后的需要排列的文字构成。导言描述随后列的版式，
+由一系列行的模板构成，列之间由 `|&|' 分隔，用 |\cr| 作为结束标志。
+%\bix^^{template}
 %Each column consists of a sequence of ^{row}
 %entries, also separated by `|&|' and ended by |\cr|. Within
 %a template, `|#|' indicates where \TeX\ should insert the
 %corresponding text of a row entry.
-每一列由一系列行的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。在模板中，`|#|' 表示 \TeX\ 应该在一个行条目中插入相应文字的位置。
+\bix^^{模板}
+每一列由一系列行的条目构成，也由 `|&|' 分隔，用 |\cr| 作为结束标志。
+在模板中，`|#|' 表示 \TeX\ 应该在一个行条目中插入相应文字的位置。
 
 %\TeX\ typesets each row entry in internal vertical
 %mode, i.e., as the contents of a \minref{vbox},
@@ -1926,15 +2146,22 @@ one \a\a\hskip 2\lastkern three\par
 %its lines have the
 %|\leftskip| and |\rightskip| (\xref\leftskip) \minref{glue}
 %appended to~them.
-\TeX\ 在内部竖直模式中对每一行条目进行排版，即像 \minref{vbox} 的内容一样，并且隐式地将它封闭在一个编组中。它总是将 vbox 的深度设为零。随后，列中的任何文字或其它水平模式内容将 \TeX\ 带回通常的水平模式。（这只是在内部竖直模式下 \TeX 行为常见准则的一个应用。）常见的段落参数适用于这种情形：行条目具有 |\parindent|（\xref\parindent）的起始缩进，而且它的每一行都附加了 |\leftskip| 和 |\rightskip|（\xref\leftskip）\minref{粘连}。
+\TeX\ 在内部竖直模式中对每一行条目进行排版，即像\minref{竖直盒子}的内容一样，
+并且隐式地将它封闭在一个编组中。它总是将 vbox 的深度设为零。
+随后，列中的任何文字或其它水平模式内容将 \TeX\ 带回通常的水平模式。%
+（这只是在内部竖直模式下 \TeX 行为常见准则的一个应用。）常见的段落参数适用于这种情形：
+行条目具有 |\parindent|（\xref\parindent ）的起始缩进，
+而且它的每一行都附加了 |\leftskip| 和 |\rightskip|（\xref\leftskip ）\minref{粘连}。
 
 %Note in particular that a row entry containing text has
 %a width of |\hsize| (\xref\hsize).  Unless you reset
 %|\hsize| to the row width that you want, you're likely to
 %encounter overfull \minref{hbox}es, or find that
 %the first column takes up the width of the entire page, or both.
-尤其需要注意的是，列条目包含的文字具有 |\hsize|（\xref\hsize）的宽度。除非你重新设置 |\hsize| 到你希望得到的行宽，否则你总能遇到过满的 \minref{hbox} 的情况，或者发现第一列占据了整页的宽度，或者两种情况都会出现。
-\eix^^{entry (column or row)}
+尤其需要注意的是，列条目包含的文字具有 |\hsize|（\xref\hsize ）的宽度。
+除非你重新设置 |\hsize| 到你希望得到的行宽，否则你总能遇到过满\minref{水平盒子}的情况，
+或者发现第一列占据了整页的宽度，或者两种情况都会出现。
+\eix^^{条目（在行或列中）}
 
 %Normally, you need to include a \minref{strut}
 %^^{struts//in vertical alignments}
@@ -1942,7 +2169,7 @@ one \a\a\hskip 2\lastkern three\par
 %template so that the rows don't come out crooked as a result
 %of the varying heights of the entries in the alignment.  You
 %can produce a strut with the |\strut| command.
-正常情况下，你需要在每个模板中包括\minref{支架}^^{struts//in vertical alignments}，
+正常情况下，你需要在每个模板中包括\minref{支架}^^{支架//在竖直阵列中}，
 以便行不会由于阵列中条目高度的变化而变得弯曲。你可以使用 |\strut| 获得支架。
 
 %The |to| form of this command instructs \TeX\
@@ -2151,7 +2378,9 @@ one \a\a\hskip 2\lastkern three\par
    rarebit&tartar\cr}}
 \endexample
 
-\eix^^{template}
+%\eix^^{template}
+%\enddesc
+\eix^^{模板}
 \enddesc
 
 \begindesc
@@ -2344,11 +2573,17 @@ one \a\a\hskip 2\lastkern three\par
    $3$&三&第三\cr}
 \endexample
 
-\eix^^{alignments//commands for}
+%\eix^^{alignments//commands for}
+%\enddesc
+\eix^^{阵列//用于阵列的命令}
 \enddesc
 
 \enddescriptions
 
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter
 \byebye
