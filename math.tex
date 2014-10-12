@@ -4,23 +4,75 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+%\chapter {Commands \linebreak for composing \linebreak math formulas}
 \chapter {数学公式命令}
 
-\bix^^{math}
+%\bix^^{math}
+%\chapterdef{math}
+\bix^^{数学}
 \chapterdef{math}
 
+%This section covers commands for constructing math formulas.
+%For an explanation of the conventions used in this section,
+%see \headcit{Descriptions of the commands}{cmddesc}.
 这一章包括了排印数学公式所需要的命令。
 在\headcit{命令描述}{cmddesc}这一节中给出了这章的惯例。
 
 \begindescriptions
 %==========================================================================
+%\section {Simple parts of formulas}
 \section {简单公式排版}
 
 %==========================================================================
+%\subsection {Greek letters}
 \subsection {希腊字母}
 
+%\begindesc
+%\bix^^{Greek letters}
+%\dothreecolumns 40
+%\easy\ctsdisplay alpha {}
+%\ctsdisplay beta {}
+%\ctsdisplay chi {}
+%\ctsdisplay delta {}
+%\ctsdisplay Delta {}
+%\ctsdisplay epsilon {}
+%\ctsdisplay varepsilon {}
+%\ctsdisplay eta {}
+%\ctsdisplay gamma {}
+%\ctsdisplay Gamma {}
+%\ctsdisplay iota {}
+%\ctsdisplay kappa {}
+%\ctsdisplay lambda {}
+%\ctsdisplay Lambda {}
+%\ctsdisplay mu {}
+%\ctsdisplay nu {}
+%\ctsdisplay omega {}
+%\ctsdisplay Omega {}
+%\ctsdisplay phi {}
+%\ctsdisplay varphi {}
+%\ctsdisplay Phi {}
+%\ctsdisplay pi {}
+%\ctsdisplay varpi {}
+%\ctsdisplay Pi {}
+%\ctsdisplay psi {}
+%\ctsdisplay Psi {}
+%\ctsdisplay rho {}
+%\ctsdisplay varrho {}
+%\ctsdisplay sigma {}
+%\ctsdisplay varsigma {}
+%\ctsdisplay Sigma {}
+%\ctsdisplay tau {}
+%\ctsdisplay theta {}
+%\ctsdisplay vartheta {}
+%\ctsdisplay Theta {}
+%\ctsdisplay upsilon {}
+%\ctsdisplay Upsilon {}
+%\ctsdisplay xi {}
+%\ctsdisplay Xi {}
+%\ctsdisplay zeta {}
+%\egroup
 \begindesc
-\bix^^{Greek letters}
+\bix^^{希腊字母}
 \dothreecolumns 40
 \easy\ctsdisplay alpha {}
 \ctsdisplay beta {}
@@ -63,6 +115,17 @@
 \ctsdisplay Xi {}
 \ctsdisplay zeta {}
 \egroup
+%\explain
+%These commands produce Greek letters suitable for mathematics.
+%You can only use them
+%within a math formula, so if you need a Greek letter within ordinary
+%text you must enclose it in dollar signs (|$|).  \TeX\ does not have
+%commands for Greek letters that look like their roman
+%counterparts, since you can get them by using those roman
+%counterparts.  For example, you can get a lowercase
+%^{omicron} in a formula by writing the letter `o', i.e.,
+%`|{\rm o}|' or an uppercase ^{beta} (`B') by writing
+%`|{\rm B}|'.
 \explain
 输入这些命令可以排印出数学公式中的相应的希腊字母符号.
 你只能在数学模式中使用它们, 所以如在普通的文本中使用它们时,
@@ -70,18 +133,37 @@
 \TeX\ 并不包含这些数学中使用的希腊字母所对应的正体字符的命令,
 不过你可以很方便地得到这些字符.
 比如说, 你可以在公式中使用 `|{\rm o}|' 来得到一个小写的 ^{omicron} `o',
-又比如, 你可以使用 `|{\rm B}|' 得到大写的 beta (`B').
+又比如, 你可以使用 `|{\rm B}|' 得到大写的 ^{beta} (`B').
 
+%Don't confuse the following letters:
+%\ulist \compact
+%\li |\upsilon| (`$\upsilon$'), |{\rm v}| (`v'), and |\nu| (`$\nu$').
+%\li |\varsigma| (`$\varsigma$') and |\zeta| (`$\zeta$').
+%\endulist
 注意不要混淆下面的符号:
 \ulist \compact
 \li |\upsilon| (`$\upsilon$'), |{\rm v}| (`v'), 和 |\nu| (`$\nu$').
 \li |\varsigma| (`$\varsigma$') 和 |\zeta| (`$\zeta$').
 \endulist
 
+%You can get slanted capital Greek letters by using the math italic
+%(|\mit|) \minref{font}.
 使用数学的意大利\minref{字体} (|\mit|) 可以得到斜体的大写希腊字母.
 
+%\TeX\ treats Greek letters as ordinary symbols when it's figuring how
+%much space to put around them.
 在计算在希腊字母周围插入多少的空白时, \TeX\ 把它们当作正常的符号.
 
+%\example
+%If $\rho$ and $\theta$ are both positive, then $f(\theta)
+%-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
+%|
+%\produces
+%If $\rho$ and $\theta$ are both positive, then
+%$f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
+%\endexample
+%\eix^^{Greek letters}
+%\enddesc
 \example
 如果 $\rho$ 和 $\theta$ 都是正数, 那么 $f(\theta)
 -{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
@@ -90,7 +172,7 @@
 如果 $\rho$ 和 $\theta$ 都是正数, 那么
 $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \endexample
-\eix^^{Greek letters}
+\eix^^{希腊字母}
 \enddesc
 
 %==========================================================================
@@ -136,7 +218,7 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \ctsdisplay spadesuit {}
 \egroup
 \explain
-^^{music symbols} ^^{card suits}
+^^{音符} ^^{花色}
 这些命令可以排印各种符号.
 为了把它们和其它的符号, 比如关系符号等, 区分开来, 它们被称为普通数学符号.
 你只能在数学模式中使用这些符号, 所以如果在普通的文本中使用, 你必须使用美元符号 (|$|) 把它们括起来.
@@ -176,7 +258,7 @@ $${{x-a}\over{x+a}}\biggm\backslash{{y-b}\over{y+b}}$$
 \subsection {二元运算符}
 
 \begindesc
-\bix^^{operations}
+\bix^^{运算符}
 \xrdef{binops}
 \dothreecolumns 34
 \easy\ctsdisplay vee {}
@@ -254,7 +336,7 @@ Let $c = a\*b$. In the case that $c=0$ or $c=1$, let
 $\Delta$ be $(\hbox{the smallest $q$})\*(\hbox{the
 largest $q$})$ in the set of approximate $\tau$-values.
 
-\eix^^{operations}
+\eix^^{运算符}
 \endexample
 \enddesc
 
@@ -263,7 +345,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 
 \begindesc
 \xrdef {relations}
-\bix^^{relations}
+\bix^^{关系符}
 \dothreecolumns 39
 \easy\ctsdisplay asymp {}
 \ctsdisplay cong {}
@@ -360,7 +442,7 @@ $\triangle ABF \not\sim \triangle ACF$.
 我们可以得到 $AB \perp AC$,且
 $\triangle ABF \not\sim \triangle ACF$.
 
-\eix^^{relations}
+\eix^^{关系符}
 \endexample
 \enddesc
 
@@ -395,7 +477,7 @@ $\triangle ABF \not\sim \triangle ACF$.
 %symbols. You might expect the space that \TeX\ puts around openings and
 %closings to be symmetrical, but in fact it isn't.
 \begindesc
-\bix^^{delimiters}
+\bix^^{定界符}
 %
 \dothreecolumns 12
 \easy\ctsdisplay lbrace {}
@@ -467,7 +549,7 @@ $\triangle ABF \not\sim \triangle ACF$.
 %\eix^^{delimiters}
 %\endexample
 %\enddesc
-\eix^^{delimiters}
+\eix^^{定界符}
 \endexample
 \enddesc
 
@@ -522,7 +604,7 @@ $\triangle ABF \not\sim \triangle ACF$.
 %The vertical arrows in the list are also \minref{delimiter}s, so you can make
 %them larger by using |\big| et al.\ (\xref \big).
 \begindesc
-\bix^^{arrows}
+\bix^^{箭头}
 \xrdef{arrows}
 %
 {\symbolspace=24pt \makecolumns 34/2:
@@ -590,7 +672,7 @@ $$f(x)\mapsto f(y) \iff x \mapsto y$$
 %\eix^^{arrows}
 %\endexample
 %\enddesc
-\eix^^{arrows}
+\eix^^{箭头}
 \endexample
 \enddesc
 
@@ -648,7 +730,7 @@ $$f(x)\mapsto f(y) \iff x \mapsto y$$
 %i.e., directly above or directly below the function name.
 \begindesc
 \xrdef{namedfns}
-\bix^^{functions, names of}
+\bix^^{函数名称}
 {\symbolspace = 36pt
 \threecolumns 32
 \easy\ctsdisplay cos {}
@@ -753,7 +835,7 @@ $$x \equiv y+1 \pmod 2$$
 %\eix^^{functions, names of}
 %\endexample
 %\enddesc
-\eix^^{functions, names of}
+\eix^^{函数名称}
 \endexample
 \enddesc
 
@@ -791,7 +873,7 @@ $$x \equiv y+1 \pmod 2$$
 %\TeX\ puts different amounts of space
 %around different classes of math symbols.
 \begindesc
-\bix^^{operators//large}
+\bix^^{运算符//巨算符}
 \threecolumns 15
 \easy\ctsdoubledisplay bigcap {}
 \ctsdoubledisplay bigcup {}
@@ -920,7 +1002,7 @@ two elements.
 \explain
 在陈列样式中，\TeX\ 通常将极限放在巨算符的上边和下边。%
 （|\int| 算符是一个例外—— \TeX\ 总是将极限放在算符的后边。）%
-^^|\int//limits after|
+^^|\int//极限放在后面|
 此命令让 \TeX\ 将极限放在巨算符后边，而不是上边和下边。
 
 %If you specify more than one of |\limits|, |\nolimits|,
@@ -1001,7 +1083,7 @@ _{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
 %\eix^^{operators//large}
 %\endexample
 %\enddesc
-\eix^^{operators//large}
+\eix^^{运算符//巨算符}
 \endexample
 \enddesc
 
@@ -1029,7 +1111,7 @@ _{-\infty}^{+\infty} f(x)e^{-i\lambda x}\,dx$$
 %\endexample
 %\enddesc
 \begindesc
-\bix^^{punctuation in math formulas}
+\bix^^{数学公式中的标点}
 \cts cdotp {}
 \cts ldotp {}
 \explain
@@ -1075,7 +1157,7 @@ $f \colon t \quad f : t$
 %\eix^^{punctuation in math formulas}
 %\endexample
 %\enddesc
-\eix^^{punctuation in math formulas}
+\eix^^{数学公式中的标点}
 \endexample
 \enddesc
 
@@ -1107,8 +1189,8 @@ $f \colon t \quad f : t$
 %limits} ^^{upper limits}
 \begindesc
 \margin{Two groups of commands have been combined here.}
-\bix^^{superscripts}
-\bix^^{subscripts}
+\bix^^{上标}
+\bix^^{下标}
 \secondprinting{\vglue-12pt}
 \makecolumns 4/2:
 \easy\ctsact _ \xrdef{@underscore} {\<argument>}
@@ -1121,8 +1203,8 @@ $f \colon t \quad f : t$
 而第二栏的命令将 \<argument> 排版为上标。
 |\sb| 和 |\sp| 命令主要用于无法使用下划线和插入符的终端中，
 或者用在重新定义了 `|_|' or `|^|' 但需要其原始定义的情况下。
-这些命令也用于设定求和号和积分号的下极限和和极限。
-^^{lower limits} ^^{upper limits}
+这些命令也用于设定求和号和积分号的下极限和上极限。
+^^{下极限} ^^{上极限}
 
 %If a subscript or superscript is not a single \minref{token}, you need
 %to enclose it in a \minref{group}.  \TeX\ does not prioritize subscripts
@@ -1185,8 +1267,8 @@ $$\lim_{x \leftarrow 0} f(x)\qquad
 %\eix^^{subscripts}
 %\endexample
 %\enddesc
-\eix^^{superscripts}
-\eix^^{subscripts}
+\eix^^{上标}
+\eix^^{下标}
 \endexample
 \enddesc
 
@@ -1218,13 +1300,13 @@ $$\lim_{x \leftarrow 0} f(x)\qquad
 %\endexample
 %\enddesc
 \begindesc
-\bix^^{styles}
+\bix^^{样式}
 \cts textstyle {}
 \cts scriptstyle {}
 \cts scriptscriptstyle {}
 \cts displaystyle {}
 \explain
-^^{text style} ^^{script style} ^^{scriptscript style} ^^{display style}
+^^{文本样式} ^^{标号样式} ^^{小标号样式} ^^{陈列样式}
 这些命令覆盖 \TeX\ 排版公式时通常使用的\minref{样式}及其字体。
 如同类似 |\it| 的字体设置命令，它们在其所在编组结束前一直有效。
 当 \TeX\ 给你要排版的公式选用了不合适的样式时，你可以使用这些命令。
@@ -1298,7 +1380,7 @@ mathchoice.
 \begindesc
 \cts mathpalette {\<argument$_1$> \<argument$_2$>}
 \explain
-^^{math symbols}
+^^{数学符号}
 此命令提供一种生成适用于四种\minref{样式}的数学结构的简便方法。%
 \footnote{译注：该宏定义为
 |\def\mathpalette#1#2{\mathchoice{#1\displaystyle{#2}}|\break
@@ -1328,7 +1410,7 @@ mathchoice.
 
 %\eix^^{styles}
 %\enddesc
-\eix^^{styles}
+\eix^^{样式}
 \enddesc
 
 %==========================================================================
@@ -1365,22 +1447,22 @@ mathchoice.
 %The other accents are usefully applied only to a single character.
 \begindesc
 \xrdef{mathaccent}
-^^{accents}
-^^{math//accents}
+^^{重音}
+^^{数学//数学重音}
 %
-\easy\ctsx acute {^{acute accent} as in $\acute x$}
-\ctsx b {^{bar-under accent} as in $\b x$}
-\ctsx bar {^{bar accent} as in $\bar x$}
-\ctsx breve {^{breve accent} as in $\breve x$}
-\ctsx check {^{check accent} as in $\check x$}
-\ctsx ddot {^{double dot accent} as in $\ddot x$}
-\ctsx dot {^{dot accent} as in $\dot x$}
-\ctsx grave {^{grave accent} as in $\grave x$}
-\ctsx hat {^{hat accent} as in $\hat x$}
-\ctsx widehat {^{wide hat accent} as in $\widehat {x+y}$}
-\ctsx tilde {^{tilde accent} as in $\tilde x$}
-\ctsx widetilde {^{wide tilde accent} as in $\widetilde {z+a}$}
-\ctsx vec {^{vector accent} as in $\vec x$}
+\easy\ctsx acute {^{锐音符}，如同 $\acute x$}
+\ctsx b {^{下线符}，如同 $\b x$}
+\ctsx bar {^{上线符}，如同 $\bar x$}
+\ctsx breve {^{短音符}，如同 $\breve x$}
+\ctsx check {^{抑扬符}，如同 $\check x$}
+\ctsx ddot {^{双点符}，如同 $\ddot x$}
+\ctsx dot {^{上点符}，如同 $\dot x$}
+\ctsx grave {^{钝音符}，如同 $\grave x$}
+\ctsx hat {^{尖角符}，如同 $\hat x$}
+\ctsx widehat {^{宽尖角符}，如同 $\widehat {x+y}$}
+\ctsx tilde {^{波浪符}，如同 $\tilde x$}
+\ctsx widetilde {^{宽波浪符}，如同 $\widetilde {z+a}$}
+\ctsx vec {^{向量符}，如同 $\vec x$}
 \explain
 这些命令在数学公式上排印重音标记。你通常需要在它们后面留下空格。
 宽重音可以应用到多字符子公式中；\TeX\ 将把重音放在子公式的中间。
@@ -1450,8 +1532,8 @@ $\dot t^n \qquad \widetilde{v_1 + v_2}$
 %These commands stack one subformula on top of another one.  We will explain how
 %|\over| works, and then relate the other commands to it.
 \begindesc
-\bix^^{fractions}
-\bix^^{stacking subformulas}
+\bix^^{分式}
+\bix^^{堆叠子公式}
 \easy\cts over {}
 \cts atop {}
 \cts above {\<dimen>}
@@ -1481,7 +1563,7 @@ $\dot t^n \qquad \widetilde{v_1 + v_2}$
 %everything to its left and to its right until it comes to a boundary,
 %namely, the beginning or end of a group.
 |\over| 命令通常用于排印分式。
-^^{fractions//produced by \b\tt\\over\e}
+^^{分式//用 \b\tt\\over\e 生成}
 如果你按下面几种形式之一撰写：
 \csdisplay
 $$!fri\over!frii$$
@@ -1616,7 +1698,7 @@ $${m \overwithdelims () n}\qquad
 \begindesc
 \cts cases {}
 \explain
-^^{combinations, notation for}
+^^{组合数记法}
 此命令排印一个表示从多个情形中选择的数学形式。
 每种情形由两部分组成，两者以 `|&|' 分隔。
 \TeX\ 将第一部分视为数学公式，第二部分视为普通文本。
@@ -1738,7 +1820,7 @@ $$\displaylines{
 \begindesc%\secondprinting{\vglue-.5\baselineskip\vskip0pt}
 \cts buildrel {\<formula> {\bt \\over} \<relation>}
 \explain
-^^{relations//putting formulas above}
+^^{关系符//将公式放在其上}
 此命令将 \<formula> 所在的\minref{盒子}放在 \<relation> 上边。
 \TeX\ 处理间隔时将结果视为一个关系符\seeconcept{类}。
 \example
@@ -1751,8 +1833,8 @@ $\buildrel \rm def \over \equiv$
 %\eix^^{stacking subformulas}
 %\endexample
 %\enddesc
-\eix^^{fractions}
-\eix^^{stacking subformulas}
+\eix^^{分式}
+\eix^^{堆叠子公式}
 \endexample
 \enddesc
 
@@ -1772,7 +1854,7 @@ $\buildrel \rm def \over \equiv$
 %are on the baseline; for |\cdots|, the dots are centered with respect to
 %the axis (see the explanation of |\vcenter|, \xref\vcenter).
 \begindesc
-\bix^^{dots}
+\bix^^{圆点}
 \easy\cts ldots {}
 \cts cdots {}
 \explain
@@ -1861,7 +1943,7 @@ $$\pmatrix{0&\ldots&0\cr
 %\eix^^{dots}
 %\endexample
 %\enddesc
-\eix^^{dots}
+\eix^^{圆点}
 \endexample
 \enddesc
 
@@ -1890,7 +1972,7 @@ $$\pmatrix{0&\ldots&0\cr
 %\endexample
 %\enddesc
 \begindesc
-\bix^^{delimiters}
+\bix^^{定界符}
 %
 \cts lgroup {}
 \cts rgroup {}
@@ -2030,7 +2112,7 @@ combined explanation is now in `General operations'.}
 \cts delimiterfactor {\param{number}}
 \cts delimitershortfall {\param{number}}
 \explain
-^^{delimiters//height of}
+^^{定界符//定界符高度}
 这两个参数共同确定了\minref{定界符}高度与其中子公式的竖直尺寸的关系。
 |\delimiterfactor| 给出定界符高度相对子公式竖直尺寸的最小比例，
 而 |\delimitershortfall| 给出定界符高度相对子公式竖直尺寸的最大差距。
@@ -2063,7 +2145,7 @@ combined explanation is now in `General operations'.}
 %and |\backslash| (\xref\vert).
 %\eix^^{delimiters}
 \see |\delcode|（\xref\delcode )、|\vert|、|\Vert| 和 |\backslash|（\xref\vert ）。
-\eix^^{delimiters}
+\eix^^{定界符}
 
 %==========================================================================
 %\subsection {Matrices}
@@ -2251,7 +2333,7 @@ $\root \alpha \of {r \cos \theta}$
 \explain
 此命令排印用 \<number> 刻画其特性的根数符号。
 它使用的定界码表示法与 ^|\delcode| 命令（\xref\delcode ）的相同。
-^^{delimiter codes}
+^^{定界码}
 
 %\example
 %\def\sqrt{\radical "270370} % as in plain TeX
@@ -2337,7 +2419,7 @@ $$\cos^2 \theta + \sin^2 \theta = 1\leqno{(12)}$$
 %You can use the |\noalign| command (\xref \noalign) to change the amount
 %of space between two lines of a multiline display.
 \begindesc
-\bix^^{displays//multiline}
+\bix^^{陈列公式//多行陈列公式}
 \cts displaylines
    {{\bt \rqbraces{\<line>\ths\\cr$\ldots$\<line>\ths\\cr}}}
 \explain
@@ -2395,7 +2477,7 @@ $$\displaylines{
 \cts leqalignno {}
    {{\bt \rqbraces{\<line> \\cr $\ldots$ \<line> \\cr}}}
 \explain
-^^{equation numbers}
+^^{公式编号}
 这些命令排印一个多行陈列公式，其中某些行的对应部分竖直对齐。
 |\eqalignno| 和 |\leqalignno| 命令还允许你给某个或某些行添加方程编号。
 |\eqalignno| 将方程编号放在右侧，
@@ -2508,7 +2590,7 @@ $$\eqalignno{
 %\eix^^{displays//multiline}
 %\endexample
 %\enddesc
-\eix^^{displays//multiline}
+\eix^^{陈列公式//多行陈列公式}
 \endexample
 \enddesc
 
@@ -2542,7 +2624,7 @@ $$\eqalignno{
 %\endexample
 %\enddesc
 \begindesc
-^^{fonts}
+^^{字体}
 \xrdef{mathfonts}
 %
 \easy\ctsx cal {use calligraphic uppercase font}
@@ -2576,7 +2658,7 @@ ${\cal XYZ} \quad
 %\minref{math mode}.  Their principal use is in defining the
 %|\it|, |\bf|, |\sl|, and |\tt| commands so that they work in math mode.
 %\enddesc
-^^{type styles}
+^^{字体风格}
 \begindesc
 \ctsx itfam {family for italic type}
 \ctsx bffam {family for boldface type}
@@ -2605,7 +2687,7 @@ ${\cal XYZ} \quad
 \cts fam {\param{number}}
 \explain
 在\minref{数学模式}时，\TeX\ 通常用字符的\minref{数学码}指定的字体族排版该字符。
-^^{class}^^{family//given by \b\tt\\fam\e}
+^^{类}^^{族//用 \b\tt\\fam\e 给出}
 但是，如果 \TeX\ 在数学模式中遇到第 $7$ \minref{类}（变量）字符，
 它将用由 |\fam| 的值给出的字体\minref{族}排版该字符，
 只要 |\fam| 的值在 $0$ 和 $15$ 之间。
@@ -2657,9 +2739,9 @@ ${\cal XYZ} \quad
 \cts scriptfont {\<family>\param{fontname}}
 \cts scriptscriptfont {\<family>\param{fontname}}
 \explain
-^^{text style}
-^^{script style}
-^^{scriptscript style}
+^^{文本样式}
+^^{标号样式}
+^^{小标号样式}
 这三个参数分别选择 \TeX\ 排版指定\minref{族}的指定\minref{样式}时所用的字体。
 这些选择在\minref{数学模式}之外无任何效果。
 \example
@@ -2733,7 +2815,7 @@ ${\cal XYZ} \quad
 \cts Biggm {}
 \cts Biggr {}
 \explain
-^^{delimiters//enlarging}
+^^{定界符//增大定界符}
 这些命令让\minref{定界符}比它们的正常尺寸还大。
 这四栏中的命令生成依次增大的尺寸。|\big|、|\bigl|、|\bigr|
 和 |\bigm| 的区别在于增大的定界符所属的\minref{类}：
@@ -2803,7 +2885,7 @@ $$(x) \quad \bigl(x\bigr) \quad \Bigl(x\Bigr) \quad
 \cts downbracefill {}
 \cts upbracefill {}
 \explain
-这两个命令分别排印朝上和朝下的可伸展^{水平花括号}。^^{braces}
+这两个命令分别排印朝上和朝下的可伸展^{水平花括号}。^^{花括号}
 \TeX\ 将让花括号足够宽。
 这两个命令用于定义 ^|\overbrace| 和 ^|\underbrace|（\xref\overbrace ）。
 \example
@@ -2847,7 +2929,7 @@ $$\hbox to 1in{\downbracefill} \quad
 \cts bracevert {}
 \explain
 这些命令排印某些大定界符的一部分，
-^^{delimiters//parts of}
+^^{定界符//定界符的一部分}
 把它们也用作定界符。
 它们取自 ^|cmex10| 数学字体中的字符。
 \example
@@ -2891,10 +2973,10 @@ $$\cdots \Big\arrowvert \cdots \Big\Arrowvert \cdots
 %\endexample
 %\enddesc
 \begindesc
-\bix^^{accents//aligning}
+\bix^^{重音//对齐重音}
 \cts skew {\<number> \<argument$_1$> \<argument$_2$>}
 \explain
-此命令将重音 \<argument$_1$> 相对 \<argu\-ment$_2$> 
+此命令将重音 \<argument$_1$> 相对 \<argu\-ment$_2$>
 从它的正常位置往右移动 \<number> 个\minref{数学单位}。
 此命令常用于调整在其他重音之上的重音的位置。
 \example
@@ -2965,13 +3047,13 @@ $$\skew 2\bar{\bar z}\quad\skew 3\tilde{\tilde y}\quad
 \cts defaultskewchar {\param{number}}
 \explain
 在执行 ^|\font| 命令读取字体的度量文件时，
-^^{metrics file//default skew character in}
+^^{度量文件//其中的默认斜字符}
 \TeX\ 设定该字体的 ^|\skewchar| 等于 |\default!-skewchar|。
 如果 |\default!-skewchar| 的值不在 $0$--$255$ 的范围内，
 \TeX\ 默认就不设定 |\skewchar| 的值。
 \PlainTeX\ 设定 |\defaultskewchar| 等于 $-1$，一般不需要改动它。
 \margin{Misleading example deleted.}
-\eix^^{accents//aligning}
+\eix^^{重音//对齐重音}
 \enddesc
 
 %==========================================================================
@@ -3067,7 +3149,7 @@ combinations of $n$ things taken $k$ at a time}$$
 %\endexample
 %\enddesc
 \begindesc
-\bix^^{space//in math formulas}
+\bix^^{间隔//数学公式中的间隔}
 \ctspecial ! \ctsxrdef{@shriek}
 \ctspecial , \ctsxrdef{@comma}
 \ctspecial > \ctsxrdef{@greater}
@@ -3164,7 +3246,7 @@ $$\openup2\jot\vbox{\halign{$\hfil#\hfil$\cr x\cr y\cr}}$$
 \begindesc
 \cts mkern {\<mudimen>}
 \explain
-^^{kerns//in math formulas}
+^^{紧排//数学公式中的紧排}
 此命令生成一个宽度为 \<mudimen> 的\minref{紧排}，即空白间隔。
 该紧排用\minref{数学单位}表示，因此在不同样式中有不同的尺寸。
 除了使用数学单位外，此命令与水平模式的|\kern|（\xref\kern ）的表现类似。
@@ -3199,7 +3281,7 @@ $0\mkern13mu 0 \qquad {\scriptscriptstyle 0 \mkern13mu 0}$
 \cts mskip {\<mudimen$_1$> {\bt plus} \<mudimen$_2$> {\bt minus}
    \<mudimen$_3$>}
 \explain
-^^{glue}
+^^{粘连}
 此命令生成一个水平\minref{粘连}，它的自然宽度为 \<mu\-dimen$_1$>，
 伸长量为 \<mudimen$_2$>，收缩量为 \<mudimen$_3$>。
 该粘连用\minref{数学单位}表示，因此将随着样式的变化而变化。
@@ -3261,7 +3343,7 @@ $\ab^{\ab}$
 %\see |\kern| (\xref\kern), |\hskip| (\xref\hskip).
 %\eix^^{space//in math formulas}
 \see |\kern|（\xref\kern ）和 |\hskip|（\xref\hskip ）。
-\eix^^{space//in math formulas}
+\eix^^{间隔//数学公式中的间隔}
 
 %==========================================================================
 %\subsection {Spacing parameters for displays}
@@ -3282,7 +3364,7 @@ $\ab^{\ab}$
 %See \knuth{pages~188--189} for a more detailed explanation of this parameter.
 %\enddesc
 \begindesc
-\bix^^{displays//spacing parameters for}
+\bix^^{陈列公式//陈列公式的间隔参数}
 \cts displaywidth {\param{dimen}}
 \explain
 此参数指定 \TeX\ 对陈列公式所允许的最大宽度。
@@ -3423,7 +3505,7 @@ $\ab^{\ab}$
 
 %\eix^^{displays//spacing parameters for}
 %\enddesc
-\eix^^{displays//spacing parameters for}
+\eix^^{陈列公式//陈列公式的间隔参数}
 \enddesc
 
 
@@ -3458,7 +3540,7 @@ $\ab^{\ab}$
 \begindesc
 \cts nulldelimiterspace {\param{dimen}}
 \explain
-^^{delimiters//null, space for}
+^^{定界符//空定界符的间隔}
 此参数指定空\minref{定界符}生成的间隔的大小。
 \PlainTeX\ 设定 |\null!-delimiterspace| 等于 |1.2pt|。
 \enddesc
@@ -3581,7 +3663,7 @@ $\mathop{\rm minmax}\limits_{t \in A \cup B}\,t$
 \cts everymath {\param{token list}}
 \cts everydisplay {\param{token list}}
 \explain
-^^{displays//actions for every display}
+^^{陈列公式//作用到每个陈列公式}
 这两个命令分别指定 \TeX\ 在每个文内公式或陈列公式开头插入的\minref{记号}列。
 你可以利用 |\everymath| 或 |\everydisplay| 在每个数学公式开头作特殊处理。
 你务必清楚，若你需要同时处理两种公式，你必须\emph{同时}设定这两个参数。
@@ -3604,6 +3686,12 @@ $$4>3$$
 %\endchapter
 %\byebye
 \enddescriptions
-\eix^^{math}
+\eix^^{数学}
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
+
 \endchapter
 \byebye
