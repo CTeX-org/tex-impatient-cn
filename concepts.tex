@@ -51,7 +51,7 @@
 %undefined control sequence.
 \defterm{活动字符}（active character）是一个有定义的\refterm{字符}。
 比如一个活动字符可能表示着一个宏定义。
-^^{macros//named by active characters}
+^^{宏//由活动字符命名}
 你可以把活动字符理解为一种控制序列。
 当 \TeX\ 碰到了一个活动字符，它就执行这个字符所表示的定义。
 如果 \TeX\ 碰到的活动字符并没有表示一个定义，
@@ -75,7 +75,7 @@
 你必须先使用 ^|\catcode| 命令 \ctsref{\catcode} 来使这个字符活动，
 然后再使用类似 |\def|，|\let| 或者 |\chardef| 之类的命令指定这个字符的定义。
 定义活动字符和定义\refterm{控制序列}所使用的方法是相同的。
-^^{category codes//of active characters}
+^^{类别码//活动字符的类别码}
 如因你尝试先对字符指定定义后把它设置成活动的，
 \TeX\ 会报错说这是一个不明的控制序列。
 
@@ -111,7 +111,7 @@
 %alignment is organized as a sequence of columns.  We first describe
 %tabbing and horizontal alignments and then more briefly describe
 %vertical alignments.
-\bix^^{tables}
+\bix^^{表格}
 \defterm{阵列}（alignment）是一个把素材有序排印的结构，
 就如一张有行有列的表格。当你需要构造一个阵列时，
 你要 (a)~描述行和列的布局，并且 (b)~告诉 \TeX\ 各行或各列中的内容。
@@ -145,7 +145,7 @@
 \ctsref{\settabs} 确定 \TeX\ 如何将可用空白水平地分为多列。
 然后你就可以逐行地填充表格的各行。
 每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“单元”组成%
-^^{entry (column or row)}
+^^{单元（在行或列中）}
 \xrdef{@and}
 \ifoldeplain\ttidxref{&}\fi
 （单元是行和列的交叉部分），并以 ^|\cr| 结束。
@@ -422,7 +422,7 @@
 因为它让一行的各单元合适地排成一行，
 即让它们有共同的\refterm{基线}，并让基线间的距离保持一致。
 \eix\ctsidxref{cr}
-\eix^^{tables}
+\eix^^{表格}
 
 \endconcept
 
@@ -465,7 +465,7 @@
 在\knuth{第~46--47~页}
 \footnote{译注：或见该书中文翻译版第35--37页。}
 中介绍了 \TeX\ 将字符组合为记号的规则。
-^^{tokens//assembled from characters}
+^^{记号//将字符组合为记号}
 
 %\li Using its ``\pix^{gullet}'', {\TeX} expands any macros, conditionals, and
 %^^{macros//expanded in \TeX's stomach}
@@ -479,8 +479,8 @@
 %In other words, \TeX's gullet always expands the leftmost un\-ex\-panded
 %token that it has not yet sent to \TeX's stomach.
 \li 使用“\pix^{食道}”，{\TeX} 展开任何宏、条件句，
-^^{macros//expanded in \TeX's stomach}
-^^{tokens//passed to \TeX's stomach}
+^^{宏//在 \TeX\ 的胃展开}
+^^{记号//传给 \TeX\ 的胃}
 以及它找到的类似结构（见\knuth{第~212--216~页}
 \footnote{译注：或见该书中文翻译版第170--173页。}），
 并将得到的一系列\refterm{记号}传给 \TeX\ 的胃。
@@ -512,9 +512,9 @@
 按照命令的指示，
 \TeX\ 的胃从字符到页面逐步组装出越来越大的部件，
 并将生成的页面传给 \TeX\ 的肠道。
-^^{pages//assembled in \TeX's stomach}
+^^{页面//在 \TeX\ 的胃中组装}
 \TeX\ 的胃执行\refterm{断行}任务%
-^^{line breaking}
+^^{断行}
 ——即将每个段落分为若干行，
 以及\refterm{分页}任务%
 ——即将连续若干行和其他竖直模式素材分为多个页面。
@@ -526,7 +526,7 @@
 %^^{\dvifile//created by \TeX's intestines}
 \li 使用“\pix^{肠道}”，\TeX\ 将它的胃生成的页面转换为适合其他程序处理的形式，
 并将转换出的结果送到 \dvifile 。
-^^{\dvifile//created by \TeX's intestines}
+^^{\dvifile//由 \TeX\ 的肠道生成}
 
 \endulist
 
@@ -578,7 +578,7 @@
 %the command is supposed to do.
 %The command can either be a \refterm{primitive} command or a
 %\refterm{macro}.
-^^{commands//arguments of}
+^^{命令//命令的参量}
 命令的\defterm{参量}（argument）包含传递给\refterm{命令}的文本，
 它补全了该命令正常运行所需的信息。
 这里的命令可以是\refterm{原始命令}或者\refterm{宏}.
@@ -586,7 +586,7 @@
 %Each primitive command ^^{primitive//command}
 %has its own convention about the form of its
 %arguments.  For instance, the sequence of \refterm{tokens:token}:
-原始命令^^{primitive//command}的参量有各自规定的形式。
+原始命令^^{原始的//原始命令}的参量有各自规定的形式。
 例如，下面的一系列\refterm{记号}：
 
 %\csdisplay
@@ -633,9 +633,9 @@
 %The macro definition determines the number and nature of the macro parameters
 %and therefore the number and nature of the macro arguments.
 另一方面，所有宏都遵循相同的参量约定。
-^^{macros//arguments of}
+^^{宏//宏的参量}
 传递给宏的每个参量都对应宏定义中的一个\refterm{参数}。
-^^{parameters//and arguments}^^{macros//parameters of}
+^^{参数//与参量对应}^^{宏//宏的参数}
 宏的参数可以是“定界的”或是“非定界的”。
 在宏的定义中确定了宏参数的个数和类型，
 从而确定了宏参量的个数和类型。
@@ -656,8 +656,8 @@
 %and vice versa.
 定界参量和非定界参量的区别在于，
 \TeX\ 用不同方式确定该参量的结束位置。
-^^{delimited arguments}
-^^{undelimited arguments}
+^^{定界参量}
+^^{非定界参量}
 \ulist
 \li 定界参量由该参量开始处和作为该参量定界子的特定记号序列之间的所有记号组成，
 但不包含该定界子序列。其中的定界子是在宏的定义中规定的。
@@ -723,7 +723,7 @@
 Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 每个都有自己的编码，但只有前面 $128$ 个是标准编码。
 在 \ascii\ “编码表”，比如\knuth{第~367~页}里面，你可以找到这些编码的含义。
-编码在 $32$--$126$ 之间的字符为“可打印字符^^{printable characters}”，
+编码在 $32$--$126$ 之间的字符为“可打印字符^^{可打印字符}”，
 比如字母，数字和标点符号。
 其余字符为“^{控制字符}”，通常用于（在计算机工业中，而不是 \TeX\ 中）
 控制输入\slash 输出和数据交换设备。
@@ -748,7 +748,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 这些字符所在的位置也和 \ascii\ 中的一样。
 但有些字体，特别是数学字体，
 将 \ascii\ 可打印字符替换为与 \ascii\ 无关的字符。
-比如，计算机现代数学字体 ^^{Computer Modern fonts} |cmsy10|
+比如，计算机现代数学字体 ^^{计算机现代字体} |cmsy10|
 在 \ascii\ 数字 `8' 的位置上是数学符号 `{$\forall$}'。
 
 \endconcept
@@ -768,7 +768,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %or to a \refterm{control sequence}. Some examples of assignments are:
 \defterm{赋值}（assignment）是一种为 \TeX\ 的寄存器，
 内部\refterm{参数}，内部表格项，或者\refterm{控制序列}分配值的结构。
-^^{registers//assignment to}^^{parameters//assignments to}
+^^{寄存器//给寄存器赋值}^^{参数//给参数赋值}
 赋值的一些例子如下：
 
 \csdisplay
@@ -815,7 +815,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %make up the page deviate from their ideal values.  (Ordinarily, most of these
 %boxes are single lines of paragraphs.)
 文本行的\defterm{劣度}（badness）值测量该行的字间隔偏离它们的自然值多远，
-^^{interword spacing}
+^^{单词间距}
 其中自然值就是文本行所用\refterm{字体}中指定的值。
 偏离越大，劣度就越大。类似地，页面的劣度测量页面盒子的间隔偏离它们的理想值多远。%
 （一般地，这些盒子大多数是段落的文本行。）
@@ -834,7 +834,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %equal to $10000$.
 更准确地说，劣度测量这些间隔对应的\refterm{粘连}要伸缩多少才能正好填满文本行或页面。
 \TeX\ 让劣度近似等于，为组成所需尺寸的行或页，粘连必须伸缩的比例的立方的 $100$ 倍。
-^^{line breaks//badness for}^^{page breaks//badness for}
+^^{断行//断行的劣度}^^{分页//分页的劣度}
 例如，粘连伸长了给定伸长量的两倍得到的比例为 $2$ 而劣度为 $800$；
 粘连伸长了给定伸长量的一半得到的比例为 $.5$ 而劣度为 $13$。
 \TeX\ 将超过 $10000$ 的劣度视为等于 $10000$。
@@ -917,7 +917,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %you place them on the pad so that their baselines
 %agree with the light guidelines that are printed on the pad.
 盒子的\defterm{基线}（baseline）是一条想象中的横穿盒子的线。
-^^{boxes//baselines of}
+^^{盒子//盒子的基线}
 在将\refterm{水平列表}的盒子组装为更大的盒子时，
 \TeX\ 将列表中各盒子对齐，以让它们的基线重合。
 打个比方，想象你在标线本上写字，你所写的每个字母都有一条隐含基线。
@@ -974,15 +974,14 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 利用一些 \TeX\ \refterm{命令}，比如 ^|\hbox|\ctsref{\hbox}、
 ^|\vbox|\ctsref{\vbox}和 ^|\vtop|\ctsref{\vtop}，你可以显式构造盒子。
 ^|\hbox| 命令通过从左到右水平添加较小的盒子构造一个盒子；
-它对一个\refterm{水平列表}进行操作以生成一个\refterm{水平盒子}^^{hboxes}（horizontal box）。
-^^{horizontal lists}
+它对一个\refterm{水平列表}进行操作以生成一个\refterm{水平盒子}^^{水平盒子}（horizontal box）。
+^^{水平列表}
 ^|\vbox| 和 |\vtop| 命令通过从上到下竖直添加较小的盒子构造一个盒子；
-^^{vboxes}
-它们对一个\refterm{竖直列表}进行操作以生成一个\refterm{竖直盒子}^^{vboxes}（vertical box）。
-^^{vertical lists}
+它们对一个\refterm{竖直列表}进行操作以生成一个\refterm{竖直盒子}^^{竖直盒子}（vertical box）。
+^^{竖直列表}
 这些水平列表和竖直列表不仅可以包含较小的盒子，
 还可以包含其他几种实体，比如\refterm{粘连}和紧排。
-^^{kerns//as list items}
+^^{紧排//作为列表项目}
 
 %A box has \refterm{height}, \refterm{depth}, and \refterm{width},
 %^^{height} ^^{depth} ^^{width}
@@ -1011,7 +1010,7 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %      &\leftarrowfill { width }\rightarrowfill\cr
 %}}
 盒子有\refterm{高度}、\refterm{深度}和\refterm{宽度}，
-^^{height} ^^{depth} ^^{width}
+^^{高度} ^^{深度} ^^{宽度}
 如下所示
 \vdisplay{\offinterlineskip\sevenrm
    \halign{#&#&\kern3pt \hfil#\hfil\cr
@@ -1047,11 +1046,11 @@ Information Interchange）的缩写。总共有 $256$ 个 \ascii\ ^{字符}，
 %baseline. \bix^^{reference point}
 %The \minref{reference point}
 %of a box is the place where its baseline intersects its left edge.
-^^{baselines}
+^^{基线}
 \refterm{基线}（baseline）如同标线本上的浅色提示线。
 像 `g' 这样的字母盒子延伸到基线下边；而像 `h' 这样的字母盒子却不会。
 盒子的高度是盒子在基线上边的延伸距离，而它的深度是在基线下边的延伸距离。
-\bix^^{reference point}
+\bix^^{基准点}
 盒子的\minref{基准点}（reference point）是它的基线与左边缘的交点。
 
 %{\tighten
@@ -1160,7 +1159,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 中 \TeX\ 如何构建竖直盒子的详细信息。
 \eix^^|\vbox|
 \eix^^|\vtop|
-\eix^^{reference point}
+\eix^^{基准点}
 
 %You have quite a lot of freedom in constructing boxes.  The typeset
 %material in a box can extend beyond the boundaries of the box as it does
@@ -1182,7 +1181,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %\endconcept
 你可以把一个盒子保存在盒子\refterm{寄存器}中并在稍后取回它。
 在使用盒子寄存器之前，
-^^{box registers}
+^^{盒子寄存器}
 你应当用 ^|\newbox| 命令\ctsref{\@newbox}预留它并给它命名。
 请参阅\conceptcit{寄存器}中的关于盒子寄存器的更多信息。
 \endconcept
@@ -1205,7 +1204,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %category codes, but they become important when you are trying to achieve
 %special effects.
 字符的\defterm{类别码}（category code）决定它在 \TeX\ 中扮演的角色。
-^^{characters//category code of}
+^^{字符//字符的类别码}
 例如，\TeX\ 赋予某个角色给字母，另一个角色给空格符，诸如此类。
 \TeX\ 给读到的每个字符都附加一个代码。
 例如，\TeX\ 读到字母 `|r|' 时附加类别码 $11$（字母符）给它。
@@ -1310,50 +1309,50 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 \halign{\indent\hfil\strut#&\qquad#\hfil&\qquad#\hfil\cr
 \it 编码&\it 意义&\it 字符\cr
 \noalign{\vskip\tinyskipamount}
-0&转义符    & |\| ^^{escape character//category code of}
-   %{\recat!ttidxref[\//category code of]]
+0&转义符    & |\| ^^{转义符//转义符的类别码}
+   %{\recat!ttidxref[\//其类别码]]
    \cr
-1&编组开始符& |{| ^^{groups}
-   %{\recat!ttidxref[{//category code of]]
+1&编组开始符& |{| ^^{编组}
+   %{\recat!ttidxref[{//其类别码]]
    \cr
 2&编组结束符& |}|
-   %{\recat!ttidxref[}//category code of]]
+   %{\recat!ttidxref[}//其类别码]]
    \cr
-3&数学环境符& |$| ^^{math shift}
-   %{\recat!ttidxref[$//category code of]]
+3&数学环境符& |$| ^^{数学开关}
+   %{\recat!ttidxref[$//其类别码]]
    \cr
-4&阵列制表符& |&| ^^{tabs} ^^{alignments//tab character for}
-   \ifoldeplain\ttidxref{&//category code of}\fi \cr
+4&阵列制表符& |&| ^^{制表} ^^{阵列//阵列的制表符}
+   \ifoldeplain\ttidxref{&//其类别码}\fi \cr
 5&行结束符  & |^^M| \tequiv \ascii\ \asciichar{return}
-   ^^{end of line} \ifoldeplain\ttidxref{^^M//category code of}\fi\cr
+   ^^{行结束符} \ifoldeplain\ttidxref{^^M//其类别码}\fi\cr
 6&宏参数符  & |#|
-   ^^{macros//parameters of}
-   ^^{parameters//indicated by \b\tt\#\e}
-   \ifoldeplain\ttidxref{#//category code of}\fi \cr
-7&上标符    & |^| 和 |^^K| ^^{superscripts}
+   ^^{宏//宏的参数}
+   ^^{参数//用 \b\tt\#\e 指明}
+   \ifoldeplain\ttidxref{#//其类别码}\fi \cr
+7&上标符    & |^| 和 |^^K| ^^{上标}
    \ttidxref{^^K}
-   \ifoldeplain\ttidxref{^//category code of}\fi \cr
-8&下标符    & |_| 和 |^^A| ^^{subscripts}
+   \ifoldeplain\ttidxref{^//其类别码}\fi \cr
+8&下标符    & |_| 和 |^^A| ^^{下标}
    \ttidxref{^^A}
-   \ifoldeplain\ttidxref{_//category code of}\fi \cr
+   \ifoldeplain\ttidxref{_//其类别码}\fi \cr
 9&可忽略符  & |^^@| \tequiv \ascii\ \asciichar{null}
-  ^^{ignored characters} \indexchar ^^@ \cr
+  ^^{可忽略符} \indexchar ^^@ \cr
 10&空格符   & \visiblespace\ 和 |^^I| \tequiv \ascii\
   \asciichar{horizontal\ tab}
-  ^^{horizontal tab}
-  ^^{space characters//category code of} \indexchar ^^I
+  ^^{水平制表符}
+  ^^{空格符//其类别码} \indexchar ^^I
   %{\recat!ttidxref[ ]]
   \cr
-11&字母符   & |A| \dots |Z| 和 |a| \dots |z| ^^{letter}\cr
+11&字母符   & |A| \dots |Z| 和 |a| \dots |z| ^^{字母}\cr
 12&其他字符 &（不属于其他类别的字符）
-  ^^{other characters}\cr
+  ^^{其他字符}\cr
 13&活动字符 & |~| 和 |^^L| \tequiv\ascii\ \asciichar{form\ feed}
-   ^^{active characters} ^^{form feed} \indexchar ~ \indexchar ^^L \cr
-14&注释符   & |%| ^^{comments}
-   %{\recat!ttidxref[%//category code of]]
+   ^^{活动字符} ^^{换页符} \indexchar ~ \indexchar ^^L \cr
+14&注释符   & |%| ^^{注释}
+   %{\recat!ttidxref[%//其类别码]]
    \cr
 15&无效字符 & |^^?| \tequiv \ascii\ \asciichar{delete}
-  ^^{invalid character} \indexchar ^^? \cr
+  ^^{无效字符} \indexchar ^^? \cr
 }}
 \vskip\belowdisplayskip
 %k \vskip 0pt plus 2pt % to fix bad page break
@@ -1397,7 +1396,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %^^{active characters}
 类别为 $13$（活动字符）的字符单独作为控制序列。
 如果 \TeX\ 碰到一个未定义的活动字符，它将会报错。
-^^{active characters}
+^^{活动字符}
 
 %If \TeX\ encounters an ^{invalid character} (category $15$)
 %in your input, it will complain about it.
@@ -1521,7 +1520,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %sequences of spaces to a single space.  See \knuth{pages~46--48} for the
 %details of this filtering.
 在读取字符时，\TeX\ 给它附加一个\refterm{类别码}。
-^^{category codes//attached during input}
+^^{类别码//在读取时附加}
 类别码影响 \TeX\ 读取字符时对该字符的解释。
 在读取宏定义时，\TeX\ 判定（并记住）宏里面的字符的类别码。
 在用它的眼睛读取字符时\seeconcept{\anatomy}，\TeX\ 执行一些“过滤”，
@@ -1601,7 +1600,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %\refterm{number} between $0$ and $255$.  The commands `|h|',
 %|\char`h|, and |\char104| all have the same effect.  ($104$ is the
 %\ascii\ code for `h'.)
-类别码为 $11$（^{字母}）或 $12$（其他）^^{other characters}的输入字符，
+类别码为 $11$（^{字母}）或 $12$（其他）^^{其他字符}的输入字符，
 是一个生成对应输出字符的命令。
 另外，你也可以用 `|\char |$n$'\ctsref{\char}^^|\char| 让 \TeX\ 生成字符 $n$，
 其中$n$是介于$0$和$255$之间的\refterm{数}。
@@ -1625,7 +1624,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %   \mathopen{a}\mathord{+}\mathrel{(}\mathclose{b}\mathclose{-}
 %   \mathop{a}\mathopen{)}\mathord{=}\mathopen{a}$$
 \refterm{字符}所属的\defterm{类}（class）指明该字符在数学公式中的角色。
-字符的类记录在它的\refterm{数学码}中。^^{mathcodes//class encoded in}
+字符的类记录在它的\refterm{数学码}中。^^{数学码//数学码中的类}
 例如，等号 `|=|' 属于第 $3$ 类（关系符号）。
 \TeX\ 利用字符类的知识确定数学公式的各部分的间隔的大小。
 \margin{clarifying material added}
@@ -1663,7 +1662,7 @@ $$\strut a+(b-a)=a \qquad
 \defterm{命令}（command）指导 \TeX\ 执行某种动作。
 到达\TeX\ 的胃\seeconcept{\anatomy}的每个\refterm{记号}都作为一个命令，
 那些作为其他命令的参量（见下面）的记号除外。
-^^{tokens//as commands}
+^^{记号//作为命令}
 命令可以由\refterm{控制序列}，由\refterm{活动字符}，或者由普通字符产生。
 \TeX\ 将普通字符视为命令这事看来有些奇怪，但实际上它是这样做的：
 当 \TeX\ 看到一个普通字符时，它构造一个用当前字体排版该字符的\refterm{盒子}。
@@ -1790,7 +1789,7 @@ $$\strut a+(b-a)=a \qquad
 %own right.)
 \ulist
 \li \refterm{控制词}是由\refterm{转义符}紧跟一个或多个字母组成的控制序列。
-^^{control words}
+^^{控制词}
 控制词在 \TeX\ 碰到非字母符时结束。
 例如，当 \TeX\ 读取 `\hbox{|\hfill!visiblespace,!visiblespace!.the|}' 时，
 它看到六个\refterm{记号}：控制序列 `|\hfill|'、逗号、空格、`|t|'、`|h|'、`|e|'。
@@ -1811,7 +1810,7 @@ $$\strut a+(b-a)=a \qquad
 %sequences.
 \li \refterm{控制符}是由^{转义符}紧跟单个非字母符组成的控制序列%
 ——非字母符也可以是空格符或者行尾符。
-^^{control symbols}
+^^{控制符}
 控制符是自定界的，即 \TeX\ 无需读取后面的字符就知道它在哪里结束。
 控制符之后的字符永远不会被吸收掉。
 \endulist
@@ -1826,7 +1825,7 @@ $$\strut a+(b-a)=a \qquad
 %form of \TeX\ described in this book.
 \TeX\ 提供了许多预定义的控制序列。
 \refterm{原始的}控制序列内建于 \TeX\ 程序中，因此可以在各种 \TeX\ 形式中使用。
-^^{primitive//control sequence}
+^^{原始的//原始控制序列}
 其他预定义的控制序列由\refterm{\plainTeX}（即本书描述的 \TeX\ 形式）提供。
 
 %You can augment the predefined control sequences with ones of your own,
@@ -1854,7 +1853,7 @@ $$\strut a+(b-a)=a \qquad
 %\endconcept
 \defterm{控制符}（control symbol）是由\refterm{转义符}紧跟单个非字母符组成的%
 \refterm{控制序列}——非字母符也可以是空格符或者行尾符。
-^^{escape character}
+^^{转义符}
 \endconcept
 
 
@@ -1874,7 +1873,7 @@ $$\strut a+(b-a)=a \qquad
 \defterm{控制词}（control word）是由\refterm{转义符}紧跟一个或多个字母
 组成的\refterm{控制序列}。\footnote{其中“字母”的确切含义是指类别码为 $11$ 的字符。}
 \TeX\ 忽略控制词之后的空格符或行尾符，仅仅用它们表示控制词的结束。
-^^{escape character}
+^^{转义符}
 \endconcept
 
 
@@ -1919,7 +1918,7 @@ $$\strut a+(b-a)=a \qquad
 （见\xrefn{\overwithdelims}，\xrefn{\left}页）这些命令之一的参量。
 ^^|\overwithdelims|
 ^^|\atopwithdelims|
-^^|abovewithdelims|
+^^|\abovewithdelims|
 \margin{Footnote deleted}
 定界环境也包括在定界环境中使用参量的\refterm{宏}的任何\refterm{参量}。
 
@@ -2073,7 +2072,7 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 %``relation'' for |m|-commands, and ``ordinary symbol'' for |g|-commands,
 %e.g., |\Big|.
 定界符可以属于任何类。
-^^{class//of a delimiter}
+^^{类//定界符的类}
 对于用 |\bigl| 和 |\bigr| 等命令增加大小的定界符，它所属的类由该命令决定：
 |l|-命令属于“开符号”，|r|-命令属于“闭符号”，
 |m|-命令属于“关系符号”，|g|-命令比如 |\Big| 属于“普通符号”。
@@ -2102,7 +2101,7 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 你可以用两种不同方法得到一个定界符：
 \olist
 \li 通过用 ^|\delcode| 命令（\xref\delcode ）给一个字符赋予非负定界码（见下面），
-\bix^^{delimiter codes}
+\bix^^{定界码}
 你可以将这个字符变成定界符。
 这样，如果你在定界环境中使用这个字符，它就和定界符一样。\footnote{%
 在非定界环境中使用定界码非负的字符也是可以的。
@@ -2159,7 +2158,7 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 也有可能小号字符或大号字符，或两者都没指定（即定界码的对应部分为零）。
 如果只指定了一个字符，\TeX\ 使用那一个。如果两个字符都没指定，
 它就将定界符替换为宽度为 ^|\nulldelimiterspace| 间隔。
-\eix^^{delimiter codes}
+\eix^^{定界码}
 
 \endconcept
 
@@ -2182,9 +2181,9 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 %a similar measure known as the ``cost'' of a particular page break.
 %\endconcept
 \TeX\ 用\refterm{缺陷}（demerits）度量它分段为行时文本行的不良度\seeconcept{断行点}。
-^^{line breaks//demerits for}
+^^{断行//断行的缺陷}
 文本行的缺陷同时受该行的\refterm{劣度}和它带有的\refterm{惩罚}影响。
-^^{badness}
+^^{劣度}
 \TeX\ 的目标是合理地分配各行文本，以让段落的总缺陷最小，
 其中总缺陷由各行的缺陷加起来。
 参见 \knuth{第~97--98~页}
@@ -2201,7 +2200,7 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 %The \defterm{depth} of a \refterm{box} is the distance that the box extends
 %below its \refterm{baseline}.
 %\endconcept
-^^{boxes//depth of}
+^^{盒子//盒子的深度}
 盒子的\defterm{深度}（depth）是盒子在\refterm{基线}之下的距离。
 \endconcept
 
@@ -2242,16 +2241,16 @@ $\Biggl( \>\Biggr) \>\Biggl[ \>\Biggr]
 %\vskip\belowdisplayskip
 \xrdef{dimdefs}
 \nobreak\vskip\abovedisplayskip
-\halign{\indent\hfil\tt #\qquad&#\hfil\cr
-pt&^{point} (72.27 points = 1 inch)\cr
-pc&^{pica} (1 pica = 12 points)\cr
-bp&big point (72 big points = 1 inch)\cr
-in&^{inch}\cr
-cm&^{centimeter} (2.54 centimeters = 1 inch)\cr
-mm&^{millimeter} (10 millimeters = 1 centimeter)\cr
-dd&^{\didotpt} (1157 {\didotpt}s = 1238 points)\cr
-cc&^{cicero} (1 cicero = 12 {\didotpt}s)\cr
-sp&^{scaled point} (65536 scaled points = 1 point)\cr
+\halign{\indent\hfil\tt #\qquad&#\ \hfil&#\qquad\hfil&#\hfil\cr
+pt& point        & ^{点} & 72.27 points = 1 inch\cr
+pc& pica         & ^{派卡} &1 pica = 12 points\cr
+bp& big point    & ^{大点} & 72 big points = 1 inch\cr
+in& inch         & ^{英寸} &\cr
+cm& centimeter   & ^{厘米} & 2.54 centimeters = 1 inch\cr
+mm& millimeter   & ^{毫米}  & 10 millimeters = 1 centimeter\cr
+dd& \didotpt     & ^{迪多点}  & 1157 {\didotpt}s = 1238 points\cr
+cc& cicero       & ^{西塞罗} & 1 cicero = 12 {\didotpt}s\cr
+sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 }
 \vskip\belowdisplayskip
 
@@ -2282,10 +2281,10 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %but not required.  You'll find a precise definition of a
 %dimension on \knuth{page~270}.  Here are some examples of dimensions:
 尺寸可以用一个^{因子}，即乘数，后面加上度量单位来表示。
-^^{units of measure}
+^^{度量单位}
 因子可以是一个整\refterm{数}，或是一个带有小数点或小数逗号的\refterm{小数}。
 因子之前可以带有加号或减号，因此尺寸可正可负。
-^^{dimensions//negative}
+^^{尺寸//负尺寸}
 即使数值为零，度量单位也必须写上。数值和度量单位之间可以有也可以没有空格。
 在\knuth{第~270~页}
 \footnote{译注：或见该书中文翻译版第221页。}
@@ -2325,7 +2324,7 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %\endconcept
 \TeX\ 对文档中的所有尺寸都乘以一个\refterm{放大率}因子$f/1000$，
 其中 $f$ 是 ^|\mag| 参数的值。
-^^{magnification}
+^^{放大率}
 由于 |\mag| 的默认值为 $1000$，在一般情形下文档是照常排版的。
 你可以指定一个与放大率无关的最终文档尺寸，
 只要在度量单位前加上 `|true|'。
@@ -2422,13 +2421,13 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %but nothing prevents you from using different typefaces for the three
 %fonts as well or using the same font twice in a family.
 \defterm{族}（family）是用于\refterm{数学模式}的，由三个相关\refterm{字体}组成的集合。
-^^{fonts//families of}
+^^{字体//字体族}
 在数学模式之外，族没有任何作用。
 一个族的三个字体分别用于正常符号（\refterm{文本尺寸}），
 上标和下标（\refterm{标号尺寸}），以及次上标和次下标等（\refterm{小标号尺寸}）。
-^^{text size}
-^^{script size}
-^^{scriptscript size}
+^^{文本尺寸}
+^^{标号尺寸}
+^^{小标号尺寸}
 例如，数字 `|2|' 用这三个字体分别显示为 `$2$'、`$\scriptstyle 2$' 和
 `$\scriptscriptstyle 2$'（在 \plainTeX\ 中）。
 通常你会将一个族的三个字体设定为相同字型且不同点数，
@@ -2455,7 +2454,7 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 \TeX\ 提供多达十六个字体族，它们用 $0$--$15$ 编号。
 比如在\refterm{\plainTeX} 中，第 $0$ 族由用于文本尺寸的 $10$ 点罗马字体，
 用于标号尺寸的 $7$ 点罗马字体，以及用于小标号尺寸的 $5$ 点罗马字体组成。
-^^{\plainTeX//font families in}
+^^{\plainTeX//其中的字体族}
 \PlainTeX\ 还将第 $1$ 族定义为由数学意大利字体组成，
 并将第 $2$ 族和第 $3$ 族分别保留给^{特殊符号}和^{数学扩展符号}。
 \footnote{第 $2$ 族和第 $3$ 族的特殊之处在于，它们的字体度量文件必须包含数学间隔参数。}
@@ -2503,8 +2502,8 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %particular implementations of \TeX\ are free to change it.}
 \li “^{结果文件}”是包含 \TeX\ 运行结果的文件。
 \TeX\ 运行后产生两个结果文件：\dvifile 和日志文件。
-^^{\dvifile//as a result file}
-^^{log file//as a result file}
+^^{\dvifile//作为结果文件}
+^^{日志文件//作为结果文件}
 \dvifile 包含打印文档所需的信息，而日志文件包含运行记录，包括 \TeX\ 生成的任何错误信息。
 若主要输入文件的名称是 |screed.tex|，则 \dvifile 和日志文件的名称分别是
 |screed.dvi| 和 |screed.log|。\footnote{这是通常的约定，
@@ -2523,7 +2522,7 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %$0$ and $15$ to refer to the terminal,
 %so `|\read16|', say, reads the next line that you type at the terminal.
 \li 要用 ^|\read| 命令\ctsref{\read}读取一个文件，你需要将这个文件和一个输入流关联起来。
-^^{input streams//reading with \b\tt\\read\e}
+^^{输入流//用 \b\tt\\read\e 读取}
 你最多可以有 $16$ 个同时活动的输入流，它们以 $0$--$15$ 编号。
 |\read| 命令读取一行并把它作为指定\refterm{控制序列}的值，
 因此用 |\read| 读取和用 ^|\input| 读取是大不相同的（后者读入整个文件）。
@@ -2547,8 +2546,8 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %
 %\endolist
 \li 要用 |\write| 命令\ctsref \write 写入一个文件，你需要将这个文件和一个输出流关联起来。
-^^|\write//output stream for|
-^^{output streams}
+^^|\write//用于输出流|
+^^{输出流}
 你最多可以有 $16$ 个同时活动的输出流，它们以 $0$--$15$ 编号。输入流和输出流是相互独立的。
 任何送到编号为负数的输出流的东西，将被写到日志文件中；
 而任何送到编号大于 $15$ 的输出流的东西，将同时被写到日志文件和终端中。
@@ -2685,14 +2684,14 @@ sp&^{scaled point} (65536 scaled points = 1 point)\cr
 %character numbered $n$, typeset in the current font, by writing `|\char |$n$'
 % \ctsref{\char}.
 举个例子，这里是 $10$ 点 Palatino 罗马字体的字母表：
-^^{Palatino fonts}
+^^{Palatino 字体}
 \vskip\abovedisplayskip{\narrower\tenpal
 \noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
 abcdefghijklmnopqrstuvwxyz\par
 }\vskip\belowdisplayskip
 \noindent
 而这里是 $12$ 点计算机现代粗体扩展字体的字母表：
-^^{Computer Modern fonts}
+^^{计算机现代字体}
 \vskip\abovedisplayskip{\narrower\font\twelvebf=cmbx12\twelvebf
 \noindent ABCDEFGHIJKLMNOPQRSTUVWXYZ\hfil\break
 abcdefghijklmnopqrstuvwxyz\par
@@ -2767,9 +2766,9 @@ abcdefghijklmnopqrstuvwxyz\par
 ^^{\tfmfile}
 另一个给出各字符的形状（比如 |cmbx12.pk|）。
 \TeX\ 本身仅用到度量文件。另一个程序，设备驱动程序，
-^^{device drivers}
+^^{设备驱动}
 把 \TeX\ 生成的 \dvifile 转换为能被打印机或其他输出设备处理的格式。
-^^{\dvifile//converted by driver}
+^^{\dvifile//由驱动程序转换}
 设备驱动程序要用到形状文件（如果该文件存在）。
 
 %The font metrics file contains the information that \TeX\ needs in
@@ -2797,7 +2796,7 @@ abcdefghijklmnopqrstuvwxyz\par
 %\par}
 {\tighten
 形状（像素）文件\xrdef{shape}可以有多种格式。
-^^{pixel file}^^{shape file}
+^^{像素文件}^^{轮廓文件}
 文件的扩展名（点号之后部分）告诉驱动文件该形状文件的格式。
 例如，|cmbx12| 字体的形状文件 可以是压缩格式的 |cmbx12.pk| ^^{\pkfile}，
 也可以是一般格式的 |cmbx12.gf| ^^{\gffile}。
@@ -2909,10 +2908,10 @@ abcdefghijklmnopqrstuvwxyz\par
 %`^|\xdef|' is equivalent to `|\global\edef|'.
 %\endconcept
 还有种特殊方法将一个\refterm{宏}定义为全局的。
-^^{macros//global}
+^^{宏//全局宏}
 通常你用 |\def| 命令或者 |\edef| 命令\ctsref{\edef}来定义一个宏。
-^^|\edef//making global|
-^^|\def//making global|
+^^|\edef//变成全局的|
+^^|\def//变成全局的|
 如果你将 |\def| 和 |\edef| 分别换为 |\gdef| 和 |\xdef|，
 这个宏定义就会是全局的。也就是说，`^|\gdef|'等价于`|\global\def|'，
 而`^|\xdef|'等价于`|\global\edef|'。
@@ -2939,17 +2938,17 @@ abcdefghijklmnopqrstuvwxyz\par
 %\TeX\ itself produces many glue
 %items as it typesets your document.
 %We'll just describe horizontal glue---vertical glue is analogous.
-\bix^^{stretch}
-\bix^^{shrink}
+\bix^^{伸长量}
+\bix^^{收缩量}
 \defterm{粘连}（glue）是可以伸长或者收缩的空白间距。
 粘连给 \TeX\ 提供了生成漂亮文档所需的灵活性。
 粘连有两种类型：水平粘连和竖直粘连。
 水平粘连出现在\refterm{水平列表}中，而竖直粘连出现在\refterm{竖直列表}中。
-^^{horizontal lists}
-^^{vertical lists}
+^^{水平列表}
+^^{竖直列表}
 你可以隐式地生成一个粘连项，比如用单词间空格，
 或者显式地生成一个粘连项，比如用 ^|\hskip| 命令。
-^^{spaces//interword}
+^^{间隔//单词间距}
 在排版文档时 \TeX\ 本身也生成很多粘连项。
 这里我们只描述水平粘连——竖直粘连与之类似。
 
@@ -2965,7 +2964,7 @@ abcdefghijklmnopqrstuvwxyz\par
 %math displays
 %(where the change is least likely to be conspicuous).
 在 \TeX\ 将一系列盒子和粘连组装成一个较大单元时，
-^^{boxes//glue with}
+^^{盒子//盒子与粘连}
 它调整各个粘连的尺寸以适合较大单元的空间要求。
 例如，为了让页面的^{右边距}保持一致，\TeX\ 调整了各行的水平粘连。
 类似地，为了让各页的^{下边距}保持相同，
@@ -3138,12 +3137,12 @@ abcdefghijklmnopqrstuvwxyz\par
 %\eix^^{shrink}
 %\endconcept
 类似地，你也可以指定可无限收缩的粘连。
-^^{glue//infinitely shrinkable}
+^^{粘连//可无限收缩的粘连}
 可无限收缩粘连可以作为负间距。
 注意 |fil| 等只可用于指定粘连的伸长量和收缩量——%
 它们不能用于指定自然尺寸。
-\eix^^{stretch}
-\eix^^{shrink}
+\eix^^{伸长量}
+\eix^^{收缩量}
 \endconcept
 
 
@@ -3161,8 +3160,8 @@ abcdefghijklmnopqrstuvwxyz\par
 \defterm{编组}（group）是文稿中 \TeX\ 视为一个单元的一部分。
 要表示一个编组，你可以用括号 `|{|' 和 `|}|'%
 （或者\refterm{类别码}合适的其他字符）将它括起来。
-^^|{//starting a group|
-^^|}//ending a group|
+^^|{//开始编组|
+^^|}//结束编组|
 
 %The most important property of a group is that any nonglobal
 %definition or assignment that you make inside a group disappears when
@@ -3251,7 +3250,7 @@ Please don't pour {\it any} more tea into my hat.
 %\endconcept
 \defterm{水平盒子}（hbox，horizontal box）是 \TeX\
 从左到右逐个放置\refterm{水平列表}的项目而构造出来的\refterm{盒子}。
-^^{horizontal lists//hboxes formed from}
+^^{水平列表//组成水平盒子}
 水平盒子，作为一个单元，既不是本质上水平的也不是本质上竖直的，
 即它可以出现在水平列表或\refterm{竖直列表}中。
 你可以用 |\hbox| 命令\ctsref{\hbox}构造水平盒子。
@@ -3289,7 +3288,7 @@ Please don't pour {\it any} more tea into my hat.
 %^^{boxes//height of}
 %\endconcept
 \refterm{盒子}的\defterm{高度}（height）是盒子在\refterm{基线}之上的距离。
-^^{boxes//height of}
+^^{盒子//盒子的高度}
 \endconcept
 
 
@@ -3319,7 +3318,7 @@ Please don't pour {\it any} more tea into my hat.
 %list} of items (boxes, glue, penalties, etc.).
 %\TeX\ typesets the items in the list
 %one after another, left to right.
-^^{hboxes//horizontal mode for}
+^^{水平盒子//处于水平模式中}
 在组装段落或者\refterm{水平盒子}时，
 \TeX\ 位于两种\defterm{水平模式}（horizontal mode）之一:
 ^{普通水平模式}用于组装段落，而^{受限水平模式}用于组装水平盒子。
@@ -3331,7 +3330,7 @@ Please don't pour {\it any} more tea into my hat.
 %items produced by inherently vertical commands, e.g., |\vskip|.
 %^^{horizontal lists//can't contain vertical commands}
 水平列表不能包含任何用本质上的竖直命令，比如 |\vskip|，生成的项目。
-^^{horizontal lists//can't contain vertical commands}
+^^{水平列表//不能包含竖直命令}
 
 %\ulist
 %\li If \TeX\ is  assembling a horizontal list in ordinary horizontal mode and
@@ -3354,8 +3353,8 @@ Please don't pour {\it any} more tea into my hat.
 它将报错。
 \endulist 这两个命令你也许会认为是本质上水平的，实际上却是本质上竖直的：
 |\halign|\ctsref{\halign}和 |\hrule|\ctsref{\hrule}。
-^^|\hrule//inherently vertical|
-^^|\halign//inherently vertical|
+^^|\hrule//本质上竖直的|
+^^|\halign//本质上竖直的|
 在\knuth{第~286~页}
 \footnote{译注：或见该书中文翻译版第236页。}
 中列出了所有本质上的竖直命令。
@@ -3418,7 +3417,7 @@ Please don't pour {\it any} more tea into my hat.
 \ulist
 \li 你可以用 ^|\-| 命令\ctsref{\@minus}插入自定连字符，
 以允许 \TeX\ 在特定位置连字化。
-^^{discretionary hyphens}
+^^{自动连字符}
 \li 你可以用 ^|\hyphenation| 命令\ctsref{\hyphenation}%
 告诉 \TeX\ 在整个文档中如何对某个单词连字化。
 \li 你可以将单词放入一个\refterm{水平盒子}中，以阻止 \TeX\ 将它连字化。
@@ -3477,11 +3476,11 @@ Please don't pour {\it any} more tea into my hat.
 它包含即将在页面建造完成后插入到该页面的素材。\footnote
 {\TeX\ 本身并不插入这些素材——它仅提供这些素材给输出例行程序，
 输出例行程序负责将它们移动到排版出的页面中。
-^^{output routine//insertions, treatment of}
+^^{输出例行程序//处理插入项}
 ^|\insert| 命令\ctsref{\insert}仅有的直接效果是，
 改变了 \TeX\ 的分页计算公式以给插入素材留出空间。
 稍后，当 \TeX\ 实际分出了页面时，它将插入素材分为两组：当前页能够放下的和无法放下的。
-^^{page breaks//insertions at}
+^^{分页//分页时的插入项}
 当前页能够放下的素材被放入盒子寄存器中，每个插入项放入一个寄存器，
 而无法放下的素材则保留到下一页中。
 此过程允许 \TeX\ 将长脚注分到连续多个页面中。}
@@ -3552,7 +3551,7 @@ Please don't pour {\it any} more tea into my hat.
 虽然 \TeX\ 默认生成两边对齐的文档，
 如果你需要也可以生成^{左对齐}或^{右对齐}的文档（或一些文本行）。
 你也可以让 \TeX\ 将一些文本行居中，从而让两边都不对齐。
-^^{centered text}
+^^{居中文本}
 用 ^|\leftskip|，^|\rightskip| 和 ^|\raggedright| 命令%
 （第 \xrefn{\leftskip}，\xrefn{\raggedright}页）可以达到这些目的.
 
@@ -3590,7 +3589,7 @@ Please don't pour {\it any} more tea into my hat.
 %\display{11\quad 1\kern1pt 1\quad 1\kern-.75pt 1}
 %You can use kerns in vertical mode to adjust the space between
 %particular pairs of lines.
-^^{spacing//adjusting with kerns}
+^^{间隔//用紧排调整}
 \defterm{紧排}（kern）表示对竖直或水平列中的项目间的距离作一定调整。
 紧排可正可负。将正紧排放入两个项目间，将以该紧排的大小拉开两个项目。
 而将负紧排放入两个项目间，将以该紧排的大小拉近两个项目。
@@ -3907,7 +3906,7 @@ already in this section.}
 %\xref{fornlets}).
 %\endconcept
 有时候你会需要欧洲语言的连写。
-^^{European languages}
+^^{欧洲语言}
 除非你使用一个针对该语言设计的字体，否则 \TeX\ 不会自动生成这些连写。
 有一些连写，比如 `\AE'，可以用命令得到（见``欧洲语言字母和连写''，\xref{fornlets}）。
 \endconcept
@@ -3915,7 +3914,7 @@ already in this section.}
 
 %\conceptindex{line breaks}
 %\concept{line break}
-\conceptindex{断行点}
+\conceptindex{断行}
 \concept{断行点}
 
 %A \defterm{line break} is a place in your document where \TeX\ ends
@@ -3955,7 +3954,7 @@ already in this section.}
 %the same effects with the ^|\break| and
 %^|\nobreak| commands (\pp\xrefn{hbreak},~\xrefn{hnobreak}).
 \li 你可以在 \TeX\ 形成段落时构建的水平列表的某处插入\refterm{惩罚}项（\xref{hpenalty}）。
-^^{penalties//in horizontal lists}
+^^{惩罚//在水平列表中}
 正惩罚值阻碍 \TeX\ 在该处断行，而负惩罚值——即奖励值——鼓励 \TeX\ 在该处断行。
 大于或等于 $10000$ 的惩罚只阻止断行，而小于或等于 $-10000$ 强制断行。
 用 ^|\break| 和 ^|\nobreak| 命令（第~\xrefn{hbreak}，\xrefn{hnobreak}~页）可以达到相同效果。
@@ -3968,9 +3967,9 @@ already in this section.}
 %{hyphenation}.
 %^^|\-//in line breaking|
 \li 你可以用 |\-| 命令\ctsref{\@minus}插入自定连字符，以允许 \TeX\ 在特定位置连字化。
-^^{discretionary hyphens}
+^^{自定连字符}
 你也可以控制 \TeX\ 在你的文档中如何连字化\seeconcept{连字}。
-^^|\-//in line breaking|
+^^|\-//在断行中|
 
 %\li You can tell \TeX\ to allow a line break after a ^{solidus} (/) between
 %two words by inserting ^|\slash| \ctsref{\slash}
@@ -3982,7 +3981,7 @@ already in this section.}
 %inserting a ^{tie} (|~|) between those words.
 %^^|~//in line breaking|
 \li 你可以通过在两个特定单词间插入^{带子} (|~|)，以禁止 \TeX\ 在该处断行。
-^^|~//in line breaking|
+^^|~//在断行中|
 
 %\li You can adjust the penalties associated with line breaking by
 %assigning different values to \TeX's line-breaking
@@ -3995,7 +3994,7 @@ already in this section.}
 %\endulist
 \li 你可以将一个单词或一列单词放在一个\refterm{水平盒子}中，
 从而阻止 \TeX\ 盒子里面的任何位置断行。
-^^{hboxes//controlling line breaks}
+^^{水平盒子//控制断行}
 \endulist
 
 %It's useful to know the places where \TeX\ can break a line:
@@ -4123,7 +4122,7 @@ already in this section.}
 %\csdisplay
 %\def\arc#1{\cos #1 + i \sin #1}
 %|
-\bix^^{macros//parameters of}
+\bix^^{宏//宏的参数}
 但宏的真正威力在于它可以带有参数。
 在调用一个带有参数的宏时，你给出用于替换这些参数的参量。
 例如，假设你这样写：
@@ -4168,7 +4167,7 @@ already in this section.}
 %A call on such a macro consists of the macro name followed by
 %the arguments of the call, one for each parameter.  Each argument is
 %either:
-^^{parameters//undelimited}
+^^{参数//非定界参数}
 当宏只有非定界参数时，这些参数必须依次出现在宏定义中，
 \emph{在各个参数之间，以及最后一个参数和替换文本前的左花括号之间，不能有任何东西}。
 对这种宏的调用由该宏的名称，以及后面跟随的各个参量组成。
@@ -4277,7 +4276,7 @@ already in this section.}
 %delimiter.  That is, when \TeX\ is looking for such an argument, it
 %takes the argument to be all the tokens from \TeX's current position up
 %to but not including the delimiter.
-\bix^^{parameters//delimited}
+\bix^^{参数//定界参数}
 宏也可以包含“定界参数”，它们可以和非定界参数混合使用。
 定界参数的想法是，
 \TeX\ 通过寻找标记参量结束的特定记号序列（即定界子）确定对应的参量。
@@ -4355,8 +4354,8 @@ already in this section.}
 你也将得到文本‘\diet {Sunday mornings} pancakes.’。
 当你将空格符作为定界子时，行尾符一般同样定界了对应的参量；
 这是因为 \TeX\ 在宏机制运作之前就将行尾符都转换为空格了。
-\eix^^{parameters//delimited}
-\eix^^{macros//parameters of}
+\eix^^{参数//定界参数}
+\eix^^{宏//宏的参数}
 
 %Once in a while you might need to define a macro that has `|#|' as a
 %meaningful character within it.
@@ -4559,7 +4558,7 @@ already in this section.}
 \endconcept
 
 
-\conceptindex{marks}
+%\conceptindex{marks}
 %\concept mark
 \concept 标记
 
@@ -4585,8 +4584,8 @@ already in this section.}
 ^|\topmark|，^|\firstmark| 和 ^|\botmark| 命令 \ctsref{\topmark}
 用于取回页面上的各种标记。
 这些命令经常在页眉和页脚中用到。
-^^{footers//marks used in}
-^^{headers//marks used in}
+^^{页脚//用于页脚的标记}
+^^{页眉//用于页眉的标记}
 
 %\margin{This example of {\tt\\mark} replaces the previous explanatory
 %paragraph.}
@@ -4699,7 +4698,7 @@ paragraph.}
 %input characters has a mathcode, which is defined by the \TeX\ program
 %but can be changed.
 \defterm{数学码}（mathcode）是一个数，\TeX\ 把这个数用来识别和描述一个数学字符，
-^^{math characters//described by mathcodes}
+^^{数学字符//用数学码描述}
 即一个在数学公式中有特别作用的字符。
 数学码表达了一个字符三个方面的信息：
 它的字符位置，它所在的字体\refterm{族}，以及它所属的类。
@@ -4716,7 +4715,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %is in class $3$ (Relation).  \TeX\ uses its knowledge of character
 %classes when it is deciding how much space to put between different
 %components of a math formula.
-^^{family//as part of mathcode}
+^^{族//作为数学码的一部分}
 \TeX\ 有十六个字体族，它们用$0$ 到 $15$ 编号。
 每个字体族包含三个字体：一个用于\refterm{文本尺寸}，
 一个用于\refterm{标号尺寸}，另一个用于\refterm{小标号尺寸}。
@@ -4802,7 +4801,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %$0$, thus making classes $0$ and $7$ equivalent.
 %\TeX\ sets |\fam| to $-1$ whenever it enters math mode.
 %\endconcept
-^^{family//variable}
+^^{族//可变族}
 只要将一个数学字符分到第$7$类，你可以将它的族定义为“可变的”。
 当 \TeX\ 在数学公式中遇到这种字符时，
 它就将该字符的字体族取为 |\fam| 参数\ctsref{\fam}的当前值。
@@ -4858,7 +4857,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \li ^{内部竖直模式}（组装\refterm{竖直盒子}）
 \li ^{文内数学模式}（组装在文本中显示的公式）
 \li ^{陈列数学模式}（组装单独一行显示的公式）
-^^{horizontal mode}^^{vertical mode}^^{math mode}
+^^{水平模式}^^{竖直模式}^^{数学模式}
 \endulist
 模式描述了 \TeX\ 正在组装的实体的类型。
 
@@ -4893,7 +4892,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %natural space of four |mu| and \refterm{stretch} of five |mu|.
 \defterm{数学粘连}（muglue）是一种仅用于数学公式中的\refterm{粘连}，
 它的度量单位是 ^|mu|（\refterm{数学单位}）。
-^^{mathematical units}^^{glue//mathematical}
+^^{数学单位}^^{粘连//数学粘连}
 1 |mu| 的大小与 \frac1/{18} em 相等，
 而 1 em 的大小取自第$2$\refterm{族}数学字体。
 \TeX\ 根据上下文自动调整 |mu| 的大小。
@@ -4926,8 +4925,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \TeX\ 中的数可以用如下四种不同方式表示：
 \olist\compact
 \li 用通常的十进制整数表示，比如 |52|
-\li 用八进制数表示，比如 |'14| ^^{octal numbers}
-\li 用十六进制数表示，比如 |"FF0| ^^{hexadecimal numbers}
+\li 用八进制数表示，比如 |'14| ^^{八进制数}
+\li 用十六进制数表示，比如 |"FF0| ^^{十六进制数}
 \li 用字符的\refterm{\ascii}编码表示，比如 |`)| 或 |`\)|
 \endolist
 \noindent
@@ -4943,10 +4942,10 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %If you need an explanation of octal and hexadecimal numbers,
 %you'll find one on \knuth{pages~43--44}.
 八进制数只能包含数字 |0|--|7|。
-^^{octal numbers}
+^^{八进制数}
 而十六进制数可以包含数字 |0|--|9| 以及字母 |A|--|F|，
 它们分别表示从 $0$ 到 $15$ 的数值。
-^^{hexadecimal numbers}
+^^{十六进制数}
 然而，你不能用小写字母来表示十六进制数。
 在\knuth{43--44~页}
 \footnote{译注：或见该书中文翻译版第33--34页。}
@@ -4984,7 +4983,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %occurrences of `|\|$c$' within numbers will also be expanded if they can be.
 %That's rarely the effect you want.
 上述的第四种形式用字符的\minref{\ascii}编码表示一个数。
-^^{characters//\ascii\ codes for}
+^^{字符//字符的 \ascii\ 码}
 \TeX\ 同样忽略此形式的数后面的空格。
 一个数按这种形式可以写成 |`|$c$ 或者 |`\|$c$。
 第二种写法虽然长一点，
@@ -4992,8 +4991,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 甚至是 `|\|'，`|%|' 或者 `|^^M|'。
 不过它确实也有一个技术上的缺点：
 比如当 \TeX\ 展开 |\edef| 或 |\write| 命令的记号序列时，
-^^|\edef//expansion of {\tt\\'\it c} in|
-^^|\write//expansion of {\tt\\'\it c} in|
+^^|\edef//在其中展开 {\tt\\'\it c}|
+^^|\write//在其中展开 {\tt\\'\it c}|
 出现在数中间的能展开的`|\|$c$'将同样被展开；
 而这多半不是你想要的。
 
@@ -5062,7 +5061,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %errors before it's gone too far.
 %When you define a macro, you can make it outer with the
 %^|\outer| command \ctsref\outer.
-\bix^^{macros//outer}
+\bix^^{宏//外部宏}
 \defterm{外部的}（outer）宏是在某些 \TeX\ 高速处理记号的环境中无法使用的宏。
 将一个命令定义为外部的，目的是使 \TeX\ 能够尽早捕获到错误。
 在定义宏时，你可以用 ^|\outer| 命令\ctsref\outer 让它成为外部的。
@@ -5103,7 +5102,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 |
 |\proclaim| 宏（\xref{\@proclaim}）在 \plainTeX\ 中被定义为外部的，
 但这里却将它放在 |\leftline| 的宏参量中。
-\eix^^{macros//outer}
+\eix^^{宏//外部宏}
 
 \endconcept
 
@@ -5130,7 +5129,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \TeX\ 收集足够填满页面的素材后，它选择分页点并将分页点之前的素材放在 |\box255| 中。
 然后 \TeX\ 调用\defterm{输出例行程序}（output routine）%
 以加工素材并最终将它送到 \dvifile 中。
-^^{\dvifile//material from output routine}
+^^{\dvifile//来自输出例行程序的素材}
 输出例行程序可以执行进一步的加工，比如插入页眉，页脚和脚注。
 \refterm{\PlainTeX:\plainTeX} 提供了一个默认的输出例行程序，
 它在每个页面底部插入居中的页码。
@@ -5170,7 +5169,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 它将这些插入项和任何“装饰”（比如页眉页脚）合并到页面主要内容中，
 并将所有这些素材包装在一个盒子里；
 最后它用 ^|\shipout| 命令\ctsref{\shipout}将这个盒子送到 \dvifile 中。
-^^{\dvifile//material from output routine}
+^^{\dvifile//来自输出例行程序的素材}
 虽然输出例行程序大多是这样运行的，但有特定用途的输出例行程序会有不同表现。
 \endconcept
 
@@ -5269,7 +5268,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 输出例行程序如常处理 |\box255|，添加其他项目比如插入项和页眉页脚到该页面，
 然后用 |\shipout| 命令将页面输出到 \dvifile 。%
 （有些输出例行程序可能有不同的行为。）
-^^{\dvifile//material from output routine}%
+^^{\dvifile//来自输出例行程序的素材}%
 从 \TeX\ 的角度看，输出例行程序输出或不输出页面都无所谓；
 输出例行程序的惟一职责是以某种方式处理|\box255|。
 \par}
@@ -5312,7 +5311,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 
 %\conceptindex{page breaks}
 %\concept{page break}
-\conceptindex{分页点}
+\conceptindex{分页}
 \concept{分页点}
 
 %A \defterm{page break} is a place in your document where \TeX\ ends a
@@ -5338,7 +5337,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 你可以用以下几种方式控制 \TeX\ 对分页点的选择：
 \ulist
 \li 你可以插入惩罚项（\xref{vpenalty}）
-^^{penalties//in vertical lists}
+^^{惩罚//在竖直列表中}
 到主竖直列的两个项目之间。
 正惩罚值阻碍 \TeX\ 在此处分页，
 而负惩罚值——换言之，奖励值——鼓励 \TeX\ 在此处分页。
@@ -5371,7 +5370,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 它就将该主竖直列中位于分页点之前的内容放入 |\box255|。
 接着它调用当前的\refterm{输出例行程序}处理 |\box255|，
 最终输出页面内容到 \dvifile 。
-^^{\dvifile//material from output routine}
+^^{\dvifile//来自输出例行程序的素材}
 输出例行程序还得处理 \TeX\ 加工页面时积累的\refterm{插入项}，比如脚注。
 
 %It's useful to know the places where \TeX\ can break a page:
@@ -5421,9 +5420,9 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %by-$11$-inch page with margins of approximately one inch
 %on all four sides, no header,
 %and a footer consisting of a centered page number.
-\bix^^{margins}
-\bix^^{headers}
-\bix^^{footers}
+\bix^^{边距}
+\bix^^{页眉}
+\bix^^{页脚}
 在设计文档时，你需要决定其\defterm{页面布局}（page layout）：
 页面大小，四个方向的边距，页眉和页脚，
 若存在的话，还有正文和页眉页脚之间的间隔大小。
@@ -5458,7 +5457,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %and no footer line.
 边距由四个参数 ^|\hoffset|，^|\voffset|，^|\hsize| 和 ^|\vsize| 共同确定
 （在\xrefpg{边距}的“边距”概念中有如何调整它们的指南）。
-\eix^^{margins}
+\eix^^{边距}
 页眉是在每个页面顶部的一行内容，位于上边距区域中。
 通过将一个\refterm{记号}列表赋值给 ^|\headline| 参数（\xref{\headline}），
 你就可以设定页眉。类似地，
@@ -5486,10 +5485,10 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %\eix^^{footers}
 %\endconcept
 利用标记，你可以将当前主题或节标题放入页眉或页脚中。
-^^{marks//with headers or footers}
+^^{标记//用于页眉和页脚}
 在\conceptcit{标记}这里将详细解释如何做到这些。
-\eix^^{headers}
-\eix^^{footers}
+\eix^^{页眉}
+\eix^^{页脚}
 \endconcept
 
 %\conceptindex{paragraphs}
@@ -5511,7 +5510,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 直观地，\defterm{段落}（paragraph）就是一系列输入行，
 并用空行或者 ^|\par| 命令\ctsref{\@par}，
 或者类似 |\vskip| 的本质上的竖直模式命令结束。
-^^|\par//ending a paragraph with|
+^^|\par//用于结束段落|
 更准确地说，段落就是 \TeX\ 在普通水平模式中处理的一系列命令。
 \TeX\ 收集整个段落的内容后，就通过选择断行点\seeconcept{断行点}将它分为多行。
 得到的结果是一系列水平盒子，以及它们之间的粘连，行间惩罚和穿插的竖直素材。
@@ -5640,7 +5639,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 你可以对 \TeX\ 参数的控制序列取值或赋值。
 如果该控制序列出现在需要取值的地方，\TeX\ 将它解释为取值；
 否则，解释为\refterm{赋值}。
-^^{assignments}
+^^{赋值}
 例如：
 \csdisplay
 \hskip\parindent
@@ -5659,7 +5658,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %^^{registers//parameters as}
 %You'll find a complete list of the \TeX\ parameters on \knuth{pages~272--275}.
 你可以将 \TeX\ 参数视为内置的\refterm{寄存器}。
-^^{registers//parameters as}
+^^{寄存器//作为参数}
 在\knuth{第~272--275~页}
 \footnote{译注：或见该书中文翻译版第223--226页。}
 中你可以找到 \TeX\ 参数的完整列表。
@@ -5695,8 +5694,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %internal vertical \refterm{mode}.)
 \defterm{惩罚}是一个你可以放在水平、竖直或数学列表中的项目，
 用于阻碍或鼓励 \TeX\ 在此处断开该列表。
-^^{horizontal lists//penalties in}
-^^{vertical lists//penalties in}
+^^{水平列表//水平列表中的惩罚}
+^^{竖直列表//竖直列表中的惩罚}
 正惩罚值表示一个糟糕断开点，而负惩罚值表示一个良好断开点。
 断开普通水平列生成一个\refterm{断行点}，
 而断开普通竖直列生成一个\refterm{分页点}。%
@@ -5767,8 +5766,8 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %list}, it uses the reference points of the boxes in the list to line up
 %those boxes horizontally or vertically \seeconcept{box}.
 %\endconcept
-^^{baselines}
-^^{boxes//reference point of}
+^^{基线}
+^^{盒子//盒子的基准点}
 \refterm{盒子}的\defterm{基准点}（reference point）是盒子左边缘与\refterm{基线}的交点。
 在处理\refterm{水平列表}或\refterm{竖直列表}时，
 \TeX\ 用列表中各盒子的基准点水平或竖直对齐这些盒子\seeconcept{盒子}。
@@ -5794,12 +5793,12 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %toks&a \refterm{token} list\idxref{token registers}\cr}}
 \vdisplay{\tabskip 10pt\halign{\tt #\hfil &#\hfil\cr
 {\it 寄存器类型}&{\it 存储内容}\cr
-box&一个\refterm{盒子} \idxref{box registers}\cr
-count&一个\refterm{数} \idxref{count registers}\cr
-dimen&一个\refterm{尺寸} \idxref{dimension registers}\cr
-muskip&\refterm{数学粘连} \idxref{muglue registers}\cr
-skip&\refterm{粘连} \idxref{glue registers}\cr
-toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
+box&一个\refterm{盒子} \idxref{盒子寄存器}\cr
+count&一个\refterm{数} \idxref{计数寄存器}\cr
+dimen&一个\refterm{尺寸} \idxref{尺寸寄存器}\cr
+muskip&\refterm{数学粘连} \idxref{数学粘连寄存器}\cr
+skip&\refterm{粘连} \idxref{粘连寄存器}\cr
+toks&一个\refterm{记号}列 \idxref{记号寄存器}\cr}}
 
 %The registers of each type are numbered from $0$ to $255$.
 %You can access register $n$ of category $c$ by using the form `|\|$cn$',
@@ -5851,7 +5850,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %Some \TeX\ parameters, e.g., |\pageno|,
 %are implemented as registers, in fact.
 给定类型的寄存器，比如粘连寄存器，就像该类型的参数一样。
-^^{parameters//like registers}
+^^{参数//如同寄存器}
 你可以如同\refterm{参数}那样获取或赋予它的值。
 有些 \TeX\ 参数，比如 |\pageno|，实际上就是作为寄存器实现的。
 
@@ -5910,12 +5909,12 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %\par}
 \TeX\ 将某些寄存器保留作特别用途：|\count0| 到
 |\count9| 用作页面编号信息，而
-^^{page numbering}
+^^{页码}
 ^|\box255| 用作送到\refterm{输出例行程序}之前的页面内容。
 寄存器 |\dimen0|--|\dimen9|、|\skip0|--|\skip9|、|\muskip0|--|\mu!-skip9|、
 |\box0|--|\box9| 和 |\box255| 除外的 |255| 号寄存器一般用作“临时”寄存器。
 也就是说 \plainTeX\ 仅提供一个用于计数的临时寄存器 |\count255|。
-请参阅 \knuth{第~122 和 346~页} 
+请参阅 \knuth{第~122 和 346~页}
 \footnote{译注：或见该书中文翻译版第95页。}，
 其中有选择寄存器编号时要遵守的约定。
 
@@ -5968,8 +5967,8 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %(and therefore look like a vertical line).  \TeX's notion of a rule is
 %more general than that of typographers, who think of a rule as a line
 %and would not usually call a square black box a rule.
-\bix^^{horizontal rules}
-\bix^^{vertical rules}
+\bix^^{水平标线}
+\bix^^{竖直标线}
 \bix^^|\hrule|
 \bix^^|\vrule|
 标线可以是水平的或者竖直的。水平标线和竖直标线的区别与你如何生成标线有关，
@@ -6034,8 +6033,8 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %%(Look at the rules that are shown above.)
 %\par}
 %\endolist
-^^{horizontal lists//rule in}
-^^{vertical lists//rule in}
+^^{水平列表//水平列表中的标线}
+^^{竖直列表//竖直列表中的标线}
 \li
 水平标线是本质上的竖直项目，不能放在\refterm{水平列表}中；
 而竖直标线是本质上的水平项目，不能放在\refterm{竖直列表}中；
@@ -6073,8 +6072,8 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 在\knuth{第~221--222~页}
 \footnote{译注：或见该书中文翻译版第178--179页。}
 中，你可以找到对 \TeX\ 如何处理标线的精确表述。
-\eix^^{horizontal rules}
-\eix^^{vertical rules}
+\eix^^{水平标线}
+\eix^^{竖直标线}
 \eix^^|\hrule|
 \eix^^|\vrule|
 \endconcept
@@ -6093,7 +6092,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %fractions in text.
 %\endconcept
 \defterm{标号尺寸}（script size）描述一族字体中三个相关\refterm{字体}的其中一个。
-^^{family//script size in}
+^^{族//族的标号尺寸}
 标号尺寸比\refterm{文本尺寸}小但比\refterm{小标号尺寸}大。
 对上标，下标以及文本中分式的分子和分母，\TeX\ 使用标号尺寸。
 \endconcept
@@ -6111,7 +6110,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %a scriptsize numerator.
 %\endconcept
 \defterm{小标号尺寸}（scriptscript size）描述一族字体中三个相关\refterm{字体}的最小一个。
-^^{family//scriptscript size in}
+^^{族//族的小标号尺寸}
 对第二级的上标、下标、分子和分母，\TeX\ 使用小标号尺寸。
 比如，对于下标中的下标，或者标号尺寸分子中的上标，\TeX\ 将使用小标号尺寸。
 \endconcept
@@ -6147,13 +6146,13 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %\TeX\ adjusts the size of
 %this kind of space to suit the length required by the context.
 \olist
-^^{end of line}
+^^{行尾符}
 \li 你可以写上某些 \TeX\ 视为空格\refterm{记号}的东西：
 一个或多个空格符，行尾符（行尾符作用和空格相似），
 或任何能展开为空格记号的\refterm{命令}。
 \TeX\ 一般将多个连续空格视为单个空格，包括其中有一个行尾符的情形。%
 （一个空行表示段落的结束；它导致 \TeX\ 生成一个 |\par| 记号。）
-^^|\par//from empty line|
+^^|\par//来自空行|
 \TeX\ 调整此种间隔的大小以适应由上下文所需的长度。
 
 %^^{glue//creating space with}
@@ -6163,7 +6162,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %producing more or less space.  You can have vertical glue as
 %well as horizontal glue.  Glue disappears whenever it is next to a
 %line or page break.
-^^{glue//creating space with}
+^^{粘连//用它生成间距}
 \li 你可以写上一个生成指定粘连的间距命令。
 粘连有\refterm{伸长量}或\refterm{收缩量}，从而生成或多或少的间隔。
 你可以有水平粘连和竖直粘连。在断行或分页位置之后的粘连将会消失。
@@ -6175,7 +6174,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %common use of a kern is to establish a fixed spatial relationship
 %between two adjacent \refterm{boxes}.
 %\endolist
-^^{kerns//creating space with}
+^^{紧排//用它生成间距}
 \li 你可以写上一个\refterm{紧排}。紧排生成固定大小的间隔，它不可伸长也不可收缩，
 而且在断行或分页时也不会消失（除非其后紧跟着一个粘连）。
 紧排常用于给两个相邻\refterm{盒子}建立固定的空间关系。
@@ -6222,7 +6221,7 @@ toks&一个\refterm{记号}列 \idxref{token registers}\cr}}
 %subscripts and superscripts).
 %\par}
 \defterm{支架}（strut）一个不可见的\refterm{盒子}，
-^^{boxes//invisible}
+^^{盒子//不可见盒子}
 它的宽度为零，而高度和深度比上下文中的“正常”行稍微大一点。
 支架常用于在通常行间隔取消时获得一致的竖直间隔，
 比如在数学公式中，或者在设定了 ^|\offinterlineskip| 的水平阵列中。
@@ -6348,20 +6347,20 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\li Display style and text style are set in \refterm{text size}, like
 %`$\rm this$'.
 \ulist\compact
-^^{display style}^^{text style}
+^^{陈列样式}^^{文本样式}
 \li 陈列样式和文本样式设定为\refterm{文本尺寸}，就像 `$\rm this$' 这样。
 
 %^^{script style}
 %\li Script style is set in \refterm{script size}, like `$\scriptstyle
 %\rm this$'.
-^^{script style}
+^^{标号样式}
 \li 标号样式设定为\refterm{标号尺寸}，就像 `$\scriptstyle \rm this$' 这样。
 
 %^^{scriptscript style}
 %\li Scriptscript style is set in \refterm{scriptscript size}, like
 %`$\scriptscriptstyle \rm this$'.
 %\endulist
-^^{scriptscript style}
+^^{小标号样式}
 \li 小标号样式设定为\refterm{小标号尺寸}，就像 `$\scriptscriptstyle \rm this$' 这样。
 \endulist
 
@@ -6424,7 +6423,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\endconcept
 \defterm{文本尺寸}（text size）描述一\refterm{族}字体中%
 三个相关\refterm{字体}的最大一个。
-^^{family//text size in}
+^^{族//族的文本尺寸}
 对\refterm{数学模式}中的普通符号，\TeX\ 使用文本尺寸。
 \endconcept
 
@@ -6463,7 +6462,6 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 \bookmark{2}{以V开头}
 %\conceptindex{vboxes}
 %\concept vbox
-\conceptindex{vboxes}
 \concept 竖直盒子
 
 %^^{vertical lists//vboxes formed from}
@@ -6479,7 +6477,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %usually bottommost) constituent list item, but for |\vtop|, it's that of the
 %first (and usually topmost) constituent list item.
 %\endconcept
-^^{vertical lists//vboxes formed from}
+^^{竖直列表//组成竖直盒子}
 \defterm{竖直盒子}（vbox，vertical box）是 \TeX\
 从上到下逐个放置\refterm{竖直列表}的项目而构造出来的\refterm{盒子}。
 竖直盒子，作为一个单元，既不是本质上水平的也不是本质上竖直的，
@@ -6520,7 +6518,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %list} of items (boxes, glue, penalties, etc.).
 %\TeX\ typesets the items in the list
 %one below another, top to bottom.
-^^{vboxes//vertical mode for}
+^^{竖直盒子//位于竖直模式中}
 在组装\refterm{竖直盒子}或者主竖直列（输出的页面来源于此）时，
 \TeX\ 位于两种\defterm{竖直模式}（vertical mode）之一:
 ^{普通竖直模式}用于组装主竖直列，而^{内部竖直模式}用于组装竖直盒子。
@@ -6535,7 +6533,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\footnote{\TeX\ \emph{ignores} any space characters
 %that it encounters while it's in a vertical mode.}
 竖直列表不能包含任何用本质上的水平命令，
-^^{vertical lists//can't contain horizontal commands}
+^^{竖直列表//不能包含水平命令}
 比如 |\hskip| 或普通的（非空格）字符，生成的项目。
 \footnote{在竖直模式中 \TeX\ \emph{忽略}它遇到的任何空格符。}
 
@@ -6562,8 +6560,8 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %inherently horizontal commands.
 这两个命令你也许会认为是本质上竖直的，实际上却是本质上水平的：
 |\valign|\ctsref{\valign}和 |\vrule|\ctsref{\vrule}。
-^^|\valign//inherently horizontal|
-^^|\vrule//inherently horizontal|
+^^|\valign//本质上水平的|
+^^|\vrule//本质上水平的|
 在\knuth{第~283~页}
 \footnote{译注：或见该书中文翻译版第234页。}
 中列出了所有本质上的水平命令。
@@ -6641,16 +6639,16 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 \li |\openout|、|\closeout| 和 |\write| 命令（第~\xrefn{\openout}~页）%
 % (2nd) removed \xref to \write, since it's on the same page
 生成用于操作输出文件的小玩意。
-^^|\openout//whatsit produced by|
-^^|\write//whatsit produced by|
-^^|\closeout//whatsit produced by|
+^^|\openout//生成小玩意|
+^^|\write//生成小玩意|
+^^|\closeout//生成小玩意|
 \TeX\ 将此操作推迟到下次送出页面到 \dvifile 时%
-^^{\dvifile//whatsits in}
+^^{\dvifile//其中的小玩意}
 （除非在该操作之前加上 ^|\immediate|）。
 \TeX\ 用小玩意表示这些命令，因为它们与当时正在排版的内容完全无关。
 \li ^|\special| 命令\ctsref{\special}让 \TeX\ 直接插入某些文本到 \dvifile 中。
 如同 |\write| 命令，\TeX\ 也将此操作推迟到下次送出页面到 \dvifile 时。
-^^{\dvifile//material inserted by \b\tt\\special\e}
+^^{\dvifile//用 \b\tt\\special\e 插入的素材}
 |\special| 的典型用法是命名一个图片文件，以让设备驱动文件将它整合到最终输出中。
 \li 当你用 ^|\language| 或 ^|\setlanguage| 命令\ctsref{\language}改变语言时，
 \TeX\ 插入一个小玩意，以引导它在以后分段为行时使用特定集合的连字规则。
@@ -6668,12 +6666,17 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %that it occupies, i.e., the distance from its left edge to its
 %right edge.  The typeset material in a box can be wider than the box itself.
 %\endconcept
-^^{boxes//width of}
+^^{盒子//盒子的宽度}
 \refterm{盒子}的\defterm{宽度}（width）是它总共占用的水平间隔，
 即从它的左边缘到右边缘的距离。盒子内排版的素材可以比盒子本身还宽。
 \endconcept
 
 \endconcepts
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
 
 \endchapter
 \byebye
