@@ -4,6 +4,7 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+%\chapter {Commands for \linebreak composing pages}
 \chapter {组页命令}
 
 \chapterdef{pages}
@@ -14,6 +15,7 @@
 \begindescriptions
 
 %==========================================================================
+%\section {Interline and interparagraph spaces}
 \section {行间距和段间距}
 
 \begindesc
@@ -58,16 +60,16 @@
 %of |\baselineskip| as illustrated in the second example below.
 %A change to |\baselineskip| at any point before the end of a paragraph affects
 %the entire paragraph.
-^^{line spacing}
-\bix^^{interline glue}
+^^{行间距}
+\bix^^{行间粘连}
 \bix^^|\baselineskip|
 \bix^^|\lineskip|
 \bix^^|\lineskiplimit|
 在一个普通\minref{竖直列}（例如段落各行）中，
 这三个参数共同确定了 \TeX\ 在相邻两个\minref{盒子}间插入的间隔。
 这个间隔称为“\minref{行间粘连}”。
-对于内部竖直模式中构造的 vbox 竖直列，其中的组成盒子间同样会有此间隔。
-^^{vboxes//interline glue for}
+对于内部竖直模式中构造的竖直盒子，其中的组成盒子间同样会有此间隔。
+^^{竖直盒子//竖直盒子的行间粘连}
 
 在通常情况下，盒子的高度和深度不会太大，
 此时 \TeX\ 让相邻盒子的两基线距离等于 |\baselineskip|。
@@ -117,7 +119,12 @@ we'd only get extra space above the line.)
 |
 \endexample
 
-\eix^^{interline glue}
+%\eix^^{interline glue}
+%\eix^^|\baselineskip|
+%\eix^^|\lineskip|
+%\eix^^|\lineskiplimit|
+%\enddesc
+\eix^^{行间粘连}
 \eix^^|\baselineskip|
 \eix^^|\lineskip|
 \eix^^|\lineskiplimit|
@@ -167,9 +174,9 @@ we'd only get extra space above the line.)
 %^^{alignments//using \b\tt\\offinterlineskip\e\ in}
 此命令让 \TeX\ 从此之后停止插入行间粘连。除非你希望对文档的剩余部分都生效（你多半不希望），
 你应该将此命令和你希望生效的文本放在一个编组中。
-它的主要用处在于可以让你自己处理行间空隙，比如用支架（^{struts}），
-而不影响 \TeX\ 的正常行间粘连。在构造水平对齐时经常会用到|\offinterlineskip|。
-^^{alignments//using \b\tt\\offinterlineskip\e\ in}
+它的主要用处在于可以让你自己处理行间空隙，比如用^{支架}（struts），
+而不影响 \TeX\ 的正常行间粘连。在构造水平\minref{阵列}时经常会用到|\offinterlineskip|。
+^^{阵列//在其中使用 \b\tt\\offinterlineskip\e}
 \example
 \def\entry#1:#2 {\strut\quad#1\quad&\quad#2\quad\cr}
 \offinterlineskip \tabskip = 0pt \halign{%
@@ -226,7 +233,7 @@ we'd only get extra space above the line.)
 在段尾之前的 |\openup| 命令将影响整个段落，
 因此想在段落中间改变 |\baseline!-skip| 时不要用 |\openup| 命令。
 在排版表格和陈列公式时 |\openup| 非常有用——多点间隔将会增加它们的可读性。
-^^{alignments//space between rows of}
+^^{阵列//各行之间的间隔}
 \example
 Alice picked up the White King very gently, and lifted him
 across more slowly than she had lifted the Queen; but before
@@ -249,9 +256,14 @@ him a little, he was so covered with ashes.
 %\subsection {Encouraging or discouraging page breaks}
 \subsection{鼓励或阻碍分页}
 
+%\begindesc
+%\bix^^{page breaks}
+%\bix^^{page breaks//encouraging or discouraging}
+%\ctspecial break {} \xrdef{vbreak}
+%\explain
 \begindesc
-\bix^^{page breaks}
-\bix^^{page breaks//encouraging or discouraging}
+\bix^^{分页}
+\bix^^{分页//鼓励或阻碍分页}
 \ctspecial break {} \xrdef{vbreak}
 \explain
 %
@@ -354,10 +366,10 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %is processed. Thus |\supereject| is a good command to use at the end of each
 %chapter or other major unit of your document.
 这两个命令将结束当前段落并强制在当前位置分页。如果你不在前面加上
-|\vfil| (\xref \vfil)，^^|\vfil//needed with {\tt\\eject}|
+|\vfil| (\xref \vfil)，^^|\vfil//在 {\tt\\eject} 时需要|
 \TeX\ 将试着将伸展页面内容（很可能会警告有松散的竖直盒子）。
 |\supereject| 命令还让 \plainTeX\ 输出例行程序处理剩下的插入项，
-^^{insertions//forced out by \b\tt\\supereject\e}例如长脚注，
+^^{插入项//用 \b\tt\\supereject\e 强制排版}例如长脚注，
 在处理其他输入之前生成它们。因而，
 |\supereject| 更适合在文档各章或主要单元结束时使用。
 \enddesc
@@ -396,23 +408,27 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 |\raggedbottom| 命令允许 \TeX\ 给不同页面的下边距一些差别。
 如果文档中有些不能跨页的大型内容，用 |\raggedbottom| 就比较合适。
 用 |\normalbottom| 命令可以取消 |\raggedbottom| 的效果.
-\eix^^{page breaks//encouraging or discouraging}
+\eix^^{分页//鼓励或阻碍分页}
 \enddesc
 
 %==========================================================================
 %\subsection {Page breaking parameters}
 \subsection{分页参数}
 
-\bix^^{page breaks//parameters for}
-\begindesc
-\cts interlinepenalty {\param{number}}
-\explain
+%\bix^^{page breaks//parameters for}
+%\begindesc
+%\cts interlinepenalty {\param{number}}
+%\explain
 %This parameter specifies the \minref{penalty} for
 %breaking a page between the lines of a paragraph.
 %By setting it to $10000$ you can force all page breaks to occur
 %between paragraphs, provided that the pages have enough stretch so
 %that \TeX\ can still compose them decently.
 %\PlainTeX\ leaves |\inter!-linepenalty| at~$0$.
+\bix^^{分页//分页参数}
+\begindesc
+\cts interlinepenalty {\param{number}}
+\explain
 此参数设定在段落内部各行间分页时的\minref{惩罚}值。
 将它设为 $10000$ 将强制在段落之间分页，
 只要页面中有足够的伸展值让 \TeX\ 排版。
@@ -520,8 +536,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 %^^{output routine//meaning of \b\tt\\insertpenalties\e\ in}
 %output routine---it's the number of insertions that have been seen
 %but that don't fit on the current page (see \knuth{page~125}).
-\bix^^{insertions//penalties for}
-\bix^^{floating material}
+\bix^^{插入项//插入项的惩罚}
+\bix^^{浮动体}
 此参数包含 \TeX\ 放置插入项到当前页面时所累积的某些\minref{惩罚}值之和。
 在 \TeX\ 处理 |\insert| 命令时，
 如果发现前面有同类型插入项被分开，留下一部分到之后的页面，
@@ -530,7 +546,7 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 
 \margin{Material moved from a footnote to the main text.}
 在输出例行程序中，
-^^{output routine//meaning of \b\tt\\insertpenalties\e\ in}
+^^{输出例行程序//\b\tt\\insertpenalties\e\ 的意义}
 |\insertpenalties| 有完全不同的意义——
 它表示已经见到但未能放入当前页的插入项的总数（见 \knuth{第~125~页}）。
 \enddesc
@@ -552,8 +568,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 就会添加 |\floatingpenalty| \minref{惩罚}值到|\insertpenalties|
 ^^|\insertpenalties|。
 \PlainTeX\ 设定 |\floatingpenalty| 为 $0$。
-\eix^^{insertions//penalties for}
-\eix^^{floating material}
+\eix^^{插入项//插入项的惩罚}
+\eix^^{浮动体}
 \enddesc
 
 \begindesc
@@ -633,8 +649,8 @@ have been added to correct an omission. The descriptions are exactly parallel.}
 $n_0 + n_1\f{l} + n_2\f{ll} + n_3\f{lll}$}，
 其中四个参数给出四个$n_i$的值。
 \TeX\ 添加内容到\minref{竖直列}时会更新这些参数的值。
-\eix^^{page breaks//parameters for}
-\eix^^{page breaks}
+\eix^^{分页//分页参数}
+\eix^^{分页}
 \enddesc
 
 %==========================================================================
@@ -645,7 +661,7 @@ $n_0 + n_1\f{l} + n_2\f{ll} + n_3\f{lll}$}，
 \subsection {页面描述参数}
 
 \begindesc
-\bix^^{page dimensions}
+\bix^^{页面尺寸}
 \margin{This command was also described in the `Paragraphs' section.
 The combined description now appears there.}
 \aux\cts hsize {\param{dimen}}
@@ -676,16 +692,16 @@ The combined description now appears there.}
 若要在页面中间改变其竖直长度，应该修改 ^|\pagegoal|（\xref \pagegoal ）的值。%
 （若要改变当前页面开始的所有页面，你需要\emph{同时}修改 |\vsize| 和 |\pagegoal|。）
 \PlainTeX\ 设定 |\vsize| 为 |8.9in|。
-\eix^^{page dimensions}
+\eix^^{页面尺寸}
 \enddesc
 
-\begindesc
-\cts hoffset {\param{dimen}}
-\cts voffset {\param{dimen}}
-\margin{These commands were moved up from later in the subsection.}
-^^{page origin}
-\idxsee{origin}{page origin}
-\explain
+%\begindesc
+%\cts hoffset {\param{dimen}}
+%\cts voffset {\param{dimen}}
+%\margin{These commands were moved up from later in the subsection.}
+%^^{page origin}
+%\idxsee{origin}{page origin}
+%\explain
 %\TeX\ normally takes the ``origin'' of a page, that is, the point where
 %it starts printing, as being one inch down from the top of the page and one
 %inch to the right of the left end of the page.\footnote{
@@ -698,11 +714,18 @@ The combined description now appears there.}
 %|\voffset| give the horizontal and vertical offset of the actual origin
 %from this point.  Thus if |\hoffset| and |\voffset| are both
 %zero, \TeX\ uses its normal origin.
+\begindesc
+\cts hoffset {\param{dimen}}
+\cts voffset {\param{dimen}}
+\margin{These commands were moved up from later in the subsection.}
+^^{页面起点}
+\idxsee{origin}{page origin}
+\explain
 \TeX\ 通常设定页面的“起点”——即它开始打印的地方——在离上页边和左页边均为一英寸的地方。\footnote{
 \TeX\ 本身并不关心页面起点的位置，
 但设备驱动程序将 \dvifile 转换为可打印形式时要用到，
 此位置信息使得在不同的设备中能得到相同的结果。
-^^{device drivers//page origin known to}}
+^^{设备驱动//它所知的页面起点}}
 |\hoffset| 和 |\voffset| 的值分别给出实际起点相对该点的水平和竖直偏移量。
 因此，若 |\hoffset| 和 |\voffset| 均为零，\TeX\ 就使用正常起点。
 \example
@@ -765,7 +788,7 @@ $d$ 等于 |\topskip| 粘连的自然大小。
 %when \TeX\ starts a paragraph.
 %\PlainTeX\ sets |\parskip| to |0pt plus 0.1pt|.
 此参数设定“^{段落间距}”，即 \TeX\ 在段落开头插入的竖直粘连。
-^^{paragraphs//glue between}
+^^{段落//段落间的粘连}
 在 |\par| (\xref{\@par}) 那里介绍了 \TeX\ 开始新段落时所作的事情。
 \PlainTeX\ 设定 |\parskip| 为 |0pt plus 0.1pt|。
 \enddesc
@@ -793,10 +816,10 @@ PlainTeX\ 设定 |\maxdepth| 为 |4pt|。
 %\subsection{Page numbers}
 \subsection{页码}
 
-\begindesc
-\bix^^{page numbering}
-\cts pageno {\param{number}}
-\explain
+%\begindesc
+%\bix^^{page numbering}
+%\cts pageno {\param{number}}
+%\explain
 %This parameter contains the current page number as an integer.  The page
 %number is normally negative for front-matter pages that are numbered
 %with small roman numerals instead of arabic numerals.  If you change the
@@ -806,6 +829,10 @@ PlainTeX\ 设定 |\maxdepth| 为 |4pt|。
 %The actual
 %printing of page numbers is handled by \TeX's \minref{output routine},
 %which you can modify.
+\begindesc
+\bix^^{页码}
+\cts pageno {\param{number}}
+\explain
 此参数以整数值记录当前页码。
 在前页（front matter）中页码通常是负数，我们用小写罗马数字而不用阿拉伯数字编号。
 在页面中间对页码的改动，会在该页的页眉和页脚中用到。
@@ -829,7 +856,7 @@ PlainTeX\ 设定 |\maxdepth| 为 |4pt|。
 \PlainTeX\ 将页码记录在\minref{寄存器} ^|\count0| 中。%
 （|\pageno| 实际上就是|\count0|的别名。）
 当它输出一个页面到 \dvifile 时，
-^^|\shipout//{\tt\\count} registers displayed at|
+^^|\shipout//此时显示 {\tt\\count} 寄存器的值|
 \TeX\ 在终端中显示  |\count0| 的值，让你知道它在排版哪一页。
 也可以把寄存器 |\count1|--|\count9| 用于嵌套的多级页码
 （但你必须自己编程）。
@@ -892,9 +919,10 @@ This explanation appears on page \folio\ of the book.
 This explanation appears on page \folio\ of the book.
 \endexample
 
-\eix^^{page numbering}
+%\eix^^{page numbering}
+%\enddesc
+\eix^^{页码}
 \enddesc
-
 
 %==========================================================================
 %\subsection{Header and footer lines}
@@ -1051,8 +1079,8 @@ This explanation appears on page \folio\ of the book.
 %These commands produce no tokens if there was no preceding |\vsplit|,
 %or if the most recent preceding |\vsplit| didn't contain any marks.
 %\eix^^{marks}
-^^{marks//for split lists}
-这两个命令展开为之前用 ^|\mark| 在 vbox $V$ 中生成的标记项的标记文本。
+^^{标记//用于分割列表}
+这两个命令展开为之前用 ^|\mark| 在竖直盒子 $V$ 中生成的标记项的标记文本。
 标记文本以记号列形式表示。
 当你用 ^|\vsplit| 命令（\xref \vsplit ）分割 $V$ 时，
 \TeX\ 按如下方式设定这两个命令的值：
@@ -1152,12 +1180,12 @@ the previous section.}
 %\subsection {General insertions}
 \subsection {一般插入项}
 
-\begindesc
-\bix^^{insertions//commands for}
-\cts topinsert {\<vertical mode material> {\bt \\endinsert}}
-\cts midinsert {\<vertical mode material> {\bt \\endinsert}}
-\cts pageinsert {\<vertical mode material> {\bt \\endinsert}}
-\explain
+%\begindesc
+%\bix^^{insertions//commands for}
+%\cts topinsert {\<vertical mode material> {\bt \\endinsert}}
+%\cts midinsert {\<vertical mode material> {\bt \\endinsert}}
+%\cts pageinsert {\<vertical mode material> {\bt \\endinsert}}
+%\explain
 %These commands produce different forms of insertions that
 %instruct
 %(or allow) \TeX\ to relocate the \<vertical mode material>:
@@ -1181,6 +1209,12 @@ the previous section.}
 %Insertions are very useful for material such as figures and tables because
 %you can position such material where you want it without knowing where the
 %page breaks will fall.
+\begindesc
+\bix^^{插入项//用于插入项的命令}
+\cts topinsert {\<vertical mode material> {\bt \\endinsert}}
+\cts midinsert {\<vertical mode material> {\bt \\endinsert}}
+\cts pageinsert {\<vertical mode material> {\bt \\endinsert}}
+\explain
 这些命令生成不同形式的插入项，
 它们指示（或者允许）\TeX\ 重新放置 \<vertical mode material>：
 \ulist
@@ -1323,8 +1357,10 @@ $n$，这个代码可以用 ^|\newinsert| 命令（\xref{\@newinsert}）得到�
 \xrdef{endofinsert}
 \enddesc
 
+%\see |\floatingpenalty| (\xref \floatingpenalty).
+%\eix^^{insertions//commands for}
 \see |\floatingpenalty| (\xref \floatingpenalty).
-\eix^^{insertions//commands for}
+\eix^^{插入项//用于插入项的命令}
 
 
 %==========================================================================
@@ -1367,7 +1403,7 @@ $n$，这个代码可以用 ^|\newinsert| 命令（\xref{\@newinsert}）得到�
 \cts plainoutput {}
 \explain
 这个命令调用 \plainTeX\ 的输出例行程序。
-^^{\plainTeX 的默认输出例行程序}
+^^{输出例行程序//\plainTeX\ 的默认程序}
 \PlainTeX\ 把 ^|\output| 定义为一个仅仅包含 |\plainoutput| 的符号列表。
 \enddesc
 
@@ -1600,4 +1636,11 @@ $B_2$这个盒子必须是个竖直盒子，不是水平盒子。
 
 \see |\splitbotmark|, |\splitfirstmark| (\xref \splitfirstmark).
 
-\enddescriptions \endchapter \byebye
+\enddescriptions 
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
+
+\endchapter \byebye
