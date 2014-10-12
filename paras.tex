@@ -57,9 +57,9 @@
 
 \begindesc
 \xrdef{fornlets}
-\bix^^{ligatures}
-^^{special symbols}
-^^{European alphabets}
+\bix^^{连写}
+^^{特殊符号}
+^^{欧洲语言字母}
 %
 \ctsx AA {斯堪地纳维亚文字母 \AA}
 \ctsx aa {斯堪地纳维亚文字母 \aa}
@@ -110,7 +110,7 @@
 \produces
 {\it les \oe vres de Moli\`ere}
 \endexample
-\eix^^{ligatures}
+\eix^^{连写}
 \enddesc
 
 %==========================================================================
@@ -142,7 +142,7 @@
 % You needn't be in \minref{math mode} to use these commands.
 
 \begindesc
-^^{special characters}
+^^{特殊字符}
 %
 \easy\ctspecialx # \ctsxrdef{@pound} {英镑符号 \# \footnote{译注：
 位于键盘的数字 3 之上，英式键盘为英镑符号，美式键盘为数字符号 \#。}}
@@ -241,7 +241,7 @@ A book about \TeX\ is in your hands.
 \begindesc
 \cts dots {}
 \explain
-^^{dots}
+^^{点号}
 这个命令可以产生一个^{省略号}, 也就是在文本中的三个小点.
 它必须使用在数学模式中; 如果你想在单词间加入省略号,
 你应该使用  |$\ldots$| 命令\ctsref{\ldots}.
@@ -277,7 +277,7 @@ A book about \TeX\ is in your hands.
 % \enddesc
 
 \begindesc
-\bix^^{characters}
+\bix^^{字符}
 \cts char {\<charcode>}
 \explain
 这个命令可以产生当前字体在 \<charcode> 位置的字符.
@@ -327,7 +327,7 @@ $\digger$
 \enddesc
 
 \see |\delimiter| (\xref\delimiter).
-\eix^^{characters}
+\eix^^{字符}
 
 %==========================================================================
 %\subsection {Accents}
@@ -355,7 +355,7 @@ $\digger$
 % need to leave a space after the ones denoted by a single letter
 % (see ``Spaces'', \xref{spaces}).
 \begindesc
-^^{accents}
+^^{重音}
 \xrdef{accents}
 %
 \ctspecialx ' \ctsxrdef{@prime} {^{锐音符} 比如 \'e}
@@ -419,7 +419,7 @@ Add a soup\c con of \'elan to my pin\~a colada.
 \explain
 这些命令产生无点的字母 `i' 和 `j'。在普通文本中，如果需要为`i' 和 `j'
 标记重音，就使用它们。
-^^{dotless letters}
+^^{无点字母}
 在数学公式里，无点的`i' 和 `j' 使用 ^|\imath| 和 ^|\jmath| 命令 (\xref\imath)。
 \example
 long `i' as in l\=\i fe  \quad \v\j
@@ -459,7 +459,7 @@ long `i' as in l\=\i fe  \quad \v\j
 \begindesc
 \cts accent {\<charcode>}
 \explain
-^^{accents}
+^^{重音}
 这个命令为后面的字符加上重音标记。重音是当前字体里 \<charcode> 位置的
 字符。\TeX\ 假定重音符号被设计的比同样字体里的字符高 $1$\thinspace ex。
 如果需要标记重音的字符过高或者过低，\TeX\ 自动调整重音位置。你可以在重
@@ -473,7 +473,7 @@ l'H\accent94 otel des Invalides
 l'H\accent94 otel des Invalides
 % Position 94 of font cmr10 has a circumflex accent.
 \endexample
-\see 数学重音 (\xref{mathaccent})。
+\see 数学重音（\xref{mathaccent}）。
 \enddesc
 %==========================================================================
 %\subsection {Defeating boundary ligatures}
@@ -505,7 +505,7 @@ l'H\accent94 otel des Invalides
 % \enddesc
 
 \begindesc
-\bix^^{ligatures}
+\bix^^{连写}
 \cts noboundary {}
 \explain
 某些时候，\TeX{} 对单词的开头或者末尾字符连写或者紧排。你可以紧接着单词
@@ -515,7 +515,7 @@ l'H\accent94 otel des Invalides
 它，\TeX{} 可以对单词的头尾做别致的处理。（标准的\TeX{} 字体不包含此边
 界字符） |\noboundary| 的效果是删除存在的边界字符，从而防止 \TeX{} 识
 别连写或紧排。
-\eix^^{ligatures}
+\eix^^{连写}
 \enddesc
 
 %==========================================================================
@@ -566,7 +566,7 @@ l'H\accent94 otel des Invalides
 % \enddesc
 
 \begindesc
-^^{fonts}
+^^{字体}
 %
 \ctsx fivebf {使用 $5$ 点粗体}
 \ctsx fivei {使用 $5$ 点数学意大利体}
@@ -648,7 +648,7 @@ See how I've reduced my weight---from
 % \enddesc
 \xrdef{seltype}
 \begindesc
-^^{type styles}
+^^{字体风格}
 \easy\ctsx bf {粗体}
 \ctsx it {意大利体}
 \ctsx rm {罗马体}
@@ -691,9 +691,9 @@ The Dormouse was {\it not} amused.
 
 
 \begindesc
-\bix^^{case conversion}
-\bix^^{uppercase//conversion to}
-\bix^^{lowercase//conversion to}
+\bix^^{大小写转换}
+\bix^^{大写字母//转换为大写字母}
+\bix^^{小写字母//转换为小写字母}
 \cts lccode {\<charcode> \tblentry{number}}
 \cts uccode {\<charcode> \tblentry{number}}
 \explain
@@ -764,7 +764,7 @@ The Dormouse was {\it not} amused.
 \begindesc
 \cts lowercase {\rqbraces{\<token list>}}
 \cts uppercase {\rqbraces{\<token list>}}
-\explain ^^{case conversion}
+\explain ^^{大小写转换}
 这些命令按照|\lccode|和|\uccode|的值转换\<token list>中的字母（类别码为$11$的）为它们的大写和小写形式。
 非字母字符不受影响，即使它们是\minref{宏}调用或其他展开成字母的命令。
 \example
@@ -773,9 +773,9 @@ The Dormouse was {\it not} amused.
 \produces
 \def\x{Cd} \lowercase{Ab\x} \uppercase{Ab\x}
 
-\eix^^{case conversion}
-\eix^^{uppercase//conversion to}
-\eix^^{lowercase//conversion to}
+\eix^^{大小写转换}
+\eix^^{大写字母//转换为大写字母}
+\eix^^{小写字母//转换为小写字母}
 \endexample
 \enddesc
 
@@ -799,7 +799,7 @@ The Dormouse was {\it not} amused.
 %is independent of preceding punctuation, i.e., its space factor
 %(\xref\spacefactor) is $1000$.
 \begindesc
-\bix^^{spaces//interword}
+\bix^^{间隔//单词间距}
 \easy\ctsbasic {\\\vs}{}
 \blankidxref\ctsxrdef{@space}
 \explain
@@ -821,7 +821,7 @@ The Dormouse was {\it not} amused.
 %\enddesc
 
 
-如果你想打印出`\vs' ^^{visible space}空格，可以输入
+如果你想打印出`\vs' ^^{可见空格}空格，可以输入
 |{\tt \char `\ }|.
 
 \example
@@ -909,7 +909,7 @@ Yes.\ No.\ Maybe.
 这将产生^{行尾}字符。通常有两个效果：
 \olist
 \li 类似一个命令，产生一个输入的空格（如果它出现在一个非空行的尾部）或者一个
-|\par|记号（如果出现在空行的尾部）。^^|\par//from empty line|
+|\par|记号（如果出现在空行的尾部）。^^|\par//来自空行|
 \li 结束一行，使\TeX{}忽略剩余的字符。
 \endolist
 \noindent
@@ -1003,7 +1003,7 @@ imitative son of Johann~S. Bach, composed the
 这个额外的空白之所以必要，是因为倾斜的字符略微挤占了后面的空格位置，
 当后面跟着直立字体时，会显得中间的空格太小。
 所有字符的倾斜修正都包含在字体的度量文件里。
-^^{metrics file//italic correction in}
+^^{度量文件//其中的倾斜修正}
 
 %The |\/| command
 %produces an ^{italic correction} for the preceding character.
@@ -1073,7 +1073,7 @@ that's clear.
 \cts frenchspacing {}
 \cts nonfrenchspacing {}
 \explain
-^^{interword spacing}
+^^{单词间距}
 \TeX{}一般会为了标点符号而调整单词间距。例如，一个句子的末尾会有额外的空白，
 句尾标点符号之后的\minref{粘连}会被拉长。
 |\frenchspacing|命令让\TeX{}调整单词间距时忽略标点符号；
@@ -1273,7 +1273,7 @@ These     spaces    are    closed   up
 %\enddesc
 \knuth{第~76~页} 对 \TeX\ 计算单词间\minref{粘连}的规则有一个具体的解释。
 \knuth{第~285--287~页}详细描述了水平列表的各种项目之后|\spacefactor|的调整。
-\eix^^{spaces//interword}
+\eix^^{间隔//单词间距}
 \enddesc
 
 %==========================================================================
@@ -1298,10 +1298,10 @@ These     spaces    are    closed   up
 %it to each one individually.
 %See \xrefpg{eplaincenter} for an alternate approach.
 \begindesc
-\bix^^{centering}
-\bix^^{flush left}
-\bix^^{flush right}
-\bix^^{justification}
+\bix^^{居中对齐}
+\bix^^{居左对齐}
+\bix^^{居右对齐}
+\bix^^{均匀对齐}
 \easy\cts centerline {\<argument>}
 \cts leftline {\<argument>}
 \cts rightline {\<argument>}
@@ -1341,10 +1341,10 @@ These     spaces    are    closed   up
 \centerline{Grand Central Station}
 \leftline{left of Karl Marx}
 \rightline{right of Genghis Khan}
-\eix^^{centering}
-\eix^^{flush left}
-\eix^^{flush right}
-\eix^^{justification}
+\eix^^{居中对齐}
+\eix^^{居左对齐}
+\eix^^{居右对齐}
+\eix^^{均匀对齐}
 \endexample
 \enddesc
 
@@ -1393,7 +1393,7 @@ hbox的宽度和当前行宽相同，即从左边距延伸到右边距。
 
 
 \begindesc
-^^{overlapping text}
+^^{覆盖文件}
 \cts llap {\<argument>}
 \cts rlap {\<argument>}
 \explain
@@ -1428,7 +1428,7 @@ hbox的宽度和当前行宽相同，即从左边距延伸到右边距。
 %
 
 |\llap|和|\rlap|可以被用来以^{叠印}的方式新建特殊字符。但是必须确保作原料的字符一般宽（等宽字体如^|cmtt10|和Computer Modern $10$-point的^{打字机字体}是这样的）。
-^^{Computer Modern fonts}
+^^{计算机现代字体}
 \example
 \noindent\llap{off left }\line{\vrule $\Leftarrow$
 left margin of examples\hfil right margin of examples
@@ -1470,7 +1470,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 
 
 \begindesc
-\bix^^{paragraphs//shaping}
+\bix^^{段落//塑造段落}
 \ctspecial par \ctsxrdef{@par}
 \explain
 这个命令结束一个段落，并使\TeX{}进入\minref{竖直模式}来在页面上增加更多内容。
@@ -1489,7 +1489,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 
 必须指出|\par|不会让\TeX{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
 要使\TeX{}开始新段落，需要处于竖直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
-^^{paragraphs//starting}
+^^{段落//开始段落}
 将插入一些竖直空白，取决于|\parskip|
 (\xref{\parskip})；新段落缩进，取决于|\parindent| (\xref{\parindent})。
 
@@ -1572,7 +1572,7 @@ starting to say, when suddenly the needles turned into oars.
 \begindesc
 \cts parfillskip {\param{glue}}
 \explain
-^^{paragraphs//glue at end of}
+^^{段落//段落末尾的粘连}
 这个参数设定\TeX{}插入段落末尾的水平粘连。
 默认值是|0pt plus 1fil|，这使得最后一行被空格填满。如果设成|0pt|，
 \TeX{}就会把段落的最后一行拉伸到右边距。
@@ -1592,14 +1592,14 @@ starting to say, when suddenly the needles turned into oars.
 %^^{indentation}
 
 
-\bix^^{indentation}
+\bix^^{缩进}
 \begindesc
 \easy\cts indent {}
 \explain
 当\TeX{}处于竖直模式时，比如段落结束以后，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，开始新的一段，并缩进|\parindent|大小。
 如果\TeX{}已经处于水平模式了，这个命令就只做缩进。
 一行中两个|\indent|产生两个缩进。
-^^{indentation}
+^^{缩进}
 %As the example below shows, an |\indent| at a point where \TeX\
 %would start a paragraph anyway is redundant.
 %When \TeX\ is in vertical mode and sees a letter or some other
@@ -1672,7 +1672,7 @@ is the third in the series.
 使\TeX{}进入水平模式，然后开始新段，不要缩进。
 在水平模式中，比如段落中，这个命令没有效果。
 |\noindent|开始的新段会取消通常的|\parindent|缩进。
-^^{indentation}
+^^{缩进}
 %A common use of |\noindent| is to cancel the indentation of
 %the first line of a
 %paragraph when the paragraph follows some displayed material.
@@ -1740,12 +1740,12 @@ words \smallskip \centerline{EAT ME}\smallskip
 \begindesc
 \cts textindent {\<argument>}
 \explain
-^^{indentation}
-这个命令让\TeX{}开始新段，正常缩进|\par!-indent|。
-然后\TeX{}在缩进的地方向右对齐排版\<argument>并加入一个en大小的空白(em的一半)。
-\PlainTeX{}使用这个命令来排版脚注（\xref\footnote）
-^^{footnotes//using \b\tt\\textindent\e\ with}
-已经列表项目 (see |\item|, \xref\item)。
+^^{缩进}
+这个命令让\TeX\ 开始新段，正常缩进|\par!-indent|。
+然后\TeX\ 在缩进的地方向右对齐排版\<argument>并加入一个en大小的空白（em的一半）。
+\PlainTeX\ 使用这个命令来排版脚注（\xref\footnote ）
+^^{脚注//在脚注中用 \b\tt\\textindent\e}
+以及列表项（见 |\item|，\xref\item ）。
 
 \example
 \parindent = 20pt \textindent{\raise 1pt\hbox{$\bullet$}}%
@@ -1784,7 +1784,7 @@ typographers do so.
 \begindesc
 \cts parindent {\param{dimen}}
 \explain
-这个\minref{参数}设定段落第一行缩进的大小。^^{indentation}
+这个\minref{参数}设定段落第一行缩进的大小。^^{缩进}
 如下面的例子所示，最好不要同时使|\parindent|和^|\parskip|为零，否则两段的区别就不明显了。
 \example
 \parindent = 2em This paragraph is indented by 2 ems.
@@ -1878,7 +1878,7 @@ I'll say it again! Pay attention!
 
 \begindesc
 \margin{这个命令在“页面”一章也有涉及。此处讲解结合了前面两个地方的内容。}
-\bix^^{line breaks//and paragraph shape}
+\bix^^{断行//断行与段落形状}
 \easy\cts hsize {\param{dimen}}
 \explain
 这个\minref{参数}设定当前的^{行宽}，即从左边距开始算起，段落里一行的宽度。
@@ -1904,7 +1904,7 @@ I'll say it again! Pay attention!
 
 
 如果|\hsize|的变化发生在一个非空的\minref{竖直盒子}里，盒子的宽度就是给定的|\hsize|。
-^^{vboxes//width determined by \b\tt\\hsize\e}
+^^{竖直盒子//由 \b\tt\\hsize\e 确定宽度}
 
 \PlainTeX{}默认|\hsize|为|6.5in|。
 
@@ -1976,7 +1976,7 @@ half wide.}}
 \begindesc
 \easy\cts narrower {}
 \explain
-^^{paragraphs//narrow}
+^^{段落//窄段落}
 这个命令产生较窄的段落，左右边距将会增加 |\parindent|（即当前段落^{缩进}的大小），
 原因是|\leftskip|和|\rightskip|分别增加了|\parindent|。
 通常|\narrower|被放在一个\minref{编组}的开始，作用于其中的段落上。
@@ -2076,7 +2076,7 @@ had we used just one ``narrower'' command.\par}
 \explain
 这些参数告诉\TeX{}在当前段落每一行的左右各放多大的空白。我们将只解释|\leftskip|，因为|\rightskip|与其类似。
 
-^^{indentation} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。
+^^{缩进} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。
 如果|\leftskip|是一个粘连，就会得到^{右对齐}的内容，即左边距参差不齐。
 
 通常，你应该在一个\minref{编组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的编组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
@@ -2136,7 +2136,10 @@ get me executed as sure as ferrets are ferrets!''
 \easy\cts raggedright {}
 \cts ttraggedright {}
 \explain
-这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。因此右边距是不均匀的。而\TeX 默认的则是均匀对齐 ^^{justification}，即左右边距一样。均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。因为左对齐避免了页面上的空白参差不齐。
+这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。
+因此右边距是不均匀的。而 \TeX\ 默认的则是均匀对齐 ^^{均匀对齐}，即左右边距一样。
+均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。
+因为左对齐避免了页面上的空白参差不齐。
 \minrefs{均匀对齐的文本}
 %You should use the |\ttraggedright| command when typesetting text in a
 %monospaced font and the |\raggedright| command when typesetting text in any
@@ -2250,7 +2253,7 @@ some eggs are very pretty, you know,'' she added.
 
 \explain
 这两个\minref{参数}一起决定段落的“^{悬挂缩进}”。悬挂缩进使\TeX{}产生某些行缩进而其他行依然正常的效果。
-^^{indentation}
+^^{缩进}
 |\hangafter|决定哪些行将被缩进；|\hangindent|决定缩进的大小以及位置是左边还是右边：
 %\ulist
 %\li Let $n$ be the value of |\hangafter|.  If $n < 0$,
@@ -2322,7 +2325,7 @@ some eggs are very pretty, you know,'' she added.
 |\hangafter|和|\hangindent|在每一段的开始都被重设为其默认值，即
 |\hangafter|为$1$，|\hangindent|为$0$。
 想要排版许多悬挂缩进的段落，可以使用|\everypar| (\xref{\everypar})。
-^^|\everypar//for hanging indentation|
+^^|\everypar//用于悬挂缩进|
 如果你同时设定|\hangafter|，|\hangindent|以及^|\parshape|，\TeX{}将忽略|\hangafter|和|\hangindent|。
 
 \example
@@ -2438,7 +2441,7 @@ n\kern .1pt o\kern .1pt t\kern .1pt e\kern .1pt d\hfil:
 1966 are also good California vintages.
 Good luck finding them!
 \endexample
-\eix^^{indentation}
+\eix^^{缩进}
 \enddesc
 
 %\begindesc
@@ -2471,7 +2474,7 @@ Good luck finding them!
 \cts vadjust {\rqbraces{\<vertical mode material>}}
 \explain
 此命令在当前位置所在行下边插入指定的 \<vertical mode material>。
-^^{vertical lists//inserting in paragraphs}
+^^{竖直列表//插入到段落中}
 例如，你可以用它输出页面，或者在特定行添加额外空白。
 
 \example
@@ -2486,10 +2489,14 @@ to be found above the line and others are to be found below it.
 \endexample
 \enddesc
 
+%\see |\parindent| (\xref\parindent),
+%|\parskip| (\xref\parskip), |\everypar| (\xref\everypar).
+%\eix^^{line breaks//and paragraph shape}
+%\eix^^{paragraphs//shaping}
 \see |\parindent| (\xref\parindent),
 |\parskip| (\xref\parskip), |\everypar| (\xref\everypar).
-\eix^^{line breaks//and paragraph shape}
-\eix^^{paragraphs//shaping}
+\eix^^{断行//断行与段落形状}
+\eix^^{段落//形成段落}
 
 %==========================================================================
 %\section {Line breaks}
@@ -2499,15 +2506,20 @@ to be found above the line and others are to be found below it.
 %\subsection {Encouraging or discouraging line breaks}
 \subsection {鼓励或阻碍断行}
 
-\begindesc
-\bix^^{line breaks}
-\bix^^{line breaks//encouraging or discouraging}
-\ctspecial break {} \xrdef{hbreak}
-\explain
+%\begindesc
+%\bix^^{line breaks}
+%\bix^^{line breaks//encouraging or discouraging}
+%\ctspecial break {} \xrdef{hbreak}
+%\explain
 %This command forces a line break.
 %Unless you do something to fill out the line, you're likely to
 %get an ``underfull hbox'' complaint.
 %|\break| can also be used in vertical mode.
+\begindesc
+\bix^^{断行}
+\bix^^{断行//鼓励或阻碍断行}
+\ctspecial break {} \xrdef{hbreak}
+\explain
 强制在此处断行。除非用某种方法填满该行，
 否则你将得到 ``underfull hbox'' 的警告。
 此命令也能用于竖直模式。
@@ -2551,7 +2563,7 @@ a certain space\nobreak\qquad must not get lost.
 %is reluctant to break lines there.  ^^{line breaks//in math formulas}
 %|\allowbreak| can also be used in vertical mode.
 在通常不断行的地方允许 \TeX\ 断行。它经常用于数学公式中，
-因为 \TeX\ 通常不愿意在其中断行。^^{line breaks//in math formulas}
+因为 \TeX\ 通常不愿意在其中断行。^^{断行//在数学公式中}
 此命令也能用于竖直模式。
 \example
 Under most circumstances we can state with some confidence
@@ -2618,7 +2630,7 @@ analyze the input/\allowbreak output behavior in the limit.
 \TeX\ 通常将行结束符视为空格。
 |\obeylines| 让 \TeX\ 将每个行结束符都视为段落结束符，从而强制断行。
 在排版诗歌或者程序代码时 |\obeylines| 大有用处。
-^^{verse, typesetting}^^{poetry, typesetting}^^{computer programs, typesetting}
+^^{诗歌，排版}^^{程序代码，排版}
 然而，如果某些行的长度超过行的实际长度（|\hsize|\tminus|\parindent|），
 它们将会被自动断行。
 
@@ -2660,7 +2672,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 Her oldest cat, while apparently friendly to most people,
 had a Jekyll\slash Hyde personality when it came to mice.
 \endexample
-\eix^^{line breaks//encouraging or discouraging}
+\eix^^{断行//鼓励或阻碍断行}
 \enddesc
 
 %\secondprinting{\vfill\eject}
@@ -2671,7 +2683,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \subsection {断行参数}
 
 \begindesc
-\bix^^{line breaks//parameters affecting}
+\bix^^{断行//影响断行的参数}
 %
 \cts pretolerance {\param{number}}
 \cts tolerance {\param{number}}
@@ -2875,7 +2887,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 若要改动多个段落的松散度，你必须对每个段落分别设置，
 或者将改动放在 |\everypar|
 \ctsref\everypar 命令中。
-^^|\everypar//for setting \b\tt\\looseness\e|
+^^|\everypar//用于设定 \b\tt\\looseness\e|
 \enddesc
 
 \begindesc
@@ -2930,7 +2942,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %thousands) for it to have any effect.
 %\PlainTeX\ sets |\adjdemerits| to~$10000$.
 \minrefs{line break}
-^^{hyphenation//penalties for}
+^^{连字//连字的惩罚}
 {\tighten
 此参数给行断点设定额外的\minref{缺陷}（demerit），只要该断点在“视觉不相容的”相邻两行间出现。
 这些相邻行使得段落看起来参差不齐。
@@ -2953,7 +2965,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \enddesc
 
 \begindesc
-\bix^^{hyphenation//penalties for}
+\bix^^{连字//连字的惩罚}
 \cts exhyphenpenalty {\param{number}}
 \explain
 %\minrefs{line break}
@@ -2985,7 +2997,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 此参数指定 \TeX\ 在隐式连字符处断行时所附加的\minref{惩罚}值。
 隐式连字符来自 \TeX\ 的连字词典，或者来自你用 |\-|~(\xref{\@minus})
 插入的^{任意连字符}。
-^^|-//leads to {\tt\\hyphenpenalty}|
+^^|-//导致 {\tt\\hyphenpenalty}|
 增大此参数将阻碍 \TeX\ 将单词连字化。
 \PlainTeX\ 设定 |\hyphenpenalty| 为 $50$。
 \enddesc
@@ -3042,7 +3054,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 因此只有在给定一个较大的数值时（比如数千）才会产生作用。
 \PlainTeX\ 设定 |\finalhyphendemerits| 为 $5000$。
 }
-\eix^^{hyphenation//penalties for}
+\eix^^{连字//连字的惩罚}
 \enddesc
 
 \begindesc
@@ -3052,7 +3064,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %This parameter specifies the penalty for breaking a math formula
 %after a binary operator when the formula appears in a paragraph.
 %\PlainTeX\ sets |\binoppenalty| to $700$.
-^^{operators}
+^^{运算符}
 此参数指定 \TeX\ 在段内公式的二元运算符后断行所附加的惩罚值。
 \PlainTeX\ 设定 |\binoppenalty| 为 $700$。
 \enddesc
@@ -3066,11 +3078,11 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %\PlainTeX\ sets |\rel!-penal!-ty| to~$500$.
 %
 %\eix^^{line breaks//parameters affecting}
-^^{relations}
+^^{关系符}
 此参数指定 \TeX\ 在段内公式的二元关系符后断行所附加的惩罚值。
 \PlainTeX\ 设定 |\rel!-penal!-ty| 为~$500$。
 
-\eix^^{line breaks//parameters affecting}
+\eix^^{断行//影响断行的参数}
 \enddesc
 
 %==========================================================================
@@ -3078,7 +3090,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \subsection {连字}
 
 \begindesc
-\bix^^{hyphenation}
+\bix^^{连字}
 %
 \easy\ctspecial - \ctsxrdef{@minus}
 \explain
@@ -3133,7 +3145,7 @@ fear of hurting the other one's feelings.
 %For example, it inserts |\discretionary!allowbreak{}{}{}| after
 %an explicit hyphen or dash.
 \minrefs{line break}
-^^{hyphenation}
+^^{连字}
 此命令指定一个“自定断点”，即，\TeX\ 可以断行的位置。
 它还告诉 \TeX\ 在断点前后放置的文字。
 \ulist
@@ -3160,7 +3172,7 @@ fear of hurting the other one's feelings.
 % ken':
 German ``fli\discretionary{k-}{k}{ck}en''
 |
-^^{hyphenation//German}
+^^{连字//德语连字}
 \endexample}
 
 \enddesc
@@ -3298,8 +3310,12 @@ Underfull \hbox (badness 10000) detected at line 0
 这是英语的建议值。
 \enddesc
 
+%\begindesc
+%\bix^^{fonts//hyphenation characters for}
+%\cts hyphenchar {\<font>\param{number}}
+%\explain
 \begindesc
-\bix^^{fonts//hyphenation characters for}
+\bix^^{字体//字体的连字符}
 \cts hyphenchar {\<font>\param{number}}
 \explain
 %\TeX\ doesn't necessarily use the `-' character at hyphenation points.
@@ -3349,7 +3365,7 @@ Underfull \hbox (badness 10000) detected at line 0
 %for `|-|'.
 当 \TeX\ 碰到 ^|\font| 命令时，它读取该字体的度量文件，
 并设置该字体的 ^|\hyphenchar| 为 |\default!-hyphen!-char|。
-^^{metrics file//default hyphen in}
+^^{度量文件//其中的默认连字符}
 如果载入字体时 |\default!-hyphen!-char| 的值不在 $0$--$255$
 范围中，\TeX\ 将不会对该字体下的任何单词连字化；
 除非你以后用 |\hyphenchar| 命令设定此字体的连字符。
@@ -3363,22 +3379,27 @@ Underfull \hbox (badness 10000) detected at line 0
 |
 \endexample
 
-\eix^^{fonts//hyphenation characters for}
+%\eix^^{fonts//hyphenation characters for}
+%\enddesc
+\eix^^{字体//字体的连字符}
 \enddesc
 
-\see |\pretolerance| (\xref \pretolerance).
-\eix^^{hyphenation}
-\eix^^{line breaks}
+%\see |\pretolerance| (\xref \pretolerance).
+%\eix^^{hyphenation}
+%\eix^^{line breaks}
+\see |\pretolerance|（\xref\pretolerance ）。
+\eix^^{连字}
+\eix^^{断行}
 
 %==========================================================================
 %\section {Section headings, lists, and theorems}
 \section {分节、列表和定理}
 
-\begindesc
-^^{section headings}
-\easy\ctspecial beginsection {\<argument>\thinspace{\bt\\par}}
-   \ctsxrdef{@beginsection}
-\explain
+%\begindesc
+%^^{section headings}
+%\easy\ctspecial beginsection {\<argument>\thinspace{\bt\\par}}
+%   \ctsxrdef{@beginsection}
+%\explain
 %You can use this command to begin a major subdivision of your document.
 %\<argument> is intended to serve as a section title.
 %|\beginsection| surrounds \<argument>
@@ -3386,6 +3407,11 @@ Underfull \hbox (badness 10000) detected at line 0
 %boldface, left-justified.
 %You can produce the |\par| that ends \<argument> with a blank line.
 %\let\message = \gobble % Don't bother to tell us about Pig and Pepper.
+\begindesc
+^^{节标题}
+\easy\ctspecial beginsection {\<argument>\thinspace{\bt\\par}}
+   \ctsxrdef{@beginsection}
+\explain
 此命令开始文档的一节。
 \<argument> 用于表示节标题。
 标题将用粗体显示，靠左对齐，而且上下有额外的竖直间距。
@@ -3427,12 +3453,12 @@ For a minute or two she stood looking at the house $\ldots$
 %
 %If you want to include more than one
 %paragraph in an item, put |\item{}| in front of the additional paragraphs.
-^^{itemized lists}
+^^{逐项列表}
 这两个命令用于创建^{逐项列表}。
 在 \<argument> 后面的整个段落会有 |\parindent|（对于|\item|）或者
 |2\parindent|（对于 |\itemitem|）的缩进。%
 （|\parindent| 的解释见\xrefpg{\parindent}。）
-^^|\parindent//indentation for itemized lists|
+^^|\parindent//逐项列表的缩进|
 \<argument> 加上 1en 的间距后被放置在段落首行文字的左边。
 也就是说，它总是落在由 |\parindent| 确定的段落缩进空白中。
 
@@ -3475,9 +3501,9 @@ but with the yolks removed.
 %\<general text> consists of the text up to the next paragraph
 %boundary, except that you can include multiple paragraphs by putting them
 %within braces and ending a paragraph after the closing right brace.
-^^{theorems}
-^^{lemmas}
-^^{hypotheses}
+^^{定理}
+^^{引理}
+^^{假设}
 此命令“陈述”一个定理、引理、假设等。
 它用粗体显示 \<argument>，并用斜体显示后面的段落。
 \<arg\-u\-ment> 后面必须跟着句号和空格，
@@ -3502,5 +3528,11 @@ What I say is not to be believed.
 \enddesc
 
 \enddescriptions
+
+\ifoldeplain\else\ifcompletebook\else
+\vskip4em{\sectionfonts\leftline{本章索引}}
+\readindexfile{i}
+\fi\fi
+
 \endchapter
 \byebye
