@@ -2393,7 +2393,9 @@
 
 % Read the cross-reference definitions.
 %
+\catcode `\_ = \letter % for new eplain
 \readauxfile
+\catcode `\_ = 8 % for new eplain
 
 \catcode`\@ = \other  % Make @ an `other' character again.
 \catcode`\^ = \active % Make ^'s do indexing outside of math mode.
