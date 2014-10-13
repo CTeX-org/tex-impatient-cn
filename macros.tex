@@ -71,13 +71,12 @@
 
 % Dirty hacks for eplain 2.0+
 \ifoldeplain\else
-   \def\stringify{\expandafter\strip@prefix\meaning\temp}%
    \let\oldxrdef = \xrdef
-   \def\xrdef#1{\def\temp{#1}\oldxrdef{\stringify}}%
+   \def\xrdef#1{\oldxrdef{\tokstostring{#1}}}%
    \let\oldxrefn = \xrefn
-   \def\xrefn#1{\def\temp{#1}\oldxrefn{\stringify}}%
+   \def\xrefn#1{\oldxrefn{\tokstostring{#1}}}%
    \let\old@definelabel = \@definelabel
-   \def\@definelabel#1{\def\temp{#1}\old@definelabel{\stringify}}%
+   \def\@definelabel#1{\old@definelabel{\tokstostring{#1}}}
    \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
    %\enablehyperlinks[dvipdfm]
 \fi
