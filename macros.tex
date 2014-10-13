@@ -78,7 +78,12 @@
    \let\old@definelabel = \@definelabel
    \def\@definelabel#1{\old@definelabel{\tokstostring{#1}}}
    \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
+   % setup hyperlinks
    \enablehyperlinks[dvipdfm]
+   \beginpackages\usepackage{color}\endpackages
+   \definecolor{teal}{rgb}{0,0.5,0.5}
+   \hlopts{colormodel=,color=teal}
+   \hlopts{bwidth=0}
 \fi
 
 % We don't want register allocation information in the log,
