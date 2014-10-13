@@ -4,34 +4,68 @@
 % See file fdl.tex for copying conditions.
 
 \input macros
+%\chapter{Examples}
 \chapter{例子}
 
 \chapterdef{examples}
 
+%This section of the book contains a set of examples
+%to help get you started and to show you how to do various things with \TeX.
+%Each example has \TeX\ output on the left-hand page and the \TeX \
+%input that led to that output on the right-hand page.
+%You can use these examples both as forms to imitate and
+%as a way of finding the
+%\TeX\ commands that you need in order to achieve a particular effect.
+%However, these examples can illustrate only a few of the
+%about $900$ \TeX\ commands.
+这一章中包括了一组例子，来帮助你熟悉 \TeX ，
+同时这些例子还展示了如何使用 \TeX\ 来完成各种排版工作。
+每个例子都有一个放在左页的 \TeX\ 排版的结果和放在右页的相对应的 \TeX\ 输入文本。
+你可以把这些例子作为模仿的样式，也可以用来找到你想要的效果的实现命令。
+不过要注意的是，这些例子仅能展示 \TeX\ $900$ 条左右的命令的一小部分。
 
-这一章中包括了一组例子, 来帮助你熟悉 \TeX, 同时这些例子还展示了如何使用 \TeX\ 来完成各种排版工作.
-每个例子都有一个放在左页的 \TeX\ 排版的结果和放在右页的相对应的 \TeX\ 输入文本.
-你可以把这些例子作为模仿的样式, 也可以用来找到你想要的效果的实现命令.
-不过要注意的是, 这些例子仅能展示 \TeX\ $900$ 条左右的命令的一小部分.
+%Some of the examples are self-descriptive---that is, they discuss the very
+%features of \TeX\ that they are illustrating.  These discussions are
+%necessarily sketchy because there isn't room in the examples for all the
+%information you'd need.  The capsule summary of commands
+%(\chapterref{capsule})
+%and the index will help you
+%locate the complete explanation of every \TeX\ feature shown in the
+%examples.
+这里的某些例子是其义自现的——也就是说，它们在介绍每个所排印出来的功能。
+这个介绍很粗略，因为没有足够的篇幅来讲术所有你想得到的信息。
+命令速查表（\chapterref{capsule}）和索引可以帮你来找到例子中的每个 \TeX\ 功能。
 
-这里的某些例子是其义自现的——也就是说, 它们在介绍每个所排印出来的功能.
-这个介绍很粗略, 因为没有足够的篇幅来讲术所有你想得到的信息.
-一个命令的速查摘要 (\chapterref{capsule}) 和索引可以帮你来找到例子中的每个 \TeX\ 功能.
+%Because we've designed the examples to illustrate
+%many things at once, some examples contain a great variety of
+%typographical effects.  These examples generally are \emph{not} good
+%models of typographical practice.  For instance, Example~8 has some of its
+%equation numbers on the left and some on the right.  You'd never want to
+%do that in a real publication.
+因为我们在设计这些例子时，把很多的东西放在一起描述，
+因此，这些例子展示了很多的排版效果。
+这些例子一般并\emph{不是}好的排版实践模版。
+比如例~8 把有些公式编号放在左边，又把另一些放在了右边。
+你永远不会在一个实际的科学出版物中使用这样的公式编号。
 
-因为我们在设计这些例子时, 把很多的东西放在一起描述,
-因此, 这些例子展示了很多的排版效果.
-这些例子一般并\emph{不}是好的排版实践模版.
-比如例~8 把有些公式编号放在左边, 又把另一些放在了右边.
-你永远不会在一个实际的科学出版物中使用这样的公式编号.
-
+%\xrdef{xmphead}
+%Each example except for the first one starts with a macro (see
+%\xref{macro}) named |\xmpheader|.  We've used |\xmpheader| in order to
+%conserve space in the input, since without it each example would have
+%several lines of material you'd already seen.
+%|\xmpheader| produces the title of an example and the
+%extra space that goes with it.  You can see in the first example
+%what |\xmpheader| does, so you can imitate it if you wish.
+%Except for |\xmpheader|, every command that we use in these examples is
+%defined in \plainTeX.
 \xrdef{xmphead}
-除了第一个例子以外, 每个例子都由一个叫 |\xmpheader| 的宏开始 (见\xref{宏}).
-我们这样做是为了节省输入文本的篇幅,
-否则每个例子开头你都会看到几行你先前已经看到的内容.
-|\xmpheader| 会排印出例子的标题和标题后的空白.
-你可以参见没有使用 |\xmpheader| 的第一个例子是如何实现这一点的,
-然后你就能模仿它了.
-除了 |\xmpheader|, 在这里使用的每个命令都是在 \PlainTeX\ 中定义过的.
+除了第一个例子以外，每个例子都由一个叫 |\xmpheader| 的宏开始（见\xref{宏}）。
+我们这样做是为了节省输入文本的篇幅，
+否则每个例子开头你都会看到几行你先前已经看到的内容。
+|\xmpheader| 会排印出例子的标题和标题后的空白。
+你可以参见没有使用 |\xmpheader| 的第一个例子是如何实现这一点的，
+然后你就能模仿它了。
+除了 |\xmpheader|，在这里使用的每个命令都是在 \PlainTeX\ 中定义过的。
 
 % The first example does the necessary eject here.
 {%
