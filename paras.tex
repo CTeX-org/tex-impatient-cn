@@ -800,8 +800,10 @@ The Dormouse was {\it not} amused.
 %(\xref\spacefactor) is $1000$.
 \begindesc
 \bix^^{间隔//单词间距}
+\writeidxfalse
 \easy\ctsbasic {\\\vs}{}
 \blankidxref\ctsxrdef{@space}
+\writeidxtrue
 \explain
 这个命令明确地产生一个单词间空格，称为``^{控制空格}''。
 当一个字母出现在一个控制序列之后或者其他情况下你不想让两个记号排在一起时，就要用到控制空格。
@@ -851,7 +853,8 @@ The Dormouse was a \TeX\ expert, but he never let on.
 \begindesc
 \cts space {}
 \explain
-这个命令等价于一个输入的空格字符。和 ^|\ | 不同，它的宽度\emph{会}受到前面标点的影响。
+这个命令等价于一个输入的空格字符。和 \writeidxfalse^|\ |\writeidxtrue 不同，
+它的宽度\emph{会}受到前面标点的影响。
 \example
 Yes.\space No.\space Maybe.\par
 Yes.\!vs!.No.\!vs!.Maybe.

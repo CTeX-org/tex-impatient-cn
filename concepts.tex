@@ -125,7 +125,7 @@
 制表阵列和水平阵列的主要区别在于你如何定义它们的布局。
 
 \bix^^|\settabs|
-\bix\ctsidxref{+}
+\bix\ifoldeplain\ctsidxref{+}\fi
 \bix\ctsidxref{cr}
 
 %To construct a tabbing alignment you first issue a |\settabs| command
@@ -144,7 +144,7 @@
 要构造一个制表阵列，你首先需要用 |\settabs| 命令
 \ctsref{\settabs} 确定 \TeX\ 如何将可用空白水平地分为多列。
 然后你就可以逐行地填充表格的各行。
-每行由控制序列|\+| \ctsref{\@plus} 及其后的一排用 |&| 隔开的“条目”组成%
+每行由控制序列|\+|\ctsref{\@plus}及其后的一排用 |&| 隔开的“条目”组成%
 ^^{条目（在行或列中）}
 \xrdef{@and}
 \ifoldeplain\ttidxref{&}\fi
@@ -2037,11 +2037,10 @@ $( \>) \>[ \>] \>\{ \>\}
 \>\vert \>\Vert
 \>\uparrow \>\downarrow \>\updownarrow
 \>\Uparrow \>\Downarrow \>\Updownarrow$}
-\ifoldeplain ^^|(| ^^|)| ^^|[| ^^|]| \fi ^^|\lbrack| ^^|\rbrack|
-^^|\{| ^^|\}| ^^|\lbrace| ^^|\rbrace|
-^^|\lfloor| ^^|\rfloor|  ^^|\lceil|  ^^|\rceil|
-^^|\langle|  ^^|\rangle|  ^^|/|  ^^|\backslash|
-^^|\vert|  ^^|\Vert|
+\ifoldeplain ^^|(| ^^|)| ^^|[| ^^|]| ^^|\{| ^^|\}| ^^|/| ^^|\backslash| \fi
+^^|\lbrack| ^^|\rbrack| ^^|\lbrace| ^^|\rbrace|
+^^|\lfloor| ^^|\rfloor| ^^|\lceil|  ^^|\rceil|
+^^|\langle| ^^|\rangle| ^^|\vert|   ^^|\Vert|
 ^^|\uparrow|  ^^|\downarrow|  ^^|\updownarrow|
 ^^|\Uparrow|  ^^|\Downarrow|  ^^|\Updownarrow|
 \noindent
@@ -3415,13 +3414,13 @@ Please don't pour {\it any} more tea into my hat.
 %\endconcept
 你可以用如下几种方式控制 \TeX\ 的连字：
 \ulist
-\li 你可以用 ^|\-| 命令\ctsref{\@minus}插入自定连字符，
+\li 你可以用 \writeidxfalse^|\-|\writeidxtrue 命令\ctsref{\@minus} 插入自定连字符，
 以允许 \TeX\ 在特定位置连字化。
-^^{自动连字符}
+^^{自定连字符}
 \li 你可以用 ^|\hyphenation| 命令\ctsref{\hyphenation}%
 告诉 \TeX\ 在整个文档中如何对某个单词连字化。
 \li 你可以将单词放入一个\refterm{水平盒子}中，以阻止 \TeX\ 将它连字化。
-\li 你可以设定一些惩罚值，比如 |\hyphenpenalty|\ctsref\hyphenpenalty。
+\li 你可以设定一些惩罚值，比如 |\hyphenpenalty|\ctsref\hyphenpenalty 。
 \endulist
 \noindent 如果单词中包含显式或自定连字符，\TeX\ 将不会在其他位置断开。
 \endconcept
@@ -3969,7 +3968,7 @@ already in this section.}
 \li 你可以用 |\-| 命令\ctsref{\@minus}插入自定连字符，以允许 \TeX\ 在特定位置连字化。
 ^^{自定连字符}
 你也可以控制 \TeX\ 在你的文档中如何连字化\seeconcept{连字}。
-^^|\-//在断行中|
+\ifoldeplain^^|\-//在断行中|\fi
 
 %\li You can tell \TeX\ to allow a line break after a ^{solidus} (/) between
 %two words by inserting ^|\slash| \ctsref{\slash}

@@ -49,6 +49,7 @@
 \newif\ifadobefont
 \newif\ifxecjk
 \newif\ifoldeplain \ifx\undefined\interitemskipamount\oldeplaintrue\fi
+\newif\ifwriteidx \writeidxtrue % disable some index items for new eplain
 
 %\xrefwarningfalse
 
@@ -1142,7 +1143,7 @@
 %
 \def\ttidxref#1{%
   \ifoldeplain\indexwrite{#1}T\ignorespaces\else
-    \sidx{\tt\tokstostring{#1}\rm}%
+    %\sidx{\tt\tokstostring{#1}\rm}%
   \fi
 }
 
@@ -1151,10 +1152,10 @@
 % indexing \alpha is \ctsidxref{alpha}.
 %
 \def\ctsidxref #1{%
-  \ifoldeplain\indexwrite{#1}C\ignorespaces\else
+  \ifoldeplain\indexwrite{#1}C\ignorespaces\else\ifwriteidx
     \edef\z{\noexpand\tt\noexpand\\\replaceit{#1}\noexpand\rm}%
     \expandafter\sidx\expandafter{\z}%
-  \fi
+  \fi\fi
 }
 
 % \indexchar is needed to generate index entries for three especially
