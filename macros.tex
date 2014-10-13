@@ -1087,9 +1087,11 @@
 %
 \def\idxref#1{%
   \ifoldeplain\indexwrite{#1}N\ignorespaces\else
+    \begingroup
     \let\b\begingroup\let\e\endgroup\let\tt\eighttt
     \edef\z{\replaceit{#1}}%
     \expandafter\sidx\expandafter{\z}%
+    \endgroup
   \fi
 }
 
