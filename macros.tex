@@ -2144,7 +2144,7 @@
 %
 \everymath = {\setmathchars}
 \everydisplay = {\setmathchars}
-\leftdisplays
+\ifoldeplain\leftdisplays\fi % \leftdisplays is buggy in new eplain
 
 \def\setmathchars{%
    \catcode`\| = \other  \catcode`\! = \other
