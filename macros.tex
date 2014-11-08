@@ -80,6 +80,8 @@
    \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
    % setup hyperlinks
    \enablehyperlinks[dvipdfm]
+   %% may cause an error with xetex.def before version v4.03
+   %% please see http://tex.stackexchange.com/q/191489/8956
    \beginpackages\usepackage{color}\endpackages
    \definecolor{teal}{rgb}{0,0.5,0.5}
    \hlopts{colormodel=,color=teal}
