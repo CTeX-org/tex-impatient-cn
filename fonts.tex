@@ -19,16 +19,22 @@
 
 % Computer Modern fonts.
 %
-\ifadobefont
+\newcount\chinesefont \chinesefont=2
+\ifcase\chinesefont
   \def\song{Adobe Song Std}
   \def\hei{Adobe Heiti Std}
   \def\kai{Adobe Kaiti Std}
   \def\fang{Adobe Fangsong Std}
-\else
+\or
   \def\song{SimSun}
   \def\hei{SimHei}
   \def\kai{KaiTi}
   \def\fang{FangSong}
+\else
+  \def\song{FandolSong}
+  \def\hei{FandolHei}
+  \def\kai{FandolKai}
+  \def\fang{FandolFang}
 \fi
 %
 \ifxecjk
