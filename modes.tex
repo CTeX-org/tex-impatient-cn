@@ -500,7 +500,8 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %to a negative distance, producing the effect of backspacing along a line
 %(for |\hss|) or moving back up a page (for |\vss|).
 这些命令产生水平和竖直的可无限伸展和收缩的粘连。
-粘连可以收缩至负的距离，产生的效果是（对于 |\hss|而言）沿一行向回移动或（对于 |\vss| 而言）向页面顶部移动。
+粘连可以收缩至负的距离，产生的效果是%
+（对于 |\hss| 而言）沿一行向左移动或（对于 |\vss| 而言）向页面顶部移动。
 
 \example
 \line{正文文本\hfil\hbox to 0pt{页边空白\hss}}
@@ -613,12 +614,17 @@ Hop \smallskip skip \medskip and \bigskip jump.
 %\TeX\ doesn't break the \<horizontal mode material> into lines,
 %since it's in restricted horizontal mode when it's assembling the box.
 %\TeX\ won't change the size of the box once it's been produced.
-该命令产生一个 hbox（水平的\minref{盒子}）以容纳 \<horizontal mode material>。\<horizontal mode material> 两侧的大括号定义一个编组。\TeX\ 不会对 \<horizontal mode material> 断行，因为当其组装盒子时它处于受限水平模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
+该命令产生一个 hbox（水平\minref{盒子}）以容纳 \<horizontal mode material>。
+\<horizontal mode material> 两侧的大括号定义一个编组。
+\TeX\ 不会对 \<horizontal mode material> 断行，
+因为当其组装盒子时它处于受限水平模式下。一旦盒子生成后，\TeX\ 不会改变其大小。
 
 %|\hbox| is often useful when you want to keep some text all on one line.
 %If your use of |\hbox| prevents \TeX\ from breaking lines in an acceptable
 %way, \TeX\ will complain about an overfull hbox.
-当你希望将一些文字全部放在一行上时，|\hbox| 是有用的。如果你所用的 |\hbox| 使得 \TeX\ 不能以一种可以接受的方式断行时，\TeX\ 会给出 hbox 过满的警告。
+当你希望将一些文字全部放在一行上时，|\hbox| 是有用的。
+如果你所用的 |\hbox| 使得 \TeX\ 不能以一种可以接受的方式断行时，
+\TeX\ 会给出 hbox 过满的警告。
 
 %The width of the hbox depends on the arguments to |\hbox|:
 %\ulist\compact
@@ -1306,8 +1312,8 @@ $$\displaylines{
 \explain
 \bix^^{盒子//幻影盒子}
 \bix^^{幻影}
-这个命令产生一个空的\minref{盒子}，它具有与假定被排版出来的 \<argument> 一样的大小与位置。
-因为某种原因为一个需要手工绘出的符号保留一定的空间是 |\phantom| 的用途之一。
+此命令产生一个空\minref{盒子}，它的大小和位置与假定 \<argument> 被排版出来时的相同。
+因某种原因需要手工给一个符号留出空间时，|\phantom| 就可派上用场。
 \example
 $1\phantom{9}2$
 |

@@ -982,7 +982,7 @@ The following input will do it:
 \eix^^{页脚//多行页脚}
 
 %\section Finding mismatched braces
-\section 找出有匹配错误的大括号
+\section 找出匹配错误的花括号
 
 % \bix^^{braces//mismatched}
 % \xrdef{mismatched}
@@ -999,16 +999,16 @@ The following input will do it:
 % or a missing right brace somewhere
 % in your document, but it gives you no hint at all
 % about where the problem might be.  So how can you find it?
-
 \bix^^{花括号//不匹配的花括号}
-\xrdef{不匹配}
-大多数情况下，如果有大括号匹配错误， \TeX\ 会在你的输入文档里非常接近
-错误发生的地方给出诊断信息。但是，\TeX\ 停止之前最令人沮丧的错误之一是
+\xrdef{mismatched}
+大多数情况下，如果有花括号匹配错误，
+\TeX\ 会在你的输入文档里非常接近错误发生的地方给出诊断信息。
+但是，\TeX\ 停止之前最令人沮丧的错误之一是
 \csdisplay
 (\end occurred inside a group at level 1)
 |
-这表明在你的文档中有一个额外的左边大括号或者缺少一个右边大括号，但是并
-没有提示可能出现问题的地方。那么，怎么找到它呢？
+这表明在你的文档中有一个额外的左花括号或者缺少一个右花括号，
+但是并没有提示可能出现问题的地方。那么，怎么找到它呢？
 
 % A debugging trick we've found useful
 % is to insert the following line or its equivalent
@@ -1034,28 +1034,24 @@ The following input will do it:
 % repeat the process within that region.
 % If the problem is a missing right brace rather than an extra left brace,
 % you should be able to track it down once you've found its mate.
-
-一条有用的调试技巧是在文档中等距离插入五到六处以下的内容（千万不要在一
-个已知的组里）：
+一条有用的调试技巧是，
+在文档内部等距离地插入五到六处类似下面的内容（不要放在已知的编组里）：
 \csdisplay
 }% a fake ending
 |
-假设问题是多了一个左边大括号。如果它在第三和第四个伪装结尾（fake
-ending）之间，你将从前三个伪装结尾的地方得到出错消息，第四个则不会。
-原因是 \TeX\ 将抱怨并忽略前三个伪装结尾，但是第四个正好匹配了那个额外
-的左边大括号。这样你就知道了那个额外的左边大括号在第三和第四个伪装结尾
-之间某个地方。如果嫌疑区域仍然太大，就去除已有的伪装结尾，并在嫌疑区域
-内重复上述步骤。如果问题是缺少一个右边大括号，一旦你发现左边那个，就能
-确定右边的了。
+假设问题是多了一个左花括号。如果它在第三和第四个伪装结尾（fake ending）之间，
+你将从前三个伪装结尾的地方得到出错消息，第四个则不会。
+原因是 \TeX\ 将抱怨并忽略前三个伪装结尾，但是第四个正好匹配了那个额外的左花括号。
+这样你就知道了那个额外的左花括号在第三和第四个伪装结尾之间某个地方。
+如果嫌疑区域仍然太大，就去除已有的伪装结尾，并在嫌疑区域内重复上述步骤。
+如果问题是缺少一个右花括号，一旦你发现左边那个，就能确定右边的了。
 
 % This method doesn't work under all circumstances.  In particular, it doesn't
 % work if your document consists of several really large groups.  But often
 % you can find some variation on this method that will lead you to that
 % elusive brace.
-
-这个方法不是必杀技。特别是，如果文档中有几个很大的组，这个方法就不
-那么灵了。然而大多数情况下，你可以适当地变化一下这个方法来找出暗地捣乱的大
-括号。
+这个方法不是必杀技。特别是，如果文档中有几个很大的组，这个方法就不那么灵了。
+然而大多数情况下，你可以适当地变化一下这个方法来找出暗地捣乱的花括号。
 
 % If all else fails, try shortening your input by removing
 % the last half of the file
@@ -1065,11 +1061,11 @@ ending）之间，你将从前三个伪装结尾的地方得到出错消息，�
 % you know it's in the second half.
 % By repeating this process you'll eventually find the error.
 % \eix^^{braces//mismatched}
-
-如果其他方法都不管用了，那就试着删掉文档后半部分（注意备份！）或者在中
-间插入一个 |\bye| 命令。如果问题仍然存在，那你就可以确知它在前一半文档
-中；如果没有问题了，你也可以确知问题在后一般文档里。重复这个过程，最终
-你将会发现错误所在。
+如果其他方法都不管用了，
+那就试着删掉文档后半部分（注意备份！）或者在中间插入一个 |\bye| 命令。
+如果问题仍然存在，那你就可以确知它在前一半文档中；
+如果没有问题了，你也可以确知问题在后一般文档里。
+重复这个过程，最终你将会发现错误所在。
 \eix^^{花括号//不匹配的花括号}
 
 % \section Setting dimensions

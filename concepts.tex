@@ -4978,9 +4978,9 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %or the roman numeral form by putting a ^|\romannumeral| command
 %in front of it.
 你不能在文本中单独使用一个数，因为它不是命令。
-但是，你可以在文本中插入一个数的十进制形式，只要将它放在 ^|\number|
-命令（\xref\number ）之后；
-或者它的罗马数字形式，只要将它放在 ^|\romannumeral| 命令之后。
+但是，将它放在 ^|\number| 命令（\xref\number ）之后，
+你就可以在文本中插入这个数的十进制形式；
+或者将它放在 ^|\romannumeral| 命令之后，以得到它的罗马数字形式。
 
 %You can also use ^{decimal constant}s, i.e., numbers with a fractional part,
 %for specifying dimensions \seeconcept{dimension}.
@@ -6502,7 +6502,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 \ulist
 \li 如果 \TeX\ 正在普通竖直模式中组装竖直列表，并碰到一个本质上的水平命令，
 它将切换到\refterm{水平模式}。
-\li 如果 \TeX\ 正在内部水平模式中组装竖直列表，并碰到一个本质上的水平命令，
+\li 如果 \TeX\ 正在内部竖直模式中组装竖直列表，并碰到一个本质上的水平命令，
 它将报错。
 \endulist
 

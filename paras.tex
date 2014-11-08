@@ -140,7 +140,6 @@
 % attaches special meanings to
 % the characters (|#|, |$|, |%|, |&|, |_|).
 % You needn't be in \minref{math mode} to use these commands.
-
 \begindesc
 ^^{特殊字符}
 %
@@ -160,13 +159,14 @@
 \ctsx P {段落符号 \P}
 \ctsx S {章节符号 \S}
 \explain
-这些命令可以产生各种特殊字符和符号.
-前五个是必需的, 因为 \TeX\ 默认地把符号 (|#|, |$|, |%|, |&|, |_|) 作特殊的用途.
-你不用为了使用这些符号而进入\minref{数学模式}.
+这些命令可以产生各种特殊字符和符号。前五个是必需的，
+因为 \TeX\ 默认地把符号 (|#|, |$|, |%|, |&|, |_|) 作特殊的用途。
+你不用为了使用这些符号而进入\minref{数学模式}。
 
 % You can use the dollar sign in the Computer Modern
 % italic fonts to get the ^{pound
 % sterling} symbol, as shown in the example below.
+你可以用计算机现代意大利字体中的美元符号来得到^{英镑}符号，例如：
 
 % \example
 % \dag It'll only cost you \$9.98 over here, but in England
@@ -177,15 +177,11 @@
 % it's {\it \$}24.98.
 % \endexample
 % \enddesc
-
-
-你可以使用计算机现代字体的意大利体中的美元符号来得到英镑符号, 例如:
-
 \example
-\dag 在这里你只需花费 \$9.98, 但在英国你需要花 {\it \$}24.98.
+\dag 在这边它只要花费你 \$9.98，但在英格兰要 {\it \$}24.98。
 |
 \produces
-\dag 在这里你只需花费 \$9.98, 但在英国你需要花 {\it \$}24.98.
+\dag 在这边它只要花费你 \$9.98，但在英格兰要 {\it \$}24.98。
 \endexample
 \enddesc
 
@@ -306,27 +302,26 @@ A book about \TeX\ is in your hands.
 % $\digger$
 % \endexample
 % \enddesc
-
-% \see |\delimiter| (\xref\delimiter).
-% \eix^^{characters}
-
 \begindesc
 \cts mathchar {\<mathcode>}
 \explain
-这个命令可以产生由 \<mathcode> 所指定的类, 簇以及位置的数学字符。这个命令仅能用在数学模式中。
+这个命令可以产生由 \<mathcode> 所指定的类，族以及位置的数学字符。
+这个命令仅能用在数学模式中。
 \example
-\def\digger{\mathchar "027F} % 类似 plain TeX 中的 \spadesuit 命令.
-% 0类, 2簇, "7F处.
+\def\digger{\mathchar "027F} % 像 plain TeX 的 \spadesuit.
+% 0类, 2族, "7F 位置.
 $\digger$
 |
 \produces
 \def\digger{\mathchar "027F}
-% 0类, 2簇, "7F处.
+% 0类, 2族, "7F 位置.
 $\digger$
 \endexample
 \enddesc
 
-\see |\delimiter| (\xref\delimiter).
+% \see |\delimiter| (\xref\delimiter).
+% \eix^^{characters}
+\see |\delimiter|（\xref\delimiter ）。
 \eix^^{字符}
 
 %==========================================================================
@@ -1099,7 +1094,7 @@ that's clear.
 
 关于\TeX{}如何处理句尾标点，请参考\xrefpg{periodspacing}。
 \example
-{\frenchspacing  An example: two sentences. Right? No.\par}
+{\frenchspacing An example: two sentences. Right? No.\par}
 {An example: two sentences. Right? No. \par}%
 |
 \produces
@@ -2216,12 +2211,12 @@ any {\it other\/} day.''
 %\endexample
 %\enddesc
 
-
 \begindesc
 \cts hang {}
 \explain
-这个命令使段落第二行及以后各行也缩进|\parindent|大小(\xref{\parindent})。
-因为第一行已经缩进了|\parindent|（除非你使用|\noindent|取消了缩进），所以整个段落呈现悬挂缩进。
+此命令使段落第二行开始各行也缩进 |\parindent| 大小（\xref{\parindent}）。
+因为第一行已经缩进了 |\parindent|（除非你使用 |\noindent| 取消了缩进），
+所以整个段落呈现悬挂缩进。
 
 \example
 \parindent=24pt \hang  ``I said you {\it looked} like an

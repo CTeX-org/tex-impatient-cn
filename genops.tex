@@ -722,7 +722,7 @@ Here's a line printed normally.\par
 %\a three \enda
 %\endexample
 %\enddesc
-\TeX\ 把 |\begingroup| 和 |\endgroup| 当作和其它的\minref{控制序列}一样对待。
+在扫描输入时，\TeX\ 如同其它\minref{控制序列}一样对待 |\begingroup| 和 |\endgroup|。
 尤其体现在，你可以定义一个包括 |\begingroup| 但不包括 |\endgroup| 的宏，
 或者与之相反。
 ^^{宏//使用 \b\tt\\begingroup\e\ 和 \b\tt\\endgroup\e}
@@ -862,10 +862,10 @@ Here's a line printed normally.\par
 \begindesc
 \cts global {}
 \explain
-这个命令使它随后的定义或\minref{赋值}成为\minref{全局}性的%
-\seeconcept{全局的}, 而不是仅局限在所处的\minref{组}之中生效.
+这个命令使得它随后的定义或\minref{赋值}成为\minref{全局}性的%
+\seeconcept{全局的}，而不是仅局限在所处的\minref{组}之中生效。
 你可以把 |\global| 放在
-包括宏定义和\minref{寄存器}赋值在内的任意的定义或\minref{赋值}前,
+包括宏定义和\minref{寄存器}赋值在内的任何定义或\minref{赋值}前。
 \example
 {\global\let\la = \leftarrow}
 $a \la b$
@@ -995,11 +995,11 @@ $a \la b$
 \begindesc
 \cts afterassignment {\<token>}
 \explain
-当 \TeX\ 遇到这个命令, 它会把 \<token> 保存在一个特殊的地方.
-当它接下来执行一个赋值时, 它会把展关后的 \<token> 放到其后.
-如果你调用了几次 |\afterassignment|, 那仅有最后一次是生效的.
-|\afterassignment| 命令的一个用处是可以写定义形式的\minref{宏}命令,
-例子如下.
+当 \TeX\ 遇到这个命令，它会把 \<token> 保存在一个特殊的地方。
+在它下次执行赋值时，它会把展开后的 \<token> 放到其后。
+如果你调用了几次 |\afterassignment|，那仅有最后一次是生效的。
+|\afterassignment| 命令的一个用处是可以写定义形式的\minref{宏}命令，
+例子如下。
 
 %See \knuth{page~279} for a precise description
 %of the behavior of |\afterassignment|.
