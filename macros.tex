@@ -794,7 +794,7 @@
    \mark{\chaptername}%
    \footnotenumber = 0 % Number footnotes from 1 in each chapter.
    \beginit{CHAPTER}%
-   \noindent
+   %\noindent
    \ignorespaces
 }
 
@@ -869,7 +869,7 @@
    % Don't go into horizontal mode within the command descriptions.
    %
    \vskip\belowsectionskip
-   \ifcommands \else \noindent \fi
+   %\ifcommands \else \noindent \fi
    \headingtrue
    \everypar = {\headingfalse \global\everypar = {}}%
       % only gets executed for \par in horizontal mode
@@ -898,7 +898,7 @@
    \nobreak
    % Don't go into horizontal mode within the command descriptions.
    \vskip\belowsubsectionskip
-   \ifcommands \else \noindent \fi
+   %\ifcommands \else \noindent \fi
    \headingtrue
    \everypar = {\headingfalse \global\everypar = {}}%
       % only gets executed for \par in horizontal mode
@@ -1235,7 +1235,8 @@
    % Use chaptername as first A-head (or only one)
    \mark{\chaptername}%
    \noheadlinetrue
-   \noindent \ignorespaces
+   %\noindent
+   \ignorespaces
 }
 
 
@@ -2273,7 +2274,7 @@
    \@writeaux{%
       \string\gdef\expandafter\string
          \csname#1_C\endcsname{\the\chapterno}}%
-   \noindent
+   %\noindent
 }
 
 \def\chapternum#1{%
