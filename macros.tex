@@ -415,6 +415,8 @@
 
 \def\onepageout{%
    \shipout\vbox{%
+      \let\@plainmakeheadline\relax  %% fixed for new eplain by qingkuan !!
+      \makeheadline                  %% fixed for new eplain by qingkuan !!
       \offinterlineskip % The page should have vertically abutting boxes.
       \ifodd\pageno
          \cropmargin = \insidemargin
