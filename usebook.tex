@@ -177,7 +177,7 @@
 %^{\texbook} (see \xrefpg{resources} for a citation).
 %These references apply to the seventeenth edition of \texbook.
 %For other editions, some references may be off by a page or two.
-在很多地方我们都给出了到^{\texbook} 的页码索引
+在很多地方我们都给出了到 \texbook\ \mcidxref{texbook} 的页码索引
 （要引用该书可以见\xrefpg{resources}）。
 这些索引适用于\texbook\ 第十七次印刷版。
 对于其它版本，有的索引可能相差一两页。
@@ -213,7 +213,7 @@
 %\pix^^{spaces//visible}
 通常我们按照你输入空格的方式显示空格，以免让你看花眼。
 但为了强调某些空格，我们用`\visiblespace'字符表示它。
-\ifoldeplain{\catcode `\ =\other\pix^^| |}\fi%
+\pix\chidxref{\ }
 这个字符很自然地被称为\emph{可见空格}.
 \pix^^{空格//可见空格}
 
@@ -233,7 +233,7 @@
 %in the definition of \plainTeX\ (\knuth{Appendix~B}).
 %The commands are organized as follows:
 第~\chapternum{paras}--\chapternum{general}~章描述了几乎每个\TeX\ 命令，
-^^{命令}包括原始命令^^{原始的//原始命令}和 ^{\plainTeX} 命令。
+^^{命令}包括原始命令^^{原始的//原始命令}和 \plainTeX\ \mcidxref{plainTeX} 命令。
 原始命令是那些内建于 \TeX\ 程序中的命令，
 而 \plainTeX{} 命令是那些在标准辅助定义文件中定义的命令（见\xref\plainTeX ）。
 我们仅仅忽略那些只在\plainTeX\ (\knuth{附录~B})定义中用到的局部命令。
@@ -354,12 +354,12 @@ glue&粘连（有可选的伸展值和收缩值）\cr
 number&可带符号的整型值（整数）\cr
 register&寄存器编号，在$0$到$255$之间\cr
 }}
-^^{\<dimen>}
-^^{\<argument>}
-^^{\<charcode>}
-^^{\<glue>}
-^^{\<number>}
-^^{\<register>}
+\aridxref{dimen}
+\aridxref{argument}
+\aridxref{charcode}
+\aridxref{glue}
+\aridxref{number}
+\aridxref{register}
 
 % \noindent
 % All of these terms are explained in more detail in \chapterref{concepts}.
@@ -393,10 +393,10 @@ register&寄存器编号，在$0$到$255$之间\cr
 我们使用``参数''这个术语来指代这些条目, 比如本是寄存器但可当参数使用的 |\pageno|.
 ^^{寄存器//作为参数}
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye

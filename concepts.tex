@@ -30,7 +30,7 @@
 书背内页包含了一份详细的在此提及的概念列表，以及他们被提及时所在的页数。
 我们建议你把书背内页复印下来，放在旁边，
 这样你就能在遇到不熟悉的概念时马上查找到它们。
-我们尽可能地使用和 \texbook\ 相一致的术语。\idxref{\texbook}
+我们尽可能地使用和 \texbook\ 相一致的术语。\mcidxref{texbook}
 
 \beginconcepts
 
@@ -125,7 +125,7 @@
 制表阵列和水平阵列的主要区别在于你如何定义它们的布局。
 
 \bix^^|\settabs|
-\bix\ifoldeplain\ctsidxref{+}\fi
+\bix\bix{\let\+\relax\syidxref{\+}}
 \bix\ctsidxref{cr}
 
 %To construct a tabbing alignment you first issue a |\settabs| command
@@ -147,7 +147,7 @@
 每行由控制序列|\+|\ctsref{\@plus}及其后的一排用 |&| 隔开的“条目”组成%
 ^^{条目（在行或列中）}
 \xrdef{@and}
-\ifoldeplain\ttidxref{&}\fi
+\chidxref{\&}
 （条目是行和列的交叉部分），并以 ^|\cr| 结束。
 如果某行的条目数目比该阵列的列数少，\TeX\ 就用空白条目填充它们。
 
@@ -233,7 +233,7 @@
 }%
 
 \eix^^|\settabs|
-\eix\ifoldeplain\ctsidxref{+}\fi
+\eix{\let\+\relax\syidxref{\+}}
 \bix^^|\halign|
 %Horizontal alignments are constructed with |\halign| \ctsref\halign.
 %\TeX\ adjusts the column widths of a horizontal alignment according to
@@ -268,9 +268,9 @@
 \li 导言由一系列\pix^{模板}组成，一个模板对应一列，
 指明该列的文本应该如何排版。
 每个模板中都必须包含一个|#|字符，
-\ifoldeplain\ttidxref{#}\fi\xrdef{@asharp}
+\chidxref{\#}\xrdef{@asharp}
 用于给出 \TeX\ 将条目的文本放入模板的位置。
-各个模板之间用 |&| 分隔，\ifoldeplain\ttidxref{&}\fi 并以 |\cr| 结束该导言。
+各个模板之间用 |&| 分隔，\chidxref{\&} 并以 |\cr| 结束该导言。
 利用合适的模板你可以让某列居中，左对齐或右对齐，
 或者使用某个特定的\refterm{字体}。
 
@@ -427,6 +427,7 @@
 \endconcept
 
 
+\def\conceptindexsort{anatomy}
 \concept{\anatomy}
 
 %\texbook\ describes the way that {\TeX} processes its input in terms of \TeX's
@@ -524,7 +525,7 @@
 %^^{\dvifile//created by \TeX's intestines}
 \li 使用“\pix^{肠道}”，\TeX\ 将它的胃生成的页面转换为适合其他程序处理的形式，
 并将转换出的结果送到 \dvifile 。
-^^{\dvifile//由 \TeX\ 的肠道生成}
+\fnidxref{dvi//created by \TeX's intestines}
 
 \endulist
 
@@ -1217,7 +1218,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 只要字符到达 \TeX\ 的^{食道}\seeconcept{\anatomy}并被解释完，它的类别码就不再改变。
 用 ^|\char| 命令\ctsref{\char}生成的字符没有类别码，
 因为 |\char| 命令是一个让 \TeX\ 生成特定\refterm{字体}中的某个特定字符的指令。
-例如，`|\|'（通常的转义字符）的^{\ascii} 码是 $92$。
+例如，`|\|'（通常的转义字符）的 \ascii\ ^^{ASCII} 码是 $92$。
 如果你键入 `|\char92 grok|'，却\emph{并不}等同于 |\grok|。
 实际上它让 \TeX\ 排版出 `$c$grok'，其中 $c$ 是当前字体的编码表中位置为 $92$ 的字符。
 
@@ -1300,49 +1301,49 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 \it 编码&\it 意义&\it 字符\cr
 \noalign{\vskip\tinyskipamount}
 0&转义符    & |\| ^^{转义符//转义符的类别码}
-   %{\recat!ttidxref[\//其类别码]]
+   \chidxref{\\//其类别码}
    \cr
 1&编组开始符& |{| ^^{编组}
-   %{\recat!ttidxref[{//其类别码]]
+   \chidxref{\{//其类别码}
    \cr
 2&编组结束符& |}|
-   %{\recat!ttidxref[}//其类别码]]
+   \chidxref{\}//其类别码}
    \cr
 3&数学环境符& |$| ^^{数学开关}
-   %{\recat!ttidxref[$//其类别码]]
+   \chidxref{\$//其类别码}
    \cr
 4&阵列制表符& |&| ^^{制表} ^^{阵列//阵列的制表符}
-   \ifoldeplain\ttidxref{&//其类别码}\fi \cr
+   \chidxref{\&//其类别码} \cr
 5&行结束符  & |^^M| \tequiv \ascii\ \asciichar{return}
-   ^^{行结束符} \ifoldeplain\ttidxref{^^M//其类别码}\fi\cr
+   ^^{行结束符} \ccidxref{M//其类别码}\cr
 6&宏参数符  & |#|
    ^^{宏//宏的参数}
    ^^{参数//用 \b\tt\#\e 指明}
-   \ifoldeplain\ttidxref{#//其类别码}\fi \cr
+   \chidxref{\#//其类别码} \cr
 7&上标符    & |^| 和 |^^K| ^^{上标}
-   \ttidxref{^^K}
-   \ifoldeplain\ttidxref{^//其类别码}\fi \cr
+   \ccidxref{K}
+   \chidxref{\^//其类别码} \cr
 8&下标符    & |_| 和 |^^A| ^^{下标}
-   \ttidxref{^^A}
-   \ifoldeplain\ttidxref{_//其类别码}\fi \cr
+   \ccidxref{A}
+   \chidxref{\_//其类别码} \cr
 9&可忽略符  & |^^@| \tequiv \ascii\ \asciichar{null}
-  ^^{可忽略符} \indexchar ^^@ \cr
+  ^^{可忽略符} \directidx{\noexpand\^\^"@@\tt\char`\^\char`\^"@\rm} \cr
 10&空格符   & \visiblespace\ 和 |^^I| \tequiv \ascii\
   \asciichar{horizontal\ tab}
   ^^{水平制表符}
-  ^^{空格符//其类别码} \indexchar ^^I
-  %{\recat!ttidxref[ ]]
+  ^^{空格符//其类别码} \ccidxref{I}
+  \chidxref{\ }
   \cr
 11&字母符   & |A| \dots |Z| 和 |a| \dots |z| ^^{字母}\cr
 12&其他字符 &（不属于其他类别的字符）
   ^^{其他字符}\cr
 13&活动字符 & |~| 和 |^^L| \tequiv\ascii\ \asciichar{form\ feed}
-   ^^{活动字符} ^^{换页符} \indexchar ~ \indexchar ^^L \cr
+   ^^{活动字符} ^^{换页符} \chidxref{\~} \ccidxref{L} \cr
 14&注释符   & |%| ^^{注释}
-   %{\recat!ttidxref[%//其类别码]]
+   \chidxref{\%//其类别码}
    \cr
 15&无效字符 & |^^?| \tequiv \ascii\ \asciichar{delete}
-  ^^{无效字符} \indexchar ^^? \cr
+  ^^{无效字符} \ccidxref{?} \cr
 }}
 \vskip\belowdisplayskip
 %k \vskip 0pt plus 2pt % to fix bad page break
@@ -1403,8 +1404,8 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 字符 `|^^K|' 和 `|^^A|' 被包含在类别$7$（上标符）和 $8$（下标符）中，
 即使它们的意义并不符合标准\refterm{\ascii} 中的解释。
 这是因为某些键盘，尤其是 \TeX\ 起源地哈佛大学的键盘，用上方向键和下方向键生成这两个字符。
-\ttidxref{^^A}
-\ttidxref{^^K}
+\ccidxref{A}
+\ccidxref{K}
 
 %There's a subtle point about the way \TeX\ assigns category codes that
 %can trip you up if you're not aware of it.  \TeX\ sometimes needs to
@@ -1495,7 +1496,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 \TeX\ 通过读取输入文件（或终端）和展开\refterm{宏}得到输入字符。
 它们是 \TeX\ 获取输入字符的\emph{仅有的}途径。
 每个输入字符有一个编码，它表示该字符在\refterm{\ascii} 码表的位置。
-^^{\ascii}
+^^{ASCII}
 例如，字母 `|T|' 的 \ascii\ 编码为 $84$。
 
 %When \TeX\ reads
@@ -1543,7 +1544,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 这种表示法的三个最常见例子是 `|^^M|'（\ascii\ \asciichar{return}字符），
 `|^^J|'（\ascii\ \asciichar{line\ feed}字符）和
 `|^^I|'（\ascii\ \asciichar{horizontal\ tab}字符）。
-\ttidxref{^^M}\ttidxref{^^J}\ttidxref{^^I}
+\ccidxref{M}\ccidxref{J}\ccidxref{I}
 
 %{\tighten
 %\TeX\ also has another notation for indicating \ascii\ code values
@@ -1756,7 +1757,7 @@ $$\strut a+(b-a)=a \qquad
 %A control sequence takes one of two forms:
 \defterm{控制序列}（control sequence）是 \TeX\ \refterm{命令}的名称。
 控制序列总是以^{转义符}开头，即以反斜杠（|\|）开头。
-\indexchar \
+\chidxref{\\}
 控制序列必为如下两种形式中的一种：
 
 %\ulist
@@ -2024,7 +2025,8 @@ $( \>) \>[ \>] \>\{ \>\}
 \>\vert \>\Vert
 \>\uparrow \>\downarrow \>\updownarrow
 \>\Uparrow \>\Downarrow \>\Updownarrow$}
-\ifoldeplain ^^|(| ^^|)| ^^|[| ^^|]| ^^|\{| ^^|\}| ^^|/| ^^|\backslash| \fi
+\chidxref{\(} \chidxref{\)} \chidxref{\[} \chidxref{\]}
+\chidxref{\/} \syidxref{\{} \syidxref{\}}
 ^^|\lbrack| ^^|\rbrack| ^^|\lbrace| ^^|\rbrace|
 ^^|\lfloor| ^^|\rfloor| ^^|\lceil|  ^^|\rceil|
 ^^|\langle| ^^|\rangle| ^^|\vert|   ^^|\Vert|
@@ -2229,7 +2231,7 @@ bp& big point    & ^{大点} & 72 big points = 1 inch\cr
 in& inch         & ^{英寸} &\cr
 cm& centimeter   & ^{厘米} & 2.54 centimeters = 1 inch\cr
 mm& millimeter   & ^{毫米}  & 10 millimeters = 1 centimeter\cr
-dd& \didotpt     & ^{迪多点}  & 1157 {\didotpt}s = 1238 points\cr
+dd& \didotpt\mcidxref{didotpt} & ^{迪多点}  & 1157 {\didotpt}s = 1238 points\cr
 cc& cicero       & ^{西塞罗} & 1 cicero = 12 {\didotpt}s\cr
 sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 }
@@ -2324,7 +2326,7 @@ sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 \defterm{陈列公式}（display math）表示在单独一行显示的公式；
 \TeX 在陈列公式上边和下边添加额外间隔，以隔开周围文本。
 陈列公式两边用 `|$$|' 括起来。
-\ifoldeplain\ttidxref{$$}\fi
+\directidx{\$\$@\tt\char`\$\char`\$\rm}
 \TeX\ 在陈列数学\refterm{模式}中读取陈列公式。
 \endconcept
 
@@ -2348,7 +2350,7 @@ sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 %method shown on \xrefpg{verbatim}.  The definition:
 \defterm{转义符}（escape character）引入一个控制序列。
 \refterm{\PlainTeX} 的转义符是反斜杠(|\|)。
-\indexchar \
+\chidxref{\\}
 利用 ^|\catcode| 命令\ctsref{\catcode}重新定义 $c_1$ 和 $c_2$ 的类别码，
 你可以将转义符从 $c_1$ 改为 $c_2$。类似地你可以定义额外的转义符。
 如果你想排版包含字面转义符的材料，你必须或者
@@ -2433,7 +2435,7 @@ sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 \TeX\ 提供多达十六个字体族，它们用 $0$--$15$ 编号。
 比如在\refterm{\plainTeX} 中，第 $0$ 族由用于文本尺寸的 $10$ 点罗马字体，
 用于标号尺寸的 $7$ 点罗马字体，以及用于小标号尺寸的 $5$ 点罗马字体组成。
-^^{\plainTeX//其中的字体族}
+\mcidxref{plainTeX//其中的字体族}
 \PlainTeX\ 还将第 $1$ 族定义为由数学意大利字体组成，
 并将第 $2$ 族和第 $3$ 族分别保留给^{特殊符号}和^{数学扩展符号}。
 \footnote{第 $2$ 族和第 $3$ 族的特殊之处在于，它们的字体度量文件必须包含数学间隔参数。}
@@ -2481,7 +2483,7 @@ sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 %particular implementations of \TeX\ are free to change it.}
 \li “^{结果文件}”是包含 \TeX\ 运行结果的文件。
 \TeX\ 运行后产生两个结果文件：\dvifile 和日志文件。
-^^{\dvifile//作为结果文件}
+\fnidxref{dvi//作为结果文件}
 ^^{日志文件//作为结果文件}
 \dvifile 包含打印文档所需的信息，而日志文件包含运行记录，包括 \TeX\ 生成的任何错误信息。
 若主要输入文件的名称是 |screed.tex|，则 \dvifile 和日志文件的名称分别是
@@ -2675,7 +2677,7 @@ abcdefghijklmnopqrstuvwxyz\par
 abcdefghijklmnopqrstuvwxyz\par
 }\vskip\belowdisplayskip
 字体中的字符都是编好号的。对于在 \ascii\ 字符表中存在的字符，
-它们的编号一般与其 ^{\ascii} 编码一致。
+它们的编号一般与其 \ascii\ ^^{ASCII} 编码一致。
 每个字体的编码表指明该字体的第 $n$ 个字符是怎样的。
 有些字体，比如那些用于数学符号的字体，根本不包含任何字母字符。
 你可以用 `|\char |$n$'\ctsref{\char}生成包含第 $n$ 个字符的盒子，
@@ -2741,12 +2743,12 @@ abcdefghijklmnopqrstuvwxyz\par
 这些字体的文件需要安装在计算机文件系统的某个 \TeX\ 能找到的位置中。
 对每个字体，\TeX\ 及相关程序一般需要两个文件：
 一个给出各字符的度量（比如 |cmbx12.tfm|），
-^^{\tfmfile}
+\fnidxref{tfm}
 另一个给出各字符的形状（比如 |cmbx12.pk|）。
 \TeX\ 本身仅用到度量文件。另一个程序，设备驱动程序，
 ^^{设备驱动}
 把 \TeX\ 生成的 \dvifile 转换为能被打印机或其他输出设备处理的格式。
-^^{\dvifile//由驱动程序转换}
+\fnidxref{dvi//由驱动程序转换}
 设备驱动程序要用到形状文件（如果该文件存在）。
 
 %The font metrics file contains the information that \TeX\ needs in
@@ -2776,8 +2778,8 @@ abcdefghijklmnopqrstuvwxyz\par
 形状（像素）文件\xrdef{shape}可以有多种格式。
 ^^{像素文件}^^{轮廓文件}
 文件的扩展名（点号之后部分）告诉驱动文件该形状文件的格式。
-例如，|cmbx12| 字体的形状文件 可以是压缩格式的 |cmbx12.pk| ^^{\pkfile}，
-也可以是一般格式的 |cmbx12.gf| ^^{\gffile}。
+例如，|cmbx12| 字体的形状文件 可以是压缩格式的 |cmbx12.pk|\fnidxref{pk}，
+也可以是一般格式的 |cmbx12.gf|\fnidxref{gf}。
 对存在于输出设备中的字体，其形状文件也许不是必需的。
 \par}
 
@@ -3391,7 +3393,7 @@ Please don't pour {\it any} more tea into my hat.
 %\endconcept
 你可以用如下几种方式控制 \TeX\ 的连字：
 \ulist
-\li 你可以用 \writeidxfalse^|\-|\writeidxtrue 命令\ctsref{\@minus} 插入自定连字符，
+\li 你可以用 |\-| \syidxref{\-} 命令\ctsref{\@minus} 插入自定连字符，
 以允许 \TeX\ 在特定位置连字化。
 ^^{自定连字符}
 \li 你可以用 ^|\hyphenation| 命令\ctsref{\hyphenation}%
@@ -3611,7 +3613,7 @@ Please don't pour {\it any} more tea into my hat.
 没有这个紧排，你将得到 \hbox{“T{o}p”} 而不是 “Top” ——%
 两者的差别是微小的但却是明显的。
 \TeX\ 用某个\refterm{字体}排版文本时自动插入的紧排的位置和大小，
-是在该字体的度量文件（^{\tfmfile}）中指定的。
+是在该字体的度量文件（\tfmfile\fnidxref{tfm}）中指定的。
 \margin{paragraph deleted to save space; most of the material was
 already in this section.}
 
@@ -3941,7 +3943,7 @@ already in this section.}
 \li 你可以用 |\-| 命令\ctsref{\@minus}插入自定连字符，以允许 \TeX\ 在特定位置连字化。
 ^^{自定连字符}
 你也可以控制 \TeX\ 在你的文档中如何连字化\seeconcept{连字}。
-\ifoldeplain^^|\-//在断行中|\fi
+\syidxref{\-//在断行中}
 
 %\li You can tell \TeX\ to allow a line break after a ^{solidus} (/) between
 %two words by inserting ^|\slash| \ctsref{\slash}
@@ -3953,7 +3955,7 @@ already in this section.}
 %inserting a ^{tie} (|~|) between those words.
 %^^|~//in line breaking|
 \li 你可以通过在两个特定单词间插入^{带子} (|~|)，以禁止 \TeX\ 在该处断行。
-^^|~//在断行中|
+\chidxref{\~//在断行中}
 
 %\li You can adjust the penalties associated with line breaking by
 %assigning different values to \TeX's line-breaking
@@ -4098,7 +4100,7 @@ already in this section.}
 但宏的真正威力在于它可以带有参数。
 在调用一个带有参数的宏时，你给出用于替换这些参数的参量。
 例如，假设你这样写：
-\pix\indexchar #
+\pix\chidxref{\#}
 \def\arc#1{\cos #1 + i \sin #1}
 \csdisplay
 \def\arc#1{\cos #1 + i \sin #1}
@@ -5094,7 +5096,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \TeX\ 收集足够填满页面的素材后，它选择分页点并将分页点之前的素材放在 |\box255| 中。
 然后 \TeX\ 调用\defterm{输出例行程序}（output routine）%
 以加工素材并最终将它送到 \dvifile 中。
-^^{\dvifile//来自输出例行程序的素材}
+\fnidxref{dvi//来自输出例行程序的素材}
 输出例行程序可以执行进一步的加工，比如插入页眉，页脚和脚注。
 \refterm{\PlainTeX:\plainTeX} 提供了一个默认的输出例行程序，
 它在每个页面底部插入居中的页码。
@@ -5134,7 +5136,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 它将这些插入项和任何“装饰”（比如页眉页脚）合并到页面主要内容中，
 并将所有这些素材包装在一个盒子里；
 最后它用 ^|\shipout| 命令\ctsref{\shipout}将这个盒子送到 \dvifile 中。
-^^{\dvifile//来自输出例行程序的素材}
+\fnidxref{dvi//来自输出例行程序的素材}
 虽然输出例行程序大多是这样运行的，但有特定用途的输出例行程序会有不同表现。
 \endconcept
 
@@ -5232,7 +5234,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 输出例行程序如常处理 |\box255|，添加其他项目比如插入项和页眉页脚到该页面，
 然后用 |\shipout| 命令将页面输出到 \dvifile 。%
 （有些输出例行程序可能有不同的行为。）
-^^{\dvifile//来自输出例行程序的素材}%
+\fnidxref{dvi//来自输出例行程序的素材}%
 从 \TeX\ 的角度看，输出例行程序输出或不输出页面都无所谓；
 输出例行程序的惟一职责是以某种方式处理|\box255|。
 \par}
@@ -5332,7 +5334,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 它就将该主竖直列中位于分页点之前的内容放入 |\box255|。
 接着它调用当前的\refterm{输出例行程序}处理 |\box255|，
 最终输出页面内容到 \dvifile 。
-^^{\dvifile//来自输出例行程序的素材}
+\fnidxref{dvi//来自输出例行程序的素材}
 输出例行程序还得处理 \TeX\ 加工页面时积累的\refterm{插入项}，比如脚注。
 
 %It's useful to know the places where \TeX\ can break a page:
@@ -5674,6 +5676,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 \endconcept
 
 
+\def\conceptindexsort{plainTeX}
 \concept{\plainTeX}
 
 %\defterm{\PlainTeX} is the form of \TeX\ described in this
@@ -6341,6 +6344,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 
 
 \bookmark{2}{以T开头}
+\def\conceptindexsort{TeXMeX}
 \concept {\TeXMeX}
 
 %(a)~A variant of \TeX\  used for mathematical typesetting in
@@ -6362,7 +6366,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\endconcept
 我们用\defterm{文内公式}（text math）这个术语表示放在一行文本之中的数学公式，
 即两边用 |$| 括起来的公式。
-\ttidxref{$}
+\chidxref{\$}
 \TeX\ 在文内数学\refterm{模式}中排版文内公式。
 \endconcept
 
@@ -6596,12 +6600,12 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 ^^|\write//生成小玩意|
 ^^|\closeout//生成小玩意|
 \TeX\ 将此操作推迟到下次送出页面到 \dvifile 时%
-^^{\dvifile//其中的小玩意}
+\fnidxref{dvi//其中的小玩意}
 （除非在该操作之前加上 ^|\immediate|）。
 \TeX\ 用小玩意表示这些命令，因为它们与当时正在排版的内容完全无关。
 \li ^|\special| 命令\ctsref{\special}让 \TeX\ 直接插入某些文本到 \dvifile 中。
 如同 |\write| 命令，\TeX\ 也将此操作推迟到下次送出页面到 \dvifile 时。
-^^{\dvifile//用 \b\tt\\special\e 插入的素材}
+\fnidxref{dvi//用 \b\tt\\special\e 插入的素材}
 |\special| 的典型用法是命名一个图片文件，以让设备驱动文件将它整合到最终输出中。
 \li 当你用 ^|\language| 或 ^|\setlanguage| 命令\ctsref{\language}改变语言时，
 \TeX\ 插入一个小玩意，以引导它在以后分段为行时使用特定集合的连字规则。
@@ -6626,10 +6630,10 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 
 \endconcepts
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye

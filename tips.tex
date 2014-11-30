@@ -307,9 +307,9 @@
 \ulist\compact
 \li 你可以使用 |\break| 命令（\xref{hbreak}），在旁边强制断行。
  ^^|\break//纠正断行|
-\li 你可以在两个单词之间插入一个带子(|~|)（见\xref{@not}），来防止在它们之间断开。\ttidxref{~}
+\li 你可以在两个单词之间插入一个带子(|~|)（见\xref{@not}），来防止在它们之间断开。\ccidxref{\~}
 \li 你可以在一些单词里插入一个或者多个自定连字符，来告诉 \TeX{} 新的断词规则（参考 |\-|，\xref{\@minus}）。
-\ifoldeplain\ctsidxref{-//在断行中}\fi
+\syidxref{\-//在断行中}
  ^^{自定连字符//纠正不良断行}
 \li 你可以使用 ^|\hbox| 命令\ctsref{\hbox}，把几个单词封装在一个水平盒子里。
 \endulist
@@ -558,7 +558,7 @@ Overfull \vbox (296.30745pt too high) has occurred
 
 如果多余的空白是在一行内，由大括号后的空格引起的，那就移除它。如果多余的空
 白是在行尾，由大括号后的空格引起的，那就紧接着在大括号后放一个`|%|'。
-%{\recat!ttidxref[%//to eliminate unwanted spaces]]
+\chidxref{\%//to eliminate unwanted spaces}
 `|%|' 用于注释开始，但不一定真的要有注释内容。
 
 % A macro definition can also
@@ -1098,7 +1098,7 @@ The following input will do it:
 % \endolist
 % \eix^^{\<dimen>}
 \null
-\bix^^{\<dimen>}
+\bix\aridxref{dimen}
 设置尺寸的最简单办法是直接赋值，比如：
 \csdisplay
 \hsize = 6in
@@ -1117,7 +1117,7 @@ The following input will do it:
 \advance\vsize by -2\parskip
 |
 \endolist
-\eix^^{\<dimen>}
+\eix\aridxref{dimen}
 
 
 %\section Creating composite fonts
@@ -1676,10 +1676,10 @@ Addison-Wesley, 1990.\par}
 `|%|'。
 \eix^^{宏//使宏易读}
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 %\endchapter\byebye
 \endchapter\byebye

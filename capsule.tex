@@ -65,89 +65,86 @@
 
 \begincapsum
 
-\writeidxfalse
-{\catcode `@ = \letter
+%{\catcode `@ = \letter
 %\caplineout {\\\visiblespace} {interword space}*{\@space}}%
-\caplineout {\\\visiblespace} {字间间隔}*{\@space}}%
-   {\catcode `\ =\other\ctsidxref{ }}
+\capsy \  {字间间隔}*{\@space}
 %\capcs ! {negative thin space for math}{}{\@shriek}
-\capcs ! {数学中的负的细小间隔}{}{\@shriek}
+\capsyidx \! {数学中的负的细小间隔}{}{\@shriek} {"\"!}
 %\capcs " {umlaut accent for text, as in \"o}{}{\@quote}
-\capcs " {文本中的元音变音符，比如 \"o 中那样}{}{\@quote}
+\capsyidx \" {文本中的元音变音符，比如 \"o 中那样}{}{\@quote} {"\""}
 %\capactwo # {introduce a macro parameter, or indicate where the text of
 %   an entry goes in an alignment preamble}{}{@msharp:@asharp}
-\capactwo # {引入宏参数，或在对齐导言中指示文本条目的位置}{}{@msharp:@asharp}
+\capactwo \# {引入宏参数，或在对齐导言中指示文本条目的位置}{}{@msharp:@asharp}
 %\capcs # {produce \# character from current font}{}{\@pound}
-\capcs # {从当前字体中输出 \# 字符}{}{\@pound}
+\capsy \# {从当前字体中输出 \# 字符}{}{\@pound}
 %\capac $ {begin or end a math formula}{}{mathform}
-\capac $ {开始或结束数学公式}{}{mathform}
+\capac \$ {开始或结束数学公式}{}{mathform}
 %\capcs $ {produce \$ character from current font}{}{\@bucks}
-\capcs $ {从当前字体中输出 \$ 字符}{}{\@bucks}
+\capsy \$ {从当前字体中输出 \$ 字符}{}{\@bucks}
 %\capac % {begin a comment}*{comments}
-\capac % {开始注释}*{comments}
+\capac \% {开始注释}*{comments}
 %\capcs % {produce \% character from current font}{}{\@percent}
-\capcs % {从当前字体中输出 \% 字符}{}{\@percent}
+\capsy \% {从当前字体中输出 \% 字符}{}{\@percent}
 %\capac & {separate templates and entries in an alignment}{}{@and}
-\capac & {在对齐中分隔模板与条目}{}{@and}
+\capac \& {在对齐中分隔模板与条目}{}{@and}
 %\capcs & {produce \& character from current font}{}{\@and}
-\capcs & {从当前字体中输出 \& 字符}{}{\@and}
+\capsy \& {从当前字体中输出 \& 字符}{}{\@and}
 %\capac ' {prime symbol for math, as in $p'$}{}{@prime}
-\capac ' {数学中的素数符号，比如 $p'$ 中那样}{}{@prime}
+\capac \' {数学中的素数符号，比如 $p'$ 中那样}{}{@prime}
 %\capcs ' {acute accent for text, as in \'e}{}{\@prime}
-\capcs ' {文本中的尖音符，比如 \'e 中那样}{}{\@prime}
+\capsy \' {文本中的尖音符，比如 \'e 中那样}{}{\@prime}
 %\capcs * {multiplication symbol that allows a line break}{}{\@star}
-\capcs * {允许断行的乘号}{}{\@star}
+\capsy \* {允许断行的乘号}{}{\@star}
 %\capcs + {begin tabbed line}{}{\@plus}
-\capcs + {开始制表符行}{}{\@plus}
+{\let\+\relax \capsy \+ {开始制表符行}{}{\@plus}}
 %\capcs , {thin space for math}{}{\@comma}
-\capcs , {数学中的细小间隔}{}{\@comma}
+\capsy \, {数学中的细小间隔}{}{\@comma}
 %\capcs - {specify a legal hyphenation point}*{\@minus}
-\capcs - {指定合法的断字点}*{\@minus}
+\capsy \- {指定合法的断字点}*{\@minus}
 %\capcs . {dot accent for text, as in \.n}{}{\@dot}
-\capcs . {文本中的点重音符，比如 \.n 中那样}{}{\@dot}
+\capsy \. {文本中的点重音符，比如 \.n 中那样}{}{\@dot}
 %\capcs / {italic correction for the previous character}*{\@slash}
-\capcs / {对之前字符的斜体校正}*{\@slash}
+\capsy \/ {对之前字符的斜体校正}*{\@slash}
 %\capcs ; {thick space for math}{}{\@semi}
-\capcs ; {数学中的较大间隔}{}{\@semi}
+\capsy \; {数学中的较大间隔}{}{\@semi}
 %\capcs = {macron accent for text, as in \=r}{}{\@equal}
-\capcs = {文本中的长音符号，比如 \=r 中那样}{}{\@equal}
+\capsy \= {文本中的长音符号，比如 \=r 中那样}{}{\@equal}
 %\capac \ {begin a control sequence}*{@backslash}
-\capac \ {开始控制序列}*{@backslash}
+\capac \\ {开始控制序列}*{@backslash}
 %\capcs > {medium space for math}{}{\@greater}
-\capcs > {数学中的中等间隔}{}{\@greater}
+\capsy \> {数学中的中等间隔}{}{\@greater}
 %\capac ^ {produce a specified subformula as a superscript}{}{@hat}
-\capac ^ {以上标形式输出指定的子公式}{}{@hat}
+\capac \^ {以上标形式输出指定的子公式}{}{@hat}
 %\capcs ^ {circumflex accent for text, as in \^o}{}{\@hat}
-\capcs ^ {文本中的抑扬符号，比如 \^o 中那样}{}{\@hat}
+\capsy \^ {文本中的抑扬符号，比如 \^o 中那样}{}{\@hat}
 {\catcode `@ = \letter
 %\caplineout {\twocarets L}{equivalent to the |\\par| primitive}
 %            {}{\@par}\ttidxref{^^L}
-\caplineout {\twocarets L}{等同于原始的 |\\par|}{}{\@par}\ttidxref{^^L}
+\caplineout {\twocarets L}{等同于原始的 |\\par|}{}{\@par}\ccidxref{L}
 %\caplineout {\twocarets M}{an end-of-line}*{@newline}\ttidxref{^^M}
-\caplineout {\twocarets M}{行结束标志}*{@newline}\ttidxref{^^M}
+\caplineout {\twocarets M}{行结束标志}*{@newline}\ccidxref{M}
 }%
 %\capac _ {produce a specified subformula as a subscript}{}{@underscore}
-\capac _ {以下标形式输出指定的子公式}{}{@underscore}
+\capac \_ {以下标形式输出指定的子公式}{}{@underscore}
 %\capcs _ {underscore: \_}{}{\@underscore}
-\capcs _ {底线：\_}{}{\@underscore}
+\capsy \_ {底线：\_}{}{\@underscore}
 %x \capac ` {in a \<number> context, \ascii\ code for character that follows}*{@lquote}
 %\capcs ` {grave accent for text, as in \`e}{}{\@lquote}
-\capcs ` {文本中的抑音符，比如 \`e 中那样}{}{\@lquote}
+\capsy \` {文本中的抑音符，比如 \`e 中那样}{}{\@lquote}
 %\capac { {start a group}{}{@lbrace}
-\capac { {开始编组}{}{@lbrace}
+\capac \{ {开始编组}{}{@lbrace}
 %\capcs { {left brace delimiter for math: $\{$}{}{\@lbrace}
-\capcs { {数学中的左大括号定界符：$\{$}{}{\@lbrace}
+\capsy \{ {数学中的左大括号定界符：$\{$}{}{\@lbrace}
 %\capcs | {parallel lines for math: $\Vert$}{}{\@bar}
-\capcs | {数学中的平行线：$\Vert$}{}{\@bar}
+\capsyidx \| {数学中的平行线：$\Vert$}{}{\@bar} {"\"|}
 %\capac } {end a group}{}{@rbrace}
-\capac } {结束编组}{}{@rbrace}
+\capac \} {结束编组}{}{@rbrace}
 %\capcs } {right brace delimiter for math: $\}$}{}{\@rbrace}
-\capcs } {数学中的右大括号定界符：$\}$}{}{\@rbrace}
+\capsy \} {数学中的右大括号定界符：$\}$}{}{\@rbrace}
 %\capac ~ {interword space at which a line will not break}{}{@not}
-\capac ~ {字间间隔，该处不能断行}{}{@not}
+\capac \~ {字间间隔，该处不能断行}{}{@not}
 %\capcs ~ {tilde accent for text, as in \~a}{}{\@not}
-\capcs ~ {文本中的颚化符，比如 \~a 中那样}{}{\@not}
-\writeidxtrue
+\capsy \~ {文本中的颚化符，比如 \~a 中那样}{}{\@not}
 \bookmark{2}{从A到G}%
 %\capcs aa {Scandinavian letter: \aa}{}{}
 \capcs aa {斯堪的纳维亚字母： \aa}{}{}

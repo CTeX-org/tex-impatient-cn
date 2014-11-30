@@ -270,7 +270,7 @@ Skip across \hskip 3cn by 3 centimeters.
 l.340 Skip across \hskip 3cn
                              by 3 centimeters.
 |
-^^|<to be read again>|
+\eridxref{to be read again}
 这里 \TeX\ 注意到 `|3|' 后面不是一个正确的度量单位，因此它假设该度量单位为点。
 \TeX\ 将重新读取 `|cn|' 的记号并将它们插入你的输入中，而这并不是你想要的。
 在这种情形下若想得到更好的结果，你可以先键入 `|2|' 以跳过 `|cn|'。
@@ -383,7 +383,7 @@ l.330 So \spadesuit
 l.29 \hbox{One \vskip
                      1in two.}
 |
-^^|<inserted text>|
+\eridxref{inserted text}
 问题在于，当 \TeX\ 位于受限水平模式中，即正在构建水平盒子时，不能使用 |\vskip|。
 但 \TeX\ 不是丢掉 |\vskip|，而是在它前面插入一个右花括号，以结束该水平盒子。
 如果你接受 \TeX\ 的修改，\TeX\ 遇到稍后的正确右花括号时将再次报错。
@@ -555,8 +555,8 @@ l.93 ...Skip \smallskip a little further.}
 %\endulist
 最后，我们提及可能出现在错误信息行对开头的另外两个指示词：
 \ulist
-\li ^|<output>| 表示 \TeX\ 在它的输出例行程序中间遇到此错误。
-\li ^|<write>| 表示 \TeX\ 在执行 |\write| 命令时遇到此错误。
+\li |<output>| \eridxref{output} 表示 \TeX\ 在它的输出例行程序中间遇到此错误。
+\li |<write>| \eridxref{write} 表示 \TeX\ 在执行 |\write| 命令时遇到此错误。
 \TeX\ 将在实际执行 |\write| 时才检测这样的错误（在 |\shipout| 时），
 而不是在刚遇到 |\write| 命令时。
 \endulist
@@ -566,10 +566,10 @@ l.93 ...Skip \smallskip a little further.}
 %\byebye
 \eix^^{错误信息}
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye

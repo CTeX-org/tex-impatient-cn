@@ -1423,7 +1423,7 @@ $n$，这个代码可以用 ^|\newinsert| 命令（\xref{\@newinsert}）得到�
 \cts shipout {\<box>}
 \explain
 这个命令让 \TeX\ 把 \<box> 输出到 \dvifile.
-^^{\dvifile//接收 \b\tt\\shipout\e 的盒子}
+\fnidxref{dvi//接收 \b\tt\\shipout\e 的盒子}
 \TeX\ 在 |\shipout| 时，把 \<box> 中的任何 |\write| 命令进行展开。
 ^^|\write// 在 {\tt\\shipout} 时进行展开|
 |\shipout| 的主要用途是在输出例行程序中，不过你可以在任何其他地方使用这个命令。
@@ -1638,9 +1638,9 @@ $B_2$这个盒子必须是个竖直盒子，不是水平盒子。
 
 \enddescriptions
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter \byebye

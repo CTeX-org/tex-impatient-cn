@@ -57,7 +57,7 @@
 %The \pix^|\letreturn| macro lets you define `|^^M|' without that
 %extra machinery (which you can see in the definition below).
 为了将 `|^^M|' 定义为活动字符，你需要将定义放在编组中，并借助某些额外机制。
-\ttidxref{^^M}
+\ccidxref{M}
 \pix^|\letreturn| 宏让你无需额外机制就可以定义 `|^^M|'（它的定义在下面可以看到）。
 
 \csdisplay
@@ -159,10 +159,10 @@
 %We also redefine ^|^^L| to be nonouter so that you can use it in a
 %macro definition or argument.
 |\%| 通常用于写出 `|%|' 字符，但它无法包含在 |\write| 的记号列中。
-^^|\write//用它写出 \b\tt\%\e\|
-%^^|%//写出该字符|
+^^|\write//用它写出 \b\tt\%\e|
+\chidxref{\%//写出该字符}
 你可以用 ^|\percentchar| 达到此目的。
-我们还将 ^|^^L| 重新定义为非外部宏，因此你可以在宏定义或者参量中使用它。
+我们还将 |^^L| \ccidxref{L} 重新定义为非外部宏，因此你可以在宏定义或者参量中使用它。
 
 \csdisplay
 {\catcode`\% = \other \gdef\percentchar{%}}%
@@ -1446,10 +1446,10 @@
 %\eix^^|eplain.tex|
 \eix^^|eplain.tex|
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye

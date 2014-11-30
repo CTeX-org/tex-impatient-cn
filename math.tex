@@ -189,7 +189,7 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \ctsdisplay triangle {}
 \ctsdisplay backslash {}
 \ctsdisplay vert {}
-\writeidxfalse\ctsydisplay | @bar {}\writeidxtrue
+\ctsydisplayn \| @bar {} \directidx{"\"|+@\hskip-.5em\tt\\\char`"\"|\rm}
 \ctsdisplay Vert {}
 \ctsdisplay emptyset {}
 \ctsdisplay bot {}
@@ -204,7 +204,7 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 \ctsdisplay nabla {}
 \ctsdisplay neg {}
 \ctsdisplay lnot {}
-\actdisplay ' @prime \ (上标点)
+\actdisplay \' @prime \ (上标点)
 \ctsdisplay prime {}
 \ctsdisplay partial {}
 \ctsdisplay surd {}
@@ -231,7 +231,7 @@ $f(\theta)-{\mit \Gamma}_{\theta} < f(\rho)-{\mit \Gamma}_{\rho}$.
 |\!|| 和 ^|\Vert| 命令是等价的, 就像 ^|\neg| 和 ^|\lnot| 命令一样.
 \margin{增加了 {\tt\\vert} 的解释}
 |\vert| 符号可以排印出和 `|!||' 相同的效果.
-\indexchar |
+\chidxref{\|}
 
 由 |\backslash|, |\vert|, 和 |\Vert| 排印的命令叫做 \minref{分界符}.
 使用 ^|\bigm| 等 (\xref \bigm) 命令可以排印大号的这些字符.
@@ -319,7 +319,7 @@ z \times y = x \;\hbox{且}\; y \neq 0$$
 \enddesc
 
 \begindesc
-\ctspecial * \ctsxrdef{@star}
+\ctsymbol \* \ctsxrdef{@star}
 \explain
 命令 |\*| 表示乘法符号 ($\times$), 也是一个二元符号.
 乘法符号在文本中的数学公式中出现时表现得和一个分词符类似.
@@ -394,7 +394,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 当 \TeX\ 需要在一个数学公式处断行, \minrefs{断行}
 它会考虑在一个关系符后进行断行---不过仅在它出现在公式的最外层时, 而不是在一个组中.
 
-除了这里列出的命令以外, \TeX\ 也把 `^|=|' 和``arrow'' 命令 (\xref{arrows}) 作为关系运算符.
+除了这里列出的命令以外, \TeX\ 也把 `|=|' \chidxref{\=} 和``arrow'' 命令 (\xref{arrows}) 作为关系运算符.
 
 一些关系符有多种命令表达方式, 你可以使用任何一个来排印它们:
 \ulist \compact
@@ -412,7 +412,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 \basicdisplay {$\not\asymp$}{\\not\\asymp}\ctsidxref{asymp}
 \basicdisplay {$\not\cong$}{\\not\\cong}\ctsidxref{cong}
 \basicdisplay {$\not\equiv$}{\\not\\equiv}\ctsidxref{equiv}
-\basicdisplay {$\not=$}{\\not=}\ttidxref{=}
+\basicdisplay {$\not=$}{\\not=}\chidxref{\=}
 \basicdisplay {$\not\ge$}{\\not\\ge}\ctsidxref{ge}
 \basicdisplay {$\not\geq$}{\\not\\geq}\ctsidxref{geq}
 \basicdisplay {$\not\le$}{\\not\\le}\ctsidxref{le}
@@ -481,9 +481,9 @@ $\triangle ABF \not\sim \triangle ACF$.
 %
 \dothreecolumns 12
 \easy\ctsdisplay lbrace {}
-\writeidxfalse\ctsydisplay { @lbrace {}\writeidxtrue
+\ctsydisplay \{ @lbrace {}
 \ctsdisplay rbrace {}
-\writeidxfalse\ctsydisplay } @rbrace {}\writeidxtrue
+\ctsydisplay \} @rbrace {}
 \ctsdisplay lbrack {}
 \ctsdisplay rbrack {}
 \ctsdisplay langle {}
@@ -1193,9 +1193,9 @@ $f \colon t \quad f : t$
 \bix^^{下标}
 \secondprinting{\vglue-12pt}
 \makecolumns 4/2:
-\easy\ctsact _ \xrdef{@underscore} {\<argument>}
+\easy\ctsact \_ \xrdef{@underscore} {\<argument>}
 \cts sb {\<argument>}
-\ctsact ^ \xrdef{@hat} {\<argument>}
+\ctsact \^ \xrdef{@hat} {\<argument>}
 \cts sp {\<argument>}
 \secondprinting{\vglue-4pt}
 \explain
@@ -3150,10 +3150,10 @@ combinations of $n$ things taken $k$ at a time}$$
 %\enddesc
 \begindesc
 \bix^^{间隔//数学公式中的间隔}
-\ctspecial ! \ctsxrdef{@shriek}
-\ctspecial , \ctsxrdef{@comma}
-\ctspecial > \ctsxrdef{@greater}
-\ctspecial ; \ctsxrdef{@semi}
+\ctsymboln \! \ctsxrdef{@shriek} \pix\directidx{"\"!+@\hskip-.5em\tt\\\char`"\"!\rm}
+\ctsymbol \, \ctsxrdef{@comma}
+\ctsymbol \> \ctsxrdef{@greater}
+\ctsymbol \; \ctsxrdef{@semi}
 \explain
 这些命令在公式中生成各种大小的^{额外间隔}。
 它们使用\minref{数学单位}来定义，
@@ -3688,10 +3688,10 @@ $$4>3$$
 \enddescriptions
 \eix^^{数学}
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye

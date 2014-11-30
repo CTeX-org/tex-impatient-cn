@@ -46,8 +46,6 @@
 \newif\ifedgetabs \edgetabstrue
 \newif\ifdvi \dvitrue % true if we want a .dvi file
 \newif\iftrimpage \trimpagetrue
-\newif\ifoldeplain \ifx\undefined\interitemskipamount\oldeplaintrue\fi
-\newif\ifwriteidx \writeidxtrue % disable some index items for new eplain
 
 %\xrefwarningfalse
 
@@ -67,24 +65,22 @@
 %
 \catcode`\@ = \letter % For the macro file only.
 
-% Dirty hacks for eplain 2.0+
-\ifoldeplain\else
-   \let\oldxrdef = \xrdef
-   \def\xrdef#1{\oldxrdef{\tokstostring{#1}}}%
-   \let\oldxrefn = \xrefn
-   \def\xrefn#1{\oldxrefn{\tokstostring{#1}}}%
-   \let\old@definelabel = \@definelabel
-   \def\@definelabel#1{\old@definelabel{\tokstostring{#1}}}
-   \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
-   % setup hyperlinks
-   \enablehyperlinks[dvipdfm]
-   %% may cause an error with xetex.def before version v4.03
-   %% please see http://tex.stackexchange.com/q/191489/8956
-   \beginpackages\usepackage{color}\endpackages
-   \definecolor{teal}{rgb}{0,0.5,0.5}
-   \hlopts{colormodel=,color=teal}
-   \hlopts{bwidth=0}
-\fi
+% Some hacks for eplain 2.0+
+\let\oldxrdef = \xrdef
+\def\xrdef#1{\oldxrdef{\tokstostring{#1}}}%
+\let\oldxrefn = \xrefn
+\def\xrefn#1{\oldxrefn{\tokstostring{#1}}}%
+\let\old@definelabel = \@definelabel
+\def\@definelabel#1{\old@definelabel{\tokstostring{#1}}}
+\def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
+% setup hyperlinks
+\enablehyperlinks[dvipdfm]
+%% may cause an error with xetex.def before version v4.03
+%% please see http://tex.stackexchange.com/q/191489/8956
+\beginpackages\usepackage{color}\endpackages
+\definecolor{teal}{rgb}{0,0.5,0.5}
+\hlopts{colormodel=,color=teal}
+\hlopts{bwidth=0}
 
 % We don't want register allocation information in the log,
 % so we redefine the relevant macro from plain.tex.
@@ -313,18 +309,9 @@
 
 \footnotemarkseparation = .16666em
 
-\ifoldeplain % eplain 1.9
-  \let\abovelistskipa = \abovelistskip
-  \let\interitemskipa = \interitemskip
-  \let\belowlistskipa = \belowlistskip
-\else % eplain 2.0+
-  \let\abovelistskipa = \abovelistskipamount
-  \let\interitemskipa = \interitemskipamount
-  \let\belowlistskipa = \belowlistskipamount
-\fi
-\abovelistskipa = \smallskipamount
-\interitemskipa = \tinyskipamount
-\belowlistskipa = \smallskipamount
+\abovelistskipamount = \smallskipamount
+\interitemskipamount = \tinyskipamount
+\belowlistskipamount = \smallskipamount
 \listleftindent = 0pt
 
 % Displays involve text and math.  We don't want as much flexibility in
@@ -1081,31 +1068,20 @@
 
 % Indexing macros for external use.
 
-% replace // in index string with ! for new eplain
-%
-\def\replaceit#1{\@replace#1//\@replaceMark}
-\def\@replace#1//#2\@replaceMark{%
-  \ifempty{#2}\noexpand#1\else#1!\@replace#2\@replaceMark\fi
-}
 
 % \idxref generates an index entry for #1. If #1 contains any control
 % sequences, they are treated literally.
 %
 \def\idxref#1{%
-  \ifoldeplain\indexwrite{#1}N\ignorespaces\else
-    \begingroup
-    \let\b\begingroup\let\e\endgroup\let\tt\eighttt
-    \edef\z{\replaceit{#1}}%
-    \expandafter\sidx\expandafter{\z}%
-    \endgroup
-  \fi
+   \begingroup
+   \let\b\begingroup\let\e\endgroup\let\tt\eighttt
+   \indexwrite{#1}{0}\ignorespaces
+   \endgroup
 }
 
 
 % For creating an index entry for control space.
-{\catcode `\ =\other
-\gdef\blankidxref{\ctsidxref{ }}
-}
+\def\blankidxref{\syidxref{\ }}
 
 % I removed this macro from eplain because \csname works as well, but
 % since the macros below are already written to use it ...
@@ -1149,28 +1125,45 @@
 % \ttidxref generates an index entry for #1 in the program font.
 % If #1 contains any control sequences, they are treated literally.
 %
-\def\ttidxref#1{%
-  \ifoldeplain\indexwrite{#1}T\ignorespaces\else
-    %\sidx{\tt\tokstostring{#1}\rm}%
-  \fi
-}
+\def\ttidxref#1{\indexwrite{#1}{1}\ignorespaces}
+
+% \ccidxref generates an index entry for a double-caret character.
+%
+\def\ccidxref#1{\indexwrite{#1}{2}\ignorespaces}
+
+% \chidxref generates an index entry for a special characters.
+%
+\def\chidxref#1{\indexwrite{#1}{3}\ignorespaces}
+
+% \syidxref generates an index entry for a control symbol
+%
+\def\syidxref#1{\indexwrite{#1}{4}\ignorespaces}
 
 % \ctsidxref generates an index entry for a control sequence.  #1
 % should not have a preceding backslash, so that the proper call for
 % indexing \alpha is \ctsidxref{alpha}.
 %
-\def\ctsidxref #1{%
-  \ifoldeplain\indexwrite{#1}C\ignorespaces\else\ifwriteidx
-    \edef\z{\noexpand\tt\noexpand\\\replaceit{#1}\noexpand\rm}%
-    \expandafter\sidx\expandafter{\z}%
-  \fi\fi
-}
+\def\ctsidxref #1{\indexwrite{#1}{5}\ignorespaces}
 
-% \indexchar is needed to generate index entries for three especially
-% difficult single characters: {, }, and \.  They are blank-delimited.
+% \aridxref generates an index entry for an argument type
 %
-\def\indexchar{\begingroup \deactivate \indexcharA}
-\def\indexcharA#1 {\indexwrite{#1}T\endgroup}
+\def\aridxref#1{\indexwrite{#1}{6}\ignorespaces}
+
+% \fnidxref generates an index entry for a filename extension
+%
+\def\fnidxref#1{\indexwrite{#1}{7}\ignorespaces}
+
+% \mcidxref generates an index entry for some miscellanous macro
+%
+\def\mcidxref#1{\indexwrite{#1}{8}\ignorespaces}
+
+% \eridxref generates an index entry for some error messages
+%
+\def\eridxref#1{\indexwrite{#1}{9}\ignorespaces}
+
+% \directidx write an index entry with special characters of makeindex
+%
+\def\directidx#1{\expandafter\sidx\expandafter{#1}\ignorespaces}
 
 % \pix indicates that the next index entry is a principal one.
 %
@@ -1183,29 +1176,88 @@
 \newif\ifbix \def\bix{\bixtrue}
 \newif\ifeix \def\eix{\eixtrue}
 
-% #1 is the text of the entry, #2 is N (normal), T (typewriter) or
-% C (control sequence) or `cs' for now.
+% Split subentries from entries and save them in macros
 %
-\def\indexwrite#1#2{\begingroup
-   \def\spacesub{\otherspace}%
-   \edef\tts{\tokstostring{#1}}%
-   \edef\nextaction{\write\index{\tts::#2::\noexpand\number\noexpand\pageno
-      \ifpix P\fi\ifbix B\fi\ifeix E\fi}}%
-   \nextaction
+\newif\ifsub \newtoks\mainentry \newtoks\subentry
+
+\def\splitentry#1{%
+  \subfalse
+  \@split#1//\@splitMark
+}
+
+\def\@split#1//#2\@splitMark{%
+  \ifempty{#2}%
+     \ifsub
+        \subentry={#1}%
+     \else
+        \mainentry={#1}\subentry={}%
+     \fi
+  \else
+     \mainentry={#1}\subtrue
+     \@split#2\@splitMark
+  \fi
+}
+
+% #1 is the text of the entry, #2 is the type of the entry
+% type 0 for general entries     <- \idxref
+% type 1 for special terms       <- \ttidxref
+% type 2 for caret notations     <- \ccidxref
+% type 3 for special characters  <- \chidxref
+% type 4 for control symbols     <- \syidxref
+% type 5 for control words       <- \ctsidxref
+% type 6 for kind of arguments   <- \aridxref
+% type 7 for filename extensions <- \fnidxref
+% type 8 for miscellanous macros <- \mcidxref
+% type 9 for error messages      <- \eridxref
+%
+\def\indexwrite#1#2{%
+   \splitentry{#1}%
+   \ifcase #2 % 0
+      \toks0 = {}%
+      \toks2 = {}%
+   \or % 1
+      \toks0 = \expandafter{\the\mainentry @\tt}%
+      \toks2 = {\rm}%
+   \or % 2
+      \toks0 = \expandafter{\expandafter\^\expandafter
+                            \^\the\mainentry @\tt\char`\^\char`\^}%
+      \toks2 = {\rm}%
+   \or % 3
+      \toks0 = \expandafter{\the\mainentry @\tt\char`}%
+      \toks2 = {\rm}%
+   \or % 4
+      \toks0 = \expandafter{\the\mainentry+@\hskip -.5em\tt\\\char`}%
+      \toks2 = {\rm}%
+   \or % 5
+      \toks0 = \expandafter{\the\mainentry @\hskip -.5em\tt\\}%
+      \toks2 = {\rm}%
+   \or % 6
+      \toks0 = \expandafter{\the\mainentry @\hskip -.5em$\langle$}%
+      \toks2 = {$\rangle$}%
+   \or % 7
+      \toks0 = \expandafter{\the\mainentry @\hskip -.5em\tt.}%
+      \toks2 = {\rm\ 文件}%
+   \or % 8
+      \toks0 = \expandafter{\the\mainentry @\csname }%
+      \toks2 = {\endcsname}%
+   \or % 9
+      \toks0 = \expandafter{\the\mainentry @\hskip -.5em\tt<}%
+      \toks2 = {>\rm}%
+   \fi
+   \edef\temp{\the\toks0\noexpand\the\mainentry\the\toks2}%
+   \mainentry = \expandafter{\temp}%
+   %
+   \edef\tempa{\the\subentry}\def\tempb{}%
+   \ifx\tempa\tempb
+      \edef\idxstring{\the\mainentry}%
+   \else
+      \edef\idxstring{\the\mainentry!\the\subentry}%
+   \fi
+   \expandafter\sidx\expandafter{\idxstring}%
    \global\pixfalse \global\bixfalse \global\eixfalse
-\endgroup}
+}
 
 {\catcode `\^ = \other \gdef\twocarets{^^}}
-
-
-% For generating index entries with weird characters, we need to deactivate
-% them: { } blank \  and substitute [ ] ! for { } \ .  \recat does this.
-% It should be enclosed in a group (which must end in `]').
-\def\recat{%
-   \aftergroup\ignorespaces
-   \catcode `\! = 0 \catcode `[ = 1 \catcode `] = 2
-   \catcode `\  = \other \deactivate
-}
 
 
 
@@ -1315,7 +1367,7 @@
 % chapters (really, only the index).
 %
 \def\backmatter{\write\tocfile{\noexpand\setback}\backtrue}
-\def\setback{\ifoldeplain\noalign{\bigskip\global\backtrue}\fi}
+\def\setback{\noalign{\bigskip\global\backtrue}}
 
 
 
@@ -1486,6 +1538,7 @@
 \def\endconcepts{\closeout\conceptfile}
 
 \newwrite\conceptfile
+\let\conceptindexsort\relax
 
 % \concept produces a concept heading and also generates a crossreference
 % suitable for the mini-index.  It even works for concepts with several words
@@ -1500,6 +1553,12 @@
    % generate the index entry
    \ifconceptindex \else \global\indextoks = {\idxref{#1}}\fi
    \conceptindexfalse
+   % sometimes we need to index a concept in another way
+   \ifx\conceptindexsort\relax \else
+      \global\indextoks = \expandafter{\expandafter
+                          \mcidxref\expandafter{\conceptindexsort}}%
+      \global\let\conceptindexsort\relax
+   \fi
    \pix\bix\the\indextoks
    %
    {\bt \let\it=\bti \unskip\null #1.\hskip1em plus.2em minus.2em }%
@@ -1839,10 +1898,41 @@
 % for it.  #1 is blank-delimited.  \ctsact does not generate a
 % cross-reference definition.
 %
-\def\ctsact{\begingroup \deactivate \ctsactA}
-\def\ctsactA#1 {\endgroup
-   \ctsbasic{#1}{}%
-   \pix\ttidxref{#1}}
+\def\ctsact#1 {%
+   \ctsbasic{\char`#1}{}%
+   \pix\chidxref{#1}}
+
+% \ctscaret precede a character #1 with double carets and generates an index entry
+% for it.  #1 is blank-delimited. \ctscaret does not generate a
+% cross-reference definition.
+%
+\def\ctscaret#1 {%
+   \ctsbasic{\char`\^\char`\^#1}{}%
+   \pix\ccidxref{#1}}
+
+% \ctsymbol prints an control symbol #1 and generates an index entry
+% for it.  #1 is blank-delimited. \ctssymbol does not generate a
+% cross-reference definition.
+%
+\def\ctsymbol#1 {%
+   \ctsbasic{\\\char`#1}{}%
+   \pix\syidxref{#1}}
+
+% \ctsymbolx is like \ctsymbol, but leaves more space after its argument.
+%
+\def\ctsymbolx#1 {%
+   \ctsbasic{\\\char`#1}{}\quad
+   \pix\syidxref{#1}}
+
+% \ctsymboln is like \ctsymbol, but doesn't generates an index entry for it.
+%
+\def\ctsymboln#1 {%
+   \ctsbasic{\\\char`#1}{}}
+
+% \ctsymbolxn = \ctsymbolx + \ctsymboln
+%
+\def\ctsymbolxn#1 {%
+   \ctsbasic{\\\char`#1}{}\quad}
 
 % \ctspecial prints a control sequence #1 and generates an index
 % entry for it.  #1 is blank-delimited.  \ctspecial does not
@@ -1852,7 +1942,7 @@
 \def\ctspecial{\begingroup \deactivate \ctspecialA}
 \def\ctspecialA#1 {\endgroup
    \ctsbasic{\\#1}{}%
-   \pix\ifoldeplain\ctsidxref{#1}\fi%
+   \pix\ctsidxref{#1}%
 }
 
 % \ctspecialx is like \ctspecial, but leaves more space after its
@@ -1863,7 +1953,7 @@
 \def\ctspecialx{\begingroup \deactivate \mapquotes \ctspecialxA}
 \def\ctspecialxA#1 {\endgroup
    \ctsbasic{\\#1}{}\quad
-   \pix\ifoldeplain\ctsidxref{#1}\fi%
+   \pix\ctsidxref{#1}%
 }
 
 % \ctsdisplay has a blank-delimited argument consisting of a control
@@ -1888,25 +1978,31 @@
 }
 \def\ddstrut{\vrule width0pt height15pt depth11pt}
 
-% \ctsydisplay displays a control symbol.  #1 is a single character,
-% which may be active.  #2 is the cross-reference label,
+% \ctsydisplay displays a control symbol.
+% #1 is the control symbol, #2 is the cross-reference label,
 % blank-delimited.
 %
-\def\ctsydisplay{\begingroup \deactivate\catcode`\|=\other \ctsydisplayA}
-\def\ctsydisplayA#1 #2 {\endgroup
-   \basicdisplay{$\csname\string#1\endcsname$}{\\#1}%
+\def\ctsydisplay#1 #2 {%
+   \basicdisplay{$#1$}{\\\char`#1}%
    \ifxref \ctsxrdef{#2}\else \xreftrue \fi
-   \pix\ctsidxref{#1}%
+   \pix\syidxref{#1}%
 }
 
-% \actdisplay displays an active character. #1 is the character, and
+% \ctsydisplayn is like \ctsydisplay, but doesn't generates an index entry for it.
+%
+\def\ctsydisplayn#1 #2 {%
+   \basicdisplay{$#1$}{\\\char`#1}%
+   \ifxref \ctsxrdef{#2}\else \xreftrue \fi
+}
+
+% \actdisplay displays an special character.
+% #1 is the control symbol corresponding to the character,
 % #2 is the cross-reference label, blank-delimited.
 %
-\def\actdisplay{\begingroup\catcode `\|=\other\actdisplayA}
-\def\actdisplayA#1 #2 {\endgroup
-   \basicdisplay{$#1$}{\string#1}%
+\def\actdisplay#1 #2 {%
+   \basicdisplay{$\char`#1$}{\char`#1}%
    \ifxref \xrdef{#2}\else \xreftrue \fi
-   \pix\ttidxref{#1}%
+   \pix\chidxref{#1}%
 }
 
 % \basicdisplay does the actual typesetting of a control sequence name.
@@ -1945,54 +2041,62 @@
 \def\endcapsum{\endit{CAPSULE SUMMARY}}
 
 \newbox\@primitivebox \setbox\@primitivebox = \hbox{\tt *}
-\newif\ifcs
-
-\def\capline{\begingroup \deactivate\catcode `\| = \other \caplineA}
-\def\caplineA#1 {\endgroup
-   \begingroup
-      \catcode `@ = \letter % for constructing labels
-      \caplineB{#1}%
-}
-
-% Parameters of \caplineB:
-%   #1 name of control sequence
-%   #2 description
-%   #3 * or empty
-%   #4 xref or xref1:xref2 or empty
-
-\def\caplineB#1#2#3#4{%
-   \ifempty {#4}\temptrue\else\tempfalse\fi
-   % \iftemp needed to avoid \if ... \else ... \fi nesting problems
-   \ifcs
-      \toks0 = {\caplineout{\\#1}{#2}{#3}}%
-      \iftemp
-         \toks1 = \expandafter{\csname #1\endcsname}%
-      \else
-         \toks1 = {#4}%
-      \fi
-      \edef\nextaction{\the\toks0 {\the\toks1}}%
-      \nextaction
-      \ctsidxref {#1}%
-   \else
-      % The \space makes one-character entries line up nicely.
-      \caplineout{\space #1}{#2}{#3}{#4}%
-      \ttidxref {#1}%
-   \fi
-   \endgroup
-}
-
-\newif\iftemp
-
 
 % In a few cases we have two cross-references for a single control
 % sequence.
 %
 \newif\ifcstwo
 
-\def\capac{\cstwofalse\csfalse\capline}
-\def\capactwo{\cstwotrue\csfalse\capline}
-\def\capcs{\cstwofalse\cstrue\capline}
-\def\capcstwo{\cstwotrue\cstrue\capline}
+\def\capac{\cstwofalse\capoutch}
+\def\capactwo{\cstwotrue\capoutch}
+\def\capsy{\cstwofalse\capoutsy}
+\def\capsyidx{\cstwofalse\capoutsyidx}
+\def\capcs{\cstwofalse\capoutcs}
+\def\capcstwo{\cstwotrue\capoutcs}
+
+% Parameters of \capoutxx macros
+%   #1 name of control sequence
+%   #2 description
+%   #3 * or empty
+%   #4 xref or xref1:xref2 or empty
+
+% Special characters
+%
+\def\capoutch#1#2#3#4{%
+  \caplineout{\enspace\char`#1}{#2}{#3}{#4}%
+  \chidxref{#1}%
+}
+
+% Control symbols
+%
+\def\capoutsy#1#2#3#4{%
+  \caplineout{\\\char`#1}{#2}{#3}{#4}%
+  \syidxref{#1}%
+}
+\def\capoutsyidx#1#2#3#4#5{%
+  \caplineout{\\\char`#1}{#2}{#3}{#4}%
+  \directidx{#5+@\hskip-.5em\tt\\\char`#5\rm}%
+}
+
+% Control sequences
+%
+\newif\iftemp
+
+\def\capoutcs#1 #2#3#4{%
+   \begingroup \catcode `\@ = \letter
+   \ifempty {#4}\temptrue\else\tempfalse\fi
+   % \iftemp needed to avoid \if ... \else ... \fi nesting problems
+   \toks0 = {\caplineout{\\#1}{#2}{#3}}%
+   \iftemp
+      \toks2 = \expandafter{\csname #1\endcsname}%
+   \else
+      \toks2 = {#4}%
+   \fi
+   \edef\nextaction{\the\toks0 {\the\toks2}}%
+   \nextaction
+   \ctsidxref {#1}%
+   \endgroup
+}
 
 % \caplineout produces an output line (or several lines) for the capsule
 % summary.  #1 is the command text, #2 is the description, #3 is either * or
@@ -2068,9 +2172,7 @@
    \endit{INDEX ENTRY}%
 }
 
-\ifoldeplain\else
-   \hookaction{beginindex}{\let \b = \bgroup \let \e = \egroup}
-\fi
+\hookaction{beginindex}{\let \b = \bgroup \let \e = \egroup}
 
 % Nah, let's forget printing the initial.
 %
@@ -2147,7 +2249,6 @@
 %
 \everymath = {\setmathchars}
 \everydisplay = {\setmathchars}
-\ifoldeplain\leftdisplays\fi % \leftdisplays is buggy in new eplain
 
 \def\setmathchars{%
    \catcode`\| = \other  \catcode`\! = \other

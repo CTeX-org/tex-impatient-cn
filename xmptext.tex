@@ -164,9 +164,8 @@
 \chardef \\ = `\\ % Let \\ denote a backslash.
 ~^^{字体} ^^{字符//特殊字符} ^^{重音}
 ~^^{音符} ^^{花色}
-~\ifoldeplain
-~^^|$| ^^|&| ^^|#| ^^|_| ^^|%| ^^|^| ^^|~| ^^|{| ^^|}| \indexchar \
-~\fi
+~\chidxref{\$} \chidxref{\&} \chidxref{\#} \chidxref{\_} \chidxref{\%}
+~\chidxref{\^} \chidxref{\~} \chidxref{\{} \chidxref{\}}
 ~%{\it Here are a few words in an italic font}, {\bf a
 ~%few words in a boldface font}, {\it and a\/ {\bf mixture}
 ~%of the two, with two\/ {\rm roman words} inserted}.
@@ -421,7 +420,7 @@ $N^6$-ethe\-no\-adeno\-sine 时，
 ~\xrdef{palatino}
 ~\idxref{Palatino 字体}
 ~\idxref{Zapf, Hermann}
-~\idxref{计算机现代字体} ^^{\Metafont}
+~\idxref{计算机现代字体} \mcidxref{Metafont}
 \font\tenrm = pplr % Palatino
 % Define a macro for invoking Palatino.
 \def\pal{\let\rm = \tenrm \baselineskip=12.5pt \rm}

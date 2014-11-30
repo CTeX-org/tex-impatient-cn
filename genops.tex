@@ -64,7 +64,7 @@
 \olist
 \li 它定义了一个名为 \<control sequence> 的控制序列,
 用来选择名为 \<font\-name> 的字体, 而且该字体可能被缩放 (见后).
-\li 它使 \TeX\ 载入 \<font\-name> 的^{字体信息文件} (^{\tfmfile}).
+\li 它使 \TeX\ 载入 \<font\-name> 的^{字体信息文件} (\tfmfile\fnidxref{tfm}).
 \endolist
 }% end tighten
 
@@ -574,7 +574,7 @@ Here's a line printed normally.\par
 \cts fmtname {}
 \cts fmtversion {}
 \explain
-这个命令会产生当前使用的 \TeX\ 格式（比如 \minref{\plainTeX} 或 ^{\LaTeX}）的名字和版本号。
+这个命令会产生当前使用的 \TeX\ 格式（比如 \minref{\plainTeX} 或 \LaTeX\mcidxref{LaTeX}）的名字和版本号。
 \example
 本书使用 \fmtname\ 格式，版本~\fmtversion 。
 |
@@ -759,9 +759,9 @@ Here's a line printed normally.\par
 \begindesc
 \makecolumns 4/2:
 \easy%
-\ctsact { \xrdef{@lbrace}
+\ctsact \{ \xrdef{@lbrace}
 \cts bgroup {}
-\ctsact } \xrdef{@rbrace}
+\ctsact \} \xrdef{@rbrace}
 \cts egroup {}
 \explain
 左花括号和右花括号命令的作用是用来开始或结束一个\minref{编组}。
@@ -4466,7 +4466,7 @@ Call \a once.
 \explain
 如果此参数大于零，
 \TeX\ 将在日志文件中记录它送出到 \dvifile 的每个盒子的内容。
-^^{\dvifile//在日志文件中记录盒子内容}
+\fnidxref{dvi//在日志文件中记录盒子内容}
 如果 ^|\tracingonline| 大于零，这些信息还将显示在终端上。
 追踪输出中每行开头的点号个数表示该行盒子的嵌套层级。
 你可以用 ^|\showboxbreadth| 和 ^|\showboxdepth|（\xref\showboxbreadth ）%
@@ -5009,9 +5009,9 @@ I\errorcontextlines=100\oops
 
 \enddescriptions
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter \byebye

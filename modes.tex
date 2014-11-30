@@ -330,7 +330,7 @@ Hop \smallskip skip \medskip and \bigskip jump.
 \margin{加入的命令；新近加入到 \TeX}
 该命令
 \footnote{|\topglue| 是在 \TeX\ 3.0 中引入的，
-比其它由^{\newTeX}（\xref{newtex}）引入的增强特性稍晚。
+比其它由 \newTeX\mcidxref{newTeX}（\xref{newtex}）引入的增强特性稍晚。
 在 \texbook 的 \emph{18th\/} 版中第一次得到描述。}
 可以精确地产生从页面顶部至该页上第一个盒子顶部的间隔。
 可以认为页面顶部位于页面第一行之上的一行无形文字的基线处。
@@ -1890,8 +1890,9 @@ one \a\a\hskip 2\lastkern three\par
 \bix^^{制表阵列}
 \bix^^{阵列//用于阵列的命令}
 %
-\ctspecial + {{\bt \<text>\thinspace\&\thinspace\<text>%
-   \thinspace\& $\cdots$ \\cr}}
+{\let\+\relax
+\ctsymbol \+ {{\bt \<text>\thinspace\&\thinspace\<text>%
+   \thinspace\& $\cdots$ \\cr}}}
 \ctsxrdef{@plus}
 \cts tabalign {}
 \explain
@@ -2586,10 +2587,10 @@ one \a\a\hskip 2\lastkern three\par
 
 \enddescriptions
 
-\ifoldeplain\else\ifcompletebook\else
+\ifcompletebook\else
 \vskip4em{\sectionfonts\leftline{本章索引}}
 \readindexfile{i}
-\fi\fi
+\fi
 
 \endchapter
 \byebye
