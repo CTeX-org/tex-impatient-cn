@@ -427,8 +427,8 @@
 \endconcept
 
 
-\def\conceptindexsort{anatomy}
-\concept{\anatomy}
+\def\conceptindexsort{texpouxi}
+\concept{\texpouxi}
 
 %\texbook\ describes the way that {\TeX} processes its input in terms of \TeX's
 %``digestive tract''---its ``^{eyes}'', ``^{mouth}'',
@@ -1215,7 +1215,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 %typeset `$c$grok', where $c$ is the character in position $92$
 %of the code table for the current font.
 类别码只附加到 \TeX\ 从输入文件中读取的字符中。
-只要字符到达 \TeX\ 的^{食道}\seeconcept{\anatomy}并被解释完，它的类别码就不再改变。
+只要字符到达 \TeX\ 的^{食道}\seeconcept{\texpouxi}并被解释完，它的类别码就不再改变。
 用 ^|\char| 命令\ctsref{\char}生成的字符没有类别码，
 因为 |\char| 命令是一个让 \TeX\ 生成特定\refterm{字体}中的某个特定字符的指令。
 例如，`|\|'（通常的转义字符）的 \ascii\ ^^{ASCII} 码是 $92$。
@@ -1514,7 +1514,7 @@ $V$ 的宽度等于列表中最宽盒子的宽度，
 ^^{类别码//在读取时附加}
 类别码影响 \TeX\ 读取字符时对该字符的解释。
 在读取宏定义时，\TeX\ 判定（并记住）宏里面的字符的类别码。
-在用它的眼睛读取字符时\seeconcept{\anatomy}，\TeX\ 执行一些“过滤”，
+在用它的眼睛读取字符时\seeconcept{\texpouxi}，\TeX\ 执行一些“过滤”，
 比如将连续多个空格压缩为一个。在\knuth{第~46--48~页}中描述了过滤的细节。
 
 %The \ascii\
@@ -1648,7 +1648,7 @@ $$\strut a+(b-a)=a \qquad
 %it constructs a \refterm{box} containing that character typeset in
 %the current font.
 \defterm{命令}（command）指导 \TeX\ 执行某种动作。
-到达\TeX\ 的胃\seeconcept{\anatomy}的每个\refterm{记号}都作为一个命令，
+到达\TeX\ 的胃\seeconcept{\texpouxi}的每个\refterm{记号}都作为一个命令，
 那些作为其他命令的参量（见下面）的记号除外。
 ^^{记号//作为命令}
 命令可以由\refterm{控制序列}，由\refterm{活动字符}，或者由普通字符产生。
@@ -1740,7 +1740,7 @@ $$\strut a+(b-a)=a \qquad
 例如，|\ifvmode| 测试 \TeX\ 是否位于\refterm{竖直模式}中。
 如果条件成立，\TeX\ 展开 \<true text>。
 如果条件不成立，\TeX\ 展开 \<false text>（如果它存在）。
-条件测试在 \TeX\ 的食道\seeconcept{\anatomy}中解释，
+条件测试在 \TeX\ 的食道\seeconcept{\texpouxi}中解释，
 因此在解释出的文本中，任何可展开\minref{记号}都被展开了。
 在\headcit{条件测试}{conds}中解释了各种条件测试。
 \endconcept
@@ -2464,7 +2464,7 @@ sp& scaled point & ^{缩点}  & 65536 scaled points = 1 point\cr
 文件由监督 \TeX\ 运行的^{操作系统}管理。
 \TeX\ 在四种不同的背景中用到文件：
 \olist
-\li “^{源码文件}”是 \TeX\ “眼睛”读取\seeconcept{\anatomy}，并根据它的一般法则解释的文件。
+\li “^{源码文件}”是 \TeX\ “眼睛”读取\seeconcept{\texpouxi}，并根据它的一般法则解释的文件。
 你的主要输入文件——即调用 \TeX\ 时在 `|**|' 之后或者在命令行中指定的文件%
 ——是一个源码文件，你用 ^|\input|命令\ctsref \input 请求的任何文件同样也是。
 
@@ -3302,7 +3302,7 @@ Please don't pour {\it any} more tea into my hat.
 在组装段落或者\refterm{水平盒子}时，
 \TeX\ 位于两种\defterm{水平模式}（horizontal mode）之一:
 ^{普通水平模式}用于组装段落，而^{受限水平模式}用于组装水平盒子。
-只要 \TeX\ 位于水平模式中，它的胃\seeconcept{\anatomy}就在构造项目%
+只要 \TeX\ 位于水平模式中，它的胃\seeconcept{\texpouxi}就在构造项目%
 （盒子、粘连、惩罚等）的\refterm{水平列表}。
 \TeX\ 逐个排版列表中的项目，从左到右。
 
@@ -4176,7 +4176,7 @@ already in this section.}
 %cannot be further expanded, \TeX\ passes that command to \TeX's stomach.
 %The order of expansion is sometimes critical, so in order to help
 %you understand it we'll give you an example of \TeX\ at work.
-\TeX\ 在食道中展开它所遇到的宏\seeconcept{\anatomy}，
+\TeX\ 在食道中展开它所遇到的宏\seeconcept{\texpouxi}，
 方法是将替换文本中的每个参数替换为它所对应的参量。
 宏展开后所得到的文本中可能还包含其他宏。
 当 \TeX\ 遇到这种嵌套的宏调用时，
@@ -4817,7 +4817,7 @@ $256$ 个可能的输入字符中每个字符都有一个数学码，
 %^^{horizontal mode}^^{vertical mode}^^{math mode}
 %\endulist
 %The mode describes the kind of entity that \TeX\ is putting together.
-\TeX\ 在胃中处理你的输入时\seeconcept{\anatomy}，
+\TeX\ 在胃中处理你的输入时\seeconcept{\texpouxi}，
 它总是处于六种\defterm{模式}（mode）的其中一种:
 \ulist\compact
 \li ^{普通水平模式}（组装段落）
@@ -6400,7 +6400,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 %\endconcept
 一个\defterm{记号}（token）要么是一个标有\refterm{类别码}的字符，
 要么是一个\refterm{控制序列}。
-\TeX\ 用它的眼睛从文件中读取字符串\seeconcept{\anatomy}，
+\TeX\ 用它的眼睛从文件中读取字符串\seeconcept{\texpouxi}，
 并用它的嘴将字符串咀嚼成一个个记号。
 当一个记号到达\TeX\ 的胃时，\TeX\ 将它解释为一个\refterm{命令}，
 除非它是之前命令的参量。
@@ -6481,7 +6481,7 @@ $\overline{x\mathstrut} \otimes \overline{t\mathstrut}$
 在组装\refterm{竖直盒子}或者主竖直列（输出的页面来源于此）时，
 \TeX\ 位于两种\defterm{竖直模式}（vertical mode）之一:
 ^{普通竖直模式}用于组装主竖直列，而^{内部竖直模式}用于组装竖直盒子。
-只要 \TeX\ 位于竖直模式中，它的胃\seeconcept{\anatomy}就在构造项目%
+只要 \TeX\ 位于竖直模式中，它的胃\seeconcept{\texpouxi}就在构造项目%
 （盒子、粘连、惩罚等）的\refterm{竖直列表}。
 \TeX\ 逐个排版列表中的项目，从上到下。
 
