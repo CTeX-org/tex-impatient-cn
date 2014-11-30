@@ -1115,8 +1115,7 @@
 
 \def\idxsee#1#2{%
    \begingroup
-   \def\spacesub{\otherspace}%
-   \edef\nextaction{\write\index{\tokstostring{#1}::N::*\tokstostring{#2}}}%
+   \edef\nextaction{\noexpand\sidx[see]{#1}{#2}}%
    \nextaction
    \ignorespaces
 \endgroup}
