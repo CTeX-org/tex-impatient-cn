@@ -1244,18 +1244,21 @@
       \toks0 = \expandafter{\the\mainentry @\hskip -.5em\tt<}%
       \toks2 = {>\rm}%
    \fi
-   \edef\temp{\the\toks0\noexpand\the\mainentry\the\toks2}%
-   \mainentry = \expandafter{\temp}%
    %
-   \edef\tempa{\the\subentry}\def\tempb{}%
-   \ifx\tempa\tempb
-      \edef\idxstring{\the\mainentry}%
-   \else
-      \edef\idxstring{\the\mainentry!\the\subentry}%
-   \fi
-   \expandafter\sidx\expandafter{\idxstring}%
+   \edef\option{\ifbix begin\else\ifeix end\fi\fi}%
+   \edef\option{\option\ifpix\ifx\option\empty\else,\fi pagemarkup=textit\fi}%
+   \ifx\option\empty\else\edef\option{[\option]}\fi
+   \toks4 = \expandafter{\option}%
+   %
+   \edef\temp{\the\subentry}%
+   \edef\next{\noexpand\sidx\the\toks4{%
+                 \the\toks0\noexpand\the\mainentry\the\toks2%
+                 \ifx\temp\empty\else!\the\subentry\fi}}%
+   \next
    \global\pixfalse \global\bixfalse \global\eixfalse
 }
+
+\def\textit#1{{\it #1}}
 
 {\catcode `\^ = \other \gdef\twocarets{^^}}
 
