@@ -1541,7 +1541,11 @@ Underfull \hbox (badness 5091) detected at line 4
 %if the last item on the current list is a \minref{kern},
 %|\lastkern| yields the dimension of that kern; if it
 %isn't a kern, it yields a dimension of $0$.
-这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，因为它们只能以参数的一部分出现。如果列表中的最后的项目不是指示类型，它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。例如，如果在当前列表中最后一项是一个\minref{紧排}，|\lastkern| 给出那个紧排的尺寸；如果它不是紧排，它给出一个尺寸 $0$。
+这些控制序列产生位于当前列表最后的项目值。它们不是真正的命令，
+因为它们只能以参数的一部分出现。如果列表中的最后的项目不是所指类型，
+它们将给出零值（或者空盒子，在 |\lastbox| 的情况下）。
+例如，如果在当前列表中最后一项是一个\minref{紧排}，
+|\lastkern| 给出那个紧排的尺寸；如果它不是紧排，它给出一个尺寸 $0$。
 
 %Using |\lastbox| has the additional effect of removing the last box from
 %the list.
@@ -1549,30 +1553,32 @@ Underfull \hbox (badness 5091) detected at line 4
 %have to add a copy of it to the list.
 %|\last!-box| is not permitted in a math list or in the main
 %vertical~list.
-使用 |\lastbox| 具有从列表中移除最后一个盒子的附加效应。如果你希望原来的 |\last!-box| 仍保留在列表中，你不得不向列表中增加它的一个拷贝。|\last!-box| 不允许用于数学列表或主竖直列表。
+使用 |\lastbox| 具有从列表中移除最后一个盒子的附加效应。
+如果你希望原来的 |\last!-box| 仍保留在列表中，你不得不向列表中增加它的一个拷贝。
+|\last!-box| 不允许用于数学列表或主竖直列表。
 
 %These control sequences are
 %most useful after macro calls that might have inserted entities of
 %the indicated kinds.
-这些控制序列在可能插入指标类型的宏调用后是非常有用的。
+在可能插入所示各种项目的宏调用后，这些控制序列是非常有用的。
 
 \example
-\def\a{two\kern 15pt}
-one \a\a\hskip 2\lastkern three\par
+\def\a{二\kern 15pt}
+一\a\a\hskip 2\lastkern 三\par
 % 在`三'之前产生三倍的紧排。
 \def\a{\hbox{二}}
-一 \a
+一\a
 \setbox0 = \lastbox % 将`二'去掉。
-三 \box0.
+三\box0。
 |
 \produces
 \def\a{二\kern 15pt}
-一 \a\a\hskip 2\lastkern 三\par
+一\a\a\hskip 2\lastkern 三\par
 % get three times as much space before `three'
 \def\a{\hbox{二}}
-一 \a
+一\a
 \setbox0 = \lastbox % removes `two'
-三 \box0.
+三\box0。
 \endexample
 \enddesc
 
@@ -1591,7 +1597,11 @@ one \a\a\hskip 2\lastkern three\par
 %a specific item that you don't want there.
 %\TeX\ doesn't provide an ^|\unbox| command because |\lastbox| produces
 %nearly the same effect.
-如果当前列表的最后一项分别是\minref{紧排}、\minref{粘连}或\minref{惩罚}的类型，这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主竖直列表中。在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
+如果当前列表的最后一项分别是\minref{紧排}、\minref{粘连}或\minref{惩罚}的类型，
+这些命令可以将它们从列表中去除。如果项目不是正确的类型，这些命令将不起作用。
+与 ^|\lastbox| 类似，你不能将它们应用于处于数学模式或主竖直列表中。
+在已知道会插入你不希望存在的特定项目的宏调用后，这些命令是非常有用的。
+\TeX\ 不提供 ^|\unbox| 命令，因为 |\lastbox| 产生了近乎一致的效果。
 \enddesc
 
 
