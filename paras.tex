@@ -1,6 +1,6 @@
 % -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
-% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
+% Copyright (C) 2003, 2014 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 % 中文翻译：Zhaopeng Xing (zpxing@gmail.com)
 % 中文翻译：zohooo (zohooo@yeah.net)
@@ -2891,7 +2891,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 \cts linepenalty {\param{number}}
 \explain
 \minrefs{line break}
-%This parameter specifies \minref{demerits} that \TeX\ assesses for each line
+%This parameter specifies the \minref{penalty} that \TeX\ assesses for each line
 %break when it is breaking a paragraph into lines.
 %The penalty is independent of where the line break occurs.
 %Increasing the value
@@ -2902,8 +2902,7 @@ had a Jekyll\slash Hyde personality when it came to mice.
 %you need to assign a rather large value to this parameter (in the
 %thousands) for it to have any effect.
 %\PlainTeX\ sets |\linepenalty| to $10$.
-此参数设定 \TeX\ 分段为行时各行的\minref{惩罚}值\thinspace%
-\footnote{译注：原文中似乎将 penalty 误认为 demerit 了。}。
+此参数设定 \TeX\ 分段为行时各行的\minref{惩罚}值。
 此惩罚值与断行位置无关。
 增大此参数将让  \TeX\ 把段落压缩到最小的行数，
 但会损害其它审美上的考虑，比如避免过紧的单词间距。
@@ -3496,20 +3495,17 @@ but with the yolks removed.
 %which serve
 %to set off \<argument> from \<general text>.
 %\<general text> consists of the text up to the next paragraph
-%boundary, except that you can include multiple paragraphs by putting them
-%within braces and ending a paragraph after the closing right brace.
+%boundary.  You can include multiple paragraphs by using |\endgraf|
+%instead of a blank line or |\par|.
 ^^{定理}
 ^^{引理}
 ^^{假设}
-此命令“陈述”一个定理、引理、假设等。
+这个命令“陈述”一个定理、引理、假设等等。
 它用粗体显示 \<argument>，并用斜体显示后面的段落。
 \<arg\-u\-ment> 后面必须跟着句号和空格，
 以此区分开 \<argument> 和 \<general text>。
-\<general text> 到下一个段落之前截止；
-若要包含多个段落，你可以将它们放在花括号中，
-并且在右花括号后结束段落\thinspace%
-\footnote{译注：原文关于包含多个段落这句似有错误。
-但改用 |\endgraf| 结束段落就可以包含多个段落。}。
+\<general text> 到下一个段落之前截止。
+若要包含多个段落，你可以用 |\endgraf| 而不是空行或 |\par| 结束段落。
 \example
 \proclaim Theorem 1.
 What I say is not to be believed.

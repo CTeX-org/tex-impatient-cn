@@ -1,6 +1,6 @@
 % -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
-% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
+% Copyright (C) 2003, 2014 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 \input macros
@@ -3339,8 +3339,8 @@ Please don't pour {\it any} more tea into my hat.
 
 %{\tighten
 %You should be aware of a subtle but important property of restricted
-%horizontal mode: \emph{you can't enter restricted horizontal mode
-%when you're in ordinary horizontal mode}.  What this means in practice is that
+%horizontal mode: \emph{you can't enter ordinary horizontal mode
+%when you're in restricted horizontal mode}.  What this means in practice is that
 %when \TeX\ is assembling an hbox it
 %won't handle paragraph-like text, i.e., text for which it does
 %\refterm{line breaking}.  You can get
@@ -3349,8 +3349,7 @@ Please don't pour {\it any} more tea into my hat.
 %put, say, a horizontal \refterm{alignment} inside an~hbox.
 %}% end scope of tighten
 对于受限水平模式，你要知道这个微小但是重要的特性：
-\emph{你无法从普通水平模式进入受限水平模式}。%
-\footnote{译注：此处似乎有误，应为“你无法从受限水平模式进入普通水平模式”。}
+\emph{你无法从受限水平模式进入普通水平模式}。
 在实践上，这意味着在组装水平盒子时 \TeX\ 无法处理类似段落的文本，
 即需要\refterm{断行:断行点}的文本。在水平盒子内部，
 通过把类似段落的文本放入一个\refterm{竖直盒子}中，你就可以绕过此限制。

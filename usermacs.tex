@@ -1,6 +1,6 @@
 % -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
-% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
+% Copyright (C) 2003, 2014 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 \input macros
@@ -789,14 +789,12 @@
 %You can also |\write| to |\tocfile| yourself.
 \noindent
 你也可以自己用 |\write| 命令写入 |\tocfile|。%
-\footnote{译注：原文的代码中遗漏 |\writetocentry| 的定义，
-而将 |\writenumberedtocentry| 的定义重复写了两遍，译文已修正此问题。
-实际上，在本书所用的 |eplain.tex| 1.9 中，
+\footnote{译注：实际上，在本书原本所用的旧 |eplain| 1.9 里面，
 |\writetocentry| 调用 |\writenumberedtocentry|，
 并在后者中根据第三个参数是否非空写入不同的目录项。
 但在 |\writenumberedtocentry| 的定义中有问题，
 导致写入 |tocfile| 文件的目录项始终有三个参数。
-在翻译时译者也同时修正 |eplain.tex| 中的这个错误。}
+在翻译时译者也同时修正了旧 |eplain| 中的这个错误。}
 
 \csdisplay
 \newwrite\tocfile \newif\iftocfileopened
@@ -809,13 +807,13 @@
    \write\tocfile{%
       \expandafter\noexpand \csname toc#1entry\endcsname
       {#2}{\folio}}%
-\ignorespaces\fi}%
+\fi\ignorespaces}%
 \def\writenumberedtocentry#1#2#3{\ifrewritetocfile
    \opentocfile
    \write\tocfile{%
       \expandafter\noexpand \csname toc#1entry\endcsname
       {#2}{#3}{\folio}}%
-\ignorespaces\fi}%
+\fi\ignorespaces}%
 |
 
 %To produce a table of contents, read the |.toc| file with

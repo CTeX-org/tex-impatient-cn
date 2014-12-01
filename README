@@ -1,36 +1,46 @@
-$Id: README,v 1.3 2011/01/27 22:16:24 karl Exp $
-This is the README file for version 1.0 of the free edition of the book
-TeX for the Impatient, released under the GNU Free Documentation License.
-(This README file itself is public domain.)
+$Id: README,v 1.5 2014/11/13 17:07:59 karl Exp $
+This is the README file for the GNU (free documentation) edition of the
+book TeX for the Impatient, released under the GNU Free Documentation
+License.  (This README file itself is public domain.)
 
-Primary distribution is through CTAN:
-   http://mirror.ctan.org/info/impatient/
+Primary distribution point: ftp://ftp.gnu.org/gnu/teximpatient/
+ automatic redirection: http://ftpmirror.gnu.org/teximpatient
+ list of mirrors for manual selection: http://www.gnu.org/prep/ftp.html
 
-TeX for the Impatient is also a GNU package, and the development sources,
-contact information, and other project details are available at
-http://www.gnu.org/software/teximpatient.
+Home page: http://www.gnu.org/software/teximpatient/
+
+Development sources, etc.: http://savannah.gnu.org/projects/teximpatient/
 
 Information about the free edition is included at the end of the preface
 and on the copyright page.
 
-We'd be interested in hearing about any projects undertaken with this
-material.  See errata.future for some ideas.
+A French translation is included in the distribution,
+and a Chinese translation is at https://bitbucket.org/zohooo/impatient
+(with PDF at
+http://zoho.is-programmer.com/user_files/zoho/epics/tex-impatient-cn.pdf).
 
+Original high-resolution scans of the artwork are available from
+http://ftpmirror.gnu.org/teximpatient/artwork.  Reduced-size bitmaps are
+in the artwork/ subdirectory here.
 
+
 Some random thoughts for people thinking of working with the source:
 
-- You may want to translate the source into some more standard format; we
-used many homegrown macros to make typing and markup easier.
+- See errata.future for some relatively small ideas for enhancements.
+
+- You may want to translate the source into some more standard
+format, such as Texinfo; we used many homegrown macros mostly to make
+typing and markup easier.
 
 - You may also want to redo the index creation to use makeindex or some
-other standard program, instead of our homegrown Icon programs (included
-in the distribution, for what it's worth).  Until the index can be
-easily regenerated, the page breaks can't change without the index
-becoming useless.
+other standard program, instead of the homegrown Icon programs (or else
+they need to be fixed; right now somehow the + characters used for
+spaces in book.idx are preserved in book.sdx, which is wrong).  Until
+the index can be easily regenerated, the page breaks can't change
+without the index becoming useless.
 
 - Printing the GFDL required many kludges, a true Eplain-compatible
 version is needed (which in turn would require using the current eplain
 to print the book).
-
 
 Happy TeXing.

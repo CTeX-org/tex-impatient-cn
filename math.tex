@@ -1,6 +1,6 @@
 % -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
-% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
+% Copyright (C) 2003, 2014 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 \input macros
@@ -954,9 +954,9 @@ $${\int_0^\pi \sin^2 ax\,dx} = {\pi \over 2}$$
 %\begindesc
 %\cts limits {}
 %\explain
-%When it's in text style, \TeX\ normally places limits after a large operator.
-%This command tells \TeX\ to place
-%limits above and below a large operator rather than after it.
+%In text style, \TeX\ normally places limits after a large operator.
+%This command tells \TeX\ to place limits above and below a large
+%operator rather than after it.
 \begindesc
 \cts limits {}
 \explain
@@ -990,20 +990,25 @@ two elements.
 %\begindesc
 %\cts nolimits {}
 %\explain
-%When it's in display
-%style, \TeX\ normally places limits above and below a large operator.
-%(The |\int| operator is an exception---\TeX\
-%places limits for |\int| after the operator in all cases.)
-%^^|\int//limits after|
-%This command tells \TeX\ to place
-%limits after a large operator rather than above and below it.
+%In display style, \TeX\ normally places limits above and below a large
+%operator.  This command tells \TeX\ to place limits after a large
+%operator rather than above and below it.
 \begindesc
 \cts nolimits {}
 \explain
 在陈列样式中，\TeX\ 通常将极限放在巨算符的上边和下边。%
-（|\int| 算符是一个例外—— \TeX\ 总是将极限放在算符的后边。）%
-^^|\int//极限放在后面|
 此命令让 \TeX\ 将极限放在巨算符后边，而不是上边和下边。
+
+%The integral operators |\int| and |\oint| are exceptions---\TeX\ places
+%limits after them in all cases, unless overridden, as in |\int\limits|.
+%(\plainTeX\ defines ^|\int| and ^|\oint| as macros that specify the
+%operator symbol followed by |\nolimits|---this is what causes them to
+%behave differently by default.)
+%^^|\int//limits after|
+积分算符 |\int| 和 |\oint| 是两个例外——除非像 |\int\limits| 这样指定，
+\TeX\ 总是将极限放在算符的后边。（\plainTeX\ 将 ^|\int| 和 ^|\oint|
+定义为算符后跟着 |\nolimits| 的宏——这就是其默认表现有所不同的原因。）%
+^^|\int//极限放在后面|
 
 %If you specify more than one of |\limits|, |\nolimits|,
 %and |\display!-limits|, the last command rules.
@@ -1028,37 +1033,14 @@ $$\bigcap\nolimits_{i=1}^Nq_i$$
 %\begindesc
 %\cts displaylimits {}
 %\explain
-%This command tells \TeX\ to
-%follow its normal rules for placement of limits:
-%\olist\compact
-%\li Limits on ^|\int| are placed after the operator.
-%\li Limits on other large operators are placed after the
-%operator in text style.
-%\li Limits on other large operators are placed above and below the operator
-%in display style.
-%\endolist
-%It's usually simpler to use |\limits| or |\nolimits|
-%to produce a specific effect, but |\display!-limits| is sometimes
-%useful in \minref{macro} definitions.
+%This command tells \TeX\ to place limits above and below all operators
+%(including the integrals) if in display style, and after all operators
+%if in text style.
 \begindesc
 \cts displaylimits {}
 \explain
-此命令让 \TeX\ 按照通常方式放置极限：
-\olist\compact
-\li ^|\int| 算符的极限总放在算符后边。%
-\footnote{译注：此处似乎有误，在 |\displaylimits| 下 ^|\int| 和其他算符应该有相同的表现。}
-\li 在文内样式中，其他巨算符的极限放在算符的后边。
-\li 在陈列样式中，其他巨算符的极限放在算符的上边和下边。
-\endolist
-用 |\limits| 或 |\nolimits| 来排印特定效果更为简单，
-但 |\display!-limits| 在\minref{宏}定义中有时会用到。
-
-%Note that \plainTeX\ defines ^|\int| as a macro that sets |\nolimits|,
-%so |\int\displaylimits| in text style restores the |\limits|
-%convention.
-注意 \plainTeX\ 在定义 ^|\int| 时就带有 |\nolimits|，
-因此文内样式的 |\int\displaylimits| 将恢复 |\limits| 约定。%
-\footnote{译注：此处似乎有误，在文内样式中，|\int\displaylimits| 的极限应该还是在后边。}
+此命令让 \TeX\ 在陈列样式中将极限放在算符（包括积分符）的上边和下边，
+在文内样式中将极限放在算符的后边。
 
 %If you specify more than one of |\limits|, |\nolimits|,
 %and |\display!-limits|, the last command rules.

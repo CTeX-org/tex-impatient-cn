@@ -1,0 +1,21 @@
+$Id: NEWS,v 1.3 2014/11/13 17:07:59 karl Exp $
+This NEWS file records noteworthy changes, very tersely.
+
+  Copyright 2013, 2014 Karl Berry.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+
+ Version 2.4 (13 November 2014)
+- Chinese translation.
+- fixes from new Chinese translator, Zou Hu.
+
+ Version 2.3 (21 May 2013)
+- first release on ftp.gnu.org.  Now looking for a maintainer.
+- update to GFDLv1.3.
+- simple configure script and Makefile added.
+- no changes to the text.
+- There is now a `NEWS' file (this one), giving a history of
+  user-visible changes.

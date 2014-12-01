@@ -1,6 +1,6 @@
 % -*- coding: utf-8 -*-
 % This is part of the book TeX for the Impatient.
-% Copyright (C) 2003 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
+% Copyright (C) 2003, 2014 Paul W. Abrahams, Kathryn A. Hargreaves, Karl Berry.
 % See file fdl.tex for copying conditions.
 
 % 中文翻译 by Zhaopeng Xing (zpxing@gmail.com)
@@ -132,7 +132,7 @@
 方可能未必就如你所愿那样。
 
 % If you don't provide \TeX\ with a |\vfill| command to fill out the page
-% after an |\eject|,
+% before an |\eject|,
 % \TeX\ redistributes the extra blank space as best it can and then usually
 % complains that ``an
 % underfull |\vbox| (badness $10000$) has occurred while |\output| is active.''
@@ -140,7 +140,7 @@
 % any of the methods mentioned above for enclosing
 % material that you want to keep together.
 
-如果你没有在 |\eject| 之后\footnote{译注：疑为笔误，应该是“之前”。}使用 |\vfill| 命令，
+如果你没有在 |\eject| 之前使用 |\vfill| 命令，
 \TeX{} 将尽其所能地重新分配额外的空白间距，然后
 发牢骚：“an underfull |\vbox| (badness $10000$) has occurred while |\output| is
  active.”上面讲的封装素材在一起的任一方法中，类似的问题也会出现。
