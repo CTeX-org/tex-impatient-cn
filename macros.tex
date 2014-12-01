@@ -74,7 +74,11 @@
 \def\@definelabel#1{\old@definelabel{\tokstostring{#1}}}
 \def\LaTeX{L\kern -.26em \raise .6ex \hbox{\sevenrm A}\kern -.15em \TeX}%
 % setup hyperlinks
-\enablehyperlinks[dvipdfm]
+\ifpdf
+  \enablehyperlinks[pdftex]
+\else
+  \enablehyperlinks[dvipdfm]
+\fi
 %% may cause an error with xetex.def before version v4.03
 %% please see http://tex.stackexchange.com/q/191489/8956
 \beginpackages\usepackage{color}\endpackages
@@ -266,7 +270,11 @@
 \topskip = 2pc        % Distance from headline to first line of text.
 
 \iftrimpage
-  \pdfpagewidth=7.375in \pdfpageheight=9.25in
+  \ifx\pdfpagewidth\undefined
+    \special{papersize=7.375in,9.25in}%
+  \else
+    \pdfpagewidth=7.375in \pdfpageheight=9.25in
+  \fi
   %\hsize=7.375in \vsize=9.25in
   %\advance \hsize by -18pc
   %\advance \vsize by -10pc
@@ -696,7 +704,14 @@
 \def\bookmark#1#2{%
   \begingroup%
   \def\linebreak{}\def\TeX{TeX}\def\vtop##1{##1}\def\noindent{}\def\\{}\def\hfil{}\def\quad{}%
-  \special{pdf:out #1 << /Title (#2) /Dest [ @thispage /FitH @ypos ] >>}%
+  \ifpdf
+     \if1#1%
+        \count255=\pageno\advance\count255 by 22%
+        \pdfoutline goto page \the\count255 {/Fit} count 0 {#2}%
+     \fi
+  \else
+     \special{pdf:out #1 << /Title (#2) /Dest [ @thispage /FitH @ypos ] >>}%
+  \fi
   \endgroup%
 }
 
@@ -710,11 +725,15 @@
   \oldvoffset=\voffset
   \oldparindent=\parindent
   \hoffset=-1in\voffset=-1in\parindent=0pt%
-  \iftrimpage
-    \special{pdf:image width 7.375in depth 9.25in (artwork/#1-l.png)}%
-  \else
-    \special{pdf:image width 210mm depth 297mm (artwork/#1.png)}%
-  \fi\pagebreak
+  \def\imgfile{artwork/#1\iftrimpage-l\fi.png}%
+  \def\imgsize{\iftrimpage width 7.375in height 0in depth 9.25in%
+               \else width 210mm height 0mm depth 297mm\fi}%
+  \ifpdf
+     \pdfimage \imgsize {\imgfile}%
+   \else
+     \special{pdf:image \imgsize (\imgfile)}%
+  \fi
+  \pagebreak
   \hoffset=\oldhoffset
   \voffset=\oldvoffset
   \parindent=\oldparindent
