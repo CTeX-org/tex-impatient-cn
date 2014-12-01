@@ -592,7 +592,6 @@ Overfull \vbox (296.30745pt too high) has occurred
 一处空格都会输出一个 |{blank space}| 命令。
 
 % It helps to know \TeX's rules for spaces:
-
 知道 \TeX{} 关于空格的规则会有帮助。
 
 % \olist
@@ -615,19 +614,21 @@ Overfull \vbox (296.30745pt too high) has occurred
 % \noindent If you've changed the category code of the space or the end-of-line
 % character, all bets are off.
 % \eix^^{space//unwanted}
-
 \olist
 \li 输入行开始之前的空格将被忽略。
-\li 输入行结束之后的空格在任何情况下都被忽略。虽然行尾本身就被当作空格。
-（一个空白行产生的是 |\par| 标记）
-\li 多于一个的空格，如果在一起，将被处理为一个空格。因此，引用一个宏之
+\li 输入行结束之后的空格在任何情况下都被忽略。虽然行尾本身就被当作空格。%
+（一个空白行产生的是 |\par| 标记。）
+\li 多于一个的空格，如果在一起，将被处理为一个空格。因此，宏调用的参量之
 后的空格将不会和宏定义末尾的空格合并。你得到的是两个空格。
 \li 控制字符之后的空格将被忽略。
 \li 数字，尺寸以及粘连设定中的 `|plus|' 和 `|minus|' 之后的空格在执行
 中也被忽略。%
 \footnote{实际上，\TeX{} 在这些地方只会忽略单个的空格。因为多个空格会
-  被处理为一个空格，所以结果就是忽略所有空格。}
+  被处理为一个空格，所以结果就是忽略所有空格。}%
 \endolist
+如果你改变了空格符或行尾符的类别码，这些规则就不算数了。
+\eix^^{间隔//不想要的间隔}
+
 
 %\section Avoiding excess space around a display
 \section 避免陈列公式周围的额外空白
