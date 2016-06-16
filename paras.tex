@@ -1464,14 +1464,12 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %ready to add more items to the page.  Since \TeX\ converts a blank line in
 %your input file into a |\par| \minref{token}, you don't ordinarily need to
 %type an explicit |\par| in order to end a paragraph.
-
-
 \begindesc
 \bix^^{段落//形成段落}
 \ctspecial par \ctsxrdef{@par}
 \explain
-这个命令结束一个段落，并使\TeX{}进入\minref{竖直模式}来在页面上增加更多内容。
-因为\TeX{}把一个空行当作|\par|\minref{记号}，所以不需要明确地键入|\par|。
+这个命令结束一个段落，并使 \TeX\ 进入\minref{竖直模式}来在页面上增加更多内容。
+因为 \TeX\ 把一个空行当作|\par|\minref{记号}，所以不需要明确地键入|\par|。
 
 %An important point is that |\par| doesn't tell
 %\TeX\ to start a paragraph; it only tells \TeX\ to end a paragraph.
@@ -1482,11 +1480,9 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %inserts an amount of vertical space given by the parameter |\parskip|
 %(\xref{\parskip}) and indents the paragraph by a horizontal space given
 %by |\parindent| (\xref{\parindent}).
-
-
-必须指出|\par|不会让\TeX{}开始新的一段；它仅仅告诉\TeX{}去结束一段。
-要使\TeX{}开始新段落，需要处于竖直模式之下（在|\par|之后已经是了），并遇到一个水平项目比如一个字母。为了开始新段落，\TeX{}
-^^{段落//开始段落}
+必须指出|\par|不会让 \TeX\ 开始新的一段；它仅仅告诉 \TeX\ 去结束一段。
+要使 \TeX\ 开始新段落，需要处于竖直模式之下（在|\par|之后已经是了），
+并遇到一个水平项目比如一个字母。为了开始新段落，\TeX\ ^^{段落//开始段落}
 将插入一些竖直空白，取决于|\parskip|
 (\xref{\parskip})；新段落缩进，取决于|\parindent| (\xref{\parindent})。
 
@@ -1495,9 +1491,9 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %be helpful to do this when you're writing a \minref{macro} that is
 %supposed to work the same way whether or not it is preceded by a blank
 %line.
+要想减小段落间|\par|产生的空白，通常可以使用命令|\vskip -\lastskip|。
+当你需要写一个\minref{宏}而让它与前面是不是空行无关的时候，这个命令就有用。
 
-
-要想减小段落间|\par|产生的空白，通常可以使用命令|\vskip -\lastskip|。当你需要写一个\minref{宏}而让它与前面是不是空行无关的时候，这个命令就有用。
 %You can get \TeX\ to take some special action at the start of each paragraph
 %by placing the instructions in ^|\everypar| (\xref\everypar).
 %
@@ -1519,8 +1515,7 @@ $\Rightarrow$\vrule}\rlap{ off right}
 %\endexample
 %\enddesc
 
-
-你可以使用^|\everypar| (\xref\everypar)来让\TeX{}在每开始一个新段落的时候做一些事。
+你可以使用 ^|\everypar| (\xref\everypar)来让 \TeX\ 在每开始一个新段落的时候做一些事。
 
 |\par|的具体效果请参阅\knuth{pages~283 and 286}。
 
@@ -1547,11 +1542,11 @@ starting to say, when suddenly the needles turned into oars.
 %original definition of |\par|.
 %\enddesc
 
-
 \begindesc
 \cts endgraf {}
 \explain
-这个命令与^|\par|同义。有时候你重新定义了^|\par|，但是又想取得|\par|的原始定义，这个命令就会有用。
+这个命令与 ^|\par| 同义。有时候你重新定义了 ^|\par|，
+但是又想取得|\par|的原始定义，这个命令就会有用。
 \enddesc
 %\begindesc
 %\cts parfillskip {\param{glue}}
@@ -1570,9 +1565,9 @@ starting to say, when suddenly the needles turned into oars.
 \cts parfillskip {\param{glue}}
 \explain
 ^^{段落//段落末尾的粘连}
-这个参数设定\TeX{}插入段落末尾的水平粘连。
+这个参数设定 \TeX\ 插入段落末尾的水平粘连。
 默认值是|0pt plus 1fil|，这使得最后一行被空格填满。如果设成|0pt|，
-\TeX{}就会把段落的最后一行拉伸到右边距。
+\TeX\ 就会把段落的最后一行拉伸到右边距。
 \enddesc
 %\bix^^{indentation}
 %\begindesc
@@ -1593,8 +1588,9 @@ starting to say, when suddenly the needles turned into oars.
 \begindesc
 \easy\cts indent {}
 \explain
-当\TeX{}处于竖直模式时，比如段落结束以后，这个命令插入段落间粘连^|\parskip|，使\TeX{}进入水平模式，开始新的一段，并缩进|\parindent|大小。
-如果\TeX{}已经处于水平模式了，这个命令就只做缩进。
+当 \TeX\ 处于竖直模式时，比如段落结束以后，这个命令插入段落间粘连 ^|\parskip|，
+使 \TeX\ 进入水平模式，开始新的一段，并缩进|\parindent|大小。
+如果 \TeX\ 已经处于水平模式了，这个命令就只做缩进。
 一行中两个|\indent|产生两个缩进。
 ^^{缩进}
 %As the example below shows, an |\indent| at a point where \TeX\
@@ -1624,9 +1620,9 @@ starting to say, when suddenly the needles turned into oars.
 %\endexample
 %\enddesc
 
-
 如下面的例子所示，新的段落开始之后的|\indent|是多余的。
-当\TeX{}处在竖直模式下，遇到一个字母或其他水平模式中的命令时，就会切换到水平模式缩进|\indent|，然后继续。
+当 \TeX\ 处在竖直模式下，遇到一个字母或其他水平模式中的命令时，
+就会切换到水平模式缩进|\indent|，然后继续。
 
 \example
 \parindent = 2em  This is the first in a series of three
@@ -1665,8 +1661,8 @@ is the third in the series.
 \begindesc
 \easy\cts noindent {}
 \explain
-当\TeX{}结束一段后处于竖直模式时，这个命令插入段落间粘连 ^|\parskip|，
-使\TeX{}进入水平模式，然后开始新段，不要缩进。
+当 \TeX\ 结束一段后处于竖直模式时，这个命令插入段落间粘连 ^|\parskip|，
+使 \TeX\ 进入水平模式，然后开始新段，不要缩进。
 在水平模式中，比如段落中，这个命令没有效果。
 |\noindent|开始的新段会取消通常的|\parindent|缩进。
 ^^{缩进}
@@ -1738,8 +1734,8 @@ words \smallskip \centerline{EAT ME}\smallskip
 \cts textindent {\<argument>}
 \explain
 ^^{缩进}
-这个命令让\TeX\ 开始新段，正常缩进|\par!-indent|。
-然后\TeX\ 在缩进的地方向右对齐排版\<argument>并加入一个en大小的空白（em的一半）。
+这个命令让 \TeX\ 开始新段，正常缩进|\par!-indent|。
+然后 \TeX\ 在缩进的地方向右对齐排版\<argument>并加入一个en大小的空白（em的一半）。
 \PlainTeX\ 使用这个命令来排版脚注（\xref\footnote ）
 ^^{脚注//在脚注中用 \b\tt\\textindent\e}
 以及列表项（见 |\item|，\xref\item ）。
@@ -1782,7 +1778,7 @@ typographers do so.
 \cts parindent {\param{dimen}}
 \explain
 这个\minref{参数}设定段落第一行缩进的大小。^^{缩进}
-如下面的例子所示，最好不要同时使|\parindent|和^|\parskip|为零，否则两段的区别就不明显了。
+如下面的例子所示，最好不要把 |\parindent|和 ^|\parskip| 都设为零，否则两段的区别就不明显了。
 \example
 \parindent = 2em This paragraph is indented by 2 ems.
 \par \parindent=0pt This paragraph is not indented at all.
@@ -1830,7 +1826,8 @@ this paragraph isn't indented either.
 \begindesc
 \cts everypar {\param{token list}}
 \explain
-\TeX{}处于水平模式下，比如新段开始的时候，就会在\<记号列表>中执行这个命令。默认的|\everypar|为空，但是你可以添加一些命令，每一段开始的时候在记号列表中执行
+\TeX\ 处于水平模式下，比如新段开始的时候，就会在\<记号列表>中执行这个命令。
+默认的|\everypar|为空，但是你可以添加一些命令，每一段开始的时候在记号列表中执行
 %
 % This \vglue makes the example overwrite the example, but since we are
 % not reprinting this page, it doesn't matter.  For reasons I did not
@@ -1879,7 +1876,8 @@ I'll say it again! Pay attention!
 \easy\cts hsize {\param{dimen}}
 \explain
 这个\minref{参数}设定当前的^{行宽}，即从左边距开始算起，段落里一行的宽度。
-很多\TeX{}命令，比如|\centerline| (\xref{\centerline})和|\hrule| (\xref{\hrule})，都间接使用了|\hsize|的值。改变|\hsize|的值，就相应地改变了这些命令的宽度效果。
+很多 \TeX\ 命令，比如|\centerline| (\xref{\centerline})和|\hrule| (\xref{\hrule})，
+都间接使用了|\hsize|的值。改变|\hsize|的值，就相应地改变了这些命令的宽度效果。
 %If you
 %set |\hsize| within a \minref{vbox} that contains text, the vbox will
 %have whatever width you've given to |\hsize|.
@@ -1903,7 +1901,7 @@ I'll say it again! Pay attention!
 如果|\hsize|的变化发生在一个非空的\minref{竖直盒子}里，盒子的宽度就是给定的|\hsize|。
 ^^{竖直盒子//由 \b\tt\\hsize\e 确定宽度}
 
-\PlainTeX{}默认|\hsize|为|6.5in|。
+\PlainTeX\ 的默认|\hsize|为|6.5in|。
 
 \example
 {\hsize = 3.5in % Set this paragraph 3.5 inches wide.
@@ -1996,8 +1994,8 @@ half wide.}}
 %had we used just one ``narrower'' command.\par}
 %\endexample\enddesc
 
-
-|\narrower|只影响其后的段落。如果包含|\narrower|的编组在段落末尾之前结束，\TeX{}将不会产生窄的段落。
+|\narrower|只影响其后的段落。如果包含|\narrower|的编组在段落末尾之前结束，
+\TeX\ 将不会产生窄的段落。
 
 \example
 {\parindent = 12pt \narrower\narrower\narrower
@@ -2071,13 +2069,15 @@ had we used just one ``narrower'' command.\par}
 \cts leftskip {\param{glue}}
 \cts rightskip {\param{glue}}
 \explain
-这些参数告诉\TeX{}在当前段落每一行的左右各放多大的空白。我们将只解释|\leftskip|，因为|\rightskip|与其类似。
+这些参数告诉 \TeX\ 在当前段落每一行的左右各放多大的空白。
+我们将只解释|\leftskip|，因为|\rightskip|与其类似。
 
 ^^{缩进} 你可以通过设置|\leftskip|为一个固定的非零\minref{尺寸}来增加左边距。
 如果|\leftskip|是一个粘连，就会得到^{右对齐}的内容，即左边距参差不齐。
 
-通常，你应该在一个\minref{编组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。可是在一个段落内的编组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处|\leftskip|的值才会被\TeX{}用来拆段成行。\minrefs{line
-break}
+通常，你应该在一个\minref{编组}里为|\leftskip|\minref{赋值}，来避免影响其余的文档部分。
+可是在一个段落内的编组里改变|\leftskip|的值是无意义的---只有段落\emph{末尾}处
+|\leftskip|的值才会被 \TeX\ 用来拆段成行。\minrefs{line break}
 
 \example
 {\leftskip = 1in The White Rabbit trotted slowly back
@@ -2133,7 +2133,7 @@ get me executed as sure as ferrets are ferrets!''
 \easy\cts raggedright {}
 \cts ttraggedright {}
 \explain
-这些命令让\TeX{}以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。
+这些命令让 \TeX\ 以“^{左对齐}”的方式排版文档，其中单词间距保持正常，即间距一样，不需伸缩。
 因此右边距是不均匀的。而 \TeX\ 默认的则是均匀对齐 ^^{均匀对齐}，即左右边距一样。
 均匀对齐的文本单词间距将会有伸缩以产生均匀的右边距。有些排版者偏好使用左对齐。
 因为左对齐避免了页面上的空白参差不齐。

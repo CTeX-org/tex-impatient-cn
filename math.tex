@@ -318,13 +318,23 @@ z \times y = x \;\hbox{且}\; y \neq 0$$
 \endexample
 \enddesc
 
+%\begindesc
+%\ctsymbol \* \ctsxrdef{@star}
+%\explain
+%The |\*| command indicates a discretionary multiplication symbol
+%($\times$), which is a binary operation.  This multiplication symbol
+%behaves like a discretionary hyphen when it appears in a formula within
+%text\minrefs{text math}.  That is, \TeX\ will typeset the |\times|
+%symbol \emph{only} if the formula needs to be broken at that point.
+%There's no point in using |\*| in a displayed formula \minrefs{display
+%math} since \TeX\ never breaks displayed formulas on its own.
 \begindesc
 \ctsymbol \* \ctsxrdef{@star}
 \explain
-命令 |\*| 表示乘法符号 ($\times$), 也是一个二元符号。
-乘法符号在文本中的数学公式中出现时表现得和一个分词符类似。
-这就是说，\TeX\ \emph{仅}会在公式该点需要断行时排版 |\times| 符号。
-因为 \TeX\ 永远不会在陈列公式中断行，所以 |\*| 在陈列公式 \minrefs{陈列公式} 中是没有任何作用的。
+命令 |\*| 表示自定断点的乘法符号 ($\times$)，它是一个二元运算符。
+该符号在文内公式中功能与自定连字符类似。
+这就是说，\emph{仅当}公式需要在该处断行时，\TeX\ 才会排版 |\times| 符号。
+因为 \TeX\ 永远不会在陈列公式中断行，所以 |\*| 在陈列公式\minrefs{陈列公式}中是没有任何作用的。
 
 \example
 Let $c = a\*b$. In the case that $c=0$ or $c=1$, let
@@ -394,7 +404,7 @@ largest $q$})$ in the set of approximate $\tau$-values.
 当 \TeX\ 需要在一个数学公式处断行，\minrefs{断行}
 它会考虑在一个关系符后进行断行---不过仅在它出现在公式的最外层时，而不是在一个组中。
 
-除了这里列出的命令以外，\TeX\ 也把 `|=|' \chidxref{\=} 和``arrow'' 命令 (\xref{arrows}) 作为关系运算符。
+除了这里列出的命令以外，\TeX\ 也把 `|=|' \chidxref{\=} 和``箭头'' 命令 (\xref{arrows}) 作为关系运算符。
 
 一些关系符有多种命令表达方式，你可以使用任何一个来排印它们：
 \ulist \compact

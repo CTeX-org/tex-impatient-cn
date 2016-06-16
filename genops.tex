@@ -1123,7 +1123,7 @@ $$\eqalign{
 因此，任何在 \<replacement text> 中的内容会被展开，
 但那些产生盒子或粘连的排列或命令依然保持原来的样子。
 比如 \TeX\ 在处理这个定义时，在由 |\edef| 的定义中的 \<replacement text> 中的 |\hbox|
-命令依然会保持命令竹的格式，而不会变成一个盒子。
+命令依然会保持命令的格式，而不会变成一个盒子。
 一般情况下，并不能明显看出什么会被展开，什么不会，
 但你可以在 \knuth{页~212-215} 找到一张可被展开的控制序列列表。
 
@@ -1429,9 +1429,9 @@ $\alphachar$
 \begindesc
 \cts futurelet {\<control sequence> \<token$_1$> \<token$_2$>}
 \explain
-这个命令告诉 \TeX\ 把 \<token$_2$> 的设为 \<control sequence> 的定义
-(可以由 |\let| 完成),
-然后按正常的方式来处理 \<token$_1$> 和 \<token$_2$>.
+
+这个命令告诉 \TeX\ 把 \<control sequence> 的定义设为 \<token$_2$>（可以由 |\let| 完成），
+然后按正常的方式来处理 \<token$_1$> 和 \<token$_2$>。
 在宏定义的最后 |\futurelet| 很有用，因为它可以给你提供一个
 在 \TeX\ 处理未处理的记号前，查看它后面的记号的方法。
 \example
@@ -1563,7 +1563,7 @@ $\alphachar$
 %is simply \<token> no matter what \<token> happens to be.
 %\example
 %\def\bunny{rabbit}
-%\edef\magic{Pull the \noexpand\bunny\ out of the hat!! }
+%\edef\magic{Pull the \noexpand\bunny\ out of the hat! }
 %% Without \noexpand, \bunny would always be replaced
 %% by `rabbit'
 %\let\oldbunny=\bunny \def\bunny{lagomorph} \magic
@@ -1586,14 +1586,14 @@ $\alphachar$
 \TeX\ 则不会理会 |\noexpand|, 而把 \<token> 按一般的方法处理。
 \example
 \def\bunny{兔子}
-\edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
+\edef\magic{把 \noexpand\bunny\ 从帽子中取出！}
 % 如果没有 \noexpand, \bunny 会永远替换为 `兔子'
 \let\oldbunny=\bunny \def\bunny{兔} \magic
 \let\bunny=\oldbunny \magic
 |
 \produces
 \def\bunny{兔子}
-\edef\magic{把 \noexpand\bunny\ 从帽子中取出!! }
+\edef\magic{把 \noexpand\bunny\ 从帽子中取出！}
 % 如果没有 \noexpand, \bunny 会永远替换为 `兔子'
 \let\oldbunny=\bunny \def\bunny{兔} \magic
 \let\bunny=\oldbunny \magic

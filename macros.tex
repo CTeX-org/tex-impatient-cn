@@ -2310,7 +2310,7 @@
 \def\plainTeX{plain \TeX}
 \def\PlainTeX{Plain \TeX}
 \def\pp{页}
-\def\pt{\thinspace {\rm 点}}
+\def\pt{\thinspace {\rm pt}}
 \def\pxlfile{{\tt .pxl} 文件}
 \def\tequiv{\unskip $\>\equiv\>$} % equivalence in text
 \def\texbook{{\sl The \TeX book}\itcorr}
@@ -2391,7 +2391,7 @@
 \def\ctsref{\begingroup \catcode`\@ = \letter \@ctsref}
 \def\@ctsref#1{（\xref{#1}）\endgroup}
 
-\def\xrefdelim[#1]{page~\xrefn{#1}} % this form doesn't need braces
+\def\xrefdelim[#1]{第~\xrefn{#1}~页} % this form doesn't need braces
 
 % This command comes at the beginning of chapters, after the \chapter
 % command and before the text.  Hence the \par in the template
